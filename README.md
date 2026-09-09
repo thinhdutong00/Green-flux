@@ -1,6 +1,7 @@
 # Green Flux
 
-Pagina iniziale statica del progetto Green Flux, collegata a GitHub e Vercel.
+Home page Green Flux, ricostruita con i contenuti e le immagini del sito originale
+e pubblicata automaticamente tramite GitHub e Vercel.
 
 - Repository pubblico: https://github.com/thinhdutong00/Green-flux
 - Sito: https://green-flux-nine.vercel.app
@@ -8,13 +9,18 @@ Pagina iniziale statica del progetto Green Flux, collegata a GitHub e Vercel.
 
 ## Struttura
 
-- `public/index.html`: pagina iniziale in italiano, adattabile a desktop e mobile.
-- `public/robots.txt`: esclude la pagina provvisoria dai motori di ricerca.
+- `public/index.html`: home in italiano con azienda, dieci campi di intervento,
+  cinque servizi chiavi in mano e contatti.
+- `public/styles.css`: stile e layout per desktop, tablet e smartphone.
+- `public/script.js`: menu mobile accessibile e aggiornamento dell’anno.
+- `public/assets/`: logo, fotografie e font serviti localmente.
+- `public/robots.txt`: esclude questa versione di anteprima dai motori di ricerca.
 - `vercel.json`: pubblica la cartella `public` con il preset Vercel **Other**.
+- `ASSET_SOURCES.md`: provenienza dei contenuti e delle immagini.
 
 ## Anteprima locale
 
-Apri `public/index.html` nel browser oppure esegui dalla cartella del progetto:
+Esegui dalla cartella del progetto:
 
 ```sh
 python3 -m http.server 3000 --directory public
@@ -28,8 +34,13 @@ Il progetto non richiede dipendenze, compilazione o variabili d'ambiente.
 Il repository è importato nel progetto Vercel `green-flux`: i push su `main`
 aggiornano il sito di produzione; gli altri branch possono generare anteprime.
 
-Quando il sito definitivo è pronto, rimuovi il meta tag `noindex, nofollow`
-da `public/index.html` e aggiorna `public/robots.txt`.
+La home mantiene `noindex, nofollow` finché è usata come anteprima sul dominio
+Vercel. Quando sostituirà il sito definitivo, rimuovi il meta tag da
+`public/index.html` e aggiorna `public/robots.txt`.
+
+I pulsanti di consulenza e le schede dei campi di intervento aprono il client
+email con destinatario e oggetto precompilati. Il numero di telefono è cliccabile.
+Non sono presenti form di raccolta dati, tracker o dipendenze esterne a runtime.
 
 Non inserire credenziali nei file versionati: `.env*` e `.vercel/` sono esclusi
 dal repository.
