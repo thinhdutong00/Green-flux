@@ -3,15 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="robots" content="noindex, nofollow" />
+  <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#193e40" />
   <meta name="description" content="Green Flux: progettazione e installazione di impianti tecnologici, energie rinnovabili e soluzioni chiavi in mano per il settore residenziale, terziario e industriale." />
   <title>Green Flux — Il partner tecnico per i tuoi progetti</title>
+  <link rel="canonical" href="https://green-flux-nine.vercel.app/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="it_IT" />
+  <meta property="og:site_name" content="Green Flux" />
+  <meta property="og:title" content="Green Flux — Il partner tecnico per i tuoi progetti" />
+  <meta property="og:description" content="Impianti tecnologici, energie rinnovabili e soluzioni chiavi in mano per i tuoi progetti." />
+  <meta property="og:url" content="https://green-flux-nine.vercel.app/" />
+  <meta property="og:image" content="https://green-flux-nine.vercel.app/assets/fotovoltaico-750.webp" />
+  <meta property="og:image:alt" content="Impianto fotovoltaico Green Flux" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" href="/assets/favicon.ico" />
-  <link rel="preload" href="/assets/fonts/plus-jakarta-sans-400.ttf" as="font" type="font/ttf" crossorigin />
-  <link rel="preload" href="/assets/fonts/plus-jakarta-sans-800.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="/assets/fonts/plus-jakarta-sans-400.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/plus-jakarta-sans-800.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" as="image" type="image/avif" imagesrcset="/assets/hero-solar-480.avif 480w, /assets/hero-solar-768.avif 768w, /assets/hero-solar-1024.avif 1024w, /assets/hero-solar-1500.avif 1500w" imagesizes="(max-width: 680px) max(100vw, 520px), 100vw" fetchpriority="high" />
   <link rel="stylesheet" href="/styles.css" />
   <script src="/script.js" defer></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Green Flux","url":"https://green-flux-nine.vercel.app/","logo":"https://green-flux-nine.vercel.app/assets/logo.png","telephone":"+393755521420","email":"info@green-flux.com","sameAs":["https://www.instagram.com/greenflux_impianti/","https://www.facebook.com/profile.php?id=61579212246290"]}</script>
 </head>
 <body id="home">
   <a class="skip-link" href="#main">Passa al contenuto</a>
@@ -74,7 +86,10 @@
   </dialog>
   <main id="main">
     <section class="hero" aria-labelledby="hero-title">
-      <img class="hero-bg" src="/assets/hero-solar.jpg" alt="Pannelli fotovoltaici installati su un tetto" width="1500" height="2250" fetchpriority="high" />
+      <picture class="hero-media">
+        <source type="image/avif" srcset="/assets/hero-solar-480.avif 480w, /assets/hero-solar-768.avif 768w, /assets/hero-solar-1024.avif 1024w, /assets/hero-solar-1500.avif 1500w" sizes="(max-width: 680px) max(100vw, 520px), 100vw" />
+        <img class="hero-bg" src="/assets/hero-solar-1500.webp" srcset="/assets/hero-solar-480.webp 480w, /assets/hero-solar-768.webp 768w, /assets/hero-solar-1024.webp 1024w, /assets/hero-solar-1500.webp 1500w" sizes="(max-width: 680px) max(100vw, 520px), 100vw" alt="Pannelli fotovoltaici installati su un tetto" width="1500" height="2250" fetchpriority="high" decoding="async" />
+      </picture>
       <div class="hero-overlay" aria-hidden="true"></div>
       <div class="hero-content">
         <p class="eyebrow">Impianti tecnologici · Energie rinnovabili</p>
@@ -92,61 +107,61 @@
       </div>
       <div class="solutions-grid">
         <a class="solution-card featured" id="fotovoltaico" href="/preventivo/?servizio=fotovoltaico" aria-label="Richiedi un preventivo: Fotovoltaico">
-          <img src="/assets/fotovoltaico.jpg" alt="" width="1209" height="862" loading="lazy" decoding="async" />
+          <img src="/assets/fotovoltaico-750.webp" srcset="/assets/fotovoltaico-400.webp 400w, /assets/fotovoltaico-750.webp 750w" sizes="(max-width: 480px) calc(100vw - 40px), (max-width: 1100px) 50vw, 580px" alt="" width="750" height="535" loading="lazy" decoding="async" />
           <span class="card-scrim" aria-hidden="true"></span>
           <span class="card-arrow"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 18 12-12M6 6h12v12"/></svg></span>
           <div class="card-content"><span class="solution-category">Energia rinnovabile</span><h3>Fotovoltaico</h3><p>L’energia del sole, al servizio dei tuoi progetti.</p></div>
         </a>
         <a class="solution-card featured" id="pompe-di-calore" href="/preventivo/?servizio=pompe-di-calore" aria-label="Richiedi un preventivo: Pompe di calore">
-          <img src="/assets/pompe-di-calore.jpg" alt="" width="1040" height="881" loading="lazy" decoding="async" />
+          <img src="/assets/pompe-di-calore-750.webp" srcset="/assets/pompe-di-calore-400.webp 400w, /assets/pompe-di-calore-750.webp 750w" sizes="(max-width: 480px) calc(100vw - 40px), (max-width: 1100px) 50vw, 580px" alt="" width="750" height="635" loading="lazy" decoding="async" />
           <span class="card-scrim" aria-hidden="true"></span>
           <span class="card-arrow"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 18 12-12M6 6h12v12"/></svg></span>
           <div class="card-content"><span class="solution-category">Riscaldamento</span><h3>Pompe di calore</h3><p>Soluzioni per il comfort termico dei tuoi spazi.</p></div>
         </a>
         <a class="solution-card" id="smart-home" href="/preventivo/?servizio=smart-home" aria-label="Richiedi un preventivo: Smart home e automazioni">
-          <img src="/assets/smart-home.jpg" alt="" width="1280" height="930" loading="lazy" decoding="async" />
+          <img src="/assets/smart-home-750.webp" srcset="/assets/smart-home-400.webp 400w, /assets/smart-home-750.webp 750w" sizes="(max-width: 480px) calc(100vw - 40px), (max-width: 1100px) 50vw, 300px" alt="" width="750" height="545" loading="lazy" decoding="async" />
           <span class="card-scrim" aria-hidden="true"></span>
           <span class="card-arrow"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 18 12-12M6 6h12v12"/></svg></span>
           <div class="card-content"><span class="solution-category">Controllo e comfort</span><h3>Smart home e automazioni</h3><p>Tecnologie integrate per la gestione degli ambienti.</p></div>
         </a>
         <a class="solution-card" id="solare-termico" href="/preventivo/?servizio=solare-termico" aria-label="Richiedi un preventivo: Solare termico">
-          <img src="/assets/solare-termico.jpg" alt="" width="1536" height="1024" loading="lazy" decoding="async" />
+          <img src="/assets/solare-termico-750.webp" srcset="/assets/solare-termico-400.webp 400w, /assets/solare-termico-750.webp 750w" sizes="(max-width: 480px) calc(100vw - 40px), (max-width: 1100px) 50vw, 300px" alt="" width="750" height="500" loading="lazy" decoding="async" />
           <span class="card-scrim" aria-hidden="true"></span>
           <span class="card-arrow"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 18 12-12M6 6h12v12"/></svg></span>
           <div class="card-content"><span class="solution-category">Energia dal sole</span><h3>Solare termico</h3><p>Il calore del sole entra nel tuo impianto.</p></div>
         </a>
         <a class="solution-card" id="biomassa" href="/preventivo/?servizio=biomassa" aria-label="Richiedi un preventivo: Biomassa">
-          <img src="/assets/biomassa.jpg" alt="" width="1029" height="730" loading="lazy" decoding="async" />
+          <img src="/assets/biomassa-750.webp" srcset="/assets/biomassa-400.webp 400w, /assets/biomassa-750.webp 750w" sizes="(max-width: 480px) calc(100vw - 40px), (max-width: 1100px) 50vw, 300px" alt="" width="750" height="532" loading="lazy" decoding="async" />
           <span class="card-scrim" aria-hidden="true"></span>
           <span class="card-arrow"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 18 12-12M6 6h12v12"/></svg></span>
           <div class="card-content"><span class="solution-category">Riscaldamento</span><h3>Biomassa</h3><p>Una delle soluzioni per le tue esigenze termiche.</p></div>
         </a>
         <a class="solution-card" id="caldaie" href="/preventivo/?servizio=caldaie" aria-label="Richiedi un preventivo: Caldaie">
-          <img src="/assets/caldaie.jpg" alt="" width="1084" height="918" loading="lazy" decoding="async" />
+          <img src="/assets/caldaie-750.webp" srcset="/assets/caldaie-400.webp 400w, /assets/caldaie-750.webp 750w" sizes="(max-width: 480px) calc(100vw - 40px), (max-width: 1100px) 50vw, 300px" alt="" width="750" height="635" loading="lazy" decoding="async" />
           <span class="card-scrim" aria-hidden="true"></span>
           <span class="card-arrow"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 18 12-12M6 6h12v12"/></svg></span>
           <div class="card-content"><span class="solution-category">Comfort termico</span><h3>Caldaie</h3><p>Dalla sostituzione del generatore al nuovo impianto.</p></div>
         </a>
         <a class="solution-card" id="condizionatori" href="/preventivo/?servizio=condizionatori" aria-label="Richiedi un preventivo: Condizionatori">
-          <img src="/assets/condizionatori.jpg" alt="" width="954" height="840" loading="lazy" decoding="async" />
+          <img src="/assets/condizionatori-750.webp" srcset="/assets/condizionatori-400.webp 400w, /assets/condizionatori-750.webp 750w" sizes="(max-width: 480px) calc(100vw - 40px), (max-width: 1100px) 50vw, 300px" alt="" width="750" height="660" loading="lazy" decoding="async" />
           <span class="card-scrim" aria-hidden="true"></span>
           <span class="card-arrow"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 18 12-12M6 6h12v12"/></svg></span>
           <div class="card-content"><span class="solution-category">Climatizzazione</span><h3>Condizionatori</h3><p>Il clima giusto negli spazi che vivi.</p></div>
         </a>
         <a class="solution-card" id="ventilazione" href="/preventivo/?servizio=ventilazione" aria-label="Richiedi un preventivo: Ventilazione meccanica">
-          <img src="/assets/ventilazione.jpg" alt="" width="1536" height="1024" loading="lazy" decoding="async" />
+          <img src="/assets/ventilazione-750.webp" srcset="/assets/ventilazione-400.webp 400w, /assets/ventilazione-750.webp 750w" sizes="(max-width: 480px) calc(100vw - 40px), (max-width: 1100px) 50vw, 300px" alt="" width="750" height="500" loading="lazy" decoding="async" />
           <span class="card-scrim" aria-hidden="true"></span>
           <span class="card-arrow"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 18 12-12M6 6h12v12"/></svg></span>
           <div class="card-content"><span class="solution-category">Qualità dell’aria</span><h3>Ventilazione meccanica</h3><p>Soluzioni per il ricambio dell’aria negli ambienti.</p></div>
         </a>
         <a class="solution-card" id="trattamento-acqua" href="/preventivo/?servizio=trattamento-acqua" aria-label="Richiedi un preventivo: Trattamento acqua">
-          <img src="/assets/trattamento-acqua.jpg" alt="" width="1065" height="794" loading="lazy" decoding="async" />
+          <img src="/assets/trattamento-acqua-750.webp" srcset="/assets/trattamento-acqua-400.webp 400w, /assets/trattamento-acqua-750.webp 750w" sizes="(max-width: 480px) calc(100vw - 40px), (max-width: 1100px) 50vw, 580px" alt="" width="750" height="559" loading="lazy" decoding="async" />
           <span class="card-scrim" aria-hidden="true"></span>
           <span class="card-arrow"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 18 12-12M6 6h12v12"/></svg></span>
           <div class="card-content"><span class="solution-category">Qualità dell’acqua</span><h3>Trattamento acqua</h3><p>Sistemi dedicati al trattamento dell’acqua.</p></div>
         </a>
         <a class="solution-card" id="impianti-completi" href="/preventivo/?servizio=impianti-completi" aria-label="Richiedi un preventivo: Impianti completi">
-          <img src="/assets/impianti-completi.jpg" alt="" width="1536" height="1024" loading="lazy" decoding="async" />
+          <img src="/assets/impianti-completi-750.webp" srcset="/assets/impianti-completi-400.webp 400w, /assets/impianti-completi-750.webp 750w" sizes="(max-width: 480px) calc(100vw - 40px), (max-width: 1100px) 50vw, 580px" alt="" width="750" height="500" loading="lazy" decoding="async" />
           <span class="card-scrim" aria-hidden="true"></span>
           <span class="card-arrow"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 18 12-12M6 6h12v12"/></svg></span>
           <div class="card-content"><span class="solution-category">Sistemi integrati</span><h3>Impianti completi</h3><p>Competenze idrauliche ed elettriche, in un solo progetto.</p></div>
@@ -158,7 +173,7 @@
     <section class="section section-muted" id="chisiamo" aria-labelledby="about-title">
       <div class="about-layout">
         <div class="image-stack">
-          <img class="main-image" src="/assets/impianti.jpg" alt="Tecnico al lavoro su un impianto all’interno di un edificio" width="750" height="502" loading="lazy" decoding="async" />
+          <img class="main-image" src="/assets/impianti-750.webp" srcset="/assets/impianti-400.webp 400w, /assets/impianti-750.webp 750w" sizes="(max-width: 980px) calc(100vw - 48px), 520px" alt="Tecnico al lavoro su un impianto all’interno di un edificio" width="750" height="502" loading="lazy" decoding="async" />
           <div class="floating-note"><strong>Non solo impianti.</strong><span>Sistemi affidabili, duraturi<br />e orientati al risparmio.</span></div>
         </div>
         <div class="about-copy">
@@ -224,7 +239,7 @@
     </section>
 
     <section class="contact-section" id="contatti" aria-labelledby="contact-title">
-      <div class="contact-copy"><p class="eyebrow brand-label">Parliamone</p><h2 id="contact-title">Le tue idee.<br />La giusta<br /><span>energia.</span></h2><p>Raccontaci il tuo progetto. Troveremo la soluzione più adatta a te.</p><div class="contact-image"><img src="/assets/progettazione.jpg" alt="Professionista che consulta il progetto di un edificio in costruzione" width="750" height="592" loading="lazy" decoding="async" /></div></div>
+      <div class="contact-copy"><p class="eyebrow brand-label">Parliamone</p><h2 id="contact-title">Le tue idee.<br />La giusta<br /><span>energia.</span></h2><p>Raccontaci il tuo progetto. Troveremo la soluzione più adatta a te.</p><div class="contact-image"><img src="/assets/progettazione-750.webp" srcset="/assets/progettazione-400.webp 400w, /assets/progettazione-750.webp 750w" sizes="(max-width: 680px) calc(100vw - 40px), 480px" alt="Professionista che consulta il progetto di un edificio in costruzione" width="750" height="592" loading="lazy" decoding="async" /></div></div>
       <div class="contact-panel">
         <div class="panel-heading"><span class="status-dot"></span>Iniziamo da una consulenza</div>
         <div class="contact-detail"><span class="contact-label">Chiamaci</span><a href="tel:+393755521420" class="contact-primary">375 552 1420 <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 18 12-12M6 6h12v12"/></svg></a></div>

@@ -1,6 +1,6 @@
-@font-face { font-family: "Plus Jakarta Sans"; src: url("/assets/fonts/plus-jakarta-sans-400.ttf") format("truetype"); font-weight: 400; font-style: normal; font-display: swap; }
-@font-face { font-family: "Plus Jakarta Sans"; src: url("/assets/fonts/plus-jakarta-sans-600.ttf") format("truetype"); font-weight: 600; font-style: normal; font-display: swap; }
-@font-face { font-family: "Plus Jakarta Sans"; src: url("/assets/fonts/plus-jakarta-sans-800.ttf") format("truetype"); font-weight: 800; font-style: normal; font-display: swap; }
+@font-face { font-family: "Plus Jakarta Sans"; src: url("/assets/fonts/plus-jakarta-sans-400.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Plus Jakarta Sans"; src: url("/assets/fonts/plus-jakarta-sans-600.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Plus Jakarta Sans"; src: url("/assets/fonts/plus-jakarta-sans-800.woff2") format("woff2"); font-weight: 800; font-style: normal; font-display: swap; }
 
 :root {
   --ink: #193e40;
@@ -82,6 +82,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid #91b646; outline-offs
 .mobile-menu :is(a, button, summary):focus-visible { outline: 2px solid var(--lime); outline-offset: -2px; border-radius: 4px; }
 @keyframes menu-items-enter { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 .hero { position: relative; isolation: isolate; display: grid; place-items: center; min-height: min(860px, 96svh); padding: 168px 24px 78px; overflow: hidden; background: var(--ink); }
+.hero-media { display: contents; }
 .hero-bg, .hero-overlay { position: absolute; inset: 0; z-index: -1; }
 .hero-bg { width: 100%; height: 100%; object-fit: cover; object-position: center 61%; opacity: .8; }
 .hero-overlay { background: radial-gradient(ellipse at 50% 35%, rgb(25 62 64 / 22%), transparent 65%), linear-gradient(180deg, rgb(18 51 53 / 68%), rgb(18 51 53 / 65%) 38%, rgb(18 51 53 / 94%)); }

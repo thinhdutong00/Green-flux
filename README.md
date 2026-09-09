@@ -33,7 +33,7 @@ e 58 px fino a 620 px di larghezza; si nasconde mentre il menu mobile è aperto.
 - `public/preventivo/`: modulo a sei passaggi, catalogo servizi, validazione e modalità di invio.
 - `api/preventivo.mjs`: invio email opzionale tramite Resend, da attivare con le variabili server.
 - `public/assets/`: logo e fotografie originali; font e licenza in `assets/fonts/`.
-- `public/robots.txt`: esclude questa versione di anteprima dai motori di ricerca.
+- `public/robots.txt` e `public/sitemap.xml`: consentono la scansione delle pagine e ne elencano gli URL canonici.
 - `vercel.json`: pubblica la cartella `public` con il preset Vercel **Other**.
 - `ASSET_SOURCES.md`: provenienza dei contenuti e delle immagini.
 
@@ -53,9 +53,9 @@ La home e il modulo in modalità riepilogo non richiedono dipendenze, compilazio
 Il repository è importato nel progetto Vercel `green-flux`: i push su `main`
 aggiornano il sito di produzione; gli altri branch possono generare anteprime.
 
-La home mantiene `noindex, nofollow` finché è usata come anteprima sul dominio
-Vercel. Quando sostituirà il sito definitivo, rimuovi il meta tag da
-`public/index.html` e aggiorna `public/robots.txt`.
+La home e il modulo sono indicizzabili. Canonical, sitemap e metadati social
+usano il dominio Vercel corrente: aggiornali insieme quando viene collegato
+il dominio definitivo.
 
 I pulsanti di preventivo aprono `/preventivo/`. Le dieci schede degli impianti e
 i cinque servizi pre-selezionano la relativa opzione tramite `?servizio=ID`.
@@ -104,3 +104,11 @@ inviare messaggi reali: `node --test tests/preventivo.test.mjs`.
 
 Non inserire credenziali nei file versionati: `.env*` e `.vercel/` sono esclusi
 dal repository.
+
+## Ottimizzazione delle risorse
+
+La hero usa AVIF con fallback WebP e dimensioni responsive da 480 a 1.500 px.
+Le foto delle sezioni sono WebP da 400 o 750 px, caricate in modo differito.
+I font locali WOFF2 mantengono i pesi originali e il set di caratteri latino;
+solo i due pesi visibili nella hero vengono precaricati. Gli originali JPG/TTF
+e la licenza dei font restano disponibili per future esportazioni.

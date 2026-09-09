@@ -39,7 +39,8 @@ https://github.com/google/fonts/tree/main/ofl/plusjakartasans
 
 Il modulo multistep riprende struttura e interazioni di
 `https://venetagreen.it/preventivo/`, consultato su autorizzazione dell’utente.
-Catalogo, domande, foto di sfondo, logo, font e recapiti sono quelli Green Flux.
+Catalogo, domande, foto di sfondo, logo e recapiti sono quelli Green Flux.
+Il modulo usa Arial come il riferimento; la home conserva Plus Jakarta Sans.
 Non sono copiati gli endpoint di raccolta richieste, i tracker o i sistemi
 pubblicitari del riferimento.
 
@@ -49,3 +50,9 @@ animazioni WhatsApp provengono da `src/components/WhatsAppFloatingButton.astro`;
 colori del fumetto, font e contatti sono adattati a Green Flux.
 
 Il sito originale mostra `info@green-flux.com`, ma alcuni collegamenti aprono `greenflux.gestione@gmail.com`. La nuova home usa coerentemente `info@green-flux.com`, già utilizzato dal pulsante consulenza originale.
+
+## Varianti ottimizzate
+
+I file AVIF/WebP derivano dalle immagini JPG elencate sopra, senza modifiche
+al contenuto. I font WOFF2 derivano dai TTF originali, con sottoinsieme latino
+comprensivo di lettere accentate, punteggiatura e simboli disponibili.
