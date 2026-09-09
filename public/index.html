@@ -33,7 +33,20 @@
     <nav class="site-nav" id="site-navigation" aria-label="Navigazione principale">
       <a href="#campidiintervento">Impianti</a>
       <a href="#chisiamo">Chi siamo</a>
-      <a href="#servizi">Servizi</a>
+      <div class="services-nav-item" id="services-nav-item">
+        <a class="services-nav-fallback" href="#servizi">Servizi</a>
+        <button class="services-nav-trigger" id="services-nav-trigger" type="button" aria-expanded="false" aria-controls="desktop-services-menu">Servizi <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></button>
+        <div class="services-menu" id="desktop-services-menu" inert>
+          <div class="services-menu-grid">
+              <a class="services-menu-card" href="#progettazione"><span class="services-menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m4 17 13-13 3 3L7 20H4v-3Zm10-10 3 3M4 4h5M4 8h3"/></svg></span><span class="services-menu-label">Progettazione</span></a>
+              <a class="services-menu-card" href="#pratiche-e-permessi"><span class="services-menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H5v18h14V8l-5-5Z"/><path d="M14 3v5h5M8 12h8M8 16h6"/></svg></span><span class="services-menu-label">Pratiche e permessi</span></a>
+              <a class="services-menu-card" href="#diagnosi-energetiche"><span class="services-menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v16h16M8 15l4-5 4 2 4-7"/></svg></span><span class="services-menu-label">Diagnosi energetiche</span></a>
+              <a class="services-menu-card" href="#detrazioni-fiscali"><span class="services-menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2V3ZM9 9h6M9 13h6"/></svg></span><span class="services-menu-label">Detrazioni fiscali</span></a>
+              <a class="services-menu-card" href="#formule-assicurative"><span class="services-menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 8 9 8 9s8-4 8-9V6l-8-3Z"/><path d="m8 12 3 3 5-6"/></svg></span><span class="services-menu-label">Formule assicurative</span></a>
+          </div>
+          <div class="services-menu-footer"><p>Scegli un servizio</p><a href="#servizi">Tutti i servizi <span aria-hidden="true">↗</span></a></div>
+        </div>
+      </div>
       <a href="#contatti">Contatti</a>
     </nav>
     <a class="header-cta" href="/preventivo/">Richiedi un preventivo <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>

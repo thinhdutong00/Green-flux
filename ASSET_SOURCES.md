@@ -51,6 +51,11 @@ Menu mobile e pulsante WhatsApp riprendono i componenti del progetto locale
 animazioni WhatsApp provengono da `src/components/WhatsAppFloatingButton.astro`;
 colori del fumetto, font e contatti sono adattati a Green Flux.
 
+Il dropdown Servizi desktop riprende il pannello Casi clinici dello stesso
+progetto (`Header.astro` e stili `clinical-mega-*` in `BaseLayout.astro`),
+con schede, riquadri delle icone e barra inferiore. Le cinque icone sono quelle
+già presenti nelle sezioni Green Flux; colori e ancore rimangono del progetto.
+
 Il sito originale mostra `info@green-flux.com`, ma alcuni collegamenti aprono `greenflux.gestione@gmail.com`. La nuova home usa coerentemente `info@green-flux.com`, già utilizzato dal pulsante consulenza originale.
 
 ## Varianti ottimizzate
