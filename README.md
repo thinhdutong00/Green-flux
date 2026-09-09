@@ -115,7 +115,7 @@ dal repository.
 La hero usa AVIF con fallback WebP e dimensioni responsive da 480 a 1.500 px.
 Le foto delle sezioni sono WebP da 400 o 750 px, caricate in modo differito.
 I font locali WOFF2 mantengono i pesi originali e il set di caratteri latino;
-solo i due pesi visibili nella hero vengono precaricati. Gli originali JPG/TTF
+tutti e tre i pesi visibili nella hero vengono precaricati. Gli originali JPG/TTF
 e la licenza dei font restano disponibili per future esportazioni.
 
 La build incorpora CSS compresso e JavaScript raggruppato nell’HTML: la prima
