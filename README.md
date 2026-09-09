@@ -67,8 +67,10 @@ localStorage o sessionStorage.
 
 Il riferimento è `https://venetagreen.it/preventivo/`: sfondo fotografico scuro,
 scheda chiara, opzioni selezionabili, barra di avanzamento e sei passaggi.
-La palette e il font rimangono Green Flux. Il catalogo include tutti i dieci
-impianti e cinque servizi della home, più la consulenza.
+La palette rimane Green Flux; il modulo usa Arial come il riferimento, mentre
+la home conserva Plus Jakarta Sans. Su mobile opzioni e campi occupano una sola
+colonna, con il pulsante principale sopra il pulsante Indietro. Il catalogo
+include tutti i dieci impianti e cinque servizi della home, più la consulenza.
 
 Il percorso raccoglie servizi, immobile, tipo di intervento, spazi, tempistiche
 e contatti. I consumi sono facoltativi e compaiono per i servizi energetici;
