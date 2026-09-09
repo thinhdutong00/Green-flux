@@ -1,0 +1,19 @@
+# Green Flux
+
+> Impianti tecnologici, energie rinnovabili e soluzioni chiavi in mano per progetti residenziali, terziari e industriali.
+
+Green Flux srls ha sede in Via Trieste 19, 35121 Padova (PD), Italia.
+I tecnici hanno oltre 15 anni di esperienza nel settore delle energie rinnovabili.
+
+## Pagine principali
+
+- [Home](https://green-flux-nine.vercel.app/): azienda, impianti, servizi e contatti.
+- [Richiedi un preventivo](https://green-flux-nine.vercel.app/preventivo/): modulo in sei passaggi; prepara un riepilogo che il cliente può inviare tramite email o WhatsApp.
+- [Impianti](https://green-flux-nine.vercel.app/#campidiintervento): fotovoltaico, pompe di calore, smart home e automazioni, solare termico, biomassa, caldaie, condizionatori, ventilazione meccanica, trattamento acqua e impianti completi.
+- [Servizi](https://green-flux-nine.vercel.app/#servizi): progettazione, pratiche e permessi, diagnosi energetiche, detrazioni fiscali e formule assicurative.
+- [Contatti](https://green-flux-nine.vercel.app/#contatti): telefono +39 375 552 1420 ed email info@green-flux.com.
+
+## Informazioni aggiuntive
+
+- [Sitemap](https://green-flux-nine.vercel.app/sitemap.xml): elenco delle pagine pubbliche.
+- [Privacy Policy](https://www.iubenda.com/privacy-policy/26429268): informativa sul trattamento dei dati.
