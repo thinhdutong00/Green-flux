@@ -173,3 +173,47 @@ function setupWhatsAppButton() {
 }
 
 setupWhatsAppButton();
+
+// Load the questionnaire only on request; normal links remain usable without JS
+// and with Ctrl/Cmd-click. The existing URL also supports direct entry.
+const quoteDialog = document.getElementById('quote-dialog');
+const quoteLoading = quoteDialog.querySelector('.quote-dialog-loading');
+let quoteFrame;
+let quoteTrigger;
+function closeQuote() { if (quoteDialog.open) quoteDialog.close(); }
+document.addEventListener('click', event => {
+  const link = event.target.closest('a[href]');
+  if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || link.target === '_blank' || quoteDialog.contains(link)) return;
+  const url = new URL(link.href);
+  if (url.origin !== window.location.origin || url.pathname !== '/preventivo/') return;
+  event.preventDefault();
+  event.stopPropagation();
+  quoteTrigger = menu.contains(link) ? toggle : link;
+  closeMenu({ immediate: true });
+  quoteLoading.hidden = false;
+  quoteFrame = document.createElement('iframe');
+  quoteFrame.className = 'quote-dialog-frame';
+  quoteFrame.title = 'Preventivo Green Flux — modulo in sei passaggi';
+  quoteFrame.hidden = true;
+  url.searchParams.set('embed', '1');
+  quoteFrame.src = url.href;
+  quoteFrame.addEventListener('load', () => {
+    if (!quoteDialog.open || !quoteFrame?.contentDocument?.getElementById('quote-form')) return;
+    quoteLoading.hidden = true;
+    quoteFrame.hidden = false;
+    quoteFrame.focus({ preventScroll: true });
+  });
+  quoteDialog.append(quoteFrame);
+  document.documentElement.classList.add('quote-open');
+  quoteDialog.showModal();
+}, true);
+quoteDialog.addEventListener('close', () => {
+  document.documentElement.classList.remove('quote-open');
+  quoteFrame?.remove();
+  quoteFrame = null;
+  quoteTrigger?.focus({ preventScroll: true });
+});
+document.getElementById('quote-dialog-close').addEventListener('click', closeQuote);
+window.addEventListener('message', event => {
+  if (event.origin === window.location.origin && event.source === quoteFrame?.contentWindow && event.data?.type === 'greenflux:close-quote') closeQuote();
+});

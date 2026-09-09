@@ -70,17 +70,29 @@ localStorage o sessionStorage.
 
 ## Modulo preventivo
 
-Il riferimento è `https://venetagreen.it/preventivo/`: sfondo fotografico scuro,
-scheda chiara, opzioni selezionabili, barra di avanzamento e sei passaggi.
-La palette rimane Green Flux; il modulo usa Arial come il riferimento, mentre
-la home conserva Plus Jakarta Sans. Su mobile opzioni e campi occupano una sola
-colonna, con il pulsante principale sopra il pulsante Indietro. Il catalogo
-include tutti i dieci impianti e cinque servizi della home, più la consulenza.
+Il riferimento aggiornato è `https://fvg.venetagreen.it/`, verificato su desktop
+e mobile: schermata bianca a tutta pagina, logo e chiusura in alto, barra di
+avanzamento, titoli grandi, campi sottolineati e opzioni con indicatore circolare.
+La palette petrolio/lime e Plus Jakarta Sans rimangono quelli di Green Flux.
 
-Il percorso raccoglie servizi, immobile, tipo di intervento, spazi, tempistiche
-e contatti. I consumi sono facoltativi e compaiono per i servizi energetici;
-le opzioni degli spazi cambiano in base alla selezione. Il riepilogo permette
-di modificare le risposte; nome, comune, un recapito e privacy sono obbligatori.
+Il percorso parte dal nome, poi raccoglie servizi, consumi o tipo di intervento,
+spazi e contatti; il sesto passaggio mostra il riepilogo modificabile e la privacy.
+Include tutti i dieci impianti e cinque servizi della home, più la consulenza.
+La scelta dei servizi è multipla; per i servizi energetici si chiede la spesa
+mensile indicativa, per gli altri il tipo di intervento. Gli spazi sono coerenti
+con i servizi selezionati e consentono scelte multiple per richieste combinate.
+Nome, comune, almeno un recapito e privacy sono obbligatori.
+
+Le risposte singole avanzano automaticamente dopo un clic; con la tastiera si
+può esplorare il gruppo e confermare con Invio. Le scelte multiple richiedono
+Avanti. Indietro e i comandi del riepilogo consentono di correggere le risposte.
+Le transizioni rispettano la preferenza di movimento ridotto.
+
+I collegamenti della home aprono un dialogo a tutto schermo e caricano il modulo
+solo su richiesta. La chiusura ripristina posizione e focus della home; Escape
+funziona anche all’interno del modulo. `/preventivo/` e le preselezioni tramite
+`?servizio=ID` restano disponibili anche come pagine autonome. La chiusura del
+dialogo elimina le risposte, che non vengono archiviate nel browser.
 
 La modalità attuale è `handoff` in `public/preventivo/delivery.mjs`: il cliente
 apre il riepilogo nell’email indirizzata a `info@green-flux.com` oppure in WhatsApp
@@ -115,7 +127,7 @@ dal repository.
 La hero usa AVIF con fallback WebP e dimensioni responsive da 480 a 1.500 px.
 Le foto delle sezioni sono WebP da 400 o 750 px, caricate in modo differito.
 I font locali WOFF2 mantengono i pesi originali e il set di caratteri latino;
-nella build della home sono inclusi nell’HTML per evitare download aggiuntivi.
+nella build delle due pagine sono inclusi nell’HTML per evitare download aggiuntivi.
 Gli originali JPG/TTF
 e la licenza dei font restano disponibili per future esportazioni.
 

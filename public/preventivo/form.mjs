@@ -1,4 +1,4 @@
-import { services, spaceOptions, hasEnergyService, validateQuote, quoteSummary, quoteText } from './data.mjs';
+import { services, projects, consumption, spaceOptions, hasEnergyService, multipleSpaces, validateQuote, reviewEntries, quoteText } from './data.mjs';
 import { delivery, sendQuote, contactLinks } from './delivery.mjs';
 
 const form = document.getElementById('quote-form');
@@ -10,31 +10,27 @@ const next = document.getElementById('quote-next');
 const submit = document.getElementById('quote-submit');
 const error = document.getElementById('quote-error');
 const fallback = document.getElementById('quote-send-fallback');
+const params = new URLSearchParams(window.location.search);
+const embedded = params.get('embed') === '1' && window.parent !== window;
 let currentStep = 0;
 let sending = false;
+let autoAdvance;
 const startedAt = Date.now();
 let requestId = window.crypto.randomUUID();
 const checked = name => [...form.querySelectorAll(`input[name="${name}"]:checked`)].map(input => input.value);
-const value = name => form.elements.namedItem(name).value.trim();
+const value = name => form.elements.namedItem(name)?.value?.trim() || '';
 
 function readData() {
   const selectedServices = checked('services');
+  const energy = hasEnergyService(selectedServices);
   return {
     services: selectedServices,
-    property: value('property'),
-    project: value('project'),
-    consumption: hasEnergyService(selectedServices) ? value('consumption') : '',
+    project: energy ? '' : value('project'),
+    consumption: energy ? value('consumption') : '',
     spaces: checked('spaces'),
-    timeline: value('timeline'),
-    name: value('name'),
-    email: value('email'),
-    phone: value('phone'),
-    city: value('city'),
-    notes: value('notes'),
+    name: value('name'), email: value('email'), phone: value('phone'), city: value('city'), notes: value('notes'),
     privacy: form.elements.namedItem('privacy').checked,
-    website: value('website'),
-    elapsed: Date.now() - startedAt,
-    requestId,
+    website: value('website'), elapsed: Date.now() - startedAt, requestId,
   };
 }
 
@@ -52,83 +48,115 @@ function clearError() {
 function showError(message, fieldName) {
   error.textContent = message;
   error.hidden = false;
-  if (fieldName) {
-    const fields = [...form.querySelectorAll(`[name="${fieldName}"]`)];
-    fields.forEach(field => {
-      field.setAttribute('aria-invalid', 'true');
-      field.setAttribute('aria-describedby', [field.getAttribute('aria-describedby'), 'quote-error'].filter(Boolean).join(' '));
-    });
-    fields[0]?.focus({ preventScroll: true });
-    fields[0]?.closest('.quote-option, .quote-field, .quote-privacy')?.scrollIntoView({ block: 'nearest', behavior: 'auto' });
-  } else error.scrollIntoView({ block: 'nearest', behavior: 'auto' });
+  const fields = fieldName ? [...form.querySelectorAll(`[name="${fieldName}"]`)] : [];
+  fields.forEach(field => {
+    field.setAttribute('aria-invalid', 'true');
+    field.setAttribute('aria-describedby', [field.getAttribute('aria-describedby'), 'quote-error'].filter(Boolean).join(' '));
+  });
+  fields[0]?.focus({ preventScroll: true });
+  (fields[0]?.closest('.quote-option, .quote-field, .quote-privacy') || error).scrollIntoView({ block: 'nearest', behavior: 'auto' });
 }
 
-function renderSpaces() {
-  const selection = checked('services');
-  const preserved = new Set(checked('spaces'));
-  const container = document.getElementById('space-options');
+function renderOptions(container, options, name, type, selected = []) {
   container.querySelectorAll('.quote-option').forEach(option => option.remove());
-  spaceOptions(selection).forEach((option, index) => {
+  options.forEach(option => {
     const label = document.createElement('label');
     label.className = 'quote-option';
     const input = document.createElement('input');
-    Object.assign(input, { className: 'quote-option-input', type: 'checkbox', name: 'spaces', value: option.id, checked: preserved.has(option.id) });
-    const key = document.createElement('span');
-    key.className = 'quote-option-key';
-    key.setAttribute('aria-hidden', 'true');
-    key.textContent = String.fromCharCode(65 + index);
+    Object.assign(input, { className: 'quote-option-input', type, name, value: option.id, checked: selected.includes(option.id) });
     const text = document.createElement('span');
     text.className = 'quote-option-text';
     text.textContent = option.label;
-    label.append(input, key, text);
+    const check = document.createElement('span');
+    check.className = 'quote-option-check';
+    check.setAttribute('aria-hidden', 'true');
+    check.textContent = '✓';
+    label.append(input, text, check);
     container.append(label);
   });
-  document.getElementById('consumption-field').hidden = !hasEnergyService(selection);
+}
+
+function renderFollowUp() {
+  window.clearTimeout(autoAdvance);
+  const ids = checked('services');
+  const energy = hasEnergyService(ids);
+  const needsName = energy ? 'consumption' : 'project';
+  const selectedNeeds = checked(needsName);
+  renderOptions(document.getElementById('needs-options'), energy ? consumption : projects, needsName, 'radio', selectedNeeds);
+  document.getElementById('needs-label').textContent = energy ? 'Consumi' : 'Progetto';
+  document.getElementById('step-title-3').textContent = energy ? 'Quanto spendi in media di bolletta al mese?' : 'Che intervento hai in mente?';
+  document.getElementById('needs-hint').textContent = energy ? 'È sufficiente una stima della spesa energetica.' : 'Partiamo dalla tua situazione, anche se il progetto è ancora da definire.';
+  document.getElementById('needs-legend').textContent = energy ? 'Spesa energetica mensile' : 'Tipo di intervento';
+  const options = spaceOptions(ids);
+  const multiple = multipleSpaces(ids);
+  let spaces = checked('spaces').filter(id => options.some(option => option.id === id));
+  if (!multiple) spaces = spaces.slice(0, 1);
+  renderOptions(document.getElementById('space-options'), options, 'spaces', multiple ? 'checkbox' : 'radio', spaces);
+  const solarOnly = ids.length > 0 && ids.every(id => services.find(service => service.id === id)?.solar);
+  document.getElementById('step-title-4').textContent = solarOnly ? 'Che tipo di tetto o spazio hai?' : 'Quali spazi vuoi valutare?';
+  document.getElementById('spaces-hint').textContent = multiple ? 'Puoi selezionare più spazi oppure scegliere la verifica con sopralluogo.' : 'Se non hai tutte le informazioni, scegli la verifica con sopralluogo.';
+  document.getElementById('service-count').textContent = ids.length ? `${ids.length} ${ids.length === 1 ? 'servizio selezionato' : 'servizi selezionati'}` : 'Puoi scegliere anche una consulenza.';
 }
 
 function renderSummary() {
   const summary = document.getElementById('quote-summary');
   summary.replaceChildren();
-  const data = readData();
-  const indices = data.consumption ? [0, 1, 2, 2, 3, 4] : [0, 1, 2, 3, 4];
-  quoteSummary(data).forEach(([label, text], index) => {
+  reviewEntries(readData()).forEach(({ field, label, value: text, step }) => {
     const row = document.createElement('div');
     row.className = 'quote-summary-row';
-    const term = document.createElement('dt');
-    term.textContent = label;
-    const description = document.createElement('dd');
-    description.textContent = text;
+    row.dataset.field = field;
+    const term = document.createElement('dt'); term.textContent = label;
+    const description = document.createElement('dd'); description.textContent = text;
     const edit = document.createElement('button');
-    edit.type = 'button';
-    edit.textContent = 'Modifica';
+    edit.type = 'button'; edit.textContent = 'Modifica';
     edit.setAttribute('aria-label', `Modifica: ${label.toLowerCase()}`);
-    edit.addEventListener('click', () => setStep(indices[index], true));
+    edit.addEventListener('click', () => setStep(step, true));
     row.append(term, description, edit);
+    if (field === 'contacts') {
+      const editName = document.createElement('button');
+      editName.type = 'button'; editName.textContent = 'Modifica nome'; editName.style.marginLeft = '16px';
+      editName.addEventListener('click', () => setStep(0, true));
+      row.append(editName);
+    }
     summary.append(row);
   });
 }
 
+function refreshActions() {
+  const invalid = validateQuote(readData()).some(issue => issue.step === currentStep);
+  (currentStep === 5 ? submit : next).setAttribute('aria-disabled', String(invalid));
+}
+
 function setStep(index, focus = false) {
+  window.clearTimeout(autoAdvance);
+  form.classList.toggle('is-backward', index < currentStep);
   currentStep = Math.max(0, Math.min(index, steps.length - 1));
   steps.forEach((step, i) => { step.hidden = i !== currentStep; });
-  const stepName = steps[currentStep].querySelector('.quote-step-label').textContent.trim();
+  form.classList.toggle('is-services', currentStep === 1);
+  form.classList.toggle('is-review', currentStep === 5);
+  form.querySelectorAll('[data-quote-name]').forEach(span => { span.textContent = value('name'); });
+  const label = steps[currentStep].querySelector('.quote-step-label').textContent.slice(2).trim();
   progress.setAttribute('aria-valuenow', String(currentStep + 1));
-  progress.setAttribute('aria-valuetext', `Passaggio ${currentStep + 1} di ${steps.length}: ${stepName.slice(1).trim()}`);
-  progress.firstElementChild.style.width = `${(currentStep + 1) / steps.length * 100}%`;
-  counter.textContent = `${currentStep + 1} / ${steps.length}`;
+  progress.setAttribute('aria-valuetext', `Passaggio ${currentStep + 1} di ${steps.length}: ${label}`);
+  progress.firstElementChild.style.width = `${currentStep / (steps.length - 1) * 100}%`;
+  counter.textContent = `Passaggio ${currentStep + 1} di ${steps.length}: ${label}`;
   previous.hidden = currentStep === 0;
-  next.hidden = currentStep === steps.length - 1;
-  submit.hidden = currentStep !== steps.length - 1;
+  next.hidden = currentStep === 5;
+  submit.hidden = currentStep !== 5;
+  document.getElementById('quote-keyboard-hint').hidden = currentStep === 5;
   fallback.hidden = true;
   clearError();
   if (currentStep === 5) renderSummary();
+  refreshActions();
   if (focus) {
     window.scrollTo({ top: 0, behavior: 'instant' });
-    steps[currentStep].querySelector('.quote-title').focus({ preventScroll: true });
+    const target = window.matchMedia('(pointer: fine)').matches && [0, 4].includes(currentStep) ? steps[currentStep].querySelector('input') : steps[currentStep].querySelector('.quote-title');
+    target.focus({ preventScroll: true });
   }
 }
 
 function advance() {
+  if (sending || currentStep === 5) return;
   const problem = validateQuote(readData()).find(issue => issue.step === currentStep);
   if (problem) return showError(problem.message, problem.field);
   setStep(currentStep + 1, true);
@@ -145,21 +173,38 @@ previous.addEventListener('click', () => { if (!sending) setStep(currentStep - 1
 form.addEventListener('input', () => {
   requestId = window.crypto.randomUUID();
   clearError();
+  refreshActions();
   if (!fallback.hidden) refreshFallback(readData());
 });
 form.addEventListener('change', event => {
-  if (event.target.name === 'services') renderSpaces();
+  if (event.target.name === 'services') renderFollowUp();
   if (event.target.name === 'spaces' && event.target.checked) {
     const unknown = event.target.value === 'da-valutare';
     form.querySelectorAll('[name="spaces"]').forEach(input => {
       if (input !== event.target && (unknown || input.value === 'da-valutare')) input.checked = false;
     });
   }
+  refreshActions();
+});
+// Pointer selection advances single-choice questions. Arrow-key navigation stays
+// in the radio group so keyboard users can explore all answers before Enter.
+form.addEventListener('click', event => {
+  const option = event.target.closest('.quote-option');
+  const input = option?.querySelector('input[type="radio"]');
+  if (!input || !event.detail || ![2, 3].includes(currentStep)) return;
+  const from = currentStep;
+  window.clearTimeout(autoAdvance);
+  autoAdvance = window.setTimeout(() => { if (currentStep === from && input.checked) advance(); }, 250);
+});
+form.addEventListener('keydown', event => {
+  if (event.key !== 'Enter' || event.isComposing || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey || event.target.closest('textarea, button, a, summary') || currentStep === 5) return;
+  event.preventDefault();
+  advance();
 });
 form.addEventListener('submit', async event => {
   event.preventDefault();
   if (sending) return;
-  if (currentStep < steps.length - 1) return advance();
+  if (currentStep < 5) return advance();
   const data = readData();
   const problem = validateQuote(data)[0];
   if (problem) {
@@ -167,9 +212,9 @@ form.addEventListener('submit', async event => {
     return showError(problem.message, problem.field);
   }
   sending = true;
-  previous.disabled = true;
+  form.inert = true;
   submit.disabled = true;
-  submit.textContent = 'Invio in corso…';
+  submit.textContent = delivery.mode === 'handoff' ? 'Preparazione…' : 'Invio in corso…';
   form.setAttribute('aria-busy', 'true');
   clearError();
   fallback.hidden = true;
@@ -189,13 +234,17 @@ form.addEventListener('submit', async event => {
     } else form.reset();
     document.getElementById('quote-complete-title').focus({ preventScroll: true });
     window.scrollTo({ top: 0, behavior: 'instant' });
+    counter.textContent = handoff ? 'Riepilogo pronto, da inviare.' : 'Richiesta inviata.';
+    progress.setAttribute('aria-valuenow', '6');
+    progress.setAttribute('aria-valuetext', counter.textContent);
   } catch (failure) {
+    form.inert = false;
     showError(failure.message || 'L’invio non è riuscito. Riprova tra poco.');
     refreshFallback(data);
     fallback.hidden = false;
   } finally {
     sending = false;
-    previous.disabled = false;
+    form.inert = false;
     submit.disabled = false;
     submit.textContent = delivery.label;
     form.removeAttribute('aria-busy');
@@ -207,7 +256,6 @@ document.getElementById('quote-edit').addEventListener('click', () => {
   form.hidden = false;
   setStep(5, true);
 });
-
 document.getElementById('quote-copy').addEventListener('click', async () => {
   const text = document.getElementById('quote-copy-text');
   const status = document.getElementById('quote-copy-status');
@@ -216,30 +264,21 @@ document.getElementById('quote-copy').addEventListener('click', async () => {
     status.textContent = 'Riepilogo copiato.';
   } catch {
     text.closest('details').open = true;
-    text.focus();
-    text.select();
+    text.focus(); text.select();
     status.textContent = 'Riepilogo selezionato: usa Copia per copiarlo.';
   }
 });
 
-document.addEventListener('keydown', event => {
-  if (sending || event.altKey || event.ctrlKey || event.metaKey || event.target.closest('input, textarea, select, button, a, summary, [contenteditable="true"]')) return;
-  const index = event.key.toUpperCase().charCodeAt(0) - 65;
-  if (event.key.length !== 1 || index < 0 || index > 15) return;
-  const option = steps[currentStep].querySelectorAll('.quote-option')[index];
-  if (option) {
-    event.preventDefault();
-    option.click();
-  }
-});
+function closeEmbedded(event) {
+  if (!embedded) return;
+  event.preventDefault();
+  window.parent.postMessage({ type: 'greenflux:close-quote' }, window.location.origin);
+}
+document.querySelectorAll('.quote-brand, #quote-close, .quote-home-return').forEach(link => link.addEventListener('click', closeEmbedded));
+document.addEventListener('keydown', event => { if (event.key === 'Escape') closeEmbedded(event); });
 
-const requested = new URLSearchParams(window.location.search).getAll('servizio');
-form.querySelectorAll('[name="services"]').forEach(input => {
-  input.checked = requested.includes(input.value) && services.some(service => service.id === input.value);
-});
-renderSpaces();
+renderOptions(document.getElementById('service-options'), services, 'services', 'checkbox', params.getAll('servizio'));
+renderFollowUp();
 setStep(0);
 submit.firstChild.textContent = `${delivery.label} `;
 document.getElementById('delivery-note').textContent = delivery.note;
-document.getElementById('quote-loading').hidden = true;
-form.hidden = false;

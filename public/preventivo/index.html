@@ -4,124 +4,84 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#193e40" />
+  <meta name="theme-color" content="#ffffff" />
   <meta name="description" content="Racconta il tuo progetto a Green Flux: richiedi un preventivo per impianti tecnologici, energie rinnovabili e servizi chiavi in mano." />
   <title>Richiedi un preventivo — Green Flux</title>
   <link rel="canonical" href="https://green-flux-nine.vercel.app/preventivo/" />
   <link rel="icon" href="/assets/favicon.ico" />
-  <link rel="stylesheet" href="/styles.css" />
   <link rel="stylesheet" href="/preventivo/styles.css" />
   <script type="module" src="/preventivo/form.mjs"></script>
 </head>
 <body class="quote-body">
   <a class="skip-link" href="#quote-form">Passa al modulo</a>
+  <header class="quote-header">
+    <a class="quote-brand" href="/" aria-label="Green Flux — Torna alla home">
+      <span class="quote-brand-mark" aria-hidden="true"><img src="/assets/logo.png" alt="" width="500" height="232" /></span>
+      <span class="quote-brand-name">GREEN FLUX<small>IMPIANTI TECNOLOGICI</small></span>
+    </a>
+    <a class="quote-close" id="quote-close" href="/" aria-label="Chiudi il preventivo e torna al sito"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg></a>
+    <div class="quote-progress-track" role="progressbar" aria-label="Avanzamento della richiesta" aria-valuemin="1" aria-valuemax="6" aria-valuenow="1" id="quote-progress"><div class="quote-progress-bar"></div></div>
+  </header>
   <main class="quote-page">
-    <div class="quote-progress-track" role="progressbar" aria-label="Avanzamento della richiesta" aria-valuemin="0" aria-valuemax="6" aria-valuenow="1" id="quote-progress"><div class="quote-progress-bar"></div></div>
-    <a class="brand quote-brand" href="/" aria-label="Green Flux — Torna alla home"><img src="/assets/logo.png" alt="Green Flux, impianti tecnologici" width="500" height="232" /></a>
-    <p class="quote-counter" aria-live="polite" aria-atomic="true"><span class="sr-only">Passaggio </span><span id="quote-counter">1 / 6</span></p>
-    <div class="quote-form quote-loading" id="quote-loading"><h1>Il tuo progetto, un passo alla volta.</h1><p>Il modulo richiede JavaScript. Puoi contattarci anche al <a href="tel:+393755521420">375 552 1420</a> o a <a href="mailto:info@green-flux.com">info@green-flux.com</a>.</p></div>
-    <form class="quote-form" id="quote-form" novalidate hidden>
+    <noscript><p>Per compilare il modulo abilita JavaScript oppure contattaci al <a href="tel:+393755521420">375 552 1420</a> o a <a href="mailto:info@green-flux.com">info@green-flux.com</a>.</p></noscript>
+    <form class="quote-form" id="quote-form" novalidate>
       <div class="quote-honeypot" aria-hidden="true"><label>Lascia vuoto questo campo<input name="website" tabindex="-1" autocomplete="off" /></label></div>
+      <p class="sr-only" id="quote-counter" aria-live="polite" aria-atomic="true">Passaggio 1 di 6: Introduzione</p>
       <section class="quote-step" data-step="0" aria-labelledby="step-title-1">
-        <p class="quote-step-label"><span>1</span>Servizi</p>
-        <h1 class="quote-title" id="step-title-1" tabindex="-1">Di cosa hai bisogno?</h1>
-        <p class="quote-description">Seleziona uno o più interventi. Se il percorso non è ancora chiaro, puoi partire dalla consulenza.</p>
-        <fieldset class="quote-options"><legend class="sr-only">Impianti e servizi richiesti</legend>
-          <label class="quote-option"><input class="quote-option-input" type="checkbox" name="services" value="fotovoltaico" /><span class="quote-option-key" aria-hidden="true">A</span><span class="quote-option-text">Fotovoltaico</span></label>
-          <label class="quote-option"><input class="quote-option-input" type="checkbox" name="services" value="pompe-di-calore" /><span class="quote-option-key" aria-hidden="true">B</span><span class="quote-option-text">Pompe di calore</span></label>
-          <label class="quote-option"><input class="quote-option-input" type="checkbox" name="services" value="smart-home" /><span class="quote-option-key" aria-hidden="true">C</span><span class="quote-option-text">Smart home e automazioni</span></label>
-          <label class="quote-option"><input class="quote-option-input" type="checkbox" name="services" value="solare-termico" /><span class="quote-option-key" aria-hidden="true">D</span><span class="quote-option-text">Solare termico</span></label>
-          <label class="quote-option"><input class="quote-option-input" type="checkbox" name="services" value="biomassa" /><span class="quote-option-key" aria-hidden="true">E</span><span class="quote-option-text">Biomassa</span></label>
-          <label class="quote-option"><input class="quote-option-input" type="checkbox" name="services" value="caldaie" /><span class="quote-option-key" aria-hidden="true">F</span><span class="quote-option-text">Caldaie</span></label>
-          <label class="quote-option"><input class="quote-option-input" type="checkbox" name="services" value="condizionatori" /><span class="quote-option-key" aria-hidden="true">G</span><span class="quote-option-text">Condizionatori</span></label>
-          <label class="quote-option"><input class="quote-option-input" type="checkbox" name="services" value="ventilazione" /><span class="quote-option-key" aria-hidden="true">H</span><span class="quote-option-text">Ventilazione meccanica</span></label>
-          <label class="quote-option"><input class="quote-option-input" type="checkbox" name="services" value="trattamento-acqua" /><span class="quote-option-key" aria-hidden="true">I</span><span class="quote-option-text">Trattamento acqua</span></label>
-          <label class="quote-option"><input class="quote-option-input" type="checkbox" name="services" value="impianti-completi" /><span class="quote-option-key" aria-hidden="true">J</span><span class="quote-option-text">Impianti completi</span></label>
-          <label class="quote-option"><input class="quote-option-input" type="checkbox" name="services" value="progettazione" /><span class="quote-option-key" aria-hidden="true">K</span><span class="quote-option-text">Progettazione</span></label>
-          <label class="quote-option"><input class="quote-option-input" type="checkbox" name="services" value="pratiche-e-permessi" /><span class="quote-option-key" aria-hidden="true">L</span><span class="quote-option-text">Pratiche e permessi</span></label>
-          <label class="quote-option"><input class="quote-option-input" type="checkbox" name="services" value="diagnosi-energetiche" /><span class="quote-option-key" aria-hidden="true">M</span><span class="quote-option-text">Diagnosi energetiche</span></label>
-          <label class="quote-option"><input class="quote-option-input" type="checkbox" name="services" value="detrazioni-fiscali" /><span class="quote-option-key" aria-hidden="true">N</span><span class="quote-option-text">Detrazioni fiscali</span></label>
-          <label class="quote-option"><input class="quote-option-input" type="checkbox" name="services" value="formule-assicurative" /><span class="quote-option-key" aria-hidden="true">O</span><span class="quote-option-text">Formule assicurative</span></label>
-          <label class="quote-option"><input class="quote-option-input" type="checkbox" name="services" value="consulenza" /><span class="quote-option-key" aria-hidden="true">P</span><span class="quote-option-text">Consulenza / non so ancora</span></label>
-        </fieldset>
+        <p class="quote-step-label"><span>01</span>Introduzione</p>
+        <h1 class="quote-title" id="step-title-1" tabindex="-1">Ciao! Facciamo un’analisi veloce.<br />Come ti chiami?</h1>
+        <label class="quote-field quote-field-lead"><span class="sr-only">Il tuo nome</span><input name="name" autocomplete="given-name" placeholder="Il tuo nome…" required minlength="2" maxlength="120" /></label>
       </section>
-
       <section class="quote-step" data-step="1" aria-labelledby="step-title-2" hidden>
-        <p class="quote-step-label"><span>2</span>Immobile</p>
-        <h2 class="quote-title" id="step-title-2" tabindex="-1">Che tipo di immobile vuoi valutare?</h2>
-        <p class="quote-description">Il contesto dell’immobile orienta vincoli tecnici, priorità e sopralluogo.</p>
-        <fieldset class="quote-options"><legend class="sr-only">Tipologia di immobile</legend>
-          <label class="quote-option"><input class="quote-option-input" type="radio" name="property" value="abitazione" /><span class="quote-option-key" aria-hidden="true">A</span><span class="quote-option-text">Abitazione singola o appartamento</span></label>
-          <label class="quote-option"><input class="quote-option-input" type="radio" name="property" value="condominio" /><span class="quote-option-key" aria-hidden="true">B</span><span class="quote-option-text">Condominio</span></label>
-          <label class="quote-option"><input class="quote-option-input" type="radio" name="property" value="azienda" /><span class="quote-option-key" aria-hidden="true">C</span><span class="quote-option-text">Azienda, ufficio o negozio</span></label>
-          <label class="quote-option"><input class="quote-option-input" type="radio" name="property" value="industriale" /><span class="quote-option-key" aria-hidden="true">D</span><span class="quote-option-text">Stabilimento industriale</span></label>
-          <label class="quote-option"><input class="quote-option-input" type="radio" name="property" value="agricola" /><span class="quote-option-key" aria-hidden="true">E</span><span class="quote-option-text">Struttura agricola o produttiva</span></label>
-          <label class="quote-option"><input class="quote-option-input" type="radio" name="property" value="altro" /><span class="quote-option-key" aria-hidden="true">F</span><span class="quote-option-text">Altro immobile / da valutare</span></label>
-        </fieldset>
+        <p class="quote-step-label"><span>02</span>Obiettivo</p>
+        <h2 class="quote-title" id="step-title-2" tabindex="-1">Piacere, <span data-quote-name></span>.<br />Di cosa hai bisogno?</h2>
+        <p class="quote-description">Scegli uno o più impianti e servizi per il tuo progetto.</p>
+        <fieldset class="quote-options quote-services" id="service-options"><legend class="sr-only">Impianti e servizi richiesti, selezione multipla</legend></fieldset>
+        <p class="quote-selection-count" id="service-count" role="status"></p>
       </section>
-
       <section class="quote-step" data-step="2" aria-labelledby="step-title-3" hidden>
-        <p class="quote-step-label"><span>3</span>Progetto</p>
-        <h2 class="quote-title" id="step-title-3" tabindex="-1">Che intervento hai in mente?</h2>
-        <p class="quote-description">Partiamo dalla tua situazione. Va bene anche un’idea iniziale: la definiamo insieme.</p>
-        <fieldset class="quote-options"><legend class="sr-only">Tipo di intervento</legend>
-          <label class="quote-option"><input class="quote-option-input" type="radio" name="project" value="nuovo" /><span class="quote-option-key" aria-hidden="true">A</span><span class="quote-option-text">Nuova installazione</span></label>
-          <label class="quote-option"><input class="quote-option-input" type="radio" name="project" value="sostituzione" /><span class="quote-option-key" aria-hidden="true">B</span><span class="quote-option-text">Sostituzione di un impianto</span></label>
-          <label class="quote-option"><input class="quote-option-input" type="radio" name="project" value="ristrutturazione" /><span class="quote-option-key" aria-hidden="true">C</span><span class="quote-option-text">Ristrutturazione completa</span></label>
-          <label class="quote-option"><input class="quote-option-input" type="radio" name="project" value="integrazione" /><span class="quote-option-key" aria-hidden="true">D</span><span class="quote-option-text">Miglioramento o integrazione</span></label>
-          <label class="quote-option"><input class="quote-option-input" type="radio" name="project" value="verifica" /><span class="quote-option-key" aria-hidden="true">E</span><span class="quote-option-text">Verifica tecnica, pratiche o consulenza</span></label>
-          <label class="quote-option"><input class="quote-option-input" type="radio" name="project" value="da-definire" /><span class="quote-option-key" aria-hidden="true">F</span><span class="quote-option-text">Non so ancora, vorrei un consiglio</span></label>
-        </fieldset>
-        <label class="quote-field quote-consumption" id="consumption-field" hidden>Consumi elettrici annui, se li conosci <span class="field-optional">Facoltativo</span><select name="consumption"><option value="">Non li ho sotto mano</option><option value="meno-3000">Meno di 3.000 kWh/anno</option><option value="3000-6000">3.000–6.000 kWh/anno</option><option value="6000-12000">6.000–12.000 kWh/anno</option><option value="oltre-12000">Oltre 12.000 kWh/anno</option></select></label>
+        <p class="quote-step-label"><span>03</span><span id="needs-label">Consumi</span></p>
+        <h2 class="quote-title" id="step-title-3" tabindex="-1">Quanto spendi in media di bolletta al mese?</h2>
+        <p class="quote-description" id="needs-hint">È sufficiente una stima della spesa energetica.</p>
+        <fieldset class="quote-options" id="needs-options"><legend class="sr-only" id="needs-legend">Spesa energetica mensile</legend></fieldset>
       </section>
-
       <section class="quote-step" data-step="3" aria-labelledby="step-title-4" hidden>
-        <p class="quote-step-label"><span>4</span>Spazi</p>
+        <p class="quote-step-label"><span>04</span>Installazione</p>
         <h2 class="quote-title" id="step-title-4" tabindex="-1">Quali spazi hai a disposizione?</h2>
-        <p class="quote-description">Puoi selezionare più opzioni. Se non hai tutte le informazioni, scegli la verifica con sopralluogo.</p>
-        <fieldset class="quote-options" id="space-options"><legend class="sr-only">Spazi disponibili</legend></fieldset>
+        <p class="quote-description" id="spaces-hint"></p>
+        <fieldset class="quote-options" id="space-options"><legend class="sr-only">Spazi per l’intervento</legend></fieldset>
       </section>
-
       <section class="quote-step" data-step="4" aria-labelledby="step-title-5" hidden>
-        <p class="quote-step-label"><span>5</span>Tempistiche</p>
-        <h2 class="quote-title" id="step-title-5" tabindex="-1">Quando vorresti partire?</h2>
-        <p class="quote-description">La tempistica ci aiuta a definire priorità, sopralluogo e prossimi passi.</p>
-        <fieldset class="quote-options"><legend class="sr-only">Tempistiche del progetto</legend>
-          <label class="quote-option"><input class="quote-option-input" type="radio" name="timeline" value="subito" /><span class="quote-option-key" aria-hidden="true">A</span><span class="quote-option-text">Il prima possibile</span></label>
-          <label class="quote-option"><input class="quote-option-input" type="radio" name="timeline" value="un-mese" /><span class="quote-option-key" aria-hidden="true">B</span><span class="quote-option-text">Entro 1 mese</span></label>
-          <label class="quote-option"><input class="quote-option-input" type="radio" name="timeline" value="tre-mesi" /><span class="quote-option-key" aria-hidden="true">C</span><span class="quote-option-text">Entro 2–3 mesi</span></label>
-          <label class="quote-option"><input class="quote-option-input" type="radio" name="timeline" value="valutazione" /><span class="quote-option-key" aria-hidden="true">D</span><span class="quote-option-text">Sto valutando con calma</span></label>
-        </fieldset>
-      </section>
-
-      <section class="quote-step" data-step="5" aria-labelledby="step-title-6" hidden>
-        <p class="quote-step-label"><span>6</span>Contatti</p>
-        <h2 class="quote-title" id="step-title-6" tabindex="-1">Dove possiamo ricontattarti?</h2>
-        <p class="quote-description">Ti ricontatteremo con domande mirate e una prima direzione tecnica per il preventivo.</p>
+        <p class="quote-step-label"><span>05</span>Contatto</p>
+        <h2 class="quote-title" id="step-title-5" tabindex="-1">Ottimo. Dove possiamo ricontattarti?</h2>
         <div class="quote-fields">
-          <label class="quote-field">Nome e cognome * <span class="sr-only">obbligatorio</span><input name="name" autocomplete="name" placeholder="Mario Rossi" required minlength="2" maxlength="120" /></label>
-          <label class="quote-field">Email<input type="email" name="email" autocomplete="email" inputmode="email" placeholder="nome@email.it" maxlength="254" aria-describedby="contact-hint" /></label>
-          <label class="quote-field">Telefono<input type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="+39 333 123 4567" maxlength="30" aria-describedby="contact-hint" /></label>
-          <label class="quote-field">Comune dell’intervento * <span class="sr-only">obbligatorio</span><input name="city" autocomplete="address-level2" placeholder="Padova" required minlength="2" maxlength="120" /></label>
-          <label class="quote-field quote-field-wide">Raccontaci il progetto in breve<textarea name="notes" rows="4" maxlength="2000" placeholder="Impianti già presenti, esigenze o dettagli utili…"></textarea></label>
+          <label class="quote-field quote-field-lead"><span class="sr-only">Numero di cellulare</span><input type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="Numero di cellulare…" maxlength="30" aria-describedby="contact-hint" /></label>
+          <label class="quote-field"><span class="sr-only">Email</span><input type="email" name="email" autocomplete="email" inputmode="email" placeholder="La tua email…" maxlength="254" aria-describedby="contact-hint" /></label>
+          <label class="quote-field"><span class="sr-only">Comune dell’intervento, obbligatorio</span><input name="city" autocomplete="address-level2" placeholder="Comune dell’intervento…" required minlength="2" maxlength="120" /></label>
         </div>
-        <p class="quote-field-hint" id="contact-hint">Nome e comune sono obbligatori. Per ricontattarti basta un recapito tra email e telefono.</p>
-        <details class="quote-review"><summary>Rivedi le tue scelte <span aria-hidden="true">+</span></summary><dl id="quote-summary"></dl></details>
+        <p class="quote-field-hint" id="contact-hint">Indica almeno un recapito tra telefono ed email e il comune dell’intervento.</p>
+        <details class="quote-notes"><summary>Vuoi aggiungere qualche dettaglio? <span aria-hidden="true">+</span></summary><label class="quote-field"><span class="sr-only">Dettagli del progetto, facoltativi</span><textarea name="notes" rows="3" maxlength="2000" placeholder="Raccontaci le tue esigenze…"></textarea></label></details>
+      </section>
+      <section class="quote-step quote-review-step" data-step="5" aria-labelledby="step-title-6" hidden>
+        <p class="quote-step-label"><span>06</span>Riepilogo</p>
+        <h2 class="quote-title" id="step-title-6" tabindex="-1">Tutto pronto, <span data-quote-name></span>.</h2>
+        <dl class="quote-summary" id="quote-summary"></dl>
         <label class="quote-privacy"><input type="checkbox" name="privacy" required /><span>Ho letto l’<a href="https://www.iubenda.com/privacy-policy/26429268" target="_blank" rel="noopener noreferrer">informativa privacy</a> e autorizzo il ricontatto per questa richiesta di preventivo.</span></label>
         <p class="quote-delivery-note" id="delivery-note"></p>
       </section>
       <p class="quote-error" id="quote-error" role="alert" hidden></p>
       <div class="quote-actions">
-        <button class="quote-button quote-button-secondary" type="button" id="quote-prev" hidden><span aria-hidden="true">←</span> Indietro</button>
-        <button class="quote-button quote-button-primary" type="button" id="quote-next">Avanti <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button>
-        <button class="quote-button quote-button-primary" type="submit" id="quote-submit" hidden>Invia richiesta <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button>
+        <button class="quote-button quote-button-secondary" type="button" id="quote-prev" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>Indietro</button>
+        <button class="quote-button quote-button-primary" type="button" id="quote-next" aria-disabled="true">Avanti <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button>
+        <button class="quote-button quote-button-primary" type="submit" id="quote-submit" hidden>Prepara richiesta <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 18 12-12M6 6h12v12"/></svg></button>
       </div>
+      <p class="quote-keyboard-hint" id="quote-keyboard-hint">premi <kbd>Invio ↵</kbd></p>
       <div class="quote-send-fallback" id="quote-send-fallback" hidden><p>Puoi usare il riepilogo anche per contattarci direttamente.</p><a id="quote-whatsapp" target="_blank" rel="noopener noreferrer">Continua su WhatsApp ↗</a><a id="quote-email">Apri una bozza email ↗</a></div>
     </form>
     <section class="quote-form quote-complete" id="quote-complete" aria-labelledby="quote-complete-title" hidden>
-      <span class="quote-complete-icon" aria-hidden="true">✓</span><p class="quote-step-label">Il tuo progetto parte da qui</p><h1 class="quote-title" id="quote-complete-title" tabindex="-1">Il riepilogo è pronto.</h1><p id="quote-complete-message" class="quote-description"></p>
+      <span class="quote-complete-icon" aria-hidden="true">✓</span><h2 class="quote-title" id="quote-complete-title" tabindex="-1">Il riepilogo è pronto.</h2><p id="quote-complete-message" class="quote-description"></p>
       <div id="quote-handoff" hidden>
-        <details class="quote-review"><summary>Leggi il riepilogo <span aria-hidden="true">+</span></summary><label class="quote-field">La tua richiesta<textarea id="quote-copy-text" readonly rows="10"></textarea></label></details>
+        <details class="quote-notes"><summary>Leggi il riepilogo <span aria-hidden="true">+</span></summary><label class="quote-field"><span class="sr-only">La tua richiesta</span><textarea id="quote-copy-text" readonly rows="10"></textarea></label></details>
         <div class="quote-handoff-actions"><a class="quote-button quote-button-primary" id="quote-handoff-email">Apri email ↗</a><a class="quote-button quote-button-primary" id="quote-handoff-whatsapp" target="_blank" rel="noopener noreferrer">Apri WhatsApp ↗</a></div>
         <button class="quote-button quote-button-secondary" type="button" id="quote-copy">Copia riepilogo</button><p class="quote-field-hint" id="quote-copy-status" role="status"></p>
         <button class="quote-button quote-button-secondary" type="button" id="quote-edit">← Modifica la richiesta</button>

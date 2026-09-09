@@ -1,11 +1,11 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { services, validateQuote, quoteText, spaceOptions } from '../public/preventivo/data.mjs';
+import { services, validateQuote, quoteText, spaceOptions, hasEnergyService } from '../public/preventivo/data.mjs';
 import { delivery, sendQuote } from '../public/preventivo/delivery.mjs';
 import handler from '../api/preventivo.mjs';
 
-const sample = () => ({ services: ['trattamento-acqua'], property: 'abitazione', project: 'nuovo', consumption: '', spaces: ['interni'], timeline: 'tre-mesi', name: 'Test Locale', email: 'test@example.com', phone: '', city: 'Padova', notes: 'Dati di test: nessun invio reale.', privacy: true, website: '', elapsed: 5000, requestId: 'aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee' });
+const sample = () => ({ services: ['trattamento-acqua'], project: 'nuovo', consumption: '', spaces: ['interni'], name: 'Test Locale', email: 'test@example.com', phone: '', city: 'Padova', notes: 'Dati di test: nessun invio reale.', privacy: true, website: '', elapsed: 5000, requestId: 'aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee' });
 
 test('Il catalogo copre tutti i 15 servizi della home e i collegamenti preselezionati', () => {
   const home = readFileSync(new URL('../public/index.html', import.meta.url), 'utf8');
@@ -22,6 +22,23 @@ test('La validazione accetta un recapito e rifiuta dati mancanti, opzioni arbitr
   for (const invalid of [{ email: '', phone: '' }, { email: 'non-email' }, { phone: 'abcd123' }, { name: ' ' }, { city: '' }, { privacy: false }, { services: ['sconosciuto'] }, { spaces: ['tetto-falda'] }, { notes: 'a'.repeat(2001) }]) assert(validateQuote({ ...sample(), ...invalid }).length);
   assert(spaceOptions(['fotovoltaico']).some(space => space.id === 'tetto-falda'));
   assert(!spaceOptions(['trattamento-acqua']).some(space => space.id === 'tetto-falda'));
+});
+
+test('Il nuovo percorso parte dal nome e adatta consumi e installazione ai servizi', () => {
+  assert.equal(validateQuote({ ...sample(), name: '' })[0].step, 0);
+  assert.equal(validateQuote({ ...sample(), services: [] }).find(error => error.field === 'services').step, 1);
+  for (const service of services) {
+    const data = { ...sample(), services: [service.id], consumption: hasEnergyService([service.id]) ? '100-200' : '', spaces: ['da-valutare'] };
+    assert.deepEqual(validateQuote(data), [], service.label);
+    if (hasEnergyService(data.services)) {
+      assert(validateQuote({ ...data, consumption: '' }).some(error => error.step === 2));
+      assert(quoteText(data).includes('Tra 100 € e 200 € al mese'));
+      assert(!quoteText(data).includes('Intervento:'));
+    }
+  }
+  assert(validateQuote({ ...sample(), spaces: ['interni', 'da-valutare'] }).length);
+  assert(validateQuote({ ...sample(), spaces: ['interni', 'esterni'] }).length);
+  assert.deepEqual(validateQuote({ ...sample(), services: ['trattamento-acqua', 'smart-home'], spaces: ['interni', 'esterni'] }), []);
 });
 
 test('Il riepilogo comprende tutti i servizi e prepara i contatti senza trasmettere dati', async () => {

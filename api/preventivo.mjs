@@ -24,7 +24,7 @@ export default async function handler(request, response) {
   catch { return sendJson(response, 400, { message: 'La richiesta non è leggibile.' }); }
   if (!data || typeof data !== 'object' || Array.isArray(data) || JSON.stringify(data).length > 10000) return sendJson(response, 400, { message: 'La richiesta non è valida o è troppo lunga.' });
   const arraysValid = ['services', 'spaces'].every(key => Array.isArray(data[key]) && data[key].length <= 16 && data[key].every(value => typeof value === 'string' && value.length <= 80));
-  const stringsValid = ['property', 'project', 'consumption', 'timeline', 'name', 'email', 'phone', 'city', 'notes'].every(key => typeof data[key] === 'string');
+  const stringsValid = ['project', 'consumption', 'name', 'email', 'phone', 'city', 'notes'].every(key => typeof data[key] === 'string');
   if (!arraysValid || !stringsValid) return sendJson(response, 400, { message: 'Controlla i campi del modulo.' });
   if (data.website || !Number.isFinite(data.elapsed) || data.elapsed < 3000) return sendJson(response, 400, { message: 'Attendi qualche secondo e riprova. Se il problema continua, contattaci direttamente.' });
   if (typeof data.requestId !== 'string' || !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(data.requestId)) return sendJson(response, 400, { message: 'Ricarica la pagina e riprova.' });

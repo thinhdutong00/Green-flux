@@ -38,9 +38,11 @@ https://github.com/google/fonts/tree/main/ofl/plusjakartasans
 ## Collegamenti di contatto
 
 Il modulo multistep riprende struttura e interazioni di
-`https://venetagreen.it/preventivo/`, consultato su autorizzazione dell’utente.
-Catalogo, domande, foto di sfondo, logo e recapiti sono quelli Green Flux.
-Il modulo usa Arial come il riferimento; la home conserva Plus Jakarta Sans.
+`https://fvg.venetagreen.it/`, riferimento corretto fornito dall’utente e
+consultato il 9 settembre 2026 su desktop e mobile. Il primo passaggio chiede
+il nome; seguono obiettivo, consumi, installazione, contatti e riepilogo.
+Catalogo, domande condizionali, logo, palette e recapiti sono quelli Green Flux.
+Il modulo e la home usano i font locali Plus Jakarta Sans già presenti.
 Non sono copiati gli endpoint di raccolta richieste, i tracker o i sistemi
 pubblicitari del riferimento.
 
