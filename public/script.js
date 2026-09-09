@@ -26,11 +26,13 @@ document.addEventListener('keydown', event => {
 });
 
 document.addEventListener('click', event => {
-  if (!event.target.closest('.header-inner')) closeMenu();
+  if (!event.target.closest('.site-header')) closeMenu();
 });
 
-window.matchMedia('(min-width: 801px)').addEventListener('change', event => {
+window.matchMedia('(min-width: 981px)').addEventListener('change', event => {
   if (event.matches) closeMenu();
 });
+
+window.addEventListener('hashchange', () => closeMenu());
 
 document.getElementById('year').textContent = new Date().getFullYear();

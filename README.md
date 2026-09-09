@@ -3,6 +3,11 @@
 Home page Green Flux, ricostruita con i contenuti e le immagini del sito originale
 e pubblicata automaticamente tramite GitHub e Vercel.
 
+Il design riprende il riferimento fornito in `Zakka-dental-landing (1).zip`:
+barra di navigazione sospesa, hero a tutta larghezza, titoli in Plus Jakarta Sans,
+schede fotografiche arrotondate e pannelli dei servizi. La palette rimane Green
+Flux: verde petrolio `#193e40`, verde scuro `#123335` e lime `#d5ed90`.
+
 - Repository pubblico: https://github.com/thinhdutong00/Green-flux
 - Sito: https://green-flux-nine.vercel.app
 - Progetto Vercel: https://vercel.com/thinhdutong00s-projects/green-flux
@@ -13,7 +18,7 @@ e pubblicata automaticamente tramite GitHub e Vercel.
   cinque servizi chiavi in mano e contatti.
 - `public/styles.css`: stile e layout per desktop, tablet e smartphone.
 - `public/script.js`: menu mobile accessibile e aggiornamento dell’anno.
-- `public/assets/`: logo, fotografie e font serviti localmente.
+- `public/assets/`: logo e fotografie originali; font e licenza in `assets/fonts/`.
 - `public/robots.txt`: esclude questa versione di anteprima dai motori di ricerca.
 - `vercel.json`: pubblica la cartella `public` con il preset Vercel **Other**.
 - `ASSET_SOURCES.md`: provenienza dei contenuti e delle immagini.

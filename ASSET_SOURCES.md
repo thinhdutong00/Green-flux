@@ -22,9 +22,18 @@ Riferimento consultato il 9 settembre 2026. La nuova pagina conserva i dieci cam
 - `public/assets/impianti-completi.jpg`: https://images.squarespace-cdn.com/content/v1/68cd3e1afa95824bcae8e74b/16e3c4aa-c732-4671-999b-b46af70eb997/impiantiOK.jpg
 - `public/assets/favicon.ico`: https://images.squarespace-cdn.com/content/v1/68cd3e1afa95824bcae8e74b/c82f84b3-7bcd-469d-bd08-44e93f9d822a/favicon.ico
 
-## Font
+## Riferimento di design e font
 
-Manrope, distribuito da Google Fonts con licenza SIL Open Font License. La licenza è inclusa in `public/assets/Manrope-OFL.txt`.
+Design fornito nell’archivio `Zakka-dental-landing (1).zip`, cartella
+`aurora-dental-landing`. Sono ripresi struttura visiva, proporzioni,
+tipografia e stile dei componenti, adattati ai contenuti e ai colori Green Flux.
+Non sono stati utilizzati i contenuti odontoiatrici, le recensioni demo o il form
+dimostrativo del riferimento.
+
+Plus Jakarta Sans nei pesi 400, 600 e 800, tratto dal riferimento fornito e
+distribuito con licenza SIL Open Font License. Licenza inclusa in
+`public/assets/fonts/OFL.txt` e reperibile nel repository Google Fonts:
+https://github.com/google/fonts/tree/main/ofl/plusjakartasans
 
 ## Collegamenti di contatto
 
