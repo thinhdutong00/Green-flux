@@ -160,6 +160,8 @@ a:focus-visible, button:focus-visible { outline: 3px solid #91b646; outline-offs
 .service-icon svg { width: 28px; height: 28px; }
 .service-item h3 { position: relative; margin: 0 0 13px; font-size: 23px; font-weight: 800; line-height: 1.2; letter-spacing: -.025em; }
 .service-item p { margin: 0; color: rgb(255 255 255 / 76%); font-size: 16px; line-height: 1.65; max-width: 460px; }
+.service-inquiry { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; margin-top: 18px; color: var(--lime); font-size: 13px; font-weight: 600; }
+.service-inquiry:hover { text-decoration: underline; text-underline-offset: 4px; }
 .service-cta { margin-top: 38px; text-align: center; }
 
 .sectors-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); width: min(1180px, 100%); margin-inline: auto; gap: 26px; }

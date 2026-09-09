@@ -37,6 +37,12 @@ https://github.com/google/fonts/tree/main/ofl/plusjakartasans
 
 ## Collegamenti di contatto
 
+Il modulo multistep riprende struttura e interazioni di
+`https://venetagreen.it/preventivo/`, consultato su autorizzazione dell’utente.
+Catalogo, domande, foto di sfondo, logo, font e recapiti sono quelli Green Flux.
+Non sono copiati gli endpoint di raccolta richieste, i tracker o i sistemi
+pubblicitari del riferimento.
+
 Menu mobile e pulsante WhatsApp riprendono i componenti del progetto locale
 `studiodentisticofederzonigranata` fornito dall’utente. Icona SVG, dimensioni e
 animazioni WhatsApp provengono da `src/components/WhatsAppFloatingButton.astro`;

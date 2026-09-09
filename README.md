@@ -30,6 +30,8 @@ e 58 px fino a 620 px di larghezza; si nasconde mentre il menu mobile è aperto.
   cinque servizi chiavi in mano e contatti.
 - `public/styles.css`: stile e layout per desktop, tablet e smartphone.
 - `public/script.js`: header sensibile allo scroll, menu mobile e aggiornamento dell’anno.
+- `public/preventivo/`: modulo a sei passaggi, catalogo servizi, validazione e modalità di invio.
+- `api/preventivo.mjs`: invio email opzionale tramite Resend, da attivare con le variabili server.
 - `public/assets/`: logo e fotografie originali; font e licenza in `assets/fonts/`.
 - `public/robots.txt`: esclude questa versione di anteprima dai motori di ricerca.
 - `vercel.json`: pubblica la cartella `public` con il preset Vercel **Other**.
@@ -47,7 +49,7 @@ Visita http://localhost:3000.
 
 ## Pubblicazione
 
-Il progetto non richiede dipendenze, compilazione o variabili d'ambiente.
+La home e il modulo in modalità riepilogo non richiedono dipendenze, compilazione o variabili d'ambiente.
 Il repository è importato nel progetto Vercel `green-flux`: i push su `main`
 aggiornano il sito di produzione; gli altri branch possono generare anteprime.
 
@@ -55,9 +57,48 @@ La home mantiene `noindex, nofollow` finché è usata come anteprima sul dominio
 Vercel. Quando sostituirà il sito definitivo, rimuovi il meta tag da
 `public/index.html` e aggiorna `public/robots.txt`.
 
-I pulsanti di consulenza e le schede dei campi di intervento aprono il client
-email con destinatario e oggetto precompilati. Il numero di telefono è cliccabile.
-Non sono presenti form di raccolta dati, tracker o dipendenze esterne a runtime.
+I pulsanti di preventivo aprono `/preventivo/`. Le dieci schede degli impianti e
+i cinque servizi pre-selezionano la relativa opzione tramite `?servizio=ID`.
+Email, telefono e pulsante WhatsApp rimangono disponibili come contatti diretti.
+Non sono presenti tracker; le risposte del modulo non sono salvate in cookie,
+localStorage o sessionStorage.
+
+## Modulo preventivo
+
+Il riferimento è `https://venetagreen.it/preventivo/`: sfondo fotografico scuro,
+scheda chiara, opzioni selezionabili, barra di avanzamento e sei passaggi.
+La palette e il font rimangono Green Flux. Il catalogo include tutti i dieci
+impianti e cinque servizi della home, più la consulenza.
+
+Il percorso raccoglie servizi, immobile, tipo di intervento, spazi, tempistiche
+e contatti. I consumi sono facoltativi e compaiono per i servizi energetici;
+le opzioni degli spazi cambiano in base alla selezione. Il riepilogo permette
+di modificare le risposte; nome, comune, un recapito e privacy sono obbligatori.
+
+La modalità attuale è `handoff` in `public/preventivo/delivery.mjs`: il cliente
+apre il riepilogo nell’email indirizzata a `info@green-flux.com` oppure in WhatsApp
+al `+39 375 552 1420`, quindi completa l’invio nell’app. Può anche copiare il testo.
+Il sito indica chiaramente che preparare il riepilogo non equivale a inviarlo.
+
+### Invio automatico opzionale
+
+L’endpoint Vercel è predisposto per [Resend](https://resend.com/docs/api-reference/emails/send-email).
+Prima di cambiare la modalità in `server`, configurare sul progetto Vercel:
+
+- `RESEND_API_KEY`: una chiave del servizio di invio.
+- `QUOTE_FROM_EMAIL`: un mittente su un dominio verificato in Resend.
+
+Il destinatario server è fissato a `info@green-flux.com`; il client non può
+modificarlo. Le credenziali non vanno inserite nei file pubblici o versionati.
+L’endpoint valida di nuovo i dati, applica controlli antispam di base e usa
+una chiave idempotente per evitare doppie email quando si ritenta l’invio.
+Il limite di frequenza in memoria vale per istanza: un limite globale richiede
+una regola Vercel dedicata. Nessuna richiesta di test è inviata a indirizzi reali.
+Il browser mostra conferma solo dopo l’accettazione del servizio email e, in caso
+di errore, conserva le risposte e propone i canali diretti.
+
+Per eseguire i controlli del catalogo, della validazione e dell’endpoint senza
+inviare messaggi reali: `node --test tests/preventivo.test.mjs`.
 
 Non inserire credenziali nei file versionati: `.env*` e `.vercel/` sono esclusi
 dal repository.
