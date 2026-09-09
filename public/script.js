@@ -145,3 +145,31 @@ header.addEventListener('focusin', () => header.classList.remove('is-hidden'));
 syncHeader();
 
 document.getElementById('year').textContent = new Date().getFullYear();
+
+function setupWhatsAppButton() {
+  const widget = document.querySelector('[data-whatsapp-floating-widget]');
+  if (!widget) return;
+  const message = widget.querySelector('[data-whatsapp-message]');
+  const badge = widget.querySelector('[data-whatsapp-badge]');
+
+  const showMessage = (text, count) => {
+    message.textContent = text;
+    message.removeAttribute('aria-hidden');
+    badge.textContent = String(count);
+    widget.classList.add('has-notification', 'is-message-visible');
+  };
+
+  // Keep the appearance and message timing of the supplied reference.
+  window.setTimeout(() => {
+    widget.classList.add('is-visible');
+    widget.removeAttribute('aria-hidden');
+  }, 5000);
+  window.setTimeout(() => showMessage('Ciao, come possiamo aiutarti?', 1), 8000);
+  window.setTimeout(() => showMessage("Hai un dubbio o un'urgenza? Scrivicelo su whatsapp!", 2), 18000);
+  window.setTimeout(() => {
+    widget.classList.remove('is-message-visible');
+    message.setAttribute('aria-hidden', 'true');
+  }, 28000);
+}
+
+setupWhatsAppButton();

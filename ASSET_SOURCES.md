@@ -37,4 +37,9 @@ https://github.com/google/fonts/tree/main/ofl/plusjakartasans
 
 ## Collegamenti di contatto
 
+Menu mobile e pulsante WhatsApp riprendono i componenti del progetto locale
+`studiodentisticofederzonigranata` fornito dall’utente. Icona SVG, dimensioni e
+animazioni WhatsApp provengono da `src/components/WhatsAppFloatingButton.astro`;
+colori del fumetto, font e contatti sono adattati a Green Flux.
+
 Il sito originale mostra `info@green-flux.com`, ma alcuni collegamenti aprono `greenflux.gestione@gmail.com`. La nuova home usa coerentemente `info@green-flux.com`, già utilizzato dal pulsante consulenza originale.

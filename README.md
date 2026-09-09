@@ -14,6 +14,12 @@ Granata: pannello a tutto schermo, sezioni espandibili e contatti sempre a porta
 di mano. Usa un dialogo nativo per gestire focus, tastiera e sfondo inattivo;
 le animazioni rispettano la preferenza di movimento ridotto.
 
+Il pulsante WhatsApp fisso in basso a destra riprende dimensioni, animazioni,
+messaggi e tempi del riferimento: compare dopo 5 secondi, mostra i messaggi
+a 8 e 18 secondi e richiude il fumetto a 28 secondi. Apre la chat al numero
+Green Flux `+39 375 552 1420` con un testo precompilato. Misura 64 px su desktop
+e 58 px fino a 620 px di larghezza; si nasconde mentre il menu mobile è aperto.
+
 - Repository pubblico: https://github.com/thinhdutong00/Green-flux
 - Sito: https://green-flux-nine.vercel.app
 - Progetto Vercel: https://vercel.com/thinhdutong00s-projects/green-flux
