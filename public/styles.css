@@ -90,7 +90,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid #91b646; outline-offs
 .eyebrow { margin: 0 0 20px; color: rgb(255 255 255 / 80%); font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
 .brand-label { color: var(--ink); }
 .lime-label { color: var(--lime); }
-.hero h1 { margin: 0; color: var(--white); font-size: clamp(54px, 7.7vw, 112px); font-weight: 800; letter-spacing: -.055em; line-height: 1.03; }
+.hero h1 { margin: 0; color: var(--white); font-size: clamp(54px, 7.7vw, 112px); font-weight: 800; letter-spacing: -.03em; line-height: 1.03; }
 .hero h1 span { color: var(--lime); }
 .hero-lead { width: min(735px, 100%); margin: 30px auto 0; color: rgb(255 255 255 / 80%); font-size: clamp(17px, 1.6vw, 22px); line-height: 1.6; }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 14px; margin-top: 38px; }
@@ -263,7 +263,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid #91b646; outline-offs
   .mobile-menu-header .brand { width: min(182px, 48vw); }
   .mobile-menu-header { gap: 8px; }
   .hero { min-height: 740px; padding: 137px 20px 64px; }
-  .hero h1 { font-size: clamp(42px, 10.4vw, 66px); line-height: 1.08; letter-spacing: -.055em; }
+  .hero h1 { font-size: clamp(42px, 10.4vw, 66px); line-height: 1.08; }
   .hero .eyebrow { font-size: 12px; letter-spacing: .06em; }
   .hero-lead { margin-top: 26px; font-size: 17px; }
   .hero-actions { flex-direction: column; gap: 12px; margin-top: 30px; }
