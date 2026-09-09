@@ -1,6 +1,10 @@
 # Green Flux
 
-Pagina iniziale statica del progetto Green Flux, predisposta per GitHub e Vercel.
+Pagina iniziale statica del progetto Green Flux, collegata a GitHub e Vercel.
+
+- Repository pubblico: https://github.com/thinhdutong00/Green-flux
+- Sito: https://green-flux-nine.vercel.app
+- Progetto Vercel: https://vercel.com/thinhdutong00s-projects/green-flux
 
 ## Struttura
 
@@ -21,8 +25,8 @@ Visita http://localhost:3000.
 ## Pubblicazione
 
 Il progetto non richiede dipendenze, compilazione o variabili d'ambiente.
-Una volta importato il repository su Vercel, i push su `main` aggiornano il sito
-di produzione; gli altri branch possono generare anteprime.
+Il repository è importato nel progetto Vercel `green-flux`: i push su `main`
+aggiornano il sito di produzione; gli altri branch possono generare anteprime.
 
 Quando il sito definitivo è pronto, rimuovi il meta tag `noindex, nofollow`
 da `public/index.html` e aggiorna `public/robots.txt`.
