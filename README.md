@@ -14,10 +14,11 @@ Granata: pannello a tutto schermo, sezioni espandibili e contatti sempre a porta
 di mano. Usa un dialogo nativo per gestire focus, tastiera e sfondo inattivo;
 le animazioni rispettano la preferenza di movimento ridotto.
 
-Su desktop, Servizi apre un pannello ispirato al menu Casi clinici dello stesso
-riferimento: cinque schede con le icone Green Flux e un collegamento a tutti i
-servizi. Le voci portano alle ancore della home. Supporta hover, clic, tastiera,
-Escape e chiusura all’esterno; l’header rimane visibile mentre il pannello è aperto.
+Campi di intervento precede Servizi sia su desktop sia su mobile. I due dropdown
+desktop riprendono il menu Casi clinici del riferimento: dieci schede per gli
+impianti, cinque per i servizi, con icone e collegamenti alle ancore della home.
+Si apre un solo pannello alla volta; entrambi supportano hover, clic, tastiera,
+Escape e chiusura all’esterno. L’header rimane visibile mentre un pannello è aperto.
 
 Il pulsante WhatsApp fisso in basso a destra riprende dimensioni, animazioni,
 messaggi e tempi del riferimento: compare dopo 5 secondi, mostra i messaggi

@@ -41,7 +41,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid #91b646; outline-offs
 .site-nav a:hover { color: var(--lime); }
 /* Desktop service cards follow the clinical-cases menu from the reference. */
 .services-nav-item { display: flex; align-items: center; align-self: stretch; }
-.services-nav-trigger { display: none; align-items: center; gap: 7px; min-height: 46px; padding: 12px 0; border: 0; background: none; color: rgb(255 255 255 / 85%); font-size: 14px; font-weight: 600; line-height: inherit; }
+.services-nav-trigger { display: none; align-items: center; gap: 7px; min-height: 46px; padding: 12px 0; border: 0; background: none; color: rgb(255 255 255 / 85%); font-size: 14px; font-weight: 600; line-height: inherit; white-space: nowrap; }
 .js .services-nav-trigger { display: inline-flex; }
 .js .services-nav-fallback { display: none; }
 .services-nav-trigger svg { width: 14px; height: 14px; transition: transform 160ms ease; }

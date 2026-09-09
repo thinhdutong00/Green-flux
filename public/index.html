@@ -31,9 +31,27 @@
   <header class="site-header">
     <a class="brand" href="#home" aria-label="Green Flux — Home"><img src="/assets/logo.png" alt="Green Flux, impianti tecnologici" width="500" height="232" /></a>
     <nav class="site-nav" id="site-navigation" aria-label="Navigazione principale">
-      <a href="#campidiintervento">Impianti</a>
       <a href="#chisiamo">Chi siamo</a>
-      <div class="services-nav-item" id="services-nav-item">
+      <div class="services-nav-item" id="fields-nav-item" data-desktop-menu>
+        <a class="services-nav-fallback" href="#campidiintervento">Campi di intervento</a>
+        <button class="services-nav-trigger" id="fields-nav-trigger" type="button" aria-expanded="false" aria-controls="desktop-fields-menu">Campi di intervento <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></button>
+        <div class="services-menu" id="desktop-fields-menu" inert>
+          <div class="services-menu-grid">
+            <a class="services-menu-card" href="#fotovoltaico"><span class="services-menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h16l2 10H2l2-10ZM8 10 7 20M16 10l1 10M3 15h18M12 2v2M5 4l2 2M19 4l-2 2"/><path d="M9 8a3 3 0 0 1 6 0"/></svg></span><span class="services-menu-label">Fotovoltaico</span></a>
+            <a class="services-menu-card" href="#pompe-di-calore"><span class="services-menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="9" cy="12" r="4"/><path d="M9 8v8M5 12h8M17 9h2M17 12h2M17 15h2M5 19v2M19 19v2"/></svg></span><span class="services-menu-label">Pompe di calore</span></a>
+            <a class="services-menu-card" href="#smart-home"><span class="services-menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 9-8 9 8M5 10v11h14V10M9 14a5 5 0 0 1 6 0M10.5 16.5a2.5 2.5 0 0 1 3 0"/><circle cx="12" cy="19" r=".5"/></svg></span><span class="services-menu-label">Smart home e automazioni</span></a>
+            <a class="services-menu-card" href="#solare-termico"><span class="services-menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="6" r="3"/><path d="M7 1v1M1 6h2M11 2l-1 1M12 6h1M7 10v1M2 2l1 1"/><rect x="15" y="4" width="6" height="16" rx="3"/><path d="M18 7v9M17 17h2M3 15h9v6H3zM6 15v6M9 15v6M12 18h3"/></svg></span><span class="services-menu-label">Solare termico</span></a>
+            <a class="services-menu-card" href="#biomassa"><span class="services-menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c1 4-3 5-3 8 0 1 1 2 2 2 0-2 2-3 3-4 1 3 4 5 4 8a6 6 0 0 1-12 0c0-5 3-7 6-14Z"/></svg></span><span class="services-menu-label">Biomassa</span></a>
+            <a class="services-menu-card" href="#caldaie"><span class="services-menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="18" rx="2"/><circle cx="12" cy="7" r="2"/><path d="M9 13h6M9 16h6M9 20v2M15 20v2"/></svg></span><span class="services-menu-label">Caldaie</span></a>
+            <a class="services-menu-card" href="#condizionatori"><span class="services-menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="9" rx="2"/><path d="M5 10h14M17 7h2M7 16v2c0 2-2 2-2 4M12 16v5M17 16v2c0 2 2 2 2 4"/></svg></span><span class="services-menu-label">Condizionatori</span></a>
+            <a class="services-menu-card" href="#ventilazione"><span class="services-menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="12" cy="12" r="2"/><path d="M12 10c-5-5 4-7 2-1M14 12c5-5 7 4 1 2M12 14c5 5-4 7-2 1M10 12c-5 5-7-4-1-2"/></svg></span><span class="services-menu-label">Ventilazione meccanica</span></a>
+            <a class="services-menu-card" href="#trattamento-acqua"><span class="services-menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2S5 10 5 15a7 7 0 0 0 14 0c0-5-7-13-7-13Z"/><path d="m9 15 2 2 4-4"/></svg></span><span class="services-menu-label">Trattamento acqua</span></a>
+            <a class="services-menu-card" href="#impianti-completi"><span class="services-menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m2 10 10-8 10 8M5 8v13h14V8M5 15h5V9h5v12M10 18h9"/><circle cx="10" cy="15" r="1.5"/></svg></span><span class="services-menu-label">Impianti completi</span></a>
+          </div>
+          <div class="services-menu-footer"><p>Scegli un campo di intervento</p><a href="#campidiintervento">Tutti i campi di intervento <span aria-hidden="true">↗</span></a></div>
+        </div>
+      </div>
+      <div class="services-nav-item" id="services-nav-item" data-desktop-menu>
         <a class="services-nav-fallback" href="#servizi">Servizi</a>
         <button class="services-nav-trigger" id="services-nav-trigger" type="button" aria-expanded="false" aria-controls="desktop-services-menu">Servizi <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></button>
         <div class="services-menu" id="desktop-services-menu" inert>
@@ -61,7 +79,7 @@
       <a class="menu-primary-link" href="#home">Home</a>
       <a class="menu-primary-link" href="#chisiamo">Chi siamo</a>
       <details class="menu-section" name="mobile-navigation">
-        <summary><span>Impianti</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <summary><span>Campi di intervento</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
         <div class="menu-section-links">
           <a href="#fotovoltaico">Fotovoltaico</a>
           <a href="#pompe-di-calore">Pompe di calore</a>
@@ -73,7 +91,7 @@
           <a href="#ventilazione">Ventilazione meccanica</a>
           <a href="#trattamento-acqua">Trattamento acqua</a>
           <a href="#impianti-completi">Impianti completi</a>
-          <a class="menu-all-link" href="#campidiintervento">Tutti gli impianti <span aria-hidden="true">↗</span></a>
+          <a class="menu-all-link" href="#campidiintervento">Tutti i campi di intervento <span aria-hidden="true">↗</span></a>
         </div>
       </details>
       <details class="menu-section" name="mobile-navigation">

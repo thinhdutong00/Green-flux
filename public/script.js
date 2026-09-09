@@ -9,75 +9,93 @@ let closingMenu = false;
 let finishMenuClose = null;
 let closeTimer;
 
-const servicesNav = document.getElementById('services-nav-item');
-const servicesTrigger = document.getElementById('services-nav-trigger');
-const servicesPanel = document.getElementById('desktop-services-menu');
-let servicesCloseTimer;
-let servicesOpenedByHover = false;
+const desktopMenus = [...document.querySelectorAll('[data-desktop-menu]')].map(nav => ({
+  nav,
+  trigger: nav.querySelector('.services-nav-trigger'),
+  panel: nav.querySelector('.services-menu'),
+  closeTimer: null,
+  openedByHover: false,
+}));
 
-function setServicesOpen(open, restoreFocus = false) {
-  clearTimeout(servicesCloseTimer);
-  servicesOpenedByHover = false;
+function setDesktopMenuOpen(item, open, restoreFocus = false) {
+  clearTimeout(item.closeTimer);
+  item.openedByHover = false;
   const isOpen = open && desktop.matches;
-  servicesNav.classList.toggle('is-open', isOpen);
-  servicesTrigger.setAttribute('aria-expanded', String(isOpen));
-  if (!isOpen && restoreFocus) servicesTrigger.focus({ preventScroll: true });
-  servicesPanel.inert = !isOpen;
+  if (isOpen) {
+    desktopMenus.forEach(other => {
+      if (other !== item && other.nav.classList.contains('is-open')) {
+        setDesktopMenuOpen(other, false, other.panel.contains(document.activeElement));
+      }
+    });
+  }
+  item.nav.classList.toggle('is-open', isOpen);
+  item.trigger.setAttribute('aria-expanded', String(isOpen));
+  if (!isOpen && restoreFocus) item.trigger.focus({ preventScroll: true });
+  item.panel.inert = !isOpen;
   if (isOpen) header.classList.remove('is-hidden');
 }
 
-servicesTrigger.addEventListener('click', () => setServicesOpen(servicesOpenedByHover || !servicesNav.classList.contains('is-open')));
-servicesTrigger.addEventListener('keydown', event => {
-  if (event.key !== 'ArrowDown') return;
-  event.preventDefault();
-  setServicesOpen(true);
-  servicesPanel.querySelector('a').focus({ preventScroll: true });
-});
-servicesNav.addEventListener('pointerenter', event => {
-  if (event.pointerType !== 'mouse') return;
-  clearTimeout(servicesCloseTimer);
-  if (!servicesNav.classList.contains('is-open')) {
-    setServicesOpen(true);
-    servicesOpenedByHover = true;
-  }
-});
-servicesNav.addEventListener('pointerleave', event => {
-  if (event.pointerType !== 'mouse') return;
-  servicesCloseTimer = setTimeout(() => {
-    const focused = document.activeElement;
-    if (servicesNav.contains(focused) && focused.matches(':focus-visible')) return;
-    setServicesOpen(false, servicesPanel.contains(focused));
-  }, 180);
-});
-servicesNav.addEventListener('focusin', () => clearTimeout(servicesCloseTimer));
-servicesNav.addEventListener('focusout', event => {
-  if (!servicesNav.contains(event.relatedTarget)) setServicesOpen(false);
+const closeDesktopMenus = () => desktopMenus.forEach(item => setDesktopMenuOpen(item, false));
+
+desktopMenus.forEach(item => {
+  const { nav, trigger, panel } = item;
+  trigger.addEventListener('click', () => setDesktopMenuOpen(item, item.openedByHover || !nav.classList.contains('is-open')));
+  trigger.addEventListener('keydown', event => {
+    if (event.key !== 'ArrowDown') return;
+    event.preventDefault();
+    setDesktopMenuOpen(item, true);
+    panel.querySelector('a').focus({ preventScroll: true });
+  });
+  nav.addEventListener('pointerenter', event => {
+    if (event.pointerType !== 'mouse') return;
+    clearTimeout(item.closeTimer);
+    if (!nav.classList.contains('is-open')) {
+      setDesktopMenuOpen(item, true);
+      item.openedByHover = true;
+    }
+  });
+  nav.addEventListener('pointerleave', event => {
+    if (event.pointerType !== 'mouse') return;
+    item.closeTimer = setTimeout(() => {
+      const focused = document.activeElement;
+      if (nav.contains(focused) && focused.matches(':focus-visible')) return;
+      setDesktopMenuOpen(item, false, panel.contains(focused));
+    }, 180);
+  });
+  nav.addEventListener('focusin', () => clearTimeout(item.closeTimer));
+  nav.addEventListener('focusout', event => {
+    if (!nav.contains(event.relatedTarget)) setDesktopMenuOpen(item, false);
+  });
+  panel.addEventListener('click', event => {
+    const link = event.target.closest('a');
+    if (!link || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const destination = link.getAttribute('href');
+    const target = document.getElementById(destination.slice(1));
+    if (!target) return;
+    event.preventDefault();
+    setDesktopMenuOpen(item, false);
+    if (window.location.hash !== destination) history.pushState(null, '', destination);
+    target.scrollIntoView({ block: 'start', behavior: reducedMotion.matches ? 'instant' : 'smooth' });
+    const temporaryTabIndex = !target.hasAttribute('tabindex') && !target.matches('a, button');
+    if (temporaryTabIndex) target.setAttribute('tabindex', '-1');
+    target.focus({ preventScroll: true });
+    if (temporaryTabIndex) target.addEventListener('blur', () => target.removeAttribute('tabindex'), { once: true });
+  });
 });
 document.addEventListener('keydown', event => {
-  if (event.key !== 'Escape' || !servicesNav.classList.contains('is-open')) return;
+  if (event.key !== 'Escape') return;
+  const item = desktopMenus.find(item => item.nav.classList.contains('is-open'));
+  if (!item) return;
   event.preventDefault();
-  setServicesOpen(false, servicesNav.contains(document.activeElement));
+  setDesktopMenuOpen(item, false, item.nav.contains(document.activeElement));
 });
 document.addEventListener('pointerdown', event => {
-  if (!servicesNav.contains(event.target)) setServicesOpen(false);
+  desktopMenus.forEach(item => {
+    if (!item.nav.contains(event.target)) setDesktopMenuOpen(item, false);
+  });
 });
-servicesPanel.addEventListener('click', event => {
-  const link = event.target.closest('a');
-  if (!link || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-  const destination = link.getAttribute('href');
-  const target = document.getElementById(destination.slice(1));
-  if (!target) return;
-  event.preventDefault();
-  setServicesOpen(false);
-  if (window.location.hash !== destination) history.pushState(null, '', destination);
-  target.scrollIntoView({ block: 'start', behavior: reducedMotion.matches ? 'instant' : 'smooth' });
-  const temporaryTabIndex = !target.hasAttribute('tabindex');
-  if (temporaryTabIndex) target.setAttribute('tabindex', '-1');
-  target.focus({ preventScroll: true });
-  if (temporaryTabIndex) target.addEventListener('blur', () => target.removeAttribute('tabindex'), { once: true });
-});
-desktop.addEventListener('change', () => setServicesOpen(false));
-window.addEventListener('hashchange', () => setServicesOpen(false));
+desktop.addEventListener('change', closeDesktopMenus);
+window.addEventListener('hashchange', closeDesktopMenus);
 
 function openMenu() {
   if (desktop.matches || menu.open) return;
@@ -190,7 +208,7 @@ function syncHeader() {
   header.classList.toggle('is-scrolled', currentScrollY > 12);
 
   const keyboardFocusInHeader = header.contains(document.activeElement) && document.activeElement.matches(':focus-visible');
-  if (currentScrollY <= header.offsetHeight + 32 || menu.open || servicesNav.classList.contains('is-open') || keyboardFocusInHeader) {
+  if (currentScrollY <= header.offsetHeight + 32 || menu.open || desktopMenus.some(item => item.nav.classList.contains('is-open')) || keyboardFocusInHeader) {
     header.classList.remove('is-hidden');
     scrollTravel = 0;
     return;

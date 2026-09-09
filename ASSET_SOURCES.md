@@ -51,10 +51,11 @@ Menu mobile e pulsante WhatsApp riprendono i componenti del progetto locale
 animazioni WhatsApp provengono da `src/components/WhatsAppFloatingButton.astro`;
 colori del fumetto, font e contatti sono adattati a Green Flux.
 
-Il dropdown Servizi desktop riprende il pannello Casi clinici dello stesso
-progetto (`Header.astro` e stili `clinical-mega-*` in `BaseLayout.astro`),
-con schede, riquadri delle icone e barra inferiore. Le cinque icone sono quelle
-già presenti nelle sezioni Green Flux; colori e ancore rimangono del progetto.
+I dropdown Campi di intervento e Servizi desktop riprendono il pannello Casi
+clinici dello stesso progetto (`Header.astro` e stili `clinical-mega-*` in
+`BaseLayout.astro`), con schede, riquadri delle icone e barra inferiore. Le dieci
+icone degli impianti sono SVG originali nello stesso stile lineare delle cinque
+icone già presenti nei servizi. Nomi, colori e ancore rimangono Green Flux.
 
 Le comparse delle sezioni riprendono `https://www.magosystem.it/` e il progetto
 locale `mago-system` (`src/App.jsx` e `src/styles.css`), verificati il 9 settembre
