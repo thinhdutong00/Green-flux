@@ -20,11 +20,20 @@ for (const page of pages) {
   let html = await readFile(new URL(page.path, source), 'utf8');
   const stylesheets = [...html.matchAll(/<link rel="stylesheet" href="([^"]+)"\s*\/>/g)];
   for (const [tag, href] of stylesheets) {
-    const css = await readFile(new URL(href.slice(1), source), 'utf8');
+    let css = await readFile(new URL(href.slice(1), source), 'utf8');
+    if (page.path === 'index.html') {
+      for (const [url, fontPath] of css.matchAll(/url\("(\/assets\/fonts\/[^\"]+\.woff2)"\)/g)) {
+        const font = await readFile(new URL(fontPath.slice(1), source));
+        css = css.replace(url, `url("data:font/woff2;base64,${font.toString('base64')}")`);
+      }
+    }
     const result = await transform(css, {
       loader: 'css', minify: true, target: ['chrome110', 'firefox115', 'safari16.4'],
     });
     html = html.replace(tag, `<style>${result.code}</style>`);
+  }
+  if (page.path === 'index.html') {
+    html = html.replace(/\s*<link rel="preload"[^>]+as="font"[^>]*\/>/g, '');
   }
   const result = await build({
     entryPoints: [fileURLToPath(new URL(page.script, source))],

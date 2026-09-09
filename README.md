@@ -112,11 +112,11 @@ dal repository.
 
 ## Ottimizzazione delle risorse
 
-La hero usa AVIF su desktop e WebP su mobile, con dimensioni responsive da
-480 a 1.500 px. Il formato mobile riduce il costo di decodifica sui telefoni.
+La hero usa AVIF con fallback WebP e dimensioni responsive da 480 a 1.500 px.
 Le foto delle sezioni sono WebP da 400 o 750 px, caricate in modo differito.
 I font locali WOFF2 mantengono i pesi originali e il set di caratteri latino;
-tutti e tre i pesi visibili nella hero vengono precaricati. Gli originali JPG/TTF
+nella build della home sono inclusi nell’HTML per evitare download aggiuntivi.
+Gli originali JPG/TTF
 e la licenza dei font restano disponibili per future esportazioni.
 
 La build incorpora CSS compresso e JavaScript raggruppato nell’HTML: la prima
