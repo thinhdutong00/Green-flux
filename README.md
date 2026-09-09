@@ -34,7 +34,8 @@ e 58 px fino a 620 px di larghezza; si nasconde mentre il menu mobile è aperto.
 - `api/preventivo.mjs`: invio email opzionale tramite Resend, da attivare con le variabili server.
 - `public/assets/`: logo e fotografie originali; font e licenza in `assets/fonts/`.
 - `public/robots.txt` e `public/sitemap.xml`: consentono la scansione delle pagine e ne elencano gli URL canonici.
-- `vercel.json`: pubblica la cartella `public` con il preset Vercel **Other**.
+- `scripts/build.mjs`: comprime e incorpora CSS e JavaScript nelle pagine generate.
+- `vercel.json`: esegue la build e pubblica la cartella `dist` con il preset Vercel **Other**.
 - `ASSET_SOURCES.md`: provenienza dei contenuti e delle immagini.
 
 ## Anteprima locale
@@ -42,14 +43,18 @@ e 58 px fino a 620 px di larghezza; si nasconde mentre il menu mobile è aperto.
 Esegui dalla cartella del progetto:
 
 ```sh
-python3 -m http.server 3000 --directory public
+npm ci
+npm run build
+python3 -m http.server 3000 --directory dist
 ```
 
-Visita http://localhost:3000.
+Visita http://localhost:3000. Modifica i sorgenti in `public` e ripeti la build
+per aggiornare l’anteprima di produzione.
 
 ## Pubblicazione
 
-La home e il modulo in modalità riepilogo non richiedono dipendenze, compilazione o variabili d'ambiente.
+La build usa esbuild come unica dipendenza di sviluppo. Le pagine pubblicate
+sono statiche; il modulo in modalità riepilogo non richiede variabili d’ambiente.
 Il repository è importato nel progetto Vercel `green-flux`: i push su `main`
 aggiornano il sito di produzione; gli altri branch possono generare anteprime.
 
@@ -112,3 +117,7 @@ Le foto delle sezioni sono WebP da 400 o 750 px, caricate in modo differito.
 I font locali WOFF2 mantengono i pesi originali e il set di caratteri latino;
 solo i due pesi visibili nella hero vengono precaricati. Gli originali JPG/TTF
 e la licenza dei font restano disponibili per future esportazioni.
+
+La build incorpora CSS compresso e JavaScript raggruppato nell’HTML: la prima
+visualizzazione non attende fogli di stile esterni e il modulo non scarica
+una catena di dipendenze JavaScript. I sorgenti rimangono separati in `public`.
