@@ -214,6 +214,39 @@ window.addEventListener('resize', () => {
 header.addEventListener('focusin', () => header.classList.remove('is-hidden'));
 syncHeader();
 
+function setupSectionReveals() {
+  const elements = document.querySelectorAll('main .reveal');
+  if (reducedMotion.matches || typeof window.IntersectionObserver !== 'function') return;
+
+  const show = element => {
+    element.classList.add('is-visible');
+    observer.unobserve(element);
+  };
+  // Match the one-time section entrances in the Mago System project.
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) show(entry.target);
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px' });
+
+  document.documentElement.classList.add('reveal-ready');
+  elements.forEach(element => observer.observe(element));
+
+  // Keyboard navigation must never land on an invisible link or anchor.
+  document.querySelector('main').addEventListener('focusin', event => {
+    const element = event.target.closest('.reveal');
+    if (element) show(element);
+  });
+  reducedMotion.addEventListener('change', event => {
+    if (!event.matches) return;
+    elements.forEach(show);
+    observer.disconnect();
+    document.documentElement.classList.remove('reveal-ready');
+  });
+}
+
+setupSectionReveals();
+
 document.getElementById('year').textContent = new Date().getFullYear();
 
 function setupWhatsAppButton() {

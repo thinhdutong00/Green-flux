@@ -56,6 +56,13 @@ progetto (`Header.astro` e stili `clinical-mega-*` in `BaseLayout.astro`),
 con schede, riquadri delle icone e barra inferiore. Le cinque icone sono quelle
 già presenti nelle sezioni Green Flux; colori e ancore rimangono del progetto.
 
+Le comparse delle sezioni riprendono `https://www.magosystem.it/` e il progetto
+locale `mago-system` (`src/App.jsx` e `src/styles.css`), verificati il 9 settembre
+2026: dissolvenza, traslazione iniziale di -36 px, durata 600 ms con curva `ease`,
+ritardo di 80 ms per il secondo blocco affiancato, osservatore con soglia 0,12
+e margine inferiore -60 px. L'effetto viene eseguito una sola volta e rispetta
+il movimento ridotto; i contenuti restano visibili senza JavaScript.
+
 Il sito originale mostra `info@green-flux.com`, ma alcuni collegamenti aprono `greenflux.gestione@gmail.com`. La nuova home usa coerentemente `info@green-flux.com`, già utilizzato dal pulsante consulenza originale.
 
 ## Varianti ottimizzate
