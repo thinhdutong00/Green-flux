@@ -8,6 +8,12 @@ barra di navigazione sospesa, hero a tutta larghezza, titoli in Plus Jakarta San
 schede fotografiche arrotondate e pannelli dei servizi. La palette rimane Green
 Flux: verde petrolio `#193e40`, verde scuro `#123335` e lime `#d5ed90`.
 
+L’header si allarga in cima alla pagina su desktop, scorre fuori durante la
+discesa e rientra risalendo. Il menu mobile riprende il riferimento Federzoni
+Granata: pannello a tutto schermo, sezioni espandibili e contatti sempre a portata
+di mano. Usa un dialogo nativo per gestire focus, tastiera e sfondo inattivo;
+le animazioni rispettano la preferenza di movimento ridotto.
+
 - Repository pubblico: https://github.com/thinhdutong00/Green-flux
 - Sito: https://green-flux-nine.vercel.app
 - Progetto Vercel: https://vercel.com/thinhdutong00s-projects/green-flux
@@ -17,7 +23,7 @@ Flux: verde petrolio `#193e40`, verde scuro `#123335` e lime `#d5ed90`.
 - `public/index.html`: home in italiano con azienda, dieci campi di intervento,
   cinque servizi chiavi in mano e contatti.
 - `public/styles.css`: stile e layout per desktop, tablet e smartphone.
-- `public/script.js`: menu mobile accessibile e aggiornamento dell’anno.
+- `public/script.js`: header sensibile allo scroll, menu mobile e aggiornamento dell’anno.
 - `public/assets/`: logo e fotografie originali; font e licenza in `assets/fonts/`.
 - `public/robots.txt`: esclude questa versione di anteprima dai motori di ricerca.
 - `vercel.json`: pubblica la cartella `public` con il preset Vercel **Other**.

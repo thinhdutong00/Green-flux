@@ -24,8 +24,54 @@
       <a href="#contatti">Contatti</a>
     </nav>
     <a class="header-cta" href="#contatti">Parliamo del tuo progetto <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" aria-label="Apri il menu"><span></span><span></span><span></span></button>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-haspopup="dialog" aria-label="Apri il menu"><span></span><span></span><span></span></button>
   </header>
+  <dialog class="mobile-menu" id="mobile-menu" aria-label="Menu principale">
+    <div class="mobile-menu-header">
+      <a class="brand" href="#home" aria-label="Green Flux — Home"><img src="/assets/logo.png" alt="Green Flux, impianti tecnologici" width="500" height="232" /></a>
+      <button class="menu-close" type="button" autofocus><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg>Chiudi</button>
+    </div>
+    <nav class="mobile-menu-scroll" aria-label="Navigazione mobile">
+      <a class="menu-primary-link" href="#home">Home</a>
+      <a class="menu-primary-link" href="#chisiamo">Chi siamo</a>
+      <details class="menu-section" name="mobile-navigation">
+        <summary><span>Impianti</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <div class="menu-section-links">
+          <a href="#fotovoltaico">Fotovoltaico</a>
+          <a href="#pompe-di-calore">Pompe di calore</a>
+          <a href="#smart-home">Smart home e automazioni</a>
+          <a href="#solare-termico">Solare termico</a>
+          <a href="#biomassa">Biomassa</a>
+          <a href="#caldaie">Caldaie</a>
+          <a href="#condizionatori">Condizionatori</a>
+          <a href="#ventilazione">Ventilazione meccanica</a>
+          <a href="#trattamento-acqua">Trattamento acqua</a>
+          <a href="#impianti-completi">Impianti completi</a>
+          <a class="menu-all-link" href="#campidiintervento">Tutti gli impianti <span aria-hidden="true">↗</span></a>
+        </div>
+      </details>
+      <details class="menu-section" name="mobile-navigation">
+        <summary><span>Servizi</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <div class="menu-section-links">
+          <a href="#progettazione">Progettazione</a>
+          <a href="#pratiche-e-permessi">Pratiche e permessi</a>
+          <a href="#diagnosi-energetiche">Diagnosi energetiche</a>
+          <a href="#detrazioni-fiscali">Detrazioni fiscali</a>
+          <a href="#formule-assicurative">Formule assicurative</a>
+          <a class="menu-all-link" href="#servizi">Tutti i servizi <span aria-hidden="true">↗</span></a>
+        </div>
+      </details>
+      <a class="menu-primary-link" href="#contatti">Contatti</a>
+    </nav>
+    <div class="mobile-menu-actions">
+      <a class="menu-action menu-action-primary" href="mailto:info@green-flux.com?subject=Richiesta%20consulenza%20Green%20Flux">Scrivici <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6 9 7 9-7"/></svg></a>
+      <a class="menu-action" href="tel:+393755521420">Chiamaci <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m8 3 3 5-3 3a14 14 0 0 0 5 5l3-3 5 3-2 5C10 22 2 14 3 5l5-2Z"/></svg></a>
+    </div>
+    <div class="mobile-menu-social">
+      <a href="https://www.instagram.com/greenflux_impianti/" target="_blank" rel="noopener noreferrer" aria-label="Green Flux su Instagram (nuova scheda)">Instagram <span aria-hidden="true">↗</span></a>
+      <a href="https://www.facebook.com/profile.php?id=61579212246290" target="_blank" rel="noopener noreferrer" aria-label="Green Flux su Facebook (nuova scheda)">Facebook <span aria-hidden="true">↗</span></a>
+    </div>
+  </dialog>
   <main id="main">
     <section class="hero" aria-labelledby="hero-title">
       <img class="hero-bg" src="/assets/hero-solar.jpg" alt="Pannelli fotovoltaici installati su un tetto" width="1500" height="2250" fetchpriority="high" />
@@ -45,61 +91,61 @@
         <p>Dall’energia al comfort, dall’acqua all’automazione. Soluzioni integrate per impianti residenziali, terziari e industriali.</p>
       </div>
       <div class="solutions-grid">
-        <a class="solution-card featured" href="mailto:info@green-flux.com?subject=Informazioni%20Fotovoltaico%20%E2%80%94%20Green%20Flux" aria-label="Richiedi informazioni: Fotovoltaico">
+        <a class="solution-card featured" id="fotovoltaico" href="mailto:info@green-flux.com?subject=Informazioni%20Fotovoltaico%20%E2%80%94%20Green%20Flux" aria-label="Richiedi informazioni: Fotovoltaico">
           <img src="/assets/fotovoltaico.jpg" alt="" width="1209" height="862" loading="lazy" decoding="async" />
           <span class="card-scrim" aria-hidden="true"></span>
           <span class="card-arrow"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 18 12-12M6 6h12v12"/></svg></span>
           <div class="card-content"><span class="solution-category">Energia rinnovabile</span><h3>Fotovoltaico</h3><p>L’energia del sole, al servizio dei tuoi progetti.</p></div>
         </a>
-        <a class="solution-card featured" href="mailto:info@green-flux.com?subject=Informazioni%20Pompe%20di%20calore%20%E2%80%94%20Green%20Flux" aria-label="Richiedi informazioni: Pompe di calore">
+        <a class="solution-card featured" id="pompe-di-calore" href="mailto:info@green-flux.com?subject=Informazioni%20Pompe%20di%20calore%20%E2%80%94%20Green%20Flux" aria-label="Richiedi informazioni: Pompe di calore">
           <img src="/assets/pompe-di-calore.jpg" alt="" width="1040" height="881" loading="lazy" decoding="async" />
           <span class="card-scrim" aria-hidden="true"></span>
           <span class="card-arrow"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 18 12-12M6 6h12v12"/></svg></span>
           <div class="card-content"><span class="solution-category">Riscaldamento</span><h3>Pompe di calore</h3><p>Soluzioni per il comfort termico dei tuoi spazi.</p></div>
         </a>
-        <a class="solution-card" href="mailto:info@green-flux.com?subject=Informazioni%20Smart%20home%20e%20automazioni%20%E2%80%94%20Green%20Flux" aria-label="Richiedi informazioni: Smart home e automazioni">
+        <a class="solution-card" id="smart-home" href="mailto:info@green-flux.com?subject=Informazioni%20Smart%20home%20e%20automazioni%20%E2%80%94%20Green%20Flux" aria-label="Richiedi informazioni: Smart home e automazioni">
           <img src="/assets/smart-home.jpg" alt="" width="1280" height="930" loading="lazy" decoding="async" />
           <span class="card-scrim" aria-hidden="true"></span>
           <span class="card-arrow"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 18 12-12M6 6h12v12"/></svg></span>
           <div class="card-content"><span class="solution-category">Controllo e comfort</span><h3>Smart home e automazioni</h3><p>Tecnologie integrate per la gestione degli ambienti.</p></div>
         </a>
-        <a class="solution-card" href="mailto:info@green-flux.com?subject=Informazioni%20Solare%20termico%20%E2%80%94%20Green%20Flux" aria-label="Richiedi informazioni: Solare termico">
+        <a class="solution-card" id="solare-termico" href="mailto:info@green-flux.com?subject=Informazioni%20Solare%20termico%20%E2%80%94%20Green%20Flux" aria-label="Richiedi informazioni: Solare termico">
           <img src="/assets/solare-termico.jpg" alt="" width="1536" height="1024" loading="lazy" decoding="async" />
           <span class="card-scrim" aria-hidden="true"></span>
           <span class="card-arrow"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 18 12-12M6 6h12v12"/></svg></span>
           <div class="card-content"><span class="solution-category">Energia dal sole</span><h3>Solare termico</h3><p>Il calore del sole entra nel tuo impianto.</p></div>
         </a>
-        <a class="solution-card" href="mailto:info@green-flux.com?subject=Informazioni%20Biomassa%20%E2%80%94%20Green%20Flux" aria-label="Richiedi informazioni: Biomassa">
+        <a class="solution-card" id="biomassa" href="mailto:info@green-flux.com?subject=Informazioni%20Biomassa%20%E2%80%94%20Green%20Flux" aria-label="Richiedi informazioni: Biomassa">
           <img src="/assets/biomassa.jpg" alt="" width="1029" height="730" loading="lazy" decoding="async" />
           <span class="card-scrim" aria-hidden="true"></span>
           <span class="card-arrow"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 18 12-12M6 6h12v12"/></svg></span>
           <div class="card-content"><span class="solution-category">Riscaldamento</span><h3>Biomassa</h3><p>Una delle soluzioni per le tue esigenze termiche.</p></div>
         </a>
-        <a class="solution-card" href="mailto:info@green-flux.com?subject=Informazioni%20Caldaie%20%E2%80%94%20Green%20Flux" aria-label="Richiedi informazioni: Caldaie">
+        <a class="solution-card" id="caldaie" href="mailto:info@green-flux.com?subject=Informazioni%20Caldaie%20%E2%80%94%20Green%20Flux" aria-label="Richiedi informazioni: Caldaie">
           <img src="/assets/caldaie.jpg" alt="" width="1084" height="918" loading="lazy" decoding="async" />
           <span class="card-scrim" aria-hidden="true"></span>
           <span class="card-arrow"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 18 12-12M6 6h12v12"/></svg></span>
           <div class="card-content"><span class="solution-category">Comfort termico</span><h3>Caldaie</h3><p>Dalla sostituzione del generatore al nuovo impianto.</p></div>
         </a>
-        <a class="solution-card" href="mailto:info@green-flux.com?subject=Informazioni%20Condizionatori%20%E2%80%94%20Green%20Flux" aria-label="Richiedi informazioni: Condizionatori">
+        <a class="solution-card" id="condizionatori" href="mailto:info@green-flux.com?subject=Informazioni%20Condizionatori%20%E2%80%94%20Green%20Flux" aria-label="Richiedi informazioni: Condizionatori">
           <img src="/assets/condizionatori.jpg" alt="" width="954" height="840" loading="lazy" decoding="async" />
           <span class="card-scrim" aria-hidden="true"></span>
           <span class="card-arrow"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 18 12-12M6 6h12v12"/></svg></span>
           <div class="card-content"><span class="solution-category">Climatizzazione</span><h3>Condizionatori</h3><p>Il clima giusto negli spazi che vivi.</p></div>
         </a>
-        <a class="solution-card" href="mailto:info@green-flux.com?subject=Informazioni%20Ventilazione%20meccanica%20%E2%80%94%20Green%20Flux" aria-label="Richiedi informazioni: Ventilazione meccanica">
+        <a class="solution-card" id="ventilazione" href="mailto:info@green-flux.com?subject=Informazioni%20Ventilazione%20meccanica%20%E2%80%94%20Green%20Flux" aria-label="Richiedi informazioni: Ventilazione meccanica">
           <img src="/assets/ventilazione.jpg" alt="" width="1536" height="1024" loading="lazy" decoding="async" />
           <span class="card-scrim" aria-hidden="true"></span>
           <span class="card-arrow"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 18 12-12M6 6h12v12"/></svg></span>
           <div class="card-content"><span class="solution-category">Qualità dell’aria</span><h3>Ventilazione meccanica</h3><p>Soluzioni per il ricambio dell’aria negli ambienti.</p></div>
         </a>
-        <a class="solution-card" href="mailto:info@green-flux.com?subject=Informazioni%20Trattamento%20acqua%20%E2%80%94%20Green%20Flux" aria-label="Richiedi informazioni: Trattamento acqua">
+        <a class="solution-card" id="trattamento-acqua" href="mailto:info@green-flux.com?subject=Informazioni%20Trattamento%20acqua%20%E2%80%94%20Green%20Flux" aria-label="Richiedi informazioni: Trattamento acqua">
           <img src="/assets/trattamento-acqua.jpg" alt="" width="1065" height="794" loading="lazy" decoding="async" />
           <span class="card-scrim" aria-hidden="true"></span>
           <span class="card-arrow"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 18 12-12M6 6h12v12"/></svg></span>
           <div class="card-content"><span class="solution-category">Qualità dell’acqua</span><h3>Trattamento acqua</h3><p>Sistemi dedicati al trattamento dell’acqua.</p></div>
         </a>
-        <a class="solution-card" href="mailto:info@green-flux.com?subject=Informazioni%20Impianti%20completi%20%E2%80%94%20Green%20Flux" aria-label="Richiedi informazioni: Impianti completi">
+        <a class="solution-card" id="impianti-completi" href="mailto:info@green-flux.com?subject=Informazioni%20Impianti%20completi%20%E2%80%94%20Green%20Flux" aria-label="Richiedi informazioni: Impianti completi">
           <img src="/assets/impianti-completi.jpg" alt="" width="1536" height="1024" loading="lazy" decoding="async" />
           <span class="card-scrim" aria-hidden="true"></span>
           <span class="card-arrow"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 18 12-12M6 6h12v12"/></svg></span>
@@ -134,27 +180,27 @@
         <p>Dalla prima idea alla realizzazione del sistema, coordiniamo tutte le competenze necessarie per un servizio completo.</p>
       </div>
       <div class="services-grid">
-        <article class="service-item">
+        <article class="service-item" id="progettazione">
           <span class="service-number" aria-hidden="true">01</span>
           <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m4 17 13-13 3 3L7 20H4v-3Zm10-10 3 3M4 4h5M4 8h3"/></svg></span>
           <h3>Progettazione</h3><p>Un progetto studiato su misura, in base alle tue esigenze e alle caratteristiche dell’impianto.</p>
         </article>
-        <article class="service-item">
+        <article class="service-item" id="pratiche-e-permessi">
           <span class="service-number" aria-hidden="true">02</span>
           <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H5v18h14V8l-5-5Z"/><path d="M14 3v5h5M8 12h8M8 16h6"/></svg></span>
           <h3>Pratiche e permessi</h3><p>Gestiamo le autorizzazioni necessarie per accompagnare il progetto fino alla realizzazione.</p>
         </article>
-        <article class="service-item">
+        <article class="service-item" id="diagnosi-energetiche">
           <span class="service-number" aria-hidden="true">03</span>
           <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v16h16M8 15l4-5 4 2 4-7"/></svg></span>
           <h3>Diagnosi energetiche</h3><p>Analizziamo consumi e prestazioni per individuare come rendere il sistema più efficiente.</p>
         </article>
-        <article class="service-item">
+        <article class="service-item" id="detrazioni-fiscali">
           <span class="service-number" aria-hidden="true">04</span>
           <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2V3ZM9 9h6M9 13h6"/></svg></span>
           <h3>Detrazioni fiscali</h3><p>Ti affianchiamo nella gestione delle pratiche per incentivi e agevolazioni applicabili al tuo progetto.</p>
         </article>
-        <article class="service-item">
+        <article class="service-item" id="formule-assicurative">
           <span class="service-number" aria-hidden="true">05</span>
           <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 8 9 8 9s8-4 8-9V6l-8-3Z"/><path d="m8 12 3 3 5-6"/></svg></span>
           <h3>Formule assicurative</h3><p>Valutiamo le coperture a tutela dell’impianto per una maggiore tranquillità nel tempo.</p>
