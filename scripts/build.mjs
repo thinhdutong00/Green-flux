@@ -1,6 +1,7 @@
 import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { build, transform } from 'esbuild';
+import { maintenanceEnabled, maintenancePage } from '../maintenance.mjs';
 
 const root = new URL('../', import.meta.url);
 const source = new URL('public/', root);
@@ -40,4 +41,13 @@ for (const page of pages) {
   html = html.replace('</body>', `<script>${result.outputFiles[0].text}</script>\n</body>`);
   await writeFile(new URL(page.path, output), html);
   console.log(`Built ${page.path}`);
+}
+
+// Match the live maintenance screen in static previews as well. The editable
+// pages above remain intact and are restored by the next build when disabled.
+if (maintenanceEnabled) {
+  for (const path of [...pages.map(page => page.path), '404.html']) {
+    await writeFile(new URL(path, output), maintenancePage);
+  }
+  console.log('Maintenance enabled for all pages; Vercel middleware returns HTTP 503.');
 }

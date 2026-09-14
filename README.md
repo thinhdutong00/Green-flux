@@ -59,6 +59,24 @@ per aggiornare l’anteprima di produzione.
 
 ## Pubblicazione
 
+### Manutenzione temporanea
+
+La manutenzione è attualmente attiva: `maintenanceEnabled` in `maintenance.mjs`
+è impostato a `true`. La schermata usa logo, colori e contatti Green Flux.
+Il middleware Vercel intercetta tutte le pagine, anche `/preventivo/`, i link
+diretti e gli URL inesistenti. Le API rispondono con un messaggio di manutenzione
+senza eseguire invii. Solo le risorse in `/assets/` restano accessibili.
+La risposta è HTTP `503`, con `Retry-After: 3600` e cache disabilitata.
+Il valore di retry è un intervallo tecnico, non una promessa di riapertura.
+
+Per riaprire il sito, imposta `maintenanceEnabled = false` in `maintenance.mjs`
+e pubblica la modifica su `main`. La build ripristina home e preventivo dai
+sorgenti originali. L’anteprima statica mostra la stessa schermata mentre la
+manutenzione è attiva; lo stato HTTP e il blocco delle API sono gestiti su Vercel
+da `middleware.js`.
+
+### Deploy
+
 La build usa esbuild come unica dipendenza di sviluppo. Le pagine pubblicate
 sono statiche; il modulo in modalità riepilogo non richiede variabili d’ambiente.
 Il repository è importato nel progetto Vercel `green-flux`: i push su `main`
