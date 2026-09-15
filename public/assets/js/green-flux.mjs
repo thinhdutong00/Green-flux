@@ -1,8 +1,9 @@
 import { showHandoff } from './handoff.mjs';
 import { setupMobileHeader } from './mobile-header.mjs';
 setupMobileHeader();
-const legacy={'chisiamo':'/chi-siamo/','chi-siamo':'/chi-siamo/','campidiintervento':'/servizi/','campi-di-intervento':'/servizi/','servizi':'/servizi/','contatti':'/contatti/','fotovoltaico':'/servizi/fotovoltaico-residenziale/','pompe-di-calore':'/servizi/pompe-calore/','condizionatori':'/servizi/climatizzazione/'};
+const legacy={'chisiamo':'/chi-siamo/','chi-siamo':'/chi-siamo/','campidiintervento':'/servizi/','campi-di-intervento':'/servizi/','servizi':'/servizi/progettazione-e-supporto/','contatti':'/contatti/','fotovoltaico':'/servizi/fotovoltaico/','pompe-di-calore':'/servizi/pompe-calore/','condizionatori':'/servizi/climatizzazione/'};
 const extra=['smart-home','solare-termico','biomassa','caldaie','ventilazione','trattamento-acqua','impianti-completi','progettazione','pratiche-e-permessi','diagnosi-energetiche','detrazioni-fiscali','formule-assicurative'];extra.forEach(id=>legacy[id]=`/servizi/${id}/`);
+for(const id of ['progettazione','pratiche-e-permessi','diagnosi-energetiche','detrazioni-fiscali','formule-assicurative'])legacy[id]='/servizi/progettazione-e-supporto/#'+id;
 if(location.pathname==='/'&&legacy[location.hash.slice(1)])location.replace(legacy[location.hash.slice(1)]);
 document.querySelectorAll('form[data-green-flux-form]:not(.quote-form)').forEach(form=>{
  const button=form.querySelector('[type="submit"]');form.addEventListener('submit',event=>{

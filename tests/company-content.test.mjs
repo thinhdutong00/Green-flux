@@ -10,13 +10,14 @@ const pages=walk('public').filter(p=>p.endsWith('index.html'));
 const textOnly=html=>html.replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1>/gi,'').replace(/<[^>]*>/g,' ').replace(/\s+/g,' ');
 
 test('Only documented activities appear in the catalogue and legacy requests become consultation',()=>{
- assert.equal(services.length,17);
+ assert.equal(services.length,16);
  for(const id of ['batterie-accumulo','manutenzione','edilizia']){
   assert(!services.some(s=>s.id===id));
   assert.equal(serviceId(id),'consulenza');
   assert(!mobileHeaderMarkup.includes(`/servizi/${id}/`));
  }
  assert.equal(serviceId('efficientamento-energetico'),'consulenza');
+ assert.equal(serviceId('fotovoltaico-aziendale'),'fotovoltaico');
  assert.equal(services[0].id,'pompe-di-calore');
  const quote=readFileSync('public/preventivo/index.html','utf8');
  const optionIds=[...quote.matchAll(/name="servizio"[^>]*value="([^"]+)"/g)].map(m=>m[1]);
@@ -42,11 +43,14 @@ test('Every page has an editorial audit record and no imported commercial promis
  }
 });
 
-test('Territorial pages require availability confirmation and do not imply local branches',()=>{
- for(const file of pages.filter(p=>p.startsWith('public/zone/'))){
-  const text=textOnly(readFileSync(file,'utf8'));
-  assert(text.includes('La disponibilità va chiesta direttamente a Green Flux'),file);
-  assert(text.includes('La sede Green Flux è in Via Trieste, 19, 35121 Padova'),file);
-  assert(!/comuni serviti|copertura pubblicata|sopralluoghi sul territorio|richieste arrivano da/i.test(text),file);
- }
+test('Consolidation keeps 19 canonical pages and redirects every removed URL without chains',()=>{
+ const previous=JSON.parse(readFileSync('content/previous-routes.json'));
+ const redirects=JSON.parse(readFileSync('content/redirects.json'));
+ const current=new Set(pages.map(p=>'/'+p.replace(/^public\//,'').replace(/index\.html$/,'')));
+ assert.equal(current.size,19);assert.equal(Object.keys(redirects).length,132);
+ assert(!pages.some(p=>/^public\/(zone|blog|progetti)\//.test(p)));
+ for(const old of previous){assert(current.has(old)||redirects[old],old);if(redirects[old]){const destination=redirects[old].split('#')[0];assert(current.has(destination),old);assert(!redirects[destination],old);}}
+ for(const page of pages){const html=readFileSync(page,'utf8');for(const m of html.matchAll(/href="([^"?#]+)[^"]*"/g))assert(!redirects[m[1]],`${page} links to retired ${m[1]}`);}
+ const text=textOnly(readFileSync('public/contatti/index.html','utf8'));
+ assert(text.includes('Via Trieste, 19'));assert(text.includes('disponibilità dell’intervento si conferma direttamente'));
 });

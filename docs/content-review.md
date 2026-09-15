@@ -1,71 +1,58 @@
-# Revisione dei contenuti Green Flux
+# Riorganizzazione editoriale — 15 settembre 2026
 
-Fonte aziendale: https://www.green-flux.com/, letta direttamente il 15 settembre 2026.
-La navigazione Chi siamo / Campi di intervento / Servizi / Contatti rimanda a
-sezioni della stessa pagina. Una copia del testo consultato è conservata in
-`sources/green-flux-2026-09-15.txt`; l'impronta del documento originale e i dati
-strutturati sono in `../content/green-flux-profile.json`.
+## Risultato
 
-## Informazioni aziendali confermate
+Da **149 pagine a 19**. Restano 17 URL precedenti, si aggiungono fotovoltaico e
+supporto e vengono accorpati 132 URL, mantenuti come reindirizzamenti permanenti.
 
-- GREEN FLUX srls, Via Trieste, 19, 35121 Padova (PD).
-- +39 375 552 1420; info@green-flux.com.
-- Tecnici con oltre 15 anni nelle energie rinnovabili: l'esperienza riguarda i
-  tecnici, non l'età dell'azienda.
-- Competenze idrauliche ed elettriche, professionisti qualificati e un unico
-  interlocutore per il progetto.
-- Impiantistica residenziale, terziaria e industriale, dalla sostituzione del
-  generatore alla ristrutturazione completa.
-- Dieci campi di intervento: pompe di calore, fotovoltaico, smart home e
-  automazioni, solare termico, biomassa, caldaie, condizionatori, ventilazione
-  meccanica, trattamento acqua, impianti completi.
-- Cinque servizi: progettazione, pratiche e permessi, diagnosi energetiche,
-  detrazioni fiscali, formule assicurative.
-- Richiesta di consulenza come punto di contatto iniziale.
+| Contenuto precedente | Scelta |
+| --- | --- |
+| 91 pagine territoriali | Servizio pertinente o contatti, senza copertura territoriale inventata. |
+| 25 guide e indice blog | Informazioni utili integrate nei servizi, eliminando gli articoli ripetitivi. |
+| Fotovoltaico casa e azienda | Una pagina con i diversi contesti di utilizzo. |
+| Cinque servizi di supporto | Una pagina con sezioni raggiungibili per ancora. |
+| Metodo | Integrato in Chi siamo. |
+| Interventi e gallerie illustrative | Accorpati al catalogo e alle pagine impianti. |
+| Batterie, manutenzione ed edilizia | Nessuna offerta autonoma non documentata; URL indirizzati a contenuti pertinenti. |
 
-## Applicazione al progetto
+## Fonte e criteri
 
-Tutte le 149 pagine sono censite in `content-audit.json` con titolo, descrizione,
-tipo e fonte. Il design, gli header, la palette e il footer bianco sono conservati.
-Le pompe di calore restano in apertura della home e del catalogo.
+[Green Flux](https://www.green-flux.com/) è la fonte per identità, recapiti,
+10 tecnologie, 5 servizi, ambiti di attività, competenze ed esperienza dei tecnici.
+Non vengono introdotti marchi, certificazioni, progetti reali, recensioni, prezzi,
+risparmi, tempi garantiti o coperture geografiche non documentati.
 
-Il catalogo e il preventivo propongono 17 voci: le dieci tecnologie, con due
-percorsi per il fotovoltaico (casa e azienda), i cinque servizi e la consulenza.
-Le 20 pagine nella cartella servizi rimangono raggiungibili: le tre voci non
-documentate come servizi autonomi sono state riformulate come percorsi di
-consulenza o progettazione impiantistica. Non si pubblicizzano installazione di
-batterie, manutenzione programmata o opere edilizie su involucro e coperture.
-I vecchi parametri del preventivo per tali voci aprono la consulenza.
+Le spiegazioni generali delle tecnologie sono distinte dalle dichiarazioni
+aziendali. Fonti tecniche primarie ENEA, GSE e Caleffi sono indicate nel modello
+e nelle pagine interessate. Le domande sul perimetro del lavoro aiutano a
+confrontare una proposta e non aggiungono prestazioni contrattuali garantite.
 
-Le pagine territoriali chiedono conferma della disponibilità per il comune
-indicato. Sono state rimosse affermazioni su regioni servite, comuni coperti,
-richieste già ricevute e squadre locali. La sola sede documentata è Padova.
+## Contenuti aggiunti e rimossi
 
-La sezione Interventi descrive gli ambiti impiantistici. Non attribuisce a Green
-Flux cantieri, case study o risultati non documentati. Le immagini illustrative
-restano riconoscibili come tali.
+Ogni tecnologia presenta una spiegazione, tre contesti, criteri di scelta,
+informazioni da preparare e domande specifiche. Rimossi i blocchi duplicati
+“Approfondisci il progetto”, i blocchi di finta testimonianza e le caratteristiche
+ripetute in più sezioni della stessa pagina.
 
-Le 25 guide sono state riscritte per aiutare a preparare la richiesta. Sono
-stati rimossi prezzi, incentivi nominativi, percentuali, simulazioni di resa,
-scadenze, recensioni e date editoriali ereditate dal riferimento. Non vengono
-presentati tempi di risposta, preventivi gratuiti o reparti aziendali inventati.
+La pagina pompe di calore affronta edificio, terminali, acqua calda, alimentazione,
+raffrescamento e fotovoltaico. Non propone dimensionamenti o risparmi predefiniti.
+Ogni servizio di supporto chiarisce funzione, momento utile, dati da preparare e
+aspetti della proposta. Agevolazioni e assicurazioni non presentano aliquote,
+ammissibilità o coperture garantite.
 
-I dati strutturati contengono identità, contatti, pagina e FAQ effettive; non
-contengono aree servite, valutazioni, recensioni, offerte economiche o progetti
-attribuiti senza fonte. Le pagine privacy conservano i recapiti confermati e il
-collegamento all'informativa ufficiale; il funzionamento del modulo è descritto
-in base al codice effettivo del nuovo sito.
+## Gestione e compatibilità
 
-## Manutenzione editoriale
+`content/site-content.json` è la fonte unica di testi e catalogo. Il renderer Node
+produce pagine, menu, footer, opzioni del preventivo e audit. La home, l’header,
+il menu mobile e i form conservano il design esistente. Le quattro precedenti
+fonti di contenuto sovrapposte sono rimosse e recuperabili nella cronologia Git.
 
-- `content/service-pages.json`: testi delle 20 pagine servizio/consulenza.
-- `content/editorial-pages.json`: testi delle 25 guide.
-- `scripts/align-green-flux-content.py`: applica il modello alle strutture visive.
-- `scripts/generate-services.py`: rimanda alla stessa procedura, per non
-  reintrodurre il vecchio catalogo.
-- `scripts/import-reference.py`: strumento storico di importazione del layout;
-  non va usato per aggiornare i contenuti aziendali correnti.
+`content/redirects.json` mappa tutti i vecchi URL. Vercel, Cloudflare e anteprima
+locale gestiscono reindirizzamenti permanenti senza catene. Menu e footer puntano
+alle nuove destinazioni; la sitemap comprende solo le 19 pagine canoniche.
+I precedenti parametri di preselezione del preventivo restano riconosciuti.
 
-Le espansioni editoriali riguardano il contesto del progetto e le informazioni
-da comunicare. Non trasformano l'assenza di informazioni nel vecchio sito in
-un'affermazione commerciale.
+## Verifica
+
+Controlli automatici su catalogo, 19 pagine, asset, link, ancore, vecchi URL,
+preselezioni e validazione dei form. Invii email simulati, senza dati reali.

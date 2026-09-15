@@ -597,7 +597,7 @@ html.quote-open, html.quote-open body { overflow: hidden; overscroll-behavior: n
 .home-pompe-calore .hero-bg { object-position:65% center; }
 .home-pompe-calore .solutions-grid > .solution-card { grid-column:span 3; min-height:340px; }
 .home-pompe-calore .solutions-grid > .solution-card.featured { grid-column:1 / -1; min-height:440px; }
-.home-pompe-calore .solution-card.featured > img { object-position:center 48%; }
+.home-pompe-calore .solution-card.featured > img { object-position:72% center; }
 .home-pompe-calore .solution-card.featured .card-content { max-width:650px; }
 .home-pompe-calore .services-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
 .home-pompe-calore .services-grid > .service-item { grid-column:auto; }

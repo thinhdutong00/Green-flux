@@ -23,10 +23,13 @@ test('Every copied and added route has a local destination and its required asse
 test('Marketing pages use Green Flux identity and never ship reference lead or ad integrations',()=>{
  for(const page of pages){const html=readFileSync(page,'utf8');assert(!/info@venetagreen|393669224744|04626150272|AW-11114392153|uc4g2w3pct|google-ads-tracking\.js|lead-platform\.js|google-reviews\//.test(html),relative(root,page));assert(html.includes('Green Flux'),page);}
 });
-test('The 12 Green Flux additions retain the complete reference service section sequence',()=>{
- const extras=JSON.parse(readFileSync('content/green-flux-services.json'));const reference=readFileSync(join(root,'servizi/pompe-calore/index.html'),'utf8');
- const sections=html=>[...html.matchAll(/<section class="([^"]+)"/g)].map(x=>x[1]);
- for(const service of extras){const html=readFileSync(join(root,'servizi',service.slug,'index.html'),'utf8');assert.deepEqual(sections(html),sections(reference),service.slug);assert(html.includes(`servizio=${service.slug}`));for(const [question] of service.faqs)assert(html.includes(question));}
+test('Every Green Flux technology has its own explanation, decision criteria and matching quote',()=>{
+ const {services:catalogue,support}=JSON.parse(readFileSync('content/site-content.json'));
+ assert.equal(catalogue.length,10);assert.equal(support.length,5);
+ const titles=new Set();
+ for(const service of catalogue){const html=readFileSync(join(root,'servizi',service.slug,'index.html'),'utf8');assert(html.includes(`servizio=${service.quote}`));assert(html.includes(service.introTitle));assert(!titles.has(service.introTitle));titles.add(service.introTitle);for(const [question] of service.faqs)assert(html.includes(question));assert.equal([...html.matchAll(/<h1\b/g)].length,1);assert(!html.includes('venetagreen-trust'));}
+ const supportPage=readFileSync(join(root,'servizi/progettazione-e-supporto/index.html'),'utf8');
+ for(const item of support){assert(supportPage.includes(`id="${item.id}"`));assert(supportPage.includes(`servizio=${item.id}`));}
 });
 test('The six-step funnel includes every service and works with direct service links',()=>{
  const html=readFileSync(join(root,'preventivo/index.html'),'utf8');assert.equal([...html.matchAll(/data-step="\d+"/g)].length,6);

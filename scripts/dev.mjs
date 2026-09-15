@@ -2,12 +2,17 @@ import http from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import { watch } from 'node:fs';
 import { resolve, extname, sep } from 'node:path';
+import { renderSite } from './render-site.mjs';
+await renderSite();
 const root=resolve('public'); const port=Number(process.env.PORT||3000);const clients=new Set();
 const types={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.mjs':'text/javascript; charset=utf-8','.json':'application/json','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.webp':'image/webp','.avif':'image/avif','.woff2':'font/woff2','.ico':'image/x-icon','.xml':'application/xml','.txt':'text/plain'};
 const server=http.createServer(async(req,res)=>{
  const url=new URL(req.url,'http://localhost');
  if(url.pathname==='/__live'){res.writeHead(200,{'Content-Type':'text/event-stream','Cache-Control':'no-cache','Connection':'keep-alive'});res.write(': connected\n\n');clients.add(res);req.on('close',()=>clients.delete(res));return;}
  try{
+  const redirects=JSON.parse(await readFile(resolve('content/redirects.json'),'utf8'));
+  const destination=redirects[url.pathname.endsWith('/')?url.pathname:url.pathname+'/'];
+  if(destination){const target=new URL(destination,'http://localhost');target.search=url.search;res.writeHead(301,{'Location':target.pathname+target.search+target.hash});return res.end();}
   let path=resolve(root,'.'+decodeURIComponent(url.pathname));if(path!==root&&!path.startsWith(root+sep)){res.writeHead(403);return res.end();}
   let entry=await stat(path);if(entry.isDirectory())path=resolve(path,'index.html');
   let data=await readFile(path);const type=types[extname(path)]||'application/octet-stream';
@@ -16,5 +21,9 @@ const server=http.createServer(async(req,res)=>{
  }catch{res.writeHead(404,{'Content-Type':'text/plain'});res.end('Pagina non trovata');}
 });
 let timer;const watcher=watch(root,{recursive:true},()=>{clearTimeout(timer);timer=setTimeout(()=>clients.forEach(res=>res.write('data: reload\n\n')),200)});
+let renderTimer,rendering=false,queued=false;
+async function rerender(){if(rendering){queued=true;return;}rendering=true;try{await renderSite();}catch(error){console.error(error);}finally{rendering=false;if(queued){queued=false;await rerender();}}}
+const contentWatcher=watch(resolve('content'),{recursive:true},(_event,file)=>{if(!['site-content.json','green-flux-profile.json','image-dimensions.json'].includes(String(file)))return;clearTimeout(renderTimer);renderTimer=setTimeout(rerender,150);});
+const templateWatcher=watch(resolve('templates'),{recursive:true},()=>{clearTimeout(renderTimer);renderTimer=setTimeout(rerender,150);});
 server.listen(port,'127.0.0.1',()=>console.log(`Green Flux live preview: http://localhost:${port}`));
-for(const signal of ['SIGINT','SIGTERM'])process.on(signal,()=>{watcher.close();clients.forEach(res=>res.end());server.close(()=>process.exit(0));});
+for(const signal of ['SIGINT','SIGTERM'])process.on(signal,()=>{watcher.close();contentWatcher.close();templateWatcher.close();clients.forEach(res=>res.end());server.close(()=>process.exit(0));});

@@ -3,6 +3,8 @@ import { fileURLToPath } from 'node:url';
 import { extname, relative, join } from 'node:path';
 import { build, transform } from 'esbuild';
 import { maintenanceEnabled, maintenancePage } from '../maintenance.mjs';
+import { renderSite } from './render-site.mjs';
+await renderSite();
 const root=fileURLToPath(new URL('../',import.meta.url));const source=join(root,'public');const output=join(root,'dist');
 async function files(directory){const entries=await readdir(directory,{withFileTypes:true});const nested=await Promise.all(entries.map(e=>e.isDirectory()?files(join(directory,e.name)):[join(directory,e.name)]));return nested.flat();}
 await rm(output,{recursive:true,force:true});await mkdir(output,{recursive:true});await cp(source,output,{recursive:true});

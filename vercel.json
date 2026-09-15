@@ -2,5 +2,667 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
   "buildCommand": "npm run build",
-  "outputDirectory": "dist"
+  "outputDirectory": "dist",
+  "redirects": [
+    {
+      "source": "/blog",
+      "destination": "/servizi/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/aziende-green-nomi-simili-scegliere-fornitore",
+      "destination": "/chi-siamo/#come-lavoriamo",
+      "permanent": true
+    },
+    {
+      "source": "/blog/batterie-accumulo-fotovoltaico-quando-convengono",
+      "destination": "/servizi/fotovoltaico/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/climatizzatore-quanti-btu",
+      "destination": "/servizi/climatizzazione/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/diagnosi-energetica-veneto-consulenza-efficientamento",
+      "destination": "/servizi/progettazione-e-supporto/#diagnosi-energetiche",
+      "permanent": true
+    },
+    {
+      "source": "/blog/fotovoltaico-6-kw-costo-preventivo",
+      "destination": "/servizi/fotovoltaico/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/fotovoltaico-aziendale-veneto-autoconsumo",
+      "destination": "/servizi/fotovoltaico/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/fotovoltaico-belluno-guida-impianti",
+      "destination": "/servizi/fotovoltaico/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/fotovoltaico-blackout-backup",
+      "destination": "/servizi/fotovoltaico/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/fotovoltaico-casa-veneto-dimensionamento",
+      "destination": "/servizi/fotovoltaico/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/fotovoltaico-con-accumulo-treviso-udine-padova",
+      "destination": "/servizi/fotovoltaico/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/fotovoltaico-gorizia-guida-impianti",
+      "destination": "/servizi/fotovoltaico/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/fotovoltaico-padova-guida-impianti",
+      "destination": "/servizi/fotovoltaico/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/fotovoltaico-rovigo-guida-impianti",
+      "destination": "/servizi/fotovoltaico/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/fotovoltaico-treviso-castelfranco-guida",
+      "destination": "/servizi/fotovoltaico/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/fotovoltaico-trieste-guida-impianti",
+      "destination": "/servizi/fotovoltaico/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/fotovoltaico-udine-friuli-guida-impianti",
+      "destination": "/servizi/fotovoltaico/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/fotovoltaico-veneto-guida-regionale",
+      "destination": "/servizi/fotovoltaico/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/fotovoltaico-venezia-guida-impianti",
+      "destination": "/servizi/fotovoltaico/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/green-flux-recensioni-metodo-preventivo",
+      "destination": "/chi-siamo/#come-lavoriamo",
+      "permanent": true
+    },
+    {
+      "source": "/blog/installatori-fotovoltaico-come-scegliere",
+      "destination": "/chi-siamo/#come-lavoriamo",
+      "permanent": true
+    },
+    {
+      "source": "/blog/manutenzione-inverter-fotovoltaico-padova-treviso",
+      "destination": "/contatti/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/pompa-calore-fotovoltaico-integrazione",
+      "destination": "/servizi/pompe-calore/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/pompa-di-calore-termosifoni",
+      "destination": "/servizi/pompe-calore/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/pulizia-pannelli-fotovoltaici",
+      "destination": "/contatti/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/quanto-produce-impianto-fotovoltaico-6-kw",
+      "destination": "/servizi/fotovoltaico/",
+      "permanent": true
+    },
+    {
+      "source": "/metodo",
+      "destination": "/chi-siamo/#come-lavoriamo",
+      "permanent": true
+    },
+    {
+      "source": "/progetti",
+      "destination": "/servizi/",
+      "permanent": true
+    },
+    {
+      "source": "/progetti/costruzioni",
+      "destination": "/servizi/impianti-completi/",
+      "permanent": true
+    },
+    {
+      "source": "/progetti/fotovoltaico",
+      "destination": "/servizi/fotovoltaico/",
+      "permanent": true
+    },
+    {
+      "source": "/servizi/batterie-accumulo",
+      "destination": "/servizi/fotovoltaico/",
+      "permanent": true
+    },
+    {
+      "source": "/servizi/consulenza",
+      "destination": "/contatti/",
+      "permanent": true
+    },
+    {
+      "source": "/servizi/detrazioni-fiscali",
+      "destination": "/servizi/progettazione-e-supporto/#detrazioni-fiscali",
+      "permanent": true
+    },
+    {
+      "source": "/servizi/diagnosi-energetiche",
+      "destination": "/servizi/progettazione-e-supporto/#diagnosi-energetiche",
+      "permanent": true
+    },
+    {
+      "source": "/servizi/edilizia",
+      "destination": "/servizi/impianti-completi/",
+      "permanent": true
+    },
+    {
+      "source": "/servizi/formule-assicurative",
+      "destination": "/servizi/progettazione-e-supporto/#formule-assicurative",
+      "permanent": true
+    },
+    {
+      "source": "/servizi/fotovoltaico-aziendale",
+      "destination": "/servizi/fotovoltaico/",
+      "permanent": true
+    },
+    {
+      "source": "/servizi/fotovoltaico-residenziale",
+      "destination": "/servizi/fotovoltaico/",
+      "permanent": true
+    },
+    {
+      "source": "/servizi/manutenzione",
+      "destination": "/contatti/",
+      "permanent": true
+    },
+    {
+      "source": "/servizi/pratiche-e-permessi",
+      "destination": "/servizi/progettazione-e-supporto/#pratiche-e-permessi",
+      "permanent": true
+    },
+    {
+      "source": "/servizi/progettazione",
+      "destination": "/servizi/progettazione-e-supporto/#progettazione",
+      "permanent": true
+    },
+    {
+      "source": "/zone",
+      "destination": "/contatti/#dove-operiamo",
+      "permanent": true
+    },
+    {
+      "source": "/zone/friuli",
+      "destination": "/contatti/#dove-operiamo",
+      "permanent": true
+    },
+    {
+      "source": "/zone/friuli/gorizia",
+      "destination": "/contatti/#dove-operiamo",
+      "permanent": true
+    },
+    {
+      "source": "/zone/friuli/gorizia/batterie-accumulo",
+      "destination": "/servizi/fotovoltaico/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/friuli/gorizia/climatizzazione",
+      "destination": "/servizi/climatizzazione/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/friuli/gorizia/consulenza-energetica",
+      "destination": "/servizi/progettazione-e-supporto/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/friuli/gorizia/efficientamento-energetico",
+      "destination": "/servizi/impianti-completi/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/friuli/gorizia/fotovoltaico",
+      "destination": "/servizi/fotovoltaico/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/friuli/gorizia/manutenzione",
+      "destination": "/contatti/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/friuli/gorizia/pompe-calore",
+      "destination": "/servizi/pompe-calore/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/friuli/pordenone",
+      "destination": "/contatti/#dove-operiamo",
+      "permanent": true
+    },
+    {
+      "source": "/zone/friuli/pordenone/batterie-accumulo",
+      "destination": "/servizi/fotovoltaico/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/friuli/pordenone/climatizzazione",
+      "destination": "/servizi/climatizzazione/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/friuli/pordenone/consulenza-energetica",
+      "destination": "/servizi/progettazione-e-supporto/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/friuli/pordenone/efficientamento-energetico",
+      "destination": "/servizi/impianti-completi/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/friuli/pordenone/fotovoltaico",
+      "destination": "/servizi/fotovoltaico/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/friuli/pordenone/manutenzione",
+      "destination": "/contatti/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/friuli/pordenone/pompe-calore",
+      "destination": "/servizi/pompe-calore/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/friuli/trieste",
+      "destination": "/contatti/#dove-operiamo",
+      "permanent": true
+    },
+    {
+      "source": "/zone/friuli/trieste/batterie-accumulo",
+      "destination": "/servizi/fotovoltaico/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/friuli/trieste/climatizzazione",
+      "destination": "/servizi/climatizzazione/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/friuli/trieste/consulenza-energetica",
+      "destination": "/servizi/progettazione-e-supporto/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/friuli/trieste/efficientamento-energetico",
+      "destination": "/servizi/impianti-completi/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/friuli/trieste/fotovoltaico",
+      "destination": "/servizi/fotovoltaico/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/friuli/trieste/manutenzione",
+      "destination": "/contatti/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/friuli/trieste/pompe-calore",
+      "destination": "/servizi/pompe-calore/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/friuli/udine",
+      "destination": "/contatti/#dove-operiamo",
+      "permanent": true
+    },
+    {
+      "source": "/zone/friuli/udine/batterie-accumulo",
+      "destination": "/servizi/fotovoltaico/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/friuli/udine/climatizzazione",
+      "destination": "/servizi/climatizzazione/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/friuli/udine/consulenza-energetica",
+      "destination": "/servizi/progettazione-e-supporto/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/friuli/udine/efficientamento-energetico",
+      "destination": "/servizi/impianti-completi/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/friuli/udine/fotovoltaico",
+      "destination": "/servizi/fotovoltaico/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/friuli/udine/manutenzione",
+      "destination": "/contatti/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/friuli/udine/pompe-calore",
+      "destination": "/servizi/pompe-calore/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto",
+      "destination": "/contatti/#dove-operiamo",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/belluno",
+      "destination": "/contatti/#dove-operiamo",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/belluno/batterie-accumulo",
+      "destination": "/servizi/fotovoltaico/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/belluno/climatizzazione",
+      "destination": "/servizi/climatizzazione/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/belluno/consulenza-energetica",
+      "destination": "/servizi/progettazione-e-supporto/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/belluno/efficientamento-energetico",
+      "destination": "/servizi/impianti-completi/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/belluno/fotovoltaico",
+      "destination": "/servizi/fotovoltaico/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/belluno/manutenzione",
+      "destination": "/contatti/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/belluno/pompe-calore",
+      "destination": "/servizi/pompe-calore/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/padova",
+      "destination": "/contatti/#dove-operiamo",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/padova/batterie-accumulo",
+      "destination": "/servizi/fotovoltaico/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/padova/climatizzazione",
+      "destination": "/servizi/climatizzazione/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/padova/consulenza-energetica",
+      "destination": "/servizi/progettazione-e-supporto/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/padova/efficientamento-energetico",
+      "destination": "/servizi/impianti-completi/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/padova/fotovoltaico",
+      "destination": "/servizi/fotovoltaico/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/padova/manutenzione",
+      "destination": "/contatti/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/padova/pompe-calore",
+      "destination": "/servizi/pompe-calore/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/rovigo",
+      "destination": "/contatti/#dove-operiamo",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/rovigo/batterie-accumulo",
+      "destination": "/servizi/fotovoltaico/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/rovigo/climatizzazione",
+      "destination": "/servizi/climatizzazione/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/rovigo/consulenza-energetica",
+      "destination": "/servizi/progettazione-e-supporto/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/rovigo/efficientamento-energetico",
+      "destination": "/servizi/impianti-completi/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/rovigo/fotovoltaico",
+      "destination": "/servizi/fotovoltaico/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/rovigo/manutenzione",
+      "destination": "/contatti/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/rovigo/pompe-calore",
+      "destination": "/servizi/pompe-calore/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/treviso",
+      "destination": "/contatti/#dove-operiamo",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/treviso/batterie-accumulo",
+      "destination": "/servizi/fotovoltaico/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/treviso/climatizzazione",
+      "destination": "/servizi/climatizzazione/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/treviso/consulenza-energetica",
+      "destination": "/servizi/progettazione-e-supporto/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/treviso/efficientamento-energetico",
+      "destination": "/servizi/impianti-completi/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/treviso/fotovoltaico",
+      "destination": "/servizi/fotovoltaico/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/treviso/manutenzione",
+      "destination": "/contatti/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/treviso/pompe-calore",
+      "destination": "/servizi/pompe-calore/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/venezia",
+      "destination": "/contatti/#dove-operiamo",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/venezia/batterie-accumulo",
+      "destination": "/servizi/fotovoltaico/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/venezia/climatizzazione",
+      "destination": "/servizi/climatizzazione/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/venezia/consulenza-energetica",
+      "destination": "/servizi/progettazione-e-supporto/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/venezia/efficientamento-energetico",
+      "destination": "/servizi/impianti-completi/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/venezia/fotovoltaico",
+      "destination": "/servizi/fotovoltaico/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/venezia/manutenzione",
+      "destination": "/contatti/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/venezia/pompe-calore",
+      "destination": "/servizi/pompe-calore/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/verona",
+      "destination": "/contatti/#dove-operiamo",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/verona/batterie-accumulo",
+      "destination": "/servizi/fotovoltaico/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/verona/climatizzazione",
+      "destination": "/servizi/climatizzazione/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/verona/consulenza-energetica",
+      "destination": "/servizi/progettazione-e-supporto/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/verona/efficientamento-energetico",
+      "destination": "/servizi/impianti-completi/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/verona/fotovoltaico",
+      "destination": "/servizi/fotovoltaico/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/verona/manutenzione",
+      "destination": "/contatti/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/verona/pompe-calore",
+      "destination": "/servizi/pompe-calore/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/vicenza",
+      "destination": "/contatti/#dove-operiamo",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/vicenza/batterie-accumulo",
+      "destination": "/servizi/fotovoltaico/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/vicenza/climatizzazione",
+      "destination": "/servizi/climatizzazione/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/vicenza/consulenza-energetica",
+      "destination": "/servizi/progettazione-e-supporto/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/vicenza/efficientamento-energetico",
+      "destination": "/servizi/impianti-completi/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/vicenza/fotovoltaico",
+      "destination": "/servizi/fotovoltaico/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/vicenza/manutenzione",
+      "destination": "/contatti/",
+      "permanent": true
+    },
+    {
+      "source": "/zone/veneto/vicenza/pompe-calore",
+      "destination": "/servizi/pompe-calore/",
+      "permanent": true
+    }
+  ]
 }

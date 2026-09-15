@@ -1,9 +1,9 @@
 import { services } from './data.mjs';
 export const propertyTypes=['Abitazione singola','Azienda o negozio','Condominio','Struttura agricola o produttiva','Altro immobile'];
 export const annualConsumptions=['Meno di 3.000 kWh/anno','3.000 - 6.000 kWh/anno','6.000 - 12.000 kWh/anno','Oltre 12.000 kWh/anno','Non li ho sotto mano'];
-export const installationSpaces=['Tetto a falda','Tetto piano','Terreno o area libera','Copertura aziendale','Ambienti interni','Locale tecnico','Impianto esistente','Da verificare con sopralluogo'];
+export const installationSpaces=['Tetto a falda','Tetto piano','Terreno o area libera','Copertura aziendale','Ambienti interni','Locale tecnico','Esterno dell’immobile','Impianto esistente','Da verificare con sopralluogo'];
 export const timelines=['Il prima possibile','Entro 1 mese','Entro 2-3 mesi','Sto valutando con calma'];
-export const aliases={'fotovoltaico-residenziale':'fotovoltaico','pompe-calore':'pompe-di-calore','climatizzazione':'condizionatori','consulenza-energetica':'consulenza','efficientamento-energetico':'consulenza','edilizia':'consulenza','batterie-accumulo':'consulenza','manutenzione':'consulenza'};
+export const aliases={'fotovoltaico-residenziale':'fotovoltaico','fotovoltaico-aziendale':'fotovoltaico','pompe-calore':'pompe-di-calore','climatizzazione':'condizionatori','consulenza-energetica':'consulenza','efficientamento-energetico':'consulenza','edilizia':'consulenza','batterie-accumulo':'consulenza','manutenzione':'consulenza'};
 export function serviceId(value){const id=aliases[value]||value;return services.some(s=>s.id===id)?id:null;}
 export function validateFunnel(data){
  const errors=[];

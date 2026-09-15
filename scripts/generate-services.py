@@ -1,7 +1,5 @@
-"""Compatibility entrypoint: regenerate using the verified Green Flux content model.
-
-The historical VenetaGreen BASE catalogue is intentionally no longer used.
-"""
+"""Compatibility entry point. Edit content/site-content.json and templates/."""
+import subprocess
 from pathlib import Path
-import runpy
-runpy.run_path(str(Path(__file__).with_name('align-green-flux-content.py')),run_name='__main__')
+root = Path(__file__).resolve().parents[1]
+subprocess.run(["node", "scripts/render-site.mjs"], cwd=root, check=True)

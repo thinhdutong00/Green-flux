@@ -1,901 +1,102 @@
 {
+  "reviewed_at": "2026-09-15",
+  "total_pages": 19,
   "source_url": "https://www.green-flux.com/",
-  "verified_at": "2026-09-15",
-  "total_pages": 149,
   "pages": {
     "/servizi/pompe-calore/": {
       "title": "Pompe di calore",
-      "description": "Progettiamo e installiamo pompe di calore per impianti residenziali, terziari e industriali. Dalla sostituzione del generatore al sistema completo, Green Flux è il tuo interlocutore per il progetto.",
-      "kind": "service",
-      "source_url": "https://www.green-flux.com/"
+      "source_url": "https://www.green-flux.com/",
+      "kind": "canonical"
     },
-    "/servizi/fotovoltaico-residenziale/": {
-      "title": "Fotovoltaico residenziale",
-      "description": "Green Flux progetta e installa impianti fotovoltaici. Per la casa, il fotovoltaico si inserisce in un servizio che può comprendere progettazione, pratiche, diagnosi energetiche e supporto per le detrazioni.",
-      "kind": "service",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/servizi/fotovoltaico-aziendale/": {
-      "title": "Fotovoltaico aziendale",
-      "description": "Green Flux opera nell’impiantistica terziaria e industriale e include il fotovoltaico tra i propri campi d’intervento. Il progetto parte dalle esigenze dell’attività e viene seguito con competenze idrauliche ed elettriche.",
-      "kind": "service",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/servizi/smart-home/": {
-      "title": "Smart home e automazioni",
-      "description": "Smart home e automazioni fanno parte dei campi d’intervento Green Flux. Le competenze elettriche e idrauliche permettono di affrontare il progetto insieme agli altri impianti dell’immobile.",
-      "kind": "service",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/servizi/solare-termico/": {
-      "title": "Solare termico",
-      "description": "Green Flux include il solare termico tra le proprie attività impiantistiche. Progettazione su misura e competenze idrauliche accompagnano la definizione della soluzione per il tuo immobile.",
-      "kind": "service",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/servizi/biomassa/": {
-      "title": "Biomassa",
-      "description": "La biomassa è uno dei campi d’intervento Green Flux. Dalla sostituzione di un generatore a un sistema più ampio, l’azienda segue progettazione e installazione con competenze impiantistiche integrate.",
-      "kind": "service",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/servizi/caldaie/": {
-      "title": "Caldaie",
-      "description": "Green Flux si occupa di caldaie e di impianti completi. La sostituzione del generatore rientra nell’attività dell’azienda, insieme alla progettazione e all’installazione per casa, terziario e industria.",
-      "kind": "service",
-      "source_url": "https://www.green-flux.com/"
+    "/servizi/fotovoltaico/": {
+      "title": "Fotovoltaico",
+      "source_url": "https://www.green-flux.com/",
+      "kind": "canonical"
     },
     "/servizi/climatizzazione/": {
       "title": "Condizionatori",
-      "description": "I condizionatori fanno parte dei campi d’intervento Green Flux. L’azienda progetta e installa impianti per abitazioni, attività del terziario e industria, anche all’interno di sistemi completi.",
-      "kind": "service",
-      "source_url": "https://www.green-flux.com/"
+      "source_url": "https://www.green-flux.com/",
+      "kind": "canonical"
+    },
+    "/servizi/caldaie/": {
+      "title": "Caldaie",
+      "source_url": "https://www.green-flux.com/",
+      "kind": "canonical"
+    },
+    "/servizi/biomassa/": {
+      "title": "Biomassa",
+      "source_url": "https://www.green-flux.com/",
+      "kind": "canonical"
+    },
+    "/servizi/solare-termico/": {
+      "title": "Solare termico",
+      "source_url": "https://www.green-flux.com/",
+      "kind": "canonical"
     },
     "/servizi/ventilazione/": {
       "title": "Ventilazione meccanica",
-      "description": "Green Flux include la ventilazione meccanica tra i campi d’intervento. Puoi inserirla in una richiesta dedicata oppure nel progetto complessivo degli impianti del tuo immobile.",
-      "kind": "service",
-      "source_url": "https://www.green-flux.com/"
+      "source_url": "https://www.green-flux.com/",
+      "kind": "canonical"
     },
     "/servizi/trattamento-acqua/": {
       "title": "Trattamento acqua",
-      "description": "Il trattamento acqua rientra nell’offerta Green Flux. Le competenze idrauliche dell’azienda accompagnano la progettazione e l’installazione nell’ambito degli impianti tecnologici.",
-      "kind": "service",
-      "source_url": "https://www.green-flux.com/"
+      "source_url": "https://www.green-flux.com/",
+      "kind": "canonical"
+    },
+    "/servizi/smart-home/": {
+      "title": "Smart home e automazioni",
+      "source_url": "https://www.green-flux.com/",
+      "kind": "canonical"
     },
     "/servizi/impianti-completi/": {
       "title": "Impianti completi",
-      "description": "Green Flux realizza impianti completi, dalla sostituzione di un generatore alla ristrutturazione completa. Competenze idrauliche ed elettriche si uniscono alla collaborazione con professionisti qualificati.",
-      "kind": "service",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/servizi/progettazione/": {
-      "title": "Progettazione",
-      "description": "Green Flux offre progettazione studiata su misura per ogni cliente. Il servizio si inserisce nell’offerta chiavi in mano, con un unico interlocutore e professionisti qualificati nelle diverse fasi.",
-      "kind": "service",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/servizi/pratiche-e-permessi/": {
-      "title": "Pratiche e permessi",
-      "description": "Green Flux comprende la gestione delle pratiche e dei permessi nella propria offerta chiavi in mano. Le autorizzazioni necessarie vengono affrontate insieme al progetto impiantistico.",
-      "kind": "service",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/servizi/diagnosi-energetiche/": {
-      "title": "Diagnosi energetiche",
-      "description": "Green Flux offre diagnosi energetiche: analisi tecniche orientate a ottimizzare consumi e prestazioni. Il servizio può accompagnare la progettazione degli impianti e la scelta degli interventi.",
-      "kind": "service",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/servizi/detrazioni-fiscali/": {
-      "title": "Detrazioni fiscali e incentivi",
-      "description": "Green Flux offre supporto per incentivi e agevolazioni legati agli impianti e gestione delle detrazioni fiscali. Il servizio accompagna il progetto e la relativa documentazione.",
-      "kind": "service",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/servizi/formule-assicurative/": {
-      "title": "Formule assicurative per gli impianti",
-      "description": "Green Flux include formule assicurative per la sicurezza dell’impianto nella propria offerta chiavi in mano. Puoi chiedere informazioni sulla formula pertinente al sistema che vuoi realizzare.",
-      "kind": "service",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/servizi/consulenza/": {
-      "title": "Consulenza per il tuo progetto",
-      "description": "Green Flux invita a partire da una consulenza per trovare la soluzione più adatta. Puoi descrivere l’intervento, dalla sostituzione di un generatore a un progetto di impianti completi.",
-      "kind": "service",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/servizi/batterie-accumulo/": {
-      "title": "Consulenza sul fotovoltaico esistente",
-      "description": "Hai un impianto fotovoltaico e vuoi valutare un nuovo progetto? Racconta a Green Flux la situazione attuale e le tue esigenze: la richiesta parte da una consulenza, con le lavorazioni da definire nella proposta.",
-      "kind": "consultation",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/servizi/manutenzione/": {
-      "title": "Valutare un impianto esistente",
-      "description": "Per un impianto già presente, puoi chiedere a Green Flux una consulenza sul nuovo intervento che stai considerando. Descrivi la situazione: attività, disponibilità e condizioni vengono definite nel confronto con l’azienda.",
-      "kind": "consultation",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/servizi/edilizia/": {
-      "title": "Impianti per una ristrutturazione",
-      "description": "Green Flux descrive la propria attività dalla sostituzione di un generatore alla ristrutturazione completa. Il suo contributo riguarda gli impianti tecnologici, con competenze idrauliche ed elettriche e professionisti qualificati.",
-      "kind": "consultation",
-      "source_url": "https://www.green-flux.com/"
+      "source_url": "https://www.green-flux.com/",
+      "kind": "canonical"
     },
     "/servizi/": {
       "title": "Impianti e servizi Green Flux",
-      "description": "Dieci campi d’intervento e un’offerta chiavi in mano: progettazione, installazione e servizi per il residenziale, il terziario e l’industria.",
-      "kind": "page",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/": {
-      "title": "Dove si trova il tuo progetto?",
-      "description": "Green Flux si occupa di impianti residenziali, terziari e industriali. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/": {
-      "title": "Il tuo progetto in Veneto",
-      "description": "Green Flux si occupa di impianti residenziali, terziari e industriali. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/friuli/": {
-      "title": "Il tuo progetto in Friuli-Venezia Giulia",
-      "description": "Green Flux si occupa di impianti residenziali, terziari e industriali. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/friuli/udine/": {
-      "title": "Il tuo progetto in provincia di Udine",
-      "description": "Green Flux si occupa di impianti residenziali, terziari e industriali. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/rovigo/": {
-      "title": "Il tuo progetto in provincia di Rovigo",
-      "description": "Green Flux si occupa di impianti residenziali, terziari e industriali. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/padova/": {
-      "title": "Il tuo progetto in provincia di Padova",
-      "description": "Green Flux si occupa di impianti residenziali, terziari e industriali. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/verona/": {
-      "title": "Il tuo progetto in provincia di Verona",
-      "description": "Green Flux si occupa di impianti residenziali, terziari e industriali. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/treviso/": {
-      "title": "Il tuo progetto in provincia di Treviso",
-      "description": "Green Flux si occupa di impianti residenziali, terziari e industriali. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/venezia/": {
-      "title": "Il tuo progetto in provincia di Venezia",
-      "description": "Green Flux si occupa di impianti residenziali, terziari e industriali. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/belluno/": {
-      "title": "Il tuo progetto in provincia di Belluno",
-      "description": "Green Flux si occupa di impianti residenziali, terziari e industriali. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/vicenza/": {
-      "title": "Il tuo progetto in provincia di Vicenza",
-      "description": "Green Flux si occupa di impianti residenziali, terziari e industriali. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/friuli/gorizia/": {
-      "title": "Il tuo progetto in provincia di Gorizia",
-      "description": "Green Flux si occupa di impianti residenziali, terziari e industriali. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/friuli/trieste/": {
-      "title": "Il tuo progetto in provincia di Trieste",
-      "description": "Green Flux si occupa di impianti residenziali, terziari e industriali. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/friuli/pordenone/": {
-      "title": "Il tuo progetto in provincia di Pordenone",
-      "description": "Green Flux si occupa di impianti residenziali, terziari e industriali. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/friuli/udine/manutenzione/": {
-      "title": "Valutare un impianto esistente: richiesta in provincia di Udine",
-      "description": "Per un impianto già presente, puoi chiedere a Green Flux una consulenza sul nuovo intervento che stai considerando. Descrivi la situazione: attività, disponibilità e condizioni vengono definite nel confronto con l’azienda. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/friuli/udine/fotovoltaico/": {
-      "title": "Fotovoltaico residenziale: richiesta in provincia di Udine",
-      "description": "Green Flux progetta e installa impianti fotovoltaici. Per la casa, il fotovoltaico si inserisce in un servizio che può comprendere progettazione, pratiche, diagnosi energetiche e supporto per le detrazioni. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/friuli/udine/pompe-calore/": {
-      "title": "Pompe di calore: richiesta in provincia di Udine",
-      "description": "Progettiamo e installiamo pompe di calore per impianti residenziali, terziari e industriali. Dalla sostituzione del generatore al sistema completo, Green Flux è il tuo interlocutore per il progetto. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/rovigo/manutenzione/": {
-      "title": "Valutare un impianto esistente: richiesta in provincia di Rovigo",
-      "description": "Per un impianto già presente, puoi chiedere a Green Flux una consulenza sul nuovo intervento che stai considerando. Descrivi la situazione: attività, disponibilità e condizioni vengono definite nel confronto con l’azienda. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/rovigo/fotovoltaico/": {
-      "title": "Fotovoltaico residenziale: richiesta in provincia di Rovigo",
-      "description": "Green Flux progetta e installa impianti fotovoltaici. Per la casa, il fotovoltaico si inserisce in un servizio che può comprendere progettazione, pratiche, diagnosi energetiche e supporto per le detrazioni. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/rovigo/pompe-calore/": {
-      "title": "Pompe di calore: richiesta in provincia di Rovigo",
-      "description": "Progettiamo e installiamo pompe di calore per impianti residenziali, terziari e industriali. Dalla sostituzione del generatore al sistema completo, Green Flux è il tuo interlocutore per il progetto. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/padova/manutenzione/": {
-      "title": "Valutare un impianto esistente: richiesta in provincia di Padova",
-      "description": "Per un impianto già presente, puoi chiedere a Green Flux una consulenza sul nuovo intervento che stai considerando. Descrivi la situazione: attività, disponibilità e condizioni vengono definite nel confronto con l’azienda. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/padova/fotovoltaico/": {
-      "title": "Fotovoltaico residenziale: richiesta in provincia di Padova",
-      "description": "Green Flux progetta e installa impianti fotovoltaici. Per la casa, il fotovoltaico si inserisce in un servizio che può comprendere progettazione, pratiche, diagnosi energetiche e supporto per le detrazioni. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/padova/pompe-calore/": {
-      "title": "Pompe di calore: richiesta in provincia di Padova",
-      "description": "Progettiamo e installiamo pompe di calore per impianti residenziali, terziari e industriali. Dalla sostituzione del generatore al sistema completo, Green Flux è il tuo interlocutore per il progetto. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/verona/manutenzione/": {
-      "title": "Valutare un impianto esistente: richiesta in provincia di Verona",
-      "description": "Per un impianto già presente, puoi chiedere a Green Flux una consulenza sul nuovo intervento che stai considerando. Descrivi la situazione: attività, disponibilità e condizioni vengono definite nel confronto con l’azienda. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/verona/fotovoltaico/": {
-      "title": "Fotovoltaico residenziale: richiesta in provincia di Verona",
-      "description": "Green Flux progetta e installa impianti fotovoltaici. Per la casa, il fotovoltaico si inserisce in un servizio che può comprendere progettazione, pratiche, diagnosi energetiche e supporto per le detrazioni. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/verona/pompe-calore/": {
-      "title": "Pompe di calore: richiesta in provincia di Verona",
-      "description": "Progettiamo e installiamo pompe di calore per impianti residenziali, terziari e industriali. Dalla sostituzione del generatore al sistema completo, Green Flux è il tuo interlocutore per il progetto. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/treviso/manutenzione/": {
-      "title": "Valutare un impianto esistente: richiesta in provincia di Treviso",
-      "description": "Per un impianto già presente, puoi chiedere a Green Flux una consulenza sul nuovo intervento che stai considerando. Descrivi la situazione: attività, disponibilità e condizioni vengono definite nel confronto con l’azienda. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/treviso/fotovoltaico/": {
-      "title": "Fotovoltaico residenziale: richiesta in provincia di Treviso",
-      "description": "Green Flux progetta e installa impianti fotovoltaici. Per la casa, il fotovoltaico si inserisce in un servizio che può comprendere progettazione, pratiche, diagnosi energetiche e supporto per le detrazioni. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/treviso/pompe-calore/": {
-      "title": "Pompe di calore: richiesta in provincia di Treviso",
-      "description": "Progettiamo e installiamo pompe di calore per impianti residenziali, terziari e industriali. Dalla sostituzione del generatore al sistema completo, Green Flux è il tuo interlocutore per il progetto. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/venezia/manutenzione/": {
-      "title": "Valutare un impianto esistente: richiesta in provincia di Venezia",
-      "description": "Per un impianto già presente, puoi chiedere a Green Flux una consulenza sul nuovo intervento che stai considerando. Descrivi la situazione: attività, disponibilità e condizioni vengono definite nel confronto con l’azienda. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/venezia/fotovoltaico/": {
-      "title": "Fotovoltaico residenziale: richiesta in provincia di Venezia",
-      "description": "Green Flux progetta e installa impianti fotovoltaici. Per la casa, il fotovoltaico si inserisce in un servizio che può comprendere progettazione, pratiche, diagnosi energetiche e supporto per le detrazioni. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/venezia/pompe-calore/": {
-      "title": "Pompe di calore: richiesta in provincia di Venezia",
-      "description": "Progettiamo e installiamo pompe di calore per impianti residenziali, terziari e industriali. Dalla sostituzione del generatore al sistema completo, Green Flux è il tuo interlocutore per il progetto. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/belluno/manutenzione/": {
-      "title": "Valutare un impianto esistente: richiesta in provincia di Belluno",
-      "description": "Per un impianto già presente, puoi chiedere a Green Flux una consulenza sul nuovo intervento che stai considerando. Descrivi la situazione: attività, disponibilità e condizioni vengono definite nel confronto con l’azienda. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/belluno/fotovoltaico/": {
-      "title": "Fotovoltaico residenziale: richiesta in provincia di Belluno",
-      "description": "Green Flux progetta e installa impianti fotovoltaici. Per la casa, il fotovoltaico si inserisce in un servizio che può comprendere progettazione, pratiche, diagnosi energetiche e supporto per le detrazioni. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/belluno/pompe-calore/": {
-      "title": "Pompe di calore: richiesta in provincia di Belluno",
-      "description": "Progettiamo e installiamo pompe di calore per impianti residenziali, terziari e industriali. Dalla sostituzione del generatore al sistema completo, Green Flux è il tuo interlocutore per il progetto. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/vicenza/manutenzione/": {
-      "title": "Valutare un impianto esistente: richiesta in provincia di Vicenza",
-      "description": "Per un impianto già presente, puoi chiedere a Green Flux una consulenza sul nuovo intervento che stai considerando. Descrivi la situazione: attività, disponibilità e condizioni vengono definite nel confronto con l’azienda. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/vicenza/fotovoltaico/": {
-      "title": "Fotovoltaico residenziale: richiesta in provincia di Vicenza",
-      "description": "Green Flux progetta e installa impianti fotovoltaici. Per la casa, il fotovoltaico si inserisce in un servizio che può comprendere progettazione, pratiche, diagnosi energetiche e supporto per le detrazioni. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/vicenza/pompe-calore/": {
-      "title": "Pompe di calore: richiesta in provincia di Vicenza",
-      "description": "Progettiamo e installiamo pompe di calore per impianti residenziali, terziari e industriali. Dalla sostituzione del generatore al sistema completo, Green Flux è il tuo interlocutore per il progetto. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/friuli/gorizia/manutenzione/": {
-      "title": "Valutare un impianto esistente: richiesta in provincia di Gorizia",
-      "description": "Per un impianto già presente, puoi chiedere a Green Flux una consulenza sul nuovo intervento che stai considerando. Descrivi la situazione: attività, disponibilità e condizioni vengono definite nel confronto con l’azienda. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/friuli/gorizia/fotovoltaico/": {
-      "title": "Fotovoltaico residenziale: richiesta in provincia di Gorizia",
-      "description": "Green Flux progetta e installa impianti fotovoltaici. Per la casa, il fotovoltaico si inserisce in un servizio che può comprendere progettazione, pratiche, diagnosi energetiche e supporto per le detrazioni. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/friuli/gorizia/pompe-calore/": {
-      "title": "Pompe di calore: richiesta in provincia di Gorizia",
-      "description": "Progettiamo e installiamo pompe di calore per impianti residenziali, terziari e industriali. Dalla sostituzione del generatore al sistema completo, Green Flux è il tuo interlocutore per il progetto. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/friuli/trieste/manutenzione/": {
-      "title": "Valutare un impianto esistente: richiesta in provincia di Trieste",
-      "description": "Per un impianto già presente, puoi chiedere a Green Flux una consulenza sul nuovo intervento che stai considerando. Descrivi la situazione: attività, disponibilità e condizioni vengono definite nel confronto con l’azienda. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/friuli/trieste/fotovoltaico/": {
-      "title": "Fotovoltaico residenziale: richiesta in provincia di Trieste",
-      "description": "Green Flux progetta e installa impianti fotovoltaici. Per la casa, il fotovoltaico si inserisce in un servizio che può comprendere progettazione, pratiche, diagnosi energetiche e supporto per le detrazioni. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/friuli/trieste/pompe-calore/": {
-      "title": "Pompe di calore: richiesta in provincia di Trieste",
-      "description": "Progettiamo e installiamo pompe di calore per impianti residenziali, terziari e industriali. Dalla sostituzione del generatore al sistema completo, Green Flux è il tuo interlocutore per il progetto. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/friuli/udine/climatizzazione/": {
-      "title": "Condizionatori: richiesta in provincia di Udine",
-      "description": "I condizionatori fanno parte dei campi d’intervento Green Flux. L’azienda progetta e installa impianti per abitazioni, attività del terziario e industria, anche all’interno di sistemi completi. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/rovigo/climatizzazione/": {
-      "title": "Condizionatori: richiesta in provincia di Rovigo",
-      "description": "I condizionatori fanno parte dei campi d’intervento Green Flux. L’azienda progetta e installa impianti per abitazioni, attività del terziario e industria, anche all’interno di sistemi completi. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/padova/climatizzazione/": {
-      "title": "Condizionatori: richiesta in provincia di Padova",
-      "description": "I condizionatori fanno parte dei campi d’intervento Green Flux. L’azienda progetta e installa impianti per abitazioni, attività del terziario e industria, anche all’interno di sistemi completi. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/verona/climatizzazione/": {
-      "title": "Condizionatori: richiesta in provincia di Verona",
-      "description": "I condizionatori fanno parte dei campi d’intervento Green Flux. L’azienda progetta e installa impianti per abitazioni, attività del terziario e industria, anche all’interno di sistemi completi. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/friuli/pordenone/manutenzione/": {
-      "title": "Valutare un impianto esistente: richiesta in provincia di Pordenone",
-      "description": "Per un impianto già presente, puoi chiedere a Green Flux una consulenza sul nuovo intervento che stai considerando. Descrivi la situazione: attività, disponibilità e condizioni vengono definite nel confronto con l’azienda. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/friuli/pordenone/fotovoltaico/": {
-      "title": "Fotovoltaico residenziale: richiesta in provincia di Pordenone",
-      "description": "Green Flux progetta e installa impianti fotovoltaici. Per la casa, il fotovoltaico si inserisce in un servizio che può comprendere progettazione, pratiche, diagnosi energetiche e supporto per le detrazioni. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/friuli/pordenone/pompe-calore/": {
-      "title": "Pompe di calore: richiesta in provincia di Pordenone",
-      "description": "Progettiamo e installiamo pompe di calore per impianti residenziali, terziari e industriali. Dalla sostituzione del generatore al sistema completo, Green Flux è il tuo interlocutore per il progetto. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/treviso/climatizzazione/": {
-      "title": "Condizionatori: richiesta in provincia di Treviso",
-      "description": "I condizionatori fanno parte dei campi d’intervento Green Flux. L’azienda progetta e installa impianti per abitazioni, attività del terziario e industria, anche all’interno di sistemi completi. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/venezia/climatizzazione/": {
-      "title": "Condizionatori: richiesta in provincia di Venezia",
-      "description": "I condizionatori fanno parte dei campi d’intervento Green Flux. L’azienda progetta e installa impianti per abitazioni, attività del terziario e industria, anche all’interno di sistemi completi. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/belluno/climatizzazione/": {
-      "title": "Condizionatori: richiesta in provincia di Belluno",
-      "description": "I condizionatori fanno parte dei campi d’intervento Green Flux. L’azienda progetta e installa impianti per abitazioni, attività del terziario e industria, anche all’interno di sistemi completi. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/vicenza/climatizzazione/": {
-      "title": "Condizionatori: richiesta in provincia di Vicenza",
-      "description": "I condizionatori fanno parte dei campi d’intervento Green Flux. L’azienda progetta e installa impianti per abitazioni, attività del terziario e industria, anche all’interno di sistemi completi. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/friuli/udine/batterie-accumulo/": {
-      "title": "Consulenza sul fotovoltaico esistente: richiesta in provincia di Udine",
-      "description": "Hai un impianto fotovoltaico e vuoi valutare un nuovo progetto? Racconta a Green Flux la situazione attuale e le tue esigenze: la richiesta parte da una consulenza, con le lavorazioni da definire nella proposta. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/friuli/gorizia/climatizzazione/": {
-      "title": "Condizionatori: richiesta in provincia di Gorizia",
-      "description": "I condizionatori fanno parte dei campi d’intervento Green Flux. L’azienda progetta e installa impianti per abitazioni, attività del terziario e industria, anche all’interno di sistemi completi. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/friuli/trieste/climatizzazione/": {
-      "title": "Condizionatori: richiesta in provincia di Trieste",
-      "description": "I condizionatori fanno parte dei campi d’intervento Green Flux. L’azienda progetta e installa impianti per abitazioni, attività del terziario e industria, anche all’interno di sistemi completi. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/rovigo/batterie-accumulo/": {
-      "title": "Consulenza sul fotovoltaico esistente: richiesta in provincia di Rovigo",
-      "description": "Hai un impianto fotovoltaico e vuoi valutare un nuovo progetto? Racconta a Green Flux la situazione attuale e le tue esigenze: la richiesta parte da una consulenza, con le lavorazioni da definire nella proposta. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/padova/batterie-accumulo/": {
-      "title": "Consulenza sul fotovoltaico esistente: richiesta in provincia di Padova",
-      "description": "Hai un impianto fotovoltaico e vuoi valutare un nuovo progetto? Racconta a Green Flux la situazione attuale e le tue esigenze: la richiesta parte da una consulenza, con le lavorazioni da definire nella proposta. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/verona/batterie-accumulo/": {
-      "title": "Consulenza sul fotovoltaico esistente: richiesta in provincia di Verona",
-      "description": "Hai un impianto fotovoltaico e vuoi valutare un nuovo progetto? Racconta a Green Flux la situazione attuale e le tue esigenze: la richiesta parte da una consulenza, con le lavorazioni da definire nella proposta. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/treviso/batterie-accumulo/": {
-      "title": "Consulenza sul fotovoltaico esistente: richiesta in provincia di Treviso",
-      "description": "Hai un impianto fotovoltaico e vuoi valutare un nuovo progetto? Racconta a Green Flux la situazione attuale e le tue esigenze: la richiesta parte da una consulenza, con le lavorazioni da definire nella proposta. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/venezia/batterie-accumulo/": {
-      "title": "Consulenza sul fotovoltaico esistente: richiesta in provincia di Venezia",
-      "description": "Hai un impianto fotovoltaico e vuoi valutare un nuovo progetto? Racconta a Green Flux la situazione attuale e le tue esigenze: la richiesta parte da una consulenza, con le lavorazioni da definire nella proposta. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/belluno/batterie-accumulo/": {
-      "title": "Consulenza sul fotovoltaico esistente: richiesta in provincia di Belluno",
-      "description": "Hai un impianto fotovoltaico e vuoi valutare un nuovo progetto? Racconta a Green Flux la situazione attuale e le tue esigenze: la richiesta parte da una consulenza, con le lavorazioni da definire nella proposta. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/vicenza/batterie-accumulo/": {
-      "title": "Consulenza sul fotovoltaico esistente: richiesta in provincia di Vicenza",
-      "description": "Hai un impianto fotovoltaico e vuoi valutare un nuovo progetto? Racconta a Green Flux la situazione attuale e le tue esigenze: la richiesta parte da una consulenza, con le lavorazioni da definire nella proposta. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/friuli/pordenone/climatizzazione/": {
-      "title": "Condizionatori: richiesta in provincia di Pordenone",
-      "description": "I condizionatori fanno parte dei campi d’intervento Green Flux. L’azienda progetta e installa impianti per abitazioni, attività del terziario e industria, anche all’interno di sistemi completi. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/friuli/gorizia/batterie-accumulo/": {
-      "title": "Consulenza sul fotovoltaico esistente: richiesta in provincia di Gorizia",
-      "description": "Hai un impianto fotovoltaico e vuoi valutare un nuovo progetto? Racconta a Green Flux la situazione attuale e le tue esigenze: la richiesta parte da una consulenza, con le lavorazioni da definire nella proposta. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/friuli/trieste/batterie-accumulo/": {
-      "title": "Consulenza sul fotovoltaico esistente: richiesta in provincia di Trieste",
-      "description": "Hai un impianto fotovoltaico e vuoi valutare un nuovo progetto? Racconta a Green Flux la situazione attuale e le tue esigenze: la richiesta parte da una consulenza, con le lavorazioni da definire nella proposta. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/friuli/udine/consulenza-energetica/": {
-      "title": "Consulenza per il tuo progetto: richiesta in provincia di Udine",
-      "description": "Green Flux invita a partire da una consulenza per trovare la soluzione più adatta. Puoi descrivere l’intervento, dalla sostituzione di un generatore a un progetto di impianti completi. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/friuli/pordenone/batterie-accumulo/": {
-      "title": "Consulenza sul fotovoltaico esistente: richiesta in provincia di Pordenone",
-      "description": "Hai un impianto fotovoltaico e vuoi valutare un nuovo progetto? Racconta a Green Flux la situazione attuale e le tue esigenze: la richiesta parte da una consulenza, con le lavorazioni da definire nella proposta. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/rovigo/consulenza-energetica/": {
-      "title": "Consulenza per il tuo progetto: richiesta in provincia di Rovigo",
-      "description": "Green Flux invita a partire da una consulenza per trovare la soluzione più adatta. Puoi descrivere l’intervento, dalla sostituzione di un generatore a un progetto di impianti completi. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/padova/consulenza-energetica/": {
-      "title": "Consulenza per il tuo progetto: richiesta in provincia di Padova",
-      "description": "Green Flux invita a partire da una consulenza per trovare la soluzione più adatta. Puoi descrivere l’intervento, dalla sostituzione di un generatore a un progetto di impianti completi. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/verona/consulenza-energetica/": {
-      "title": "Consulenza per il tuo progetto: richiesta in provincia di Verona",
-      "description": "Green Flux invita a partire da una consulenza per trovare la soluzione più adatta. Puoi descrivere l’intervento, dalla sostituzione di un generatore a un progetto di impianti completi. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/treviso/consulenza-energetica/": {
-      "title": "Consulenza per il tuo progetto: richiesta in provincia di Treviso",
-      "description": "Green Flux invita a partire da una consulenza per trovare la soluzione più adatta. Puoi descrivere l’intervento, dalla sostituzione di un generatore a un progetto di impianti completi. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/venezia/consulenza-energetica/": {
-      "title": "Consulenza per il tuo progetto: richiesta in provincia di Venezia",
-      "description": "Green Flux invita a partire da una consulenza per trovare la soluzione più adatta. Puoi descrivere l’intervento, dalla sostituzione di un generatore a un progetto di impianti completi. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/belluno/consulenza-energetica/": {
-      "title": "Consulenza per il tuo progetto: richiesta in provincia di Belluno",
-      "description": "Green Flux invita a partire da una consulenza per trovare la soluzione più adatta. Puoi descrivere l’intervento, dalla sostituzione di un generatore a un progetto di impianti completi. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/vicenza/consulenza-energetica/": {
-      "title": "Consulenza per il tuo progetto: richiesta in provincia di Vicenza",
-      "description": "Green Flux invita a partire da una consulenza per trovare la soluzione più adatta. Puoi descrivere l’intervento, dalla sostituzione di un generatore a un progetto di impianti completi. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/friuli/gorizia/consulenza-energetica/": {
-      "title": "Consulenza per il tuo progetto: richiesta in provincia di Gorizia",
-      "description": "Green Flux invita a partire da una consulenza per trovare la soluzione più adatta. Puoi descrivere l’intervento, dalla sostituzione di un generatore a un progetto di impianti completi. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/friuli/trieste/consulenza-energetica/": {
-      "title": "Consulenza per il tuo progetto: richiesta in provincia di Trieste",
-      "description": "Green Flux invita a partire da una consulenza per trovare la soluzione più adatta. Puoi descrivere l’intervento, dalla sostituzione di un generatore a un progetto di impianti completi. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/friuli/pordenone/consulenza-energetica/": {
-      "title": "Consulenza per il tuo progetto: richiesta in provincia di Pordenone",
-      "description": "Green Flux invita a partire da una consulenza per trovare la soluzione più adatta. Puoi descrivere l’intervento, dalla sostituzione di un generatore a un progetto di impianti completi. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/friuli/udine/efficientamento-energetico/": {
-      "title": "Impianti per una ristrutturazione: richiesta in provincia di Udine",
-      "description": "Green Flux descrive la propria attività dalla sostituzione di un generatore alla ristrutturazione completa. Il suo contributo riguarda gli impianti tecnologici, con competenze idrauliche ed elettriche e professionisti qualificati. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/rovigo/efficientamento-energetico/": {
-      "title": "Impianti per una ristrutturazione: richiesta in provincia di Rovigo",
-      "description": "Green Flux descrive la propria attività dalla sostituzione di un generatore alla ristrutturazione completa. Il suo contributo riguarda gli impianti tecnologici, con competenze idrauliche ed elettriche e professionisti qualificati. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/padova/efficientamento-energetico/": {
-      "title": "Impianti per una ristrutturazione: richiesta in provincia di Padova",
-      "description": "Green Flux descrive la propria attività dalla sostituzione di un generatore alla ristrutturazione completa. Il suo contributo riguarda gli impianti tecnologici, con competenze idrauliche ed elettriche e professionisti qualificati. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/verona/efficientamento-energetico/": {
-      "title": "Impianti per una ristrutturazione: richiesta in provincia di Verona",
-      "description": "Green Flux descrive la propria attività dalla sostituzione di un generatore alla ristrutturazione completa. Il suo contributo riguarda gli impianti tecnologici, con competenze idrauliche ed elettriche e professionisti qualificati. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/treviso/efficientamento-energetico/": {
-      "title": "Impianti per una ristrutturazione: richiesta in provincia di Treviso",
-      "description": "Green Flux descrive la propria attività dalla sostituzione di un generatore alla ristrutturazione completa. Il suo contributo riguarda gli impianti tecnologici, con competenze idrauliche ed elettriche e professionisti qualificati. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/venezia/efficientamento-energetico/": {
-      "title": "Impianti per una ristrutturazione: richiesta in provincia di Venezia",
-      "description": "Green Flux descrive la propria attività dalla sostituzione di un generatore alla ristrutturazione completa. Il suo contributo riguarda gli impianti tecnologici, con competenze idrauliche ed elettriche e professionisti qualificati. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/belluno/efficientamento-energetico/": {
-      "title": "Impianti per una ristrutturazione: richiesta in provincia di Belluno",
-      "description": "Green Flux descrive la propria attività dalla sostituzione di un generatore alla ristrutturazione completa. Il suo contributo riguarda gli impianti tecnologici, con competenze idrauliche ed elettriche e professionisti qualificati. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/veneto/vicenza/efficientamento-energetico/": {
-      "title": "Impianti per una ristrutturazione: richiesta in provincia di Vicenza",
-      "description": "Green Flux descrive la propria attività dalla sostituzione di un generatore alla ristrutturazione completa. Il suo contributo riguarda gli impianti tecnologici, con competenze idrauliche ed elettriche e professionisti qualificati. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/friuli/gorizia/efficientamento-energetico/": {
-      "title": "Impianti per una ristrutturazione: richiesta in provincia di Gorizia",
-      "description": "Green Flux descrive la propria attività dalla sostituzione di un generatore alla ristrutturazione completa. Il suo contributo riguarda gli impianti tecnologici, con competenze idrauliche ed elettriche e professionisti qualificati. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/friuli/trieste/efficientamento-energetico/": {
-      "title": "Impianti per una ristrutturazione: richiesta in provincia di Trieste",
-      "description": "Green Flux descrive la propria attività dalla sostituzione di un generatore alla ristrutturazione completa. Il suo contributo riguarda gli impianti tecnologici, con competenze idrauliche ed elettriche e professionisti qualificati. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/zone/friuli/pordenone/efficientamento-energetico/": {
-      "title": "Impianti per una ristrutturazione: richiesta in provincia di Pordenone",
-      "description": "Green Flux descrive la propria attività dalla sostituzione di un generatore alla ristrutturazione completa. Il suo contributo riguarda gli impianti tecnologici, con competenze idrauliche ed elettriche e professionisti qualificati. Indica il comune dell’immobile e chiedi conferma della disponibilità per il tuo intervento.",
-      "kind": "location-request",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/blog/pompa-di-calore-termosifoni/": {
-      "title": "Pompa di calore: descrivere l’impianto con termosifoni",
-      "description": "Vuoi valutare una pompa di calore e hai già i termosifoni? Ecco come presentare l’impianto attuale e le esigenze della casa.",
-      "kind": "guide",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/blog/pompa-calore-fotovoltaico-integrazione/": {
-      "title": "Pompa di calore e fotovoltaico: presentare un progetto completo",
-      "description": "Green Flux si occupa sia di pompe di calore sia di fotovoltaico. Per una richiesta che comprende entrambi, parti dall’insieme degli impianti e delle esigenze.",
-      "kind": "guide",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/blog/fotovoltaico-casa-veneto-dimensionamento/": {
-      "title": "Fotovoltaico per casa: preparare la richiesta di progetto",
-      "description": "Le informazioni sulla casa e sui consumi aiutano a presentare una richiesta di fotovoltaico coerente con le tue esigenze.",
-      "kind": "guide",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/blog/fotovoltaico-6-kw-costo-preventivo/": {
-      "title": "Preventivo fotovoltaico: che cosa descrivere nella richiesta",
-      "description": "Una richiesta utile presenta l’immobile, il progetto e i servizi da considerare. Il costo si definisce nella proposta relativa all’intervento.",
-      "kind": "guide",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/blog/quanto-produce-impianto-fotovoltaico-6-kw/": {
-      "title": "Fotovoltaico: chiarire gli obiettivi energetici del progetto",
-      "description": "Prima di chiedere una soluzione, descrivi i consumi e gli obiettivi che vuoi affrontare con il fotovoltaico.",
-      "kind": "guide",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/blog/fotovoltaico-aziendale-veneto-autoconsumo/": {
-      "title": "Fotovoltaico aziendale: descrivere attività e fabbisogni",
-      "description": "Per un immobile di lavoro, la richiesta deve raccontare l’attività e le sue esigenze impiantistiche.",
-      "kind": "guide",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/blog/batterie-accumulo-fotovoltaico-quando-convengono/": {
-      "title": "Fotovoltaico esistente: prima di scegliere nuovi componenti",
-      "description": "Quando vuoi modificare un impianto, parti dalla descrizione del sistema e delle nuove esigenze, poi chiedi una consulenza.",
-      "kind": "guide",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/blog/fotovoltaico-con-accumulo-treviso-udine-padova/": {
-      "title": "Ampliare il fotovoltaico: come presentare l’impianto attuale",
-      "description": "Una nuova esigenza energetica richiede prima di tutto una descrizione chiara dell’impianto già installato.",
-      "kind": "guide",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/blog/fotovoltaico-blackout-backup/": {
-      "title": "Fotovoltaico: raccontare le esigenze di continuità elettrica",
-      "description": "Se la continuità elettrica è una priorità, descrivila nella richiesta senza dare per definite funzioni o componenti.",
-      "kind": "guide",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/blog/climatizzatore-quanti-btu/": {
-      "title": "Condizionatori: descrivere gli ambienti prima del progetto",
-      "description": "Per chiedere un impianto di climatizzazione, presenta gli ambienti, l’utilizzo e le esigenze di comfort.",
-      "kind": "guide",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/blog/pulizia-pannelli-fotovoltaici/": {
-      "title": "Fotovoltaico già installato: a chi presentare una nuova esigenza",
-      "description": "Per chiedere informazioni su un impianto esistente, prepara una descrizione del sistema e dell’attività che desideri valutare.",
-      "kind": "guide",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/blog/manutenzione-inverter-fotovoltaico-padova-treviso/": {
-      "title": "Impianti esistenti: preparare una richiesta di consulenza",
-      "description": "Una richiesta chiara distingue la situazione attuale dal nuovo intervento che vorresti valutare.",
-      "kind": "guide",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/blog/diagnosi-energetica-veneto-consulenza-efficientamento/": {
-      "title": "Diagnosi energetica: il punto di partenza sono consumi e prestazioni",
-      "description": "La diagnosi energetica è un servizio dichiarato da Green Flux per analizzare consumi e prestazioni degli impianti.",
-      "kind": "guide",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/blog/installatori-fotovoltaico-come-scegliere/": {
-      "title": "Fotovoltaico: conoscere l’offerta Green Flux",
-      "description": "Per valutare l’offerta, parti dalle attività dichiarate dall’azienda e dai servizi che vuoi includere nel progetto.",
-      "kind": "guide",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/blog/green-flux-recensioni-metodo-preventivo/": {
-      "title": "Green Flux: competenze, servizi e contatti",
-      "description": "Un riepilogo dell’identità Green Flux per conoscere l’azienda e preparare il primo contatto.",
-      "kind": "guide",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/blog/aziende-green-nomi-simili-scegliere-fornitore/": {
-      "title": "Come riconoscere i recapiti Green Flux",
-      "description": "Ragione sociale, sede e contatti permettono di indirizzare la richiesta all’azienda corretta.",
-      "kind": "guide",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/blog/fotovoltaico-padova-guida-impianti/": {
-      "title": "Fotovoltaico: una richiesta per un immobile a Padova",
-      "description": "Hai un progetto per un immobile a Padova? Comunica la località e chiedi a Green Flux conferma della disponibilità per il tuo intervento.",
-      "kind": "guide",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/blog/fotovoltaico-veneto-guida-regionale/": {
-      "title": "Fotovoltaico: una richiesta per un immobile in Veneto",
-      "description": "Hai un progetto per un immobile in Veneto? Comunica la località e chiedi a Green Flux conferma della disponibilità per il tuo intervento.",
-      "kind": "guide",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/blog/fotovoltaico-udine-friuli-guida-impianti/": {
-      "title": "Fotovoltaico: una richiesta per un immobile a Udine",
-      "description": "Hai un progetto per un immobile a Udine? Comunica la località e chiedi a Green Flux conferma della disponibilità per il tuo intervento.",
-      "kind": "guide",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/blog/fotovoltaico-treviso-castelfranco-guida/": {
-      "title": "Fotovoltaico: una richiesta per un immobile a Treviso",
-      "description": "Hai un progetto per un immobile a Treviso? Comunica la località e chiedi a Green Flux conferma della disponibilità per il tuo intervento.",
-      "kind": "guide",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/blog/fotovoltaico-rovigo-guida-impianti/": {
-      "title": "Fotovoltaico: una richiesta per un immobile a Rovigo",
-      "description": "Hai un progetto per un immobile a Rovigo? Comunica la località e chiedi a Green Flux conferma della disponibilità per il tuo intervento.",
-      "kind": "guide",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/blog/fotovoltaico-venezia-guida-impianti/": {
-      "title": "Fotovoltaico: una richiesta per un immobile a Venezia",
-      "description": "Hai un progetto per un immobile a Venezia? Comunica la località e chiedi a Green Flux conferma della disponibilità per il tuo intervento.",
-      "kind": "guide",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/blog/fotovoltaico-belluno-guida-impianti/": {
-      "title": "Fotovoltaico: una richiesta per un immobile a Belluno",
-      "description": "Hai un progetto per un immobile a Belluno? Comunica la località e chiedi a Green Flux conferma della disponibilità per il tuo intervento.",
-      "kind": "guide",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/blog/fotovoltaico-gorizia-guida-impianti/": {
-      "title": "Fotovoltaico: una richiesta per un immobile a Gorizia",
-      "description": "Hai un progetto per un immobile a Gorizia? Comunica la località e chiedi a Green Flux conferma della disponibilità per il tuo intervento.",
-      "kind": "guide",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/blog/fotovoltaico-trieste-guida-impianti/": {
-      "title": "Fotovoltaico: una richiesta per un immobile a Trieste",
-      "description": "Hai un progetto per un immobile a Trieste? Comunica la località e chiedi a Green Flux conferma della disponibilità per il tuo intervento.",
-      "kind": "guide",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/blog/": {
-      "title": "Guide per il tuo progetto Green Flux",
-      "description": "Pompe di calore, impianti e servizi: le informazioni da raccogliere per presentare il tuo progetto a Green Flux.",
-      "kind": "page",
-      "source_url": "https://www.green-flux.com/"
+      "source_url": "https://www.green-flux.com/",
+      "kind": "canonical"
+    },
+    "/servizi/progettazione-e-supporto/": {
+      "title": "Progettazione e supporto",
+      "source_url": "https://www.green-flux.com/",
+      "kind": "canonical"
     },
     "/chi-siamo/": {
-      "title": "Green Flux: impianti e competenze integrate",
-      "description": "Green Flux realizza impianti con un approccio innovativo, efficiente e sostenibile. Si avvale di tecnici che operano da oltre 15 anni nelle energie rinnovabili, con competenze sia idrauliche che elettriche.",
-      "kind": "page",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/metodo/": {
-      "title": "Un unico interlocutore per il tuo progetto",
-      "description": "Dalla sostituzione di un generatore alla ristrutturazione completa: progettazione e installazione, diagnosi energetiche e gestione delle detrazioni fiscali, con un unico interlocutore e la collaborazione di professionisti qualificati.",
-      "kind": "page",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/progetti/": {
-      "title": "Ambiti di intervento Green Flux",
-      "description": "Impianti residenziali, terziari e industriali: dalla sostituzione di un generatore alla ristrutturazione completa.",
-      "kind": "page",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/progetti/fotovoltaico/": {
-      "title": "Il fotovoltaico nei tuoi progetti",
-      "description": "Il fotovoltaico è un campo d’intervento Green Flux, nell’ambito degli impianti per abitazioni, terziario e industria.",
-      "kind": "page",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/progetti/costruzioni/": {
-      "title": "Gli impianti nella ristrutturazione",
-      "description": "Green Flux segue il progetto impiantistico dalla sostituzione di un generatore alla ristrutturazione completa, con competenze idrauliche ed elettriche.",
-      "kind": "page",
-      "source_url": "https://www.green-flux.com/"
+      "title": "Chi siamo",
+      "source_url": "https://www.green-flux.com/",
+      "kind": "canonical"
     },
     "/contatti/": {
-      "title": "Parla con Green Flux",
-      "description": "Raccontaci il tuo progetto: dalla sostituzione di un generatore agli impianti completi per casa, terziario e industria.",
-      "kind": "page",
-      "source_url": "https://www.green-flux.com/"
+      "title": "Contatti",
+      "source_url": "https://www.green-flux.com/",
+      "kind": "canonical"
     },
     "/": {
-      "title": "Green Flux — Pompe di calore e impianti su misura",
-      "description": "Pompe di calore e impianti tecnologici: progettazione e installazione per residenziale, terziario e industria. Green Flux, Padova.",
-      "kind": "home",
-      "source_url": "https://www.green-flux.com/"
-    },
-    "/cookie-policy/": {
-      "title": "Informativa cookie",
-      "description": "Informativa sull'uso di cookie e strumenti simili sul sito Green Flux.",
-      "kind": "legal",
-      "source_url": "https://www.green-flux.com/"
+      "title": "Green Flux · Pompe di calore e impianti",
+      "source_url": "https://www.green-flux.com/",
+      "kind": "canonical"
     },
     "/privacy-policy/": {
       "title": "Informativa privacy",
-      "description": "Informativa sul trattamento dei dati personali degli utenti del sito Green Flux.",
-      "kind": "legal",
-      "source_url": "https://www.green-flux.com/"
+      "source_url": "https://www.green-flux.com/",
+      "kind": "canonical"
+    },
+    "/cookie-policy/": {
+      "title": "Informativa cookie",
+      "source_url": "https://www.green-flux.com/",
+      "kind": "canonical"
     },
     "/termini-condizioni/": {
       "title": "Termini e condizioni",
-      "description": "Condizioni di uso del sito Green Flux e informazioni su richieste di contatto e preventivo.",
-      "kind": "legal",
-      "source_url": "https://www.green-flux.com/"
+      "source_url": "https://www.green-flux.com/",
+      "kind": "canonical"
     },
     "/preventivo/": {
-      "title": "Richiedi un preventivo Green Flux",
-      "description": "Descrivi impianti, immobile e progetto. Prepara una richiesta di preventivo o consulenza per Green Flux.",
-      "kind": "form",
-      "source_url": "https://www.green-flux.com/"
+      "title": "Richiedi un preventivo",
+      "source_url": "https://www.green-flux.com/",
+      "kind": "canonical"
     }
   }
 }

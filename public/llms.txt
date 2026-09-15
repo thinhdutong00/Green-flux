@@ -1,11 +1,19 @@
 # Green Flux
 
-Impianti tecnologici per residenziale, terziario e industria.
+Impianti residenziali, terziari e industriali.
 
-- [Servizi](https://green-flux-nine.vercel.app/servizi/)
+- [Home](https://green-flux-nine.vercel.app/)
+- [Impianti e servizi](https://green-flux-nine.vercel.app/servizi/)
+- [Pompe di calore](https://green-flux-nine.vercel.app/servizi/pompe-calore/)
+- [Fotovoltaico](https://green-flux-nine.vercel.app/servizi/fotovoltaico/)
+- [Condizionatori](https://green-flux-nine.vercel.app/servizi/climatizzazione/)
+- [Caldaie](https://green-flux-nine.vercel.app/servizi/caldaie/)
+- [Biomassa](https://green-flux-nine.vercel.app/servizi/biomassa/)
+- [Solare termico](https://green-flux-nine.vercel.app/servizi/solare-termico/)
+- [Ventilazione meccanica](https://green-flux-nine.vercel.app/servizi/ventilazione/)
+- [Trattamento acqua](https://green-flux-nine.vercel.app/servizi/trattamento-acqua/)
+- [Smart home e automazioni](https://green-flux-nine.vercel.app/servizi/smart-home/)
+- [Impianti completi](https://green-flux-nine.vercel.app/servizi/impianti-completi/)
+- [Progettazione e supporto](https://green-flux-nine.vercel.app/servizi/progettazione-e-supporto/)
 - [Chi siamo](https://green-flux-nine.vercel.app/chi-siamo/)
-- [Metodo](https://green-flux-nine.vercel.app/metodo/)
-- [Preventivo](https://green-flux-nine.vercel.app/preventivo/)
 - [Contatti](https://green-flux-nine.vercel.app/contatti/)
-
-GREEN FLUX srls, Via Trieste 19, 35121 Padova. info@green-flux.com; +39 375 552 1420.

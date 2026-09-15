@@ -1,22 +1,5 @@
-export const services = [
-  { id: 'pompe-di-calore', label: 'Pompe di calore', group: 'Impianti', energy: true },
-  { id: 'fotovoltaico-aziendale', label: 'Fotovoltaico aziendale', group: 'Impianti', energy: true, solar: true },
-  { id: 'fotovoltaico', label: 'Fotovoltaico residenziale', group: 'Impianti', energy: true, solar: true },
-  { id: 'smart-home', label: 'Smart home e automazioni', group: 'Impianti' },
-  { id: 'solare-termico', label: 'Solare termico', group: 'Impianti', energy: true, solar: true },
-  { id: 'biomassa', label: 'Biomassa', group: 'Impianti', energy: true },
-  { id: 'caldaie', label: 'Caldaie', group: 'Impianti', energy: true },
-  { id: 'condizionatori', label: 'Condizionatori', group: 'Impianti', energy: true },
-  { id: 'ventilazione', label: 'Ventilazione meccanica', group: 'Impianti' },
-  { id: 'trattamento-acqua', label: 'Trattamento acqua', group: 'Impianti' },
-  { id: 'impianti-completi', label: 'Impianti completi', group: 'Impianti', energy: true },
-  { id: 'progettazione', label: 'Progettazione', group: 'Servizi' },
-  { id: 'pratiche-e-permessi', label: 'Pratiche e permessi', group: 'Servizi' },
-  { id: 'diagnosi-energetiche', label: 'Diagnosi energetiche', group: 'Servizi', energy: true },
-  { id: 'detrazioni-fiscali', label: 'Detrazioni fiscali', group: 'Servizi' },
-  { id: 'formule-assicurative', label: 'Formule assicurative', group: 'Servizi' },
-  { id: 'consulenza', label: 'Consulenza / non so ancora', group: 'Consulenza' },
-];
+import { services } from './catalog.mjs';
+export { services };
 export const projects = [
   { id: 'nuovo', label: 'Nuova installazione' },
   { id: 'sostituzione', label: 'Sostituzione di un impianto' },

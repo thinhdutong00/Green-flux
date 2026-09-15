@@ -1,4 +1,4 @@
-/* VenetaGreen desktop structure: logo, six links, quote action in one open row. */
+/* Shared desktop header: logo, main navigation and quote action. */
 .gf-home-desktop-header { display:none; }
 @media (min-width:992px) {
   .home-pompe-calore > .site-header { display:none; }
