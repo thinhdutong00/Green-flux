@@ -1,6 +1,18 @@
 # Fonti dei contenuti e delle immagini
 
-Contenuti aziendali di tutte le pagine e immagini della home: https://www.green-flux.com/
+Contenuti aziendali di tutte le pagine: https://www.green-flux.com/
+
+Le immagini correnti comprendono i file del sito originale Green Flux elencati
+sotto e una nuova libreria di immagini illustrative originali generata con lo
+strumento integrato ImageGen. Le foto importate da VenetaGreen sono state
+sostituite e rimosse dai file pubblicati il 15 settembre 2026.
+Mappa delle sostituzioni, prompt e percorsi: `docs/image-replacements.md` e
+`content/image-replacements.json`.
+
+Le icone di interfaccia importate sono sostituite da SVG Lucide distribuiti con
+licenza ISC: https://github.com/lucide-icons/lucide. La licenza è inclusa in
+`public/assets/icons/LICENSE-lucide.txt`. Freccia orizzontale e angoli decorativi
+sono semplici forme SVG create per questo progetto.
 
 Revisione integrale del 15 settembre 2026: `docs/content-review.md`. Il
 riferimento VenetaGreen resta una fonte di struttura visiva; le informazioni
@@ -82,12 +94,13 @@ L’utente ha autorizzato esplicitamente la copia di struttura, testi, funnel e 
 del sito https://venetagreen.it/. Sono state scaricate le 137 pagine pubbliche
 collegate, 449 risorse sotto `/assets/` e il CSS del percorso preventivo sotto
 `/_astro/`. Gli URL di origine sono documentati in `docs/reference-import.json`.
-I nomi delle risorse importate rimangono invariati per rendere tracciabile la provenienza.
+Questa importazione è storica: i file immagine del riferimento sono stati
+successivamente sostituiti. Il manifesto originale rimane per tracciabilità.
 
 Le 12 pagine Green Flux aggiuntive usano le immagini originali Green Flux già
 presenti nel repository e contenuti elaborati a partire dai servizi dichiarati
-su https://www.green-flux.com/. Le immagini del riferimento indicate come
-illustrative conservano tale indicazione. Recensioni, dati fiscali, data di
+su https://www.green-flux.com/. Le nuove immagini generate sono illustrative.
+Recensioni, dati fiscali, data di
 fondazione, tracker e destinatari commerciali del riferimento non vengono
 attribuiti a Green Flux. Le sezioni delle recensioni mantengono il layout ma
 mostrano servizi e punti di forza dichiarati dall’azienda.

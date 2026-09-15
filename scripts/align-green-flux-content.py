@@ -87,7 +87,7 @@ def fill_cards(section,items,heading=None,lead=None):
   for meta in block.select('.zone-card-meta'):meta.decompose()
   txt(block.select_one('h3'),name);txt(block.select_one('.service-title p'),desc)
   icon=block.select_one('.service-icon-wrapper img')
-  if icon:icon['src']='/assets/ui/asset-009.svg';icon['alt']=''
+  if icon:icon['src']='/assets/icons/house-plug.svg';icon['alt']=''
   a=block.select_one('a')
   if url and a:a['href']=url[0];txt(a.select_one('.primary-button-text'),'APPROFONDISCI')
   elif a:a.decompose()

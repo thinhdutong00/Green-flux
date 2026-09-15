@@ -124,3 +124,15 @@ disponibilità dell'intervento. Le pagine legali rinviano alle informative Green
 Flux esistenti e descrivono il funzionamento effettivo dei moduli.
 
 Provenienza e inventario: `ASSET_SOURCES.md` e `docs/reference-import.json`.
+
+## Libreria immagini
+
+Le foto importate da VenetaGreen sono sostituite con 13 immagini illustrative
+originali, salvate in `public/assets/images/` in tre risoluzioni WebP ciascuna.
+Le immagini provenienti dal sito originale Green Flux restano in `public/assets/`.
+Le icone condivise sono in `public/assets/icons/`, con la relativa licenza Lucide.
+
+`docs/image-replacements.md` documenta soggetti, file finali e prompt.
+`content/image-replacements.json` conserva la mappa completa dei vecchi URL e
+le dimensioni effettive dei nuovi file. La migrazione una tantum è documentata
+in `scripts/replace-reference-images.py`; non va eseguita durante la build.
