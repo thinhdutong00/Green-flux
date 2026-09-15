@@ -245,7 +245,7 @@ def corporate_pages():
   '/progetti/costruzioni/':('Gli impianti nella ristrutturazione','Green Flux segue il progetto impiantistico dalla sostituzione di un generatore alla ristrutturazione completa, con competenze idrauliche ed elettriche.')}
  for route,(name,lead) in project_data.items():
   s=PAGES[route];title(route,name,lead);setall(s,'.internal-hero-kicker','Ambiti di intervento')
-  setall(s,'.internal-hero-content > p:not(.internal-hero-kicker):not(.internal-hero-text)','Le immagini illustrano tipologie di impianto e non documentano cantieri Green Flux.')
+  for note in s.select('.vg-project-image-note'):note.decompose()
   body=s.select_one('.case-study-details-content')
   if body:inner(body,'<h2>'+esc(name)+'</h2><p>'+esc(lead)+'</p><h2>Progettazione e installazione</h2><p>'+esc(PROFILE['approach'])+'</p><h2>Tre ambiti impiantistici</h2><p>Residenziale, terziario e industriale: descrivi gli spazi e le esigenze del tuo progetto.</p>')
   for sec in s.select('main > .service-section'):fill_cards(sec,service_items(['pompe-calore','fotovoltaico-residenziale','impianti-completi','progettazione']),'Dal contesto al progetto','Scegli un campo d’intervento per approfondire la tua richiesta.')
