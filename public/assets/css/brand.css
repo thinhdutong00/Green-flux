@@ -1,0 +1,72 @@
+/* One palette across the homepage, services, guides, local pages and quote flow. */
+:root {
+  --gf-ink:#193e40;
+  --gf-deep:#123335;
+  --gf-lime:#d5ed90;
+  --gf-paper:#f8faf6;
+  --gf-white:#ffffff;
+  --gf-muted:#637571;
+  --gf-line:#dce3d8;
+  --theme-color-1:var(--gf-ink);
+  --neutral-04:var(--gf-ink);
+  --neutral-03:var(--gf-muted);
+  --neutral-02:var(--gf-paper);
+  --neutral-01:var(--gf-white);
+}
+body:not(.home-pompe-calore) { color:var(--gf-ink); }
+a { color:inherit; }
+::selection { background:var(--gf-lime); color:var(--gf-ink); }
+:focus-visible { outline-color:var(--gf-ink); }
+input,textarea,select { accent-color:var(--gf-ink); }
+
+/* Lime actions use dark type; dark feature panels keep light type. */
+body:not(.home-pompe-calore) .button-primary:not(.vg-variant-9eeab034-5cca-e7aa-4218-f2bf93e21760),
+body:not(.home-pompe-calore) .form-button {
+  background:var(--gf-lime)!important; color:var(--gf-ink)!important; border-color:var(--gf-lime)!important;
+}
+body:not(.home-pompe-calore) .button-primary:not(.vg-variant-9eeab034-5cca-e7aa-4218-f2bf93e21760) .primary-button-text {
+  color:var(--gf-ink)!important;
+}
+body:not(.home-pompe-calore) .button-primary:not(.vg-variant-9eeab034-5cca-e7aa-4218-f2bf93e21760):hover,
+body:not(.home-pompe-calore) .form-button:hover { background:#e2f5b1!important; }
+body:not(.home-pompe-calore) .button-arrow-right-icon { background:var(--gf-ink)!important; }
+body:not(.home-pompe-calore) .button-arrow-right-icon img { filter:brightness(0) invert(1); }
+.content-wrapper.cta,.counter-card-wrapper,.bg-theme-color-01 { background-color:var(--gf-ink)!important; }
+.content-wrapper.cta .button-primary { background:var(--gf-lime)!important; border-color:var(--gf-lime)!important; }
+.content-wrapper.cta .button-primary .primary-button-text { color:var(--gf-ink)!important; }
+.icon-wrapper,.service-icon-wrapper,.icon-wrap,.blog-date { background-color:var(--gf-ink)!important; }
+.icon-wrapper img,.service-icon-wrapper img:not(.gf-service-photo),.icon-wrap img { filter:brightness(0) invert(1); }
+.bg-theme-color-01 :is(h1,h2,h3,h4,p),.counter-card-wrapper :is(h2,p) { color:var(--gf-white)!important; }
+.text-theme-color-01 { color:var(--gf-ink)!important; }
+.venetagreen-trust .vg-review-avatar { background:var(--gf-ink)!important; color:var(--gf-lime)!important; }
+.gf-regions-note { border-color:var(--gf-lime); background:var(--gf-paper); }
+.gf-handoff { color:var(--gf-ink); background:var(--gf-paper); border-color:var(--gf-line); }
+.gf-handoff-actions a,.gf-handoff-actions button { background:var(--gf-ink); color:var(--gf-white); }
+.gf-handoff-actions button { background:var(--gf-lime); color:var(--gf-ink); }
+
+/* White footers on every internal marketing page. */
+.footer-section { background:var(--gf-white)!important; color:var(--gf-ink); }
+.footer-section :is(h2,h3,h4,p,a,.navtext,.footer-link-title) { color:var(--gf-ink); }
+.footer-section .footer-summary,.footer-section .vg-image-disclosure { color:var(--gf-muted); }
+.footer-section a:hover { color:var(--gf-deep); text-decoration:underline; }
+.footer-section .gf-footer-extra { border-color:var(--gf-line); }
+.footer-section .footer-logo { filter:none; }
+.brand-logo .original-logo-white,.quote-wizard-body .quote-brand img { filter:none; }
+.brand-logo::after { content:""; position:absolute; pointer-events:none; inset:0 auto 0 0; width:56px; background:url('/assets/logo.png') -29px -17px / 235px auto no-repeat; }
+
+/* The existing six steps retain their layout and use the same brand colors. */
+.quote-wizard-body { background:var(--gf-deep); }
+.quote-wizard-body .quote-page:after { background:linear-gradient(90deg,#123335ed,#123335b3 52%,#123335d1)!important; }
+.quote-wizard-body .quote-progress-bar { background:var(--gf-lime)!important; }
+.quote-wizard-body .quote-title,.quote-wizard-body .quote-option-text { color:var(--gf-ink)!important; }
+.quote-wizard-body .quote-step-label span { background:var(--gf-ink)!important; color:var(--gf-lime)!important; }
+.quote-wizard-body .quote-option.is-selected,
+.quote-wizard-body .quote-option:has(.quote-option-input:checked) { background:var(--gf-lime)!important; border-color:var(--gf-ink)!important; }
+.quote-wizard-body .quote-option.is-selected .quote-option-text,
+.quote-wizard-body .quote-option:has(.quote-option-input:checked) .quote-option-text { color:var(--gf-ink)!important; }
+.quote-wizard-body .quote-button-primary { background:var(--gf-lime)!important; color:var(--gf-ink)!important; border-color:var(--gf-ink)!important; }
+.quote-wizard-body .quote-error { background:#fff2f0!important; color:#a52626!important; border-color:#a52626!important; }
+
+/* Native controls on the compact legal pages use the same palette. */
+.policy-page { color:var(--gf-ink); }
+.policy-nav,.policy-footer,.policy-page hr { border-color:var(--gf-line); }

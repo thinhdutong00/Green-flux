@@ -17,6 +17,12 @@ della stessa dimensione e tutti i 20 servizi restano raggiungibili. Le pagine
 interne conservano struttura e contenuti importati; il menu mobile mantiene il
 design Green Flux ripristinato.
 
+L'header desktop riprende quello di VenetaGreen, con logo, navigazione in linea
+e pulsante preventivo. Tutte le pagine usano la palette della homepage: petrolio
+`#193e40`, petrolio scuro `#123335`, lime `#d5ed90` e fondi chiari. I footer delle
+pagine interne restano bianchi. Il controllo browser copre tutte le 149 pagine
+a larghezze desktop e mobile, oltre al menu e alle selezioni del preventivo.
+
 ## Anteprima che si aggiorna automaticamente
 
 ```sh
@@ -77,6 +83,8 @@ La manutenzione è **disattivata** in `maintenance.mjs`. Per attivarla, impostar
 - `public/assets/js/handoff.mjs`: riepilogo, copia e apertura email/WhatsApp.
 - `public/assets/css/site.css`: stili del riferimento.
 - `public/assets/css/green-flux.css`: adattamenti al logo e al flusso Green Flux.
+- `public/assets/css/brand.css`: palette comune, pulsanti, pannelli e footer.
+- `public/assets/css/desktop-header.css`: header desktop condiviso con la home.
 - `content/green-flux-services.json`: contenuti strutturati delle 12 pagine aggiunte.
 
 I file HTML sono i sorgenti pubblicati e sono modificabili direttamente. Gli

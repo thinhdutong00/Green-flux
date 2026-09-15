@@ -1,0 +1,36 @@
+/* VenetaGreen desktop structure: logo, six links, quote action in one open row. */
+.gf-home-desktop-header { display:none; }
+@media (min-width:992px) {
+  .home-pompe-calore > .site-header { display:none; }
+  .gf-desktop-header { display:block; width:100%; color:var(--gf-white); }
+  .gf-home-desktop-header { position:absolute; inset:0 0 auto; z-index:100; }
+  .gf-desktop-header > .container { display:block; width:calc(100% - 40px); max-width:1280px; padding:0; margin:0 auto; }
+  .gf-desktop-header .navbar-black { display:block; width:100%; margin:0; padding:16px 0; background:transparent; }
+  .gf-desktop-header .navbar-black > .container { display:block; width:100%; max-width:none; padding:0; margin:0; }
+  .gf-desktop-header .header-content { display:flex; align-items:center; justify-content:space-between; gap:24px; width:100%; }
+  .gf-desktop-header .logo-sub-button { flex:none; }
+  .gf-desktop-header .brand-logo { display:block; width:180px; height:74px; overflow:hidden; position:relative; }
+  .gf-desktop-header .brand-logo img { position:absolute; width:235px!important; height:auto!important; max-width:none!important; left:-29px; top:-17px; }
+  .gf-home-desktop-header .original-logo-white { display:block; filter:none; }
+  .gf-home-desktop-header .original-logo-black { display:none; }
+  .gf-desktop-header .nav-menu { display:flex!important; flex-flow:row!important; align-items:center!important; justify-content:center; gap:clamp(16px,2.4vw,40px); padding:0; margin:0; border:0; background:transparent!important; box-shadow:none; flex:1; }
+  .gf-desktop-header .nav-menu .nav-link { display:inline-flex!important; align-items:center; min-height:44px; padding:0!important; margin:0!important; color:inherit; font-family:Arial,Helvetica,sans-serif; font-size:14px!important; font-weight:400; line-height:1.2; text-transform:uppercase; text-decoration:none; white-space:nowrap; }
+  .gf-desktop-header .nav-link:hover { opacity:1; text-decoration:underline; text-underline-offset:6px; }
+  .gf-desktop-header .header-button { display:flex; flex:none; align-items:center; }
+  .gf-desktop-header .button-primary { display:inline-flex; align-items:center; min-height:56px; padding:8px 8px 8px 20px; border:0; border-radius:100px; background:var(--gf-lime)!important; color:var(--gf-ink)!important; text-decoration:none; }
+  .gf-desktop-header .secondary-button-area { display:flex; align-items:center; gap:12px; }
+  .gf-desktop-header .primary-button-text { margin:0; color:var(--gf-ink)!important; font-family:Arial,Helvetica,sans-serif; font-size:16px; font-weight:600; line-height:1.2; white-space:nowrap; }
+  .gf-desktop-header .button-arrow-right-icon { display:grid; place-items:center; flex:none; width:40px; height:40px; border-radius:50%; background:var(--gf-ink)!important; overflow:hidden; }
+  .gf-desktop-header .button-arrow-right-icon img { display:block; width:24px; height:24px; filter:brightness(0) invert(1); }
+  .gf-desktop-header .button-arrow-right-icon .hover { display:none; }
+  .gf-desktop-header .menu-button { display:none!important; }
+  .gf-desktop-header :is(a,button):focus-visible { outline:3px solid var(--gf-lime); outline-offset:4px; }
+  .vg-blog-post-nav-shell .gf-desktop-header :is(a,button):focus-visible { outline-color:var(--gf-ink); }
+}
+@media (min-width:992px) and (max-width:1199px) {
+  .gf-desktop-header .header-content { gap:16px; }
+  .gf-desktop-header .brand-logo { width:155px; }
+  .gf-desktop-header .nav-menu { gap:16px; }
+  .gf-desktop-header .primary-button-text { font-size:14px; }
+}
+@media (max-width:991px) { .gf-home-desktop-header { display:none!important; } }
