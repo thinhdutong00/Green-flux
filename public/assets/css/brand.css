@@ -52,7 +52,7 @@ body:not(.home-pompe-calore) .button-arrow-right-icon img { filter:brightness(0)
 .footer-section .gf-footer-extra { border-color:var(--gf-line); }
 .footer-section .footer-logo { filter:none; }
 .brand-logo .original-logo-white,.quote-wizard-body .quote-brand img { filter:none; }
-.brand-logo::after { content:""; position:absolute; pointer-events:none; inset:0 auto 0 0; width:56px; background:url('/assets/logo.png') -29px -17px / 235px auto no-repeat; }
+.brand-logo::after { content:""; position:absolute; pointer-events:none; inset:0 auto 0 0; width:56px; background:url('/assets/logo.webp') -29px -17px / 235px auto no-repeat; }
 
 /* The existing six steps retain their layout and use the same brand colors. */
 .quote-wizard-body { background:var(--gf-deep); }
@@ -70,3 +70,4 @@ body:not(.home-pompe-calore) .button-arrow-right-icon img { filter:brightness(0)
 /* Native controls on the compact legal pages use the same palette. */
 .policy-page { color:var(--gf-ink); }
 .policy-nav,.policy-footer,.policy-page hr { border-color:var(--gf-line); }
+@media(max-width:767px){.quote-wizard-body .quote-page:before{background-image:url('/assets/images/solar-home-960.webp')}}

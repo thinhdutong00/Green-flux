@@ -233,7 +233,7 @@ header.addEventListener('focusin', () => header.classList.remove('is-hidden'));
 syncHeader();
 
 function setupSectionReveals() {
-  const elements = document.querySelectorAll('main .reveal');
+  const elements = document.querySelectorAll('main .reveal:not(.hero-content)');
   if (reducedMotion.matches || typeof window.IntersectionObserver !== 'function') return;
 
   const show = element => {
@@ -280,17 +280,16 @@ function setupWhatsAppButton() {
     widget.classList.add('has-notification', 'is-message-visible');
   };
 
-  // Keep the appearance and message timing of the supplied reference.
-  window.setTimeout(() => {
-    widget.classList.add('is-visible');
-    widget.removeAttribute('aria-hidden');
-  }, 5000);
-  window.setTimeout(() => showMessage('Ciao, come possiamo aiutarti?', 1), 8000);
-  window.setTimeout(() => showMessage("Hai un dubbio o un'urgenza? Scrivicelo su whatsapp!", 2), 18000);
-  window.setTimeout(() => {
-    widget.classList.remove('is-message-visible');
+  // Contact is available immediately; the help bubble responds to intent.
+  const button = widget.querySelector('a');
+  const hideMessage = () => {
+    widget.classList.remove('is-message-visible', 'has-notification');
     message.setAttribute('aria-hidden', 'true');
-  }, 28000);
+  };
+  button.addEventListener('pointerenter', () => showMessage('Ciao, come possiamo aiutarti?', 1));
+  button.addEventListener('focus', () => showMessage('Ciao, come possiamo aiutarti?', 1));
+  widget.addEventListener('pointerleave', hideMessage);
+  button.addEventListener('blur', hideMessage);
 }
 
 setupWhatsAppButton();

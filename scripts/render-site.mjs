@@ -156,7 +156,7 @@ export async function renderSite() {
   await writeFile(join(root,'content/redirects.json'),JSON.stringify(redirects,null,2)+'\n');
   await writeFile(join(publicRoot,'_redirects'),Object.entries(redirects).flatMap(([from,to])=>[`${from} ${to} 301`,`${from.slice(0,-1)} ${to} 301`]).join('\n')+'\n');
   const vercel=JSON.parse(await readFile(join(root,'vercel.json'),'utf8'));
-  vercel.redirects=Object.entries(redirects).map(([source,destination])=>({source:source.slice(0,-1),destination,permanent:true}));
+  vercel.redirects=Object.entries(redirects).flatMap(([source,destination])=>[source,source.slice(0,-1)].map(source=>({source,destination,permanent:true})));
   await writeFile(join(root,'vercel.json'),JSON.stringify(vercel,null,2)+'\n');
   await writeFile(join(root,'docs/content-audit.json'),JSON.stringify({reviewed_at:content.reviewed_at,total_pages:routes.length,source_url:content.company_source,pages:audit},null,2)+'\n');
   await writeFile(join(publicRoot,'llms.txt'),'# Green Flux\n\nImpianti residenziali, terziari e industriali.\n\n'+[['/','Home'],['/servizi/','Impianti e servizi'],...content.services.map(s=>[serviceRoute(s.slug),s.title]),[supportRoute,'Progettazione e supporto'],['/chi-siamo/','Chi siamo'],['/contatti/','Contatti']].map(([u,t])=>`- [${t}](${origin+u})`).join('\n')+'\n');
