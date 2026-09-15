@@ -71,3 +71,19 @@ Il sito originale mostra `info@green-flux.com`, ma alcuni collegamenti aprono `g
 I file AVIF/WebP derivano dalle immagini JPG elencate sopra, senza modifiche
 al contenuto. I font WOFF2 derivano dai TTF originali, con sottoinsieme latino
 comprensivo di lettere accentate, punteggiatura e simboli disponibili.
+
+## Migrazione multipagina — 15 settembre 2026
+
+L’utente ha autorizzato esplicitamente la copia di struttura, testi, funnel e risorse
+del sito https://venetagreen.it/. Sono state scaricate le 137 pagine pubbliche
+collegate, 449 risorse sotto `/assets/` e il CSS del percorso preventivo sotto
+`/_astro/`. Gli URL di origine sono documentati in `docs/reference-import.json`.
+I nomi delle risorse importate rimangono invariati per rendere tracciabile la provenienza.
+
+Le 12 pagine Green Flux aggiuntive usano le immagini originali Green Flux già
+presenti nel repository e contenuti elaborati a partire dai servizi dichiarati
+su https://www.green-flux.com/. Le immagini del riferimento indicate come
+illustrative conservano tale indicazione. Recensioni, dati fiscali, data di
+fondazione, tracker e destinatari commerciali del riferimento non vengono
+attribuiti a Green Flux. Le sezioni delle recensioni mantengono il layout ma
+mostrano servizi e punti di forza dichiarati dall’azienda.

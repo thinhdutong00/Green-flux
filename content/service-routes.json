@@ -1,0 +1,102 @@
+{
+  "fotovoltaico-residenziale": {
+    "title": "Fotovoltaico residenziale",
+    "description": "Impianti per casa progettati su consumi, tetto disponibile e autoconsumo.",
+    "image": "fotovoltaico"
+  },
+  "fotovoltaico-aziendale": {
+    "title": "Fotovoltaico aziendale",
+    "description": "Soluzioni per imprese e attività produttive, con analisi tecnica e studio dei consumi.",
+    "image": "fotovoltaico"
+  },
+  "pompe-calore": {
+    "title": "Pompe di calore",
+    "description": "Riscaldamento, raffrescamento e acqua calda integrati con il fabbisogno dell’edificio.",
+    "image": "pompe-di-calore"
+  },
+  "climatizzazione": {
+    "title": "Climatizzazione efficiente",
+    "description": "Comfort estivo e invernale con macchine dimensionate sui tuoi ambienti.",
+    "image": "condizionatori"
+  },
+  "consulenza": {
+    "title": "Consulenza energetica",
+    "description": "Analisi di consumi, edificio e priorità prima di scegliere gli interventi.",
+    "image": "progettazione"
+  },
+  "batterie-accumulo": {
+    "title": "Batterie di accumulo",
+    "description": "Accumulo fotovoltaico dimensionato su produzione e consumi reali.",
+    "image": "fotovoltaico"
+  },
+  "manutenzione": {
+    "title": "Manutenzione impianti",
+    "description": "Controlli e assistenza per rendimento, sicurezza e continuità degli impianti.",
+    "image": "impianti"
+  },
+  "edilizia": {
+    "title": "Riqualificazione energetica",
+    "description": "Interventi coordinati su involucro, coperture e impianti.",
+    "image": "impianti-completi"
+  },
+  "smart-home": {
+    "title": "Smart home e automazioni",
+    "description": "Automazioni e gestione intelligente degli impianti per rendere la casa più comoda, controllabile e coerente con le tue abitudini.",
+    "image": "smart-home"
+  },
+  "solare-termico": {
+    "title": "Solare termico",
+    "description": "Impianti solari termici per la produzione di acqua calda, progettati su esposizione, fabbisogno e integrazione con il sistema esistente.",
+    "image": "solare-termico"
+  },
+  "biomassa": {
+    "title": "Impianti a biomassa",
+    "description": "Soluzioni di riscaldamento a biomassa valutate sul fabbisogno dell’edificio, sul combustibile e sui requisiti di installazione.",
+    "image": "biomassa"
+  },
+  "caldaie": {
+    "title": "Caldaie",
+    "description": "Sostituzione e installazione di caldaie con verifica del fabbisogno, della distribuzione e delle condizioni tecniche dell’edificio.",
+    "image": "caldaie"
+  },
+  "ventilazione": {
+    "title": "Ventilazione meccanica",
+    "description": "Sistemi di ventilazione per il ricambio dell’aria negli edifici, dimensionati sugli ambienti e integrati con comfort e gestione dell’umidità.",
+    "image": "ventilazione"
+  },
+  "trattamento-acqua": {
+    "title": "Trattamento acqua",
+    "description": "Soluzioni per il trattamento dell’acqua scelte sulle sue caratteristiche, sugli utilizzi e sulle esigenze degli impianti.",
+    "image": "trattamento-acqua"
+  },
+  "impianti-completi": {
+    "title": "Impianti completi",
+    "description": "Impianti elettrici e idraulici coordinati per nuove installazioni e ristrutturazioni, con un unico interlocutore tecnico.",
+    "image": "impianti-completi"
+  },
+  "progettazione": {
+    "title": "Progettazione impianti",
+    "description": "Progettazione su misura per trasformare esigenze, vincoli dell’edificio e obiettivi energetici in un sistema realizzabile.",
+    "image": "progettazione"
+  },
+  "pratiche-e-permessi": {
+    "title": "Pratiche e permessi",
+    "description": "Supporto nella gestione delle autorizzazioni e della documentazione necessaria per realizzare gli impianti.",
+    "image": "progettazione"
+  },
+  "diagnosi-energetiche": {
+    "title": "Diagnosi energetiche",
+    "description": "Analisi tecnica di consumi e prestazioni per individuare criticità e orientare gli interventi di miglioramento energetico.",
+    "image": "progettazione"
+  },
+  "detrazioni-fiscali": {
+    "title": "Detrazioni fiscali e incentivi",
+    "description": "Supporto per valutare incentivi e agevolazioni collegati agli impianti, verificando progetto, requisiti e documentazione.",
+    "image": "progettazione"
+  },
+  "formule-assicurative": {
+    "title": "Formule assicurative per gli impianti",
+    "description": "Supporto nella valutazione di formule assicurative per gli impianti, in relazione al sistema realizzato e alle condizioni di copertura.",
+    "image": "impianti"
+  }
+}

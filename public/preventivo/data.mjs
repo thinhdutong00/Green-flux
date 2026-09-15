@@ -1,5 +1,9 @@
 export const services = [
-  { id: 'fotovoltaico', label: 'Fotovoltaico', group: 'Impianti', energy: true, solar: true },
+  { id: 'fotovoltaico-aziendale', label: 'Fotovoltaico aziendale', group: 'Impianti', energy: true, solar: true },
+  { id: 'batterie-accumulo', label: 'Batterie di accumulo', group: 'Impianti', energy: true },
+  { id: 'manutenzione', label: 'Manutenzione impianti', group: 'Servizi' },
+  { id: 'edilizia', label: 'Riqualificazione energetica', group: 'Servizi', energy: true },
+  { id: 'fotovoltaico', label: 'Fotovoltaico residenziale', group: 'Impianti', energy: true, solar: true },
   { id: 'pompe-di-calore', label: 'Pompe di calore', group: 'Impianti', energy: true },
   { id: 'smart-home', label: 'Smart home e automazioni', group: 'Impianti' },
   { id: 'solare-termico', label: 'Solare termico', group: 'Impianti', energy: true, solar: true },
@@ -86,7 +90,19 @@ export function reviewEntries(data) {
     ...(data.notes ? [{ field: 'notes', label: 'Dettagli del progetto', value: data.notes, step: 4 }] : []),
   ];
 }
-export function quoteSummary(data) { return reviewEntries(data).map(({ label, value }) => [label, value]); }
+export function quoteSummary(data) {
+  if (data.funnel === 'reference') {
+    return [
+      ['Impianti e servizi', data.services.map(id => labelFor(services, id)).join(', ')],
+      ['Immobile', data.propertyType], ['Consumi indicativi', data.annualConsumption],
+      ['Spazi disponibili', data.installationSpace], ['Tempistiche', data.timeline],
+      ['Nome', data.name], ['Email', data.email || 'Non indicata'],
+      ['Telefono', data.phone || 'Non indicato'], ['Comune', data.city],
+      ...(data.notes ? [['Dettagli del progetto', data.notes]] : []),
+    ];
+  }
+  return reviewEntries(data).map(({ label, value }) => [label, value]);
+}
 export function quoteText(data) {
   return ['Richiesta di preventivo — Green Flux', '', ...quoteSummary(data).map(([key, value]) => `${key}: ${value}`), '', 'Ho letto l’informativa privacy e autorizzo il ricontatto per questa richiesta.'].join('\n');
 }

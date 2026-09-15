@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html data-astro-cid-p64ushxs="" lang="it"><head><meta charset="utf-8"/><title>Dimensionamento fotovoltaico per casa | Green Flux</title><meta content="Come dimensionare il fotovoltaico sui consumi reali: esempio in kWh, numero di pannelli, spazio sul tetto e confronto tra impianto con e senza accumulo." name="description"/><meta content="width=device-width, initial-scale=1" name="viewport"/><meta content="Dimensionamento fotovoltaico per casa | Green Flux" property="og:title"/><meta content="Come dimensionare il fotovoltaico sui consumi reali: esempio in kWh, numero di pannelli, spazio sul tetto e confronto tra impianto con e senza accumulo." property="og:description"/><meta content="article" property="og:type"/><meta content="https://green-flux-nine.vercel.app/blog/fotovoltaico-casa-veneto-dimensionamento/" property="og:url"/><meta content="https://green-flux-nine.vercel.app/assets/venetagreen/blog-v2/fotovoltaico-casa-veneto-dimensionamento/cover-16973f9bbe-1600.webp" property="og:image"/><meta content="Abitazione con moduli fotovoltaici su un tetto in coppi" property="og:image:alt"/><meta content="2026-06-08" property="article:published_time"/><meta content="2026-09-06" property="article:modified_time"/><meta content="summary_large_image" name="twitter:card"/><meta content="Dimensionamento fotovoltaico per casa | Green Flux" name="twitter:title"/><meta content="Come dimensionare il fotovoltaico sui consumi reali: esempio in kWh, numero di pannelli, spazio sul tetto e confronto tra impianto con e senza accumulo." name="twitter:description"/><meta content="https://green-flux-nine.vercel.app/assets/venetagreen/blog-v2/fotovoltaico-casa-veneto-dimensionamento/cover-16973f9bbe-1600.webp" name="twitter:image"/><meta content="Abitazione con moduli fotovoltaici su un tetto in coppi" name="twitter:image:alt"/><link href="/assets/favicon.ico" rel="icon"/><style>
+  .vg-cookie-banner,
+  .vg-cookie-trigger {
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 0;
+  }
+
+  .vg-cookie-banner {
+    background: #fff;
+    border: 1px solid #d8e0d3;
+    border-radius: 8px;
+    bottom: 14px;
+    box-shadow: 0 18px 50px rgba(8, 24, 20, 0.18);
+    color: #17231f;
+    display: grid;
+    gap: 10px;
+    left: 14px;
+    max-height: calc(100dvh - 28px);
+    max-width: min(420px, calc(100vw - 28px));
+    overflow: auto;
+    padding: 14px;
+    position: fixed;
+    width: 420px;
+    z-index: 2147483000;
+  }
+
+  .vg-cookie-banner[hidden],
+  .vg-cookie-trigger[hidden],
+  .vg-cookie-preferences[hidden] {
+    display: none !important;
+  }
+
+  .vg-cookie-copy {
+    display: grid;
+    gap: 6px;
+  }
+
+  .vg-cookie-copy p,
+  .vg-cookie-title {
+    margin: 0;
+  }
+
+  .vg-cookie-title {
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 1.2;
+  }
+
+  .vg-cookie-copy p:not(.vg-cookie-title) {
+    color: #43504b;
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  .vg-cookie-copy a {
+    align-items: center;
+    color: #2f6f37;
+    display: inline-flex;
+    font-size: 12px;
+    font-weight: 700;
+    min-height: 34px;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    width: fit-content;
+  }
+
+  .vg-cookie-actions {
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .vg-cookie-button {
+    align-items: center;
+    border: 1px solid #cbd6c7;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 12px;
+    font-weight: 800;
+    justify-content: center;
+    line-height: 1.15;
+    min-height: 42px;
+    min-width: 44px;
+    padding: 8px 10px;
+    text-align: center;
+    white-space: normal;
+  }
+
+  .vg-cookie-button:focus-visible,
+  .vg-cookie-trigger:focus-visible,
+  .vg-cookie-toggle input:focus-visible {
+    outline: 3px solid rgba(91, 154, 57, 0.36);
+    outline-offset: 2px;
+  }
+
+  .vg-cookie-button-ghost {
+    background: #f8fbf6;
+    color: #25362f;
+  }
+
+  .vg-cookie-button-primary {
+    background: #3f7924;
+    border-color: #3f7924;
+    color: #fff;
+  }
+
+  .vg-cookie-preferences {
+    border-top: 1px solid #e6ece2;
+    display: grid;
+    gap: 8px;
+    padding-top: 10px;
+  }
+
+  .vg-cookie-toggle {
+    align-items: center;
+    border: 1px solid #edf1ea;
+    border-radius: 6px;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 18px 1fr;
+    margin: 0;
+    padding: 9px 10px;
+  }
+
+  .vg-cookie-toggle input {
+    accent-color: #5b9a39;
+    height: 18px;
+    margin: 0;
+    width: 18px;
+  }
+
+  .vg-cookie-toggle span {
+    display: grid;
+    gap: 2px;
+  }
+
+  .vg-cookie-toggle strong {
+    color: #17231f;
+    font-size: 12px;
+    line-height: 1.2;
+  }
+
+  .vg-cookie-toggle small {
+    color: #5c6964;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1.25;
+  }
+
+  .vg-cookie-trigger {
+    background: #17231f;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 50%;
+    bottom: 12px;
+    box-shadow: 0 10px 30px rgba(8, 24, 20, 0.2);
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    left: 12px;
+    min-height: 48px;
+    min-width: 48px;
+    padding: 0;
+    position: fixed;
+    width: 48px;
+    z-index: 2147482999;
+  }
+
+  .vg-cookie-trigger-icon {
+    display: block;
+    fill: currentColor;
+    height: 24px;
+    width: 24px;
+  }
+
+  @media screen and (max-width: 420px) {
+    .vg-cookie-banner {
+      bottom: 10px;
+      left: 10px;
+      max-width: calc(100vw - 20px);
+      padding: 12px;
+      width: calc(100vw - 20px);
+    }
+
+    .vg-cookie-actions {
+      gap: 6px;
+    }
+
+    .vg-cookie-button {
+      font-size: 11px;
+      padding-left: 7px;
+      padding-right: 7px;
+    }
+  }
+</style><link href="/assets/css/site.css" rel="stylesheet"/><style>.service-card > img.service-card-icon {
+  display: block;
+  flex: 0 0 250px;
+  width: 250px !important;
+  height: 250px !important;
+  max-width: 46%;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+@media screen and (max-width: 991px) {
+  .service-card > img.service-card-icon {
+    flex-basis: 230px;
+    width: 230px !important;
+    height: 230px !important;
+    max-width: 42%;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .service-card > img.service-card-icon {
+    flex: 0 0 auto;
+    width: 190px !important;
+    height: 190px !important;
+    max-width: 100%;
+    align-self: flex-start;
+  }
+}
+</style><style>
+  .lead-honeypot {
+    height: 1px !important;
+    left: -10000px !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    top: auto !important;
+    width: 1px !important;
+  }
+</style><style>.vg-blog-breadcrumb[data-astro-cid-p64ushxs]{flex-wrap:wrap;justify-content:center;gap:10px;font-size:14px;line-height:1.5;display:flex}.vg-blog-breadcrumb[data-astro-cid-p64ushxs] a[data-astro-cid-p64ushxs],.vg-blog-byline[data-astro-cid-p64ushxs] a[data-astro-cid-p64ushxs]{color:#426f27;text-decoration:underline}.vg-blog-byline[data-astro-cid-p64ushxs]{color:#59645c;margin:0;font-size:14px;line-height:1.8}.vg-blog-cover-wrapper[data-astro-cid-p64ushxs]{margin:0 0 40px}.vg-blog-cover-wrapper[data-astro-cid-p64ushxs] .vg-blog-post-cover[data-astro-cid-p64ushxs]{margin-bottom:8px}.vg-blog-cover-wrapper[data-astro-cid-p64ushxs] figcaption[data-astro-cid-p64ushxs]{color:#59645c;text-align:right;font-size:13px}.vg-blog-toc[data-astro-cid-p64ushxs]{background:#f2f6ee;border:1px solid #dce6d5;border-radius:10px;margin-bottom:36px;padding:24px}.vg-blog-toc[data-astro-cid-p64ushxs] strong[data-astro-cid-p64ushxs]{margin-bottom:12px;font-size:20px;display:block}.vg-blog-toc[data-astro-cid-p64ushxs] ol[data-astro-cid-p64ushxs]{margin-bottom:0!important}.vg-blog-toc[data-astro-cid-p64ushxs] a[data-astro-cid-p64ushxs]{font-size:16px}.vg-blog-post-content[data-astro-cid-p64ushxs] h2,.vg-blog-post-content[data-astro-cid-p64ushxs] h3{scroll-margin-top:28px}.vg-blog-post-content[data-astro-cid-p64ushxs] h3{margin:30px 0 14px;font-size:23px;line-height:1.35}.vg-blog-post-content[data-astro-cid-p64ushxs] a{text-underline-offset:3px;overflow-wrap:anywhere;text-decoration:underline}.vg-blog-post-content[data-astro-cid-p64ushxs] table{border-collapse:collapse;table-layout:fixed;width:100%;margin:28px 0;font-size:16px;line-height:1.55}.vg-blog-post-content[data-astro-cid-p64ushxs] th,.vg-blog-post-content[data-astro-cid-p64ushxs] td{text-align:left;vertical-align:top;overflow-wrap:anywhere;border:1px solid #dce6d5;padding:12px}.vg-blog-post-content[data-astro-cid-p64ushxs] th{color:#203819;background:#edf3e7}.vg-blog-post-content[data-astro-cid-p64ushxs] blockquote{background:#f6f8f3;border-left:4px solid #77a746;margin:28px 0;padding:20px}.vg-blog-post-content[data-astro-cid-p64ushxs] blockquote p:last-child{margin-bottom:0!important}.vg-blog-post-content[data-astro-cid-p64ushxs] strong{color:#263b21}.vg-blog-post-content[data-astro-cid-p64ushxs] .vg-blog-inline-figure{width:100%;max-width:100%;margin:36px 0}.vg-blog-post-content[data-astro-cid-p64ushxs] .vg-blog-inline-figure img{border-radius:12px;width:100%;height:auto}.vg-blog-post-content[data-astro-cid-p64ushxs] .vg-blog-inline-figure figcaption{text-align:left;margin-top:12px;font-size:14px;line-height:1.6}.vg-blog-faq-item[data-astro-cid-p64ushxs]{border-top:1px solid #dfe7e2;padding-top:18px}.vg-blog-consultation[data-astro-cid-p64ushxs]{background:#edf3e7;border-radius:10px;margin-top:40px;padding:24px}.vg-blog-consultation[data-astro-cid-p64ushxs] h2[data-astro-cid-p64ushxs]{font-size:27px;margin-top:0!important}.vg-blog-consultation[data-astro-cid-p64ushxs] p[data-astro-cid-p64ushxs]{margin-bottom:0!important}@media (width<=600px){.vg-blog-post-content[data-astro-cid-p64ushxs] table{font-size:13px}.vg-blog-post-content[data-astro-cid-p64ushxs] th,.vg-blog-post-content[data-astro-cid-p64ushxs] td{padding:8px 6px}.vg-blog-toc[data-astro-cid-p64ushxs]{padding:20px 16px}}
+</style><link href="https://green-flux-nine.vercel.app/blog/fotovoltaico-casa-veneto-dimensionamento/" rel="canonical"/><meta content="index, follow, max-image-preview:large" name="robots"/><meta content="it_IT" property="og:locale"/><meta content="Green Flux" property="og:site_name"/><link as="image" fetchpriority="high" href="/assets/venetagreen/blog-v2/fotovoltaico-casa-veneto-dimensionamento/cover-16973f9bbe-1600.webp" imagesizes="(max-width: 767px) 100vw, (max-width: 1100px) 90vw, 900px" imagesrcset="/assets/venetagreen/blog-v2/fotovoltaico-casa-veneto-dimensionamento/cover-16973f9bbe-480.webp 480w, /assets/venetagreen/blog-v2/fotovoltaico-casa-veneto-dimensionamento/cover-16973f9bbe-960.webp 960w, /assets/venetagreen/blog-v2/fotovoltaico-casa-veneto-dimensionamento/cover-16973f9bbe-1600.webp 1600w" rel="preload"/><meta content="1600" property="og:image:width"/><meta content="900" property="og:image:height"/><link href="/assets/css/green-flux.css" rel="stylesheet"/><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://green-flux-nine.vercel.app/#organization", "name": "Green Flux", "legalName": "GREEN FLUX srls", "url": "https://green-flux-nine.vercel.app/", "logo": "https://green-flux-nine.vercel.app/assets/logo.png", "telephone": "+39 375 552 1420", "email": "info@green-flux.com", "address": {"@type": "PostalAddress", "streetAddress": "Via Trieste, 19", "postalCode": "35121", "addressLocality": "Padova", "addressCountry": "IT"}}, {"@type": "WebPage", "@id": "https://green-flux-nine.vercel.app/blog/fotovoltaico-casa-veneto-dimensionamento/", "url": "https://green-flux-nine.vercel.app/blog/fotovoltaico-casa-veneto-dimensionamento/", "name": "Dimensionamento fotovoltaico per casa | Green Flux", "inLanguage": "it-IT"}]}</script></head><body data-astro-cid-p64ushxs=""><a class="vg-skip-link" href="#contenuto">Vai al contenuto</a><main data-astro-cid-p64ushxs="" id="contenuto"><section class="internal-hero-shell vg-blog-post-nav-shell" data-astro-cid-p64ushxs=""><section class="header-primary"><section class="header"><div class="vg-layout-blockcontainer container vg-container"><div class="navbar-black vg-nav" role="banner"><div class="vg-layout-blockcontainer container vg-container"><div class="header-content"><div class="logo-sub-button"><a class="brand-logo vg-nav-brand" href="/"><img alt="Green Flux — impianti tecnologici" class="original-logo-white" decoding="async" height="74" loading="eager" src="/assets/logo.png" width="180"/><img alt="Green Flux — impianti tecnologici" class="original-logo-black" decoding="async" height="74" loading="eager" src="/assets/logo.png" width="180"/></a></div><nav class="nav-menu vg-nav-menu" role="navigation"><a class="nav-link header vg-nav-link" href="/chi-siamo/">Chi siamo</a><a class="nav-link header vg-nav-link" href="/servizi/">Servizi</a><a class="nav-link header vg-nav-link" href="/progetti/">Realizzazioni</a><a class="nav-link header vg-nav-link" href="/zone/">Zone</a><a class="nav-link header vg-nav-link" href="/blog/">Blog</a><a class="nav-link header vg-nav-link" href="/contatti/">Contatti</a></nav><div class="header-button"><div class="button-wrap"><a class="button-primary vg-inline-block" href="/preventivo/"><div class="secondary-button-area"><p class="primary-button-text">RICHIEDI PREVENTIVO</p><div class="button-arrow-right-icon"><img alt="" class="arrow-right-icon" height="24" loading="lazy" src="/assets/ui/asset-001.svg" width="24"/><img alt="" class="arrow-right-icon hover" height="24" loading="lazy" src="/assets/ui/asset-001.svg" width="24"/></div></div></a></div><button aria-label="Apri menu" class="menu-button vg-nav-button" type="button"><span class="hamburger-icon"></span></button></div></div></div></div></div></section></section></section><section class="service-details-section section-padding vg-blog-post-section" data-astro-cid-p64ushxs=""><div class="vg-layout-blockcontainer container vg-container" data-astro-cid-p64ushxs=""><div class="content-wrapper vg-blog-post-layout" data-astro-cid-p64ushxs=""><article class="vg-blog-post-article" data-astro-cid-p64ushxs=""><header class="vg-blog-post-header" data-astro-cid-p64ushxs=""><nav aria-label="Percorso di navigazione" class="vg-blog-breadcrumb" data-astro-cid-p64ushxs=""><a data-astro-cid-p64ushxs="" href="/">Home</a><span aria-hidden="true" data-astro-cid-p64ushxs="">/</span><a data-astro-cid-p64ushxs="" href="/blog/">Blog</a><span aria-hidden="true" data-astro-cid-p64ushxs="">/</span><span data-astro-cid-p64ushxs="">Fotovoltaico</span></nav><div class="vg-blog-post-meta" data-astro-cid-p64ushxs=""><span data-astro-cid-p64ushxs="">Fotovoltaico</span><span data-astro-cid-p64ushxs="">5 min di lettura</span></div><h1 class="vg-blog-post-title" data-astro-cid-p64ushxs="">Dimensionamento fotovoltaico: quanti kW servono per casa?</h1><p class="vg-blog-post-summary" data-astro-cid-p64ushxs="">Bollette, orari di consumo e tetto: ecco come passare dai kWh che usi alla potenza da valutare, senza confondere produzione e risparmio.</p><p class="vg-blog-byline" data-astro-cid-p64ushxs="">Redazione <a data-astro-cid-p64ushxs="" href="/chi-siamo/">Green Flux</a> · Aggiornato il <time data-astro-cid-p64ushxs="" datetime="2026-09-06">6 settembre 2026</time><br data-astro-cid-p64ushxs=""/>Pubblicato il <time data-astro-cid-p64ushxs="" datetime="2026-06-08">8 giugno 2026</time></p></header><figure class="vg-blog-cover-wrapper" data-astro-cid-p64ushxs=""><div class="vg-blog-post-cover" data-astro-cid-p64ushxs=""><img alt="Abitazione con moduli fotovoltaici su un tetto in coppi" data-astro-cid-p64ushxs="" data-image-id="fotovoltaico-casa-veneto-dimensionamento-cover" data-image-kind="editorial" decoding="async" fetchpriority="high" height="900" loading="eager" sizes="(max-width: 767px) 100vw, (max-width: 1100px) 90vw, 900px" src="/assets/venetagreen/blog-v2/fotovoltaico-casa-veneto-dimensionamento/cover-16973f9bbe-1600.webp" srcset="/assets/venetagreen/blog-v2/fotovoltaico-casa-veneto-dimensionamento/cover-16973f9bbe-480.webp 480w, /assets/venetagreen/blog-v2/fotovoltaico-casa-veneto-dimensionamento/cover-16973f9bbe-960.webp 960w, /assets/venetagreen/blog-v2/fotovoltaico-casa-veneto-dimensionamento/cover-16973f9bbe-1600.webp 1600w" width="1600"/></div><figcaption data-astro-cid-p64ushxs="">Le immagini di questa guida sono rappresentazioni illustrative generate con IA.</figcaption></figure><div class="case-study-details-content vg-richtext vg-blog-post-content" data-astro-cid-p64ushxs=""><nav aria-label="Indice dell'articolo" class="vg-blog-toc" data-astro-cid-p64ushxs=""><strong data-astro-cid-p64ushxs="">In questa guida</strong><ol data-astro-cid-p64ushxs=""><li data-astro-cid-p64ushxs=""><a data-astro-cid-p64ushxs="" href="#kw-kwp-e-kwh-tre-dati-da-non-scambiare">kW, kWp e kWh: tre dati da non scambiare</a></li><li data-astro-cid-p64ushxs=""><a data-astro-cid-p64ushxs="" href="#come-ricavare-il-consumo-di-partenza-dalle-bollette">Come ricavare il consumo di partenza dalle bollette</a></li><li data-astro-cid-p64ushxs=""><a data-astro-cid-p64ushxs="" href="#un-esempio-di-calcolo-della-potenza">Un esempio di calcolo della potenza</a></li><li data-astro-cid-p64ushxs=""><a data-astro-cid-p64ushxs="" href="#quanti-pannelli-e-quanti-metri-quadrati-servono">Quanti pannelli e quanti metri quadrati servono</a></li><li data-astro-cid-p64ushxs=""><a data-astro-cid-p64ushxs="" href="#autoconsumo-e-autonomia-misurano-cose-diverse">Autoconsumo e autonomia misurano cose diverse</a></li><li data-astro-cid-p64ushxs=""><a data-astro-cid-p64ushxs="" href="#come-includere-accumulo-e-pompa-di-calore">Come includere accumulo e pompa di calore</a></li><li data-astro-cid-p64ushxs=""><a data-astro-cid-p64ushxs="" href="#cosa-deve-consegnare-una-valutazione-utile">Cosa deve consegnare una valutazione utile</a></li><li data-astro-cid-p64ushxs=""><a data-astro-cid-p64ushxs="" href="#domande-frequenti">Domande frequenti</a></li></ol></nav><p>Il <strong>dimensionamento di un impianto fotovoltaico</strong> serve a scegliere una potenza coerente con l’energia che la casa può utilizzare, la superficie disponibile e gli eventuali nuovi consumi. Non esiste una corrispondenza automatica tra numero di persone e kW: due famiglie di quattro persone possono avere profili molto diversi.</p>
+<p>Per un’abitazione in Veneto il punto di partenza è un bilancio in kWh. Il tetto stabilisce cosa si può installare; gli orari di consumo aiutano a capire quale configurazione conviene approfondire. La potenza del contatore, da sola, non risponde a nessuna delle due domande.</p>
+<h2 id="kw-kwp-e-kwh-tre-dati-da-non-scambiare">kW, kWp e kWh: tre dati da non scambiare</h2>
+<p>Il kW misura una potenza istantanea. Il kWp indica la potenza nominale dei moduli nelle condizioni standard di prova. Il kWh misura invece una quantità di energia prodotta o consumata in un intervallo di tempo.</p>
+<p>Un apparecchio che assorbe 1 kW per due ore consuma 2 kWh. Un impianto da 6 kWp non produce 6 kWh in ogni ora di luce: la potenza cambia con irraggiamento, temperatura e orientamento. Anche la potenza nominale dell’inverter può essere diversa da quella complessiva dei pannelli, se il progetto lo prevede.</p>
+<h2 id="come-ricavare-il-consumo-di-partenza-dalle-bollette">Come ricavare il consumo di partenza dalle bollette</h2>
+<p>Raccogli dodici mesi completi, evitando di sommare più volte i consumi annui riepilogati in ogni fattura. Distingui le letture effettive dalle stime e considera periodi particolari, come una casa rimasta vuota o lavori di ristrutturazione.</p>
+<p>Le fasce F1, F2 e F3 danno una prima indicazione, ma non coincidono esattamente con le ore di produzione solare. Se disponibili, i dati orari o quartorari del distributore permettono un confronto migliore. Una lavatrice alle 7 e una alle 13 possono ricadere in contesti tariffari simili ma avere un rapporto molto diverso con il fotovoltaico.</p>
+<table>
+<thead>
+<tr>
+<th>Dato</th>
+<th>A cosa serve nel progetto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Consumo annuo e mensile in kWh</td>
+<td>Definire il fabbisogno e la stagionalità</td>
+</tr>
+<tr>
+<td>Consumi nelle ore diurne</td>
+<td>Stimare l’autoconsumo diretto</td>
+</tr>
+<tr>
+<td>Prelievi serali e notturni</td>
+<td>Valutare il possibile contributo di una batteria</td>
+</tr>
+<tr>
+<td>Carichi futuri già decisi</td>
+<td>Aggiungere pompa di calore, auto elettrica o induzione</td>
+</tr>
+<tr>
+<td>Potenza e impianto elettrico</td>
+<td>Verificare connessione e contemporaneità dei carichi</td>
+</tr>
+</tbody>
+</table><figure class="vg-blog-inline-figure" data-blog-image-slot="/blog/fotovoltaico-casa-veneto-dimensionamento/#blog-v2-context"><img alt="Planimetria della copertura e documenti dei consumi" data-image-id="fotovoltaico-casa-veneto-dimensionamento-context" data-image-kind="editorial" decoding="async" height="900" loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 1100px) 90vw, 900px" src="/assets/venetagreen/blog-v2/fotovoltaico-casa-veneto-dimensionamento/context-89ef4ea7dc-1600.webp" srcset="/assets/venetagreen/blog-v2/fotovoltaico-casa-veneto-dimensionamento/context-89ef4ea7dc-480.webp 480w, /assets/venetagreen/blog-v2/fotovoltaico-casa-veneto-dimensionamento/context-89ef4ea7dc-960.webp 960w, /assets/venetagreen/blog-v2/fotovoltaico-casa-veneto-dimensionamento/context-89ef4ea7dc-1600.webp 1600w" width="1600"/><figcaption>Bollette, geometria del tetto e ostacoli aiutano a scegliere la potenza.</figcaption></figure>
+<h2 id="un-esempio-di-calcolo-della-potenza">Un esempio di calcolo della potenza</h2>
+<p>Supponiamo, solo per illustrare il metodo, una casa che consumi <strong>4.500 kWh all’anno</strong> e una produzione specifica ipotizzata di <strong>1.200 kWh per kWp all’anno</strong>. Dividendo 4.500 per 1.200 si ottengono 3,75 kWp.</p>
+<p>Questo numero descrive un equilibrio energetico annuo teorico: non significa che un impianto da 3,75 kWp azzeri i prelievi. Di notte la casa continuerà a richiedere energia e in estate potrebbe produrne più del necessario. Serve quindi confrontare almeno due configurazioni realistiche sul tetto, verificando produzione mensile, autoconsumo ed energia immessa.</p>
+<p>La resa di 1.200 usata nell’esempio è un’ipotesi didattica, non una stima per tutti i tetti veneti. Per un indirizzo specifico, <a href="https://joint-research-centre.ec.europa.eu/pvgis-online-tool_en">PVGIS della Commissione europea</a> permette di elaborare una simulazione. Nella guida su <a href="/blog/quanto-produce-impianto-fotovoltaico-6-kw/">quanto produce un impianto da 6 kW</a> trovi come interpretare i risultati.</p>
+<h2 id="quanti-pannelli-e-quanti-metri-quadrati-servono">Quanti pannelli e quanti metri quadrati servono</h2>
+<p>Per il numero dei moduli, dividi la potenza desiderata per quella del singolo pannello. Se il modulo scelto è da 450 Wp, 9 pannelli corrispondono a 4,05 kWp, mentre 14 pannelli arrivano a 6,30 kWp. Le taglie commerciali chiamate “4 kW” o “6 kW” vanno quindi lette nella distinta effettiva.</p>
+<p>Se ogni modulo dell’esempio misura 2 m², 14 moduli occupano 28 m² di superficie fisica. Il tetto necessario può essere più ampio: contano distanze, ostacoli, accessi, geometria delle falde ed eventuale spazio tra le file. Non usare la sola superficie catastale per decidere la taglia.</p>
+<p>Prima di disegnare la disposizione occorre verificare lo stato della copertura. Rifare una guaina dopo aver installato i moduli può richiedere smontaggio e rimontaggio: coordinare i lavori fin dall’inizio evita una voce di spesa prevedibile.</p><figure class="vg-blog-inline-figure" data-blog-image-slot="/blog/fotovoltaico-casa-veneto-dimensionamento/#blog-v2-detail"><img alt="Dettaglio dei moduli e degli spazi liberi sulla copertura" data-image-id="fotovoltaico-casa-veneto-dimensionamento-detail" data-image-kind="editorial" decoding="async" height="900" loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 1100px) 90vw, 900px" src="/assets/venetagreen/blog-v2/fotovoltaico-casa-veneto-dimensionamento/detail-7d10d5d04f-1600.webp" srcset="/assets/venetagreen/blog-v2/fotovoltaico-casa-veneto-dimensionamento/detail-7d10d5d04f-480.webp 480w, /assets/venetagreen/blog-v2/fotovoltaico-casa-veneto-dimensionamento/detail-7d10d5d04f-960.webp 960w, /assets/venetagreen/blog-v2/fotovoltaico-casa-veneto-dimensionamento/detail-7d10d5d04f-1600.webp 1600w" width="1600"/><figcaption>Numero di pannelli e superficie utilizzabile vanno verificati sul tetto reale.</figcaption></figure>
+<h2 id="autoconsumo-e-autonomia-misurano-cose-diverse">Autoconsumo e autonomia misurano cose diverse</h2>
+<p>L’autoconsumo indica quanta produzione fotovoltaica viene usata nell’immobile. L’autonomia, o autosufficienza, indica invece quanta parte dei consumi viene coperta dal fotovoltaico. Per un impianto senza batteria, con 5.000 kWh prodotti, 2.000 kWh usati direttamente e 4.000 kWh consumati dalla casa, l’autoconsumo è il 40% e l’autonomia il 50%.</p>
+<p>Aumentare i pannelli può aumentare la produzione senza far crescere altrettanto il risparmio. Le due percentuali, insieme ai kWh immessi e prelevati, aiutano a leggere questa differenza. Il <a href="https://autoconsumo.psn.gse.it/">Portale Autoconsumo GSE</a> offre un ulteriore riferimento per una valutazione preliminare.</p>
+<h2 id="come-includere-accumulo-e-pompa-di-calore">Come includere accumulo e pompa di calore</h2>
+<p>La batteria deve avere energia disponibile da caricare e consumi successivi da servire. Non si dimensiona copiando il numero dei kW del fotovoltaico: potenza dell’impianto e capacità della batteria sono grandezze diverse. Approfondisci il confronto nella guida su <a href="/blog/batterie-accumulo-fotovoltaico-quando-convengono/">quando conviene l’accumulo</a>.</p>
+<p>Se è prevista una pompa di calore, chiedi una stima elettrica mensile del nuovo sistema. Aggiungere semplicemente un consumo annuo alla bolletta storica nasconde il fatto che il riscaldamento si concentra nei mesi con meno sole. Per un’auto elettrica, oltre ai chilometri, conta soprattutto se sarà parcheggiata a casa nelle ore di produzione.</p>
+<h2 id="cosa-deve-consegnare-una-valutazione-utile">Cosa deve consegnare una valutazione utile</h2>
+<p>Richiedi una proposta con disposizione dei pannelli, ipotesi della simulazione, produzione mensile, autoconsumo, componenti e voci escluse. Fai distinguere il beneficio energetico dagli eventuali incentivi, la cui applicabilità va verificata separatamente.</p>
+<p>Per il <a href="/servizi/fotovoltaico-residenziale/">fotovoltaico residenziale Green Flux</a> prepara bollette, fotografie della copertura e un elenco dei nuovi impianti realmente previsti. Sono informazioni più utili di una richiesta generica di “massima potenza possibile”.</p>
+<section aria-labelledby="domande-frequenti" data-astro-cid-p64ushxs=""><h2 data-astro-cid-p64ushxs="" id="domande-frequenti">Domande frequenti</h2><div class="vg-blog-faq-item" data-astro-cid-p64ushxs=""><h3 data-astro-cid-p64ushxs="">Un contatore da 3 kW limita il fotovoltaico a 3 kWp?</h3><p data-astro-cid-p64ushxs="">Non è una corrispondenza automatica. Potenza dei moduli, inverter e potenza della fornitura hanno ruoli diversi; la configurazione e la connessione devono essere verificate nel progetto.</p></div><div class="vg-blog-faq-item" data-astro-cid-p64ushxs=""><h3 data-astro-cid-p64ushxs="">Un impianto che produce quanto consumo azzera la bolletta?</h3><p data-astro-cid-p64ushxs="">No. Produzione e consumo possono avvenire in momenti diversi; restano eventuali prelievi dalla rete e componenti fisse della fornitura.</p></div><div class="vg-blog-faq-item" data-astro-cid-p64ushxs=""><h3 data-astro-cid-p64ushxs="">La taglia dipende dai metri quadrati della casa?</h3><p data-astro-cid-p64ushxs="">Solo indirettamente. Servono consumi elettrici, profilo orario, nuovi carichi e caratteristiche del tetto; la superficie abitativa da sola non basta.</p></div></section><aside aria-labelledby="valutazione-progetto" class="vg-blog-consultation" data-astro-cid-p64ushxs=""><h2 data-astro-cid-p64ushxs="" id="valutazione-progetto">Porta questi dati al sopralluogo</h2><p data-astro-cid-p64ushxs="">Per il tuo immobile in Veneto o Friuli-Venezia Giulia, possiamo partire da consumi, fotografie e obiettivi per verificare le alternative. Scopri il servizio <a data-astro-cid-p64ushxs="" href="/servizi/fotovoltaico-residenziale/">fotovoltaico per la casa</a> o <a data-astro-cid-p64ushxs="" href="/preventivo/">richiedi una valutazione Green Flux</a>.</p></aside><nav aria-labelledby="guide-collegate" class="vg-blog-related" data-astro-cid-p64ushxs=""><h2 data-astro-cid-p64ushxs="" id="guide-collegate">Continua ad approfondire</h2><ul data-astro-cid-p64ushxs=""><li data-astro-cid-p64ushxs=""><a data-astro-cid-p64ushxs="" href="/blog/quanto-produce-impianto-fotovoltaico-6-kw/">Quanto produce un impianto fotovoltaico da 6 kW? Esempio a Treviso</a></li><li data-astro-cid-p64ushxs=""><a data-astro-cid-p64ushxs="" href="/blog/batterie-accumulo-fotovoltaico-quando-convengono/">Batterie di accumulo fotovoltaico: quando convengono davvero</a></li><li data-astro-cid-p64ushxs=""><a data-astro-cid-p64ushxs="" href="/blog/fotovoltaico-6-kw-costo-preventivo/">Fotovoltaico da 6 kW: costo, accumulo e confronto dei preventivi</a></li></ul></nav></div></article></div></div></section><section class="cta-section"><div class="vg-layout-blockcontainer container vg-container"><div class="content-wrapper cta"><div class="cta-content"><h2 class="cta-heading-2">Porta il tuo immobile verso un'energia più intelligente.</h2><div class="cta-buttons"><a class="button-primary vg-variant-ec989391-cb6b-ac0c-8979-cf84be85c84b vg-inline-block" href="/preventivo/"><div class="secondary-button-area"><p class="primary-button-text">RICHIEDI PREVENTIVO</p><div class="button-arrow-right-icon"><img alt="" class="arrow-right-icon" height="24" loading="lazy" src="/assets/ui/asset-001.svg" width="24"/><img alt="" class="arrow-right-icon hover" height="24" loading="lazy" src="/assets/ui/asset-001.svg" width="24"/></div></div></a></div></div><img alt="Immagine illustrativa: due tecnici consultano un tablet" class="cta-image" data-image-id="shared-cta" data-image-kind="shared" decoding="async" fetchpriority="low" height="1254" loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 1100px) 90vw, 900px" src="/assets/venetagreen/editorial/shared-cta-84aeae866f-1254.webp" srcset="/assets/venetagreen/editorial/shared-cta-84aeae866f-480.webp 480w, /assets/venetagreen/editorial/shared-cta-84aeae866f-960.webp 960w, /assets/venetagreen/editorial/shared-cta-84aeae866f-1254.webp 1254w" style="object-fit:contain; object-position:right bottom; aspect-ratio:1254/1254" width="1254"/></div></div></section><section class="footer-section section-padding"><div class="vg-layout-blockcontainer container vg-container"><div class="content-wrapper footer"><div class="content-top footer"><div class="footer-content-left"><h3 class="heading-3">Energia pulita per il tuo futuro.</h3><p class="footer-summary">Progettiamo impianti fotovoltaici, termici, elettrici e soluzioni integrate per case e aziende. Da Padova, valutiamo ogni intervento a partire dalle tue esigenze.</p></div><nav aria-label="Link principali footer" class="navitem-list footer"><a class="navtext" href="/">INIZIO</a><a class="navtext" href="/servizi/">SERVIZI</a><a class="navtext" href="/zone/veneto/">ZONE</a><a class="navtext" href="/contatti/">CONTATTI</a><a class="navtext" href="/preventivo/">PREVENTIVO</a></nav></div><div class="footer-link-columns"><nav aria-label="Servizi" class="footer-link-group"><p class="footer-link-title">Servizi</p><ul class="footer-link-list"><li><a href="/servizi/fotovoltaico-residenziale/">Fotovoltaico residenziale</a></li><li><a href="/servizi/fotovoltaico-aziendale/">Fotovoltaico aziendale</a></li><li><a href="/servizi/batterie-accumulo/">Batterie di accumulo</a></li><li><a href="/servizi/pompe-calore/">Pompe di calore</a></li><li><a href="/servizi/climatizzazione/">Climatizzazione</a></li><li><a href="/servizi/manutenzione/">Manutenzione impianti</a></li></ul></nav><nav aria-label="Azienda" class="footer-link-group"><p class="footer-link-title">Azienda</p><ul class="footer-link-list"><li><a href="/chi-siamo/">Chi siamo</a></li><li><a href="/metodo/">Metodo Green Flux</a></li><li><a href="/progetti/">Realizzazioni</a></li><li><a href="/blog/">Blog energia</a></li></ul></nav><nav aria-label="Zone servite" class="footer-link-group"><p class="footer-link-title">Zone servite</p><ul class="footer-link-list"><li><a href="/zone/veneto/">Fotovoltaico in Veneto</a></li><li><a href="/zone/friuli/">Fotovoltaico in Friuli-VG</a></li><li><a href="/zone/veneto/treviso/">Fotovoltaico Treviso</a></li><li><a href="/zone/veneto/venezia/">Fotovoltaico Venezia</a></li><li><a href="/zone/veneto/padova/">Fotovoltaico Padova</a></li><li><a href="/zone/friuli/gorizia/">Fotovoltaico Gorizia</a></li><li><a href="/zone/friuli/udine/">Fotovoltaico Udine</a></li></ul></nav><address class="footer-company-info"><p class="footer-link-title">Contatti</p><p>GREEN FLUX srls</p><p></p><p>Via Trieste, 19, 35121 Padova (PD)</p><p><a href="tel:+393755521420">+39 375 552 1420</a></p><p><a href="mailto:info@green-flux.com">info@green-flux.com</a></p></address></div><nav aria-label="Altri impianti e servizi Green Flux" class="gf-footer-extra"><a href="/servizi/smart-home/">Smart home e automazioni</a><a href="/servizi/solare-termico/">Solare termico</a><a href="/servizi/biomassa/">Impianti a biomassa</a><a href="/servizi/caldaie/">Caldaie</a><a href="/servizi/ventilazione/">Ventilazione meccanica</a><a href="/servizi/trattamento-acqua/">Trattamento acqua</a><a href="/servizi/impianti-completi/">Impianti completi</a><a href="/servizi/progettazione/">Progettazione impianti</a><a href="/servizi/pratiche-e-permessi/">Pratiche e permessi</a><a href="/servizi/diagnosi-energetiche/">Diagnosi energetiche</a><a href="/servizi/detrazioni-fiscali/">Detrazioni fiscali e incentivi</a><a href="/servizi/formule-assicurative/">Formule assicurative per gli impianti</a></nav><div aria-label="Green Flux" class="footer-brand-text">Green Flux</div><div class="content-bottom footer"><p class="body-text-16">2025 © Green Flux. Tutti i diritti riservati.</p><nav aria-label="Link legali" class="navitem-list footer"><a class="navtext" href="/termini-condizioni/">Termini e condizioni</a><a class="navtext" href="/privacy-policy/">Informativa privacy</a><a class="navtext" href="/cookie-policy/">Informativa cookie</a></nav></div></div></div></section></main><script defer="" src="/assets/js/site.js"></script><script src="/assets/js/green-flux.mjs" type="module"></script></body></html>

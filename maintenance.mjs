@@ -1,5 +1,5 @@
 // Set to false and redeploy to restore the entire site.
-export const maintenanceEnabled = true;
+export const maintenanceEnabled = false;
 
 export const maintenancePage = `<!doctype html>
 <html lang="it">

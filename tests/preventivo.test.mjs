@@ -7,12 +7,12 @@ import handler from '../api/preventivo.mjs';
 
 const sample = () => ({ services: ['trattamento-acqua'], project: 'nuovo', consumption: '', spaces: ['interni'], name: 'Test Locale', email: 'test@example.com', phone: '', city: 'Padova', notes: 'Dati di test: nessun invio reale.', privacy: true, website: '', elapsed: 5000, requestId: 'aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee' });
 
-test('Il catalogo copre tutti i 15 servizi della home e i collegamenti preselezionati', () => {
-  const home = readFileSync(new URL('../public/index.html', import.meta.url), 'utf8');
-  assert.equal(services.filter(service => service.id !== 'consulenza').length, 15);
-  for (const service of services.filter(service => service.id !== 'consulenza')) {
-    assert(home.includes(`id="${service.id}"`));
-    assert(home.includes(`href="/preventivo/?servizio=${service.id}"`));
+test('Il catalogo mantiene i servizi precedenti e copre le nuove pagine', () => {
+  const routes = { 'fotovoltaico': 'fotovoltaico-residenziale', 'pompe-di-calore': 'pompe-calore', 'condizionatori': 'climatizzazione' };
+  for (const service of services) {
+    const slug = routes[service.id] || service.id;
+    const page = readFileSync(new URL(`../public/servizi/${slug}/index.html`, import.meta.url), 'utf8');
+    assert(page.includes(`/preventivo/?servizio=${slug}`));
   }
 });
 

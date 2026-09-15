@@ -1,0 +1,30 @@
+/* Reference layout retained; these rules adapt only Green Flux identity and added flows. */
+.brand-logo { width:180px; height:74px; position:relative; overflow:hidden; flex:none; }
+.brand-logo img { width:235px!important; height:auto!important; max-width:none; position:absolute; left:-29px; top:-17px; }
+.brand-logo .original-logo-white { filter:brightness(0) invert(1); }
+.brand-logo .original-logo-black { filter:brightness(0); }
+.quote-brand { width:180px; height:74px; overflow:hidden; }
+.quote-brand img { width:235px!important; height:auto!important; max-width:none; margin-left:-29px; margin-top:-17px; filter:brightness(0); }
+.gf-delivery-note { margin-top:24px; font-size:14px; line-height:1.6; }
+.gf-handoff { margin-top:24px; padding:24px; border:1px solid #dce5dc; border-radius:12px; background:#f7faf7; }
+.gf-handoff h2 { font-size:28px; line-height:1.2; }
+.gf-handoff p { font-size:16px; line-height:1.6; }
+.gf-handoff-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:20px; }
+.gf-handoff-actions a,.gf-handoff-actions button { border:0; border-radius:8px; padding:14px 20px; background:#1c4a35; color:white; font:inherit; font-weight:600; cursor:pointer; text-decoration:none; }
+.gf-handoff-actions button { background:#e4eee8; color:#183e2c; }
+.gf-handoff textarea { display:block; width:100%; padding:12px; min-height:200px; resize:vertical; border:1px solid #aeb9b1; border-radius:6px; background:white; font:inherit; color:#1e2923; }
+.gf-form-error { color:#a52626; margin-top:14px; font-size:16px; }
+.gf-more-services { margin-top:28px; }
+.gf-footer-extra { display:flex; flex-wrap:wrap; gap:12px 24px; border-top:1px solid #ffffff30; padding-block:24px; }
+.gf-footer-extra a { font-size:14px; color:inherit; text-decoration:none; }
+.gf-footer-extra a:hover { text-decoration:underline; }
+.gf-regions-note { padding:16px 24px; border-left:3px solid #90b866; background:#f5f8f3; margin-block:24px; line-height:1.6; }
+.gf-service-photo { object-fit:cover; }
+.quote-close { position:fixed; top:24px; right:24px; font-size:28px; color:inherit; text-decoration:none; z-index:10; }
+:focus-visible { outline:3px solid #57854b; outline-offset:5px; }
+@media(max-width:767px){.gf-handoff{padding:18px}.gf-handoff-actions{flex-direction:column}.gf-handoff-actions a{text-align:center}.quote-close{top:18px;right:18px}.brand-logo{width:155px}.brand-logo img{width:215px!important;left:-28px;top:-12px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+.quote-wizard-body .quote-brand img { filter:brightness(0) invert(1); }
+.quote-wizard-body .quote-close { color:white; }
+.quote-wizard-body .quote-counter { right:78px; }
+.quote-page > .gf-handoff { width:100%; max-width:820px; margin-top:40px; color:#0b1018; }

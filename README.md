@@ -1,160 +1,111 @@
 # Green Flux
 
-Home page Green Flux, ricostruita con i contenuti e le immagini del sito originale
-e pubblicata automaticamente tramite GitHub e Vercel.
+Sito statico multipagina Green Flux. La migrazione del 15 settembre 2026 riprende
+le 137 pagine pubbliche collegate di https://venetagreen.it/, con struttura delle
+sezioni, testi, stile, immagini, FAQ, guide, pagine locali e percorso preventivo.
+Il riferimento è stato scaricato direttamente dal sito corrente, perché alcune
+copie indicizzate mostravano contenuti precedenti.
 
-Il design riprende il riferimento fornito in `Zakka-dental-landing (1).zip`:
-barra di navigazione sospesa, hero a tutta larghezza, titoli in Plus Jakarta Sans,
-schede fotografiche arrotondate e pannelli dei servizi. La palette rimane Green
-Flux: verde petrolio `#193e40`, verde scuro `#123335` e lime `#d5ed90`.
+Sono state aggiunte 12 pagine per i servizi specifici Green Flux, per un totale
+di 149 pagine: smart home, solare termico, biomassa, caldaie, ventilazione,
+trattamento acqua, impianti completi, progettazione, pratiche e permessi,
+diagnosi energetiche, detrazioni fiscali e formule assicurative.
 
-L’header si allarga in cima alla pagina su desktop, scorre fuori durante la
-discesa e rientra risalendo. Il menu mobile riprende il riferimento Federzoni
-Granata: pannello a tutto schermo, sezioni espandibili e contatti sempre a portata
-di mano. Usa un dialogo nativo per gestire focus, tastiera e sfondo inattivo;
-le animazioni rispettano la preferenza di movimento ridotto.
-
-Campi di intervento precede Servizi sia su desktop sia su mobile. I due dropdown
-desktop riprendono il menu Casi clinici del riferimento: dieci schede per gli
-impianti, cinque per i servizi, con icone e collegamenti alle ancore della home.
-Si apre un solo pannello alla volta; entrambi supportano hover, clic, tastiera,
-Escape e chiusura all’esterno. L’header rimane visibile mentre un pannello è aperto.
-
-Il pulsante WhatsApp fisso in basso a destra riprende dimensioni, animazioni,
-messaggi e tempi del riferimento: compare dopo 5 secondi, mostra i messaggi
-a 8 e 18 secondi e richiude il fumetto a 28 secondi. Apre la chat al numero
-Green Flux `+39 375 552 1420` con un testo precompilato. Misura 64 px su desktop
-e 58 px fino a 620 px di larghezza; si nasconde mentre il menu mobile è aperto.
-
-- Repository pubblico: https://github.com/thinhdutong00/Green-flux
-- Sito: https://green-flux-nine.vercel.app
-- Progetto Vercel: https://vercel.com/thinhdutong00s-projects/green-flux
-
-## Struttura
-
-- `public/index.html`: home in italiano con azienda, dieci campi di intervento,
-  cinque servizi chiavi in mano e contatti.
-- `public/styles.css`: stile e layout per desktop, tablet e smartphone.
-- `public/script.js`: header sensibile allo scroll, menu mobile e aggiornamento dell’anno.
-- `public/preventivo/`: modulo a sei passaggi, catalogo servizi, validazione e modalità di invio.
-- `api/preventivo.mjs`: invio email opzionale tramite Resend, da attivare con le variabili server.
-- `public/assets/`: logo e fotografie originali; font e licenza in `assets/fonts/`.
-- `public/robots.txt` e `public/sitemap.xml`: consentono la scansione delle pagine e ne elencano gli URL canonici.
-- `scripts/build.mjs`: comprime e incorpora CSS e JavaScript nelle pagine generate.
-- `vercel.json`: esegue la build e pubblica la cartella `dist` con il preset Vercel **Other**.
-- `ASSET_SOURCES.md`: provenienza dei contenuti e delle immagini.
-
-## Anteprima locale
-
-Esegui dalla cartella del progetto:
+## Anteprima che si aggiorna automaticamente
 
 ```sh
 npm ci
-npm run build
-python3 -m http.server 3000 --directory dist
+npm run dev
 ```
 
-Visita http://localhost:3000. Modifica i sorgenti in `public` e ripeti la build
-per aggiornare l’anteprima di produzione.
+Aprire http://localhost:3000. Il server locale serve i sorgenti in `public/` e
+ricarica le pagine quando cambiano i file, senza una build manuale. Non salva né
+trasmette risposte del modulo. Il server ascolta solo sull'interfaccia locale.
+
+## Build e controlli
+
+```sh
+npm test
+npm run build
+```
+
+La build copia il sito in `dist/`, comprime i fogli CSS, raggruppa i moduli
+JavaScript condivisi e genera la sitemap di tutte le pagine. Node.js 22 o
+successivo è consigliato. I test verificano il catalogo, le destinazioni dei
+link, le risorse, la sequenza delle sezioni aggiunte, i sei passaggi del
+preventivo, la validazione, i riepiloghi e l'endpoint email con invii simulati.
 
 ## Pubblicazione
 
-### Manutenzione temporanea
+- Repository: https://github.com/thinhdutong00/Green-flux
+- Produzione Vercel: https://green-flux-nine.vercel.app
+- Progetto Vercel: https://vercel.com/thinhdutong00s-projects/green-flux
 
-La manutenzione è attualmente attiva: `maintenanceEnabled` in `maintenance.mjs`
-è impostato a `true`. La schermata usa logo, colori e contatti Green Flux.
-Il middleware Vercel intercetta tutte le pagine, anche `/preventivo/`, i link
-diretti e gli URL inesistenti. Le API rispondono con un messaggio di manutenzione
-senza eseguire invii. Solo le risorse in `/assets/` restano accessibili.
-La risposta è HTTP `503`, con `Retry-After: 3600` e cache disabilitata.
-Il valore di retry è un intervallo tecnico, non una promessa di riapertura.
+Il push su `main` avvia la pubblicazione Vercel. Le pagine pubblicate si aggiornano
+al completamento del deploy; la ricarica automatica durante le modifiche locali
+è disponibile su `localhost:3000`.
 
-Per riaprire il sito, imposta `maintenanceEnabled = false` in `maintenance.mjs`
-e pubblica la modifica su `main`. La build ripristina home e preventivo dai
-sorgenti originali. L’anteprima statica mostra la stessa schermata mentre la
-manutenzione è attiva; lo stato HTTP e il blocco delle API sono gestiti su Vercel
-da `middleware.js`.
+È disponibile anche una pubblicazione privata Sites dello stesso sorgente;
+`.openai/hosting.json` identifica il progetto e l'output statico. La pubblicazione
+Sites è una versione salvata e va aggiornata dopo le modifiche.
 
-### Deploy
+La manutenzione è **disattivata** in `maintenance.mjs`. Per attivarla, impostare
+`maintenanceEnabled = true` e pubblicare. Il middleware mantiene il blocco HTTP
+503 sulle pagine e sulle API, lasciando disponibili le risorse grafiche.
 
-La build usa esbuild come unica dipendenza di sviluppo. Le pagine pubblicate
-sono statiche; il modulo in modalità riepilogo non richiede variabili d’ambiente.
-Il repository è importato nel progetto Vercel `green-flux`: i push su `main`
-aggiornano il sito di produzione; gli altri branch possono generare anteprime.
+## Dove modificare
 
-La home e il modulo sono indicizzabili. Canonical, sitemap e metadati social
-usano il dominio Vercel corrente: aggiornali insieme quando viene collegato
-il dominio definitivo.
+- `public/index.html`: home e sezioni del riferimento.
+- `public/servizi/`: catalogo e 20 pagine di servizio.
+- `public/chi-siamo/`, `public/metodo/`, `public/contatti/`, `public/progetti/`:
+  pagine aziendali e percorsi collegati.
+- `public/blog/`, `public/zone/`: guide e pagine territoriali importate.
+- `public/preventivo/index.html`: percorso in sei passaggi del riferimento.
+- `public/preventivo/wizard.mjs`: navigazione, preselezioni e riepilogo.
+- `public/preventivo/funnel-data.mjs`: dati e validazione del nuovo percorso.
+- `public/preventivo/data.mjs`: catalogo condiviso e compatibilità con il vecchio
+  schema dell'endpoint email.
+- `public/assets/js/site.js`: menu e FAQ del riferimento.
+- `public/assets/js/green-flux.mjs`: contatti e compatibilità con le vecchie ancore.
+- `public/assets/js/handoff.mjs`: riepilogo, copia e apertura email/WhatsApp.
+- `public/assets/css/site.css`: stili del riferimento.
+- `public/assets/css/green-flux.css`: adattamenti al logo e al flusso Green Flux.
+- `content/green-flux-services.json`: contenuti strutturati delle 12 pagine aggiunte.
 
-I pulsanti di preventivo aprono `/preventivo/`. Le dieci schede degli impianti e
-i cinque servizi pre-selezionano la relativa opzione tramite `?servizio=ID`.
-Email, telefono e pulsante WhatsApp rimangono disponibili come contatti diretti.
-Non sono presenti tracker; le risposte del modulo non sono salvate in cookie,
-localStorage o sessionStorage.
+I file HTML sono i sorgenti pubblicati e sono modificabili direttamente. Gli
+script Python sono strumenti della migrazione, non dipendenze della build.
+`import-reference.py` richiede un archivio locale delle pagine autorizzate e
+BeautifulSoup; `generate-services.py` usa il modello della pagina pompe di calore
+per rigenerare le pagine aggiunte dal JSON (sovrascrivendo quelle pagine).
 
-## Modulo preventivo
+## Preventivo e contatti
 
-Il riferimento aggiornato è `https://fvg.venetagreen.it/`, verificato su desktop
-e mobile: schermata bianca a tutta pagina, logo e chiusura in alto, barra di
-avanzamento, titoli grandi, campi sottolineati e opzioni con indicatore circolare.
-La palette petrolio/lime e Plus Jakarta Sans rimangono quelli di Green Flux.
+I passaggi sono: servizio, immobile, consumi, spazi, tempistiche, contatti.
+Tutti i 20 servizi sono selezionabili. I collegamenti delle pagine servizio
+aprono `/preventivo/?servizio=ID` con l'opzione corretta già selezionata.
+Le vecchie preselezioni restano supportate.
 
-Il percorso parte dal nome, poi raccoglie servizi, consumi o tipo di intervento,
-spazi e contatti; il sesto passaggio mostra il riepilogo modificabile e la privacy.
-Include tutti i dieci impianti e cinque servizi della home, più la consulenza.
-La scelta dei servizi è multipla; per i servizi energetici si chiede la spesa
-mensile indicativa, per gli altri il tipo di intervento. Gli spazi sono coerenti
-con i servizi selezionati e consentono scelte multiple per richieste combinate.
-Nome, comune, almeno un recapito e privacy sono obbligatori.
+Il sito mantiene la consegna tramite riepilogo già prevista nel progetto:
+il cliente apre email o WhatsApp e conferma l'invio nell'app scelta. Preparare
+il riepilogo non viene presentato come un invio completato. Le risposte restano
+in memoria nella pagina e non vengono salvate in cookie o storage persistente.
+Email e WhatsApp usano esclusivamente `info@green-flux.com` e `+39 375 552 1420`.
 
-Le risposte singole avanzano automaticamente dopo un clic; con la tastiera si
-può esplorare il gruppo e confermare con Invio. Le scelte multiple richiedono
-Avanti. Indietro e i comandi del riepilogo consentono di correggere le risposte.
-Le transizioni rispettano la preferenza di movimento ridotto.
+L'endpoint Vercel opzionale `api/preventivo.mjs` conserva lo schema precedente.
+Per usarlo occorrono `RESEND_API_KEY` e `QUOTE_FROM_EMAIL` sul server e un
+collegamento esplicito del nuovo client: il nuovo wizard è in modalità riepilogo.
+Non sono stati copiati endpoint CRM, strumenti pubblicitari, account di analisi,
+identificativi fiscali o destinatari di VenetaGreen.
 
-I collegamenti della home aprono un dialogo a tutto schermo e caricano il modulo
-solo su richiesta. La chiusura ripristina posizione e focus della home; Escape
-funziona anche all’interno del modulo. `/preventivo/` e le preselezioni tramite
-`?servizio=ID` restano disponibili anche come pagine autonome. La chiusura del
-dialogo elimina le risposte, che non vengono archiviate nel browser.
+## Adattamenti aziendali
 
-La modalità attuale è `handoff` in `public/preventivo/delivery.mjs`: il cliente
-apre il riepilogo nell’email indirizzata a `info@green-flux.com` oppure in WhatsApp
-al `+39 375 552 1420`, quindi completa l’invio nell’app. Può anche copiare il testo.
-Il sito indica chiaramente che preparare il riepilogo non equivale a inviarlo.
+Logo e recapiti sono Green Flux. La storia aziendale del riferimento non è stata
+attribuita a Green Flux: viene indicata l'esperienza dei tecnici dichiarata sul
+sito aziendale. Le recensioni nominative VenetaGreen sono sostituite, nello stesso
+componente grafico, con i servizi e punti di forza verificati Green Flux. Le
+immagini illustrative mantengono la relativa indicazione e non vengono presentate
+come fotografie di cantieri Green Flux. Le pagine locali richiedono conferma della
+disponibilità dell'intervento. Le pagine legali rinviano alle informative Green
+Flux esistenti e descrivono il funzionamento effettivo dei moduli.
 
-### Invio automatico opzionale
-
-L’endpoint Vercel è predisposto per [Resend](https://resend.com/docs/api-reference/emails/send-email).
-Prima di cambiare la modalità in `server`, configurare sul progetto Vercel:
-
-- `RESEND_API_KEY`: una chiave del servizio di invio.
-- `QUOTE_FROM_EMAIL`: un mittente su un dominio verificato in Resend.
-
-Il destinatario server è fissato a `info@green-flux.com`; il client non può
-modificarlo. Le credenziali non vanno inserite nei file pubblici o versionati.
-L’endpoint valida di nuovo i dati, applica controlli antispam di base e usa
-una chiave idempotente per evitare doppie email quando si ritenta l’invio.
-Il limite di frequenza in memoria vale per istanza: un limite globale richiede
-una regola Vercel dedicata. Nessuna richiesta di test è inviata a indirizzi reali.
-Il browser mostra conferma solo dopo l’accettazione del servizio email e, in caso
-di errore, conserva le risposte e propone i canali diretti.
-
-Per eseguire i controlli del catalogo, della validazione e dell’endpoint senza
-inviare messaggi reali: `node --test tests/preventivo.test.mjs`.
-
-Non inserire credenziali nei file versionati: `.env*` e `.vercel/` sono esclusi
-dal repository.
-
-## Ottimizzazione delle risorse
-
-La hero usa AVIF con fallback WebP e dimensioni responsive da 480 a 1.500 px.
-Le foto delle sezioni sono WebP da 400 o 750 px, caricate in modo differito.
-I font locali WOFF2 mantengono i pesi originali e il set di caratteri latino;
-nella build delle due pagine sono inclusi nell’HTML per evitare download aggiuntivi.
-Gli originali JPG/TTF
-e la licenza dei font restano disponibili per future esportazioni.
-
-La build incorpora CSS compresso e JavaScript raggruppato nell’HTML: la prima
-visualizzazione non attende fogli di stile esterni e il modulo non scarica
-una catena di dipendenze JavaScript. I sorgenti rimangono separati in `public`.
+Provenienza e inventario: `ASSET_SOURCES.md` e `docs/reference-import.json`.

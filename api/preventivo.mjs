@@ -1,4 +1,4 @@
-import { validateQuote, quoteText } from '../public/preventivo/data.mjs';
+import { validateQuote, quoteText, services } from '../public/preventivo/data.mjs';
 
 // Best-effort per-instance throttling. Use Vercel rate-limit rules for a global limit.
 const attempts = new Map();
@@ -23,7 +23,7 @@ export default async function handler(request, response) {
   try { if (typeof data === 'string') data = JSON.parse(data); }
   catch { return sendJson(response, 400, { message: 'La richiesta non è leggibile.' }); }
   if (!data || typeof data !== 'object' || Array.isArray(data) || JSON.stringify(data).length > 10000) return sendJson(response, 400, { message: 'La richiesta non è valida o è troppo lunga.' });
-  const arraysValid = ['services', 'spaces'].every(key => Array.isArray(data[key]) && data[key].length <= 16 && data[key].every(value => typeof value === 'string' && value.length <= 80));
+  const arraysValid = ['services', 'spaces'].every(key => Array.isArray(data[key]) && data[key].length <= services.length && data[key].every(value => typeof value === 'string' && value.length <= 80));
   const stringsValid = ['project', 'consumption', 'name', 'email', 'phone', 'city', 'notes'].every(key => typeof data[key] === 'string');
   if (!arraysValid || !stringsValid) return sendJson(response, 400, { message: 'Controlla i campi del modulo.' });
   if (data.website || !Number.isFinite(data.elapsed) || data.elapsed < 3000) return sendJson(response, 400, { message: 'Attendi qualche secondo e riprova. Se il problema continua, contattaci direttamente.' });

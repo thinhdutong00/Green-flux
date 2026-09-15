@@ -1,53 +1,20 @@
-import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
+import { cp, mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
+import { extname, relative, join } from 'node:path';
 import { build, transform } from 'esbuild';
 import { maintenanceEnabled, maintenancePage } from '../maintenance.mjs';
-
-const root = new URL('../', import.meta.url);
-const source = new URL('public/', root);
-const output = new URL('dist/', root);
-const pages = [
-  { path: 'index.html', script: 'script.js' },
-  { path: 'preventivo/index.html', script: 'preventivo/form.mjs' },
-];
-
-// Keep editable sources separate; publish self-contained pages without blocking
-// stylesheet requests or a chain of JavaScript module downloads.
-await rm(output, { recursive: true, force: true });
-await mkdir(output, { recursive: true });
-await cp(source, output, { recursive: true });
-
-for (const page of pages) {
-  let html = await readFile(new URL(page.path, source), 'utf8');
-  const stylesheets = [...html.matchAll(/<link rel="stylesheet" href="([^"]+)"\s*\/>/g)];
-  for (const [tag, href] of stylesheets) {
-    let css = await readFile(new URL(href.slice(1), source), 'utf8');
-    for (const [url, fontPath] of css.matchAll(/url\("(\/assets\/fonts\/[^\"]+\.woff2)"\)/g)) {
-      const font = await readFile(new URL(fontPath.slice(1), source));
-      css = css.replace(url, `url("data:font/woff2;base64,${font.toString('base64')}")`);
-    }
-    const result = await transform(css, {
-      loader: 'css', minify: true, target: ['chrome110', 'firefox115', 'safari16.4'],
-    });
-    html = html.replace(tag, `<style>${result.code}</style>`);
-  }
-  html = html.replace(/\s*<link rel="preload"[^>]+as="font"[^>]*\/>/g, '');
-  const result = await build({
-    entryPoints: [fileURLToPath(new URL(page.script, source))],
-    bundle: true, minify: true, write: false, platform: 'browser',
-    format: 'iife', target: 'es2022', legalComments: 'none',
-  });
-  html = html.replace(/\s*<script(?: type="module")? src="[^"]+"(?: defer)?><\/script>/g, '');
-  html = html.replace('</body>', `<script>${result.outputFiles[0].text}</script>\n</body>`);
-  await writeFile(new URL(page.path, output), html);
-  console.log(`Built ${page.path}`);
+const root=fileURLToPath(new URL('../',import.meta.url));const source=join(root,'public');const output=join(root,'dist');
+async function files(directory){const entries=await readdir(directory,{withFileTypes:true});const nested=await Promise.all(entries.map(e=>e.isDirectory()?files(join(directory,e.name)):[join(directory,e.name)]));return nested.flat();}
+await rm(output,{recursive:true,force:true});await mkdir(output,{recursive:true});await cp(source,output,{recursive:true});
+const all=await files(source);const pages=all.filter(f=>extname(f)==='.html');
+// Keep the reference's shared CSS and page structure; cache shared assets once.
+for(const file of all.filter(f=>extname(f)==='.css')){const result=await transform(await readFile(file,'utf8'),{loader:'css',minify:true,target:['chrome110','firefox115','safari16.4']});await writeFile(join(output,relative(source,file)),result.code);}
+for(const path of ['assets/js/site.js','assets/js/green-flux.mjs','preventivo/wizard.mjs']){
+ await build({entryPoints:[join(source,path)],outfile:join(output,path),bundle:true,minify:true,platform:'browser',format:'iife',target:'es2022',legalComments:'none'});
 }
-
-// Match the live maintenance screen in static previews as well. The editable
-// pages above remain intact and are restored by the next build when disabled.
-if (maintenanceEnabled) {
-  for (const path of [...pages.map(page => page.path), '404.html']) {
-    await writeFile(new URL(path, output), maintenancePage);
-  }
-  console.log('Maintenance enabled for all pages; Vercel middleware returns HTTP 503.');
-}
+if(maintenanceEnabled){for(const path of [...pages.map(p=>relative(source,p)),'404.html'])await writeFile(join(output,path),maintenancePage);}
+const origin='https://green-flux-nine.vercel.app';
+const routes=pages.filter(p=>p.endsWith('index.html')).map(p=>'/'+relative(source,p).replace(/index\.html$/,'').split('\\').join('/')).sort();
+const sitemap=`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${routes.map(route=>`  <url><loc>${origin}${route}</loc></url>`).join('\n')}\n</urlset>\n`;
+await writeFile(join(output,'sitemap.xml'),sitemap);await writeFile(join(source,'sitemap.xml'),sitemap);
+console.log(`Built ${pages.length} pages, ${routes.length} sitemap routes and shared assets.${maintenanceEnabled?' Maintenance enabled.':''}`);
