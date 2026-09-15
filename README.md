@@ -11,6 +11,12 @@ di 149 pagine: smart home, solare termico, biomassa, caldaie, ventilazione,
 trattamento acqua, impianti completi, progettazione, pratiche e permessi,
 diagnosi energetiche, detrazioni fiscali e formule assicurative.
 
+La homepage usa il design Green Flux precedente alla migrazione, con pompe di
+calore in apertura e nella scheda principale. Gli altri impianti hanno schede
+della stessa dimensione e tutti i 20 servizi restano raggiungibili. Le pagine
+interne conservano struttura e contenuti importati; il menu mobile mantiene il
+design Green Flux ripristinato.
+
 ## Anteprima che si aggiorna automaticamente
 
 ```sh
@@ -55,7 +61,8 @@ La manutenzione è **disattivata** in `maintenance.mjs`. Per attivarla, impostar
 
 ## Dove modificare
 
-- `public/index.html`: home e sezioni del riferimento.
+- `public/index.html`: homepage Green Flux con focus sulle pompe di calore.
+- `public/styles.css`, `public/script.js`: design e interazioni della sola home.
 - `public/servizi/`: catalogo e 20 pagine di servizio.
 - `public/chi-siamo/`, `public/metodo/`, `public/contatti/`, `public/progetti/`:
   pagine aziendali e percorsi collegati.

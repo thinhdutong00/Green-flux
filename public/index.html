@@ -1,539 +1,310 @@
 <!DOCTYPE html>
 
-<html lang="it"><head><meta charset="utf-8"/><title>Impianti fotovoltaici Veneto e Friuli | Green Flux</title><meta content="Impianti fotovoltaici, accumulo, pompe di calore e climatizzazione in Veneto e Friuli-VG. Analisi tecnica e preventivo Green Flux." name="description"/><meta content="Impianti fotovoltaici Veneto e Friuli | Green Flux" property="og:title"/><meta content="Impianti fotovoltaici, accumulo, pompe di calore e climatizzazione in Veneto e Friuli-VG. Analisi tecnica e preventivo Green Flux." property="og:description"/><meta content="website" property="og:type"/><meta content="https://green-flux-nine.vercel.app/" property="og:url"/><meta content="https://green-flux-nine.vercel.app/assets/venetagreen/editorial/home-0-d6212ff902-1600.webp" property="og:image"/><meta content="summary_large_image" name="twitter:card"/><meta content="Impianti fotovoltaici Veneto e Friuli | Green Flux" name="twitter:title"/><meta content="Impianti fotovoltaici, accumulo, pompe di calore e climatizzazione in Veneto e Friuli-VG. Analisi tecnica e preventivo Green Flux." name="twitter:description"/><meta content="https://green-flux-nine.vercel.app/assets/venetagreen/editorial/home-0-d6212ff902-1600.webp" name="twitter:image"/><meta content="width=device-width, initial-scale=1" name="viewport"/><link href="/assets/favicon.ico" rel="shortcut icon" type="image/x-icon"/><link href="/assets/favicon.ico" rel="icon" sizes="32x32" type="image/png"/><link href="/assets/favicon.ico" rel="apple-touch-icon" sizes="180x180"/><style>
-  .vg-cookie-banner,
-  .vg-cookie-trigger {
-    font-family: Arial, Helvetica, sans-serif;
-    letter-spacing: 0;
-  }
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="index, follow" name="robots"/>
+<meta content="#193e40" name="theme-color"/>
+<meta content="Pompe di calore progettate sulle esigenze della tua casa o attività. Green Flux segue analisi, progettazione e installazione, con soluzioni integrate per tutti i tuoi impianti." name="description"/>
+<title>Green Flux — Pompe di calore e impianti su misura</title>
+<link href="https://green-flux-nine.vercel.app/" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="it_IT" property="og:locale"/>
+<meta content="Green Flux" property="og:site_name"/>
+<meta content="Green Flux — Pompe di calore e impianti su misura" property="og:title"/>
+<meta content="Pompe di calore progettate sulle esigenze della tua casa o attività. Green Flux segue analisi, progettazione e installazione, con soluzioni integrate per tutti i tuoi impianti." property="og:description"/>
+<meta content="https://green-flux-nine.vercel.app/" property="og:url"/>
 
-  .vg-cookie-banner {
-    background: #fff;
-    border: 1px solid #d8e0d3;
-    border-radius: 8px;
-    bottom: 14px;
-    box-shadow: 0 18px 50px rgba(8, 24, 20, 0.18);
-    color: #17231f;
-    display: grid;
-    gap: 10px;
-    left: 14px;
-    max-height: calc(100dvh - 28px);
-    max-width: min(420px, calc(100vw - 28px));
-    overflow: auto;
-    padding: 14px;
-    position: fixed;
-    width: 420px;
-    z-index: 2147483000;
-  }
 
-  .vg-cookie-banner[hidden],
-  .vg-cookie-trigger[hidden],
-  .vg-cookie-preferences[hidden] {
-    display: none !important;
-  }
+<meta content="summary_large_image" name="twitter:card"/>
+<link href="/assets/favicon.ico" rel="icon"/>
+<link as="font" crossorigin="" href="/assets/fonts/plus-jakarta-sans-400.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="/assets/fonts/plus-jakarta-sans-600.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="/assets/fonts/plus-jakarta-sans-800.woff2" rel="preload" type="font/woff2"/>
 
-  .vg-cookie-copy {
-    display: grid;
-    gap: 6px;
-  }
+<link href="/styles.css" rel="stylesheet"/>
+<script defer="" src="/script.js"></script>
 
-  .vg-cookie-copy p,
-  .vg-cookie-title {
-    margin: 0;
-  }
-
-  .vg-cookie-title {
-    font-size: 15px;
-    font-weight: 800;
-    line-height: 1.2;
-  }
-
-  .vg-cookie-copy p:not(.vg-cookie-title) {
-    color: #43504b;
-    font-size: 12px;
-    line-height: 1.45;
-  }
-
-  .vg-cookie-copy a {
-    align-items: center;
-    color: #2f6f37;
-    display: inline-flex;
-    font-size: 12px;
-    font-weight: 700;
-    min-height: 34px;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-    width: fit-content;
-  }
-
-  .vg-cookie-actions {
-    display: grid;
-    gap: 8px;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .vg-cookie-button {
-    align-items: center;
-    border: 1px solid #cbd6c7;
-    border-radius: 6px;
-    cursor: pointer;
-    display: inline-flex;
-    font-size: 12px;
-    font-weight: 800;
-    justify-content: center;
-    line-height: 1.15;
-    min-height: 42px;
-    min-width: 44px;
-    padding: 8px 10px;
-    text-align: center;
-    white-space: normal;
-  }
-
-  .vg-cookie-button:focus-visible,
-  .vg-cookie-trigger:focus-visible,
-  .vg-cookie-toggle input:focus-visible {
-    outline: 3px solid rgba(91, 154, 57, 0.36);
-    outline-offset: 2px;
-  }
-
-  .vg-cookie-button-ghost {
-    background: #f8fbf6;
-    color: #25362f;
-  }
-
-  .vg-cookie-button-primary {
-    background: #3f7924;
-    border-color: #3f7924;
-    color: #fff;
-  }
-
-  .vg-cookie-preferences {
-    border-top: 1px solid #e6ece2;
-    display: grid;
-    gap: 8px;
-    padding-top: 10px;
-  }
-
-  .vg-cookie-toggle {
-    align-items: center;
-    border: 1px solid #edf1ea;
-    border-radius: 6px;
-    display: grid;
-    gap: 10px;
-    grid-template-columns: 18px 1fr;
-    margin: 0;
-    padding: 9px 10px;
-  }
-
-  .vg-cookie-toggle input {
-    accent-color: #5b9a39;
-    height: 18px;
-    margin: 0;
-    width: 18px;
-  }
-
-  .vg-cookie-toggle span {
-    display: grid;
-    gap: 2px;
-  }
-
-  .vg-cookie-toggle strong {
-    color: #17231f;
-    font-size: 12px;
-    line-height: 1.2;
-  }
-
-  .vg-cookie-toggle small {
-    color: #5c6964;
-    font-size: 11px;
-    font-weight: 400;
-    line-height: 1.25;
-  }
-
-  .vg-cookie-trigger {
-    background: #17231f;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 50%;
-    bottom: 12px;
-    box-shadow: 0 10px 30px rgba(8, 24, 20, 0.2);
-    color: #fff;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: 48px;
-    left: 12px;
-    min-height: 48px;
-    min-width: 48px;
-    padding: 0;
-    position: fixed;
-    width: 48px;
-    z-index: 2147482999;
-  }
-
-  .vg-cookie-trigger-icon {
-    display: block;
-    fill: currentColor;
-    height: 24px;
-    width: 24px;
-  }
-
-  @media screen and (max-width: 420px) {
-    .vg-cookie-banner {
-      bottom: 10px;
-      left: 10px;
-      max-width: calc(100vw - 20px);
-      padding: 12px;
-      width: calc(100vw - 20px);
-    }
-
-    .vg-cookie-actions {
-      gap: 6px;
-    }
-
-    .vg-cookie-button {
-      font-size: 11px;
-      padding-left: 7px;
-      padding-right: 7px;
-    }
-  }
-</style><link href="/assets/css/site.css" rel="stylesheet"/><style>.service-card > img.service-card-icon {
-  display: block;
-  flex: 0 0 250px;
-  width: 250px !important;
-  height: 250px !important;
-  max-width: 46%;
-  object-fit: contain !important;
-  object-position: center !important;
-}
-
-@media screen and (max-width: 991px) {
-  .service-card > img.service-card-icon {
-    flex-basis: 230px;
-    width: 230px !important;
-    height: 230px !important;
-    max-width: 42%;
-  }
-}
-
-@media screen and (max-width: 479px) {
-  .service-card > img.service-card-icon {
-    flex: 0 0 auto;
-    width: 190px !important;
-    height: 190px !important;
-    max-width: 100%;
-    align-self: flex-start;
-  }
-}
-</style><style>
-  .lead-honeypot {
-    height: 1px !important;
-    left: -10000px !important;
-    overflow: hidden !important;
-    position: absolute !important;
-    top: auto !important;
-    width: 1px !important;
-  }
-</style><link href="https://green-flux-nine.vercel.app/" rel="canonical"/><meta content="index, follow, max-image-preview:large" name="robots"/><meta content="it_IT" property="og:locale"/><meta content="Green Flux" property="og:site_name"/><link as="image" fetchpriority="high" href="/assets/venetagreen/editorial/home-0-d6212ff902-1600.webp" imagesizes="100vw" imagesrcset="/assets/venetagreen/editorial/home-0-d6212ff902-480.webp 480w, /assets/venetagreen/editorial/home-0-d6212ff902-960.webp 960w, /assets/venetagreen/editorial/home-0-d6212ff902-1600.webp 1600w" rel="preload"/><meta content="Immagine illustrativa: abitazione con pannelli fotovoltaici su un tetto in coppi" property="og:image:alt"/><meta content="1600" property="og:image:width"/><meta content="900" property="og:image:height"/><meta content="Immagine illustrativa: abitazione con pannelli fotovoltaici su un tetto in coppi" name="twitter:image:alt"/><link href="/assets/css/green-flux.css" rel="stylesheet"/><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://green-flux-nine.vercel.app/#organization", "name": "Green Flux", "legalName": "GREEN FLUX srls", "url": "https://green-flux-nine.vercel.app/", "logo": "https://green-flux-nine.vercel.app/assets/logo.png", "telephone": "+39 375 552 1420", "email": "info@green-flux.com", "address": {"@type": "PostalAddress", "streetAddress": "Via Trieste, 19", "postalCode": "35121", "addressLocality": "Padova", "addressCountry": "IT"}}, {"@type": "WebPage", "@id": "https://green-flux-nine.vercel.app/", "url": "https://green-flux-nine.vercel.app/", "name": "Impianti fotovoltaici Veneto e Friuli | Green Flux", "inLanguage": "it-IT"}]}</script></head><body class=""><a class="vg-skip-link" href="#contenuto">Vai al contenuto</a><main id="contenuto"><section class="section"><div aria-hidden="true" class="bg-shape" style="pointer-events:none"></div><section class="header-secondary"><section class="header"><div class="vg-layout-blockcontainer container vg-container"><div class="navbar-black vg-nav" role="banner"><div class="vg-layout-blockcontainer container vg-container"><div class="header-content"><div class="logo-sub-button"><a aria-current="page" class="brand-logo vg-nav-brand vg-state-current" href="/"><img alt="Green Flux — impianti tecnologici" class="original-logo-white vg-variant-0ca61bb5-b53c-ef16-5437-73cb5171c657" decoding="async" height="74" loading="eager" src="/assets/logo.png" width="180"/><img alt="Green Flux — impianti tecnologici" class="original-logo-black vg-variant-0ca61bb5-b53c-ef16-5437-73cb5171c657" decoding="async" height="74" loading="eager" src="/assets/logo.png" width="180"/></a></div><nav class="nav-menu vg-variant-0ca61bb5-b53c-ef16-5437-73cb5171c657 vg-nav-menu" role="navigation"><a class="nav-link vg-variant-0ca61bb5-b53c-ef16-5437-73cb5171c657 header vg-nav-link" href="/chi-siamo/">Chi siamo</a><a class="nav-link vg-variant-0ca61bb5-b53c-ef16-5437-73cb5171c657 header vg-nav-link" href="/servizi/">Servizi</a><a class="nav-link vg-variant-0ca61bb5-b53c-ef16-5437-73cb5171c657 header vg-nav-link" href="/progetti/">Realizzazioni</a><a class="nav-link vg-variant-0ca61bb5-b53c-ef16-5437-73cb5171c657 header vg-nav-link" href="/zone/">Zone</a><a class="nav-link vg-variant-0ca61bb5-b53c-ef16-5437-73cb5171c657 header vg-nav-link" href="/blog/">Blog</a><a class="nav-link vg-variant-0ca61bb5-b53c-ef16-5437-73cb5171c657 header vg-nav-link" href="/contatti/">Contatti</a></nav><div class="header-button"><div class="button-wrap"><a class="button-primary vg-inline-block" href="/preventivo/"><div class="secondary-button-area"><p class="primary-button-text">RICHIEDI PREVENTIVO</p><div class="button-arrow-right-icon"><img alt="" aria-hidden="true" class="arrow-right-icon" height="24" loading="lazy" src="/assets/ui/asset-001.svg" width="24"/><img alt="" aria-hidden="true" class="arrow-right-icon hover" height="24" loading="lazy" src="/assets/ui/asset-001.svg" width="24"/></div></div></a></div><div aria-label="Apri menu" class="menu-button vg-nav-button" role="button" tabindex="0"><div class="hamburger-icon vg-variant-0ca61bb5-b53c-ef16-5437-73cb5171c657"></div></div></div></div></div></div></div></section></section><section class="hero-section lp" style=" background-position:center; background-size:cover; background-image:none"><picture aria-hidden="true" class="hero-bg-picture" style="pointer-events:none"><source media="(min-width: 768px)" sizes="100vw" srcset="/assets/venetagreen/editorial/home-0-d6212ff902-480.webp 480w, /assets/venetagreen/editorial/home-0-d6212ff902-960.webp 960w, /assets/venetagreen/editorial/home-0-d6212ff902-1600.webp 1600w" type="image/webp"/><img alt="" aria-hidden="true" class="hero-bg-image" data-image-id="home-0" data-image-kind="editorial" decoding="async" fetchpriority="high" height="900" loading="eager" sizes="100vw" src="/assets/venetagreen/editorial/home-0-d6212ff902-1600.webp" srcset="/assets/venetagreen/editorial/home-0-d6212ff902-480.webp 480w, /assets/venetagreen/editorial/home-0-d6212ff902-960.webp 960w, /assets/venetagreen/editorial/home-0-d6212ff902-1600.webp 1600w" style="pointer-events:none" width="1600"/></picture><div aria-hidden="true" class="hero-bg-overlay" style="pointer-events:none"></div><div class="vg-layout-blockcontainer container vg-container"><div class="content-wrapper"><div class="hero-content-area" style="position:relative; z-index:20"><h1 class="heading-1 text-neutral-01">Impianti fotovoltaici in Veneto e Friuli-Venezia Giulia</h1><div class="hero-text-button" style="position:relative; z-index:20"><p class="body-text-18 text-neutral-01">Progettiamo soluzioni energetiche su consumi reali: fotovoltaico, accumulo, pompe di calore e comfort per case e aziende.</p><div class="hero-buttons" style="position:relative; z-index:20"><a class="button-primary vg-inline-block" href="/preventivo/" style="position:relative; z-index:20; pointer-events:auto"><div class="secondary-button-area"><p class="primary-button-text">RICHIEDI PREVENTIVO</p><div class="button-arrow-right-icon"><img alt="" aria-hidden="true" class="arrow-right-icon" height="24" loading="lazy" src="/assets/ui/asset-002.svg" width="24"/><img alt="" aria-hidden="true" class="arrow-right-icon hover" height="24" loading="lazy" src="/assets/ui/asset-002.svg" width="24"/></div></div></a></div></div></div></div></div></section></section><section class="feature-section"><div class="vg-layout-blockcontainer container vg-container"><div class="feature-card-wrapper"><div class="feature-card"><div class="icon-wrapper"><img alt="" aria-hidden="true" class="icon" height="21" loading="lazy" src="/assets/ui/asset-003.svg" width="21"/></div><div class="feature-text"><p class="body-text-20 semibold">Progetto su misura</p><p class="body-text-14 text-neutral-03">Ogni soluzione nasce da consumi, spazi disponibili e obiettivi misurabili.</p></div></div><div class="feature-card"><div class="icon-wrapper"><img alt="" aria-hidden="true" class="icon" height="21" loading="lazy" src="/assets/ui/asset-004.svg" width="21"/></div><div class="feature-text"><p class="body-text-20 semibold">Metodo tecnico</p><p class="body-text-14 text-neutral-03">Consulenza, sopralluogo, progetto, pratiche, installazione e assistenza in un unico percorso.</p></div></div><div class="feature-card"><div class="icon-wrapper"><img alt="" aria-hidden="true" class="icon" height="21" loading="lazy" src="/assets/ui/asset-005.svg" width="21"/></div><div class="feature-text"><p class="body-text-20 semibold">Assistenza nel tempo</p><p class="body-text-14 text-neutral-03">Un referente tecnico per fotovoltaico, accumulo, pompe di calore e manutenzione programmata.</p></div></div></div></div></section><section class="case-study-section"><div class="vg-layout-blockcontainer container vg-container"><div class="content-wrapper hero-lp"><div class="case-study-image-wrapper"><img alt="Immagine illustrativa: abitazione con pannelli fotovoltaici su un tetto in coppi" class="case-study-image" data-image-id="home-1" data-image-kind="editorial" decoding="async" height="900" loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 1100px) 90vw, 900px" src="/assets/venetagreen/editorial/home-1-7e85e31462-1600.webp" srcset="/assets/venetagreen/editorial/home-1-7e85e31462-480.webp 480w, /assets/venetagreen/editorial/home-1-7e85e31462-960.webp 960w, /assets/venetagreen/editorial/home-1-7e85e31462-1600.webp 1600w" style="object-fit:cover; object-position:center; aspect-ratio:606/657" width="1600"/><img alt="" aria-hidden="true" class="shape-image" height="260" loading="lazy" src="/assets/ui/asset-006.svg" width="260"/></div><div class="case-study-content-wrapper"><div class="title-top"><h2>Impianti fotovoltaici progettati in Veneto e Friuli</h2><p class="body-text-16">Green Flux aiuta famiglie e aziende a ridurre sprechi e costi energetici con fotovoltaico, pompe di calore, batterie di accumulo e interventi di efficienza integrati.</p></div><div class="text-button"><div class="text-wrapper"><div class="text-wrap"><p class="body-text-20 semibold">Case, aziende e immobili produttivi</p><p class="body-text-16 text-neutral-03">Progetti tecnici per abitazioni, condomini, imprese e coperture produttive.</p></div><div class="text-wrap"><p class="body-text-20 semibold">Energia, comfort e continuità</p><p class="body-text-16 text-neutral-03">Impianti integrati con accumulo, climatizzazione e riqualificazione dell'edificio.</p></div></div><a class="button-primary vg-variant-9eeab034-5cca-e7aa-4218-f2bf93e21760 vg-inline-block" href="/chi-siamo/"><div class="secondary-button-area"><p class="primary-button-text">APPROFONDISCI</p><div class="button-arrow-right-icon vg-variant-9eeab034-5cca-e7aa-4218-f2bf93e21760"><img alt="" aria-hidden="true" class="arrow-right-icon" height="24" loading="lazy" src="/assets/ui/asset-007.svg" width="24"/><img alt="" aria-hidden="true" class="arrow-right-icon hover" height="24" loading="lazy" src="/assets/ui/asset-007.svg" width="24"/></div></div></a></div></div></div></div></section><section class="service-section section-padding bg-neutral-02"><div class="vg-layout-blockcontainer container vg-container"><div class="content-wrapper service"><div class="service-section-title"><h2 class="heading-h2-black">Soluzioni energetiche per ridurre consumi e sprechi</h2></div><div class="service-card-wrapper"><div class="single-service-card"><div class="service-icon-wrapper"><img alt="" aria-hidden="true" class="icon" height="36" loading="lazy" src="/assets/ui/asset-008.svg" width="36"/></div><div class="service-content"><div class="service-title"><h3 class="heading-4">Fotovoltaico</h3><p class="body-text-16 text-neutral-03">Progettiamo impianti su misura per case, aziende e condomini, partendo da consumi reali, spazi disponibili, orientamento del tetto e obiettivi di risparmio.</p></div><a class="button-primary vg-variant-9eeab034-5cca-e7aa-4218-f2bf93e21760 vg-inline-block" href="/servizi/fotovoltaico-residenziale/"><div class="secondary-button-area"><p class="primary-button-text">APPROFONDISCI</p><div class="button-arrow-right-icon vg-variant-9eeab034-5cca-e7aa-4218-f2bf93e21760"><img alt="" aria-hidden="true" class="arrow-right-icon" height="24" loading="lazy" src="/assets/ui/asset-007.svg" width="24"/><img alt="" aria-hidden="true" class="arrow-right-icon hover" height="24" loading="lazy" src="/assets/ui/asset-007.svg" width="24"/></div></div></a></div></div><div class="single-service-card"><div class="service-icon-wrapper"><img alt="" aria-hidden="true" class="icon" height="36" loading="lazy" src="/assets/ui/asset-009.svg" width="36"/></div><div class="service-content"><div class="service-title"><h3 class="heading-4">Efficienza energetica</h3><p class="body-text-16 text-neutral-03">Coordiniamo pompe di calore, climatizzazione, batterie e interventi edilizi per migliorare comfort, consumi e valore dell'immobile.</p></div><a class="button-primary vg-variant-9eeab034-5cca-e7aa-4218-f2bf93e21760 vg-inline-block" href="/servizi/"><div class="secondary-button-area"><p class="primary-button-text">APPROFONDISCI</p><div class="button-arrow-right-icon vg-variant-9eeab034-5cca-e7aa-4218-f2bf93e21760"><img alt="" aria-hidden="true" class="arrow-right-icon" height="24" loading="lazy" src="/assets/ui/asset-007.svg" width="24"/><img alt="" aria-hidden="true" class="arrow-right-icon hover" height="24" loading="lazy" src="/assets/ui/asset-007.svg" width="24"/></div></div></a></div></div><div class="single-service-card"><div class="service-icon-wrapper"><img alt="" aria-hidden="true" class="icon" height="36" loading="lazy" src="/assets/ui/asset-010.svg" width="36"/></div><div class="service-content"><div class="service-title"><h3 class="heading-4">Consulenza e assistenza</h3><p class="body-text-16 text-neutral-03">Seguiamo analisi energetica, pratiche, installazione, collaudo e manutenzione programmata, con un referente tecnico prima e dopo ogni intervento.</p></div><a class="button-primary vg-variant-9eeab034-5cca-e7aa-4218-f2bf93e21760 vg-inline-block" href="/servizi/consulenza/"><div class="secondary-button-area"><p class="primary-button-text">APPROFONDISCI</p><div class="button-arrow-right-icon vg-variant-9eeab034-5cca-e7aa-4218-f2bf93e21760"><img alt="" aria-hidden="true" class="arrow-right-icon" height="24" loading="lazy" src="/assets/ui/asset-007.svg" width="24"/><img alt="" aria-hidden="true" class="arrow-right-icon hover" height="24" loading="lazy" src="/assets/ui/asset-007.svg" width="24"/></div></div></a></div></div></div></div></div></section><section class="about-section section-padding"><div class="vg-layout-blockcontainer container vg-container"><div class="content-wrapper hero-lp"><div class="about-content-wrapper"><div class="title-top"><h2>Energia solare progettata per lavorare ogni giorno.</h2><p class="body-text-16">Con un processo tecnico completo, Green Flux trasforma consumi, esposizione e spazi disponibili in soluzioni solari efficienti, integrate e facili da gestire nel tempo.</p></div><div class="text-button"><a class="button-primary vg-variant-9eeab034-5cca-e7aa-4218-f2bf93e21760 vg-inline-block" href="/metodo/"><div class="secondary-button-area"><p class="primary-button-text">VEDI IL METODO</p><div class="button-arrow-right-icon vg-variant-9eeab034-5cca-e7aa-4218-f2bf93e21760"><img alt="" aria-hidden="true" class="arrow-right-icon" height="24" loading="lazy" src="/assets/ui/asset-007.svg" width="24"/><img alt="" aria-hidden="true" class="arrow-right-icon hover" height="24" loading="lazy" src="/assets/ui/asset-007.svg" width="24"/></div></div></a></div></div><div class="about-image-wrapper"><img alt="Immagine illustrativa: abitazione con pannelli fotovoltaici su un tetto in coppi" class="about-image" data-image-id="home-2" data-image-kind="editorial" decoding="async" height="900" loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 1100px) 90vw, 900px" src="/assets/venetagreen/editorial/home-2-409bfa7401-1600.webp" srcset="/assets/venetagreen/editorial/home-2-409bfa7401-480.webp 480w, /assets/venetagreen/editorial/home-2-409bfa7401-960.webp 960w, /assets/venetagreen/editorial/home-2-409bfa7401-1600.webp 1600w" style="object-fit:cover; object-position:center; aspect-ratio:590/580" width="1600"/><img alt="" aria-hidden="true" class="shape-image-left" height="260" loading="lazy" src="/assets/ui/asset-006.svg" width="260"/><div class="counter-card-wrapper"><div class="single-counter"><p class="heading-2">15+</p><p class="body-text-16">Anni di esperienza dei tecnici</p></div><div class="single-counter"><p class="heading-2">01</p><p class="body-text-16">Unico interlocutore</p></div></div></div></div></div></section><section class="project-section" style="background-image:linear-gradient(180deg,rgba(0,0,0,.2),rgba(0,0,0,.55)),url(/assets/venetagreen/generated/slots/home-process-bg.webp); background-position:center; background-size:cover"><div class="vg-layout-blockcontainer container project vg-container"><div class="content-wrapper project"><div class="project-card-01"><div class="number"><p class="heading-2 text-neutral-01">01</p><div class="project-line"></div></div><div class="project-text"><p class="body-text-20 semibold text-neutral-01">Consulenza</p><p class="body-text-16 text-neutral-02 opacity-70">Analisi consumi, obiettivi energetici e condizioni dell'immobile.</p></div></div><div class="project-card-01"><div class="number"><p class="heading-2 text-neutral-01">02</p><div class="project-line"></div></div><div class="project-text"><p class="body-text-20 semibold text-neutral-01">Progettazione</p><p class="body-text-16 text-neutral-02 opacity-70">Dimensionamento di impianto, accumulo e servizi di efficienza collegati.</p></div></div><div class="project-card-01"><div class="number"><p class="heading-2 text-neutral-01">03</p><img alt="" aria-hidden="true" class="project-arrow-icon" height="22" loading="lazy" src="/assets/ui/asset-011.png" width="273"/></div><div class="project-text"><p class="body-text-20 semibold text-neutral-01">Installazione</p><p class="body-text-16 text-neutral-02 opacity-70">Cantiere coordinato, pratiche, collaudo e assistenza successiva.</p></div></div></div></div></section><section class="features-section section-padding"><div class="vg-layout-blockcontainer container vg-container"><div class="content-wrapper features-lp"><div class="features-image-card"><img alt="Immagine illustrativa: tecnico che consulta un tablet durante un sopralluogo energetico" class="about-image" data-image-id="home-3" data-image-kind="editorial" decoding="async" height="900" loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 1100px) 90vw, 900px" src="/assets/venetagreen/editorial/home-3-f67ca51bdd-1600.webp" srcset="/assets/venetagreen/editorial/home-3-f67ca51bdd-480.webp 480w, /assets/venetagreen/editorial/home-3-f67ca51bdd-960.webp 960w, /assets/venetagreen/editorial/home-3-f67ca51bdd-1600.webp 1600w" style="object-fit:cover; object-position:center; aspect-ratio:590/580" width="1600"/><img alt="" aria-hidden="true" class="shape-image" height="260" loading="lazy" src="/assets/ui/asset-006.svg" width="260"/><div class="features-card-wrapper"><div class="features-icon-box"><img alt="" aria-hidden="true" class="icon" height="32" loading="lazy" src="/assets/ui/asset-012.svg" width="32"/><p class="body-text-16 medium">Sopralluogo tecnico</p></div><div class="features-icon-box"><img alt="" aria-hidden="true" class="icon" height="32" loading="lazy" src="/assets/ui/asset-013.svg" width="32"/><p class="body-text-16 medium">Installatori qualificati</p></div><div class="features-icon-box"><img alt="" aria-hidden="true" class="icon" height="32" loading="lazy" src="/assets/ui/asset-014.svg" width="32"/><p class="body-text-16 medium">Consulenza e assistenza continua</p></div></div></div><div class="about-content-wrapper"><div class="title-top"><h2>Il metodo Green Flux, in pratica.</h2><p class="body-text-16">Ogni progetto nasce da dati, sopralluogo e obiettivi chiari: meno sprechi, più autonomia energetica e consumi più leggibili nel tempo.</p></div><div class="text-button"><a class="button-primary vg-variant-9eeab034-5cca-e7aa-4218-f2bf93e21760 vg-inline-block" href="/servizi/"><div class="secondary-button-area"><p class="primary-button-text">APPROFONDISCI</p><div class="button-arrow-right-icon vg-variant-9eeab034-5cca-e7aa-4218-f2bf93e21760"><img alt="" aria-hidden="true" class="arrow-right-icon" height="24" loading="lazy" src="/assets/ui/asset-007.svg" width="24"/><img alt="" aria-hidden="true" class="arrow-right-icon hover" height="24" loading="lazy" src="/assets/ui/asset-007.svg" width="24"/></div></div></a></div></div></div></div></section><section class="testimonial-section section-padding bg-neutral-02 venetagreen-trust" style="overflow:hidden"><style>
-  .venetagreen-trust,
-  .venetagreen-trust .vg-layout-blockcontainer,
-  .venetagreen-trust .content-wrapper.testimonial {
-    overflow: visible !important;
-  }
-  .venetagreen-trust {
-    max-width: none !important;
-    width: 100% !important;
-  }
-  .venetagreen-trust .content-wrapper.testimonial {
-    width: 100% !important;
-  }
-  .venetagreen-trust .testimonial-card-wrapper {
-    left: 50%;
-    margin-left: -50vw !important;
-    margin-right: -50vw !important;
-    max-width: 100vw !important;
-    overflow: hidden;
-    position: relative;
-    width: 100vw !important;
-  }
-  .venetagreen-trust .testimonial-slider,
-  .venetagreen-trust .testimonial-mask {
-    width: 100% !important;
-    height: auto !important;
-  }
-  .venetagreen-trust .testimonial-slider {
-    background-color: transparent !important;
-    overflow: hidden !important;
-  }
-  .venetagreen-trust .testimonial-mask {
-    display: block !important;
-    overflow: hidden !important;
-    white-space: nowrap !important;
-  }
-  .venetagreen-trust .vg-review-marquee-track {
-    align-items: stretch;
-    animation: vgReviewMarquee 72s linear infinite !important;
-    display: flex;
-    width: max-content;
-    will-change: transform;
-  }
-  .venetagreen-trust .vg-review-marquee-group {
-    align-items: stretch;
-    display: flex;
-    flex: 0 0 auto;
-    gap: 24px;
-    padding-right: 24px;
-  }
-  .venetagreen-trust .vg-slide {
-    display: flex !important;
-    flex: 0 0 min(460px, calc(100vw - 48px));
-    height: auto !important;
-    margin: 0 !important;
-    max-width: none !important;
-    transform: none !important;
-    visibility: visible !important;
-    white-space: normal !important;
-    width: min(460px, calc(100vw - 48px)) !important;
-  }
-  .venetagreen-trust .single-testimonial-card {
-    height: 100%;
-    justify-content: space-between;
-    min-height: 340px;
-    width: 100%;
-  }
-  .venetagreen-trust .left-arrow,
-  .venetagreen-trust .right-arrow,
-  .venetagreen-trust .slide-nav {
-    display: none !important;
-  }
-  .venetagreen-trust .vg-review-avatar {
-    align-items: center;
-    border-radius: 999px;
-    color: #fff;
-    display: flex;
-    flex: 0 0 68px;
-    font-family: Poppins, Arial, sans-serif;
-    font-size: 24px;
-    font-weight: 600;
-    height: 68px;
-    justify-content: center;
-    line-height: 1;
-    overflow: hidden;
-    width: 68px;
-  }
-  .venetagreen-trust .vg-review-avatar-image {
-    border-radius: inherit;
-    display: block !important;
-    height: 100% !important;
-    max-width: none !important;
-    object-fit: cover;
-    width: 100% !important;
-  }
-  .venetagreen-trust .vg-review-avatar.orange { background: #f57c00; }
-  .venetagreen-trust .vg-review-avatar.green { background: #2f6b3f; }
-  .venetagreen-trust .vg-review-avatar.teal { background: #00796b; }
-  .venetagreen-trust .vg-review-avatar.blue { background: #315e8d; }
-  .venetagreen-trust .vg-review-avatar.purple { background: #7e57c2; }
-  .venetagreen-trust .vg-review-text {
-    white-space: pre-line;
-  }
-  @keyframes vgReviewMarquee {
-    from {
-      transform: translate3d(0, 0, 0);
-    }
-    to {
-      transform: translate3d(-50%, 0, 0);
-    }
-  }
-  @media screen and (max-width: 767px) {
-    .venetagreen-trust .vg-review-marquee-track {
-      animation-duration: 84s !important;
-    }
-    .venetagreen-trust .vg-review-marquee-group {
-      gap: 16px;
-      padding-right: 16px;
-    }
-    .venetagreen-trust .vg-slide {
-      flex-basis: min(340px, calc(100vw - 40px));
-      width: min(340px, calc(100vw - 40px)) !important;
-    }
-    .venetagreen-trust .single-testimonial-card {
-      min-height: 370px;
-    }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .venetagreen-trust .testimonial-mask {
-      overflow-x: auto !important;
-    }
-    .venetagreen-trust .vg-review-marquee-track {
-      animation: none !important;
-      transform: none !important;
-    }
-  }
-</style><div class="vg-layout-blockcontainer container vg-container"><div class="content-wrapper testimonial"><div class="section-title"><h2 class="heading-h2-black">Il valore di un progetto seguito bene</h2><p class="body-text-16-center">Competenze e servizi Green Flux, dall’analisi iniziale alla realizzazione.</p></div><div class="testimonial-card-wrapper"><div class="testimonial-slider vg-slider"><div class="testimonial-mask vg-slider-mask">
-<div class="vg-review-marquee-track">
-<div class="vg-review-marquee-group"><div class="slider-1 vg-slide">
-<div class="single-testimonial-card">
-<div class="client-details">
-<div aria-hidden="true" class="vg-review-avatar blue">01</div>
-<div class="client-information">
-<p class="body-text-20 semibold">Progettazione su misura</p>
-<p class="body-text-16 text-neutral-03">Il punto di partenza</p>
+<meta content="https://green-flux-nine.vercel.app/assets/venetagreen/editorial/home-0-d6212ff902-1600.webp" property="og:image"/><meta content="https://green-flux-nine.vercel.app/assets/venetagreen/editorial/home-0-d6212ff902-1600.webp" name="twitter:image"/><meta content="Immagine illustrativa: abitazione con pannelli fotovoltaici su un tetto in coppi" property="og:image:alt"/><meta content="1600" property="og:image:width"/><meta content="900" property="og:image:height"/><meta content="Immagine illustrativa: abitazione con pannelli fotovoltaici su un tetto in coppi" name="twitter:image:alt"/><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://green-flux-nine.vercel.app/#organization", "name": "Green Flux", "legalName": "GREEN FLUX srls", "url": "https://green-flux-nine.vercel.app/", "logo": "https://green-flux-nine.vercel.app/assets/logo.png", "telephone": "+39 375 552 1420", "email": "info@green-flux.com", "address": {"@type": "PostalAddress", "streetAddress": "Via Trieste, 19", "postalCode": "35121", "addressLocality": "Padova", "addressCountry": "IT"}}, {"@type": "WebPage", "@id": "https://green-flux-nine.vercel.app/", "url": "https://green-flux-nine.vercel.app/", "name": "Green Flux — Pompe di calore e impianti su misura", "inLanguage": "it-IT"}]}</script><link as="image" fetchpriority="high" href="/assets/venetagreen/editorial/servizi-pompe-calore-0-f5ed3643c6-1600.webp" imagesizes="100vw" imagesrcset="/assets/venetagreen/editorial/servizi-pompe-calore-0-f5ed3643c6-480.webp 480w, /assets/venetagreen/editorial/servizi-pompe-calore-0-f5ed3643c6-960.webp 960w, /assets/venetagreen/editorial/servizi-pompe-calore-0-f5ed3643c6-1600.webp 1600w" rel="preload" type="image/webp"/></head>
+<body class="home-pompe-calore" id="home">
+<a class="skip-link" href="#main">Passa al contenuto</a>
+<header class="site-header">
+<a aria-label="Green Flux — Home" class="brand" href="#home"><img alt="Green Flux, impianti tecnologici" height="232" src="/assets/logo.png" width="500"/></a>
+<nav aria-label="Navigazione principale" class="site-nav" id="site-navigation">
+<a href="/chi-siamo/">Chi siamo</a>
+<div class="services-nav-item" data-desktop-menu="" id="fields-nav-item">
+<a class="services-nav-fallback" href="/servizi/">Campi di intervento</a>
+<button aria-controls="desktop-fields-menu" aria-expanded="false" class="services-nav-trigger" id="fields-nav-trigger" type="button">Campi di intervento <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 16 16"><path d="m4 6 4 4 4-4"></path></svg></button>
+<div class="services-menu" id="desktop-fields-menu" inert="">
+<div class="services-menu-grid"><a class="services-menu-card" href="/servizi/fotovoltaico-residenziale/"><span aria-hidden="true" class="services-menu-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 10h16l2 10H2l2-10ZM8 10 7 20M16 10l1 10M3 15h18M12 2v2M5 4l2 2M19 4l-2 2"></path><path d="M9 8a3 3 0 0 1 6 0"></path></svg></span><span class="services-menu-label">Fotovoltaico</span></a><a class="services-menu-card" href="/servizi/pompe-calore/"><span aria-hidden="true" class="services-menu-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><rect height="14" rx="2" width="20" x="2" y="5"></rect><circle cx="9" cy="12" r="4"></circle><path d="M9 8v8M5 12h8M17 9h2M17 12h2M17 15h2M5 19v2M19 19v2"></path></svg></span><span class="services-menu-label">Pompe di calore</span></a><a class="services-menu-card" href="/servizi/smart-home/"><span aria-hidden="true" class="services-menu-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="m3 11 9-8 9 8M5 10v11h14V10M9 14a5 5 0 0 1 6 0M10.5 16.5a2.5 2.5 0 0 1 3 0"></path><circle cx="12" cy="19" r=".5"></circle></svg></span><span class="services-menu-label">Smart home e automazioni</span></a><a class="services-menu-card" href="/servizi/solare-termico/"><span aria-hidden="true" class="services-menu-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="7" cy="6" r="3"></circle><path d="M7 1v1M1 6h2M11 2l-1 1M12 6h1M7 10v1M2 2l1 1"></path><rect height="16" rx="3" width="6" x="15" y="4"></rect><path d="M18 7v9M17 17h2M3 15h9v6H3zM6 15v6M9 15v6M12 18h3"></path></svg></span><span class="services-menu-label">Solare termico</span></a><a class="services-menu-card" href="/servizi/biomassa/"><span aria-hidden="true" class="services-menu-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 3c1 4-3 5-3 8 0 1 1 2 2 2 0-2 2-3 3-4 1 3 4 5 4 8a6 6 0 0 1-12 0c0-5 3-7 6-14Z"></path></svg></span><span class="services-menu-label">Biomassa</span></a><a class="services-menu-card" href="/servizi/caldaie/"><span aria-hidden="true" class="services-menu-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><rect height="18" rx="2" width="14" x="5" y="2"></rect><circle cx="12" cy="7" r="2"></circle><path d="M9 13h6M9 16h6M9 20v2M15 20v2"></path></svg></span><span class="services-menu-label">Caldaie</span></a><a class="services-menu-card" href="/servizi/climatizzazione/"><span aria-hidden="true" class="services-menu-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><rect height="9" rx="2" width="20" x="2" y="4"></rect><path d="M5 10h14M17 7h2M7 16v2c0 2-2 2-2 4M12 16v5M17 16v2c0 2 2 2 2 4"></path></svg></span><span class="services-menu-label">Condizionatori</span></a><a class="services-menu-card" href="/servizi/ventilazione/"><span aria-hidden="true" class="services-menu-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><rect height="18" rx="3" width="18" x="3" y="3"></rect><circle cx="12" cy="12" r="2"></circle><path d="M12 10c-5-5 4-7 2-1M14 12c5-5 7 4 1 2M12 14c5 5-4 7-2 1M10 12c-5 5-7-4-1-2"></path></svg></span><span class="services-menu-label">Ventilazione meccanica</span></a><a class="services-menu-card" href="/servizi/trattamento-acqua/"><span aria-hidden="true" class="services-menu-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2S5 10 5 15a7 7 0 0 0 14 0c0-5-7-13-7-13Z"></path><path d="m9 15 2 2 4-4"></path></svg></span><span class="services-menu-label">Trattamento acqua</span></a><a class="services-menu-card" href="/servizi/impianti-completi/"><span aria-hidden="true" class="services-menu-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="m2 10 10-8 10 8M5 8v13h14V8M5 15h5V9h5v12M10 18h9"></path><circle cx="10" cy="15" r="1.5"></circle></svg></span><span class="services-menu-label">Impianti completi</span></a><a class="services-menu-card" href="/servizi/fotovoltaico-aziendale/"><span aria-hidden="true" class="services-menu-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 10h16l2 10H2l2-10ZM8 10 7 20M16 10l1 10M3 15h18M12 2v2M5 4l2 2M19 4l-2 2"></path><path d="M9 8a3 3 0 0 1 6 0"></path></svg></span><span class="services-menu-label">Fotovoltaico aziendale</span></a><a class="services-menu-card" href="/servizi/batterie-accumulo/"><span aria-hidden="true" class="services-menu-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 10h16l2 10H2l2-10ZM8 10 7 20M16 10l1 10M3 15h18M12 2v2M5 4l2 2M19 4l-2 2"></path><path d="M9 8a3 3 0 0 1 6 0"></path></svg></span><span class="services-menu-label">Batterie di accumulo</span></a><a class="services-menu-card" href="/servizi/edilizia/"><span aria-hidden="true" class="services-menu-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 10h16l2 10H2l2-10ZM8 10 7 20M16 10l1 10M3 15h18M12 2v2M5 4l2 2M19 4l-2 2"></path><path d="M9 8a3 3 0 0 1 6 0"></path></svg></span><span class="services-menu-label">Riqualificazione energetica</span></a></div>
+<div class="services-menu-footer"><p>Scegli un campo di intervento</p><a href="/servizi/">Tutti i campi di intervento <span aria-hidden="true">↗</span></a></div>
 </div>
 </div>
-<p class="body-text-18 text-neutral-03 vg-review-text">Il progetto viene studiato sulle esigenze del cliente, sulle caratteristiche dell’edificio e sugli impianti da integrare.</p>
-</div>
-</div><div class="slider-2 vg-slide">
-<div class="single-testimonial-card">
-<div class="client-details">
-<div aria-hidden="true" class="vg-review-avatar teal">02</div>
-<div class="client-information">
-<p class="body-text-20 semibold">Competenze integrate</p>
-<p class="body-text-16 text-neutral-03">Idraulica ed elettricità</p>
+<div class="services-nav-item" data-desktop-menu="" id="services-nav-item">
+<a class="services-nav-fallback" href="/servizi/">Servizi</a>
+<button aria-controls="desktop-services-menu" aria-expanded="false" class="services-nav-trigger" id="services-nav-trigger" type="button">Servizi <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 16 16"><path d="m4 6 4 4 4-4"></path></svg></button>
+<div class="services-menu" id="desktop-services-menu" inert="">
+<div class="services-menu-grid"><a class="services-menu-card" href="/servizi/progettazione/"><span aria-hidden="true" class="services-menu-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="m4 17 13-13 3 3L7 20H4v-3Zm10-10 3 3M4 4h5M4 8h3"></path></svg></span><span class="services-menu-label">Progettazione</span></a><a class="services-menu-card" href="/servizi/pratiche-e-permessi/"><span aria-hidden="true" class="services-menu-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14 3H5v18h14V8l-5-5Z"></path><path d="M14 3v5h5M8 12h8M8 16h6"></path></svg></span><span class="services-menu-label">Pratiche e permessi</span></a><a class="services-menu-card" href="/servizi/diagnosi-energetiche/"><span aria-hidden="true" class="services-menu-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 4v16h16M8 15l4-5 4 2 4-7"></path></svg></span><span class="services-menu-label">Diagnosi energetiche</span></a><a class="services-menu-card" href="/servizi/detrazioni-fiscali/"><span aria-hidden="true" class="services-menu-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2V3ZM9 9h6M9 13h6"></path></svg></span><span class="services-menu-label">Detrazioni fiscali</span></a><a class="services-menu-card" href="/servizi/formule-assicurative/"><span aria-hidden="true" class="services-menu-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 8 9 8 9s8-4 8-9V6l-8-3Z"></path><path d="m8 12 3 3 5-6"></path></svg></span><span class="services-menu-label">Formule assicurative</span></a><a class="services-menu-card" href="/servizi/consulenza/"><span aria-hidden="true" class="services-menu-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="m4 17 13-13 3 3L7 20H4v-3Zm10-10 3 3M4 4h5M4 8h3"></path></svg></span><span class="services-menu-label">Consulenza energetica</span></a><a class="services-menu-card" href="/servizi/manutenzione/"><span aria-hidden="true" class="services-menu-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="m4 17 13-13 3 3L7 20H4v-3Zm10-10 3 3M4 4h5M4 8h3"></path></svg></span><span class="services-menu-label">Manutenzione impianti</span></a></div>
+<div class="services-menu-footer"><p>Scegli un servizio</p><a href="/servizi/">Tutti i servizi <span aria-hidden="true">↗</span></a></div>
 </div>
 </div>
-<p class="body-text-18 text-neutral-03 vg-review-text">Tecnici con oltre 15 anni di esperienza nelle energie rinnovabili e competenze sia idrauliche sia elettriche.</p>
-</div>
-</div><div class="slider-3 vg-slide">
-<div class="single-testimonial-card">
-<div class="client-details">
-<div aria-hidden="true" class="vg-review-avatar purple">03</div>
-<div class="client-information">
-<p class="body-text-20 semibold">Pratiche e permessi</p>
-<p class="body-text-16 text-neutral-03">Un percorso seguito</p>
-</div>
-</div>
-<p class="body-text-18 text-neutral-03 vg-review-text">Supporto nella gestione delle autorizzazioni necessarie alla realizzazione del sistema.</p>
-</div>
-</div><div class="slider-4 vg-slide">
-<div class="single-testimonial-card">
-<div class="client-details">
-<div aria-hidden="true" class="vg-review-avatar green">04</div>
-<div class="client-information">
-<p class="body-text-20 semibold">Diagnosi energetiche</p>
-<p class="body-text-16 text-neutral-03">Consumi e prestazioni</p>
-</div>
-</div>
-<p class="body-text-18 text-neutral-03 vg-review-text">Analisi tecnica per individuare gli interventi utili a migliorare il funzionamento degli impianti.</p>
-</div>
-</div><div class="slider-5 vg-slide">
-<div class="single-testimonial-card">
-<div class="client-details">
-<div aria-hidden="true" class="vg-review-avatar orange">05</div>
-<div class="client-information">
-<p class="body-text-20 semibold">Detrazioni fiscali</p>
-<p class="body-text-16 text-neutral-03">Supporto agli incentivi</p>
-</div>
-</div>
-<p class="body-text-18 text-neutral-03 vg-review-text">Assistenza per valutare incentivi e agevolazioni in relazione al progetto e ai requisiti applicabili.</p>
-</div>
-</div><div class="slider-6 vg-slide">
-<div class="single-testimonial-card">
-<div class="client-details">
-<div aria-hidden="true" class="vg-review-avatar green">06</div>
-<div class="client-information">
-<p class="body-text-20 semibold">Impianti completi</p>
-<p class="body-text-16 text-neutral-03">Un unico interlocutore</p>
-</div>
-</div>
-<p class="body-text-18 text-neutral-03 vg-review-text">Dalla sostituzione di un generatore agli impianti di una ristrutturazione, con professionisti lungo tutta la filiera.</p>
-</div>
-</div></div>
-<div aria-hidden="true" class="vg-review-marquee-group"><div class="slider-1 vg-slide">
-<div class="single-testimonial-card">
-<div class="client-details">
-<div aria-hidden="true" class="vg-review-avatar blue">01</div>
-<div class="client-information">
-<p class="body-text-20 semibold">Progettazione su misura</p>
-<p class="body-text-16 text-neutral-03">Il punto di partenza</p>
-</div>
-</div>
-<p class="body-text-18 text-neutral-03 vg-review-text">Il progetto viene studiato sulle esigenze del cliente, sulle caratteristiche dell’edificio e sugli impianti da integrare.</p>
-</div>
-</div><div class="slider-2 vg-slide">
-<div class="single-testimonial-card">
-<div class="client-details">
-<div aria-hidden="true" class="vg-review-avatar teal">02</div>
-<div class="client-information">
-<p class="body-text-20 semibold">Competenze integrate</p>
-<p class="body-text-16 text-neutral-03">Idraulica ed elettricità</p>
-</div>
-</div>
-<p class="body-text-18 text-neutral-03 vg-review-text">Tecnici con oltre 15 anni di esperienza nelle energie rinnovabili e competenze sia idrauliche sia elettriche.</p>
-</div>
-</div><div class="slider-3 vg-slide">
-<div class="single-testimonial-card">
-<div class="client-details">
-<div aria-hidden="true" class="vg-review-avatar purple">03</div>
-<div class="client-information">
-<p class="body-text-20 semibold">Pratiche e permessi</p>
-<p class="body-text-16 text-neutral-03">Un percorso seguito</p>
-</div>
-</div>
-<p class="body-text-18 text-neutral-03 vg-review-text">Supporto nella gestione delle autorizzazioni necessarie alla realizzazione del sistema.</p>
-</div>
-</div><div class="slider-4 vg-slide">
-<div class="single-testimonial-card">
-<div class="client-details">
-<div aria-hidden="true" class="vg-review-avatar green">04</div>
-<div class="client-information">
-<p class="body-text-20 semibold">Diagnosi energetiche</p>
-<p class="body-text-16 text-neutral-03">Consumi e prestazioni</p>
-</div>
-</div>
-<p class="body-text-18 text-neutral-03 vg-review-text">Analisi tecnica per individuare gli interventi utili a migliorare il funzionamento degli impianti.</p>
-</div>
-</div><div class="slider-5 vg-slide">
-<div class="single-testimonial-card">
-<div class="client-details">
-<div aria-hidden="true" class="vg-review-avatar orange">05</div>
-<div class="client-information">
-<p class="body-text-20 semibold">Detrazioni fiscali</p>
-<p class="body-text-16 text-neutral-03">Supporto agli incentivi</p>
-</div>
-</div>
-<p class="body-text-18 text-neutral-03 vg-review-text">Assistenza per valutare incentivi e agevolazioni in relazione al progetto e ai requisiti applicabili.</p>
-</div>
-</div><div class="slider-6 vg-slide">
-<div class="single-testimonial-card">
-<div class="client-details">
-<div aria-hidden="true" class="vg-review-avatar green">06</div>
-<div class="client-information">
-<p class="body-text-20 semibold">Impianti completi</p>
-<p class="body-text-16 text-neutral-03">Un unico interlocutore</p>
-</div>
-</div>
-<p class="body-text-18 text-neutral-03 vg-review-text">Dalla sostituzione di un generatore agli impianti di una ristrutturazione, con professionisti lungo tutta la filiera.</p>
-</div>
-</div></div>
-</div>
-</div></div></div></div></div></section><section class="blog-section section-padding"><div class="vg-layout-blockcontainer container vg-container"><div class="content-wrapper blog-lp"><h2 class="heading-h2-black">Guide e approfondimenti</h2><div class="blog-card-wrapper"><div class="blog-collection-list-wrapper vg-dyn-list"><div class="blog-collection-list vg-dyn-items" role="list"><div class="blog-collection-item vg-dyn-item" role="listitem"><a class="blog-card vg-inline-block" href="/blog/fotovoltaico-casa-veneto-dimensionamento/"><div class="blog-image-wrapper"><img alt="Abitazione con moduli fotovoltaici su un tetto in coppi" class="blog-image" data-image-id="fotovoltaico-casa-veneto-dimensionamento-cover" data-image-kind="teaser" decoding="async" height="900" loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 1100px) 50vw, 400px" src="/assets/venetagreen/blog-v2/fotovoltaico-casa-veneto-dimensionamento/cover-16973f9bbe-1600.webp" srcset="/assets/venetagreen/blog-v2/fotovoltaico-casa-veneto-dimensionamento/cover-16973f9bbe-480.webp 480w, /assets/venetagreen/blog-v2/fotovoltaico-casa-veneto-dimensionamento/cover-16973f9bbe-960.webp 960w, /assets/venetagreen/blog-v2/fotovoltaico-casa-veneto-dimensionamento/cover-16973f9bbe-1600.webp 1600w" style="object-fit:cover; object-position:center; aspect-ratio:410/432; width:100%; height:auto" width="1600"/></div><div class="blog-content"><div class="blog-date-wrapper"><p class="blog-date-text">8 Giugno 2026</p></div><h3 class="blog-title">Fotovoltaico per casa in Veneto: come dimensionare un impianto</h3></div></a></div><div class="blog-collection-item vg-dyn-item" role="listitem"><a class="blog-card vg-inline-block" href="/blog/batterie-accumulo-fotovoltaico-quando-convengono/"><div class="blog-image-wrapper"><img alt="Inverter e batteria di accumulo in un locale tecnico domestico" class="blog-image" data-image-id="batterie-accumulo-fotovoltaico-quando-convengono-cover" data-image-kind="teaser" decoding="async" height="900" loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 1100px) 50vw, 400px" src="/assets/venetagreen/blog-v2/batterie-accumulo-fotovoltaico-quando-convengono/cover-1326e8d48f-1600.webp" srcset="/assets/venetagreen/blog-v2/batterie-accumulo-fotovoltaico-quando-convengono/cover-1326e8d48f-480.webp 480w, /assets/venetagreen/blog-v2/batterie-accumulo-fotovoltaico-quando-convengono/cover-1326e8d48f-960.webp 960w, /assets/venetagreen/blog-v2/batterie-accumulo-fotovoltaico-quando-convengono/cover-1326e8d48f-1600.webp 1600w" style="object-fit:cover; object-position:center; aspect-ratio:410/432; width:100%; height:auto" width="1600"/></div><div class="blog-content"><div class="blog-date-wrapper"><p class="blog-date-text">1 Giugno 2026</p></div><h3 class="blog-title">Batterie di accumulo per fotovoltaico: quando convengono davvero</h3></div></a></div><div class="blog-collection-item vg-dyn-item" role="listitem"><a class="blog-card vg-inline-block" href="/blog/pompa-calore-fotovoltaico-integrazione/"><div class="blog-image-wrapper"><img alt="Abitazione con fotovoltaico e pompa di calore" class="blog-image" data-image-id="pompa-calore-fotovoltaico-integrazione-cover" data-image-kind="teaser" decoding="async" height="900" loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 1100px) 50vw, 400px" src="/assets/venetagreen/blog-v2/pompa-calore-fotovoltaico-integrazione/cover-8b05cfd386-1600.webp" srcset="/assets/venetagreen/blog-v2/pompa-calore-fotovoltaico-integrazione/cover-8b05cfd386-480.webp 480w, /assets/venetagreen/blog-v2/pompa-calore-fotovoltaico-integrazione/cover-8b05cfd386-960.webp 960w, /assets/venetagreen/blog-v2/pompa-calore-fotovoltaico-integrazione/cover-8b05cfd386-1600.webp 1600w" style="object-fit:cover; object-position:center; aspect-ratio:410/432; width:100%; height:auto" width="1600"/></div><div class="blog-content"><div class="blog-date-wrapper"><p class="blog-date-text">27 Maggio 2026</p></div><h3 class="blog-title">Pompa di calore e fotovoltaico: come integrarli per ridurre i consumi</h3></div></a></div></div></div></div></div></div></section><section class="service-section section-padding bg-neutral-02" data-internal-links-for="/"><div class="vg-layout-blockcontainer container vg-container"><div class="content-wrapper service"><div class="service-section-title"><p class="internal-hero-kicker">Percorsi consigliati</p><h2 class="heading-h2-black">Approfondisci le soluzioni Green Flux</h2><p class="body-text-16 text-neutral-03">Dalla home puoi passare subito ai servizi principali, alle zone servite e alle guide utili per preparare una richiesta più precisa.</p></div><div class="service-card-wrapper"><article class="single-service-card"><div class="service-icon-wrapper"><img alt="" class="icon" height="36" loading="lazy" src="/assets/ui/asset-008.svg" width="36"/></div><div class="service-content"><div class="service-title"><p class="body-text-16 text-neutral-03 zone-card-meta">Servizio</p><h3 class="heading-4">Fotovoltaico residenziale</h3><p class="body-text-16 text-neutral-03">Dimensionamento su consumi reali, tetto, autoconsumo e possibilità di accumulo.</p></div><a class="button-primary vg-variant-9eeab034-5cca-e7aa-4218-f2bf93e21760 vg-inline-block" href="/servizi/fotovoltaico-residenziale/"><div class="secondary-button-area"><p class="primary-button-text">Scopri Fotovoltaico residenziale</p><div class="button-arrow-right-icon vg-variant-9eeab034-5cca-e7aa-4218-f2bf93e21760"><img alt="" class="arrow-right-icon" height="24" loading="lazy" src="/assets/ui/asset-007.svg" width="24"/><img alt="" class="arrow-right-icon hover" height="24" loading="lazy" src="/assets/ui/asset-007.svg" width="24"/></div></div></a></div></article><article class="single-service-card"><div class="service-icon-wrapper"><img alt="" class="icon" height="36" loading="lazy" src="/assets/ui/asset-009.svg" width="36"/></div><div class="service-content"><div class="service-title"><p class="body-text-16 text-neutral-03 zone-card-meta">Servizio</p><h3 class="heading-4">Fotovoltaico aziendale</h3><p class="body-text-16 text-neutral-03">Soluzioni per imprese e immobili produttivi con consumi nelle ore di lavoro.</p></div><a class="button-primary vg-variant-9eeab034-5cca-e7aa-4218-f2bf93e21760 vg-inline-block" href="/servizi/fotovoltaico-aziendale/"><div class="secondary-button-area"><p class="primary-button-text">Scopri Fotovoltaico aziendale</p><div class="button-arrow-right-icon vg-variant-9eeab034-5cca-e7aa-4218-f2bf93e21760"><img alt="" class="arrow-right-icon" height="24" loading="lazy" src="/assets/ui/asset-007.svg" width="24"/><img alt="" class="arrow-right-icon hover" height="24" loading="lazy" src="/assets/ui/asset-007.svg" width="24"/></div></div></a></div></article><article class="single-service-card"><div class="service-icon-wrapper"><img alt="" class="icon" height="36" loading="lazy" src="/assets/ui/asset-010.svg" width="36"/></div><div class="service-content"><div class="service-title"><p class="body-text-16 text-neutral-03 zone-card-meta">Copertura</p><h3 class="heading-4">Zone servite</h3><p class="body-text-16 text-neutral-03">Percorso locale per Veneto e Friuli-Venezia Giulia, con province e servizi collegati.</p></div><a class="button-primary vg-variant-9eeab034-5cca-e7aa-4218-f2bf93e21760 vg-inline-block" href="/zone/"><div class="secondary-button-area"><p class="primary-button-text">Scopri Zone servite</p><div class="button-arrow-right-icon vg-variant-9eeab034-5cca-e7aa-4218-f2bf93e21760"><img alt="" class="arrow-right-icon" height="24" loading="lazy" src="/assets/ui/asset-007.svg" width="24"/><img alt="" class="arrow-right-icon hover" height="24" loading="lazy" src="/assets/ui/asset-007.svg" width="24"/></div></div></a></div></article><article class="single-service-card"><div class="service-icon-wrapper"><img alt="" class="icon" height="36" loading="lazy" src="/assets/ui/asset-017.svg" width="36"/></div><div class="service-content"><div class="service-title"><p class="body-text-16 text-neutral-03 zone-card-meta">Guida</p><h3 class="heading-4">Dimensionare il fotovoltaico per casa</h3><p class="body-text-16 text-neutral-03">Una guida pratica per capire potenza, consumi, tetto e dati utili al preventivo.</p></div><a class="button-primary vg-variant-9eeab034-5cca-e7aa-4218-f2bf93e21760 vg-inline-block" href="/blog/fotovoltaico-casa-veneto-dimensionamento/"><div class="secondary-button-area"><p class="primary-button-text">Scopri Dimensionare il fotovoltaico per casa</p><div class="button-arrow-right-icon vg-variant-9eeab034-5cca-e7aa-4218-f2bf93e21760"><img alt="" class="arrow-right-icon" height="24" loading="lazy" src="/assets/ui/asset-007.svg" width="24"/><img alt="" class="arrow-right-icon hover" height="24" loading="lazy" src="/assets/ui/asset-007.svg" width="24"/></div></div></a></div></article></div></div></div></section><section class="cta-section"><div class="vg-layout-blockcontainer container vg-container"><div class="content-wrapper cta"><div class="cta-content"><h2 class="cta-heading-2">Porta il tuo immobile verso un'energia più intelligente.</h2><div class="cta-buttons"><a class="button-primary vg-variant-ec989391-cb6b-ac0c-8979-cf84be85c84b vg-inline-block" href="/preventivo/"><div class="secondary-button-area"><p class="primary-button-text">RICHIEDI PREVENTIVO</p><div class="button-arrow-right-icon"><img alt="" aria-hidden="true" class="arrow-right-icon" height="24" loading="lazy" src="/assets/ui/asset-001.svg" width="24"/><img alt="" aria-hidden="true" class="arrow-right-icon hover" height="24" loading="lazy" src="/assets/ui/asset-001.svg" width="24"/></div></div></a></div></div><img alt="Immagine illustrativa: due tecnici consultano un tablet" class="cta-image" data-image-id="shared-cta" data-image-kind="shared" decoding="async" fetchpriority="low" height="1254" loading="lazy" sizes="(max-width: 767px) 100vw, (max-width: 1100px) 90vw, 900px" src="/assets/venetagreen/editorial/shared-cta-84aeae866f-1254.webp" srcset="/assets/venetagreen/editorial/shared-cta-84aeae866f-480.webp 480w, /assets/venetagreen/editorial/shared-cta-84aeae866f-960.webp 960w, /assets/venetagreen/editorial/shared-cta-84aeae866f-1254.webp 1254w" style="object-fit:contain; object-position:right bottom; aspect-ratio:1254/1254" width="1254"/></div></div></section><section class="footer-section section-padding"><p class="vg-image-disclosure">Le immagini degli impianti e dei tecnici sono rappresentazioni illustrative generate con IA.</p><div class="vg-layout-blockcontainer container vg-container"><div class="content-wrapper footer"><div class="content-top footer"><div class="footer-content-left"><h3 class="heading-3">Energia pulita, progettata con metodo.</h3><p class="footer-summary">Progettiamo impianti fotovoltaici, termici, elettrici e soluzioni integrate per case e aziende. Da Padova, valutiamo ogni intervento a partire dalle tue esigenze.</p></div><nav aria-label="Link principali footer" class="navitem-list footer"><a class="navtext" href="/">INIZIO</a><a class="navtext" href="/servizi/">SERVIZI</a><a class="navtext" href="/zone/">ZONE</a><a class="navtext" href="/contatti/">CONTATTI</a><a class="navtext" href="/preventivo/">PREVENTIVO</a></nav></div>
-<div class="footer-link-columns">
-<nav aria-label="Servizi" class="footer-link-group">
-<p class="footer-link-title">Servizi</p>
-<ul class="footer-link-list">
-<li><a href="/servizi/fotovoltaico-residenziale/">Fotovoltaico residenziale</a></li><li><a href="/servizi/fotovoltaico-aziendale/">Fotovoltaico aziendale</a></li><li><a href="/servizi/batterie-accumulo/">Batterie di accumulo</a></li><li><a href="/servizi/pompe-calore/">Pompe di calore</a></li><li><a href="/servizi/climatizzazione/">Climatizzazione</a></li><li><a href="/servizi/manutenzione/">Manutenzione impianti</a></li>
-</ul>
+<a href="/contatti/">Contatti</a>
 </nav>
-<nav aria-label="Azienda" class="footer-link-group">
-<p class="footer-link-title">Azienda</p>
-<ul class="footer-link-list">
-<li><a href="/chi-siamo/">Chi siamo</a></li><li><a href="/metodo/">Metodo Green Flux</a></li><li><a href="/progetti/">Realizzazioni</a></li><li><a href="/blog/">Blog energia</a></li>
-</ul>
-</nav>
-<nav aria-label="Zone servite" class="footer-link-group">
-<p class="footer-link-title">Zone servite</p>
-<ul class="footer-link-list">
-<li><a href="/zone/veneto/">Fotovoltaico in Veneto</a></li><li><a href="/zone/friuli/">Fotovoltaico in Friuli-VG</a></li><li><a href="/zone/veneto/treviso/">Fotovoltaico Treviso</a></li><li><a href="/zone/veneto/venezia/">Fotovoltaico Venezia</a></li><li><a href="/zone/veneto/padova/">Fotovoltaico Padova</a></li><li><a href="/zone/friuli/gorizia/">Fotovoltaico Gorizia</a></li><li><a href="/zone/friuli/udine/">Fotovoltaico Udine</a></li>
-</ul>
-</nav>
-<address class="footer-company-info">
-<p class="footer-link-title">Contatti</p>
-<p>GREEN FLUX srls</p>
-<p></p>
-<p>Via Trieste, 19, 35121 Padova (PD)</p>
-<p><a href="tel:+393755521420">+39 375 552 1420</a></p>
-<p><a href="mailto:info@green-flux.com">info@green-flux.com</a></p>
-</address>
+<a class="header-cta" href="/preventivo/">Richiedi un preventivo <svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"></path></svg></a>
+<button aria-controls="mobile-menu" aria-expanded="false" aria-haspopup="dialog" aria-label="Apri il menu" class="menu-toggle" type="button"><span></span><span></span><span></span></button>
+</header>
+<dialog aria-label="Menu principale" class="mobile-menu" id="mobile-menu">
+<div class="mobile-menu-header">
+<a aria-label="Green Flux — Home" class="brand" href="/"><img alt="Green Flux, impianti tecnologici" height="232" src="/assets/logo.png" width="500"/></a>
+<button autofocus="" class="menu-close" type="button"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"></path></svg>Chiudi</button>
 </div>
-<nav aria-label="Altri impianti e servizi Green Flux" class="gf-footer-extra"><a href="/servizi/smart-home/">Smart home e automazioni</a><a href="/servizi/solare-termico/">Solare termico</a><a href="/servizi/biomassa/">Impianti a biomassa</a><a href="/servizi/caldaie/">Caldaie</a><a href="/servizi/ventilazione/">Ventilazione meccanica</a><a href="/servizi/trattamento-acqua/">Trattamento acqua</a><a href="/servizi/impianti-completi/">Impianti completi</a><a href="/servizi/progettazione/">Progettazione impianti</a><a href="/servizi/pratiche-e-permessi/">Pratiche e permessi</a><a href="/servizi/diagnosi-energetiche/">Diagnosi energetiche</a><a href="/servizi/detrazioni-fiscali/">Detrazioni fiscali e incentivi</a><a href="/servizi/formule-assicurative/">Formule assicurative per gli impianti</a></nav><div aria-label="Green Flux" class="footer-brand-text">Green Flux</div><div class="content-bottom footer"><p class="body-text-16">2026 © Green Flux. Tutti i diritti riservati.</p><nav aria-label="Link legali" class="navitem-list footer"><a class="navtext" href="/termini-condizioni/">Termini e condizioni</a><a class="navtext" href="/privacy-policy/">Informativa privacy</a><a class="navtext" href="/cookie-policy/">Informativa cookie</a></nav></div></div></div></section></main><script defer="" src="/assets/js/site.js"></script><script src="/assets/js/green-flux.mjs" type="module"></script></body></html>
+<nav aria-label="Navigazione mobile" class="mobile-menu-scroll">
+<a class="menu-primary-link" href="/">Home</a>
+<a class="menu-primary-link" href="/chi-siamo/">Chi siamo</a>
+<details class="menu-section" name="mobile-navigation">
+<summary><span>Campi di intervento</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"></path></svg></summary>
+<div class="menu-section-links">
+<a href="/servizi/fotovoltaico-residenziale/">Fotovoltaico</a>
+<a href="/servizi/pompe-calore/">Pompe di calore</a>
+<a href="/servizi/smart-home/">Smart home e automazioni</a>
+<a href="/servizi/solare-termico/">Solare termico</a>
+<a href="/servizi/biomassa/">Biomassa</a>
+<a href="/servizi/caldaie/">Caldaie</a>
+<a href="/servizi/climatizzazione/">Condizionatori</a>
+<a href="/servizi/ventilazione/">Ventilazione meccanica</a>
+<a href="/servizi/trattamento-acqua/">Trattamento acqua</a>
+<a href="/servizi/impianti-completi/">Impianti completi</a>
+<a href="/servizi/fotovoltaico-aziendale/">Fotovoltaico aziendale</a><a href="/servizi/batterie-accumulo/">Batterie di accumulo</a><a href="/servizi/edilizia/">Riqualificazione energetica</a><a class="menu-all-link" href="/servizi/">Tutti i campi di intervento <span aria-hidden="true">↗</span></a>
+</div>
+</details>
+<details class="menu-section" name="mobile-navigation">
+<summary><span>Servizi</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"></path></svg></summary>
+<div class="menu-section-links">
+<a href="/servizi/progettazione/">Progettazione</a>
+<a href="/servizi/pratiche-e-permessi/">Pratiche e permessi</a>
+<a href="/servizi/diagnosi-energetiche/">Diagnosi energetiche</a>
+<a href="/servizi/detrazioni-fiscali/">Detrazioni fiscali</a>
+<a href="/servizi/formule-assicurative/">Formule assicurative</a>
+<a href="/servizi/consulenza/">Consulenza energetica</a><a href="/servizi/manutenzione/">Manutenzione impianti</a><a class="menu-all-link" href="/servizi/">Tutti i servizi <span aria-hidden="true">↗</span></a>
+</div>
+</details>
+<a class="menu-primary-link" href="/metodo/">Metodo</a><a class="menu-primary-link" href="/progetti/">Realizzazioni</a><a class="menu-primary-link" href="/zone/">Zone</a><a class="menu-primary-link" href="/blog/">Blog</a><a class="menu-primary-link" href="/contatti/">Contatti</a>
+</nav>
+<div class="mobile-menu-actions">
+<a class="menu-action menu-action-primary" href="/preventivo/">Preventivo <svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect height="14" rx="2" width="18" x="3" y="5"></rect><path d="m3 6 9 7 9-7"></path></svg></a>
+<a class="menu-action" href="tel:+393755521420">Chiamaci <svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="m8 3 3 5-3 3a14 14 0 0 0 5 5l3-3 5 3-2 5C10 22 2 14 3 5l5-2Z"></path></svg></a>
+</div>
+<div class="mobile-menu-social">
+<a aria-label="Green Flux su Instagram (nuova scheda)" href="https://www.instagram.com/greenflux_impianti/" rel="noopener noreferrer" target="_blank">Instagram <span aria-hidden="true">↗</span></a>
+<a aria-label="Green Flux su Facebook (nuova scheda)" href="https://www.facebook.com/profile.php?id=61579212246290" rel="noopener noreferrer" target="_blank">Facebook <span aria-hidden="true">↗</span></a>
+</div>
+</dialog>
+<main id="main">
+<section aria-labelledby="hero-title" class="hero">
+<picture class="hero-media">
+
+<img alt="Immagine illustrativa: pompa di calore esterna accanto a un’abitazione" class="hero-bg" fetchpriority="high" height="900" sizes="100vw" src="/assets/venetagreen/editorial/servizi-pompe-calore-0-f5ed3643c6-1600.webp" srcset="/assets/venetagreen/editorial/servizi-pompe-calore-0-f5ed3643c6-480.webp 480w, /assets/venetagreen/editorial/servizi-pompe-calore-0-f5ed3643c6-960.webp 960w, /assets/venetagreen/editorial/servizi-pompe-calore-0-f5ed3643c6-1600.webp 1600w" width="1600"/>
+</picture>
+<div aria-hidden="true" class="hero-overlay"></div>
+<div class="hero-content reveal">
+<p class="eyebrow">Pompe di calore · Impianti tecnologici</p>
+<h1 id="hero-title">Pompe di calore.<br/><span>Il comfort, su misura.</span></h1>
+<p class="hero-lead">Riscaldamento, raffrescamento e acqua calda: progettiamo la pompa di calore a partire dal tuo edificio, dai consumi e dall’impianto esistente. Dalla consulenza all’installazione, un unico interlocutore.</p>
+<div class="hero-actions"><a class="button button-primary" href="/preventivo/?servizio=pompe-di-calore">Preventivo pompa di calore <svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"></path></svg></a><a class="button button-secondary" href="#campidiintervento">Scopri tutti gli impianti</a></div>
+<div class="experience-proof"><span class="experience-value">15<span>+</span></span><p>Anni di esperienza dei nostri tecnici<br/><strong>Una visione completa dell’impiantistica.</strong></p></div>
+</div>
+</section>
+<section aria-labelledby="solutions-title" class="section section-white solutions" id="campidiintervento">
+<div class="section-heading split reveal">
+<div><p class="eyebrow brand-label">Campi di intervento</p><h2 id="solutions-title">Dal comfort di casa.<br/>A ogni tuo impianto.</h2></div>
+<p>Le pompe di calore al centro del comfort. Insieme, una gamma completa di soluzioni per energia, climatizzazione, acqua e automazione, da scegliere in base al tuo progetto.</p>
+</div>
+<div class="solutions-grid"><a aria-label="Scopri Pompe di calore" class="solution-card reveal featured" href="/servizi/pompe-calore/" id="pompe-di-calore">
+<img alt="Immagine illustrativa: pompe di calore" decoding="async" height="635" loading="lazy" sizes="(max-width: 680px) calc(100vw - 40px), 1180px" src="/assets/pompe-di-calore-750.webp" srcset="/assets/pompe-di-calore-400.webp 400w, /assets/pompe-di-calore-750.webp 750w" width="750"/>
+<span aria-hidden="true" class="card-scrim"></span>
+<span class="card-arrow"><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="m6 18 12-12M6 6h12v12"></path></svg></span>
+<div class="card-content"><span class="solution-category">Riscaldamento · Raffrescamento · Acqua calda</span><h3>Pompe di calore</h3><p>Partiamo dal tuo impianto e dai tuoi consumi per progettare il comfort di casa, in ogni stagione.</p></div>
+</a>
+<a aria-label="Scopri Fotovoltaico" class="solution-card reveal" href="/servizi/fotovoltaico-residenziale/" id="fotovoltaico">
+<img alt="Immagine illustrativa: fotovoltaico" decoding="async" height="535" loading="lazy" sizes="(max-width: 680px) calc(100vw - 40px), (max-width: 991px) 50vw, 280px" src="/assets/fotovoltaico-750.webp" srcset="/assets/fotovoltaico-400.webp 400w, /assets/fotovoltaico-750.webp 750w" width="750"/>
+<span aria-hidden="true" class="card-scrim"></span>
+<span class="card-arrow"><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="m6 18 12-12M6 6h12v12"></path></svg></span>
+<div class="card-content"><span class="solution-category">Energia rinnovabile</span><h3>Fotovoltaico residenziale</h3><p>L’energia del sole, al servizio dei tuoi progetti.</p></div>
+</a>
+
+<a aria-label="Scopri Smart home e automazioni" class="solution-card reveal" href="/servizi/smart-home/" id="smart-home">
+<img alt="Immagine illustrativa: smart home e automazioni" decoding="async" height="545" loading="lazy" sizes="(max-width: 680px) calc(100vw - 40px), (max-width: 991px) 50vw, 280px" src="/assets/smart-home-750.webp" srcset="/assets/smart-home-400.webp 400w, /assets/smart-home-750.webp 750w" width="750"/>
+<span aria-hidden="true" class="card-scrim"></span>
+<span class="card-arrow"><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="m6 18 12-12M6 6h12v12"></path></svg></span>
+<div class="card-content"><span class="solution-category">Controllo e comfort</span><h3>Smart home e automazioni</h3><p>Tecnologie integrate per la gestione degli ambienti.</p></div>
+</a>
+<a aria-label="Scopri Solare termico" class="solution-card reveal" href="/servizi/solare-termico/" id="solare-termico">
+<img alt="Immagine illustrativa: solare termico" decoding="async" height="500" loading="lazy" sizes="(max-width: 680px) calc(100vw - 40px), (max-width: 991px) 50vw, 280px" src="/assets/solare-termico-750.webp" srcset="/assets/solare-termico-400.webp 400w, /assets/solare-termico-750.webp 750w" width="750"/>
+<span aria-hidden="true" class="card-scrim"></span>
+<span class="card-arrow"><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="m6 18 12-12M6 6h12v12"></path></svg></span>
+<div class="card-content"><span class="solution-category">Energia dal sole</span><h3>Solare termico</h3><p>Il calore del sole entra nel tuo impianto.</p></div>
+</a>
+<a aria-label="Scopri Biomassa" class="solution-card reveal" href="/servizi/biomassa/" id="biomassa">
+<img alt="Immagine illustrativa: biomassa" decoding="async" height="532" loading="lazy" sizes="(max-width: 680px) calc(100vw - 40px), (max-width: 991px) 50vw, 280px" src="/assets/biomassa-750.webp" srcset="/assets/biomassa-400.webp 400w, /assets/biomassa-750.webp 750w" width="750"/>
+<span aria-hidden="true" class="card-scrim"></span>
+<span class="card-arrow"><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="m6 18 12-12M6 6h12v12"></path></svg></span>
+<div class="card-content"><span class="solution-category">Riscaldamento</span><h3>Biomassa</h3><p>Una delle soluzioni per le tue esigenze termiche.</p></div>
+</a>
+<a aria-label="Scopri Caldaie" class="solution-card reveal" href="/servizi/caldaie/" id="caldaie">
+<img alt="Immagine illustrativa: caldaie" decoding="async" height="635" loading="lazy" sizes="(max-width: 680px) calc(100vw - 40px), (max-width: 991px) 50vw, 280px" src="/assets/caldaie-750.webp" srcset="/assets/caldaie-400.webp 400w, /assets/caldaie-750.webp 750w" width="750"/>
+<span aria-hidden="true" class="card-scrim"></span>
+<span class="card-arrow"><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="m6 18 12-12M6 6h12v12"></path></svg></span>
+<div class="card-content"><span class="solution-category">Comfort termico</span><h3>Caldaie</h3><p>Dalla sostituzione del generatore al nuovo impianto.</p></div>
+</a>
+<a aria-label="Scopri Condizionatori" class="solution-card reveal" href="/servizi/climatizzazione/" id="condizionatori">
+<img alt="Immagine illustrativa: condizionatori" decoding="async" height="660" loading="lazy" sizes="(max-width: 680px) calc(100vw - 40px), (max-width: 991px) 50vw, 280px" src="/assets/condizionatori-750.webp" srcset="/assets/condizionatori-400.webp 400w, /assets/condizionatori-750.webp 750w" width="750"/>
+<span aria-hidden="true" class="card-scrim"></span>
+<span class="card-arrow"><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="m6 18 12-12M6 6h12v12"></path></svg></span>
+<div class="card-content"><span class="solution-category">Climatizzazione</span><h3>Condizionatori</h3><p>Il clima giusto negli spazi che vivi.</p></div>
+</a>
+<a aria-label="Scopri Ventilazione meccanica" class="solution-card reveal" href="/servizi/ventilazione/" id="ventilazione">
+<img alt="Immagine illustrativa: ventilazione meccanica" decoding="async" height="500" loading="lazy" sizes="(max-width: 680px) calc(100vw - 40px), (max-width: 991px) 50vw, 280px" src="/assets/ventilazione-750.webp" srcset="/assets/ventilazione-400.webp 400w, /assets/ventilazione-750.webp 750w" width="750"/>
+<span aria-hidden="true" class="card-scrim"></span>
+<span class="card-arrow"><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="m6 18 12-12M6 6h12v12"></path></svg></span>
+<div class="card-content"><span class="solution-category">Qualità dell’aria</span><h3>Ventilazione meccanica</h3><p>Soluzioni per il ricambio dell’aria negli ambienti.</p></div>
+</a>
+<a aria-label="Scopri Trattamento acqua" class="solution-card reveal" href="/servizi/trattamento-acqua/" id="trattamento-acqua">
+<img alt="Immagine illustrativa: trattamento acqua" decoding="async" height="559" loading="lazy" sizes="(max-width: 680px) calc(100vw - 40px), (max-width: 991px) 50vw, 280px" src="/assets/trattamento-acqua-750.webp" srcset="/assets/trattamento-acqua-400.webp 400w, /assets/trattamento-acqua-750.webp 750w" width="750"/>
+<span aria-hidden="true" class="card-scrim"></span>
+<span class="card-arrow"><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="m6 18 12-12M6 6h12v12"></path></svg></span>
+<div class="card-content"><span class="solution-category">Qualità dell’acqua</span><h3>Trattamento acqua</h3><p>Sistemi dedicati al trattamento dell’acqua.</p></div>
+</a>
+<a aria-label="Scopri Impianti completi" class="solution-card reveal" href="/servizi/impianti-completi/" id="impianti-completi">
+<img alt="Immagine illustrativa: impianti completi" decoding="async" height="500" loading="lazy" sizes="(max-width: 680px) calc(100vw - 40px), (max-width: 991px) 50vw, 280px" src="/assets/impianti-completi-750.webp" srcset="/assets/impianti-completi-400.webp 400w, /assets/impianti-completi-750.webp 750w" width="750"/>
+<span aria-hidden="true" class="card-scrim"></span>
+<span class="card-arrow"><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="m6 18 12-12M6 6h12v12"></path></svg></span>
+<div class="card-content"><span class="solution-category">Sistemi integrati</span><h3>Impianti completi</h3><p>Competenze idrauliche ed elettriche, in un solo progetto.</p></div>
+</a>
+<a aria-label="Scopri Fotovoltaico aziendale" class="solution-card reveal" href="/servizi/fotovoltaico-aziendale/" id="fotovoltaico-aziendale">
+<img alt="Immagine illustrativa: fotovoltaico aziendale" decoding="async" height="535" loading="lazy" sizes="(max-width: 680px) calc(100vw - 40px), (max-width: 991px) 50vw, 280px" src="/assets/fotovoltaico-750.webp" srcset="/assets/fotovoltaico-400.webp 400w, /assets/fotovoltaico-750.webp 750w" width="750"/>
+<span aria-hidden="true" class="card-scrim"></span>
+<span class="card-arrow"><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="m6 18 12-12M6 6h12v12"></path></svg></span>
+<div class="card-content"><span class="solution-category">Energia per le imprese</span><h3>Fotovoltaico aziendale</h3><p>Impianti solari dimensionati sui consumi della tua attività.</p></div>
+</a><a aria-label="Scopri Batterie di accumulo" class="solution-card reveal" href="/servizi/batterie-accumulo/" id="batterie-accumulo">
+<img alt="Immagine illustrativa: batterie di accumulo" decoding="async" height="535" loading="lazy" sizes="(max-width: 680px) calc(100vw - 40px), (max-width: 991px) 50vw, 280px" src="/assets/fotovoltaico-750.webp" srcset="/assets/fotovoltaico-400.webp 400w, /assets/fotovoltaico-750.webp 750w" width="750"/>
+<span aria-hidden="true" class="card-scrim"></span>
+<span class="card-arrow"><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="m6 18 12-12M6 6h12v12"></path></svg></span>
+<div class="card-content"><span class="solution-category">Autonomia energetica</span><h3>Batterie di accumulo</h3><p>Conservare l’energia prodotta per utilizzarla quando serve.</p></div>
+</a><a aria-label="Scopri Riqualificazione energetica" class="solution-card reveal" href="/servizi/edilizia/" id="edilizia">
+<img alt="Immagine illustrativa: riqualificazione energetica" decoding="async" height="535" loading="lazy" sizes="(max-width: 680px) calc(100vw - 40px), (max-width: 991px) 50vw, 280px" src="/assets/impianti-completi-750.webp" srcset="/assets/impianti-completi-400.webp 400w, /assets/impianti-completi-750.webp 750w" width="750"/>
+<span aria-hidden="true" class="card-scrim"></span>
+<span class="card-arrow"><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="m6 18 12-12M6 6h12v12"></path></svg></span>
+<div class="card-content"><span class="solution-category">Edifici e impianti</span><h3>Riqualificazione energetica</h3><p>Interventi coordinati per migliorare involucro e impianti.</p></div>
+</a></div>
+<div class="solutions-note reveal"><span>Non sai da dove iniziare?</span><a href="/preventivo/?servizio=consulenza">Troviamo insieme la soluzione per te <svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"></path></svg></a></div>
+</section>
+<section aria-labelledby="about-title" class="section section-muted" id="chisiamo">
+<div class="about-layout">
+<div class="image-stack reveal">
+<img alt="Tecnico al lavoro su un impianto all’interno di un edificio" class="main-image" decoding="async" height="502" loading="lazy" sizes="(max-width: 980px) calc(100vw - 48px), 520px" src="/assets/impianti-750.webp" srcset="/assets/impianti-400.webp 400w, /assets/impianti-750.webp 750w" width="750"/>
+<div class="floating-note"><strong>Non solo impianti.</strong><span>Sistemi affidabili, duraturi<br/>e orientati al risparmio.</span></div>
+</div>
+<div class="about-copy reveal delay-1">
+<p class="eyebrow brand-label">Chi siamo · Green Flux</p>
+<h2 id="about-title">Esperienza concreta.<br/><span>Visione sostenibile.</span></h2>
+<p>Green Flux nasce per realizzare impianti in modo innovativo, efficiente e sostenibile. Mettiamo le nostre competenze al servizio del tuo progetto.</p>
+<div class="advantage-list">
+<article><span>01</span><div><h3>Oltre 15 anni sul campo</h3><p>I nostri tecnici operano da oltre 15 anni nel settore delle energie rinnovabili.</p></div></article>
+<article><span>02</span><div><h3>Competenze integrate</h3><p>Esperienza sia in ambito idraulico che elettrico, per progettare sistemi completi.</p></div></article>
+<article><span>03</span><div><h3>Un unico interlocutore</h3><p>Una rete di professionisti qualificati accompagna ogni fase della realizzazione.</p></div></article>
+</div>
+</div>
+</div>
+</section>
+<section aria-labelledby="services-title" class="section services-section" id="servizi">
+<div class="section-heading split dark reveal">
+<div><p class="eyebrow lime-label">Soluzioni chiavi in mano</p><h2 id="services-title">Il tuo progetto.<br/>Seguito in ogni fase.</h2></div>
+<p>Per una pompa di calore come per ogni altro impianto, seguiamo tutte le fasi: analisi, progetto, pratiche, installazione e assistenza.</p>
+</div>
+<div class="services-grid">
+<article class="service-item reveal" id="progettazione">
+<span aria-hidden="true" class="service-number">01</span>
+<span aria-hidden="true" class="service-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="m4 17 13-13 3 3L7 20H4v-3Zm10-10 3 3M4 4h5M4 8h3"></path></svg></span>
+<h3>Progettazione</h3><p>Un progetto studiato su misura, in base alle tue esigenze e alle caratteristiche dell’impianto.</p>
+<a class="service-inquiry" href="/servizi/progettazione/">Scopri il servizio <span aria-hidden="true">↗</span></a>
+</article>
+<article class="service-item reveal" id="pratiche-e-permessi">
+<span aria-hidden="true" class="service-number">02</span>
+<span aria-hidden="true" class="service-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="M14 3H5v18h14V8l-5-5Z"></path><path d="M14 3v5h5M8 12h8M8 16h6"></path></svg></span>
+<h3>Pratiche e permessi</h3><p>Gestiamo le autorizzazioni necessarie per accompagnare il progetto fino alla realizzazione.</p>
+<a class="service-inquiry" href="/servizi/pratiche-e-permessi/">Scopri il servizio <span aria-hidden="true">↗</span></a>
+</article>
+<article class="service-item reveal" id="diagnosi-energetiche">
+<span aria-hidden="true" class="service-number">03</span>
+<span aria-hidden="true" class="service-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 4v16h16M8 15l4-5 4 2 4-7"></path></svg></span>
+<h3>Diagnosi energetiche</h3><p>Analizziamo consumi e prestazioni per individuare come rendere il sistema più efficiente.</p>
+<a class="service-inquiry" href="/servizi/diagnosi-energetiche/">Scopri il servizio <span aria-hidden="true">↗</span></a>
+</article>
+<article class="service-item reveal" id="detrazioni-fiscali">
+<span aria-hidden="true" class="service-number">04</span>
+<span aria-hidden="true" class="service-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2V3ZM9 9h6M9 13h6"></path></svg></span>
+<h3>Detrazioni fiscali</h3><p>Ti affianchiamo nella gestione delle pratiche per incentivi e agevolazioni applicabili al tuo progetto.</p>
+<a class="service-inquiry" href="/servizi/detrazioni-fiscali/">Scopri il servizio <span aria-hidden="true">↗</span></a>
+</article>
+<article class="service-item reveal" id="formule-assicurative">
+<span aria-hidden="true" class="service-number">05</span>
+<span aria-hidden="true" class="service-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 8 9 8 9s8-4 8-9V6l-8-3Z"></path><path d="m8 12 3 3 5-6"></path></svg></span>
+<h3>Formule assicurative</h3><p>Valutiamo le coperture a tutela dell’impianto per una maggiore tranquillità nel tempo.</p>
+<a class="service-inquiry" href="/servizi/formule-assicurative/">Scopri il servizio <span aria-hidden="true">↗</span></a>
+</article>
+<article class="service-item reveal" id="consulenza">
+<span aria-hidden="true" class="service-number">06</span>
+<span aria-hidden="true" class="service-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 4v16h16M8 15l4-5 4 2 4-7"></path></svg></span>
+<h3>Consulenza energetica</h3><p>Definiamo insieme le priorità, a partire dai consumi e dalle caratteristiche del tuo edificio.</p>
+<a class="service-inquiry" href="/servizi/consulenza/">Scopri il servizio <span aria-hidden="true">↗</span></a>
+</article><article class="service-item reveal" id="manutenzione">
+<span aria-hidden="true" class="service-number">07</span>
+<span aria-hidden="true" class="service-icon"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="m4 17 13-13 3 3L7 20H4v-3Zm10-10 3 3M4 4h5M4 8h3"></path></svg></span>
+<h3>Manutenzione impianti</h3><p>Controlli e assistenza per mantenere gli impianti efficienti e seguirli nel tempo.</p>
+<a class="service-inquiry" href="/servizi/manutenzione/">Scopri il servizio <span aria-hidden="true">↗</span></a>
+</article></div>
+<div class="service-cta reveal"><a class="button button-primary" href="/preventivo/?servizio=pompe-di-calore">Iniziamo dal tuo progetto <svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"></path></svg></a></div>
+</section>
+<section aria-labelledby="sectors-title" class="section section-white sectors-section">
+<div class="section-heading centered reveal"><p class="eyebrow brand-label">I tuoi spazi, la nostra competenza</p><h2 id="sectors-title">L’impianto giusto.<br/>In ogni contesto.</h2><p>Un servizio completo per il residenziale, il terziario e l’industria.</p></div>
+<div class="sectors-grid">
+<article class="sector-card reveal"><span class="sector-number">01 /</span><h3>Residenziale</h3><p>Soluzioni per la casa: energia, climatizzazione, acqua e automazioni.</p><span class="sector-tag">Il comfort di ogni giorno</span></article>
+<article class="sector-card reveal"><span class="sector-number">02 /</span><h3>Terziario</h3><p>Impianti tecnologici per gli ambienti dedicati al lavoro e ai servizi.</p><span class="sector-tag">Gli spazi della tua attività</span></article>
+<article class="sector-card reveal"><span class="sector-number">03 /</span><h3>Industriale</h3><p>Competenze idrauliche ed elettriche per sistemi e impianti industriali.</p><span class="sector-tag">Le esigenze della tua impresa</span></article>
+</div>
+</section>
+<section aria-labelledby="contact-title" class="contact-section" id="contatti">
+<div class="contact-copy reveal"><p class="eyebrow brand-label">Parliamone</p><h2 id="contact-title">Le tue idee.<br/>La giusta<br/><span>energia.</span></h2><p>Vuoi valutare una pompa di calore o un altro intervento? Raccontaci il tuo edificio e le tue esigenze: partiamo da qui.</p><div class="contact-image"><img alt="Professionista che consulta il progetto di un edificio in costruzione" decoding="async" height="592" loading="lazy" sizes="(max-width: 680px) calc(100vw - 40px), 480px" src="/assets/progettazione-750.webp" srcset="/assets/progettazione-400.webp 400w, /assets/progettazione-750.webp 750w" width="750"/></div></div>
+<div class="contact-panel reveal delay-1">
+<div class="panel-heading"><span class="status-dot"></span>Iniziamo da una consulenza</div>
+<div class="contact-detail"><span class="contact-label">Chiamaci</span><a class="contact-primary" href="tel:+393755521420">375 552 1420 <svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="m6 18 12-12M6 6h12v12"></path></svg></a></div>
+<div class="contact-detail"><span class="contact-label">Scrivici</span><a class="contact-email" href="mailto:info@green-flux.com">info@green-flux.com <svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="m6 18 12-12M6 6h12v12"></path></svg></a></div>
+<div class="contact-detail"><span class="contact-label">Dove siamo</span><address><strong>GREEN FLUX srls</strong><br/>Via Trieste, 19<br/>35121 · Padova (PD)</address></div>
+<a class="button button-dark" href="/preventivo/">Richiedi un preventivo <svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"></path></svg></a>
+<div class="social-links"><a aria-label="Green Flux su Instagram (nuova scheda)" href="https://www.instagram.com/greenflux_impianti/" rel="noopener noreferrer" target="_blank">Instagram <svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="m6 18 12-12M6 6h12v12"></path></svg></a><a aria-label="Green Flux su Facebook (nuova scheda)" href="https://www.facebook.com/profile.php?id=61579212246290" rel="noopener noreferrer" target="_blank">Facebook <svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="m6 18 12-12M6 6h12v12"></path></svg></a></div>
+</div>
+</section>
+</main>
+<footer class="site-footer">
+<div class="footer-grid">
+<div class="footer-about"><a aria-label="Green Flux — Torna all’inizio" class="brand footer-brand" href="#home"><img alt="Green Flux, impianti tecnologici" height="232" loading="lazy" src="/assets/logo.png" width="500"/></a><p>Il partner tecnico per i tuoi progetti.<br/>Impianti innovativi, efficienti e sostenibili.</p></div>
+<nav aria-label="Navigazione a fondo pagina"><h3>Esplora</h3><a href="/servizi/">Campi di intervento</a><a href="/chi-siamo/">Chi siamo</a><a href="/servizi/">Servizi</a><a href="/preventivo/">Richiedi un preventivo</a><a href="/contatti/">Contatti</a><a href="/metodo/">Metodo</a><a href="/progetti/">Realizzazioni</a><a href="/zone/">Zone</a><a href="/blog/">Blog</a></nav>
+<div><h3>Green Flux srls</h3><a href="tel:+393755521420">375 552 1420</a><a href="mailto:info@green-flux.com">info@green-flux.com</a><p>Via Trieste, 19<br/>35121 · Padova (PD)</p></div>
+</div>
+<div class="footer-bottom"><span>© <span id="year">2026</span> GREEN FLUX srls</span><div><a href="/privacy-policy/" rel="noopener noreferrer" target="_blank">Privacy Policy</a><a href="/cookie-policy/" rel="noopener noreferrer" target="_blank">Cookie Policy</a></div><a href="#home">Torna all’inizio ↑</a></div>
+</footer>
+<div aria-hidden="true" class="whatsapp-floating-widget" data-whatsapp-floating-widget="">
+<div aria-hidden="true" aria-live="polite" class="whatsapp-message-bubble" data-whatsapp-message="" role="status">
+      Ciao, come possiamo aiutarti?
+    </div>
+<a aria-label="Scrivici su WhatsApp (nuova scheda)" class="whatsapp-floating-button" href="https://wa.me/393755521420?text=Ciao%2C%20ti%20contatto%20dal%20sito%20https%3A%2F%2Fwww.green-flux.com%2F" rel="noopener noreferrer" target="_blank">
+<svg aria-hidden="true" focusable="false" viewBox="120 100 810 810">
+<path d="M783.302 243.246c-69.329-69.387-161.529-107.619-259.763-107.658-202.402 0-367.133 164.668-367.214 367.072-.026 64.699 16.883 127.854 49.017 183.522l-52.096 190.229 194.665-51.047c53.636 29.244 114.022 44.656 175.482 44.682h.151c202.382 0 367.128-164.688 367.21-367.094.039-98.087-38.121-190.319-107.452-259.706zM523.544 808.047h-.125c-54.767-.021-108.483-14.729-155.344-42.529l-11.146-6.612-115.517 30.293 30.834-112.592-7.259-11.544c-30.552-48.579-46.688-104.729-46.664-162.379.066-168.229 136.985-305.096 305.339-305.096 81.521.031 158.154 31.811 215.779 89.482s89.342 134.332 89.312 215.859c-.066 168.243-136.984 305.118-305.209 305.118zm167.415-228.515c-9.177-4.591-54.286-26.782-62.697-29.843-8.41-3.062-14.526-4.592-20.645 4.592-6.115 9.182-23.699 29.843-29.053 35.964-5.352 6.122-10.704 6.888-19.879 2.296-9.176-4.591-38.74-14.277-73.786-45.526-27.275-24.319-45.691-54.359-51.043-63.543-5.352-9.183-.569-14.146 4.024-18.72 4.127-4.109 9.175-10.713 13.763-16.069 4.587-5.355 6.117-9.183 9.175-15.304 3.059-6.122 1.529-11.479-.765-16.07-2.293-4.591-20.644-49.739-28.29-68.104-7.447-17.886-15.013-15.466-20.645-15.747-5.346-.266-11.469-.322-17.585-.322s-16.057 2.295-24.467 11.478-32.113 31.374-32.113 76.521c0 45.147 32.877 88.764 37.465 94.885 4.588 6.122 64.699 98.771 156.741 138.502 21.892 9.45 38.982 15.094 52.308 19.322 21.98 6.979 41.982 5.995 57.793 3.634 17.628-2.633 54.284-22.189 61.932-43.615 7.646-21.427 7.646-39.791 5.352-43.617-2.294-3.826-8.41-6.122-17.585-10.714z"></path>
+</svg>
+<span aria-hidden="true" class="whatsapp-notification-badge" data-whatsapp-badge="">1</span>
+</a>
+</div>
+
+</body>
+</html>
