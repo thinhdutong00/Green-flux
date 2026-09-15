@@ -1,6 +1,10 @@
 # Fonti dei contenuti e delle immagini
 
-Contenuti e immagini della home: https://www.green-flux.com/
+Contenuti aziendali di tutte le pagine e immagini della home: https://www.green-flux.com/
+
+Revisione integrale del 15 settembre 2026: `docs/content-review.md`. Il
+riferimento VenetaGreen resta una fonte di struttura visiva; le informazioni
+commerciali correnti provengono da Green Flux.
 
 Riferimento consultato il 9 settembre 2026. La nuova pagina conserva i dieci campi di intervento, i cinque servizi, l’esperienza dei tecnici e i contatti aziendali, con testi riorganizzati.
 

@@ -1,0 +1,65 @@
+{
+  "source_url": "https://www.green-flux.com/",
+  "verified_at": "2026-09-15",
+  "source_sha256": "e7774d0073e739db89c94af9ae75ce62bf3b666876feeb8c8efba972fe6c9bfb",
+  "company": {
+    "name": "Green Flux",
+    "legal_name": "GREEN FLUX srls",
+    "street": "Via Trieste, 19",
+    "postal_code": "35121",
+    "city": "Padova",
+    "province": "PD",
+    "phone": "+39 375 552 1420",
+    "email": "info@green-flux.com"
+  },
+  "about": "Green Flux realizza impianti con un approccio innovativo, efficiente e sostenibile. Si avvale di tecnici che operano da oltre 15 anni nelle energie rinnovabili, con competenze sia idrauliche che elettriche.",
+  "scope": [
+    "Residenziale",
+    "Terziario",
+    "Industriale"
+  ],
+  "technologies": [
+    "Pompe di calore",
+    "Fotovoltaico",
+    "Smart home e automazioni",
+    "Solare termico",
+    "Biomassa",
+    "Caldaie",
+    "Condizionatori",
+    "Ventilazione meccanica",
+    "Trattamento acqua",
+    "Impianti completi"
+  ],
+  "support_services": [
+    "Progettazione",
+    "Pratiche e permessi",
+    "Diagnosi energetiche",
+    "Detrazioni fiscali",
+    "Formule assicurative"
+  ],
+  "approach": "Dalla sostituzione di un generatore alla ristrutturazione completa: progettazione e installazione, diagnosi energetiche e gestione delle detrazioni fiscali, con un unico interlocutore e la collaborazione di professionisti qualificati.",
+  "source_sections": {
+    "company": "#chisiamo",
+    "technologies": "#campidiintervento",
+    "support": "#servizi",
+    "contacts": "#contatti"
+  },
+  "unsupported_claims_removed": [
+    "Copertura garantita di Veneto e Friuli-Venezia Giulia e dei singoli comuni",
+    "Cantieri e progetti realizzati non documentati",
+    "Recensioni, numeri di clienti e risultati non documentati",
+    "Manutenzione programmata e assistenza post vendita come servizi autonomi",
+    "Vendita e installazione di batterie di accumulo come servizio autonomo",
+    "Opere su cappotti, coperture o edilizia come servizio autonomo",
+    "Incentivi, percentuali, prezzi, tempi di rientro e scadenze copiati",
+    "Aree aziendali e ruoli del personale inventati",
+    "Promessa di preventivo gratuito o risposta entro tempi definiti"
+  ],
+  "route_policy": "Conservare gli URL; riscrivere le pagine non documentate come percorsi di consulenza o preparazione della richiesta. Non dichiarare copertura territoriale. Fotovoltaico casa e azienda sono due contesti della stessa attività dichiarata. Consulenza è il contatto offerto dalla fonte.",
+  "social": {
+    "instagram": "https://www.instagram.com/greenflux_impianti/",
+    "facebook": "https://www.facebook.com/profile.php?id=61579212246290"
+  },
+  "privacy_url": "https://www.iubenda.com/privacy-policy/26429268",
+  "cookie_url": "https://www.iubenda.com/privacy-policy/26429268/cookie-policy"
+}

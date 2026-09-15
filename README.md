@@ -1,27 +1,23 @@
 # Green Flux
 
-Sito statico multipagina Green Flux. La migrazione del 15 settembre 2026 riprende
-le 137 pagine pubbliche collegate di https://venetagreen.it/, con struttura delle
-sezioni, testi, stile, immagini, FAQ, guide, pagine locali e percorso preventivo.
-Il riferimento è stato scaricato direttamente dal sito corrente, perché alcune
-copie indicizzate mostravano contenuti precedenti.
+Sito statico multipagina Green Flux, con 149 pagine. Struttura visiva e percorsi
+riprendono il riferimento VenetaGreen; le informazioni aziendali sono state
+riallineate integralmente a https://www.green-flux.com/ il 15 settembre 2026.
 
-Sono state aggiunte 12 pagine per i servizi specifici Green Flux, per un totale
-di 149 pagine: smart home, solare termico, biomassa, caldaie, ventilazione,
-trattamento acqua, impianti completi, progettazione, pratiche e permessi,
-diagnosi energetiche, detrazioni fiscali e formule assicurative.
+La homepage mantiene il design Green Flux e le pompe di calore in evidenza.
+Il catalogo propone i campi d'intervento e i servizi dichiarati dall'azienda:
+17 voci nel preventivo, contando separatamente fotovoltaico casa e azienda e
+aggiungendo la consulenza. Le tre vecchie voci non documentate come offerte
+specifiche sono diventate percorsi di consulenza o progettazione degli impianti.
 
-La homepage usa il design Green Flux precedente alla migrazione, con pompe di
-calore in apertura e nella scheda principale. Gli altri impianti hanno schede
-della stessa dimensione e tutti i 20 servizi restano raggiungibili. Le pagine
-interne conservano struttura e contenuti importati; il menu mobile mantiene il
-design Green Flux ripristinato.
+Le pagine locali chiedono conferma della disponibilità; la sezione Interventi
+presenta gli ambiti impiantistici. Le guide aiutano a preparare la richiesta,
+senza risultati, prezzi o incentivi copiati da altre aziende.
 
-L'header desktop riprende quello di VenetaGreen, con logo, navigazione in linea
-e pulsante preventivo. Tutte le pagine usano la palette della homepage: petrolio
-`#193e40`, petrolio scuro `#123335`, lime `#d5ed90` e fondi chiari. I footer delle
-pagine interne restano bianchi. Il controllo browser copre tutte le 149 pagine
-a larghezze desktop e mobile, oltre al menu e alle selezioni del preventivo.
+L'header desktop riprende quello di VenetaGreen. Il menu mobile, il design della
+home, la palette petrolio/lime e i footer interni bianchi sono conservati.
+Fonte, criteri e inventario della revisione: `docs/content-review.md` e
+`docs/content-audit.json`.
 
 ## Anteprima che si aggiorna automaticamente
 
@@ -69,10 +65,10 @@ La manutenzione è **disattivata** in `maintenance.mjs`. Per attivarla, impostar
 
 - `public/index.html`: homepage Green Flux con focus sulle pompe di calore.
 - `public/styles.css`, `public/script.js`: design e interazioni della sola home.
-- `public/servizi/`: catalogo e 20 pagine di servizio.
+- `public/servizi/`: catalogo e 20 pagine di servizio/consulenza.
 - `public/chi-siamo/`, `public/metodo/`, `public/contatti/`, `public/progetti/`:
   pagine aziendali e percorsi collegati.
-- `public/blog/`, `public/zone/`: guide e pagine territoriali importate.
+- `public/blog/`, `public/zone/`: guide al progetto e richieste per località.
 - `public/preventivo/index.html`: percorso in sei passaggi del riferimento.
 - `public/preventivo/wizard.mjs`: navigazione, preselezioni e riepilogo.
 - `public/preventivo/funnel-data.mjs`: dati e validazione del nuovo percorso.
@@ -85,18 +81,22 @@ La manutenzione è **disattivata** in `maintenance.mjs`. Per attivarla, impostar
 - `public/assets/css/green-flux.css`: adattamenti al logo e al flusso Green Flux.
 - `public/assets/css/brand.css`: palette comune, pulsanti, pannelli e footer.
 - `public/assets/css/desktop-header.css`: header desktop condiviso con la home.
-- `content/green-flux-services.json`: contenuti strutturati delle 12 pagine aggiunte.
+- `content/green-flux-profile.json`: fonte e informazioni aziendali confermate.
+- `content/service-pages.json`, `content/editorial-pages.json`: testi verificati.
+- `scripts/align-green-flux-content.py`: applicazione dei contenuti alle pagine.
+- `content/green-flux-services.json`: sottoinsieme dei servizi aggiunti, allineato al modello corrente.
 
 I file HTML sono i sorgenti pubblicati e sono modificabili direttamente. Gli
 script Python sono strumenti della migrazione, non dipendenze della build.
 `import-reference.py` richiede un archivio locale delle pagine autorizzate e
-BeautifulSoup; `generate-services.py` usa il modello della pagina pompe di calore
-per rigenerare le pagine aggiunte dal JSON (sovrascrivendo quelle pagine).
+BeautifulSoup; `align-green-flux-content.py` applica i contenuti verificati alle strutture
+attuali. `generate-services.py` richiama questa procedura. Non rieseguire
+l’importazione storica per aggiornare le informazioni aziendali.
 
 ## Preventivo e contatti
 
 I passaggi sono: servizio, immobile, consumi, spazi, tempistiche, contatti.
-Tutti i 20 servizi sono selezionabili. I collegamenti delle pagine servizio
+Le 17 voci verificate del catalogo sono selezionabili. I collegamenti delle pagine servizio
 aprono `/preventivo/?servizio=ID` con l'opzione corretta già selezionata.
 Le vecchie preselezioni restano supportate.
 

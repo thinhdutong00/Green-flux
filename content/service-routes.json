@@ -1,102 +1,122 @@
 {
+  "pompe-calore": {
+    "title": "Pompe di calore",
+    "image": "pompe-di-calore",
+    "kind": "service",
+    "description": "Progettiamo e installiamo pompe di calore per impianti residenziali, terziari e industriali. Dalla sostituzione del generatore al sistema completo, Green Flux è il tuo interlocutore per il progetto."
+  },
   "fotovoltaico-residenziale": {
     "title": "Fotovoltaico residenziale",
-    "description": "Impianti per casa progettati su consumi, tetto disponibile e autoconsumo.",
-    "image": "fotovoltaico"
+    "image": "fotovoltaico",
+    "kind": "service",
+    "description": "Green Flux progetta e installa impianti fotovoltaici. Per la casa, il fotovoltaico si inserisce in un servizio che può comprendere progettazione, pratiche, diagnosi energetiche e supporto per le detrazioni."
   },
   "fotovoltaico-aziendale": {
     "title": "Fotovoltaico aziendale",
-    "description": "Soluzioni per imprese e attività produttive, con analisi tecnica e studio dei consumi.",
-    "image": "fotovoltaico"
-  },
-  "pompe-calore": {
-    "title": "Pompe di calore",
-    "description": "Riscaldamento, raffrescamento e acqua calda integrati con il fabbisogno dell’edificio.",
-    "image": "pompe-di-calore"
-  },
-  "climatizzazione": {
-    "title": "Climatizzazione efficiente",
-    "description": "Comfort estivo e invernale con macchine dimensionate sui tuoi ambienti.",
-    "image": "condizionatori"
-  },
-  "consulenza": {
-    "title": "Consulenza energetica",
-    "description": "Analisi di consumi, edificio e priorità prima di scegliere gli interventi.",
-    "image": "progettazione"
-  },
-  "batterie-accumulo": {
-    "title": "Batterie di accumulo",
-    "description": "Accumulo fotovoltaico dimensionato su produzione e consumi reali.",
-    "image": "fotovoltaico"
-  },
-  "manutenzione": {
-    "title": "Manutenzione impianti",
-    "description": "Controlli e assistenza per rendimento, sicurezza e continuità degli impianti.",
-    "image": "impianti"
-  },
-  "edilizia": {
-    "title": "Riqualificazione energetica",
-    "description": "Interventi coordinati su involucro, coperture e impianti.",
-    "image": "impianti-completi"
+    "image": "fotovoltaico",
+    "kind": "service",
+    "description": "Green Flux opera nell’impiantistica terziaria e industriale e include il fotovoltaico tra i propri campi d’intervento. Il progetto parte dalle esigenze dell’attività e viene seguito con competenze idrauliche ed elettriche."
   },
   "smart-home": {
     "title": "Smart home e automazioni",
-    "description": "Automazioni e gestione intelligente degli impianti per rendere la casa più comoda, controllabile e coerente con le tue abitudini.",
-    "image": "smart-home"
+    "image": "smart-home",
+    "kind": "service",
+    "description": "Smart home e automazioni fanno parte dei campi d’intervento Green Flux. Le competenze elettriche e idrauliche permettono di affrontare il progetto insieme agli altri impianti dell’immobile."
   },
   "solare-termico": {
     "title": "Solare termico",
-    "description": "Impianti solari termici per la produzione di acqua calda, progettati su esposizione, fabbisogno e integrazione con il sistema esistente.",
-    "image": "solare-termico"
+    "image": "solare-termico",
+    "kind": "service",
+    "description": "Green Flux include il solare termico tra le proprie attività impiantistiche. Progettazione su misura e competenze idrauliche accompagnano la definizione della soluzione per il tuo immobile."
   },
   "biomassa": {
-    "title": "Impianti a biomassa",
-    "description": "Soluzioni di riscaldamento a biomassa valutate sul fabbisogno dell’edificio, sul combustibile e sui requisiti di installazione.",
-    "image": "biomassa"
+    "title": "Biomassa",
+    "image": "biomassa",
+    "kind": "service",
+    "description": "La biomassa è uno dei campi d’intervento Green Flux. Dalla sostituzione di un generatore a un sistema più ampio, l’azienda segue progettazione e installazione con competenze impiantistiche integrate."
   },
   "caldaie": {
     "title": "Caldaie",
-    "description": "Sostituzione e installazione di caldaie con verifica del fabbisogno, della distribuzione e delle condizioni tecniche dell’edificio.",
-    "image": "caldaie"
+    "image": "caldaie",
+    "kind": "service",
+    "description": "Green Flux si occupa di caldaie e di impianti completi. La sostituzione del generatore rientra nell’attività dell’azienda, insieme alla progettazione e all’installazione per casa, terziario e industria."
+  },
+  "climatizzazione": {
+    "title": "Condizionatori",
+    "image": "condizionatori",
+    "kind": "service",
+    "description": "I condizionatori fanno parte dei campi d’intervento Green Flux. L’azienda progetta e installa impianti per abitazioni, attività del terziario e industria, anche all’interno di sistemi completi."
   },
   "ventilazione": {
     "title": "Ventilazione meccanica",
-    "description": "Sistemi di ventilazione per il ricambio dell’aria negli edifici, dimensionati sugli ambienti e integrati con comfort e gestione dell’umidità.",
-    "image": "ventilazione"
+    "image": "ventilazione",
+    "kind": "service",
+    "description": "Green Flux include la ventilazione meccanica tra i campi d’intervento. Puoi inserirla in una richiesta dedicata oppure nel progetto complessivo degli impianti del tuo immobile."
   },
   "trattamento-acqua": {
     "title": "Trattamento acqua",
-    "description": "Soluzioni per il trattamento dell’acqua scelte sulle sue caratteristiche, sugli utilizzi e sulle esigenze degli impianti.",
-    "image": "trattamento-acqua"
+    "image": "trattamento-acqua",
+    "kind": "service",
+    "description": "Il trattamento acqua rientra nell’offerta Green Flux. Le competenze idrauliche dell’azienda accompagnano la progettazione e l’installazione nell’ambito degli impianti tecnologici."
   },
   "impianti-completi": {
     "title": "Impianti completi",
-    "description": "Impianti elettrici e idraulici coordinati per nuove installazioni e ristrutturazioni, con un unico interlocutore tecnico.",
-    "image": "impianti-completi"
+    "image": "impianti-completi",
+    "kind": "service",
+    "description": "Green Flux realizza impianti completi, dalla sostituzione di un generatore alla ristrutturazione completa. Competenze idrauliche ed elettriche si uniscono alla collaborazione con professionisti qualificati."
   },
   "progettazione": {
-    "title": "Progettazione impianti",
-    "description": "Progettazione su misura per trasformare esigenze, vincoli dell’edificio e obiettivi energetici in un sistema realizzabile.",
-    "image": "progettazione"
+    "title": "Progettazione",
+    "image": "progettazione",
+    "kind": "service",
+    "description": "Green Flux offre progettazione studiata su misura per ogni cliente. Il servizio si inserisce nell’offerta chiavi in mano, con un unico interlocutore e professionisti qualificati nelle diverse fasi."
   },
   "pratiche-e-permessi": {
     "title": "Pratiche e permessi",
-    "description": "Supporto nella gestione delle autorizzazioni e della documentazione necessaria per realizzare gli impianti.",
-    "image": "progettazione"
+    "image": "progettazione",
+    "kind": "service",
+    "description": "Green Flux comprende la gestione delle pratiche e dei permessi nella propria offerta chiavi in mano. Le autorizzazioni necessarie vengono affrontate insieme al progetto impiantistico."
   },
   "diagnosi-energetiche": {
     "title": "Diagnosi energetiche",
-    "description": "Analisi tecnica di consumi e prestazioni per individuare criticità e orientare gli interventi di miglioramento energetico.",
-    "image": "progettazione"
+    "image": "progettazione",
+    "kind": "service",
+    "description": "Green Flux offre diagnosi energetiche: analisi tecniche orientate a ottimizzare consumi e prestazioni. Il servizio può accompagnare la progettazione degli impianti e la scelta degli interventi."
   },
   "detrazioni-fiscali": {
     "title": "Detrazioni fiscali e incentivi",
-    "description": "Supporto per valutare incentivi e agevolazioni collegati agli impianti, verificando progetto, requisiti e documentazione.",
-    "image": "progettazione"
+    "image": "progettazione",
+    "kind": "service",
+    "description": "Green Flux offre supporto per incentivi e agevolazioni legati agli impianti e gestione delle detrazioni fiscali. Il servizio accompagna il progetto e la relativa documentazione."
   },
   "formule-assicurative": {
     "title": "Formule assicurative per gli impianti",
-    "description": "Supporto nella valutazione di formule assicurative per gli impianti, in relazione al sistema realizzato e alle condizioni di copertura.",
-    "image": "impianti"
+    "image": "impianti",
+    "kind": "service",
+    "description": "Green Flux include formule assicurative per la sicurezza dell’impianto nella propria offerta chiavi in mano. Puoi chiedere informazioni sulla formula pertinente al sistema che vuoi realizzare."
+  },
+  "consulenza": {
+    "title": "Consulenza per il tuo progetto",
+    "image": "progettazione",
+    "kind": "service",
+    "description": "Green Flux invita a partire da una consulenza per trovare la soluzione più adatta. Puoi descrivere l’intervento, dalla sostituzione di un generatore a un progetto di impianti completi."
+  },
+  "batterie-accumulo": {
+    "title": "Consulenza sul fotovoltaico esistente",
+    "image": "fotovoltaico",
+    "kind": "consultation",
+    "description": "Hai un impianto fotovoltaico e vuoi valutare un nuovo progetto? Racconta a Green Flux la situazione attuale e le tue esigenze: la richiesta parte da una consulenza, con le lavorazioni da definire nella proposta."
+  },
+  "manutenzione": {
+    "title": "Valutare un impianto esistente",
+    "image": "impianti",
+    "kind": "consultation",
+    "description": "Per un impianto già presente, puoi chiedere a Green Flux una consulenza sul nuovo intervento che stai considerando. Descrivi la situazione: attività, disponibilità e condizioni vengono definite nel confronto con l’azienda."
+  },
+  "edilizia": {
+    "title": "Impianti per una ristrutturazione",
+    "image": "impianti-completi",
+    "kind": "consultation",
+    "description": "Green Flux descrive la propria attività dalla sostituzione di un generatore alla ristrutturazione completa. Il suo contributo riguarda gli impianti tecnologici, con competenze idrauliche ed elettriche e professionisti qualificati."
   }
 }

@@ -1,10 +1,7 @@
 export const services = [
-  { id: 'fotovoltaico-aziendale', label: 'Fotovoltaico aziendale', group: 'Impianti', energy: true, solar: true },
-  { id: 'batterie-accumulo', label: 'Batterie di accumulo', group: 'Impianti', energy: true },
-  { id: 'manutenzione', label: 'Manutenzione impianti', group: 'Servizi' },
-  { id: 'edilizia', label: 'Riqualificazione energetica', group: 'Servizi', energy: true },
-  { id: 'fotovoltaico', label: 'Fotovoltaico residenziale', group: 'Impianti', energy: true, solar: true },
   { id: 'pompe-di-calore', label: 'Pompe di calore', group: 'Impianti', energy: true },
+  { id: 'fotovoltaico-aziendale', label: 'Fotovoltaico aziendale', group: 'Impianti', energy: true, solar: true },
+  { id: 'fotovoltaico', label: 'Fotovoltaico residenziale', group: 'Impianti', energy: true, solar: true },
   { id: 'smart-home', label: 'Smart home e automazioni', group: 'Impianti' },
   { id: 'solare-termico', label: 'Solare termico', group: 'Impianti', energy: true, solar: true },
   { id: 'biomassa', label: 'Biomassa', group: 'Impianti', energy: true },
