@@ -1,5 +1,5 @@
 import { quoteText } from './data.mjs';
-import { readFunnel, validateFunnel, serviceId, questionsFor } from './funnel-data.mjs';
+import { readFunnel, validateFunnel, serviceId, questionsFor, adjacentFunnelStep } from './funnel-data.mjs';
 import { showHandoff } from '../assets/js/handoff.mjs';
 const wizard = document.querySelector('[data-quote-wizard]');
 if (wizard) {
@@ -14,6 +14,7 @@ if (wizard) {
   const next = wizard.querySelector('[data-next]');
   const submit = wizard.querySelector('[data-submit]');
   const savedAnswers = new Map();
+  const selected = serviceId(new URLSearchParams(location.search).get('servizio'));
   let current = 0;
   function element(tag, attributes = {}, text) {
     const node = document.createElement(tag);
@@ -96,17 +97,20 @@ if (wizard) {
     wizard.querySelector('.gf-handoff')?.remove();
   });
   form.addEventListener('input', () => { sync(); error.hidden = true; });
-  next.addEventListener('click', () => { if (validate(current)) setStep(current + 1, true); });
-  previous.addEventListener('click', () => setStep(current - 1, true));
+  function advance() {
+    if (validate(current)) setStep(adjacentFunnelStep(current, 1, selected), true);
+  }
+  next.addEventListener('click', advance);
+  previous.addEventListener('click', () => setStep(adjacentFunnelStep(current, -1, selected), true));
   form.addEventListener('keydown', event => {
     if (event.key === 'Enter' && !(event.target instanceof HTMLTextAreaElement) && event.target.tagName !== 'BUTTON' && event.target.tagName !== 'A' && current < steps.length - 1) {
       event.preventDefault();
-      if (validate(current)) setStep(current + 1, true);
+      advance();
     }
   });
   form.addEventListener('submit', event => {
     event.preventDefault();
-    if (current < steps.length - 1) { if (validate(current)) setStep(current + 1, true); return; }
+    if (current < steps.length - 1) { advance(); return; }
     const data = readFunnel(new FormData(form));
     const issues = validateFunnel(data);
     if (issues.length) { setStep(issues[0].step, true); validate(issues[0].step); return; }
@@ -114,7 +118,6 @@ if (wizard) {
     counter.textContent = 'Riepilogo';
     showHandoff(stage, quoteText(data), { onEdit: () => { form.hidden = false; setStep(steps.length - 1, true); } });
   });
-  const selected = serviceId(new URLSearchParams(location.search).get('servizio'));
   if (selected) {
     const input = [...form.querySelectorAll('[name="servizio"]')].find(x => x.value === selected);
     if (input) input.checked = true;

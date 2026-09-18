@@ -100,6 +100,11 @@ export async function renderSite() {
   const ctaTemplate = await template('cta');
   const audit = {};
   async function write(route, html, title) {
+    const service = content.services.find(item => serviceRoute(item.slug) === route);
+    if (service) {
+      html = html.replace('<body class="gf-content-page">', `<body class="gf-content-page" data-quote-service="${esc(service.quote)}">`)
+        .replaceAll('href="/preventivo/"', `href="${quote(service.quote)}"`);
+    }
     html = rewriteLinks(html);
     if (/\{\{[^{}]+\}\}/.test(html)) throw new Error(`Unfilled template in ${route}`);
     const target = join(publicRoot, route, 'index.html');

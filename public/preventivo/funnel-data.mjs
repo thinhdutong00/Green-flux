@@ -8,6 +8,10 @@ export function serviceId(value) {
   const id = Object.hasOwn(aliases, value) ? aliases[value] : value;
   return services.some(s => s.id === id) ? id : null;
 }
+export function adjacentFunnelStep(current, direction, preselectedService) {
+  const next = Math.max(0, Math.min(5, current + direction));
+  return next === 1 && serviceId(preselectedService) ? next + direction : next;
+}
 export function questionsFor(ids, index) {
   return services.filter(service => ids.includes(service.id)).flatMap(service => {
     const questions = serviceQuestions[service.id] || [];

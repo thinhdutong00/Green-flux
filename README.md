@@ -79,5 +79,6 @@ per una futura integrazione, con configurazione server richiesta.
 
 Il push su `main` pubblica su Vercel. Sites richiede la pubblicazione della versione
 salvata nel progetto indicato in `.openai/hosting.json`. Reindirizzamenti:
-`vercel.json`, `public/_redirects` e server locale. Manutenzione disattivata in
-`maintenance.mjs`. Criteri editoriali: `docs/content-review.md`.
+`vercel.json`, `public/_redirects` e server locale. La build pubblica direttamente
+le pagine del sito, senza una schermata di manutenzione.
+Criteri editoriali: `docs/content-review.md`.

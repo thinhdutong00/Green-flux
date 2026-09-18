@@ -1,9 +1,13 @@
 import { mobileHeaderMarkup } from './mobile-header-template.mjs';
 
+export function mobileHeaderForService(service) {
+  return service ? mobileHeaderMarkup.replaceAll('href="/preventivo/"', `href="/preventivo/?servizio=${encodeURIComponent(service)}"`) : mobileHeaderMarkup;
+}
+
 export function setupMobileHeader() {
   // The focused quote flow has its own header and close control.
   if (!document.querySelector('section.header') || document.querySelector('.gf-mobile-header')) return;
-  document.body.insertAdjacentHTML('afterbegin', mobileHeaderMarkup);
+  document.body.insertAdjacentHTML('afterbegin', mobileHeaderForService(document.body.dataset.quoteService));
   const header = document.querySelector('.gf-mobile-header');
   const toggle = header.querySelector('.gf-mobile-toggle');
   const menu = document.querySelector('#gf-mobile-menu');
