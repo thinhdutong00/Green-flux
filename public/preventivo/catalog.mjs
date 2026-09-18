@@ -58,36 +58,5 @@ export const services = [
     "label": "Impianti completi",
     "group": "Impianti",
     "energy": true
-  },
-  {
-    "id": "progettazione",
-    "label": "Progettazione",
-    "group": "Servizi"
-  },
-  {
-    "id": "pratiche-e-permessi",
-    "label": "Pratiche e permessi",
-    "group": "Servizi"
-  },
-  {
-    "id": "diagnosi-energetiche",
-    "label": "Diagnosi energetiche",
-    "group": "Servizi",
-    "energy": true
-  },
-  {
-    "id": "detrazioni-fiscali",
-    "label": "Detrazioni fiscali e incentivi",
-    "group": "Servizi"
-  },
-  {
-    "id": "formule-assicurative",
-    "label": "Formule assicurative",
-    "group": "Servizi"
-  },
-  {
-    "id": "consulenza",
-    "label": "Consulenza / non so ancora",
-    "group": "Consulenza"
   }
 ];

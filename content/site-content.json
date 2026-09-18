@@ -86,7 +86,12 @@
           "label": "ENEA · tecnologie per il riscaldamento",
           "url": "https://www.efficienzaenergetica.enea.it/servizi-per/cittadini/interventi-di-efficienza-e-risparmio-energetico-nelle-abitazioni/impianti/riscaldamento/tecnologie-e-etichetta-energetica-riscaldamento.html"
         }
-      ]
+      ],
+      "home": {
+        "order": 2,
+        "benefit": "Il comfort che ti fa sentire a casa.",
+        "proof": "Riscaldamento e acqua calda con una soluzione dimensionata sull’edificio, sui radiatori o sugli altri sistemi che distribuiscono il calore."
+      }
     },
     {
       "slug": "fotovoltaico",
@@ -168,7 +173,12 @@
           "label": "GSE · il solare fotovoltaico",
           "url": "https://www.gse.it/documenti_site/Documenti%20GSE/Rapporti%20statistici/GSE%20-%20Solare%20Fotovoltaico%20-%20Rapporto%20Statistico%202022.pdf"
         }
-      ]
+      ],
+      "home": {
+        "order": 1,
+        "benefit": "Più energia prodotta da te.",
+        "proof": "Trasforma il sole in elettricità da usare in casa o nella tua attività. Il progetto parte da esposizione, consumi e orari di utilizzo."
+      }
     },
     {
       "slug": "climatizzazione",
@@ -250,7 +260,12 @@
           "label": "ENEA · raffrescamento e pompe di calore",
           "url": "https://www.efficienzaenergetica.enea.it/servizi-per/cittadini/interventi-di-efficienza-e-risparmio-energetico-nelle-abitazioni/impianti/raffrescamento/tecnologie-e-etichetta-energetica-raffrescamento/solo-freddo-e-pompe-di-calore.html"
         }
-      ]
+      ],
+      "home": {
+        "order": 3,
+        "benefit": "Fuori fa caldo. Dentro stai bene.",
+        "proof": "Potenza, posizione delle unità e regolazione si scelgono in base alle stanze, per portare il fresco dove vivi e lavori."
+      }
     },
     {
       "slug": "caldaie",
@@ -328,7 +343,12 @@
           "label": "ENEA · impianti di riscaldamento",
           "url": "https://www.efficienzaenergetica.enea.it/servizi-per/cittadini/interventi-di-efficienza-e-risparmio-energetico-nelle-abitazioni/impianti/riscaldamento.html"
         }
-      ]
+      ],
+      "home": {
+        "order": 4,
+        "benefit": "Il calore su cui conti ogni giorno.",
+        "proof": "Riscaldamento e, nella configurazione adatta, acqua calda sanitaria. La scelta considera l’impianto esistente, i collegamenti e la regolazione degli ambienti."
+      }
     },
     {
       "slug": "biomassa",
@@ -401,7 +421,12 @@
         "caldaie",
         "impianti-completi"
       ],
-      "sources": []
+      "sources": [],
+      "home": {
+        "order": 5,
+        "benefit": "Il piacere del calore, con legna o pellet.",
+        "proof": "Dalla stufa al sistema che riscalda l’edificio: valutiamo il fabbisogno insieme a deposito del combustibile, spazi e gestione quotidiana."
+      }
     },
     {
       "slug": "solare-termico",
@@ -479,7 +504,12 @@
           "label": "ENEA · collettori solari per acqua calda",
           "url": "https://www.efficienzaenergetica.enea.it/detrazioni-fiscali/ecobonus/vademecum/collettori-solari.html"
         }
-      ]
+      ],
+      "home": {
+        "order": 6,
+        "benefit": "Il sole, anche nell’acqua calda.",
+        "proof": "I collettori trasferiscono il calore del sole all’acqua. Esposizione, fabbisogno e integrazione con il generatore esistente guidano il dimensionamento."
+      }
     },
     {
       "slug": "ventilazione",
@@ -557,7 +587,12 @@
           "label": "ENEA · ventilazione meccanica e recupero di calore",
           "url": "https://www.efficienzaenergetica.enea.it/images/Vademecum_Italia_in_classe_A_accessibile.pdf"
         }
-      ]
+      ],
+      "home": {
+        "order": 7,
+        "benefit": "Aria nuova, anche a finestre chiuse.",
+        "proof": "Il ricambio meccanico rinnova l’aria degli ambienti. Nei sistemi predisposti, il recupero di calore limita la dispersione dell’energia già utilizzata."
+      }
     },
     {
       "slug": "trattamento-acqua",
@@ -635,7 +670,12 @@
           "label": "Caleffi · gestione dell’acqua negli impianti",
           "url": "https://www.caleffi.com/it-it/blog/la-gestione-dellacqua-negli-impianti-pompa-di-calore-dallevoluzione-dei-generatori"
         }
-      ]
+      ],
+      "home": {
+        "order": 8,
+        "benefit": "Meno calcare. Più cura per i tuoi impianti.",
+        "proof": "Filtrazione, riduzione della durezza e protezione dei circuiti: il trattamento si sceglie dalle caratteristiche dell’acqua e dal problema da risolvere."
+      }
     },
     {
       "slug": "smart-home",
@@ -713,7 +753,12 @@
           "label": "ENEA · automazione e controllo degli edifici",
           "url": "https://modenergy.enea.it/bacs/"
         }
-      ]
+      ],
+      "home": {
+        "order": 9,
+        "benefit": "La casa segue i tuoi ritmi.",
+        "proof": "Orari, zone e comandi coordinati semplificano la gestione quotidiana. Definiamo le funzioni a partire dalle tue abitudini e dai dispositivi compatibili."
+      }
     },
     {
       "slug": "impianti-completi",
@@ -790,49 +835,74 @@
         "pompe-calore",
         "smart-home"
       ],
-      "sources": []
+      "sources": [],
+      "home": {
+        "order": 10,
+        "benefit": "Un progetto che tiene tutto insieme.",
+        "proof": "Idraulica ed elettrico si coordinano fin dall’inizio. Funzioni, spazi e collegamenti vengono progettati insieme, nella nuova costruzione come nella ristrutturazione."
+      }
     }
   ],
   "support": [
     {
       "id": "progettazione",
       "title": "Progettazione",
-      "text": "Trasforma le esigenze dell’immobile in scelte impiantistiche coordinate. Mette in relazione generatori, distribuzione, regolazione, spazi e collegamenti.",
-      "use": "Quando devi scegliere un nuovo impianto, sostituire un generatore o coordinare più lavorazioni.",
+      "text": "Nel progetto dell’impianto, traduce le esigenze dell’immobile in scelte tecniche coordinate. Mette in relazione generatori, distribuzione, regolazione, spazi e collegamenti.",
+      "use": "Nella scelta di un nuovo impianto, nella sostituzione di un generatore o quando più lavorazioni devono essere coordinate.",
       "prepare": "Planimetrie, impianti esistenti, funzioni richieste e vincoli già noti.",
-      "clarify": "Quali impianti rientrano nel progetto, quali elaborati sono previsti e come si coordina il lavoro con gli altri professionisti."
+      "clarify": "Quali impianti rientrano nel progetto, quali elaborati sono previsti e come si coordina il lavoro con gli altri professionisti.",
+      "home": {
+        "benefit": "Decidere con una visione chiara.",
+        "proof": "Spazi, potenze e collegamenti vengono valutati insieme: puoi capire come le scelte tecniche rispondono a ciò che chiedi al tuo immobile."
+      }
     },
     {
       "id": "pratiche-e-permessi",
       "title": "Pratiche e permessi",
-      "text": "Supporta il percorso autorizzativo del progetto. Green Flux dichiara la gestione delle autorizzazioni necessarie all’intervento.",
-      "use": "Quando l’intervento richiede documenti, richieste o autorizzazioni da coordinare con l’installazione.",
+      "text": "Accompagna la realizzazione dell’impianto con la gestione delle pratiche e delle autorizzazioni necessarie. Le attività da seguire si definiscono in base al tipo di intervento.",
+      "use": "Quando l’installazione richiede documenti, richieste o autorizzazioni da coordinare con i lavori.",
       "prepare": "Indirizzo, tipo di immobile, titolo di disponibilità e documenti già presenti.",
-      "clarify": "Quali pratiche sono necessarie, chi le presenta, quali documenti devi fornire e quali costi rientrano nella proposta."
+      "clarify": "Quali pratiche sono necessarie, chi le presenta, quali documenti devi fornire e quali costi rientrano nella proposta.",
+      "home": {
+        "benefit": "Sapere quale passo viene dopo.",
+        "proof": "La gestione delle pratiche accompagna l’installazione. Documenti necessari, attività e responsabilità si chiariscono in relazione al progetto."
+      }
     },
     {
       "id": "diagnosi-energetiche",
       "title": "Diagnosi energetiche",
-      "text": "Analizza consumi e prestazioni per individuare dove concentrare l’attenzione. Aiuta a motivare le priorità prima di scegliere gli interventi.",
-      "use": "Quando vuoi capire come viene utilizzata l’energia o confrontare possibili miglioramenti dell’immobile.",
+      "text": "Nel percorso di valutazione dell’impianto, l’analisi dei consumi e delle prestazioni aiuta a individuare le priorità e confrontare gli interventi possibili.",
+      "use": "Quando, prima di scegliere o rinnovare l’impianto, occorre capire come viene utilizzata l’energia nell’immobile.",
       "prepare": "Bollette e dati di consumo, orari di utilizzo, caratteristiche dell’edificio e degli impianti.",
-      "clarify": "Il perimetro dell’analisi, i dati necessari e come verranno presentate le valutazioni. Specifica se la richiesta riguarda anche altri documenti energetici."
+      "clarify": "Quali analisi sono utili al progetto impiantistico, quali dati servono e quali risultati verranno presentati nella valutazione.",
+      "home": {
+        "benefit": "Capire dove vale la pena intervenire.",
+        "proof": "L’analisi di consumi e prestazioni aiuta a individuare le priorità e confrontare le soluzioni prima di scegliere gli impianti."
+      }
     },
     {
       "id": "detrazioni-fiscali",
       "title": "Detrazioni fiscali e incentivi",
-      "text": "Affianca la valutazione delle agevolazioni in relazione al progetto. Le possibilità dipendono dall’intervento, dal beneficiario e dai requisiti applicabili.",
-      "use": "Prima di definire lavori e documentazione, se vuoi valutare il supporto disponibile per le agevolazioni.",
+      "text": "Il supporto sulle agevolazioni accompagna la valutazione del progetto impiantistico. Le possibilità dipendono dall’intervento, dal beneficiario e dai requisiti applicabili.",
+      "use": "Durante la definizione dell’intervento impiantistico, per coordinare la valutazione delle agevolazioni e la documentazione necessaria.",
       "prepare": "Tipo di intervento, situazione dell’immobile e informazioni sul soggetto che sostiene la spesa.",
-      "clarify": "Quale supporto viene prestato, quali verifiche servono e quali adempimenti restano al cliente o al suo consulente."
+      "clarify": "Quale supporto viene prestato, quali verifiche servono e quali adempimenti restano al cliente o al suo consulente.",
+      "home": {
+        "benefit": "Fare scelte con più consapevolezza.",
+        "proof": "Valutiamo il supporto sulle agevolazioni legate all’intervento, in base ai requisiti applicabili e alla situazione di chi sostiene la spesa."
+      }
     },
     {
       "id": "formule-assicurative",
       "title": "Formule assicurative",
-      "text": "Green Flux include formule assicurative tra i servizi collegati agli impianti. La valutazione deve riferirsi a una proposta concreta e alle sue condizioni.",
-      "use": "Quando vuoi conoscere le opzioni di copertura associabili al progetto impiantistico.",
+      "text": "Le formule assicurative si valutano in relazione all’impianto previsto nel progetto. Le eventuali coperture e le relative condizioni vanno chiarite nella proposta.",
+      "use": "Quando, insieme alla realizzazione dell’impianto, vuoi valutare le opzioni di copertura associabili.",
       "prepare": "Tipologia e caratteristiche dell’impianto, ubicazione e protezioni eventualmente già presenti.",
-      "clarify": "Soggetto assicuratore, rischi coperti, esclusioni, massimali, franchigie, durata e premio indicati nella documentazione della proposta."
+      "clarify": "Soggetto assicuratore, rischi coperti, esclusioni, massimali, franchigie, durata e premio indicati nella documentazione della proposta.",
+      "home": {
+        "benefit": "Conoscere le tutele del tuo investimento.",
+        "proof": "Le coperture associabili all’impianto si valutano su una proposta concreta, chiarendo condizioni, costi ed esclusioni."
+      }
     }
   ]
 }

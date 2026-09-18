@@ -13,24 +13,24 @@
   --neutral-02:var(--gf-paper);
   --neutral-01:var(--gf-white);
 }
-body:not(.home-pompe-calore) { color:var(--gf-ink); }
+body:not(.home-green-flux) { color:var(--gf-ink); }
 a { color:inherit; }
 ::selection { background:var(--gf-lime); color:var(--gf-ink); }
 :focus-visible { outline-color:var(--gf-ink); }
 input,textarea,select { accent-color:var(--gf-ink); }
 
 /* Lime actions use dark type; dark feature panels keep light type. */
-body:not(.home-pompe-calore) .button-primary:not(.vg-variant-9eeab034-5cca-e7aa-4218-f2bf93e21760),
-body:not(.home-pompe-calore) .form-button {
+body:not(.home-green-flux) .button-primary:not(.vg-variant-9eeab034-5cca-e7aa-4218-f2bf93e21760),
+body:not(.home-green-flux) .form-button {
   background:var(--gf-lime)!important; color:var(--gf-ink)!important; border-color:var(--gf-lime)!important;
 }
-body:not(.home-pompe-calore) .button-primary:not(.vg-variant-9eeab034-5cca-e7aa-4218-f2bf93e21760) .primary-button-text {
+body:not(.home-green-flux) .button-primary:not(.vg-variant-9eeab034-5cca-e7aa-4218-f2bf93e21760) .primary-button-text {
   color:var(--gf-ink)!important;
 }
-body:not(.home-pompe-calore) .button-primary:not(.vg-variant-9eeab034-5cca-e7aa-4218-f2bf93e21760):hover,
-body:not(.home-pompe-calore) .form-button:hover { background:#e2f5b1!important; }
-body:not(.home-pompe-calore) .button-arrow-right-icon { background:var(--gf-ink)!important; }
-body:not(.home-pompe-calore) .button-arrow-right-icon img { filter:brightness(0) invert(1); }
+body:not(.home-green-flux) .button-primary:not(.vg-variant-9eeab034-5cca-e7aa-4218-f2bf93e21760):hover,
+body:not(.home-green-flux) .form-button:hover { background:#e2f5b1!important; }
+body:not(.home-green-flux) .button-arrow-right-icon { background:var(--gf-ink)!important; }
+body:not(.home-green-flux) .button-arrow-right-icon img { filter:brightness(0) invert(1); }
 .content-wrapper.cta,.counter-card-wrapper,.bg-theme-color-01 { background-color:var(--gf-ink)!important; }
 .content-wrapper.cta .button-primary { background:var(--gf-lime)!important; border-color:var(--gf-lime)!important; }
 .content-wrapper.cta .button-primary .primary-button-text { color:var(--gf-ink)!important; }

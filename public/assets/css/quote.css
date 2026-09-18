@@ -1,0 +1,94 @@
+@font-face{font-family:"Quote Jakarta";src:url('/assets/fonts/plus-jakarta-sans-400.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:"Quote Jakarta";src:url('/assets/fonts/plus-jakarta-sans-600.woff2') format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:"Quote Jakarta";src:url('/assets/fonts/plus-jakarta-sans-700.woff2') format('woff2');font-weight:700;font-display:swap}
+/* Green Flux brand greens, shared with assets/css/brand.css. */
+:root{--quote-ink:#193e40;--quote-deep:#123335;--quote-accent:var(--quote-ink);--quote-lime:#d5ed90;--quote-lime-text:#657f1f;--quote-line:#e4e4e7;--quote-text:#18181b;--quote-muted:#71717a}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--quote-text);font-family:"Quote Jakarta",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit}
+button,a,input,select,textarea{-webkit-tap-highlight-color:transparent}
+a{color:inherit}
+button{cursor:pointer}
+[hidden]{display:none!important}
+::selection{background:var(--quote-lime);color:var(--quote-ink)}
+:focus-visible{outline:3px solid var(--quote-ink);outline-offset:4px}
+.quote-page{min-height:100svh;display:flex;flex-direction:column}
+.quote-header{position:sticky;top:0;z-index:3;display:flex;align-items:center;justify-content:space-between;padding:30px 32px;background:#fff;min-height:112px;flex:none}
+.quote-brand{display:block;width:190px;height:52px;position:relative;overflow:hidden;flex:none}
+.quote-brand img{position:absolute;left:-29px;top:-29px;width:235px;height:auto;max-width:none;filter:brightness(0)}
+.quote-brand::after{content:"";position:absolute;inset:0 auto 0 0;width:54px;background:url('/assets/logo.webp') -29px -29px / 235px auto no-repeat;pointer-events:none}
+.quote-close{display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;color:#a1a1aa;text-decoration:none;transition:color .2s,background .2s}
+.quote-close:hover{color:var(--quote-text);background:#f4f4f5}
+.quote-progress-track{position:sticky;top:112px;z-index:3;height:4px;background:#f4f4f5;width:100%;flex:none}
+.quote-progress-bar{width:0;height:100%;background:var(--quote-lime);transition:width .5s ease-out}
+.quote-stage{width:100%;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 16px}
+.quote-form{width:100%;max-width:672px;margin:0}
+.quote-step{animation:quote-enter .35s ease-out}
+.quote-step-label{display:flex;align-items:center;gap:12px;margin:0 0 24px;color:var(--quote-accent);font:700 14px/20px ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;text-transform:uppercase}
+.quote-step-label i{width:48px;height:1px;background:var(--quote-lime);flex:none}
+.quote-title{margin:0 0 32px;font-size:48px;font-weight:700;line-height:1.08;letter-spacing:0;overflow-wrap:anywhere;outline:none}
+.quote-title [data-customer-name]{color:var(--quote-lime-text)}
+.quote-description{margin:-12px 0 32px;color:var(--quote-muted);font-size:16px;line-height:1.6}
+.quote-name-input{display:block;width:100%;padding:16px 0;background:transparent;border:0;border-bottom:2px solid var(--quote-line);border-radius:0;color:var(--quote-text);font-size:36px;line-height:1.4;transition:border-color .2s}
+.quote-name-input::placeholder{color:#d4d4d8;opacity:1}
+.quote-name-input:focus{outline:none;border-bottom-color:var(--quote-accent)}
+.quote-options{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;min-width:0;margin:0;padding:0;border:0}
+.quote-option{position:relative;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px;border:2px solid #f4f4f5;border-radius:12px;background:#fff;color:#52525b;cursor:pointer;box-shadow:0 1px 2px #0000000d;transition:border-color .2s,background .2s,box-shadow .2s}
+.quote-option:hover{border-color:var(--quote-lime);color:var(--quote-accent);box-shadow:0 4px 6px -1px #0000000d}
+.quote-option-text{font-size:20px;font-weight:600;line-height:1.4;overflow-wrap:anywhere}
+.quote-option-input{position:absolute;opacity:0;width:1px;height:1px;margin:0}
+.quote-option-key{display:none}
+.quote-option::after{content:"";display:block;width:24px;height:24px;flex:none;border:1px solid var(--quote-line);border-radius:50%;background:#fff}
+.quote-option.is-selected,.quote-option:has(input:checked){border-color:var(--quote-accent);background:var(--quote-lime);color:var(--quote-ink)}
+.quote-option.is-selected::after,.quote-option:has(input:checked)::after{border-color:var(--quote-accent);background:var(--quote-accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 12 4 4 8-8'/%3E%3C/svg%3E") center/18px no-repeat}
+.quote-option:has(input:focus-visible){outline:3px solid var(--quote-ink);outline-offset:4px}
+.quote-question{min-width:0;border:0;padding:0;margin:0}
+.quote-question+.quote-question{margin-top:40px;padding-top:32px;border-top:1px solid var(--quote-line)}
+.quote-question-legend{width:100%;padding:0;margin:0 0 12px;font-size:22px;line-height:1.4;font-weight:700}
+.quote-question-hint{color:var(--quote-muted);margin:0 0 20px;font-size:15px;line-height:1.6}
+.quote-actions{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:48px;padding-bottom:32px}
+.quote-button{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:60px;padding:16px 32px;border:0;border-radius:999px;font-size:18px;font-weight:700;line-height:28px;text-decoration:none;transition:background .2s,color .2s,box-shadow .2s,transform .2s}
+.quote-button-primary{margin-left:auto;color:var(--quote-ink);background:var(--quote-lime);box-shadow:0 10px 15px -3px #0000001a,0 4px 6px -4px #0000001a}
+.quote-button-primary:hover:not(:disabled){background:var(--quote-deep);color:var(--quote-lime);transform:translateY(-1px)}
+.quote-button-primary:disabled{background:#f4f4f5;color:#d4d4d8;box-shadow:none;cursor:not-allowed}
+.quote-button-secondary{min-height:44px;padding:8px 16px;color:#a1a1aa;background:transparent;font-size:16px;font-weight:400;border-radius:8px}
+.quote-button-secondary:hover{color:var(--quote-text);background:#fafafa}
+.quote-keyboard-hint{display:flex;justify-content:flex-end;align-items:center;gap:8px;margin:16px 0 0;color:#a1a1aa;font-size:12px;line-height:20px}
+.quote-keyboard-hint kbd{border:1px solid var(--quote-line);border-radius:4px;background:#fafafa;color:#71717a;font:inherit;padding:0 8px;box-shadow:0 1px 2px #0000000d}
+.quote-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 24px}
+.quote-field{display:block;min-width:0;color:#52525b;font-size:14px;font-weight:600;line-height:1.5}
+.quote-field input,.quote-field select,.quote-field textarea{display:block;width:100%;min-width:0;padding:14px 0;margin-top:6px;border:0;border-bottom:2px solid var(--quote-line);border-radius:0;background:transparent;color:var(--quote-text);font-size:18px;font-weight:400;line-height:1.5}
+.quote-field input::placeholder,.quote-field textarea::placeholder{color:#a1a1aa}
+.quote-field input:focus,.quote-field select:focus,.quote-field textarea:focus{outline:none;border-color:var(--quote-accent)}
+.quote-field textarea{resize:vertical}
+.quote-field-wide{grid-column:1/-1}
+.quote-optional{font-weight:400;color:#a1a1aa}
+.quote-privacy{display:flex;align-items:flex-start;gap:12px;margin-top:32px;color:#71717a;font-size:14px;line-height:1.6;cursor:pointer}
+.quote-privacy input{flex:none;width:18px;height:18px;margin:3px 0 0;accent-color:var(--quote-accent)}
+.quote-privacy a{color:var(--quote-ink);text-underline-offset:3px}
+.quote-delivery-note{margin:24px 0 0;color:var(--quote-muted);font-size:14px;line-height:1.6}
+.quote-error{margin:24px 0 0;padding:14px 16px;border:1px solid #efcbc7;border-radius:8px;background:#fff8f7;color:#a52626;font-size:15px;line-height:1.5}
+.gf-handoff{width:100%;max-width:672px;color:var(--quote-text)}
+.gf-handoff h2{margin:0 0 24px;font-size:40px;line-height:1.15;letter-spacing:0}
+.gf-handoff p{color:var(--quote-muted);font-size:16px;line-height:1.6}
+.gf-handoff details{margin-top:32px;padding:24px;background:#fafafa;border:1px solid #f4f4f5;border-radius:16px}
+.gf-handoff summary{cursor:pointer;font-weight:600}
+.gf-handoff textarea{display:block;width:100%;min-height:260px;margin-top:20px;padding:12px;resize:vertical;border:1px solid var(--quote-line);border-radius:8px;background:white;color:var(--quote-text);font:inherit;font-size:14px;line-height:1.6}
+.gf-handoff-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.gf-handoff-actions a,.gf-handoff-actions button{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:14px 22px;border:0;border-radius:999px;background:var(--quote-lime);color:var(--quote-ink);font:inherit;font-weight:600;text-decoration:none;cursor:pointer}
+.gf-handoff-actions button{background:#f4f4f5;color:var(--quote-ink)}
+.gf-handoff-actions a:hover,.gf-handoff-actions button:hover{background:var(--quote-deep);color:var(--quote-lime)}
+.quote-skip-link{position:fixed;left:16px;top:-100px;z-index:5;padding:12px;background:var(--quote-ink);color:#fff}
+.quote-skip-link:focus{top:12px}
+.visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip-path:inset(50%);white-space:nowrap;border:0!important}
+@keyframes quote-enter{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:767px){
+ .quote-header{padding:24px;min-height:96px}.quote-brand{height:48px}.quote-close{width:48px;height:48px}.quote-progress-track{top:96px}
+ .quote-title{font-size:30px;line-height:1.25;letter-spacing:0}.quote-description{font-size:15px;margin-top:-12px;margin-bottom:24px}
+ .quote-name-input{font-size:24px;line-height:1.4}.quote-option{padding:20px;gap:16px}.quote-option-text{font-size:18px}
+ .quote-keyboard-hint{display:none}.quote-fields{grid-template-columns:minmax(0,1fr)}.quote-field-wide{grid-column:auto}
+ .quote-question-legend{font-size:20px}.quote-button{padding:16px 28px}.quote-button-secondary{padding:8px 12px}
+ .gf-handoff h2{font-size:30px}.gf-handoff-actions{display:grid;grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:359px){.quote-header{padding:20px 16px}.quote-brand{width:178px}.quote-button{padding:14px 20px;font-size:16px}.quote-button-secondary{padding:8px}.quote-title{font-size:28px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}

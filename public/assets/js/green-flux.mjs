@@ -1,6 +1,8 @@
 import { showHandoff } from './handoff.mjs';
 import { setupMobileHeader } from './mobile-header.mjs';
+import { setupDesktopMenus } from './desktop-header.mjs';
 setupMobileHeader();
+setupDesktopMenus();
 const legacy={'chisiamo':'/chi-siamo/','chi-siamo':'/chi-siamo/','campidiintervento':'/servizi/','campi-di-intervento':'/servizi/','servizi':'/servizi/progettazione-e-supporto/','contatti':'/contatti/','fotovoltaico':'/servizi/fotovoltaico/','pompe-di-calore':'/servizi/pompe-calore/','condizionatori':'/servizi/climatizzazione/'};
 const extra=['smart-home','solare-termico','biomassa','caldaie','ventilazione','trattamento-acqua','impianti-completi','progettazione','pratiche-e-permessi','diagnosi-energetiche','detrazioni-fiscali','formule-assicurative'];extra.forEach(id=>legacy[id]=`/servizi/${id}/`);
 for(const id of ['progettazione','pratiche-e-permessi','diagnosi-energetiche','detrazioni-fiscali','formule-assicurative'])legacy[id]='/servizi/progettazione-e-supporto/#'+id;

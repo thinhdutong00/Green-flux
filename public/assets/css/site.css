@@ -256,6 +256,7 @@ html{scroll-behavior:auto!important}
 .content-wrapper.cta .cta-image{
   align-self:end!important;
   aspect-ratio:auto!important;
+  display:block!important;
   height:100%!important;
   justify-self:end!important;
   margin-right:clamp(0px,2vw,42px)!important;
@@ -265,7 +266,7 @@ html{scroll-behavior:auto!important}
   object-fit:contain!important;
   object-position:right bottom!important;
   position:relative!important;
-  transform:translateY(1%)!important;
+  transform:none!important;
   width:auto!important;
   z-index:3!important;
 }
@@ -283,15 +284,15 @@ html{scroll-behavior:auto!important}
     grid-template-columns:1fr!important;
     height:auto!important;
     min-height:0!important;
-    padding:44px 24px 0!important;
+    padding:40px 24px 0!important;
     width:100%!important;
   }
   .content-wrapper.cta::after{
     display:none;
   }
   .content-wrapper.cta .cta-content{
-    order:2;
-    padding:20px 0 44px!important;
+    order:0;
+    padding:0 0 28px!important;
     width:100%!important;
   }
   .content-wrapper.cta .cta-heading-2{
@@ -300,9 +301,11 @@ html{scroll-behavior:auto!important}
   }
   .content-wrapper.cta .cta-image{
     height:auto!important;
-    margin-right:-24px!important;
+    justify-self:center!important;
+    margin:0!important;
+    object-position:center bottom!important;
     order:1;
-    width:min(88%,540px)!important;
+    width:min(100%,540px)!important;
   }
 }
 

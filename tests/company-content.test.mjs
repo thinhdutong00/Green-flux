@@ -9,14 +9,14 @@ const walk=dir=>readdirSync(dir,{withFileTypes:true}).flatMap(e=>e.isDirectory()
 const pages=walk('public').filter(p=>p.endsWith('index.html'));
 const textOnly=html=>html.replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1>/gi,'').replace(/<[^>]*>/g,' ').replace(/\s+/g,' ');
 
-test('Only documented activities appear in the catalogue and legacy requests become consultation',()=>{
- assert.equal(services.length,16);
+test('Only the ten installations appear in the quote catalogue; unsupported legacy requests are not preselected',()=>{
+ assert.equal(services.length,10);
  for(const id of ['batterie-accumulo','manutenzione','edilizia']){
   assert(!services.some(s=>s.id===id));
-  assert.equal(serviceId(id),'consulenza');
+  assert.equal(serviceId(id),null);
   assert(!mobileHeaderMarkup.includes(`/servizi/${id}/`));
  }
- assert.equal(serviceId('efficientamento-energetico'),'consulenza');
+ assert.equal(serviceId('efficientamento-energetico'),null);
  assert.equal(serviceId('fotovoltaico-aziendale'),'fotovoltaico');
  assert.equal(services[0].id,'pompe-di-calore');
  const quote=readFileSync('public/preventivo/index.html','utf8');

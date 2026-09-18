@@ -1,4 +1,5 @@
 import { services } from './catalog.mjs';
+import { questionsFor } from './funnel-data.mjs';
 export { services };
 export const projects = [
   { id: 'nuovo', label: 'Nuova installazione' },
@@ -71,11 +72,12 @@ export function reviewEntries(data) {
   ];
 }
 export function quoteSummary(data) {
-  if (data.funnel === 'reference') {
+  if (data.funnel === 'conditional') {
     return [
-      ['Impianti e servizi', data.services.map(id => labelFor(services, id)).join(', ')],
-      ['Immobile', data.propertyType], ['Consumi indicativi', data.annualConsumption],
-      ['Spazi disponibili', data.installationSpace], ['Tempistiche', data.timeline],
+      ['Immobile', data.propertyType],
+      ['Impianti', data.services.map(id => labelFor(services, id)).join(', ')],
+      ...questionsFor(data.services).map(question => [`${question.label} — ${question.title}`, data.answers?.[question.service]?.[question.id] || 'Non indicato']),
+      ['Tempistiche', data.timeline],
       ['Nome', data.name], ['Email', data.email || 'Non indicata'],
       ['Telefono', data.phone || 'Non indicato'], ['Comune', data.city],
       ...(data.notes ? [['Dettagli del progetto', data.notes]] : []),

@@ -39,6 +39,7 @@ const closeDesktopMenus = () => desktopMenus.forEach(item => setDesktopMenuOpen(
 
 desktopMenus.forEach(item => {
   const { nav, trigger, panel } = item;
+  nav.classList.add('is-enhanced');
   trigger.addEventListener('click', () => setDesktopMenuOpen(item, item.openedByHover || !nav.classList.contains('is-open')));
   trigger.addEventListener('keydown', event => {
     if (event.key !== 'ArrowDown') return;

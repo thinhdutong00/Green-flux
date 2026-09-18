@@ -593,25 +593,58 @@ html.quote-open, html.quote-open body { overflow: hidden; overscroll-behavior: n
 .quote-dialog-loading a { text-decoration: underline; text-underline-offset: 4px; }
 .quote-dialog-loading button { padding: 10px 24px; border: 0; border-radius: 24px; background: var(--lime); color: var(--ink); }
 
-/* Homepage: original design with heat pumps leading and equal-sized service cards. */
-.home-pompe-calore .hero-bg { object-position:65% center; }
-.home-pompe-calore .solutions-grid > .solution-card { grid-column:span 3; min-height:340px; }
-.home-pompe-calore .solutions-grid > .solution-card.featured { grid-column:1 / -1; min-height:440px; }
-.home-pompe-calore .solution-card.featured img { object-position:72% center; }
-.home-pompe-calore .solution-card.featured .card-content { max-width:650px; }
-.home-pompe-calore .services-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
-.home-pompe-calore .services-grid > .service-item { grid-column:auto; }
-.home-pompe-calore .service-inquiry { font-size:14px; }
-.home-pompe-calore .solution-category { font-size:14px; }
+/* Homepage: the complete offer, with equal space for every installation. */
+.home-green-flux .hero-bg { object-position:64% center; opacity:1; }
+.home-green-flux .hero-overlay { background:linear-gradient(90deg,rgb(18 51 53 / 95%) 0%,rgb(18 51 53 / 82%) 40%,rgb(18 51 53 / 34%) 78%),linear-gradient(0deg,rgb(18 51 53 / 50%),transparent 60%); }
+.home-green-flux .hero-content { width:min(1180px,100%); text-align:left; }
+.home-green-flux .hero h1 { max-width:850px; font-size:clamp(56px,7.4vw,104px); }
+.home-green-flux .hero-lead { max-width:630px; margin-left:0; color:rgb(255 255 255 / 88%); font-size:20px; }
+.home-green-flux .hero-actions { justify-content:flex-start; }
+.home-green-flux .solutions-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.home-green-flux .solutions-grid > .solution-card { grid-column:auto; min-height:450px; }
+.home-green-flux .card-content { padding:150px 32px 32px; }
+.home-green-flux .card-content h3 { max-width:480px; font-size:clamp(28px,2.4vw,36px); line-height:1.12; }
+.home-green-flux .card-content p { max-width:490px; color:rgb(255 255 255 / 90%); }
+.home-green-flux .card-scrim { background:linear-gradient(180deg,rgb(18 51 53 / 2%),rgb(18 51 53 / 35%) 24%,rgb(18 51 53 / 92%) 70%,#123335); }
+.home-green-flux .solution-category { font-size:14px; }
+.solution-detail { display:inline-flex; align-items:center; gap:10px; margin-top:22px; color:var(--lime); font-size:14px; font-weight:600; }
+.home-green-flux .services-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.home-green-flux .services-grid > .service-item { grid-column:auto; }
+.home-green-flux .service-inquiry { font-size:14px; }
+.home-green-flux .service-item .support-benefit { margin:15px 0 10px; color:var(--lime); font-size:19px; font-weight:600; line-height:1.45; }
+.ecosystem-panel { width:min(1180px,100%); margin:56px auto 0; padding:42px; border:1px solid var(--line); border-radius:26px; background:var(--paper); }
+.ecosystem-heading { max-width:750px; }
+.ecosystem-heading h3 { margin:0 0 20px; font-size:clamp(30px,3vw,44px); line-height:1.12; letter-spacing:-.035em; }
+.ecosystem-heading > p:last-child { margin:0; color:var(--muted); font-size:17px; line-height:1.65; }
+.ecosystem-connections { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:30px; margin-top:36px; }
+.ecosystem-connections article { padding-top:24px; border-top:1px solid var(--line); }
+.ecosystem-connections article > span { color:var(--muted); font-size:12px; font-weight:800; letter-spacing:.065em; text-transform:uppercase; }
+.ecosystem-connections h4 { margin:14px 0 12px; font-size:21px; line-height:1.35; letter-spacing:-.02em; }
+.ecosystem-connections p { margin:0; color:var(--muted); font-size:15px; line-height:1.65; }
+.ecosystem-link { display:inline-flex; align-items:center; gap:12px; min-height:44px; margin-top:26px; font-size:15px; font-weight:800; }
+.ecosystem-link:hover { text-decoration:underline; text-underline-offset:4px; }
 @media (max-width:991px) {
- .home-pompe-calore .solutions-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
- .home-pompe-calore .solutions-grid > .solution-card { grid-column:span 1; }
- .home-pompe-calore .services-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+ .home-green-flux .hero { padding-top:160px; }
+ .home-green-flux .hero-lead { max-width:580px; }
+ .home-green-flux .services-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+ .home-green-flux .card-content { padding:130px 24px 28px; }
+ .home-green-flux .card-content h3 { font-size:29px; }
+ .ecosystem-panel { padding:30px; }
+ .ecosystem-connections { gap:24px; }
 }
 @media (max-width:680px) {
- .home-pompe-calore .hero-bg { object-position:72% center; }
- .home-pompe-calore .hero h1 { font-size:clamp(40px,10vw,66px); }
- .home-pompe-calore .solutions-grid,.home-pompe-calore .services-grid { grid-template-columns:minmax(0,1fr); }
- .home-pompe-calore .solutions-grid > .solution-card { min-height:320px; }
- .home-pompe-calore .solutions-grid > .solution-card.featured { min-height:390px; }
+ .home-green-flux .hero { min-height:790px; padding:136px 20px 54px; }
+ .home-green-flux .hero-bg { object-position:60% center; }
+ .home-green-flux .hero-overlay { background:linear-gradient(90deg,rgb(18 51 53 / 90%),rgb(18 51 53 / 65%)),linear-gradient(0deg,rgb(18 51 53 / 75%),transparent 85%); }
+ .home-green-flux .hero h1 { font-size:clamp(44px,11vw,66px); }
+ .home-green-flux .hero-lead { font-size:17px; }
+ .home-green-flux .hero-actions { align-items:flex-start; }
+ .home-green-flux .solutions-grid,.home-green-flux .services-grid { grid-template-columns:minmax(0,1fr); }
+ .home-green-flux .solutions-grid > .solution-card { min-height:420px; }
+ .home-green-flux .card-content { padding:130px 26px 28px; }
+ .home-green-flux .card-content h3 { font-size:30px; }
+ .home-green-flux .solution-category { font-size:12px; }
+ .ecosystem-panel { margin-top:32px; padding:28px 24px; border-radius:22px; }
+ .ecosystem-connections { grid-template-columns:minmax(0,1fr); gap:26px; }
+ .ecosystem-heading > p:last-child { font-size:16px; }
 }
