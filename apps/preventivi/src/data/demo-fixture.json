@@ -1,0 +1,17 @@
+{
+  "notice": "DEMO: tutti i nomi cliente, gli importi e le condizioni seguenti sono esempi, non prezzi o condizioni commerciali Green Flux.",
+  "categories": ["Pompe di calore", "Accumuli", "Installazione", "Smaltimento", "Accessori", "Servizi tecnici", "Fotovoltaico", "Extra"],
+  "catalog": [
+    {"category": "Pompe di calore", "name": "DEMO · Pompa di calore aria-acqua", "sku": "DEMO-PDC-01", "kind": "product", "description": "Sistema aria-acqua per riscaldamento e raffrescamento. Caratteristiche indicative da sostituire con quelle della configurazione selezionata.", "priceCents": 750000, "vatBps": 2200, "unit": "pz", "featured": true},
+    {"category": "Accumuli", "name": "DEMO · Accumulo inerziale 100 litri", "sku": "DEMO-ACC-01", "kind": "product", "description": "Accumulo inerziale coibentato per l’integrazione con l’impianto termico. Dimensionamento da verificare in fase di progetto.", "priceCents": 65000, "vatBps": 2200, "unit": "pz", "featured": true},
+    {"category": "Installazione", "name": "DEMO · Installazione e collegamenti", "sku": "DEMO-INS-01", "kind": "service", "description": "Posa delle apparecchiature, collegamenti idraulici ed elettrici previsti nella configurazione e verifica funzionale finale.", "priceCents": 180000, "vatBps": 2200, "unit": "a corpo", "featured": false},
+    {"category": "Smaltimento", "name": "DEMO · Rimozione del generatore esistente", "sku": "DEMO-SMA-01", "kind": "service", "description": "Disconnessione e rimozione del generatore esistente; conferimento secondo le modalità da definire nel progetto.", "priceCents": 35000, "vatBps": 2200, "unit": "a corpo", "featured": false},
+    {"category": "Accessori", "name": "DEMO · Kit accessori idraulici", "sku": "DEMO-ACC-02", "kind": "product", "description": "Accessori per collegamento e intercettazione. La distinta finale viene definita sulla base delle esigenze dell’intervento.", "priceCents": 28000, "vatBps": 2200, "unit": "kit", "featured": false},
+    {"category": "Servizi tecnici", "name": "DEMO · Sopralluogo e progettazione", "sku": "DEMO-TEC-01", "kind": "service", "description": "Rilievo tecnico, raccolta dei dati dell’immobile e definizione della soluzione impiantistica proposta.", "priceCents": 45000, "vatBps": 2200, "unit": "a corpo", "featured": false},
+    {"category": "Fotovoltaico", "name": "DEMO · Modulo fotovoltaico", "sku": "DEMO-FV-01", "kind": "product", "description": "Modulo fotovoltaico di esempio. Potenza, modello e caratteristiche verranno definiti nella proposta reale.", "priceCents": 22000, "vatBps": 2200, "unit": "pz", "featured": true}
+  ],
+  "customers": [
+    {"firstName": "Mario", "lastName": "Rossi · DEMO", "company": "", "email": "mario.rossi@example.com", "phone": "", "address": "Via Esempio, 10", "postalCode": "35121", "city": "Padova", "province": "PD"},
+    {"firstName": "Anna", "lastName": "Verdi · DEMO", "company": "", "email": "anna.verdi@example.com", "phone": "", "address": "Via Dimostrativa, 24", "postalCode": "31100", "city": "Treviso", "province": "TV"}
+  ]
+}

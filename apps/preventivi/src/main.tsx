@@ -1,0 +1,15 @@
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { createBrowserRouter, RouterProvider, Link } from 'react-router-dom';
+import { AppProvider } from './components/AppProvider';
+import Layout from './components/Layout';
+import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
+import Catalog from './pages/Catalog';
+import Customers from './pages/Customers';
+import Settings from './pages/Settings';
+import Quotes from './pages/Quotes';
+import QuoteEditor from './pages/QuoteEditor';
+import './styles/app.css';
+const router=createBrowserRouter([{path:'/login',element:<Login/>},{path:'/',element:<Layout/>,children:[{index:true,element:<Dashboard/>},{path:'listino',element:<Catalog/>},{path:'clienti',element:<Customers/>},{path:'impostazioni',element:<Settings/>},{path:'preventivi',element:<Quotes/>},{path:'preventivi/nuovo',element:<QuoteEditor/>},{path:'preventivi/:id',element:<QuoteEditor/>},{path:'*',element:<div className="card access-error"><h1>Pagina non trovata</h1><Link className="btn btn-primary" to="/">Torna alla dashboard</Link></div>}]}]);
+ReactDOM.createRoot(document.getElementById('root')!).render(<React.StrictMode><AppProvider><RouterProvider router={router}/></AppProvider></React.StrictMode>);
