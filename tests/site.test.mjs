@@ -25,6 +25,23 @@ test('Every copied and added route has a local destination and its required asse
 test('Marketing pages use Green Flux identity and never ship reference lead or ad integrations',()=>{
  for(const page of pages){const html=readFileSync(page,'utf8');assert(!/info@venetagreen|393669224744|04626150272|AW-11114392153|uc4g2w3pct|google-ads-tracking\.js|lead-platform\.js|google-reviews\//.test(html),relative(root,page));assert(html.includes('Green Flux'),page);}
 });
+test('The home footer exposes accessible Facebook and Instagram links',()=>{
+ const html=readFileSync(join(root,'index.html'),'utf8');
+ const footer=html.match(/<footer class="site-footer">[\s\S]*?<\/footer>/)?.[0] ?? '';
+ assert(footer.includes('href="https://www.facebook.com/share/19rzXZZ9UN/"'));
+ assert(footer.includes('aria-label="Green Flux su Facebook (nuova scheda)"'));
+ assert(footer.includes('href="https://www.instagram.com/greenflux_impianti?stkn=MWxkdXExMWw0aXV3cQ=="'));
+ assert(footer.includes('aria-label="Green Flux su Instagram (nuova scheda)"'));
+});
+test('The home review carousel renders the audited Google reviews and controls',()=>{
+ const {reviews}=JSON.parse(readFileSync('content/site-content.json','utf8'));
+ const html=readFileSync(join(root,'index.html'),'utf8');
+ const script=readFileSync(join(root,'script.js'),'utf8');
+ assert.equal(reviews.source,'Google');assert.equal(reviews.rating,5);assert.equal(reviews.count,27);assert.equal(reviews.items.length,6);
+ assert(html.includes('data-review-carousel'));assert(html.includes(reviews.sourceUrl));assert(html.includes('27 recensioni su Google'));
+ for(const review of reviews.items){assert.equal(review.rating,5);assert(html.includes(review.author));assert(html.includes(review.text.replaceAll('&','&amp;').replaceAll("'",'&#39;')));}
+ assert(script.includes('function setupReviewCarousel()'));
+});
 test('Every Green Flux technology has its own explanation, decision criteria and matching quote',()=>{
  const {services:catalogue,support}=JSON.parse(readFileSync('content/site-content.json'));
  assert.equal(catalogue.length,10);assert.equal(support.length,5);

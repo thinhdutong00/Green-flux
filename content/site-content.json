@@ -843,6 +843,45 @@
       }
     }
   ],
+  "reviews": {
+    "source": "Google",
+    "sourceUrl": "https://www.google.com/maps?cid=11411563110781072231",
+    "rating": 5,
+    "count": 27,
+    "checkedAt": "2026-09-26",
+    "items": [
+      {
+        "author": "Matteo Rossetti",
+        "rating": 5,
+        "text": "Mi hanno installato una caldaia, in tempi brevi con un buon prezzo. Ottima azienda con personale qualificato, da consigliare"
+      },
+      {
+        "author": "Simone Maschio",
+        "rating": 5,
+        "text": "Chiamati per consulenza e installazione di un impianto fotovoltaico, precisi nel dare risposte e lavoro fatto bene, veramente soddisfatto!"
+      },
+      {
+        "author": "Giuseppe Sinigaglia",
+        "rating": 5,
+        "text": "Azienda molto affidabile con installatori professionali che hanno seguito tutte le fasi del lavoro anche in una situazione particolare di villa antica con molte particolarità e vari vincoli."
+      },
+      {
+        "author": "Claudio Biasiolo",
+        "rating": 5,
+        "text": "Li consiglio, sono sempre stati attenti alle mie richieste ed esigenze a cui hanno risposto con puntualità e cortesia. Anche a idee che non mi avrebbero portato benefici, hanno dato sempre il consiglio nel mio interesse più che al loro."
+      },
+      {
+        "author": "Clara Paccagnella",
+        "rating": 5,
+        "text": "Ho installato una pompa di riscaldamento, mi é piaciuto il fatto che si sono presi il tempo necessario per studiare il sistema più corretto per la mia situazione. Consiglio."
+      },
+      {
+        "author": "Giovanni Dondi",
+        "rating": 5,
+        "text": "Ho incontrato persone cordiali e disponibili. Il lavoro è stato eseguito come concordato senza fretta ed a regola d'arte, sono soddisfatto."
+      }
+    ]
+  },
   "support": [
     {
       "id": "progettazione",

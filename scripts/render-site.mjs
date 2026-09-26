@@ -52,6 +52,7 @@ function rewriteLinks(text) {
   return text.replace(/href="([^"#]+)(#[^"]*)?"/g, (all, path, hash = '') => redirects[path] ? `href="${esc(redirects[path])}${redirects[path].includes('#') ? '' : hash}"` : all);
 }
 const sections = pairs => pairs.map(([title, text]) => `<article class="gf-information-item"><h3>${esc(title)}</h3><p>${esc(text)}</p></article>`).join('');
+const reviewCards = items => items.map(({author,rating,text}) => `<article class="review-card"><div aria-label="${esc(rating)} stelle su 5" class="review-card-stars" role="img">${'★'.repeat(rating)}${'☆'.repeat(5-rating)}</div><blockquote><p>${esc(text)}</p></blockquote><footer><strong>${esc(author)}</strong><span>Recensione Google</span></footer></article>`).join('');
 function navMarkup(prefix = '') {
   const arrow = '<span aria-hidden="true">⌄</span>';
   return `${link('/', 'Home', prefix+'menu-primary-link')}${link('/chi-siamo/', 'Chi siamo', prefix+'menu-primary-link')}
@@ -151,7 +152,10 @@ export async function renderSite() {
     SERVICE_IMAGE:img(s.image,s.imageAlt).replace(/sizes="[^"]+"/,'sizes="(max-width: 680px) calc(100vw - 40px), (max-width: 1228px) 50vw, 578px"'),
     HOME_BENEFIT:esc(s.home.benefit), HOME_PROOF:esc(s.home.proof)
   })).join('');
-  const homeValues = {HOME_HEADER:header.replace('header gf-desktop-header','header gf-desktop-header gf-home-desktop-header'),HOME_MOBILE_NAV:navMarkup(),HOME_SERVICE_CARDS:homeCards,HOME_FOOTER_LINKS:footerLinks};
+  const homeValues = {
+    HOME_HEADER:header.replace('header gf-desktop-header','header gf-desktop-header gf-home-desktop-header'), HOME_MOBILE_NAV:navMarkup(), HOME_SERVICE_CARDS:homeCards, HOME_FOOTER_LINKS:footerLinks,
+    HOME_REVIEW_CARDS:reviewCards(content.reviews.items), HOME_REVIEW_RATING:esc(content.reviews.rating.toFixed(1).replace('.',',')), HOME_REVIEW_COUNT:esc(content.reviews.count), HOME_REVIEW_URL:esc(content.reviews.sourceUrl)
+  };
   for(const s of content.support){homeValues['SUPPORT_TITLE_'+s.id]=esc(s.title);homeValues['SUPPORT_BENEFIT_'+s.id]=esc(s.home.benefit);homeValues['SUPPORT_TEXT_'+s.id]=esc(s.home.proof);}
   await write('/',fill(await template('home'),homeValues),'Green Flux · Energia, comfort e impianti integrati');
   for(const [name,route,title] of [['privacy','/privacy-policy/','Informativa privacy'],['cookies','/cookie-policy/','Informativa cookie'],['terms','/termini-condizioni/','Termini e condizioni']])await write(route,fill(await template(name),{HEADER:header,FOOTER:footer}),title);

@@ -266,6 +266,36 @@ function setupSectionReveals() {
 
 setupSectionReveals();
 
+function setupReviewCarousel() {
+  const carousel = document.querySelector('[data-review-carousel]');
+  if (!carousel) return;
+  const track = carousel.querySelector('[data-review-track]');
+  const previous = carousel.querySelector('[data-review-previous]');
+  const next = carousel.querySelector('[data-review-next]');
+  const cards = [...track.querySelectorAll('.review-card')];
+
+  const step = () => {
+    const first = cards[0];
+    if (!first) return track.clientWidth;
+    const gap = Number.parseFloat(getComputedStyle(track).columnGap) || 0;
+    return first.getBoundingClientRect().width + gap;
+  };
+  const update = () => {
+    const max = Math.max(0, track.scrollWidth - track.clientWidth);
+    previous.disabled = track.scrollLeft <= 2;
+    next.disabled = track.scrollLeft >= max - 2;
+  };
+  const move = direction => track.scrollBy({ left: direction * step(), behavior: reducedMotion.matches ? 'auto' : 'smooth' });
+
+  previous.addEventListener('click', () => move(-1));
+  next.addEventListener('click', () => move(1));
+  track.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+}
+
+setupReviewCarousel();
+
 document.getElementById('year').textContent = new Date().getFullYear();
 
 function setupWhatsAppButton() {
