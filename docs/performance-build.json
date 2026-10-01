@@ -16,8 +16,8 @@
   },
   {
     "page": "/",
-    "cssBefore": 52556,
-    "cssAfter": 46571
+    "cssBefore": 52518,
+    "cssAfter": 46533
   },
   {
     "page": "/preventivo/",
@@ -51,6 +51,11 @@
   },
   {
     "page": "/servizi/impianti-completi/",
+    "cssBefore": 162765,
+    "cssAfter": 52207
+  },
+  {
+    "page": "/servizi/impianti-radianti-parete-soffitto/",
     "cssBefore": 162765,
     "cssAfter": 52207
   },

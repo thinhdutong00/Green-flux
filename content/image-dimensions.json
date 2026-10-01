@@ -338,5 +338,41 @@
   "/assets/images/solar-detail-960.webp": [
     960,
     540
+  ],
+  "/assets/images/boiler-installation-480.webp": [
+    480,
+    270
+  ],
+  "/assets/images/boiler-installation-960.webp": [
+    960,
+    540
+  ],
+  "/assets/images/boiler-installation-1600.webp": [
+    1600,
+    900
+  ],
+  "/assets/images/comfort-consultation-480.webp": [
+    480,
+    270
+  ],
+  "/assets/images/comfort-consultation-960.webp": [
+    960,
+    540
+  ],
+  "/assets/images/comfort-consultation-1600.webp": [
+    1600,
+    900
+  ],
+  "/assets/images/radiant-wall-ceiling-480.webp": [
+    480,
+    270
+  ],
+  "/assets/images/radiant-wall-ceiling-960.webp": [
+    960,
+    540
+  ],
+  "/assets/images/radiant-wall-ceiling-1600.webp": [
+    1600,
+    900
   ]
 }

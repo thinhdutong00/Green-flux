@@ -41,6 +41,10 @@ export const serviceQuestions = {
     question('funzioni', 'Che cosa vorresti controllare o automatizzare?', ['Riscaldamento e climatizzazione', 'Luci e consumi elettrici', 'Tapparelle e altre aperture', 'Sicurezza e accessi', 'Più funzioni insieme', unknown]),
     question('situazione', 'In quale situazione vorresti inserire le automazioni?', ['Nuova costruzione', 'Ristrutturazione con rifacimento degli impianti', 'Immobile con impianti esistenti', 'Ampliamento di un sistema smart già presente', unknown]),
   ],
+  'impianti-radianti': [
+    question('superfici', 'Quali superfici vuoi valutare per l’impianto radiante?', ['Pareti', 'Soffitti', 'Pareti e soffitti', unknown]),
+    question('funzioni', 'Quali funzioni dovrà svolgere il sistema?', ['Solo riscaldamento', 'Riscaldamento e raffrescamento', 'Integrazione di un impianto esistente', unknown]),
+  ],
   'impianti-completi': [
     question('intervento', 'Quale progetto vuoi realizzare?', ['Impianti per una nuova costruzione', 'Ristrutturazione completa', 'Rinnovo coordinato di più impianti esistenti', unknown]),
     question('sistemi', 'Quali impianti vuoi coordinare?', ['Riscaldamento, raffrescamento e acqua calda', 'Impianti elettrici, fotovoltaico e automazioni', 'Impianti idraulici ed elettrici insieme', unknown]),

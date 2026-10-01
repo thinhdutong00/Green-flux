@@ -42,22 +42,40 @@ test('The home review carousel renders the audited Google reviews and controls',
  for(const review of reviews.items){assert.equal(review.rating,5);assert(html.includes(review.author));assert(html.includes(review.text.replaceAll('&','&amp;').replaceAll("'",'&#39;')));}
  assert(script.includes('function setupReviewCarousel()'));
 });
+test('The home and navigation expose only the requested services in the requested order',()=>{
+ const html=readFileSync(join(root,'index.html'),'utf8');
+ const expected=['Pompe di calore','Fotovoltaico','Smart home e automazioni','Ventilazione meccanica','Caldaie','Condizionatori','Impianti radianti a parete e soffitto','Impianti completi'];
+ const home=html.match(/<div class="solutions-grid">([\s\S]*?)<div class="ecosystem-panel/)[1];
+ const homeTitles=[...home.matchAll(/<span class="solution-category">([^<]+)<\/span>/g)].map(match=>match[1]);
+ assert.deepEqual(homeTitles,expected);
+ const desktopMenu=html.match(/<div class="services-menu" id="desktop-fields-menu"[\s\S]*?<div class="services-menu-footer">/)[0];
+ const menuTitles=[...desktopMenu.matchAll(/<span class="services-menu-label">([^<]+)<\/span>/g)].map(match=>match[1]);
+ assert.deepEqual(menuTitles,expected);
+ const supportCards=[...html.matchAll(/data-support-id="([^"]+)"/g)].map(match=>match[1]);
+ assert.deepEqual(supportCards,['progettazione','diagnosi-energetiche','detrazioni-fiscali']);
+ for(const title of ['Biomassa','Solare termico','Trattamento acqua']){
+  assert(!homeTitles.includes(title));assert(!menuTitles.includes(title));
+ }
+ assert(html.includes('/assets/images/comfort-consultation-1600.webp'));
+ assert(readFileSync(join(root,'servizi/caldaie/index.html'),'utf8').includes('/assets/images/boiler-installation-1600.webp'));
+ assert(readFileSync(join(root,'servizi/impianti-radianti-parete-soffitto/index.html'),'utf8').includes('/assets/images/radiant-wall-ceiling-1600.webp'));
+});
 test('Every Green Flux technology has its own explanation, decision criteria and matching quote',()=>{
  const {services:catalogue,support}=JSON.parse(readFileSync('content/site-content.json'));
- assert.equal(catalogue.length,10);assert.equal(support.length,5);
+ assert.equal(catalogue.length,11);assert.equal(support.length,5);
  const titles=new Set();
  for(const service of catalogue){const html=readFileSync(join(root,'servizi',service.slug,'index.html'),'utf8');assert(html.includes(`servizio=${service.quote}`));assert(html.includes(service.introTitle));assert(!titles.has(service.introTitle));titles.add(service.introTitle);for(const [question] of service.faqs)assert(html.includes(question));assert.equal([...html.matchAll(/<h1\b/g)].length,1);assert(!html.includes('venetagreen-trust'));}
  const supportPage=readFileSync(join(root,'servizi/progettazione-e-supporto/index.html'),'utf8');
  for(const item of support){assert(supportPage.includes(`id="${item.id}"`));assert(!supportPage.includes(`servizio=${item.id}`));assert.equal(serviceId(item.id),null);}
 });
-test('The six-step funnel starts with the name, then the ten installations, and supports direct links',()=>{
+test('The six-step funnel starts with the name, then the eleven installations, and supports direct links',()=>{
  const html=readFileSync(join(root,'preventivo/index.html'),'utf8');assert.equal([...html.matchAll(/data-step="\d+"/g)].length,6);
  const step1=html.match(/data-step="1"[\s\S]*?<\/section>/)[0];
  const step2=html.match(/data-step="2"[\s\S]*?<\/section>/)[0];
  assert(step1.includes('name="nome"'));assert(!step1.includes('name="immobile"'));assert(!step1.includes('name="servizio"'));
  const contacts=html.match(/data-step="6"[\s\S]*?<\/section>/)[0];
  assert(contacts.includes('name="immobile"'));assert(!contacts.includes('name="nome"'));
- assert.equal([...step2.matchAll(/name="servizio"/g)].length,10);
+ assert.equal([...step2.matchAll(/name="servizio"/g)].length,11);
  for(const s of services){assert(step2.includes(`value="${s.id}"`),s.id);assert.equal(serviceId(s.id),s.id);assert.deepEqual(validateFunnel({...sample(),services:[s.id],answers:answersFor([s.id])}),[]);}
  assert.equal(serviceId('pompe-calore'),'pompe-di-calore');assert.equal(serviceId('fotovoltaico-residenziale'),'fotovoltaico');assert.equal(serviceId('climatizzazione'),'condizionatori');assert.equal(serviceId('arbitrary'),null);
  assert(!supportQuoteLinks().length);

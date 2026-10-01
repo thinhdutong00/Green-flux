@@ -8,7 +8,11 @@ import handler from '../api/preventivo.mjs';
 const sample = () => ({ services: ['trattamento-acqua'], project: 'nuovo', consumption: '', spaces: ['interni'], name: 'Test Locale', email: 'test@example.com', phone: '', city: 'Padova', notes: 'Dati di test: nessun invio reale.', privacy: true, website: '', elapsed: 5000, requestId: 'aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee' });
 
 test('Ogni opzione del catalogo ha una destinazione pertinente e una richiesta preselezionata', () => {
-  const routes = { 'pompe-di-calore': 'pompe-calore', 'condizionatori': 'climatizzazione' };
+  const routes = {
+    'pompe-di-calore': 'pompe-calore',
+    'condizionatori': 'climatizzazione',
+    'impianti-radianti': 'impianti-radianti-parete-soffitto',
+  };
   for (const service of services) {
     if(service.id==='consulenza')continue;
     const slug = routes[service.id] || service.id;

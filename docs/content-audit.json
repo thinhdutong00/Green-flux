@@ -1,6 +1,6 @@
 {
   "reviewed_at": "2026-09-15",
-  "total_pages": 19,
+  "total_pages": 20,
   "source_url": "https://www.green-flux.com/",
   "pages": {
     "/servizi/pompe-calore/": {
@@ -45,6 +45,11 @@
     },
     "/servizi/smart-home/": {
       "title": "Smart home e automazioni",
+      "source_url": "https://www.green-flux.com/",
+      "kind": "canonical"
+    },
+    "/servizi/impianti-radianti-parete-soffitto/": {
+      "title": "Impianti radianti a parete e soffitto",
       "source_url": "https://www.green-flux.com/",
       "kind": "canonical"
     },

@@ -54,6 +54,12 @@ export const services = [
     "group": "Impianti"
   },
   {
+    "id": "impianti-radianti",
+    "label": "Impianti radianti a parete e soffitto",
+    "group": "Impianti",
+    "energy": true
+  },
+  {
     "id": "impianti-completi",
     "label": "Impianti completi",
     "group": "Impianti",

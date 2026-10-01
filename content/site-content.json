@@ -88,7 +88,7 @@
         }
       ],
       "home": {
-        "order": 2,
+        "order": 1,
         "benefit": "Il comfort che ti fa sentire a casa.",
         "proof": "Riscaldamento e acqua calda con una soluzione dimensionata sull’edificio, sui radiatori o sugli altri sistemi che distribuiscono il calore."
       }
@@ -175,7 +175,7 @@
         }
       ],
       "home": {
-        "order": 1,
+        "order": 2,
         "benefit": "Più energia prodotta da te.",
         "proof": "Trasforma il sole in elettricità da usare in casa o nella tua attività. Il progetto parte da esposizione, consumi e orari di utilizzo."
       }
@@ -262,7 +262,7 @@
         }
       ],
       "home": {
-        "order": 3,
+        "order": 6,
         "benefit": "Fuori fa caldo. Dentro stai bene.",
         "proof": "Potenza, posizione delle unità e regolazione si scelgono in base alle stanze, per portare il fresco dove vivi e lavori."
       }
@@ -272,8 +272,8 @@
       "title": "Caldaie",
       "quote": "caldaie",
       "category": "Riscaldamento e comfort",
-      "image": "caldaie-750.webp",
-      "imageAlt": "Caldaia per un impianto termico",
+      "image": "images/boiler-installation-1600.webp",
+      "imageAlt": "Caldaia moderna installata in un locale tecnico domestico",
       "summary": "Generazione di calore per riscaldamento e acqua calda, da valutare insieme all’impianto esistente.",
       "lead": "La sostituzione del generatore è uno degli interventi da cui può partire Green Flux. Il servizio mette in relazione la nuova caldaia con distribuzione, regolazione e necessità dell’immobile.",
       "introTitle": "Sostituire la caldaia significa guardare anche il resto dell’impianto",
@@ -345,7 +345,7 @@
         }
       ],
       "home": {
-        "order": 4,
+        "order": 5,
         "benefit": "Il calore su cui conti ogni giorno.",
         "proof": "Riscaldamento e, nella configurazione adatta, acqua calda sanitaria. La scelta considera l’impianto esistente, i collegamenti e la regolazione degli ambienti."
       }
@@ -423,7 +423,8 @@
       ],
       "sources": [],
       "home": {
-        "order": 5,
+        "order": 90,
+        "visible": false,
         "benefit": "Il piacere del calore, con legna o pellet.",
         "proof": "Dalla stufa al sistema che riscalda l’edificio: valutiamo il fabbisogno insieme a deposito del combustibile, spazi e gestione quotidiana."
       }
@@ -506,7 +507,8 @@
         }
       ],
       "home": {
-        "order": 6,
+        "order": 91,
+        "visible": false,
         "benefit": "Il sole, anche nell’acqua calda.",
         "proof": "I collettori trasferiscono il calore del sole all’acqua. Esposizione, fabbisogno e integrazione con il generatore esistente guidano il dimensionamento."
       }
@@ -589,7 +591,7 @@
         }
       ],
       "home": {
-        "order": 7,
+        "order": 4,
         "benefit": "Aria nuova, anche a finestre chiuse.",
         "proof": "Il ricambio meccanico rinnova l’aria degli ambienti. Nei sistemi predisposti, il recupero di calore limita la dispersione dell’energia già utilizzata."
       }
@@ -672,7 +674,8 @@
         }
       ],
       "home": {
-        "order": 8,
+        "order": 92,
+        "visible": false,
         "benefit": "Meno calcare. Più cura per i tuoi impianti.",
         "proof": "Filtrazione, riduzione della durezza e protezione dei circuiti: il trattamento si sceglie dalle caratteristiche dell’acqua e dal problema da risolvere."
       }
@@ -755,9 +758,91 @@
         }
       ],
       "home": {
-        "order": 9,
+        "order": 3,
         "benefit": "La casa segue i tuoi ritmi.",
         "proof": "Orari, zone e comandi coordinati semplificano la gestione quotidiana. Definiamo le funzioni a partire dalle tue abitudini e dai dispositivi compatibili."
+      }
+    },
+    {
+      "slug": "impianti-radianti-parete-soffitto",
+      "title": "Impianti radianti a parete e soffitto",
+      "quote": "impianti-radianti",
+      "category": "Riscaldamento e raffrescamento",
+      "image": "images/radiant-wall-ceiling-1600.webp",
+      "imageAlt": "Installazione di un impianto radiante a parete e soffitto",
+      "summary": "Sistemi radianti integrati nelle superfici per distribuire caldo e, nelle configurazioni previste, fresco negli ambienti.",
+      "lead": "Green Flux progetta e installa impianti radianti a parete e soffitto, coordinando superfici, generatore, circuito idraulico e regolazione.",
+      "introTitle": "Il comfort passa dalle superfici dell’ambiente",
+      "overview": [
+        "Negli impianti radianti a parete e soffitto, l’acqua circola in tubazioni integrate in pannelli o strati predisposti. Le superfici scambiano calore con l’ambiente senza richiedere terminali sporgenti come radiatori o ventilconvettori.",
+        "Il progetto deve considerare il fabbisogno dell’edificio, la stratigrafia delle superfici e la temperatura di lavoro. Se il sistema viene previsto anche per il raffrescamento, regolazione dell’umidità e controllo della condensa entrano nella valutazione tecnica."
+      ],
+      "situations": [
+        [
+          "Ristrutturare gli ambienti",
+          "Stai intervenendo su pareti o controsoffitti e vuoi integrare la distribuzione del caldo e del fresco nelle superfici."
+        ],
+        [
+          "Liberare spazio",
+          "Vuoi ridurre la presenza di terminali a vista e coordinare l’impianto con arredi e distribuzione delle stanze."
+        ],
+        [
+          "Coordinare caldo e fresco",
+          "Vuoi valutare un unico sistema radiante insieme al generatore e alla gestione dell’umidità prevista dal progetto."
+        ]
+      ],
+      "checksTitle": "Le verifiche che definiscono il sistema",
+      "checks": [
+        [
+          "Fabbisogno e superfici",
+          "Dimensioni, isolamento e utilizzo degli ambienti determinano quanta superficie attiva occorre valutare."
+        ],
+        [
+          "Pareti e soffitti",
+          "Stratigrafie, finiture, arredi e punti di fissaggio devono essere coordinati con il percorso dei circuiti."
+        ],
+        [
+          "Generatore e circuito",
+          "Temperature di lavoro, collettori e collegamenti idraulici vanno progettati insieme alla pompa di calore o all’altro generatore previsto."
+        ],
+        [
+          "Regolazione e umidità",
+          "Zone, sonde e gestione dell’umidità sono parte del progetto, soprattutto quando è richiesto anche il raffrescamento."
+        ]
+      ],
+      "prepare": [
+        "Planimetrie e dimensioni degli ambienti",
+        "Informazioni su isolamento e superfici da rinnovare",
+        "Generatore esistente o previsto",
+        "Esigenze di riscaldamento, raffrescamento e regolazione per zone"
+      ],
+      "faqs": [
+        [
+          "In cosa differisce da un impianto a pavimento?",
+          "Il principio di scambio radiante è simile, ma cambiano le superfici utilizzate, le stratigrafie e il coordinamento con finiture, arredi e lavorazioni."
+        ],
+        [
+          "Può essere usato anche per raffrescare?",
+          "Alcune configurazioni lo prevedono. Occorre progettare temperature, regolazione e controllo dell’umidità per limitare il rischio di condensa."
+        ],
+        [
+          "Posso fissare mobili o lampade sulle superfici radianti?",
+          "Punti di fissaggio e percorsi dei circuiti devono essere definiti e documentati prima di forare pareti o soffitti."
+        ],
+        [
+          "Si abbina a una pompa di calore?",
+          "Può essere valutato nello stesso progetto. La compatibilità dipende dal fabbisogno, dalle temperature di lavoro e dalla configurazione complessiva dell’impianto."
+        ]
+      ],
+      "related": [
+        "pompe-calore",
+        "impianti-completi"
+      ],
+      "sources": [],
+      "home": {
+        "order": 7,
+        "benefit": "Il comfort avvolge ogni ambiente.",
+        "proof": "Pareti e soffitti diventano superfici attive per distribuire caldo e, nel progetto adatto, fresco in modo uniforme."
       }
     },
     {
@@ -837,7 +922,7 @@
       ],
       "sources": [],
       "home": {
-        "order": 10,
+        "order": 8,
         "benefit": "Un progetto che tiene tutto insieme.",
         "proof": "Idraulica ed elettrico si coordinano fin dall’inizio. Funzioni, spazi e collegamenti vengono progettati insieme, nella nuova costruzione come nella ristrutturazione."
       }
@@ -903,6 +988,7 @@
       "prepare": "Indirizzo, tipo di immobile, titolo di disponibilità e documenti già presenti.",
       "clarify": "Quali pratiche sono necessarie, chi le presenta, quali documenti devi fornire e quali costi rientrano nella proposta.",
       "home": {
+        "visible": false,
         "benefit": "Sapere quale passo viene dopo.",
         "proof": "La gestione delle pratiche accompagna l’installazione. Documenti necessari, attività e responsabilità si chiariscono in relazione al progetto."
       }
@@ -939,6 +1025,7 @@
       "prepare": "Tipologia e caratteristiche dell’impianto, ubicazione e protezioni eventualmente già presenti.",
       "clarify": "Soggetto assicuratore, rischi coperti, esclusioni, massimali, franchigie, durata e premio indicati nella documentazione della proposta.",
       "home": {
+        "visible": false,
         "benefit": "Conoscere le tutele del tuo investimento.",
         "proof": "Le coperture associabili all’impianto si valutano su una proposta concreta, chiarendo condizioni, costi ed esclusioni."
       }

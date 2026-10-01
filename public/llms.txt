@@ -13,6 +13,7 @@ Impianti residenziali, terziari e industriali.
 - [Ventilazione meccanica](https://green-flux-nine.vercel.app/servizi/ventilazione/)
 - [Trattamento acqua](https://green-flux-nine.vercel.app/servizi/trattamento-acqua/)
 - [Smart home e automazioni](https://green-flux-nine.vercel.app/servizi/smart-home/)
+- [Impianti radianti a parete e soffitto](https://green-flux-nine.vercel.app/servizi/impianti-radianti-parete-soffitto/)
 - [Impianti completi](https://green-flux-nine.vercel.app/servizi/impianti-completi/)
 - [Progettazione e supporto](https://green-flux-nine.vercel.app/servizi/progettazione-e-supporto/)
 - [Chi siamo](https://green-flux-nine.vercel.app/chi-siamo/)

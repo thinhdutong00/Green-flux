@@ -11,6 +11,10 @@ const previousRoutes = JSON.parse(await readFile(join(root, 'content/previous-ro
 let imageDimensions = JSON.parse(await readFile(join(root, 'content/image-dimensions.json'), 'utf8'));
 const origin = 'https://green-flux-nine.vercel.app';
 const supportRoute = '/servizi/progettazione-e-supporto/';
+const featuredServices = () => [...content.services]
+  .filter(service => service.home?.visible !== false)
+  .sort((a, b) => a.home.order - b.home.order);
+const featuredSupport = () => content.support.filter(service => service.home?.visible !== false);
 export const serviceRoute = slug => `/servizi/${slug}/`;
 export let routes = ['/', '/servizi/', ...content.services.map(s => serviceRoute(s.slug)), supportRoute, '/chi-siamo/', '/contatti/', '/preventivo/', '/privacy-policy/', '/cookie-policy/', '/termini-condizioni/'];
 const esc = value => String(value).replace(/[&<>"']/g, x => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));
@@ -56,14 +60,14 @@ const reviewCards = items => items.map(({author,rating,text}) => `<article class
 function navMarkup(prefix = '') {
   const arrow = '<span aria-hidden="true">⌄</span>';
   return `${link('/', 'Home', prefix+'menu-primary-link')}${link('/chi-siamo/', 'Chi siamo', prefix+'menu-primary-link')}
-  <details class="${prefix}menu-section" name="mobile-navigation"><summary><span>Impianti</span>${arrow}</summary><div class="${prefix}menu-section-links">${content.services.map(s => link(serviceRoute(s.slug), s.title)).join('')}${link('/servizi/', 'Tutti gli impianti', prefix+'menu-all-link')}</div></details>
-  <details class="${prefix}menu-section" name="mobile-navigation"><summary><span>Progettazione e supporto</span>${arrow}</summary><div class="${prefix}menu-section-links">${content.support.map(s => link(supportRoute+'#'+s.id, s.title)).join('')}${link(supportRoute, 'Come ti affianchiamo', prefix+'menu-all-link')}</div></details>${link('/contatti/', 'Contatti', prefix+'menu-primary-link')}`;
+  <details class="${prefix}menu-section" name="mobile-navigation"><summary><span>Impianti</span>${arrow}</summary><div class="${prefix}menu-section-links">${featuredServices().map(s => link(serviceRoute(s.slug), s.title)).join('')}${link('/servizi/', 'Tutti gli impianti', prefix+'menu-all-link')}</div></details>
+  <details class="${prefix}menu-section" name="mobile-navigation"><summary><span>Progettazione e supporto</span>${arrow}</summary><div class="${prefix}menu-section-links">${featuredSupport().map(s => link(supportRoute+'#'+s.id, s.title)).join('')}${link(supportRoute, 'Come ti affianchiamo', prefix+'menu-all-link')}</div></details>${link('/contatti/', 'Contatti', prefix+'menu-primary-link')}`;
 }
 function footerMarkup() {
   return `<footer class="footer-section section-padding"><div class="vg-layout-blockcontainer container vg-container"><div class="content-wrapper footer">
   <div class="content-top footer"><div class="footer-content-left"><h2 class="heading-3">Il partner tecnico per i tuoi progetti.</h2><p class="footer-summary">Impianti tecnologici, competenze idrauliche ed elettriche. Dalla scelta del sistema alla sua realizzazione.</p></div></div>
-  <div class="footer-link-columns"><nav class="footer-link-group" aria-label="Impianti"><p class="footer-link-title">Impianti</p><ul class="footer-link-list">${content.services.map(s => `<li>${link(serviceRoute(s.slug),s.title)}</li>`).join('')}</ul></nav>
-  <nav class="footer-link-group" aria-label="Supporto al progetto"><p class="footer-link-title">Progettazione e supporto</p><ul class="footer-link-list">${content.support.map(s => `<li>${link(supportRoute+'#'+s.id,s.title)}</li>`).join('')}</ul></nav>
+  <div class="footer-link-columns"><nav class="footer-link-group" aria-label="Impianti"><p class="footer-link-title">Impianti</p><ul class="footer-link-list">${featuredServices().map(s => `<li>${link(serviceRoute(s.slug),s.title)}</li>`).join('')}</ul></nav>
+  <nav class="footer-link-group" aria-label="Supporto al progetto"><p class="footer-link-title">Progettazione e supporto</p><ul class="footer-link-list">${featuredSupport().map(s => `<li>${link(supportRoute+'#'+s.id,s.title)}</li>`).join('')}</ul></nav>
   <nav class="footer-link-group" aria-label="Azienda"><p class="footer-link-title">Green Flux</p><ul class="footer-link-list">${[['/chi-siamo/','Chi siamo'],['/chi-siamo/#come-lavoriamo','Come lavoriamo'],['/contatti/','Contatti'],['/preventivo/','Richiedi un preventivo']].map(([u,t])=>`<li>${link(u,t)}</li>`).join('')}</ul></nav>
   <address class="footer-company-info"><p class="footer-link-title">Contatti</p><p>GREEN FLUX srls</p><p>Via Trieste, 19<br>35121 Padova (PD)</p><p>${link('tel:+393755521420','+39 375 552 1420')}</p><p>${link('mailto:info@green-flux.com','info@green-flux.com')}</p></address></div>
   <div aria-label="Green Flux" class="footer-brand-text">Green Flux</div><div class="content-bottom footer"><p class="body-text-16">2026 © Green Flux. Tutti i diritti riservati.</p><nav class="navitem-list footer" aria-label="Informazioni legali">${[['/privacy-policy/','Privacy'],['/cookie-policy/','Cookie'],['/termini-condizioni/','Termini e condizioni']].map(([u,t])=>link(u,t,'navtext')).join('')}</nav></div></div></div></footer>`;
@@ -94,8 +98,8 @@ export async function renderSite() {
     MENU_CARDS: items.map(([icon, label, href]) => `<a class="services-menu-card" href="${esc(href)}"><span class="services-menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="/assets/icons/navigation.svg#${esc(icon)}"></use></svg></span><span class="services-menu-label">${esc(label)}</span></a>`).join('')
   });
   const header = fill(await template('header'), {
-    DESKTOP_FIELDS: desktopMenu('fields', 'Impianti', '/servizi/', content.services.map(s => [s.quote, s.title, serviceRoute(s.slug)]), 'Scegli un campo di intervento', 'Tutti gli impianti'),
-    DESKTOP_SUPPORT: desktopMenu('services', 'Progettazione e supporto', supportRoute, content.support.map(s => [s.id, s.title, supportRoute+'#'+s.id]), 'Il supporto al tuo impianto', 'Come ti affianchiamo')
+    DESKTOP_FIELDS: desktopMenu('fields', 'Impianti', '/servizi/', featuredServices().map(s => [s.quote, s.title, serviceRoute(s.slug)]), 'Scegli un campo di intervento', 'Tutti gli impianti'),
+    DESKTOP_SUPPORT: desktopMenu('services', 'Progettazione e supporto', supportRoute, featuredSupport().map(s => [s.id, s.title, supportRoute+'#'+s.id]), 'Il supporto al tuo impianto', 'Come ti affianchiamo')
   });
   const footer = footerMarkup();
   const ctaTemplate = await template('cta');
@@ -130,7 +134,7 @@ export async function renderSite() {
   }
   const hubBody = `<section class="gf-section"><div class="gf-wrap"><p class="gf-eyebrow">Gli impianti</p><h2>Scegli l’esigenza da cui partire</h2><p class="gf-section-lead">Riscaldamento, energia solare, aria, acqua e controllo: ogni pagina spiega a cosa serve la soluzione e quali aspetti valutare.</p>${cards(content.services)}</div></section>
   <section class="gf-section gf-paper"><div class="gf-wrap gf-intro"><div><p class="gf-eyebrow">I servizi tecnici</p><h2>Dal progetto alla gestione dei documenti</h2><p>Progettazione, pratiche e permessi, diagnosi energetiche, supporto per agevolazioni e formule assicurative accompagnano l’offerta Green Flux. Il perimetro si definisce sul singolo intervento.</p>${link(supportRoute,'Progettazione e supporto ↗','gf-button')}</div><div class="gf-information-grid gf-one">${sections([['Devi scegliere la tecnologia?','Parti dal problema che vuoi risolvere: comfort, consumi, acqua calda o ristrutturazione. Puoi chiedere un confronto anche senza avere già scelto l’impianto.'],['Devi coordinare più sistemi?','La pagina Impianti completi ti aiuta a definire funzioni, spazi, lavorazioni e priorità.']])}</div></div></section>`;
-  await write('/servizi/',page('/servizi/','Impianti e servizi Green Flux','Dieci ambiti impiantistici e cinque servizi di supporto per abitazioni, attività e immobili industriali.',hubBody), 'Impianti e servizi Green Flux');
+  await write('/servizi/',page('/servizi/','Impianti e servizi Green Flux','Undici ambiti impiantistici e cinque servizi di supporto per abitazioni, attività e immobili industriali.',hubBody), 'Impianti e servizi Green Flux');
 
   const supportBody = `<section class="gf-section"><div class="gf-wrap"><h2>Il supporto che accompagna il tuo impianto</h2><p class="gf-section-lead">Progettazione, pratiche, diagnosi e gli altri servizi di supporto si valutano in relazione all’impianto da realizzare. Parti dalla richiesta di preventivo per il tuo impianto: le attività necessarie, i documenti e le responsabilità saranno definiti nella proposta.</p><nav class="gf-anchor-nav" aria-label="Servizi di supporto">${content.support.map(s=>link('#'+s.id,s.title)).join('')}</nav></div></section>
   ${content.support.map((s,i)=>`<section id="${s.id}" class="gf-section ${i%2===0?'gf-paper':''}"><div class="gf-wrap gf-support-detail"><div><p class="gf-eyebrow">0${i+1} · Servizio di supporto</p><h2>${esc(s.title)}</h2><p>${esc(s.text)}</p>${link(quote(),'Richiedi un preventivo per il tuo impianto ↗','gf-button')}</div><dl><dt>Quando è utile</dt><dd>${esc(s.use)}</dd><dt>Cosa preparare</dt><dd>${esc(s.prepare)}</dd><dt>Cosa chiarire nella proposta</dt><dd>${esc(s.clarify)}</dd></dl></div></section>`).join('')}`;
@@ -147,7 +151,7 @@ export async function renderSite() {
 
   const footerLinks = [['/servizi/','Impianti'],[supportRoute,'Progettazione e supporto'],['/chi-siamo/','Chi siamo'],['/contatti/','Contatti'],['/preventivo/','Richiedi un preventivo']].map(([u,t])=>link(u,t)).join('');
   const cardTemplate = await template('home-service-card');
-  const homeCards = [...content.services].sort((a,b)=>a.home.order-b.home.order).map(s=>fill(cardTemplate,{
+  const homeCards = featuredServices().map(s=>fill(cardTemplate,{
     SERVICE_TITLE:esc(s.title), SERVICE_URL:serviceRoute(s.slug), SERVICE_ID:s.quote,
     SERVICE_IMAGE:img(s.image,s.imageAlt).replace(/sizes="[^"]+"/,'sizes="(max-width: 680px) calc(100vw - 40px), (max-width: 1228px) 50vw, 578px"'),
     HOME_BENEFIT:esc(s.home.benefit), HOME_PROOF:esc(s.home.proof)
@@ -159,7 +163,7 @@ export async function renderSite() {
   for(const s of content.support){homeValues['SUPPORT_TITLE_'+s.id]=esc(s.title);homeValues['SUPPORT_BENEFIT_'+s.id]=esc(s.home.benefit);homeValues['SUPPORT_TEXT_'+s.id]=esc(s.home.proof);}
   await write('/',fill(await template('home'),homeValues),'Green Flux · Energia, comfort e impianti integrati');
   for(const [name,route,title] of [['privacy','/privacy-policy/','Informativa privacy'],['cookies','/cookie-policy/','Informativa cookie'],['terms','/termini-condizioni/','Termini e condizioni']])await write(route,fill(await template(name),{HEADER:header,FOOTER:footer}),title);
-  const energy = new Set(['pompe-di-calore','fotovoltaico','solare-termico','biomassa','caldaie','condizionatori','impianti-completi']);
+  const energy = new Set(['pompe-di-calore','fotovoltaico','solare-termico','biomassa','caldaie','condizionatori','impianti-radianti','impianti-completi']);
   const catalogue = content.services.map(s=>({id:s.quote,label:s.title,group:'Impianti',...(energy.has(s.quote)?{energy:true}:{}),...(['fotovoltaico','solare-termico'].includes(s.quote)?{solar:true}:{})}));
   const quoteOption = (name, type, value, label = value) => `<label class="quote-option"><input class="quote-option-input" name="${name}" type="${type}" value="${esc(value)}"><span class="quote-option-text">${esc(label)}</span></label>`;
   await write('/preventivo/',fill(await template('quote'),{

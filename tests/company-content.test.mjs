@@ -9,8 +9,8 @@ const walk=dir=>readdirSync(dir,{withFileTypes:true}).flatMap(e=>e.isDirectory()
 const pages=walk('public').filter(p=>p.endsWith('index.html'));
 const textOnly=html=>html.replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1>/gi,'').replace(/<[^>]*>/g,' ').replace(/\s+/g,' ');
 
-test('Only the ten installations appear in the quote catalogue; unsupported legacy requests are not preselected',()=>{
- assert.equal(services.length,10);
+test('Only the eleven installations appear in the quote catalogue; unsupported legacy requests are not preselected',()=>{
+ assert.equal(services.length,11);
  for(const id of ['batterie-accumulo','manutenzione','edilizia']){
   assert(!services.some(s=>s.id===id));
   assert.equal(serviceId(id),null);
@@ -43,11 +43,11 @@ test('Every page has an editorial audit record and no imported commercial promis
  }
 });
 
-test('Consolidation keeps 19 canonical pages and redirects every removed URL without chains',()=>{
+test('Consolidation keeps 20 canonical pages and redirects every removed URL without chains',()=>{
  const previous=JSON.parse(readFileSync('content/previous-routes.json'));
  const redirects=JSON.parse(readFileSync('content/redirects.json'));
  const current=new Set(pages.map(p=>'/'+p.replace(/^public\//,'').replace(/index\.html$/,'')));
- assert.equal(current.size,19);assert.equal(Object.keys(redirects).length,132);
+ assert.equal(current.size,20);assert.equal(Object.keys(redirects).length,132);
  assert(!pages.some(p=>/^public\/(zone|blog|progetti)\//.test(p)));
  for(const old of previous){assert(current.has(old)||redirects[old],old);if(redirects[old]){const destination=redirects[old].split('#')[0];assert(current.has(destination),old);assert(!redirects[destination],old);}}
  for(const page of pages){const html=readFileSync(page,'utf8');for(const m of html.matchAll(/href="([^"?#]+)[^"]*"/g))assert(!redirects[m[1]],`${page} links to retired ${m[1]}`);}
