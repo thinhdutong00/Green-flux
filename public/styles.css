@@ -158,7 +158,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid #91b646; outline-offs
 .solution-card:hover .card-arrow { background: var(--lime); color: var(--ink); border-color: var(--lime); }
 .card-content { width: 100%; padding: 64px 24px 27px; color: var(--white); }
 .featured .card-content { padding: 72px 34px 34px; }
-.solution-category { display: block; margin-bottom: 11px; color: var(--lime); font-size: 14px; font-weight: 800; letter-spacing: .055em; line-height: 1.3; text-transform: uppercase; }
+.solution-category { display: inline-flex; align-items: center; width: fit-content; max-width: 100%; margin-bottom: 14px; padding: 7px 11px; border: 1px solid rgb(213 237 144 / 60%); border-radius: 999px; background: rgb(18 51 53 / 78%); box-shadow: 0 6px 20px rgb(0 0 0 / 16%); color: var(--lime); font-size: 16px; font-weight: 800; letter-spacing: .03em; line-height: 1.25; text-transform: uppercase; backdrop-filter: blur(8px); }
 .card-content h3 { margin: 0; font-size: clamp(21px, 2vw, 25px); font-weight: 800; line-height: 1.12; letter-spacing: -.035em; overflow-wrap: break-word; }
 .featured .card-content h3 { font-size: 37px; }
 .card-content p { margin: 13px 0 0; color: rgb(255 255 255 / 88%); font-size: 16px; line-height: 1.55; }
@@ -341,7 +341,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid #91b646; outline-offs
   .card-content, .featured .card-content { padding: 64px 22px 25px; }
   .card-content h3 { font-size: 23px; }
   .featured .card-content h3 { font-size: 32px; }
-  .solution-category { font-size: 13px; letter-spacing: .04em; }
+  .solution-category { font-size: 15px; letter-spacing: .025em; }
   .card-content p { font-size: 16px; }
   .solutions-note { flex-direction: column; gap: 1px; font-size: 14px; text-align: center; }
   .solutions-note a { gap: 10px; }
@@ -635,7 +635,7 @@ html.quote-open, html.quote-open body { overflow: hidden; overscroll-behavior: n
 .home-green-flux .card-content h3 { max-width:480px; font-size:clamp(28px,2.4vw,36px); line-height:1.12; }
 .home-green-flux .card-content p { max-width:490px; color:rgb(255 255 255 / 90%); }
 .home-green-flux .card-scrim { background:linear-gradient(180deg,rgb(18 51 53 / 2%),rgb(18 51 53 / 35%) 24%,rgb(18 51 53 / 92%) 70%,#123335); }
-.home-green-flux .solution-category { font-size:14px; }
+.home-green-flux .solution-category { font-size:17px; }
 .solution-detail { display:inline-flex; align-items:center; gap:10px; margin-top:22px; color:var(--lime); font-size:14px; font-weight:600; }
 .home-green-flux .services-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
 .home-green-flux .services-grid > .service-item { grid-column:auto; }
@@ -675,7 +675,7 @@ html.quote-open, html.quote-open body { overflow: hidden; overscroll-behavior: n
  .home-green-flux .solutions-grid > .solution-card { min-height:420px; }
  .home-green-flux .card-content { padding:130px 26px 28px; }
  .home-green-flux .card-content h3 { font-size:30px; }
- .home-green-flux .solution-category { font-size:12px; }
+ .home-green-flux .solution-category { font-size:16px; }
  .reviews-heading { gap:28px; margin-bottom:32px; }
  .reviews-summary { padding:20px; }
  .review-card { flex-basis:88%; min-height:310px; padding:26px; border-radius:22px; }
