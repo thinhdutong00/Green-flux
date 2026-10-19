@@ -125,6 +125,20 @@ export async function renderSite() {
   }
 
   for (const s of content.services) {
+    if (s.slug === 'pompe-calore') {
+      const title = 'Pompe di calore: il comfort di casa, una nuova energia';
+      await write(serviceRoute(s.slug), fill(await template('heat-pump-landing'), {
+        LANDING_DESCRIPTION: esc(s.lead),
+        LANDING_INTRO_TITLE: esc(s.introTitle),
+        LANDING_OVERVIEW: paragraphs(s.overview),
+        LANDING_CHECKS: s.checks.map(([heading, text], index) => `<article class="hp-check"><span>0${index + 1}</span><div><h3>${esc(heading)}</h3><p>${esc(text)}</p></div></article>`).join(''),
+        LANDING_FAQS: s.faqs.map(([question, answer], index) => `<details${index === 0 ? ' open' : ''}><summary>${esc(question)}<span aria-hidden="true">+</span></summary><p>${esc(answer)}</p></details>`).join(''),
+        LANDING_PREPARE: list(s.prepare),
+        LANDING_SOURCES: s.sources.map(source => link(source.url, source.label)).join(' · '),
+        LANDING_SCHEMA: JSON.stringify(schema(serviceRoute(s.slug), title, s.lead)).replace(/</g, '\\u003c')
+      }), title);
+      continue;
+    }
     const body = `<section class="gf-section"><div class="gf-wrap gf-intro"><div><p class="gf-eyebrow">Il servizio</p><h2>${esc(s.introTitle)}</h2>${paragraphs(s.overview)}</div><aside class="gf-preparation"><h2>Per il primo confronto</h2><p>Se li hai già disponibili, questi elementi aiutano a descrivere il progetto.</p>${list(s.prepare)}${link(quote(s.quote),'Parla del tuo progetto ↗','gf-button')}</aside></div></section>
     <section class="gf-section gf-paper" id="quando-valutarlo"><div class="gf-wrap"><p class="gf-eyebrow">Le tue esigenze</p><h2>Quando valutarlo</h2><div class="gf-information-grid gf-three">${sections(s.situations)}</div></div></section>
     <section class="gf-section" id="progetto"><div class="gf-wrap"><p class="gf-eyebrow">Le scelte tecniche</p><h2>${esc(s.checksTitle)}</h2><div class="gf-information-grid">${sections(s.checks)}</div><p class="gf-support-link">Hai bisogno anche di un progetto, di una diagnosi o di supporto documentale? ${link(supportRoute,'Scopri i servizi che accompagnano l’impianto ↗')}</p></div></section>
