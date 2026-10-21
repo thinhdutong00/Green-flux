@@ -74,3 +74,5 @@ html{scroll-padding-top:90px}.hp-wrap{width:calc(100% - 40px)}.hp-section{paddin
 }
 @media(max-width:360px){.hp-header{max-width:calc(100% - 24px);width:calc(100% - 24px);padding-left:8px}.hp-header .hp-brand-name{font-size:12px}.hp-header .hp-brand-name small{font-size:5px;letter-spacing:1.2px}.hp-nav-cta{padding-inline:12px;font-size:9px}.hp-header .hp-brand-mark{width:31px}.hp-hero h1{font-size:32px;letter-spacing:-1.5px}.hp-hero-lead{font-size:14px}.hp-hero-cta{padding-inline:18px;font-size:11px}.hp-tile-water,.hp-tile-cooling{padding:15px}.hp-tile-water h3,.hp-tile-cooling h3{font-size:18px}.hp-section h2,.hp-why-copy h2{font-size:30px}.hp-final-section h2{font-size:31px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+.hp-method-cards p strong{display:block;margin-bottom:9px;color:#e4e4e7;font-weight:600}
