@@ -92,3 +92,16 @@ button{cursor:pointer}
 }
 @media(max-width:359px){.quote-header{padding:20px 16px}.quote-brand{width:178px}.quote-button{padding:14px 20px;font-size:16px}.quote-button-secondary{padding:8px}.quote-title{font-size:28px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* The heat-pump campaign shares the validated questionnaire and its delivery. */
+.quote-service-context{width:100%;max-width:672px;margin:0 0 12px;color:#507a30;font-size:11px;font-weight:600;line-height:1.7}
+.quote-visible-counter{width:100%;max-width:672px;color:#85858f;font-size:10px;line-height:1.7;margin:0 0 30px}
+.quote-heat-pump{--quote-accent:#60853f;--quote-lime:#d7e8c6;--quote-lime-text:#60853f}
+.quote-heat-pump .quote-name-input:focus{border-color:#60853f}
+.quote-heat-pump .quote-button-primary{background:#86ad5c;color:#fff}
+.quote-heat-pump .quote-button-primary:hover:not(:disabled){background:#60853f;color:#fff}
+.quote-heat-pump .quote-button-primary:disabled{background:#f4f4f5;color:#d4d4d8}
+.quote-heat-pump .quote-progress-bar{background:#86ad5c}
+.quote-heat-pump .quote-stage{padding-top:35px;padding-bottom:35px}
+.quote-embedded .quote-close{visibility:hidden}
+@media(max-width:767px){.quote-service-context{font-size:10px;margin-bottom:8px}.quote-visible-counter{margin-bottom:25px;font-size:9px}.quote-heat-pump .quote-stage{padding:27px 24px 30px}}

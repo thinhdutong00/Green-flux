@@ -3,87 +3,82 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#193e40">
-  <title>Pompe di calore: il comfort di casa, una nuova energia | Green Flux</title>
+  <meta name="theme-color" content="#0b0d0c">
+  <title>Pompe di calore su misura per la tua casa | Green Flux</title>
   <meta name="description" content="{{LANDING_DESCRIPTION}}">
   <link rel="canonical" href="https://green-flux-nine.vercel.app/servizi/pompe-calore/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="it_IT">
-  <meta property="og:title" content="Il comfort di casa, una nuova energia | Green Flux">
+  <meta property="og:title" content="Pompe di calore. Il comfort cambia. | Green Flux">
   <meta property="og:description" content="{{LANDING_DESCRIPTION}}">
   <meta property="og:url" content="https://green-flux-nine.vercel.app/servizi/pompe-calore/">
   <meta property="og:image" content="https://green-flux-nine.vercel.app/assets/images/heat-pump-home-1600.webp">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/assets/favicon.ico">
   <link rel="preload" href="/assets/fonts/plus-jakarta-sans-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/assets/fonts/plus-jakarta-sans-600.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/plus-jakarta-sans-700.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/css/heat-pump-landing.css">
   <script type="application/ld+json">{{LANDING_SCHEMA}}</script>
+  <script type="module" src="/assets/js/heat-pump-landing.mjs"></script>
 </head>
 <body class="hp-landing" data-quote-service="pompe-di-calore" id="inizio">
-  <a class="hp-skip" href="#contenuto">Vai al contenuto</a>
-  <header class="hp-header">
-    <div class="hp-wrap hp-header-inner">
-      <a class="hp-logo" href="/" aria-label="Green Flux, torna alla home"><img src="/assets/logo.webp" alt="Green Flux, impianti tecnologici" width="500" height="232"></a>
-      <nav class="hp-nav" aria-label="Navigazione della pagina"><a href="#vantaggi">Perché sceglierla</a><a href="#metodo">Il nostro metodo</a><a href="#domande">Domande frequenti</a></nav>
-      <a class="hp-button hp-button-small" href="/preventivo/?servizio=pompe-di-calore">Richiedi un preventivo <span aria-hidden="true">↗</span></a>
+<a class="hp-skip" href="#contenuto">Vai al contenuto</a>
+<header class="hp-header">
+  <a class="hp-brand" href="/" aria-label="Green Flux, torna alla home"><span class="hp-brand-mark" aria-hidden="true"></span><span class="hp-brand-name">GREEN <b>FLUX</b><small>IMPIANTI TECNOLOGICI</small></span></a>
+  <nav aria-label="Navigazione della pagina"><a href="#soluzioni">Soluzioni</a><a href="#vantaggi">Vantaggi</a><a href="#metodo">Come funziona</a><a href="#domande">FAQ</a></nav>
+  <a class="hp-button hp-nav-cta" href="/preventivo/?servizio=pompe-di-calore" data-hp-open>Richiedi offerta <span aria-hidden="true">↗</span></a>
+</header>
+<main id="contenuto">
+  <section class="hp-hero" aria-labelledby="hero-title">
+    <picture class="hp-hero-media"><img src="/assets/images/heat-pump-home-1600.webp" srcset="/assets/images/heat-pump-home-480.webp 480w, /assets/images/heat-pump-home-960.webp 960w, /assets/images/heat-pump-home-1600.webp 1600w" sizes="100vw" width="1600" height="900" alt="Immagine illustrativa: pompa di calore installata all’esterno di una casa" fetchpriority="high"></picture>
+    <div class="hp-hero-shade" aria-hidden="true"></div>
+    <div class="hp-hero-content hp-wrap">
+      <p class="hp-eyebrow hp-hero-kicker">La tua casa. Una nuova energia.</p>
+      <h1 id="hero-title">Pompe di calore.<br><em>Il comfort cambia.</em></h1>
+      <p class="hp-hero-lead">Riscaldamento, acqua calda e un progetto pensato per te.<br>Ci occupiamo di <strong>progettazione e installazione</strong>, partendo dalla tua casa e dall’impianto che hai già.</p>
+      <a class="hp-button hp-hero-cta" href="/preventivo/?servizio=pompe-di-calore" data-hp-open>Trova la soluzione per casa tua <span aria-hidden="true">→</span></a>
+      <a class="hp-hero-proof" href="#recensioni"><span class="hp-proof-initials" aria-hidden="true"><i>C</i><i>C</i><i>G</i></span><span><span class="hp-stars" role="img" aria-label="{{LANDING_REVIEW_RATING}} stelle su 5">★★★★★</span><span><strong>{{LANDING_REVIEW_RATING}}/5</strong> · {{LANDING_REVIEW_COUNT}} recensioni Google</span></span></a>
+      <span class="hp-proof-date">Rilevazione del {{LANDING_REVIEW_DATE}}</span>
     </div>
-  </header>
-  <main id="contenuto">
-    <section class="hp-hero" aria-labelledby="hero-title">
-      <div class="hp-hero-copy">
-        <p class="hp-eyebrow"><span class="hp-dot" aria-hidden="true"></span> Pompe di calore · Green Flux</p>
-        <h1 id="hero-title">Il comfort di casa. <br><em>Una nuova <br>energia.</em></h1>
-        <p class="hp-hero-lead">Riscaldamento e acqua calda, con una pompa di calore progettata intorno a te. Ti accompagniamo dalla scelta all’installazione.</p>
-        <div class="hp-hero-actions"><a class="hp-button" href="/preventivo/?servizio=pompe-di-calore">Parliamo della tua casa <span aria-hidden="true">↗</span></a><a class="hp-quiet-link" href="#come-funziona">Scopri come funziona <span aria-hidden="true">↓</span></a></div>
-        <div class="hp-hero-proof"><span class="hp-proof-symbol" aria-hidden="true">↗</span><p><strong>Un unico interlocutore.</strong> <br>Competenze idrauliche ed elettriche, insieme.</p></div>
-      </div>
-      <div class="hp-hero-visual">
-        <img class="hp-hero-photo" src="/assets/images/heat-pump-home-1600.webp" srcset="/assets/images/heat-pump-home-480.webp 480w, /assets/images/heat-pump-home-960.webp 960w, /assets/images/heat-pump-home-1600.webp 1600w" sizes="(max-width: 760px) 100vw, 52vw" width="1600" height="900" alt="Immagine illustrativa: pompa di calore accanto a una casa con giardino" fetchpriority="high">
-        <div class="hp-image-label"><span class="hp-label-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 10.5 12 3l9 7.5M5 9v12h14V9M9 21v-7h6v7"/></svg></span><div><span>Il tuo prossimo impianto</span><strong>Si parte dalla tua casa.</strong></div></div>
-        <span class="hp-image-caption">Immagine illustrativa</span>
-      </div>
-    </section>
-    <div class="hp-promise-strip"><div class="hp-wrap hp-promises"><span><i aria-hidden="true">✓</i> Progettazione su misura</span><span><i aria-hidden="true">✓</i> Installazione coordinata</span><span><i aria-hidden="true">✓</i> Supporto nelle scelte tecniche</span></div></div>
+    <span class="hp-image-note">Immagine illustrativa</span>
+  </section>
+  <div class="hp-trust-strip"><div class="hp-wrap hp-trust-grid"><p><strong>15+</strong><span>Anni di esperienza<br>dei nostri tecnici</span></p><p><strong>Su misura</strong><span>Il progetto parte<br>dal tuo immobile</span></p><p><strong>Un referente</strong><span>Dalla scelta<br>all’installazione</span></p><p><strong>Casa + impianto</strong><span>Idraulica ed elettrico<br>nello stesso progetto</span></p></div></div>
 
-    <section class="hp-section hp-wrap" id="vantaggi" aria-labelledby="benefits-title">
-      <div class="hp-section-heading"><div><p class="hp-eyebrow">Una scelta da vivere, ogni giorno</p><h2 id="benefits-title">Il benessere cambia. <br>La tua casa, anche.</h2></div><p>La pompa di calore porta una nuova possibilità nel tuo impianto. Le funzioni si scelgono in base all’edificio, alle tue abitudini e a ciò di cui hai bisogno.</p></div>
-      <div class="hp-benefits">
-        <article><span class="hp-benefit-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 7c-5 5 5 5 0 10s5 5 0 10M17 4c-5 5 5 5 0 10s5 5 0 10M24 7c-5 5 5 5 0 10s5 5 0 10"/></svg></span><span class="hp-overline">01 / Riscaldamento</span><h3>La temperatura <br>che ti fa stare bene.</h3><p>Un sistema dimensionato per riscaldare i tuoi ambienti, valutando isolamento, radiatori e altri terminali già presenti.</p></article>
-        <article><span class="hp-benefit-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 4S7 14 7 20a9 9 0 0 0 18 0c0-6-9-16-9-16Z"/><path d="M12 20a4 4 0 0 0 4 4"/></svg></span><span class="hp-overline">02 / Acqua calda</span><h3>Il comfort dei <br>piccoli gesti.</h3><p>La produzione di acqua calda può entrare nello stesso progetto, con un accumulo scelto in base a spazi e utilizzi.</p></article>
-        <article><span class="hp-benefit-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 3v26M5 9l22 14M5 23 27 9M12 5l4 4 4-4M12 27l4-4 4 4M5 14l6-1-1-6M22 25l-1-6 6-1M5 18l6 1-1 6M22 7l-1 6 6 1"/></svg></span><span class="hp-overline">03 / Anche in estate</span><h3>Un progetto per <br>più stagioni.</h3><p>Con una configurazione e terminali predisposti, puoi valutare anche il raffrescamento degli ambienti.</p></article>
-      </div>
-    </section>
+  <section class="hp-section hp-wrap" id="soluzioni" aria-labelledby="solutions-title">
+    <div class="hp-section-heading"><div><p class="hp-eyebrow">Le soluzioni per il tuo comfort</p><h2 id="solutions-title">Una scelta.<br>Tanti modi di stare bene.</h2></div><p>Dalla sostituzione della caldaia alla ristrutturazione. Scegliamo insieme come far lavorare la pompa di calore nella tua casa.</p></div>
+    <div class="hp-bento">
+      <a class="hp-tile hp-tile-main hp-tile-dark" href="/preventivo/?servizio=pompe-di-calore" data-hp-open><img src="/assets/images/heat-pump-home-960.webp" width="1600" height="900" loading="lazy" decoding="async" alt="Immagine illustrativa: pompa di calore esterna"><span class="hp-tile-arrow" aria-hidden="true">↗</span><div class="hp-tile-copy"><span>Il cuore del tuo nuovo impianto</span><h3>Pompe di calore<br>per la tua casa.</h3><p>Riscalda gli ambienti con un sistema dimensionato sull’edificio, sui tuoi consumi e sulle tue abitudini.</p></div></a>
+      <a class="hp-tile hp-tile-water" href="#come-funziona"><span class="hp-tile-arrow" aria-hidden="true">↗</span><svg class="hp-water-icon" aria-hidden="true" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M20 4S8 17 8 25a12 12 0 0 0 24 0C32 17 20 4 20 4Z"/><path d="M14 25a6 6 0 0 0 6 6"/></svg><div class="hp-tile-copy"><h3>Acqua calda.<br>Ogni giorno.</h3><p>Una configurazione dedicata alle esigenze di chi vive la casa.</p></div></a>
+      <a class="hp-tile hp-tile-dark hp-tile-cooling" href="#domande"><img src="/assets/images/air-conditioning-960.webp" width="1600" height="900" loading="lazy" decoding="async" alt="Immagine illustrativa: ambiente domestico climatizzato"><span class="hp-tile-arrow" aria-hidden="true">↗</span><div class="hp-tile-copy"><h3>Comfort.<br>Anche d’estate.</h3><p>Raffrescamento, se previsto dalla configurazione e dai terminali.</p></div></a>
+      <a class="hp-tile hp-tile-solar" href="/preventivo/?servizio=pompe-di-calore" data-hp-open><img src="/assets/images/solar-home-960.webp" width="1600" height="900" loading="lazy" decoding="async" alt="Immagine illustrativa: casa con pannelli fotovoltaici"><span class="hp-tile-arrow" aria-hidden="true">↗</span><div class="hp-tile-copy"><h3>Il sole incontra<br>il tuo riscaldamento.</h3><p>Pompa di calore e fotovoltaico si valutano insieme, in base a produzione e consumi.</p></div></a>
+      <a class="hp-tile hp-tile-dark hp-tile-project" href="#vantaggi"><img src="/assets/images/project-plans-960.webp" width="1600" height="900" loading="lazy" decoding="async" alt="Immagine illustrativa: progetto tecnico di un impianto"><span class="hp-tile-arrow" aria-hidden="true">↗</span><div class="hp-tile-copy"><h3>Un impianto.<br>Un progetto completo.</h3><p>Edificio, distribuzione, alimentazione e regolazione: ogni elemento conta.</p></div></a>
+      <a class="hp-tile hp-tile-dark hp-tile-support" href="#metodo"><img src="/assets/images/energy-consultation-960.webp" width="1600" height="900" loading="lazy" decoding="async" alt="Immagine illustrativa: confronto su un progetto impiantistico"><span class="hp-tile-arrow" aria-hidden="true">↗</span><div class="hp-tile-copy"><h3>Ti accompagniamo.<br>Una scelta alla volta.</h3><p>Progettazione e supporto documentale da definire sul tuo intervento.</p></div></a>
+    </div>
+    <p class="hp-photo-disclosure">Le immagini hanno finalità illustrative.</p>
+  </section>
 
-    <section class="hp-explainer" id="come-funziona" aria-labelledby="explain-title">
-      <div class="hp-wrap hp-explainer-grid">
-        <div><p class="hp-eyebrow">Capire, prima di scegliere</p><h2 id="explain-title">{{LANDING_INTRO_TITLE}}</h2><p class="hp-explainer-intro">L’energia è già nell’aria. <br>Il progetto la porta in casa.</p><div class="hp-body-copy">{{LANDING_OVERVIEW}}</div><a class="hp-text-link" href="/preventivo/?servizio=pompe-di-calore">Valutiamo il tuo impianto <span aria-hidden="true">↗</span></a></div>
-        <div class="hp-energy-diagram" role="img" aria-label="L’aria esterna e l’energia elettrica alimentano la pompa di calore che trasferisce calore all’impianto della casa.">
-          <div class="hp-diagram-top"><span>Aria esterna</span><span>Energia elettrica</span></div>
-          <div class="hp-diagram-arrows" aria-hidden="true"><span>↓</span><span>↓</span></div>
-          <div class="hp-diagram-machine"><svg viewBox="0 0 84 60" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="5" y="5" width="74" height="48" rx="3"/><circle cx="31" cy="29" r="17"/><circle cx="31" cy="29" r="4"/><path d="M31 12c14 0 13 13 0 17m17 0c0 14-13 13-17 0m0 17c-14 0-13-13 0-17M14 29c0-14 13-13 17 0M57 17h12m-12 6h12m-12 6h12m-12 6h12m-12 6h12M12 53v4m60-4v4"/></svg><strong>Pompa di calore</strong><span>Trasferisce energia termica</span></div>
-          <span class="hp-diagram-down" aria-hidden="true">↓</span><div class="hp-diagram-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="m3 11 9-8 9 8M5 9v12h14V9M10 21v-7h4v7"/></svg><strong>Il comfort di casa tua</strong><span>Riscaldamento · Acqua calda*</span></div><p class="hp-diagram-note">Schema indicativo. *In base alla configurazione scelta.</p>
-        </div>
-      </div>
-    </section>
+  <section class="hp-why-section" id="vantaggi" aria-labelledby="why-title"><div class="hp-wrap hp-why-grid">
+    <div class="hp-image-collage"><img class="hp-collage-main" src="/assets/images/technician-heat-pump-1086.webp" srcset="/assets/images/technician-heat-pump-480.webp 480w, /assets/images/technician-heat-pump-1086.webp 1086w" sizes="(max-width:760px) 90vw, 42vw" width="1086" height="1448" loading="lazy" decoding="async" alt="Immagine illustrativa: tecnico con tablet accanto a una pompa di calore"><div class="hp-collage-detail"><img src="/assets/images/heat-pump-home-480.webp" width="1600" height="900" loading="lazy" decoding="async" alt="Immagine illustrativa: unità esterna della pompa di calore"><span>La soluzione parte dalla casa.</span></div></div>
+    <div class="hp-why-copy"><p class="hp-eyebrow">Perché Green Flux</p><h2 id="why-title">Scelte chiare.<br>Competenze integrate.<br><em>Un unico interlocutore.</em></h2><p>Passare a una pompa di calore significa scegliere un impianto che funzioni insieme alla tua casa. Mettiamo in relazione edificio, consumi e necessità, prima di scegliere la macchina.</p>
+      <div class="hp-reasons"><article><span aria-hidden="true">↗</span><div><h3>Il progetto viene prima.</h3><p>Fabbisogno, terminali e spazi vengono valutati insieme, anche quando vuoi mantenere i termosifoni.</p></div></article><article><span aria-hidden="true">✓</span><div><h3>Idraulica ed elettrico, insieme.</h3><p>Tecnici con oltre 15 anni di esperienza nelle energie rinnovabili e collaborazione con professionisti qualificati.</p></div></article><article><span aria-hidden="true">≡</span><div><h3>Una proposta da capire.</h3><p>Forniture, collegamenti, installazione e attività di supporto si definiscono nel perimetro dell’intervento.</p></div></article></div>
+      <a class="hp-text-link" href="/preventivo/?servizio=pompe-di-calore" data-hp-open>Partiamo dal tuo impianto <span aria-hidden="true">↗</span></a>
+    </div>
+  </div></section>
 
-    <section class="hp-section hp-wrap" aria-labelledby="situations-title">
-      <div class="hp-section-heading"><div><p class="hp-eyebrow">Da dove partiamo?</p><h2 id="situations-title">Ogni casa ha <br>il suo punto di partenza.</h2></div><p>Non serve avere già tutte le risposte. Raccontaci la situazione attuale e cosa vuoi migliorare: le scelte tecniche vengono dopo.</p></div>
-      <div class="hp-situations"><article><span class="hp-overline">Hai una caldaia?</span><h3>Vuoi cambiare <br>il riscaldamento.</h3><p>Valutiamo il generatore insieme ai terminali e ai collegamenti esistenti, per capire come impostare la sostituzione.</p><a class="hp-text-link" href="/preventivo/?servizio=pompe-di-calore">Partiamo dal tuo impianto <span aria-hidden="true">↗</span></a></article><article><span class="hp-overline">Stai ristrutturando?</span><h3>Progetti oggi <br>il comfort di domani.</h3><p>Generatore, distribuzione e acqua calda si coordinano con gli spazi e con le altre lavorazioni previste nella casa.</p><a class="hp-text-link" href="/preventivo/?servizio=pompe-di-calore">Raccontaci il progetto <span aria-hidden="true">↗</span></a></article><article><span class="hp-overline">Pensi al fotovoltaico?</span><h3>Fai dialogare <br>i tuoi impianti.</h3><p>Produzione elettrica e fabbisogni della pompa di calore si valutano insieme, considerando i tuoi consumi e gli orari d’uso.</p><a class="hp-text-link" href="/servizi/fotovoltaico/">Scopri l’integrazione <span aria-hidden="true">↗</span></a></article></div>
-    </section>
+  <section class="hp-method-section" id="metodo" aria-labelledby="method-title"><div class="hp-wrap"><div class="hp-section-heading"><div><p class="hp-eyebrow">Il metodo Green Flux</p><h2 id="method-title">Dalla prima domanda.<br>Al comfort di casa.</h2></div><p>Un percorso per chiarire ciò che serve al tuo immobile e arrivare a un progetto definito.</p></div>
+    <div class="hp-method-cards"><article><span class="hp-method-icon" aria-hidden="true">≡</span><span class="hp-step-number" aria-hidden="true">01</span><h3>Raccontaci la casa.</h3><p>Rispondi al quiz dedicato: impianto attuale, distribuzione del calore e tempistiche.</p></article><article><span class="hp-method-icon" aria-hidden="true">⌖</span><span class="hp-step-number" aria-hidden="true">02</span><h3>Valutiamo il contesto.</h3><p>Si approfondiscono fabbisogni, spazi e collegamenti per impostare le scelte tecniche.</p></article><article><span class="hp-method-icon" aria-hidden="true">↗</span><span class="hp-step-number" aria-hidden="true">03</span><h3>Definiamo il progetto.</h3><p>Macchina, lavorazioni e servizi di supporto vengono chiariti nella proposta.</p></article><article><span class="hp-method-icon" aria-hidden="true">⏻</span><span class="hp-step-number" aria-hidden="true">04</span><h3>Realizziamo l’impianto.</h3><p>L’installazione coordina le competenze idrauliche ed elettriche previste dal progetto.</p></article></div>
+    <div class="hp-method-cta"><a class="hp-button" href="/preventivo/?servizio=pompe-di-calore" data-hp-open>Inizia la tua richiesta <span aria-hidden="true">→</span></a><span>5 passaggi · Pompe di calore già selezionate</span></div>
+  </div></section>
 
-    <section class="hp-method" id="metodo" aria-labelledby="method-title">
-      <div class="hp-method-image"><img src="/assets/images/technician-heat-pump-1086.webp" srcset="/assets/images/technician-heat-pump-480.webp 480w, /assets/images/technician-heat-pump-960.webp 960w, /assets/images/technician-heat-pump-1086.webp 1086w" sizes="(max-width: 760px) 100vw, 45vw" alt="Immagine illustrativa: tecnico con tablet accanto a una pompa di calore" width="1086" height="1448" loading="lazy" decoding="async"><span class="hp-image-caption">Immagine illustrativa</span></div>
-      <div class="hp-method-copy"><p class="hp-eyebrow">Il metodo Green Flux</p><h2 id="method-title">La macchina giusta <br>inizia dalle <br><em>domande giuste.</em></h2><p class="hp-method-lead">Prima di scegliere una pompa di calore, mettiamo a fuoco quattro aspetti del tuo immobile.</p><div class="hp-checks">{{LANDING_CHECKS}}</div><a class="hp-button" href="/preventivo/?servizio=pompe-di-calore">Iniziamo dal tuo progetto <span aria-hidden="true">↗</span></a></div>
-    </section>
+  <section class="hp-section hp-wrap hp-reviews-section" id="recensioni" aria-labelledby="reviews-title"><div class="hp-center-heading"><p class="hp-eyebrow">Le esperienze dei clienti Green Flux</p><h2 id="reviews-title">La fiducia si costruisce.<br>Un lavoro alla volta.</h2><p>Le parole di chi ci ha scelto per il proprio impianto.</p></div><div class="hp-reviews-grid">{{LANDING_REVIEWS}}</div><a class="hp-review-source" href="{{LANDING_REVIEW_URL}}" target="_blank" rel="noopener noreferrer">{{LANDING_REVIEW_RATING}}/5 su {{LANDING_REVIEW_COUNT}} recensioni Google · Rilevazione del {{LANDING_REVIEW_DATE}} <span aria-hidden="true">↗</span></a></section>
 
-    <section class="hp-section hp-wrap hp-faq-grid" id="domande" aria-labelledby="faq-title">
-      <div><p class="hp-eyebrow">Facciamo chiarezza</p><h2 id="faq-title">Le domande <br>più frequenti.</h2><p class="hp-faq-intro">Ogni impianto merita una valutazione dedicata. Intanto, ecco da cosa partire.</p><a class="hp-text-link" href="tel:+393755521420">Preferisci parlarne? Chiamaci <span aria-hidden="true">↗</span></a></div>
-      <div class="hp-faqs">{{LANDING_FAQS}}</div>
-    </section>
+  <section class="hp-explainer-section" id="come-funziona" aria-labelledby="explain-title"><div class="hp-wrap hp-explainer-grid"><div><p class="hp-eyebrow">Capire la tecnologia</p><h2 id="explain-title">{{LANDING_INTRO_TITLE}}</h2></div><div class="hp-body-copy">{{LANDING_OVERVIEW}}<a class="hp-text-link" href="/preventivo/?servizio=pompe-di-calore" data-hp-open>Valuta la soluzione per casa tua <span aria-hidden="true">↗</span></a></div></div></section>
 
-    <section class="hp-contact-section" id="richiesta" aria-labelledby="contact-title"><div class="hp-wrap hp-contact-grid"><div><p class="hp-eyebrow">Il primo passo è una conversazione</p><h2 id="contact-title">La tua casa. <br>La tua prossima <br><em>buona scelta.</em></h2><p>Descrivici il tuo immobile e cosa hai in mente. Prepariamo insieme il punto di partenza per il tuo impianto.</p><div class="hp-contact-actions"><a class="hp-button" href="/preventivo/?servizio=pompe-di-calore">Richiedi un preventivo <span aria-hidden="true">↗</span></a><a class="hp-outline-button" href="https://wa.me/393755521420?text=Buongiorno%20Green%20Flux%2C%20vorrei%20informazioni%20per%20una%20pompa%20di%20calore.">Scrivici su WhatsApp <span aria-hidden="true">↗</span></a></div></div><aside class="hp-prepare"><span class="hp-overline">Per il primo confronto</span><h3>Se li hai, tieni <br>questi dati a portata.</h3>{{LANDING_PREPARE}}<p>Non hai tutte le informazioni? Puoi comunque iniziare la richiesta.</p></aside></div></section>
-  </main>
-  <footer class="hp-footer"><div class="hp-wrap"><div class="hp-footer-top"><a class="hp-footer-brand" href="/">Green Flux<span>Impianti tecnologici. Scelte consapevoli.</span></a><address><strong>GREEN FLUX srls</strong> <br>Via Trieste, 19 · 35121 Padova (PD)</address><div class="hp-footer-contact"><a href="tel:+393755521420">+39 375 552 1420</a><a href="mailto:info@green-flux.com">info@green-flux.com</a></div></div><div class="hp-footer-bottom"><p>© 2026 Green Flux. Tutti i diritti riservati.</p><nav aria-label="Link del sito"><a href="/">Il sito Green Flux</a><a href="/privacy-policy/">Privacy</a><a href="/cookie-policy/">Cookie</a><a href="/termini-condizioni/">Termini e condizioni</a></nav></div><p class="hp-sources">Approfondimenti tecnici: {{LANDING_SOURCES}}</p></div></footer>
+  <section class="hp-section hp-wrap hp-faq-section" id="domande" aria-labelledby="faq-title"><div class="hp-center-heading"><p class="hp-eyebrow">Risposte, prima delle scelte</p><h2 id="faq-title">Domande frequenti.</h2><p>Termosifoni, costi, estate e fotovoltaico: partiamo dai tuoi dubbi.</p></div><div class="hp-faqs">{{LANDING_FAQS}}<details><summary>Come preparo la richiesta di preventivo?<span aria-hidden="true">+</span></summary><p>Il quiz è già dedicato alle pompe di calore. Ti chiediamo nome, riscaldamento attuale, distribuzione del calore, tempistiche e recapiti. Alla fine puoi controllare il riepilogo e completare l’invio via email o WhatsApp.</p></details><details><summary>Cosa serve per valutare spazi e dimensionamento?<span aria-hidden="true">+</span></summary><p>Superficie, isolamento, consumi e posizione dell’unità esterna sono aspetti da approfondire nel progetto. Se disponibili, prepara foto, bollette e una descrizione dell’impianto esistente. Non occorre avere già tutti i documenti per iniziare.</p></details></div></section>
+
+  <section class="hp-final-section" aria-labelledby="final-title"><div class="hp-wrap"><p class="hp-eyebrow">La tua prossima scelta comincia qui</p><h2 id="final-title">Passa a una pompa di calore.<br><em>Partiamo dalla tua casa.</em></h2><p>Poche domande per raccontarci il tuo impianto.<br>Un primo passo verso una soluzione su misura.</p><a class="hp-button hp-final-cta" href="/preventivo/?servizio=pompe-di-calore" data-hp-open>Prepara la tua richiesta <span aria-hidden="true">→</span></a><span class="hp-final-note">5 PASSAGGI · POMPE DI CALORE · UNA RICHIESTA SU MISURA</span></div></section>
+</main>
+<footer class="hp-footer"><div class="hp-wrap"><div class="hp-footer-grid"><div><a class="hp-brand" href="/" aria-label="Green Flux, home"><span class="hp-brand-mark" aria-hidden="true"></span><span class="hp-brand-name">GREEN <b>FLUX</b><small>IMPIANTI TECNOLOGICI</small></span></a><p>Competenze idrauliche ed elettriche per i tuoi impianti. Dalla progettazione all’installazione.</p><div class="hp-social"><a href="https://www.instagram.com/greenflux_impianti/" target="_blank" rel="noopener noreferrer" aria-label="Green Flux su Instagram, nuova scheda">Instagram ↗</a><a href="https://www.facebook.com/profile.php?id=61579212246290" target="_blank" rel="noopener noreferrer" aria-label="Green Flux su Facebook, nuova scheda">Facebook ↗</a></div></div><nav aria-label="Esplora Green Flux"><h3>Esplora</h3><a href="#soluzioni">Soluzioni</a><a href="#vantaggi">Perché Green Flux</a><a href="#metodo">Come funziona</a><a href="#domande">Domande frequenti</a><a href="/">Il sito Green Flux</a></nav><div class="hp-footer-contact"><h3>Contatti</h3><address>GREEN FLUX srls<br>Via Trieste, 19<br>35121 Padova (PD)</address><a href="tel:+393755521420">+39 375 552 1420</a><a href="mailto:info@green-flux.com">info@green-flux.com</a><a href="https://wa.me/393755521420">Scrivici su WhatsApp ↗</a></div></div><div class="hp-footer-bottom"><p>© 2026 Green Flux. Tutti i diritti riservati.</p><nav aria-label="Informazioni legali"><a href="/privacy-policy/">Privacy</a><a href="/cookie-policy/">Cookie</a><a href="/termini-condizioni/">Termini e condizioni</a></nav></div><p class="hp-sources">Approfondimenti tecnici: {{LANDING_SOURCES}}</p></div></footer>
+<dialog class="hp-quiz-dialog" aria-label="Analisi per la tua pompa di calore" data-hp-quiz><button class="hp-quiz-close" type="button" aria-label="Chiudi il quiz e torna alla landing" data-hp-close>×</button><iframe title="Quiz Green Flux dedicato alle pompe di calore" data-hp-quiz-frame></iframe></dialog>
 </body>
 </html>

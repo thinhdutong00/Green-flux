@@ -14,7 +14,35 @@ if (wizard) {
   const next = wizard.querySelector('[data-next]');
   const submit = wizard.querySelector('[data-submit]');
   const savedAnswers = new Map();
-  const selected = serviceId(new URLSearchParams(location.search).get('servizio'));
+  const params = new URLSearchParams(location.search);
+  const selected = serviceId(params.get('servizio'));
+  const journey = selected ? [0, 2, 3, 4, 5] : [0, 1, 2, 3, 4, 5];
+  const embedded = params.get('embed') === '1' && window.parent !== window;
+  if (selected === 'pompe-di-calore') {
+    document.title = 'La tua pompa di calore — Richiesta Green Flux';
+    document.body.classList.add('quote-heat-pump');
+    const context = document.createElement('p');
+    context.className = 'quote-service-context';
+    context.textContent = 'Pompe di calore · Il tuo percorso dedicato';
+    stage.prepend(context);
+    counter.classList.remove('visually-hidden');
+    counter.classList.add('quote-visible-counter');
+    wizard.querySelector('.quote-close').href = '/servizi/pompe-calore/';
+    wizard.querySelector('.quote-close').setAttribute('aria-label', 'Chiudi il quiz e torna alla landing pompe di calore');
+  }
+  if (embedded) {
+    document.body.classList.add('quote-embedded');
+    const closeQuiz = () => window.parent.postMessage({ type: 'green-flux:close-quiz' }, location.origin);
+    window.addEventListener('keydown', event => {
+      if (event.key === 'Escape') { event.preventDefault(); closeQuiz(); }
+    });
+    wizard.querySelectorAll('.quote-close, .quote-brand').forEach(link => link.addEventListener('click', event => {
+      event.preventDefault(); closeQuiz();
+    }));
+  }
+  journey.forEach((stepIndex, index) => {
+    steps[stepIndex].querySelector('.quote-step-label > span').textContent = String(index + 1).padStart(2, '0');
+  });
   let current = 0;
   function element(tag, attributes = {}, text) {
     const node = document.createElement(tag);
@@ -60,11 +88,12 @@ if (wizard) {
   function setStep(index, focus = false) {
     current = Math.max(0, Math.min(index, steps.length - 1));
     steps.forEach((step, i) => { step.hidden = i !== current; step.setAttribute('aria-hidden', String(i !== current)); });
-    const percent = Math.round(current / (steps.length - 1) * 100);
+    const visibleIndex = journey.indexOf(current);
+    const percent = Math.round(visibleIndex / (journey.length - 1) * 100);
     progress.style.width = `${percent}%`;
     progressTrack.setAttribute('aria-valuenow', String(percent));
-    progressTrack.setAttribute('aria-valuetext', `Passaggio ${current + 1} di ${steps.length}`);
-    counter.textContent = `Passaggio ${current + 1} di ${steps.length}`;
+    progressTrack.setAttribute('aria-valuetext', `Passaggio ${visibleIndex + 1} di ${journey.length}`);
+    counter.textContent = `Passaggio ${visibleIndex + 1} di ${journey.length}`;
     previous.hidden = current === 0;
     next.hidden = current === steps.length - 1;
     submit.hidden = current !== steps.length - 1;
