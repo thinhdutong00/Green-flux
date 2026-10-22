@@ -1,8 +1,12 @@
 import { quoteText } from './data.mjs';
 import { readFunnel, validateFunnel, serviceId, questionsFor, adjacentFunnelStep } from './funnel-data.mjs';
 import { showHandoff } from '../assets/js/handoff.mjs';
+import { mountHeatPumpQuiz } from './heat-pump-wizard.mjs';
 const wizard = document.querySelector('[data-quote-wizard]');
-if (wizard) {
+const campaignParams = new URLSearchParams(location.search);
+if (wizard && serviceId(campaignParams.get('servizio')) === 'pompe-di-calore') {
+  mountHeatPumpQuiz(wizard, { embedded: campaignParams.get('embed') === '1' && window.parent !== window });
+} else if (wizard) {
   const form = wizard.querySelector('.quote-form');
   const steps = [...form.querySelectorAll('[data-step]')];
   const progress = wizard.querySelector('[data-progress]');
@@ -18,18 +22,6 @@ if (wizard) {
   const selected = serviceId(params.get('servizio'));
   const journey = selected ? [0, 2, 3, 4, 5] : [0, 1, 2, 3, 4, 5];
   const embedded = params.get('embed') === '1' && window.parent !== window;
-  if (selected === 'pompe-di-calore') {
-    document.title = 'La tua pompa di calore — Richiesta Green Flux';
-    document.body.classList.add('quote-heat-pump');
-    const context = document.createElement('p');
-    context.className = 'quote-service-context';
-    context.textContent = 'Pompe di calore · Il tuo percorso dedicato';
-    stage.prepend(context);
-    counter.classList.remove('visually-hidden');
-    counter.classList.add('quote-visible-counter');
-    wizard.querySelector('.quote-close').href = '/servizi/pompe-calore/';
-    wizard.querySelector('.quote-close').setAttribute('aria-label', 'Chiudi il quiz e torna alla landing pompe di calore');
-  }
   if (embedded) {
     document.body.classList.add('quote-embedded');
     const closeQuiz = () => window.parent.postMessage({ type: 'green-flux:close-quiz' }, location.origin);

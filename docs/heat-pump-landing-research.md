@@ -34,17 +34,22 @@ Le pagine indicate sono raggiungibili al momento dell’analisi. Le date riporta
 
 ## Quiz per pompe di calore
 
-Cinque passaggi visibili, con la tecnologia già preselezionata:
+Aggiornamento del 22 ottobre 2026: nuovo riferimento esplicito dell’utente, [Preventivo VenetaGreen](https://venetagreen.it/preventivo/), esaminato su desktop e mobile senza inviare richieste.
 
-1. Nome.
-2. Riscaldamento attuale.
-3. Distribuzione del calore: radiatori, pavimento, ventilconvettori o situazione da valutare.
-4. Tempistiche.
-5. Comune, tipologia di immobile, recapito, note e autorizzazione al ricontatto.
+Il modulo riprende la struttura osservata: colonna verde con titolo e avanzamento, area bianca con schede selezionabili, azioni fisse in basso; su mobile l’avanzamento diventa una testata compatta e le schede sono in colonna. I sei passaggi sono adattati al riscaldamento:
 
-Il riepilogo conserva le risposte e può essere modificato. Email e WhatsApp sono i canali di invio già previsti dal sito: la conferma finale avviene nell’app scelta. Le risposte non sono salvate in cookie o storage persistente. Chiudendo e riaprendo il quiz nella stessa visita, le risposte restano nel modulo caricato; il ricaricamento della pagina le elimina.
+1. Tipologia cliente: privato, azienda o ditta individuale.
+2. Comune e immobile, con opzioni coerenti con la tipologia cliente.
+3. Riscaldamento attuale, inclusi nuovo impianto e situazione da valutare.
+4. Distribuzione del calore; superficie e spazio esterno facoltativi.
+5. Funzioni richieste e tempistiche.
+6. Riepilogo modificabile, nome, ragione sociale per attività, telefono obbligatorio, email facoltativa, note e autorizzazione al ricontatto.
 
-La numerazione e la barra di avanzamento riflettono i cinque passaggi effettivi; non compare il passaggio di scelta del servizio. Sono previsti chiusura con pulsante o Escape, ritorno al punto della landing e ripristino del focus.
+Non vengono riprese le domande su tetto, bolletta elettrica o accumulo fotovoltaico. La disponibilità geografica e la configurazione tecnica si confermano sul progetto: il quiz non calcola prezzi o incentivi.
+
+Il riepilogo conserva tutte le risposte e può essere modificato tornando al passaggio corrispondente. Cambiando tipologia cliente, un immobile non più compatibile viene deselezionato; la ragione sociale non viene inclusa per un privato. Email e WhatsApp sono i canali di invio già previsti dal sito: la conferma finale avviene nell’app scelta. Le risposte non sono salvate in cookie o storage persistente. Chiudendo e riaprendo il quiz nella stessa visita, le risposte restano nel modulo caricato; il ricaricamento della pagina le elimina.
+
+La numerazione riflette i sei passaggi effettivi. Sono previsti chiusura con pulsante o Escape, ritorno al punto della landing e ripristino del focus. Il percorso generale per gli altri impianti resta disponibile su `/preventivo/`.
 
 ## Come misurare l’efficacia dopo la pubblicazione
 

@@ -188,7 +188,8 @@ export async function renderSite() {
   await write('/preventivo/',fill(await template('quote'),{
     QUOTE_OPTIONS: catalogue.map(s=>quoteOption('servizio','checkbox',s.id,s.label)).join(''),
     QUOTE_TIMELINES: timelines.map(value=>quoteOption('tempistiche','radio',value)).join(''),
-    QUOTE_PROPERTY_TYPES: propertyTypes.map(value=>`<option value="${esc(value)}">${esc(value)}</option>`).join('')
+    QUOTE_PROPERTY_TYPES: propertyTypes.map(value=>`<option value="${esc(value)}">${esc(value)}</option>`).join(''),
+    HEAT_PUMP_QUIZ: await template('heat-pump-quote')
   }),'Richiedi un preventivo');
   await writeFile(join(publicRoot,'preventivo/catalog.mjs'),`// Generated from content/site-content.json by scripts/render-site.mjs.\nexport const services = ${JSON.stringify(catalogue,null,2)};\n`);
   await writeFile(join(publicRoot,'assets/js/mobile-header-template.mjs'),`// Generated from templates/mobile-header.html and content/site-content.json.\nexport const mobileHeaderMarkup = ${JSON.stringify(fill(await template('mobile-header'),{MOBILE_NAV:navMarkup('gf-')}))};\n`);
