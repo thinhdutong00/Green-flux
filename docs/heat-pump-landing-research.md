@@ -51,10 +51,22 @@ Il riepilogo conserva tutte le risposte e può essere modificato tornando al pas
 
 La numerazione riflette i sei passaggi effettivi. Sono previsti chiusura con pulsante o Escape, ritorno al punto della landing e ripristino del focus. Il percorso generale per gli altri impianti resta disponibile su `/preventivo/`.
 
+## Contenuti tecnici integrati — 22 ottobre 2026
+
+Su richiesta dell’utente è stata letta la [pagina VenetaGreen sulle pompe di calore](https://venetagreen.it/servizi/pompe-calore/). I temi utili sono stati rielaborati per Green Flux: sostituzione della caldaia, produzione sanitaria, compatibilità dei terminali, uso estivo, efficienza e collegamento con il fotovoltaico.
+
+Le spiegazioni sono state confrontate con [ENEA, tecnologie per il riscaldamento](https://www.efficienzaenergetica.enea.it/servizi-per/cittadini/interventi-di-efficienza-e-risparmio-energetico-nelle-abitazioni/impianti/riscaldamento/tecnologie-e-etichetta-energetica-riscaldamento.html), consultabile nell’estratto indicizzato, con [Vaillant, pompa di calore e termosifoni](https://www.vaillant.it/consigli/comprendere-la-tecnologia/pompe-di-calore/pompa-di-calore-per-termosifoni-come-funziona/) con [Caleffi, componenti degli impianti a pompa di calore](https://www.caleffi.com/it-it/blog/componenti-di-un-impianto-pompa-di-calore), e con la [rassegna scientifica sui sistemi solari abbinati a pompe di calore](https://arxiv.org/abs/2102.09797).
+
+La hero presenta la sostituzione della caldaia con un sistema elettrico. Le sei schede esistenti spiegano aria-acqua, accumulo sanitario, reversibilità, autoconsumo, dimensionamento e radiatori. Il collage e i tre motivi di scelta chiariscono temperatura di mandata, collocazione e contenuto del preventivo. Il blocco divulgativo spiega il COP con un esempio, distinguendo rendimento e spesa. Le FAQ precisano anche le differenze fra aria-acqua, aria-aria e ibrido.
+
+I quattro titoli del metodo e “Dicono di Noi” restano quelli già approvati dall’utente. Non cambiano CSS, immagini, font, classi, sezioni, navigazione o quiz. Le descrizioni del metodo chiariscono le attività concrete già previste nel percorso Green Flux.
+
+Non sono trasferiti da VenetaGreen listini, aliquote, percentuali di risparmio, assistenza continuativa, partnership con marchi o dichiarazioni di emissioni nulle. L’esempio COP 3 esprime un rapporto fra energia termica ed elettrica; non promette una riduzione fissa della bolletta. L’integrazione fotovoltaica dipende dalla contemporaneità fra produzione e utilizzo.
+
 ## Come misurare l’efficacia dopo la pubblicazione
 
 Prima di attribuire miglioramenti al design servono dati omogenei per sorgente di traffico e periodo. I punti utili da misurare sono: visita della landing, apertura del quiz, passaggi completati, riepilogo preparato, scelta del canale e richiesta effettivamente ricevuta. Il click su email o WhatsApp non equivale a un contatto ricevuto. Valutare anche richieste pertinenti, interventi contattabili e preventivi accettati. Nessun sistema di tracciamento pubblicitario è stato aggiunto con questo intervento.
 
 ## Verifiche eseguite
 
-Build completata e 19 test del repository superati. Verifiche nel browser sulla build di produzione: apertura del quiz dalla landing; preselezione della pompa di calore; cinque passaggi e progressione 0/25/50/75/100; validazione dei dati mancanti; riepilogo con riscaldamento e terminali; modifica e conservazione delle risposte nella stessa visita; chiusura con Escape e ritorno del focus; visualizzazione desktop e smartphone a 390 px, senza scorrimento orizzontale o immagini non caricate. I test del modulo usano dati fittizi e non completano invii esterni.
+Build completata e 25 test del repository superati. Verifiche del quiz a sei passaggi su desktop e smartphone: validazione, riepilogo, modifica delle risposte, cambio cliente, conservazione dei dati nella stessa visita, chiusura con Escape e ritorno del focus. Per l’aggiornamento editoriale sono confrontate la struttura e le immagini del template prima e dopo la modifica; la verifica visiva riguarda leggibilità, altezza delle schede e assenza di scorrimento orizzontale. I test del modulo usano dati fittizi e non completano invii esterni.

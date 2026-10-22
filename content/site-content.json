@@ -10,11 +10,11 @@
       "image": "images/heat-pump-home-1600.webp",
       "imageAlt": "Pompa di calore esterna accanto a un’abitazione",
       "summary": "Riscaldamento e acqua calda, con una soluzione dimensionata sull’edificio e sull’impianto esistente.",
-      "lead": "Dalla sostituzione della caldaia a un nuovo impianto: Green Flux progetta e installa pompe di calore partendo dalle esigenze del tuo immobile.",
-      "introTitle": "La pompa di calore nel progetto della casa",
+      "lead": "Pompe di calore aria-acqua per sostituire la caldaia: riscaldamento, acqua calda e verifica dei termosifoni. Progettazione e installazione Green Flux.",
+      "introTitle": "Più calore dell’elettricità che consuma. Come è possibile?",
       "overview": [
-        "Una pompa di calore trasferisce calore da una sorgente, come l’aria esterna, all’impianto dell’edificio. Nei sistemi elettrici il compressore utilizza energia per compiere questo trasferimento. La configurazione può essere dedicata al riscaldamento, alla produzione di acqua calda o a più funzioni.",
-        "Per scegliere una soluzione occorre conoscere l’edificio e il modo in cui distribuisce il calore: radiatori, pavimento radiante e ventilconvettori hanno esigenze diverse. Green Flux mette insieme le competenze idrauliche ed elettriche necessarie a progettare l’intervento."
+        "Una pompa di calore elettrica trasferisce energia dall’ambiente alla casa, anziché ottenere tutto il calore bruciando combustibile. Il compressore rende utilizzabile quel calore per riscaldare gli ambienti e, con la configurazione prevista, produrre acqua calda sanitaria.",
+        "Il COP confronta il calore fornito con l’elettricità consumata: con un COP pari a 3, a 1 kWh elettrico corrispondono 3 kWh termici. È un esempio di funzionamento, non una percentuale di risparmio in bolletta: la convenienza si valuta con clima, temperatura dei terminali, consumi e tariffe della tua casa."
       ],
       "situations": [
         [
@@ -58,19 +58,19 @@
       "faqs": [
         [
           "Posso tenere i termosifoni?",
-          "La risposta dipende dalle dispersioni dell’edificio e dalla capacità dei radiatori di fornire il calore richiesto alla temperatura prevista. È uno dei punti da verificare nel progetto."
+          "In molti casi sì, dopo una verifica. Contano il calore richiesto dall’edificio, la superficie dei radiatori e la temperatura dell’acqua necessaria a scaldare gli ambienti. Una temperatura più bassa favorisce l’efficienza; se i radiatori non bastano, si valutano ampliamenti o altri adattamenti. Il sopralluogo serve a capire quali lavori occorrono nella tua casa."
         ],
         [
           "Può raffrescare in estate?",
-          "Alcune configurazioni possono farlo, ma servono terminali e gestione dell’impianto adatti anche al raffrescamento. La sola sostituzione del generatore non rende automaticamente utilizzabile questa funzione."
+          "Una pompa di calore reversibile può lavorare anche in raffrescamento, con terminali e regolazione adeguati. I ventilconvettori possono distribuire caldo e freddo; il raffrescamento radiante richiede anche il controllo dell’umidità. I normali termosifoni non sostituiscono un impianto di climatizzazione. Verifichiamo questa funzione insieme al riscaldamento."
         ],
         [
           "Devo installare anche il fotovoltaico?",
-          "Il fotovoltaico produce elettricità e può essere valutato insieme alla pompa di calore; le due scelte vanno dimensionate sui consumi e sugli spazi del progetto."
+          "No: una pompa di calore elettrica può funzionare con l’elettricità della rete. Se hai o vuoi installare il fotovoltaico, una parte della produzione può alimentarla direttamente. Il beneficio dipende da quanta energia produci e utilizzi nello stesso momento: il progetto considera i due impianti insieme."
         ],
         [
           "Come si valuta il costo dell’intervento?",
-          "La proposta deve considerare macchina, collegamenti, eventuali modifiche all’impianto e servizi richiesti. Descrivere la situazione esistente permette di definire un perimetro confrontabile."
+          "Il prezzo della macchina è solo una parte. Nel preventivo vanno considerati potenza e configurazione, eventuale accumulo per l’acqua calda, posa, collegamenti idraulici ed elettrici e modifiche ai terminali. Comune, superficie, impianto attuale e consumi aiutano a preparare una proposta che descriva il lavoro completo."
         ]
       ],
       "related": [
@@ -85,6 +85,10 @@
         {
           "label": "ENEA · tecnologie per il riscaldamento",
           "url": "https://www.efficienzaenergetica.enea.it/servizi-per/cittadini/interventi-di-efficienza-e-risparmio-energetico-nelle-abitazioni/impianti/riscaldamento/tecnologie-e-etichetta-energetica-riscaldamento.html"
+        },
+        {
+          "label": "Vaillant · pompa di calore e termosifoni",
+          "url": "https://www.vaillant.it/consigli/comprendere-la-tecnologia/pompe-di-calore/pompa-di-calore-per-termosifoni-come-funziona/"
         }
       ],
       "home": {
