@@ -76,3 +76,6 @@ html{scroll-padding-top:90px}.hp-wrap{width:calc(100% - 40px)}.hp-section{paddin
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 
 .hp-method-cards p strong{display:block;margin-bottom:9px;color:#e4e4e7;font-weight:600}
+
+/* Keep the close control focus ring consistent on touch and keyboard input. */
+.hp-quiz-close{-webkit-tap-highlight-color:transparent}.hp-quiz-close:focus,.hp-quiz-close:focus-visible{outline:2px solid rgb(255 255 255 / 55%);outline-offset:2px}
