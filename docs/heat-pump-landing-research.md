@@ -80,3 +80,7 @@ Prima di attribuire miglioramenti al design servono dati omogenei per sorgente d
 ## Verifiche eseguite
 
 Build completata e 25 test del repository superati. Verifiche del quiz a sei passaggi su desktop e smartphone: validazione, riepilogo, modifica delle risposte, cambio cliente, conservazione dei dati nella stessa visita, chiusura con Escape e ritorno del focus. Per l’aggiornamento editoriale sono confrontate la struttura e le immagini del template prima e dopo la modifica; la verifica visiva riguarda leggibilità, altezza delle schede e assenza di scorrimento orizzontale. I test del modulo usano dati fittizi e non completano invii esterni.
+
+### Rimozione della scheda vincoli — 27 ottobre 2026
+
+Su richiesta del titolare, rimossa la scheda «Vincoli e responsabilità. Chiari fin dall’inizio.». La scheda incentivi occupa l’intera ultima riga su desktop, senza lasciare una cella vuota; le cinque schede conservano stili, immagini e contenuti.
