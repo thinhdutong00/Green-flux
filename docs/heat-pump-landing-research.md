@@ -63,6 +63,16 @@ I quattro titoli del metodo e “Dicono di Noi” restano quelli già approvati 
 
 Non sono trasferiti da VenetaGreen listini, aliquote, percentuali di risparmio, assistenza continuativa, partnership con marchi o dichiarazioni di emissioni nulle. L’esempio COP 3 esprime un rapporto fra energia termica ed elettrica; non promette una riduzione fissa della bolletta. L’integrazione fotovoltaica dipende dalla contemporaneità fra produzione e utilizzo.
 
+## Schede di valutazione — 27 ottobre 2026
+
+Su richiesta dell’utente, la sezione “Riscaldamento. Acqua calda. Fresco.” riprende i contenuti del nuovo screenshot fornito: fabbisogno reale; edificio, terminali e alimentazione; integrazione fotovoltaica con accumulo; verifica degli incentivi. I temi sono distribuiti nelle sei schede esistenti, separando terminali e potenza elettrica e dedicando l’ultima scheda a vincoli e responsabilità, già citati nell’introduzione del riferimento.
+
+Restano griglia, classi, dimensioni, colori, tipografia e foto della sezione. Il simbolo della scheda chiara rappresenta ora l’edificio. Le altre sezioni, la foto in divisa e il quiz restano invariati. La scheda “Incentivi e requisiti” apre il supporto sulle agevolazioni già presente nel sito.
+
+Il riferimento “giugno 2026” dello screenshot viene sostituito da una formulazione senza scadenza editoriale. Ecobonus, Bonus Casa e Conto Termico 3.0 sono presentati come misure da verificare sul singolo intervento, senza aliquote, importi o ammissibilità garantite. Si considerano generatore sostituito, edificio, eventuali bandi locali e cumulabilità. Verifica delle fonti al 27 ottobre 2026: [ENEA, portale bonus fiscali](https://bonusfiscali.enea.it/), [ENEA, aggiornamento dei vademecum di ottobre](https://www.media.enea.it/comunicati-e-news/archivio-anni/anno-2026/energia-ecobonus-enea-aggiorna-vademecum-su-interventi-di-efficientamento.html), [GSE, Conto Termico 3.0](https://www.gse.it/servizi-per-te/efficienza-energetica/conto-termico-3-0).
+
+Il controllo editoriale del repository consente i nomi di queste misure solo nella scheda espressamente richiesta dall’utente; conserva il divieto di promesse e riferimenti non approvati nelle altre pagine.
+
 ## Come misurare l’efficacia dopo la pubblicazione
 
 Prima di attribuire miglioramenti al design servono dati omogenei per sorgente di traffico e periodo. I punti utili da misurare sono: visita della landing, apertura del quiz, passaggi completati, riepilogo preparato, scelta del canale e richiesta effettivamente ricevuta. Il click su email o WhatsApp non equivale a un contatto ricevuto. Valutare anche richieste pertinenti, interventi contattabili e preventivi accettati. Nessun sistema di tracciamento pubblicitario è stato aggiunto con questo intervento.
