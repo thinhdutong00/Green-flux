@@ -96,3 +96,7 @@ Sostituiti i contenuti della sola `/landing/pompe-calore/` con le dieci sezioni 
 ### Ripristino della hero della copia — 28 ottobre 2026
 
 Ripristinata nella sola copia la hero precedente allo script, come nello screenshot fornito: «Pompe di calore. Calore senza gas.», descrizione e CTA «Valuta il cambio della caldaia». Ripristinati anche il pulsante della barra «Richiedi offerta» e i quattro indicatori subito sotto la hero. Tutto il resto dello script, le fotografie, i CSS e il quiz restano invariati.
+
+### Secondo contenuto della copia, hero esclusa — 28 ottobre 2026
+
+Applicato il nuovo testo del titolare a tutte le sezioni successive alla hero della copia. Preservati integralmente hero, barra iniziale, indicatori, CSS e moduli. I sei casi su combustibili e fotovoltaico usano le schede e la griglia responsive già presenti, con descrizioni complete e altezze automatiche per non tagliare i testi; nessuna nuova fotografia o regola CSS. Aggiornati sostituzione, compatibilità, investimento, comfort, FAQ, metodo e richiesta finale. Il segnaposto editoriale per le recensioni è soddisfatto dalle recensioni Google autentiche già presenti, senza modificarne le citazioni. Il file `content/heat-pump-landing-copy-script.txt` conserva il testo ricevuto completo; le sue cinque righe iniziali relative alla hero sono escluse dalla pagina su richiesta esplicita.
