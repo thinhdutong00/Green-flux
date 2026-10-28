@@ -88,3 +88,7 @@ Su richiesta del titolare, rimossa la scheda «Vincoli e responsabilità. Chiari
 ### Copia della landing — 28 ottobre 2026
 
 Creata la copia `/landing/pompe-calore/` nel template autonomo `templates/heat-pump-landing-copy.html`, con gli stessi contenuti, immagini, stili e modulo della versione al momento della duplicazione. La pagina originale resta invariata. La copia è accessibile tramite link, ha `noindex, follow`, conserva il canonical della pagina originale ed è esclusa dalla sitemap e dalla navigazione. Per modificare solo questa versione intervenire sul relativo template; CSS, immagini e modulo sono risorse condivise.
+
+### Script della copia — 28 ottobre 2026
+
+Sostituiti i contenuti della sola `/landing/pompe-calore/` con le dieci sezioni dello script fornito dal titolare, conservato in `content/heat-pump-landing-copy-script.txt`. Riutilizzati i componenti esistenti, senza modificare CSS, fotografie o file del quiz. Mantenute le recensioni autentiche e i contatti. Inserite tutte le frasi e le CTA dello script, con suddivisioni HTML per la leggibilità. Il dialog del quiz resta identico e tutte le CTA mantengono il collegamento al percorso dedicato alle pompe di calore.
