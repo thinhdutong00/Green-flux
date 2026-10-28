@@ -2,12 +2,12 @@
   {
     "page": "/chi-siamo/",
     "cssBefore": 162765,
-    "cssAfter": 50915
+    "cssAfter": 50884
   },
   {
     "page": "/contatti/",
     "cssBefore": 162765,
-    "cssAfter": 47040
+    "cssAfter": 47009
   },
   {
     "page": "/cookie-policy/",
@@ -37,37 +37,37 @@
   {
     "page": "/servizi/biomassa/",
     "cssBefore": 162765,
-    "cssAfter": 52576
+    "cssAfter": 52545
   },
   {
     "page": "/servizi/caldaie/",
     "cssBefore": 162765,
-    "cssAfter": 52770
+    "cssAfter": 52739
   },
   {
     "page": "/servizi/climatizzazione/",
     "cssBefore": 162765,
-    "cssAfter": 52770
+    "cssAfter": 52739
   },
   {
     "page": "/servizi/fotovoltaico/",
     "cssBefore": 162765,
-    "cssAfter": 52770
+    "cssAfter": 52739
   },
   {
     "page": "/servizi/impianti-completi/",
     "cssBefore": 162765,
-    "cssAfter": 52650
+    "cssAfter": 52619
   },
   {
     "page": "/servizi/impianti-radianti-parete-soffitto/",
     "cssBefore": 162765,
-    "cssAfter": 52650
+    "cssAfter": 52619
   },
   {
     "page": "/servizi/",
     "cssBefore": 162765,
-    "cssAfter": 51672
+    "cssAfter": 51641
   },
   {
     "page": "/servizi/pompe-calore/",
@@ -77,27 +77,27 @@
   {
     "page": "/servizi/progettazione-e-supporto/",
     "cssBefore": 162765,
-    "cssAfter": 50804
+    "cssAfter": 50773
   },
   {
     "page": "/servizi/smart-home/",
     "cssBefore": 162765,
-    "cssAfter": 52696
+    "cssAfter": 52665
   },
   {
     "page": "/servizi/solare-termico/",
     "cssBefore": 162765,
-    "cssAfter": 52770
+    "cssAfter": 52739
   },
   {
     "page": "/servizi/trattamento-acqua/",
     "cssBefore": 162765,
-    "cssAfter": 52876
+    "cssAfter": 52845
   },
   {
     "page": "/servizi/ventilazione/",
     "cssBefore": 162765,
-    "cssAfter": 52696
+    "cssAfter": 52665
   },
   {
     "page": "/termini-condizioni/",
@@ -106,7 +106,7 @@
   },
   {
     "page": "/thank-you/",
-    "cssBefore": 5117,
-    "cssAfter": 5050
+    "cssBefore": 6182,
+    "cssAfter": 6115
   }
 ]

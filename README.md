@@ -69,12 +69,16 @@ Le foto importate da VenetaGreen sono rimosse. Fonti, immagini e licenze sono in
 Il preventivo include 10 impianti, 5 servizi e l’opzione consulenza. La scelta
 dell’immobile distingue abitazioni e aziende; il fotovoltaico è un solo servizio.
 Il quiz pompe di calore, il preventivo generale e il modulo contatti inviano a
-`/api/preventivo`. Dopo una risposta `accepted: true`, l’utente viene portato a
-`/thank-you/`, anche quando il quiz si trova nella finestra della landing.
-La pagina conferma il ricontatto entro 24 ore; è accessibile per anteprima ma
-esclusa dall’indicizzazione e dalla sitemap. Errori, timeout e configurazione
-mancante mantengono i dati nel modulo e offrono email o WhatsApp come alternativa,
-senza mostrare una falsa conferma.
+`/api/preventivo`. Tutte le compilazioni valide portano a `/thank-you/`, anche
+quando il quiz si trova nella finestra della landing. Una richiesta accettata
+mostra la conferma di ricontatto entro 24 ore. Se l’invio diretto non è disponibile,
+la stessa pagina si apre con `#completa-invio` e permette di inviare il riepilogo
+già compilato via email o WhatsApp, senza dichiarare che sia già stato ricevuto.
+I dati non sono inseriti nell’URL: il riepilogo è trasferito in sessionStorage
+nella stessa scheda per un massimo di 15 minuti, con scadenza e pulizia alla
+successiva lettura o durante la permanenza nella thank-you page. La navigazione
+funziona anche quando lo storage è disabilitato, mostrando i contatti diretti.
+La pagina è accessibile per anteprima ma esclusa dall’indicizzazione e dalla sitemap.
 
 L’invio diretto richiede **`RESEND_API_KEY`** e **`QUOTE_FROM_EMAIL`** nelle variabili
 server di Vercel. Il mittente deve essere verificato presso Resend. Non inserire

@@ -144,7 +144,7 @@ if (wizard && serviceId(campaignParams.get('servizio')) === 'pompe-di-calore') {
     form.setAttribute('aria-busy', 'true');
     submit.disabled = previous.disabled = true;
     submit.textContent = 'Invio in corso…';
-    try { await submitAndRedirect(sendRequest, data); }
+    try { await submitAndRedirect(sendRequest, data, { requestText: quoteText(data) }); }
     catch (failure) {
       error.textContent = failure.message || 'L’invio non è riuscito. I dati sono ancora nel modulo.';
       error.hidden = false;

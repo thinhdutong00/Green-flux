@@ -13,6 +13,7 @@
   <link rel="preload" href="/assets/fonts/plus-jakarta-sans-700.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/css/thank-you.css">
   <script type="application/ld+json">{{THANK_YOU_SCHEMA}}</script>
+  <script type="module" src="/assets/js/thank-you.mjs"></script>
 </head>
 <body class="ty-page">
   <a class="ty-skip" href="#contenuto">Vai al contenuto</a>
@@ -23,10 +24,16 @@
   <main class="ty-wrap" id="contenuto">
     <section class="ty-confirmation" aria-labelledby="thank-you-title">
       <div class="ty-copy">
-        <div class="ty-status"><span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4L19 6"/></svg></span>Richiesta inviata</div>
+        <div class="ty-status"><span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4L19 6"/></svg></span><b data-thank-you-status>Richiesta inviata</b></div>
         <h1 id="thank-you-title">Grazie per averci scelto.<br><em>Ti ricontattiamo<br>entro 24 ore.</em></h1>
-        <p>Abbiamo ricevuto la tua richiesta. Un referente <strong>Green Flux</strong> ti contatterà ai recapiti che hai indicato per approfondire le tue esigenze e capire insieme da dove partire.</p>
+        <p data-thank-you-message>Abbiamo ricevuto la tua richiesta. Un referente <strong>Green Flux</strong> ti contatterà ai recapiti che hai indicato per approfondire le tue esigenze e capire insieme da dove partire.</p>
         <p class="ty-reassurance">Non serve compilare di nuovo il modulo: il prossimo passo lo facciamo noi.</p>
+        <section class="ty-handoff" data-request-handoff hidden aria-labelledby="complete-request-title">
+          <h2 id="complete-request-title">Completa l’invio della tua richiesta</h2>
+          <p data-handoff-note>Il messaggio è già compilato: aprilo e conferma l’invio nell’app scelta.</p>
+          <div class="ty-handoff-actions"><a class="ty-button" data-request-whatsapp target="_blank" rel="noopener noreferrer">Invia con WhatsApp <span aria-hidden="true">↗</span></a><a class="ty-button ty-button-outline" data-request-email>Invia via email <span aria-hidden="true">↗</span></a></div>
+          <details data-request-summary><summary>Rivedi il riepilogo</summary><textarea aria-label="Riepilogo della richiesta" readonly rows="7"></textarea></details>
+        </section>
         <a class="ty-button" href="/servizi/pompe-calore/">Torna alle pompe di calore <span aria-hidden="true">↗</span></a>
       </div>
       <aside class="ty-next" aria-labelledby="next-title">

@@ -20,7 +20,7 @@ document.querySelectorAll('form[data-green-flux-form]:not(.quote-form)').forEach
   const text=['Richiesta di contatto — Green Flux','',`Nome: ${name}`,`Email: ${email||'Non indicata'}`,`Telefono: ${phone||'Non indicato'}`,`Oggetto: ${request.subject}`,`Messaggio: ${request.notes}`,'','Ho letto l’informativa privacy e autorizzo il ricontatto per questa richiesta.'].join('\n');
   sending=true;form.setAttribute('aria-busy','true');form.parentElement.querySelector('.gf-handoff')?.remove();
   if(button){button.disabled=true;if(button.tagName==='INPUT')button.value='Invio in corso…';else button.textContent='Invio in corso…';}
-  try{await submitAndRedirect(sendRequest,request);}
+  try{await submitAndRedirect(sendRequest,request,{requestText:text});}
   catch(failure){const p=document.createElement('p');p.className='gf-form-error';p.setAttribute('role','alert');p.textContent=failure.message||'L’invio non è riuscito. I dati sono ancora nel modulo.';form.append(p);showHandoff(form.parentElement,text,{onEdit:()=>{button?.focus();}});}
   finally{sending=false;form.removeAttribute('aria-busy');if(button){button.disabled=false;if(button.tagName==='INPUT')button.value='Invia la richiesta';else button.textContent='Invia la richiesta';}}
  });

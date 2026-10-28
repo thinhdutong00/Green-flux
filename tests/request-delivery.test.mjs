@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { createRequestSender, submitAndRedirect } from '../public/assets/js/request-delivery.mjs';
+import { createRequestSender, submitAndRedirect, pendingRequestKey, pendingRequestLifetime, readPendingRequest } from '../public/assets/js/request-delivery.mjs';
 import { heatingOptions, distributionOptions, timelines, heatPumpRequestText } from '../public/preventivo/heat-pump-data.mjs';
 import { questionsFor } from '../public/preventivo/funnel-data.mjs';
 import { quoteText } from '../public/preventivo/data.mjs';
@@ -16,24 +16,48 @@ const heatPump = () => ({
   website: '', elapsed: 5000, requestId,
 });
 
-test('Delivery confirms acceptance before navigating; iframe requests redirect the whole landing', async () => {
+test('All completed requests reach the thank-you page; unconfirmed requests retain their summary for completion there', async () => {
   let resolveDelivery;
   const visited = [];
-  const parent = { location: { origin: 'https://example.test', assign: path => visited.push(['parent', path]) } };
+  const values = new Map();
+  const sessionStorage = { getItem: key => values.get(key) ?? null, setItem: (key,value) => values.set(key,value), removeItem: key => values.delete(key) };
+  const parent = { sessionStorage, location: { origin: 'https://example.test', assign: path => visited.push(['parent', path]) } };
   const browser = { parent, location: { origin: 'https://example.test', assign: path => visited.push(['iframe', path]) } };
-  const pending = submitAndRedirect(() => new Promise(resolve => { resolveDelivery = resolve; }), {}, browser);
+  const pending = submitAndRedirect(() => new Promise(resolve => { resolveDelivery = resolve; }), {}, { browser });
   assert.deepEqual(visited, []);
   resolveDelivery({ accepted: true });
   await pending;
   assert.deepEqual(visited, [['parent', '/thank-you/']]);
   visited.length = 0;
   for (const sender of [async () => { throw new Error('Invio fallito'); }, async () => ({ accepted: false }), async () => ({ handoff: true })]) {
-    await assert.rejects(submitAndRedirect(sender, {}, browser));
-    assert.deepEqual(visited, []);
+    const result = await submitAndRedirect(sender, {}, { browser, requestText: 'Riepilogo di test: nome, recapiti e progetto.' });
+    assert.deepEqual(result, { accepted: false });
+    assert.deepEqual(visited, [['parent', '/thank-you/#completa-invio']]);
+    assert.equal(readPendingRequest(parent).text, 'Riepilogo di test: nome, recapiti e progetto.');
+    assert(!visited[0][1].includes('recapiti'));
+    visited.length = 0;
   }
+  await submitAndRedirect(async () => ({ accepted: true }), {}, { browser });
+  assert.equal(values.has(pendingRequestKey), false);
+  visited.length = 0;
   browser.parent = browser;
-  await submitAndRedirect(async () => ({ accepted: true }), {}, browser);
+  await submitAndRedirect(async () => ({ accepted: true }), {}, { browser });
   assert.deepEqual(visited, [['iframe', '/thank-you/']]);
+});
+
+test('Pending request summaries expire and disabled browser storage never blocks the redirect', async () => {
+  const values = new Map();
+  const visited = [];
+  const browser = { sessionStorage: { getItem: key => values.get(key) ?? null, setItem: (key,value) => values.set(key,value), removeItem: key => values.delete(key) }, location: { origin: 'https://example.test', assign: path => visited.push(path) } };
+  browser.parent = browser;
+  await submitAndRedirect(async () => ({ accepted: false }), {}, { browser, requestText: 'Riepilogo di test' });
+  const draft = readPendingRequest(browser);
+  assert(draft.expiresAt <= Date.now() + pendingRequestLifetime);
+  assert.equal(readPendingRequest(browser, draft.expiresAt + 1), null);
+  assert.equal(values.size, 0);
+  Object.defineProperty(browser, 'sessionStorage', { get() { throw new Error('Storage disabilitato'); } });
+  await submitAndRedirect(async () => { throw new Error('Rete non disponibile'); }, {}, { browser, requestText: 'Riepilogo di test' });
+  assert.deepEqual(visited, ['/thank-you/#completa-invio', '/thank-you/#completa-invio']);
 });
 
 test('Retries reuse the request id and changed requests receive a new id; errors never count as acceptance', async () => {

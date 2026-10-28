@@ -1,5 +1,6 @@
 import { services, projects, consumption, spaceOptions, hasEnergyService, multipleSpaces, validateQuote, reviewEntries, quoteText } from './data.mjs';
 import { delivery, sendQuote, contactLinks } from './delivery.mjs';
+import { submitAndRedirect } from '../assets/js/request-delivery.mjs';
 
 const form = document.getElementById('quote-form');
 const steps = [...form.querySelectorAll('[data-step]')];
@@ -219,24 +220,7 @@ form.addEventListener('submit', async event => {
   clearError();
   fallback.hidden = true;
   try {
-    const result = await sendQuote(data);
-    form.hidden = true;
-    document.getElementById('quote-complete').hidden = false;
-    const handoff = Boolean(result.handoff);
-    document.getElementById('quote-complete-title').textContent = handoff ? 'Il riepilogo è pronto.' : 'Richiesta inviata.';
-    document.getElementById('quote-complete-message').textContent = handoff ? 'Scegli email o WhatsApp per aprire la richiesta già compilata. Completa l’invio nell’app scelta: il riepilogo non è ancora stato inviato a Green Flux.' : 'Grazie per averci raccontato il tuo progetto. Green Flux ti ricontatterà ai recapiti che hai indicato per approfondire la richiesta.';
-    document.getElementById('quote-handoff').hidden = !handoff;
-    if (handoff) {
-      document.getElementById('quote-handoff-email').href = result.links.email;
-      document.getElementById('quote-handoff-whatsapp').href = result.links.whatsapp;
-      document.getElementById('quote-copy-text').value = quoteText(data);
-      document.getElementById('quote-copy-status').textContent = '';
-    } else form.reset();
-    document.getElementById('quote-complete-title').focus({ preventScroll: true });
-    window.scrollTo({ top: 0, behavior: 'instant' });
-    counter.textContent = handoff ? 'Riepilogo pronto, da inviare.' : 'Richiesta inviata.';
-    progress.setAttribute('aria-valuenow', '6');
-    progress.setAttribute('aria-valuetext', counter.textContent);
+    await submitAndRedirect(sendQuote, data, { requestText: quoteText(data) });
   } catch (failure) {
     form.inert = false;
     showError(failure.message || 'L’invio non è riuscito. Riprova tra poco.');

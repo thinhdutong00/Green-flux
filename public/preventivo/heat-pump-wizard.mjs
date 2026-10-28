@@ -159,7 +159,7 @@ export function mountHeatPumpQuiz(root, { embedded = false } = {}) {
     form.setAttribute('aria-busy', 'true');
     next.disabled = previous.disabled = true;
     next.textContent = 'Invio in corso…';
-    try { await submitAndRedirect(sendRequest, data); }
+    try { await submitAndRedirect(sendRequest, data, { requestText: heatPumpRequestText(data) }); }
     catch (failure) {
       showError({ message: failure.message || 'L’invio non è riuscito. I dati sono ancora nel modulo.' });
       completion.hidden = false;
