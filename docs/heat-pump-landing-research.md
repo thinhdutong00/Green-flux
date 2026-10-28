@@ -92,3 +92,7 @@ Creata la copia `/landing/pompe-calore/` nel template autonomo `templates/heat-p
 ### Script della copia — 28 ottobre 2026
 
 Sostituiti i contenuti della sola `/landing/pompe-calore/` con le dieci sezioni dello script fornito dal titolare, conservato in `content/heat-pump-landing-copy-script.txt`. Riutilizzati i componenti esistenti, senza modificare CSS, fotografie o file del quiz. Mantenute le recensioni autentiche e i contatti. Inserite tutte le frasi e le CTA dello script, con suddivisioni HTML per la leggibilità. Il dialog del quiz resta identico e tutte le CTA mantengono il collegamento al percorso dedicato alle pompe di calore.
+
+### Ripristino della hero della copia — 28 ottobre 2026
+
+Ripristinata nella sola copia la hero precedente allo script, come nello screenshot fornito: «Pompe di calore. Calore senza gas.», descrizione e CTA «Valuta il cambio della caldaia». Ripristinati anche il pulsante della barra «Richiedi offerta» e i quattro indicatori subito sotto la hero. Tutto il resto dello script, le fotografie, i CSS e il quiz restano invariati.
