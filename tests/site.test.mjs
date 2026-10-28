@@ -64,7 +64,19 @@ test('Every Green Flux technology has its own explanation, decision criteria and
  const {services:catalogue,support}=JSON.parse(readFileSync('content/site-content.json'));
  assert.equal(catalogue.length,11);assert.equal(support.length,5);
  const titles=new Set();
- for(const service of catalogue){const html=readFileSync(join(root,'servizi',service.slug,'index.html'),'utf8');assert(html.includes(`servizio=${service.quote}`));assert(html.includes(service.introTitle));assert(!titles.has(service.introTitle));titles.add(service.introTitle);for(const [question] of service.faqs)assert(html.includes(question));assert.equal([...html.matchAll(/<h1\b/g)].length,1);assert(!html.includes('venetagreen-trust'));}
+ for(const service of catalogue){
+  const html=readFileSync(join(root,'servizi',service.slug,'index.html'),'utf8');
+  assert(html.includes(`servizio=${service.quote}`));assert(!titles.has(service.introTitle));titles.add(service.introTitle);
+  let catalogueVersion=html;
+  if(service.slug==='pompe-calore'){
+   assert(html.includes('Abbatti i Costi del Riscaldamento.'));
+   for(const topic of ['La tua abitazione consuma più energia del necessario?','Calore senza gas.','In famiglia l\'acqua calda non basta mai?','Verifica se la tua casa è compatibile','Hai già il fotovoltaico o vuoi installarlo?'])assert(html.includes(topic),topic);
+   catalogueVersion=readFileSync(join(root,'landing/pompe-calore/index.html'),'utf8');
+   assert(catalogueVersion.includes('name="robots" content="noindex, follow"'));
+  }
+  assert(catalogueVersion.includes(service.introTitle));for(const [question] of service.faqs)assert(catalogueVersion.includes(question));
+  assert.equal([...html.matchAll(/<h1\b/g)].length,1);assert(!html.includes('venetagreen-trust'));
+ }
  const supportPage=readFileSync(join(root,'servizi/progettazione-e-supporto/index.html'),'utf8');
  for(const item of support){assert(supportPage.includes(`id="${item.id}"`));assert(!supportPage.includes(`servizio=${item.id}`));assert.equal(serviceId(item.id),null);}
 });
