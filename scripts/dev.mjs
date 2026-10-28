@@ -3,12 +3,19 @@ import { readFile, stat } from 'node:fs/promises';
 import { watch } from 'node:fs';
 import { resolve, extname, sep } from 'node:path';
 import { renderSite } from './render-site.mjs';
+import quoteHandler from '../api/preventivo.mjs';
 await renderSite();
 const root=resolve('public'); const port=Number(process.env.PORT||3000);const clients=new Set();
 const types={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.mjs':'text/javascript; charset=utf-8','.json':'application/json','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.webp':'image/webp','.avif':'image/avif','.woff2':'font/woff2','.ico':'image/x-icon','.xml':'application/xml','.txt':'text/plain'};
 const server=http.createServer(async(req,res)=>{
  const url=new URL(req.url,'http://localhost');
  if(url.pathname==='/__live'){res.writeHead(200,{'Content-Type':'text/event-stream','Cache-Control':'no-cache','Connection':'keep-alive'});res.write(': connected\n\n');clients.add(res);req.on('close',()=>clients.delete(res));return;}
+ if(url.pathname==='/api/preventivo'){
+  res.status=code=>{res.statusCode=code;return res;};res.json=payload=>{res.setHeader('Content-Type','application/json; charset=utf-8');res.end(JSON.stringify(payload));};
+  try{const chunks=[];let length=0;for await(const chunk of req){length+=chunk.length;if(length>10000)return res.status(413).json({message:'La richiesta è troppo lunga.'});chunks.push(chunk);}req.body=Buffer.concat(chunks).toString();await quoteHandler(req,res);}
+  catch{if(!res.writableEnded)res.status(500).json({message:'L’invio non è riuscito. I dati sono ancora nel modulo.'});}
+  return;
+ }
  try{
   const redirects=JSON.parse(await readFile(resolve('content/redirects.json'),'utf8'));
   const destination=redirects[url.pathname.endsWith('/')?url.pathname:url.pathname+'/'];

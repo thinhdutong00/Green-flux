@@ -68,10 +68,22 @@ Le foto importate da VenetaGreen sono rimosse. Fonti, immagini e licenze sono in
 
 Il preventivo include 10 impianti, 5 servizi e l’opzione consulenza. La scelta
 dell’immobile distingue abitazioni e aziende; il fotovoltaico è un solo servizio.
-Il modulo prepara un riepilogo: il cliente completa l’invio in email o WhatsApp.
-Destinatari: `info@green-flux.com` e `+39 375 552 1420`. Nessun salvataggio dei dati
-in cookie o storage persistente. L’endpoint email opzionale resta disponibile
-per una futura integrazione, con configurazione server richiesta.
+Il quiz pompe di calore, il preventivo generale e il modulo contatti inviano a
+`/api/preventivo`. Dopo una risposta `accepted: true`, l’utente viene portato a
+`/thank-you/`, anche quando il quiz si trova nella finestra della landing.
+La pagina conferma il ricontatto entro 24 ore; è accessibile per anteprima ma
+esclusa dall’indicizzazione e dalla sitemap. Errori, timeout e configurazione
+mancante mantengono i dati nel modulo e offrono email o WhatsApp come alternativa,
+senza mostrare una falsa conferma.
+
+L’invio diretto richiede **`RESEND_API_KEY`** e **`QUOTE_FROM_EMAIL`** nelle variabili
+server di Vercel. Il mittente deve essere verificato presso Resend. Non inserire
+chiavi nei sorgenti o nelle variabili pubbliche. `GET /api/preventivo` restituisce
+soltanto `{ available: true/false }` per verificare la presenza della configurazione,
+senza inviare messaggi. Il destinatario è fisso: `info@green-flux.com`.
+Alternativa WhatsApp: `+39 375 552 1420`. Nessun salvataggio dei dati in cookie o
+storage persistente del browser. Il sito privato Sites è statico: l’endpoint
+server è eseguito dal deploy Vercel del dominio pubblico.
 
 - Repository: https://github.com/thinhdutong00/Green-flux
 - Sito Vercel: https://green-flux-nine.vercel.app

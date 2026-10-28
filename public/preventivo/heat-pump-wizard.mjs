@@ -4,6 +4,7 @@ import {
   validateHeatPumpRequest, heatPumpSummary, heatPumpRequestText,
 } from './heat-pump-data.mjs';
 import { showHandoff } from '../assets/js/handoff.mjs';
+import { createRequestSender, submitAndRedirect } from '../assets/js/request-delivery.mjs';
 
 const paths = {
   house: '<path d="m3 10 9-7 9 7M5 9v12h14V9M9 21v-7h6v7M16 5V2h3v6"/>',
@@ -47,7 +48,8 @@ export function mountHeatPumpQuiz(root, { embedded = false } = {}) {
   const completion = root.querySelector('[data-hpq-completion]');
   let current = 0;
   let clientType = '';
-  let showingCompletion = false;
+  const sendRequest = createRequestSender('heat-pump');
+  let sending = false;
 
   for (const [index, label] of heatPumpSteps.entries()) {
     const item = element('li');
@@ -120,10 +122,10 @@ export function mountHeatPumpQuiz(root, { embedded = false } = {}) {
   }
   function setProgress() {
     progressItems.forEach((item, index) => {
-      const done = showingCompletion || index < current;
+      const done = index < current;
       item.classList.toggle('is-complete', done);
-      item.classList.toggle('is-active', !showingCompletion && index === current);
-      if (!showingCompletion && index === current) item.setAttribute('aria-current', 'step');
+      item.classList.toggle('is-active', index === current);
+      if (index === current) item.setAttribute('aria-current', 'step');
       else item.removeAttribute('aria-current');
       item.querySelector('.hpq-step-circle').textContent = done ? '✓' : String(index + 1);
     });
@@ -133,7 +135,7 @@ export function mountHeatPumpQuiz(root, { embedded = false } = {}) {
     panels.forEach((panel, position) => { panel.hidden = position !== current; });
     title.textContent = heatPumpSteps[current];
     counter.textContent = `${current + 1} di ${heatPumpSteps.length}`;
-    next.textContent = current === 5 ? 'Prepara la richiesta' : 'Avanti';
+    next.textContent = current === 5 ? 'Invia la richiesta' : 'Avanti';
     previous.disabled = current === 0;
     setProgress(); clearError(); sync();
     workspace.scrollTop = 0;
@@ -142,25 +144,33 @@ export function mountHeatPumpQuiz(root, { embedded = false } = {}) {
   form.addEventListener('input', () => { clearError(); sync(); });
   form.addEventListener('change', () => { clearError(); sync(); });
   previous.addEventListener('click', () => setStep(current - 1, true));
-  form.addEventListener('submit', event => {
+  form.addEventListener('submit', async event => {
     event.preventDefault();
+    if (sending) return;
     const data = read();
     const issues = validateHeatPumpRequest(data);
     const issue = current < 5 ? issues.find(issue => issue.step === current) : issues[0];
     if (issue) { if (issue.step !== current) setStep(issue.step, true); showError(issue); return; }
     if (current < 5) { setStep(current + 1, true); return; }
-    form.hidden = true;
-    completion.hidden = false;
-    showingCompletion = true;
-    title.textContent = 'Richiesta pronta';
-    setProgress();
-    showHandoff(completion, heatPumpRequestText(data), { onEdit: () => {
-      showingCompletion = false;
-      completion.hidden = true;
-      form.hidden = false;
-      setStep(5, true);
-    } });
-    workspace.scrollTop = 0;
+    sending = true;
+    clearError();
+    completion.hidden = true;
+    completion.replaceChildren();
+    form.setAttribute('aria-busy', 'true');
+    next.disabled = previous.disabled = true;
+    next.textContent = 'Invio in corso…';
+    try { await submitAndRedirect(sendRequest, data); }
+    catch (failure) {
+      showError({ message: failure.message || 'L’invio non è riuscito. I dati sono ancora nel modulo.' });
+      completion.hidden = false;
+      showHandoff(completion, heatPumpRequestText(data), { onEdit: () => { completion.hidden = true; setStep(5, true); } });
+    } finally {
+      sending = false;
+      form.removeAttribute('aria-busy');
+      next.disabled = false;
+      previous.disabled = current === 0;
+      next.textContent = 'Invia la richiesta';
+    }
   });
   form.addEventListener('keydown', event => {
     if (event.key === 'Enter' && event.target.tagName === 'INPUT' && event.target.type !== 'checkbox') {

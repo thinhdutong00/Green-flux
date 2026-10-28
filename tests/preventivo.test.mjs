@@ -75,7 +75,9 @@ test('Endpoint email: convalida, configurazione, destinatario fisso, idempotenza
   };
   try {
     delete process.env.RESEND_API_KEY; delete process.env.QUOTE_FROM_EMAIL;
-    assert.equal((await request({ method: 'GET' })).code, 405);
+    const status = await request({ method: 'GET' });
+    assert.equal(status.code, 200); assert.deepEqual(status.payload, { available: false });
+    assert.equal((await request({ method: 'DELETE' })).code, 405);
     assert.equal((await request({}, { ...sample(), services: 'bad' })).code, 400);
     assert.equal((await request({}, { ...sample(), website: 'spam' })).code, 400);
     assert.equal((await request({}, { ...sample(), privacy: false })).code, 400);

@@ -1,6 +1,6 @@
 {
   "reviewed_at": "2026-09-15",
-  "total_pages": 21,
+  "total_pages": 22,
   "canonical_pages": 20,
   "source_url": "https://www.green-flux.com/",
   "pages": {
@@ -108,6 +108,11 @@
       "title": "Pompe di calore progettate per la tua casa",
       "source_url": "https://www.green-flux.com/",
       "kind": "landing-copy"
+    },
+    "/thank-you/": {
+      "title": "Grazie per la tua richiesta",
+      "source_url": "https://www.green-flux.com/",
+      "kind": "confirmation"
     }
   }
 }

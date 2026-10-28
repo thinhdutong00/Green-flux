@@ -2,7 +2,7 @@
   {
     "page": "/chi-siamo/",
     "cssBefore": 162765,
-    "cssAfter": 50648
+    "cssAfter": 50915
   },
   {
     "page": "/contatti/",
@@ -37,37 +37,37 @@
   {
     "page": "/servizi/biomassa/",
     "cssBefore": 162765,
-    "cssAfter": 52309
+    "cssAfter": 52576
   },
   {
     "page": "/servizi/caldaie/",
     "cssBefore": 162765,
-    "cssAfter": 52503
+    "cssAfter": 52770
   },
   {
     "page": "/servizi/climatizzazione/",
     "cssBefore": 162765,
-    "cssAfter": 52503
+    "cssAfter": 52770
   },
   {
     "page": "/servizi/fotovoltaico/",
     "cssBefore": 162765,
-    "cssAfter": 52503
+    "cssAfter": 52770
   },
   {
     "page": "/servizi/impianti-completi/",
     "cssBefore": 162765,
-    "cssAfter": 52383
+    "cssAfter": 52650
   },
   {
     "page": "/servizi/impianti-radianti-parete-soffitto/",
     "cssBefore": 162765,
-    "cssAfter": 52383
+    "cssAfter": 52650
   },
   {
     "page": "/servizi/",
     "cssBefore": 162765,
-    "cssAfter": 51405
+    "cssAfter": 51672
   },
   {
     "page": "/servizi/pompe-calore/",
@@ -77,31 +77,36 @@
   {
     "page": "/servizi/progettazione-e-supporto/",
     "cssBefore": 162765,
-    "cssAfter": 50537
+    "cssAfter": 50804
   },
   {
     "page": "/servizi/smart-home/",
     "cssBefore": 162765,
-    "cssAfter": 52429
+    "cssAfter": 52696
   },
   {
     "page": "/servizi/solare-termico/",
     "cssBefore": 162765,
-    "cssAfter": 52503
+    "cssAfter": 52770
   },
   {
     "page": "/servizi/trattamento-acqua/",
     "cssBefore": 162765,
-    "cssAfter": 52609
+    "cssAfter": 52876
   },
   {
     "page": "/servizi/ventilazione/",
     "cssBefore": 162765,
-    "cssAfter": 52429
+    "cssAfter": 52696
   },
   {
     "page": "/termini-condizioni/",
     "cssBefore": 27907,
     "cssAfter": 14160
+  },
+  {
+    "page": "/thank-you/",
+    "cssBefore": 4839,
+    "cssAfter": 4772
   }
 ]

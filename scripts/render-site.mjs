@@ -196,6 +196,9 @@ export async function renderSite() {
   await writeFile(join(publicRoot,'assets/js/mobile-header-template.mjs'),`// Generated from templates/mobile-header.html and content/site-content.json.\nexport const mobileHeaderMarkup = ${JSON.stringify(fill(await template('mobile-header'),{MOBILE_NAV:navMarkup('gf-')}))};\n`);
   // Authored copies have their own template so content edits can be made independently.
   for (const copy of landingCopies) await write(copy.route, await template(copy.template), copy.title, 'landing-copy');
+  await write('/thank-you/', fill(await template('thank-you'), {
+    THANK_YOU_SCHEMA: JSON.stringify(schema('/thank-you/', 'Grazie per la tua richiesta', 'Green Flux ti ricontatta entro 24 ore.')).replace(/</g, '\\u003c')
+  }), 'Grazie per la tua richiesta', 'confirmation');
   // Remove only the audited legacy pages. Their URLs remain as permanent redirects.
   for(const old of Object.keys(redirects))await rm(join(publicRoot,old,'index.html'),{force:true});
   async function removeEmpty(dir){for(const e of await readdir(dir,{withFileTypes:true}))if(e.isDirectory())await removeEmpty(join(dir,e.name));if(dir!==publicRoot&&(await readdir(dir)).length===0)await rm(dir,{recursive:true});}

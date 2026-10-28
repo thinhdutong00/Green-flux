@@ -2,6 +2,7 @@ import { quoteText } from './data.mjs';
 import { readFunnel, validateFunnel, serviceId, questionsFor, adjacentFunnelStep } from './funnel-data.mjs';
 import { showHandoff } from '../assets/js/handoff.mjs';
 import { mountHeatPumpQuiz } from './heat-pump-wizard.mjs';
+import { createRequestSender, submitAndRedirect } from '../assets/js/request-delivery.mjs';
 const wizard = document.querySelector('[data-quote-wizard]');
 const campaignParams = new URLSearchParams(location.search);
 if (wizard && serviceId(campaignParams.get('servizio')) === 'pompe-di-calore') {
@@ -18,6 +19,8 @@ if (wizard && serviceId(campaignParams.get('servizio')) === 'pompe-di-calore') {
   const next = wizard.querySelector('[data-next]');
   const submit = wizard.querySelector('[data-submit]');
   const savedAnswers = new Map();
+  const sendRequest = createRequestSender('conditional');
+  let sending = false;
   const params = new URLSearchParams(location.search);
   const selected = serviceId(params.get('servizio'));
   const journey = selected ? [0, 2, 3, 4, 5] : [0, 1, 2, 3, 4, 5];
@@ -129,15 +132,29 @@ if (wizard && serviceId(campaignParams.get('servizio')) === 'pompe-di-calore') {
       advance();
     }
   });
-  form.addEventListener('submit', event => {
+  form.addEventListener('submit', async event => {
     event.preventDefault();
+    if (sending) return;
     if (current < steps.length - 1) { advance(); return; }
     const data = readFunnel(new FormData(form));
     const issues = validateFunnel(data);
     if (issues.length) { setStep(issues[0].step, true); validate(issues[0].step); return; }
-    form.hidden = true;
-    counter.textContent = 'Riepilogo';
-    showHandoff(stage, quoteText(data), { onEdit: () => { form.hidden = false; setStep(steps.length - 1, true); } });
+    sending = true;
+    wizard.querySelector('.gf-handoff')?.remove();
+    form.setAttribute('aria-busy', 'true');
+    submit.disabled = previous.disabled = true;
+    submit.textContent = 'Invio in corso…';
+    try { await submitAndRedirect(sendRequest, data); }
+    catch (failure) {
+      error.textContent = failure.message || 'L’invio non è riuscito. I dati sono ancora nel modulo.';
+      error.hidden = false;
+      showHandoff(stage, quoteText(data), { onEdit: () => setStep(steps.length - 1, true) });
+    } finally {
+      sending = false;
+      form.removeAttribute('aria-busy');
+      submit.disabled = previous.disabled = false;
+      submit.textContent = 'Invia la richiesta';
+    }
   });
   if (selected) {
     const input = [...form.querySelectorAll('[name="servizio"]')].find(x => x.value === selected);
