@@ -32,8 +32,8 @@ test('Every page has an editorial audit record and no imported commercial promis
   assert(audit.pages[route],route);
   const text=textOnly(html);
   assert(!/VenetaGreen|preventivo gratuito|comuni coperti|regioni servite|squadra tecnica|progetti realizzati|giugno 2026|manutenzione programmata|batterie di accumulo|cappotto/i.test(text),route);
-  // The owner requested named incentives in this single, conditional review card.
-  const incentiveCard=route==='/servizi/pompe-calore/'?html.match(/<a\b[^>]*id="incentivi"[^>]*>[\s\S]*?<\/a>/)?.[0] ?? '':'';
+  // The owner requested named incentives in this conditional card and its landing copy.
+  const incentiveCard=['/servizi/pompe-calore/','/landing/pompe-calore/'].includes(route)?html.match(/<a\b[^>]*id="incentivi"[^>]*>[\s\S]*?<\/a>/)?.[0] ?? '':'';
   assert(!/Conto Termico|Ecobonus/i.test(textOnly(html.replace(incentiveCard,''))),route);
   if(incentiveCard){
    assert(/Verifichiamo/.test(textOnly(incentiveCard)),route);
@@ -54,7 +54,9 @@ test('Consolidation keeps 20 canonical pages and redirects every removed URL wit
  const previous=JSON.parse(readFileSync('content/previous-routes.json'));
  const redirects=JSON.parse(readFileSync('content/redirects.json'));
  const current=new Set(pages.map(p=>'/'+p.replace(/^public\//,'').replace(/index\.html$/,'')));
- assert.equal(current.size,20);assert.equal(Object.keys(redirects).length,132);
+ const audit=JSON.parse(readFileSync('docs/content-audit.json','utf8'));
+ const canonical=[...current].filter(route=>audit.pages[route]?.kind==='canonical');
+ assert.equal(canonical.length,20);assert.equal(Object.keys(redirects).length,132);
  assert(!pages.some(p=>/^public\/(zone|blog|progetti)\//.test(p)));
  for(const old of previous){assert(current.has(old)||redirects[old],old);if(redirects[old]){const destination=redirects[old].split('#')[0];assert(current.has(destination),old);assert(!redirects[destination],old);}}
  for(const page of pages){const html=readFileSync(page,'utf8');for(const m of html.matchAll(/href="([^"?#]+)[^"]*"/g))assert(!redirects[m[1]],`${page} links to retired ${m[1]}`);}

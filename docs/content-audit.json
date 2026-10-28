@@ -1,6 +1,7 @@
 {
   "reviewed_at": "2026-09-15",
-  "total_pages": 20,
+  "total_pages": 21,
+  "canonical_pages": 20,
   "source_url": "https://www.green-flux.com/",
   "pages": {
     "/servizi/pompe-calore/": {
@@ -102,6 +103,11 @@
       "title": "Richiedi un preventivo",
       "source_url": "https://www.green-flux.com/",
       "kind": "canonical"
+    },
+    "/landing/pompe-calore/": {
+      "title": "Pompe di calore su misura per la tua casa",
+      "source_url": "https://www.green-flux.com/",
+      "kind": "landing-copy"
     }
   }
 }

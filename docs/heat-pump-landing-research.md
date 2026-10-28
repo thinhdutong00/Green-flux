@@ -84,3 +84,7 @@ Build completata e 25 test del repository superati. Verifiche del quiz a sei pas
 ### Rimozione della scheda vincoli — 27 ottobre 2026
 
 Su richiesta del titolare, rimossa la scheda «Vincoli e responsabilità. Chiari fin dall’inizio.». La scheda incentivi occupa l’intera ultima riga su desktop, senza lasciare una cella vuota; le cinque schede conservano stili, immagini e contenuti.
+
+### Copia della landing — 28 ottobre 2026
+
+Creata la copia `/landing/pompe-calore/` nel template autonomo `templates/heat-pump-landing-copy.html`, con gli stessi contenuti, immagini, stili e modulo della versione al momento della duplicazione. La pagina originale resta invariata. La copia è accessibile tramite link, ha `noindex, follow`, conserva il canonical della pagina originale ed è esclusa dalla sitemap e dalla navigazione. Per modificare solo questa versione intervenire sul relativo template; CSS, immagini e modulo sono risorse condivise.

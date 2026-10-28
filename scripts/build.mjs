@@ -2,7 +2,7 @@ import { cp, mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { extname, relative, join } from 'node:path';
 import { build, transform } from 'esbuild';
-import { renderSite } from './render-site.mjs';
+import { renderSite, routes as canonicalRoutes } from './render-site.mjs';
 import { optimizePages } from './optimize-pages.mjs';
 await renderSite();
 const root=fileURLToPath(new URL('../',import.meta.url));const source=join(root,'public');const output=join(root,'dist');
@@ -17,7 +17,7 @@ for(const path of ['script.js','assets/js/site.js','assets/js/green-flux.mjs','a
 const performance = await optimizePages(output, pages.map(p=>relative(source,p)), all.filter(p=>['.js','.mjs'].includes(extname(p))));
 await writeFile(join(root,'docs/performance-build.json'),JSON.stringify(performance,null,2)+'\n');
 const origin='https://green-flux-nine.vercel.app';
-const routes=pages.filter(p=>p.endsWith('index.html')).map(p=>'/'+relative(source,p).replace(/index\.html$/,'').split('\\').join('/')).sort();
+const routes=pages.filter(p=>p.endsWith('index.html')).map(p=>'/'+relative(source,p).replace(/index\.html$/,'').split('\\').join('/')).filter(route=>canonicalRoutes.includes(route)).sort();
 const sitemap=`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${routes.map(route=>`  <url><loc>${origin}${route}</loc></url>`).join('\n')}\n</urlset>\n`;
 await writeFile(join(output,'sitemap.xml'),sitemap);await writeFile(join(source,'sitemap.xml'),sitemap);
 console.log(`Built ${pages.length} pages, ${routes.length} sitemap routes and shared assets.`);

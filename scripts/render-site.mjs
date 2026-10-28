@@ -11,6 +11,7 @@ const previousRoutes = JSON.parse(await readFile(join(root, 'content/previous-ro
 let imageDimensions = JSON.parse(await readFile(join(root, 'content/image-dimensions.json'), 'utf8'));
 const origin = 'https://green-flux-nine.vercel.app';
 const supportRoute = '/servizi/progettazione-e-supporto/';
+const landingCopies = [{ route: '/landing/pompe-calore/', template: 'heat-pump-landing-copy', title: 'Pompe di calore su misura per la tua casa' }];
 const featuredServices = () => [...content.services]
   .filter(service => service.home?.visible !== false)
   .sort((a, b) => a.home.order - b.home.order);
@@ -104,7 +105,7 @@ export async function renderSite() {
   const footer = footerMarkup();
   const ctaTemplate = await template('cta');
   const audit = {};
-  async function write(route, html, title) {
+  async function write(route, html, title, kind = 'canonical') {
     const service = content.services.find(item => serviceRoute(item.slug) === route);
     if (service) {
       html = html.replace('<body class="gf-content-page">', `<body class="gf-content-page" data-quote-service="${esc(service.quote)}">`)
@@ -115,7 +116,7 @@ export async function renderSite() {
     const target = join(publicRoot, route, 'index.html');
     await mkdir(dirname(target), { recursive: true });
     await writeFile(target, html);
-    audit[route] = { title, source_url: content.company_source, kind: 'canonical' };
+    audit[route] = { title, source_url: content.company_source, kind };
   }
   function page(route, title, lead, body, options = {}) {
     const asset = options.image || 'images/heat-pump-home-1600.webp';
@@ -193,6 +194,8 @@ export async function renderSite() {
   }),'Richiedi un preventivo');
   await writeFile(join(publicRoot,'preventivo/catalog.mjs'),`// Generated from content/site-content.json by scripts/render-site.mjs.\nexport const services = ${JSON.stringify(catalogue,null,2)};\n`);
   await writeFile(join(publicRoot,'assets/js/mobile-header-template.mjs'),`// Generated from templates/mobile-header.html and content/site-content.json.\nexport const mobileHeaderMarkup = ${JSON.stringify(fill(await template('mobile-header'),{MOBILE_NAV:navMarkup('gf-')}))};\n`);
+  // Authored copies have their own template so content edits can be made independently.
+  for (const copy of landingCopies) await write(copy.route, await template(copy.template), copy.title, 'landing-copy');
   // Remove only the audited legacy pages. Their URLs remain as permanent redirects.
   for(const old of Object.keys(redirects))await rm(join(publicRoot,old,'index.html'),{force:true});
   async function removeEmpty(dir){for(const e of await readdir(dir,{withFileTypes:true}))if(e.isDirectory())await removeEmpty(join(dir,e.name));if(dir!==publicRoot&&(await readdir(dir)).length===0)await rm(dir,{recursive:true});}
@@ -202,8 +205,8 @@ export async function renderSite() {
   const vercel=JSON.parse(await readFile(join(root,'vercel.json'),'utf8'));
   vercel.redirects=Object.entries(redirects).flatMap(([source,destination])=>[source,source.slice(0,-1)].map(source=>({source,destination,permanent:true})));
   await writeFile(join(root,'vercel.json'),JSON.stringify(vercel,null,2)+'\n');
-  await writeFile(join(root,'docs/content-audit.json'),JSON.stringify({reviewed_at:content.reviewed_at,total_pages:routes.length,source_url:content.company_source,pages:audit},null,2)+'\n');
+  await writeFile(join(root,'docs/content-audit.json'),JSON.stringify({reviewed_at:content.reviewed_at,total_pages:Object.keys(audit).length,canonical_pages:routes.length,source_url:content.company_source,pages:audit},null,2)+'\n');
   await writeFile(join(publicRoot,'llms.txt'),'# Green Flux\n\nImpianti residenziali, terziari e industriali.\n\n'+[['/','Home'],['/servizi/','Impianti e servizi'],...content.services.map(s=>[serviceRoute(s.slug),s.title]),[supportRoute,'Progettazione e supporto'],['/chi-siamo/','Chi siamo'],['/contatti/','Contatti']].map(([u,t])=>`- [${t}](${origin+u})`).join('\n')+'\n');
-  console.log(`Rendered ${routes.length} canonical pages and ${Object.keys(redirects).length} legacy redirects.`);
+  console.log(`Rendered ${routes.length} canonical pages, ${landingCopies.length} landing copies and ${Object.keys(redirects).length} legacy redirects.`);
 }
 if(process.argv[1] && resolve(process.argv[1])===fileURLToPath(import.meta.url))await renderSite();
