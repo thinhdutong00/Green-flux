@@ -75,7 +75,7 @@ export default async function handler(request, response) {
     });
     const receipt = await result.json().catch(() => null);
     if (!result.ok || !receipt?.id) return sendJson(response, 502, { message: 'Non abbiamo ricevuto conferma dell’invio. I dati sono ancora nel modulo: riprova oppure usa i contatti qui sotto.' });
-    return sendJson(response, 200, { accepted: true });
+    return sendJson(response, 200, { accepted: true, receipt: { id: data.requestId, kind } });
   } catch {
     return sendJson(response, 502, { message: 'La conferma dell’invio non è arrivata. Puoi riprovare o inviare il riepilogo tramite i contatti qui sotto.' });
   }
