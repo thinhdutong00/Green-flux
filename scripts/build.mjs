@@ -11,7 +11,7 @@ await rm(output,{recursive:true,force:true});await mkdir(output,{recursive:true}
 const all=await files(source);const pages=all.filter(f=>extname(f)==='.html');
 // Keep authored files readable and optimize only the production output.
 for(const file of all.filter(f=>extname(f)==='.css')){const result=await transform(await readFile(file,'utf8'),{loader:'css',minify:true,target:['chrome110','firefox115','safari16.4']});await writeFile(join(output,relative(source,file)),result.code);}
-for(const path of ['script.js','assets/js/site.js','assets/js/green-flux.mjs','assets/js/heat-pump-landing.mjs','assets/js/thank-you.mjs','preventivo/wizard.mjs']){
+for(const path of ['script.js','assets/js/site.js','assets/js/green-flux.mjs','assets/js/heat-pump-landing.mjs','assets/js/thank-you.mjs','assets/js/ads-measurement.mjs','preventivo/wizard.mjs']){
  await build({entryPoints:[join(source,path)],outfile:join(output,path),bundle:true,minify:true,platform:'browser',format:'iife',target:'es2022',legalComments:'none'});
 }
 const performance = await optimizePages(output, pages.map(p=>relative(source,p)), all.filter(p=>['.js','.mjs'].includes(extname(p))));
