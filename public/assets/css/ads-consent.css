@@ -1,0 +1,11 @@
+.gf-consent[hidden],.gf-consent-trigger[hidden]{display:none!important}
+.gf-consent{position:fixed;z-index:2147483000;left:18px;bottom:18px;width:min(440px,calc(100vw - 36px));box-sizing:border-box;padding:22px;background:#fff;color:#193e40;border:1px solid #dce3d8;border-radius:16px;box-shadow:0 10px 40px #193e4026;font:15px/1.5 Arial,Helvetica,sans-serif;max-height:calc(100dvh - 36px);overflow:auto}
+.gf-consent h2{font:700 20px/1.2 Arial,Helvetica,sans-serif;margin:0 0 12px;color:#193e40}
+.gf-consent p{font:15px/1.5 Arial,Helvetica,sans-serif;margin:0 0 12px;color:#405b59}
+.gf-consent a{color:inherit;text-decoration:underline}
+.gf-consent-actions{display:flex;gap:10px;margin-top:18px}
+.gf-consent button,.gf-consent-trigger{cursor:pointer;min-height:44px;border:1px solid #193e40;border-radius:8px;padding:10px 15px;font:700 14px/1.3 Arial,Helvetica,sans-serif;background:#fff;color:#193e40}
+.gf-consent button[data-consent-accept]{background:#193e40;color:#fff}
+.gf-consent-actions button{flex:1}
+.gf-consent-trigger{position:fixed;z-index:2147482999;left:14px;bottom:14px;box-shadow:0 4px 20px #193e401a;font-size:12px;padding:8px 12px}
+.gf-consent button:focus-visible,.gf-consent-trigger:focus-visible{outline:3px solid #9fc131;outline-offset:3px}
