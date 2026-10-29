@@ -11,8 +11,8 @@
   },
   {
     "page": "/cookie-policy/",
-    "cssBefore": 27907,
-    "cssAfter": 14160
+    "cssBefore": 29161,
+    "cssAfter": 15412
   },
   {
     "page": "/",
@@ -26,13 +26,13 @@
   },
   {
     "page": "/preventivo/",
-    "cssBefore": 27299,
-    "cssAfter": 26190
+    "cssBefore": 28553,
+    "cssAfter": 27442
   },
   {
     "page": "/privacy-policy/",
-    "cssBefore": 27907,
-    "cssAfter": 14160
+    "cssBefore": 29161,
+    "cssAfter": 15412
   },
   {
     "page": "/servizi/biomassa/",
@@ -71,8 +71,8 @@
   },
   {
     "page": "/servizi/pompe-calore/",
-    "cssBefore": 28274,
-    "cssAfter": 22947
+    "cssBefore": 29528,
+    "cssAfter": 24199
   },
   {
     "page": "/servizi/progettazione-e-supporto/",
@@ -106,7 +106,7 @@
   },
   {
     "page": "/thank-you/",
-    "cssBefore": 6182,
-    "cssAfter": 6115
+    "cssBefore": 7436,
+    "cssAfter": 7367
   }
 ]

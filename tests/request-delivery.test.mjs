@@ -96,7 +96,9 @@ test('The email endpoint validates all active forms and sends their complete sum
   };
   try {
     process.env.RESEND_API_KEY = 'test-key'; process.env.QUOTE_FROM_EMAIL = 'Test <test@example.com>';
-    assert.equal((await invoke(heatPump())).code, 200);
+    const acceptedHeatPump = await invoke(heatPump());
+    assert.equal(acceptedHeatPump.code, 200);
+    assert.deepEqual(acceptedHeatPump.payload.receipt, { id: requestId, kind: 'heat-pump' });
     assert.equal(outbound[0].text, heatPumpRequestText(heatPump()));
     assert(!Object.hasOwn(outbound[0], 'reply_to'));
     const conditional = { kind: 'conditional', funnel: 'conditional', services: ['fotovoltaico'], answers: { fotovoltaico: Object.fromEntries(questionsFor(['fotovoltaico']).map(q => [q.id, q.options[0]])) }, propertyType: 'Abitazione singola', timeline: timelines[0], name: 'Test Locale', email: 'test@example.com', phone: '', city: 'Padova', notes: '', privacy: true, website: '', elapsed: 5000, requestId };

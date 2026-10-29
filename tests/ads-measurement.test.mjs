@@ -17,6 +17,7 @@ test('Only an accepted heat-pump delivery provides a conversion receipt, includi
   const { browser: parent, values } = browserFixture();
   const iframe = { parent, location: { origin: parent.location.origin } };
   const receipt = { id: requestId, kind: 'heat-pump' };
+  saveAdsConsent(parent, true);
   await submitAndRedirect(async () => ({ accepted: true, receipt }), {}, { browser: iframe });
   assert.equal(readConversionReceipt(parent).id, requestId);
   const stored = JSON.parse(values.get(conversionReceiptKey));
@@ -25,6 +26,9 @@ test('Only an accepted heat-pump delivery provides a conversion receipt, includi
     await submitAndRedirect(async () => result, {}, { browser: iframe });
     assert.equal(readConversionReceipt(parent), null);
   }
+  saveAdsConsent(parent, false);
+  await submitAndRedirect(async () => ({ accepted: true, receipt }), {}, { browser: iframe });
+  assert.equal(readConversionReceipt(parent), null);
 });
 
 test('Direct visits, failed deliveries, other pages, reloads and expired receipts do not create conversions', () => {
