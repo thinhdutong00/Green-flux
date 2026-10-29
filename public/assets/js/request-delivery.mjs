@@ -1,3 +1,5 @@
+import { clearConversionReceipt, saveConversionReceipt } from './conversion-receipt.mjs';
+
 export const thankYouPath = '/thank-you/';
 export const pendingRequestKey = 'green-flux:pending-request';
 export const pendingRequestLifetime = 15 * 60 * 1000;
@@ -41,11 +43,14 @@ export function readPendingRequest(browser, now = Date.now()) {
 
 export async function submitAndRedirect(sender, data, { requestText = '', browser = window } = {}) {
   let accepted = false;
-  try { accepted = (await sender(data))?.accepted === true; } catch { /* Continue on the thank-you page with the prepared request. */ }
+  let receipt;
+  try { const result = await sender(data); accepted = result?.accepted === true; receipt = result?.receipt; } catch { /* Continue on the thank-you page with the prepared request. */ }
   // The landing quiz lives in a same-origin iframe: navigate the whole page.
   let destination = browser;
   try { if (browser.parent !== browser && browser.parent.location.origin === browser.location.origin) destination = browser.parent; } catch { /* Cross-origin embeds keep navigation inside the frame. */ }
   clearPendingRequest(destination);
+  clearConversionReceipt(destination);
+  if (accepted) saveConversionReceipt(destination, receipt);
   if (!accepted && requestText) {
     try { destination.sessionStorage.setItem(pendingRequestKey, JSON.stringify({ version: 1, text: requestText, expiresAt: Date.now() + pendingRequestLifetime })); } catch { /* Navigation still works when browser storage is disabled. */ }
   }
