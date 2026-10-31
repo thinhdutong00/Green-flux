@@ -9,3 +9,9 @@
 .gf-consent-actions button{flex:1}
 .gf-consent-trigger{position:fixed;z-index:2147482999;left:14px;bottom:14px;box-shadow:0 4px 20px #193e401a;font-size:12px;padding:8px 12px}
 .gf-consent button:focus-visible,.gf-consent-trigger:focus-visible{outline:3px solid #9fc131;outline-offset:3px}
+
+.gf-consent-settings[hidden]{display:none!important}
+.gf-consent-settings{display:grid;gap:12px;padding-top:8px}
+.gf-consent-settings label{display:flex;align-items:flex-start;gap:10px}
+.gf-consent-settings input{flex:none;accent-color:#193e40;width:18px;height:18px;margin-top:2px}
+.gf-consent-actions{flex-wrap:wrap}

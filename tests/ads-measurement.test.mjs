@@ -9,6 +9,7 @@ function browserFixture() {
   const values = new Map();
   const storage = { getItem: key => values.get(key) ?? null, setItem: (key,value) => values.set(key,value), removeItem: key => values.delete(key) };
   const browser = { sessionStorage: storage, localStorage: storage, location: { origin: 'https://example.test', pathname: '/thank-you/', hash: '', assign() {} } };
+  browser.CustomEvent = class { constructor(type, options) { this.type = type; this.detail = options.detail; } };
   browser.parent = browser;
   return { browser, values };
 }
@@ -92,7 +93,7 @@ test('The deployed entry point blocks Google until consent and records the accep
       querySelector(selector) { if (!children.has(selector)) children.set(selector, element()); return children.get(selector); },
     };
   }
-  const doc = { cookie: '', createElement: element, head: { append: node => scripts.push(node) }, body: { append: (...items) => nodes.push(...items) } };
+  const doc = { cookie: '', dispatchEvent() {}, createElement: element, head: { append: node => scripts.push(node) }, body: { append: (...items) => nodes.push(...items) } };
   const previous = { window: globalThis.window, document: globalThis.document, location: globalThis.location };
   try {
     globalThis.window = browser; globalThis.document = doc; globalThis.location = browser.location;
