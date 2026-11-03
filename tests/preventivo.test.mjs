@@ -76,7 +76,7 @@ test('Endpoint email: convalida, configurazione, destinatario fisso, idempotenza
   try {
     delete process.env.RESEND_API_KEY; delete process.env.QUOTE_FROM_EMAIL;
     const status = await request({ method: 'GET' });
-    assert.equal(status.code, 200); assert.deepEqual(status.payload, { available: false });
+    assert.equal(status.code, 200); assert.deepEqual(status.payload, { available: false, customerConfirmation: false });
     assert.equal((await request({ method: 'DELETE' })).code, 405);
     assert.equal((await request({}, { ...sample(), services: 'bad' })).code, 400);
     assert.equal((await request({}, { ...sample(), website: 'spam' })).code, 400);
@@ -87,7 +87,12 @@ test('Endpoint email: convalida, configurazione, destinatario fisso, idempotenza
     assert.equal(accepted.code, 200); assert.equal(accepted.payload.accepted, true);
     const outbound = JSON.parse(calls[0].body);
     assert.deepEqual(outbound.to, ['info@green-flux.com']); assert.equal(outbound.reply_to, 'test@example.com'); assert.equal(outbound.text, quoteText(sample()));
-    await request(); assert.equal(calls[0].headers['Idempotency-Key'], calls[1].headers['Idempotency-Key']);
+    assert.equal(accepted.payload.confirmationStatus, 'sent');
+    const confirmation = JSON.parse(calls[1].body);
+    assert.deepEqual(confirmation.to, ['test@example.com']); assert.equal(confirmation.reply_to, 'info@green-flux.com');
+    await request(); assert.equal(calls[0].headers['Idempotency-Key'], calls[2].headers['Idempotency-Key']);
+    assert.equal(calls[1].headers['Idempotency-Key'], calls[3].headers['Idempotency-Key']);
+    assert.notEqual(calls[0].headers['Idempotency-Key'], calls[1].headers['Idempotency-Key']);
     mode = 'provider'; assert.equal((await request()).code, 502);
     mode = 'network'; assert.equal((await request()).code, 502); assert.equal((await request()).code, 502);
     assert.equal((await request()).code, 429);

@@ -98,6 +98,7 @@ test('The email endpoint validates all active forms and sends their complete sum
     process.env.RESEND_API_KEY = 'test-key'; process.env.QUOTE_FROM_EMAIL = 'Test <test@example.com>';
     const acceptedHeatPump = await invoke(heatPump());
     assert.equal(acceptedHeatPump.code, 200);
+    assert.equal(acceptedHeatPump.payload.confirmationStatus, 'not_requested');
     assert.deepEqual(acceptedHeatPump.payload.receipt, { id: requestId, kind: 'heat-pump' });
     assert.equal(outbound[0].text, heatPumpRequestText(heatPump()));
     assert(!Object.hasOwn(outbound[0], 'reply_to'));
@@ -107,14 +108,18 @@ test('The email endpoint validates all active forms and sends their complete sum
     assert.equal(outbound[1].reply_to, conditional.email);
     const contact = { kind: 'contact', name: 'Test Locale', email: 'test@example.com', phone: '', subject: 'Richiesta Informazioni', notes: 'Informazioni sul progetto.', privacy: true, website: '', elapsed: 5000, requestId };
     assert.equal((await invoke(contact)).code, 200);
-    assert(outbound[2].text.includes(contact.notes));
-    for (const message of outbound) assert.deepEqual(message.to, ['info@green-flux.com']);
+    const business = outbound.filter(message => message.to[0] === 'info@green-flux.com');
+    const confirmations = outbound.filter(message => message.to[0] === 'test@example.com');
+    assert(business[2].text.includes(contact.notes));
+    assert.equal(business.length, 3); assert.equal(confirmations.length, 2);
+    for (const message of confirmations) { assert.equal(message.reply_to, 'info@green-flux.com'); assert(message.text.includes('entro 24 ore')); }
+    assert(confirmations[0].text.includes(quoteText(conditional))); assert(confirmations[1].text.includes(contact.notes));
     for (const invalid of [{ ...heatPump(), phone: '' }, { ...heatPump(), privacy: false }, { ...heatPump(), heating: 'arbitrario' }, { ...conditional, answers: {} }, { ...contact, privacy: false }, { ...contact, subject: 'arbitrario' }, { ...heatPump(), kind: 'arbitrario' }]) assert.equal((await invoke(invalid)).code, 400);
-    assert.equal(outbound.length, 3);
+    assert.equal(outbound.length, 5);
     delete process.env.RESEND_API_KEY;
     const unavailable = await invoke(heatPump());
     assert.equal(unavailable.code, 503); assert.notEqual(unavailable.payload.accepted, true);
-    assert.equal(outbound.length, 3);
+    assert.equal(outbound.length, 5);
   } finally {
     globalThis.fetch = previousFetch;
     if (previousKey === undefined) delete process.env.RESEND_API_KEY; else process.env.RESEND_API_KEY = previousKey;

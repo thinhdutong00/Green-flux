@@ -83,8 +83,18 @@ La pagina è accessibile per anteprima ma esclusa dall’indicizzazione e dalla 
 L’invio diretto richiede **`RESEND_API_KEY`** e **`QUOTE_FROM_EMAIL`** nelle variabili
 server di Vercel. Il mittente deve essere verificato presso Resend. Non inserire
 chiavi nei sorgenti o nelle variabili pubbliche. `GET /api/preventivo` restituisce
-soltanto `{ available: true/false }` per verificare la presenza della configurazione,
-senza inviare messaggi. Il destinatario è fisso: `info@green-flux.com`.
+`{ available: true/false, customerConfirmation: true/false }` per verificare la
+presenza della configurazione, senza inviare messaggi. Il destinatario della
+richiesta è fisso: `info@green-flux.com`. Dopo l’accettazione dell’invio, se il
+cliente ha lasciato un’email valida, riceve una conferma con tutti i dati della
+richiesta e l’avviso di ricontatto entro 24 ore. La conferma include HTML e testo
+semplice e consente di rispondere a `info@green-flux.com`. Le due email hanno
+chiavi di idempotenza distinte per evitare duplicati durante i tentativi ripetuti.
+Un errore della sola conferma non annulla una richiesta già accettata: la risposta
+mantiene `accepted: true` e la ricevuta di conversione, con `confirmationStatus`
+pari a `sent`, `not_requested` o `failed`. I log degli errori non includono i dati
+personali del cliente. La conferma viene gestita dall’endpoint comune dei moduli
+contatti, preventivo generale e quiz pompe di calore, inclusi i quiz nelle landing.
 Alternativa WhatsApp: `+39 375 552 1420`. Nessun salvataggio dei dati in cookie o
 storage persistente del browser. Il sito privato Sites è statico: l’endpoint
 server è eseguito dal deploy Vercel del dominio pubblico.

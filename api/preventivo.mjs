@@ -1,6 +1,7 @@
 import { validateQuote, quoteText, services } from '../public/preventivo/data.mjs';
 import { validateFunnel } from '../public/preventivo/funnel-data.mjs';
 import { validateHeatPumpRequest, heatPumpRequestText } from '../public/preventivo/heat-pump-data.mjs';
+import { customerConfirmation } from '../lib/customer-confirmation.mjs';
 
 // Best-effort per-instance throttling. Use Vercel rate-limit rules for a global limit.
 const attempts = new Map();
@@ -10,7 +11,10 @@ const sendJson = (response, code, payload) => {
 };
 
 export default async function handler(request, response) {
-  if (request.method === 'GET') return sendJson(response, 200, { available: Boolean(process.env.RESEND_API_KEY && process.env.QUOTE_FROM_EMAIL) });
+  if (request.method === 'GET') {
+    const available = Boolean(process.env.RESEND_API_KEY && process.env.QUOTE_FROM_EMAIL);
+    return sendJson(response, 200, { available, customerConfirmation: available });
+  }
   if (request.method !== 'POST') {
     response.setHeader('Allow', 'GET, POST');
     return sendJson(response, 405, { message: 'Metodo non consentito.' });
@@ -75,10 +79,31 @@ export default async function handler(request, response) {
     });
     const receipt = await result.json().catch(() => null);
     if (!result.ok || !receipt?.id) return sendJson(response, 502, { message: 'Non abbiamo ricevuto conferma dell’invio. I dati sono ancora nel modulo: riprova oppure usa i contatti qui sotto.' });
-    return sendJson(response, 200, { accepted: true, receipt: { id: data.requestId, kind } });
+    const confirmationStatus = data.email.trim() ? await sendCustomerConfirmation(apiKey, from, data, text) : 'not_requested';
+    return sendJson(response, 200, { accepted: true, receipt: { id: data.requestId, kind }, confirmationStatus });
   } catch {
     return sendJson(response, 502, { message: 'La conferma dell’invio non è arrivata. Puoi riprovare o inviare il riepilogo tramite i contatti qui sotto.' });
   }
+}
+
+async function sendCustomerConfirmation(apiKey, from, data, requestText) {
+  // The request has already been accepted. A confirmation failure must not turn
+  // it into a failed form submission or generate a duplicate business enquiry.
+  try {
+    const result = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json', 'Idempotency-Key': `greenflux-confirmation-${data.requestId}` },
+      body: JSON.stringify({ from, to: [data.email.trim()], ...customerConfirmation(data.name, requestText) }),
+      // Together with the primary 10s timeout this stays inside the form's 15s limit.
+      signal: AbortSignal.timeout(3000),
+    });
+    const receipt = await result.json().catch(() => null);
+    if (result.ok && receipt?.id) return 'sent';
+    console.error('customer_confirmation_failed', { requestId: data.requestId, status: result.status });
+  } catch {
+    console.error('customer_confirmation_failed', { requestId: data.requestId, reason: 'network_or_timeout' });
+  }
+  return 'failed';
 }
 
 function validateContact(data) {
