@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { saveConversionReceipt, readConversionReceipt, recordConfirmedConversion, conversionReceiptKey, conversionReceiptLifetime } from '../public/assets/js/conversion-receipt.mjs';
 import { readAdsConsent, saveAdsConsent, consentSettings, adsConsentKey, adsConsentLifetime } from '../public/assets/js/ads-consent.mjs';
 import { submitAndRedirect } from '../public/assets/js/request-delivery.mjs';
+import { readClarityConsent } from '../public/assets/js/clarity.mjs';
 
 const requestId = '11111111-2222-4333-8444-555555555555';
 function browserFixture() {
@@ -101,13 +102,33 @@ test('The deployed entry point blocks Google until consent and records the accep
     const conversions = () => browser.dataLayer.filter(command => command[0] === 'event' && command[1] === 'conversion');
     assert.equal(scripts.length, 0);
     assert.equal(conversions().length, 0);
-    nodes[0].querySelector('[data-consent-accept]').listeners.click();
+    // Closing the first layer is a complete refusal, with no tracker load.
+    nodes[0].querySelector('[data-consent-close]').listeners.click();
+    assert.equal(readAdsConsent(browser), false);
+    assert.equal(readClarityConsent(browser), false);
+    assert.equal(nodes[0].hidden, true);
+    assert.equal(scripts.length, 0);
+    nodes[1].listeners.click();
+    nodes[0].querySelector('[data-consent-manage]').listeners.click();
+    assert.equal(scripts.length, 0);
+    assert.equal(nodes[0].querySelector('[data-consent-ads]').checked, false);
+    assert.equal(nodes[0].querySelector('[data-consent-analytics]').checked, false);
+    // A granular advertising choice must leave Clarity refused.
+    nodes[0].querySelector('[data-consent-ads]').checked = true;
+    nodes[0].querySelector('[data-consent-save]').listeners.click();
+    assert.equal(readAdsConsent(browser), true);
+    assert.equal(readClarityConsent(browser), false);
     assert.equal(scripts.length, 1);
     assert.equal(new URL(scripts[0].src).searchParams.get('id'), 'AW-18501721820');
     assert.equal(conversions().length, 0);
     scripts[0].listeners.load();
     assert.equal(conversions().length, 1);
     assert.deepEqual(conversions()[0][2], { send_to: 'AW-18501721820/c3AoCIbZsq0dENy9p_ZE', transaction_id: requestId, value: 0, currency: 'EUR' });
+    nodes[1].listeners.click();
+    nodes[0].querySelector('[data-consent-accept]').listeners.click();
+    assert.equal(readClarityConsent(browser), true);
+    assert.equal(scripts.length, 1);
+    assert.equal(conversions().length, 1);
     nodes[0].querySelector('[data-consent-reject]').listeners.click();
     assert.equal(readAdsConsent(browser), false);
     assert.equal(conversions().length, 1);

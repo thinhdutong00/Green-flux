@@ -65,14 +65,38 @@ if (window.top === window) {
 
   const banner = document.createElement('section');
   banner.className = 'gf-consent';
+  banner.id = 'gf-cookie-banner';
   banner.setAttribute('role', 'region');
   banner.setAttribute('aria-label', 'Preferenze cookie');
-  banner.innerHTML = '<h2>Le tue preferenze cookie</h2><p>Con il tuo consenso usiamo Google Ads per misurare i risultati degli annunci e Microsoft Clarity per capire come viene usata la landing pompe di calore, con mappe di calore e registrazioni delle interazioni. I dati compilati nei moduli sono mascherati. Puoi rifiutare e usare comunque il sito e il modulo.</p><p><a href="/cookie-policy/">Informativa cookie</a> · <a href="/privacy-policy/">Privacy</a></p><div class="gf-consent-settings" data-consent-settings hidden><label><input type="checkbox" data-consent-ads> Efficacia degli annunci (Google Ads)</label><label><input type="checkbox" data-consent-analytics> Analisi della navigazione (Microsoft Clarity)</label><button type="button" data-consent-save>Salva le preferenze</button></div><div class="gf-consent-actions"><button type="button" data-consent-reject>Rifiuta</button><button type="button" data-consent-manage aria-expanded="false">Preferenze</button><button type="button" data-consent-accept>Accetta tutti</button></div>';
+  banner.innerHTML = `
+    <div class="gf-consent-inner">
+      <button class="gf-consent-close" type="button" data-consent-close aria-label="Chiudi e rifiuta i cookie facoltativi" title="Continua senza cookie facoltativi"><span aria-hidden="true">×</span></button>
+      <div class="gf-consent-copy" data-consent-summary>
+        <h2>Cookie e privacy</h2>
+        <p>Con il tuo consenso usiamo Google Ads per misurare gli annunci e Microsoft Clarity per analizzare la navigazione nella pagina pompe di calore. I dati dei moduli sono mascherati. Le due scelte sono indipendenti.</p>
+        <p class="gf-consent-note">Chiudi con la X per continuare senza cookie facoltativi. <a href="/cookie-policy/">Informativa cookie</a> · <a href="/privacy-policy/">Privacy</a></p>
+      </div>
+      <div class="gf-consent-actions" data-consent-actions>
+        <button type="button" data-consent-accept>Accetta tutti</button>
+        <button type="button" data-consent-manage aria-expanded="false" aria-controls="gf-cookie-settings">Gestisci le preferenze</button>
+      </div>
+      <div class="gf-consent-settings" id="gf-cookie-settings" data-consent-settings hidden>
+        <h2 tabindex="-1" data-consent-settings-title>Gestisci le preferenze</h2>
+        <p>Scegli quali strumenti facoltativi consentire. Puoi cambiare idea in qualsiasi momento da “Preferenze cookie”.</p>
+        <div class="gf-consent-categories">
+          <div class="gf-consent-category"><strong>Necessari</strong><p>Permettono al sito di funzionare e di ricordare queste preferenze.</p><span class="gf-consent-required">Sempre attivi</span></div>
+          <label class="gf-consent-category"><span><strong>Efficacia degli annunci</strong><span>Google Ads misura i risultati degli annunci, senza ricevere i dati compilati nei moduli e senza attivare annunci personalizzati.</span></span><input type="checkbox" data-consent-ads aria-label="Consenti la misurazione degli annunci con Google Ads"></label>
+          <label class="gf-consent-category"><span><strong>Analisi della navigazione</strong><span>Microsoft Clarity crea mappe di calore e registrazioni delle interazioni nella pagina pompe di calore. I moduli sono mascherati.</span></span><input type="checkbox" data-consent-analytics aria-label="Consenti l’analisi della navigazione con Microsoft Clarity"></label>
+        </div>
+        <div class="gf-consent-settings-footer"><p><a href="/cookie-policy/">Informativa cookie</a> · <a href="/privacy-policy/">Privacy</a></p><div class="gf-consent-settings-actions"><button type="button" data-consent-back>Indietro</button><button type="button" data-consent-reject>Rifiuta tutti</button><button type="button" data-consent-save>Salva le preferenze</button></div></div>
+      </div>
+    </div>`;
   const trigger = document.createElement('button');
   trigger.className = 'gf-consent-trigger';
   trigger.type = 'button';
   trigger.textContent = 'Preferenze cookie';
   trigger.setAttribute('aria-expanded', 'false');
+  trigger.setAttribute('aria-controls', 'gf-cookie-banner');
   function closeBanner() {
     banner.hidden = true;
     trigger.hidden = false;
@@ -86,8 +110,17 @@ if (window.top === window) {
     else removeAdvertisingCookies();
   }
   const settings = banner.querySelector('[data-consent-settings]');
+  const summary = banner.querySelector('[data-consent-summary]');
+  const actions = banner.querySelector('[data-consent-actions]');
+  const manageButton = banner.querySelector('[data-consent-manage]');
   const adsCheckbox = banner.querySelector('[data-consent-ads]');
   const analyticsCheckbox = banner.querySelector('[data-consent-analytics]');
+  function showSettings(open) {
+    settings.hidden = !open;
+    summary.hidden = open;
+    actions.hidden = open;
+    manageButton.setAttribute('aria-expanded', String(open));
+  }
   function syncSettings() {
     adsCheckbox.checked = consent === true;
     analyticsCheckbox.checked = analyticsConsent === true;
@@ -97,25 +130,33 @@ if (window.top === window) {
     applyChoice(ads);
     analyticsConsent = analytics;
     saveClarityConsent(analytics);
-    settings.hidden = true;
-    banner.querySelector('[data-consent-manage]').setAttribute('aria-expanded', 'false');
+    showSettings(false);
     closeBanner();
     trigger.focus({ preventScroll: true });
   }
   banner.querySelector('[data-consent-accept]').addEventListener('click', () => choose(true, true));
   banner.querySelector('[data-consent-reject]').addEventListener('click', () => choose(false, false));
-  banner.querySelector('[data-consent-manage]').addEventListener('click', () => {
+  banner.querySelector('[data-consent-close]').addEventListener('click', () => choose(false, false));
+  banner.addEventListener('keydown', event => {
+    if (event.key === 'Escape') { event.preventDefault(); choose(false, false); }
+  });
+  manageButton.addEventListener('click', () => {
     syncSettings();
-    settings.hidden = !settings.hidden;
-    banner.querySelector('[data-consent-manage]').setAttribute('aria-expanded', String(!settings.hidden));
+    showSettings(true);
+    banner.querySelector('[data-consent-settings-title]').focus({ preventScroll: true });
+  });
+  banner.querySelector('[data-consent-back]').addEventListener('click', () => {
+    showSettings(false);
+    manageButton.focus({ preventScroll: true });
   });
   banner.querySelector('[data-consent-save]').addEventListener('click', () => choose(adsCheckbox.checked, analyticsCheckbox.checked));
   trigger.addEventListener('click', () => {
     syncSettings();
+    showSettings(false);
     banner.hidden = false;
     trigger.hidden = true;
     trigger.setAttribute('aria-expanded', 'true');
-    banner.querySelector('button').focus({ preventScroll: true });
+    banner.querySelector('[data-consent-close]').focus({ preventScroll: true });
   });
   banner.hidden = !needsChoice();
   trigger.hidden = needsChoice();
