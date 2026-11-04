@@ -9,7 +9,7 @@ Destinazione esclusiva: `1_T3GS1bZUXE_5FQXKOeEd1gOzJmjKoBtiJksfyRGHvw`, scheda *
 - `GREEN_FLUX_CRM_SECRET`: segreto casuale di almeno 32 byte, variabile **Secret** di produzione Vercel; lo stesso valore nelle proprietà del progetto Apps Script. Mai in Git, nelle URL o nelle variabili pubbliche.
 - `BLOB_STORE_ID`: store **privato**, collegato esclusivamente alla produzione del progetto `green-flux`. L'accesso OIDC non richiede token statici aggiuntivi.
 
-Apps Script deve essere un progetto dedicato Green Flux. Configurare il segreto nelle proprietà, distribuire come Web app eseguita dal proprietario e raggiungibile da Vercel. L'endpoint pubblico restituisce solo uno stato di servizio; ogni scrittura richiede HMAC-SHA256 e timestamp entro 5 minuti. Il foglio rimane privato.
+Apps Script deve essere un progetto dedicato Green Flux, con il servizio avanzato **Google Sheets API v4** abilitato (`Sheets`). Configurare il segreto nelle proprietà, distribuire come Web app eseguita dal proprietario e raggiungibile da Vercel. L'endpoint pubblico restituisce solo uno stato di servizio; ogni scrittura richiede HMAC-SHA256 e timestamp entro 5 minuti. Il foglio rimane privato.
 
 Eseguire `installRecoveryTrigger` nel progetto dedicato: crea un controllo ogni 10 minuti. Questo evita dipendenze dai cron frequenti non disponibili sul piano Vercel Hobby. Il trigger chiama `POST /api/crm-retry` con autenticazione server e restituisce solo conteggi.
 
@@ -20,7 +20,7 @@ Tutti i moduli che usano `/api/preventivo` sono coperti: `contact`, `heat-pump`,
 1. Coda privata `staged/<requestId>.json` prima dell'invio; scritture immutabili per preservare il primo tentativo e il corpo Resend.
 2. Email a Green Flux con chiave idempotente `greenflux-<requestId>`.
 3. Solo dopo un ID Resend confermato, salvataggio `confirmed/<requestId>.json` e scrittura autenticata su Sheets. Conferma al cliente separata: un suo errore non invalida la richiesta.
-4. Apps Script acquisisce un lock, cerca l'ID esatto nella colonna O e inserisce una sola riga. Se l'ID esiste non modifica stati, note o altri campi commerciali. Data nativa e fuso `Europe/Rome`; stringhe protette dall'interpretazione come formule.
+4. Apps Script acquisisce un lock, cerca l'ID esatto nella colonna O e inserisce una sola riga con un batch atomico Sheets API, compreso l'ID. Se l'ID esiste non modifica stati, note o altri campi commerciali. Rispetta i menu esistenti: servizi fuori catalogo o multipli diventano `Altro`, con i dettagli completi nelle note; `Altre fonti` usa il valore esistente `Altro`. Data nativa e fuso `Europe/Rome`; stringhe protette dall'interpretazione come formule.
 5. Una scrittura confermata elimina le copie con recapiti dalla coda. Resta una ricevuta minima, senza recapiti, eliminata dal processo di recupero dopo 30 giorni.
 
 Un errore di Sheets o della coda non blocca un'email confermata. Il trigger recupera sia le registrazioni confermate ancora in coda sia un invio email interrotto entro 23 ore, mantenendo la stessa chiave Resend. Dopo quella finestra un invio email dall'esito ignoto viene spostato in `review/`: non viene reinviato alla cieca dopo la scadenza dell'idempotenza Resend. Richiede controllo dell'originale su Resend. I log contengono solo codici diagnostici e requestId, mai recapiti o segreti.
