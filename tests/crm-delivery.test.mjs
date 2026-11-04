@@ -76,20 +76,53 @@ test('The retry endpoint rejects anonymous requests and discloses no queued data
   await retryHandler({ method: 'POST', headers: {} }, response);
   assert.equal(response.code, 401); assert.deepEqual(response.payload, { ok: false });
 });
-test('Apps Script rejects invalid signatures and replays; locked requestId deduplication preserves commercial edits and neutralizes formulas', () => {
+function scriptHarness() {
   const rows = [['Data', 'Nome e cognome', 'Telefono', 'Email', 'Città', 'Provenienza', 'Annuncio / campagna', 'Servizio richiesto', 'Stato richiesta', 'Contattato', 'Data e ora contatto', 'Comunicazioni / note', 'Preventivo', 'Accettato', 'ID richiesta', 'Pagina di ingresso', 'Pagina di invio', 'Evidenza attribuzione']];
-  let locked = false;
+  const state = { failCommit: false, commits: 0, rows, locked: false };
+  const choices = { 6: ['Google Ads', 'Google organico', 'Google Maps', 'Diretto', 'Social', 'Referral', 'Altro', 'Non rilevata'], 8: ['Pompe di calore', 'Fotovoltaico', 'Altro'], 9: ['Nuova', 'Da contattare'] };
   const book = { getId: () => '1_T3GS1bZUXE_5FQXKOeEd1gOzJmjKoBtiJksfyRGHvw', getSpreadsheetTimeZone: () => 'Europe/Rome', getSheetByName: () => sheet };
-  const sheet = { getParent: () => book, getLastRow: () => rows.length, getMaxRows: () => 1000, getRange: (row, col, height = 1, width = 1) => ({ getValues: () => Array.from({ length: height }, (_, i) => Array.from({ length: width }, (_, j) => rows[row - 1 + i]?.[col - 1 + j] ?? '')), setNumberFormat() {}, setValues: values => { assert(locked); rows[row - 1] = values[0]; }, createTextFinder: value => ({ matchEntireCell() { return this; }, matchCase() { return this; }, findNext: () => rows.slice(1).some(r => r[14] === value) }) }) };
-  const context = vm.createContext({ console, Date, JSON, Number, String, Object, Math, SpreadsheetApp: { openById(id) { assert.equal(id, book.getId()); return book; }, flush() {} }, PropertiesService: { getScriptProperties: () => ({ getProperty: () => 'test-secret' }) }, Utilities: { Charset: { UTF_8: 'utf8' }, computeHmacSha256Signature: (text, key) => [...createHmac('sha256', key).update(text).digest()] }, LockService: { getScriptLock: () => ({ waitLock() { assert(!locked); locked = true; }, hasLock: () => locked, releaseLock() { locked = false; } }) }, ContentService: { MimeType: { JSON: 'json' }, createTextOutput: text => ({ setMimeType: () => JSON.parse(text) }) } });
+  const sheet = { getParent: () => book, getSheetId: () => 0, getLastRow: () => rows.length, getMaxRows: () => 1000, getRange: (row, col, height = 1, width = 1) => ({ getValues: () => Array.from({ length: height }, (_, i) => Array.from({ length: width }, (_, j) => rows[row - 1 + i]?.[col - 1 + j] ?? '')), getDataValidation: () => choices[col] ? { getCriteriaType: () => 'VALUE_IN_LIST', getCriteriaValues: () => [choices[col]] } : null, createTextFinder: value => ({ matchEntireCell() { return this; }, matchCase() { return this; }, findNext: () => rows.slice(1).some(r => r[14] === value) }) }) };
+  const context = vm.createContext({ console: { error() {} }, Date, JSON, Number, String, Object, Math,
+    SpreadsheetApp: { openById(id) { assert.equal(id, book.getId()); return book; }, flush() {}, DataValidationCriteria: { VALUE_IN_LIST: 'VALUE_IN_LIST' } },
+    Sheets: { Spreadsheets: { batchUpdate(body, sheetId) {
+      assert(state.locked); assert.equal(sheetId, book.getId());
+      if (state.failCommit) throw new Error('Sheets batch rejected');
+      const update = body.requests[0].updateCells;
+      const values = update.rows[0].values.map(c => c.userEnteredValue.stringValue ?? c.userEnteredValue.numberValue);
+      for (const [column, allowed] of Object.entries(choices)) assert(allowed.includes(values[Number(column) - 1]));
+      assert.equal(update.fields, 'userEnteredValue');
+      rows[update.range.startRowIndex] = values; state.commits++;
+    } } },
+    PropertiesService: { getScriptProperties: () => ({ getProperty: () => 'test-secret' }) },
+    Utilities: { Charset: { UTF_8: 'utf8' }, computeHmacSha256Signature: (text, key) => [...createHmac('sha256', key).update(text).digest()], formatDate: (date, timeZone) => { const parts = Object.fromEntries(new Intl.DateTimeFormat('en-GB', { timeZone, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23' }).formatToParts(date).map(p => [p.type, p.value])); return ['year', 'month', 'day', 'hour', 'minute', 'second'].map(k => parts[k]).join(','); } },
+    LockService: { getScriptLock: () => ({ waitLock() { assert(!state.locked); state.locked = true; }, hasLock: () => state.locked, releaseLock() { state.locked = false; } }) }, ContentService: { MimeType: { JSON: 'json' }, createTextOutput: text => ({ setMimeType: () => JSON.parse(text) }) }
+  });
   vm.runInContext(readFileSync('integrations/google-sheets/Code.gs', 'utf8'), context);
+  state.context = context;
+  state.invoke = envelope => context.doPost({ postData: { contents: JSON.stringify(envelope) } });
+  return state;
+}
+test('Apps Script rejects invalid signatures and replays; atomic requestId deduplication preserves commercial edits and neutralizes formulas', () => {
+  const { invoke, rows, context } = scriptHarness();
   const crm = { ...sample().crm, name: '=IMPORTXML("secret")', phone: '+390000000000', notes: '=FORMULA', resendId: 'confirmed-email' };
-  const invoke = envelope => context.doPost({ postData: { contents: JSON.stringify(envelope) } });
   assert.equal(invoke(signedEnvelope(crm, 'wrong-secret')).reason, 'unauthorized');
   assert.equal(invoke(signedEnvelope(crm, 'test-secret', Date.now() - 600000)).reason, 'unauthorized');
   assert.equal(invoke(signedEnvelope(crm, 'test-secret')).ok, true); assert.equal(rows.length, 2);
-  assert.equal(rows[1][8], 'Da contattare'); assert(rows[1][1].startsWith("'=")); assert(rows[1][2].startsWith("'+")); assert(rows[1][11].startsWith("'=")); assert(rows[1][0] instanceof Date);
-  rows[1][8] = 'Contattato'; rows[1][11] = 'Nota commerciale reale';
-  assert.equal(invoke(signedEnvelope(crm, 'test-secret')).duplicate, true); assert.equal(rows.length, 2); assert.equal(rows[1][8], 'Contattato'); assert.equal(rows[1][11], 'Nota commerciale reale');
-  assert.equal(locked, false);
+  assert.equal(rows[1][8], 'Da contattare'); assert(rows[1][1].startsWith("'=")); assert(rows[1][2].startsWith("'+")); assert(rows[1][11].startsWith("'=")); assert.equal(typeof rows[1][0], 'number');
+  assert.equal(rows[1][7], 'Altro'); assert(rows[1][11].includes('Richiesta Informazioni'));
+  rows[1][8] = 'In trattativa'; rows[1][11] = 'Nota commerciale reale';
+  assert.equal(invoke(signedEnvelope(crm, 'test-secret')).duplicate, true); assert.equal(rows.length, 2); assert.equal(rows[1][8], 'In trattativa'); assert.equal(rows[1][11], 'Nota commerciale reale');
+  assert.equal(context.gfRomeSerial_(new Date('2026-11-04T15:23:00Z')), Date.UTC(2026, 10, 4, 16, 23) / 86400000 + 25569);
+  assert.equal(context.gfRomeSerial_(new Date('2026-07-04T15:23:00Z')), Date.UTC(2026, 6, 4, 17, 23) / 86400000 + 25569);
+});
+test('Rejected atomic writes leave no partial rows; recovery uses strict live dropdowns and preserves full service details', () => {
+  const state = scriptHarness();
+  const crm = { ...sample().crm, source: 'Altre fonti', service: 'Condizionatori, Fotovoltaico', resendId: 'confirmed-email' };
+  state.failCommit = true;
+  assert.equal(state.invoke(signedEnvelope(crm, 'test-secret')).reason, 'write_failed');
+  assert.equal(state.rows.length, 1); assert.equal(state.commits, 0); assert.equal(state.locked, false);
+  state.failCommit = false;
+  assert.equal(state.invoke(signedEnvelope(crm, 'test-secret')).ok, true);
+  assert.equal(state.rows.length, 2); assert.equal(state.rows[1][5], 'Altro'); assert.equal(state.rows[1][7], 'Altro'); assert(state.rows[1][11].includes(crm.service));
+  assert.equal(state.invoke(signedEnvelope(crm, 'test-secret')).duplicate, true); assert.equal(state.commits, 1);
 });

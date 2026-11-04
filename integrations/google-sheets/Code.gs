@@ -4,7 +4,7 @@ const GF_SHEET_NAME = 'Richieste dal sito';
 const GF_HEADERS = ['Data', 'Nome e cognome', 'Telefono', 'Email', 'Città', 'Provenienza', 'Annuncio / campagna', 'Servizio richiesto', 'Stato richiesta', 'Contattato', 'Data e ora contatto', 'Comunicazioni / note', 'Preventivo', 'Accettato', 'ID richiesta'];
 const GF_SOURCES = ['Google Ads', 'Google organico', 'Google Maps', 'Diretto', 'Social', 'Referral', 'Altre fonti', 'Non rilevata'];
 
-function doGet() { return gfJson_({ ok: true, service: 'green-flux-crm', version: 1 }); }
+function doGet() { return gfJson_({ ok: true, service: 'green-flux-crm', version: 2 }); }
 
 function doPost(event) {
   let lock;
@@ -33,19 +33,45 @@ function doPost(event) {
       const filter = sheet.getFilter();
       if (filter) { const criteria = []; for (let col = 1; col <= filter.getRange().getNumColumns(); col++) criteria.push(filter.getColumnFilterCriteria(col)); filter.remove(); const fresh = sheet.getRange(1, 1, sheet.getMaxRows(), Math.min(18, sheet.getMaxColumns())).createFilter(); criteria.forEach((rule, index) => { if (rule) fresh.setColumnFilterCriteria(index + 1, rule); }); }
     }
-    const values = [date, lead.name, lead.phone, lead.email, lead.city, lead.source, lead.campaign, lead.service, 'Da contattare', '', '', lead.notes, '', '', lead.requestId].map(gfText_);
+    // Respect the existing strict dropdowns. The full requested service remains in notes.
+    const source = gfChoice_(sheet, row, 6, lead.source === 'Altre fonti' ? 'Altro' : lead.source, 'Non rilevata');
+    const service = gfChoice_(sheet, row, 8, lead.service, 'Altro');
+    const status = gfChoice_(sheet, row, 9, 'Da contattare', 'Nuova');
+    const notes = service === lead.service ? lead.notes : String(lead.notes || '') + '\n\nServizio / oggetto indicato nel modulo: ' + String(lead.service || 'Non specificato');
+    const values = [date, lead.name, lead.phone, lead.email, lead.city, source, lead.campaign, service, status, '', '', notes, '', '', lead.requestId].map(gfText_);
     const extraHeaders = sheet.getRange(1, 16, 1, 3).getValues()[0];
     if (extraHeaders.join('|') === 'Pagina di ingresso|Pagina di invio|Evidenza attribuzione') values.push(gfText_(lead.entryPage), gfText_(lead.submissionPage), gfText_(lead.evidence));
-    sheet.getRange(row, 3).setNumberFormat('@');
-    sheet.getRange(row, 1, 1, values.length).setValues([values]);
-    sheet.getRange(row, 1).setNumberFormat('dd/mm/yyyy hh:mm');
+    // SpreadsheetApp.setValues can leave a partial row after a validation error.
+    // The Sheets API validates and commits all cells, including requestId, atomically.
     SpreadsheetApp.flush();
+    const cells = values.map((value, index) => index === 0
+      ? { userEnteredValue: { numberValue: gfRomeSerial_(date) } }
+      : { userEnteredValue: { stringValue: String(value) } });
+    const grid = { sheetId: sheet.getSheetId(), startRowIndex: row - 1, endRowIndex: row };
+    Sheets.Spreadsheets.batchUpdate({ requests: [
+      { updateCells: { range: Object.assign({}, grid, { startColumnIndex: 0, endColumnIndex: values.length }), rows: [{ values: cells }], fields: 'userEnteredValue' } },
+      { repeatCell: { range: Object.assign({}, grid, { startColumnIndex: 0, endColumnIndex: 1 }), cell: { userEnteredFormat: { numberFormat: { type: 'DATE_TIME', pattern: 'dd/mm/yyyy hh:mm' } } }, fields: 'userEnteredFormat.numberFormat' } },
+      { repeatCell: { range: Object.assign({}, grid, { startColumnIndex: 2, endColumnIndex: 3 }), cell: { userEnteredFormat: { numberFormat: { type: 'TEXT' } } }, fields: 'userEnteredFormat.numberFormat' } }
+    ] }, GF_SHEET_ID);
     return gfJson_({ ok: true, requestId: lead.requestId, duplicate: false });
   } catch (error) {
     // Never log contact details, incoming payloads, HMACs, or credentials.
     console.error('green_flux_crm_write_failed');
     return gfJson_({ ok: false, reason: 'write_failed' });
   } finally { if (lock && lock.hasLock()) lock.releaseLock(); }
+}
+
+function gfChoice_(sheet, row, column, value, fallback) {
+  const rule = sheet.getRange(row, column).getDataValidation();
+  if (!rule || rule.getCriteriaType() !== SpreadsheetApp.DataValidationCriteria.VALUE_IN_LIST) return value;
+  const allowed = rule.getCriteriaValues()[0].map(String);
+  if (allowed.includes(String(value))) return value;
+  if (allowed.includes(fallback)) return fallback;
+  throw new Error('dropdown_mismatch');
+}
+function gfRomeSerial_(date) {
+  const parts = Utilities.formatDate(date, 'Europe/Rome', 'yyyy,MM,dd,HH,mm,ss').split(',').map(Number);
+  return Date.UTC(parts[0], parts[1] - 1, parts[2], parts[3], parts[4], parts[5]) / 86400000 + 25569;
 }
 
 function gfSheet_() {
