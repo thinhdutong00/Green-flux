@@ -8,7 +8,7 @@ export function readShortRequest(formData) {
 export function validateShortRequest(data) {
   const errors = [];
   const issue = (field, message) => errors.push({ field, message });
-  if (typeof data.name !== 'string' || data.name.trim().length < 2 || data.name.length > 120) issue('nome', 'Scrivi il tuo nome, almeno 2 caratteri.');
+  if (typeof data.name !== 'string' || data.name.trim().length < 2 || data.name.length > 120) issue('nome', 'Inserisci nome e cognome, da 2 a 120 caratteri.');
   if (typeof data.phone !== 'string' || !/^\+?[\d\s().-]+$/.test(data.phone) || data.phone.replace(/\D/g, '').length < 7 || data.phone.replace(/\D/g, '').length > 15) issue('telefono', 'Controlla il numero di telefono, incluso il prefisso se necessario.');
   if (typeof data.city !== 'string' || data.city.trim().length < 2 || data.city.length > 120) issue('comune', 'Scrivi il comune in cui si trova la casa.');
   if (!shortHeatingOptions.includes(data.heating)) issue('riscaldamento', 'Scegli il riscaldamento attuale. Se hai dubbi, seleziona “Non lo so”.');
