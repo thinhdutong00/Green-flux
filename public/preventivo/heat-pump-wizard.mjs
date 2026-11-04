@@ -7,6 +7,7 @@ import { showHandoff } from '../assets/js/handoff.mjs';
 import { createRequestSender, submitAndRedirect } from '../assets/js/request-delivery.mjs';
 import { trackLeadEvent } from '../assets/js/lead-events.mjs';
 import { readSubmissionStatus } from '../assets/js/submission-status.mjs';
+import { landingRequestAlreadySent, landingRequestError } from '../assets/js/landing-request-messages.mjs';
 
 const paths = {
   house: '<path d="m3 10 9-7 9 7M5 9v12h14V9M9 21v-7h6v7M16 5V2h3v6"/>',
@@ -30,7 +31,7 @@ function icon(name) {
   node.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${paths[name] || paths.house}</svg>`;
   return node;
 }
-export function mountHeatPumpQuiz(root, { embedded = false } = {}) {
+export function mountHeatPumpQuiz(root, { embedded = false, hideDirectContacts = false } = {}) {
   const template = document.querySelector('#heat-pump-quote-template');
   if (!template) throw new Error('Template del preventivo pompe di calore non disponibile.');
   root.className = 'hpq-page';
@@ -38,10 +39,14 @@ export function mountHeatPumpQuiz(root, { embedded = false } = {}) {
   document.body.classList.add('hpq-body');
   document.title = 'Preventivo pompe di calore su misura | Green Flux';
   const form = root.querySelector('[data-hpq-form]');
+  if (hideDirectContacts) {
+    root.querySelectorAll('a[href^="tel:"], a[href*="wa.me/"]').forEach(link => link.remove());
+    root.querySelector('[data-hpq-phone-label]').textContent = 'Telefono *';
+  }
   let statusBrowser = window;
   try { if (window.parent.location.origin === location.origin) statusBrowser = window.parent; } catch { /* External embeds stay independent. */ }
   if (['heat-pump', 'heat-pump-short'].includes(readSubmissionStatus(statusBrowser)?.kind)) {
-    form.replaceChildren(element('p', '', 'La tua richiesta è già stata inviata. Per aggiungere un dettaglio, chiamaci al +39 375 552 1420.'));
+    form.replaceChildren(element('p', '', hideDirectContacts ? landingRequestAlreadySent : 'La tua richiesta è già stata inviata. Per aggiungere un dettaglio, chiamaci al +39 375 552 1420.'));
     return;
   }
   const diagnostic = (name, params = {}) => trackLeadEvent(name, { ...params, form_position: 'quiz' });
@@ -176,9 +181,11 @@ export function mountHeatPumpQuiz(root, { embedded = false } = {}) {
     try { await submitAndRedirect(sendRequest, data, { requestText: heatPumpRequestText(data), redirectOnError: false, onAccepted: () => { delivered = true; diagnostic('lead_form_success'); } }); }
     catch (failure) {
       diagnostic('lead_form_error', { error_category: failure.category || 'network_or_timeout' });
-      showError({ message: failure.message || 'L’invio non è riuscito. I dati sono ancora nel modulo.' });
-      completion.hidden = false;
-      showHandoff(completion, heatPumpRequestText(data), { onEdit: () => { completion.hidden = true; setStep(5, true); } });
+      showError({ message: hideDirectContacts ? landingRequestError(failure) : failure.message || 'L’invio non è riuscito. I dati sono ancora nel modulo.' });
+      if (!hideDirectContacts) {
+        completion.hidden = false;
+        showHandoff(completion, heatPumpRequestText(data), { onEdit: () => { completion.hidden = true; setStep(5, true); } });
+      }
     } finally {
       sending = false;
       form.removeAttribute('aria-busy');

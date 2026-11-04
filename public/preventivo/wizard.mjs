@@ -6,7 +6,7 @@ import { createRequestSender, submitAndRedirect } from '../assets/js/request-del
 const wizard = document.querySelector('[data-quote-wizard]');
 const campaignParams = new URLSearchParams(location.search);
 if (wizard && serviceId(campaignParams.get('servizio')) === 'pompe-di-calore') {
-  mountHeatPumpQuiz(wizard, { embedded: campaignParams.get('embed') === '1' && window.parent !== window });
+  mountHeatPumpQuiz(wizard, { embedded: campaignParams.get('embed') === '1' && window.parent !== window, hideDirectContacts: campaignParams.get('contact') === 'form' && window.parent !== window });
 } else if (wizard) {
   const form = wizard.querySelector('.quote-form');
   const steps = [...form.querySelectorAll('[data-step]')];

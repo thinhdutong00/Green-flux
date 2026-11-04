@@ -3,6 +3,7 @@ import { createRequestSender, submitAndRedirect } from './request-delivery.mjs';
 import { trackLeadEvent } from './lead-events.mjs';
 import { readSubmissionStatus } from './submission-status.mjs';
 import { CLARITY_CONSENT_EVENT } from './clarity.mjs';
+import { landingRequestAlreadySent, landingRequestError } from './landing-request-messages.mjs';
 
 const form = document.querySelector('[data-lead-form]');
 if (form) {
@@ -18,7 +19,7 @@ if (form) {
     const previous = readSubmissionStatus(window);
     if (!['heat-pump', 'heat-pump-short'].includes(previous?.kind)) return;
     completed = true;
-    status.textContent = 'La tua richiesta è già stata inviata. Per aggiungere un dettaglio, chiamaci o scrivici: non serve compilare di nuovo.';
+    status.textContent = landingRequestAlreadySent;
     status.hidden = false;
     button.disabled = true;
     button.textContent = 'Richiesta già inviata';
@@ -60,7 +61,7 @@ if (form) {
     try {
       await submitAndRedirect(sender, data, { redirectOnError: false, onAccepted: () => { completed = true; trackLeadEvent('lead_form_success'); } });
     } catch (error) {
-      status.textContent = error.message || 'La conferma non è arrivata. I dati sono ancora qui: riprova oppure chiamaci al +39 375 552 1420.';
+      status.textContent = landingRequestError(error);
       status.hidden = false;
       status.focus();
       trackLeadEvent('lead_form_error', { error_category: error.category || 'network_or_timeout' });

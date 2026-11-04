@@ -20,7 +20,7 @@ if (dialog && frame && typeof dialog.showModal === 'function') {
       event.preventDefault();
       if (['heat-pump', 'heat-pump-short'].includes(readSubmissionStatus(window)?.kind)) { location.assign('/thank-you/'); return; }
       opener = link;
-      if (!frame.hasAttribute('src')) frame.src = '/preventivo/?servizio=pompe-di-calore&embed=1';
+      if (!frame.hasAttribute('src')) frame.src = '/preventivo/?servizio=pompe-di-calore&embed=1&contact=form';
       dialog.showModal();
       document.body.classList.add('hp-quiz-open');
     });

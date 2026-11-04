@@ -9,6 +9,7 @@ import { saveAdsConsent } from '../public/assets/js/ads-consent.mjs';
 import { CLARITY_CONSENT_KEY } from '../public/assets/js/clarity.mjs';
 import { readSubmissionStatus, saveSubmissionStatus } from '../public/assets/js/submission-status.mjs';
 import { submitAndRedirect, createRequestSender } from '../public/assets/js/request-delivery.mjs';
+import { landingRequestError } from '../public/assets/js/landing-request-messages.mjs';
 
 const sample = () => ({ kind: 'heat-pump-short', name: 'TEST TECNICO', phone: '+390491234567', city: 'Padova', heating: 'Non lo so', email: 'cliente@example.test', privacy: true, website: '', elapsed: 5000, requestId: '22222222-3333-4444-8555-666666666666' });
 const storage = () => { const entries = new Map(); return { getItem: k => entries.get(k) ?? null, setItem: (k,v) => entries.set(k,v), removeItem: k => entries.delete(k) }; };
@@ -121,4 +122,25 @@ test('Failed short submissions stay in the form, retries keep the same id, and s
   assert.equal(readSubmissionStatus(top).kind,'heat-pump'); assert.equal(top.sessionStorage.getItem('green-flux:confirmed-request'),null);
   assert.equal(readSubmissionStatus(browser()),null);
   saveSubmissionStatus(top,'heat-pump',100);assert.equal(readSubmissionStatus(top,100+16*60*1000),null);
+});
+
+test('Landing delivery errors retain retry guidance without exposing phone or WhatsApp actions from shared API messages', async () => {
+  for (const status of [400, 429, 502, 503, 'network']) {
+    const top = browser();
+    const sender = createRequestSender('heat-pump-short', {
+      browser: top,
+      createId: () => sample().requestId,
+      fetchRequest: async () => {
+        if (status === 'network') throw new TypeError('Failed to fetch');
+        return { ok: false, status, json: async () => ({ message: 'Riprova, chiamaci al +39 375 552 1420 oppure usa WhatsApp.' }) };
+      },
+    });
+    await assert.rejects(submitAndRedirect(sender, sample(), { browser: top, redirectOnError: false }), error => {
+      const message = landingRequestError(error);
+      assert.match(message, /riprova/i);
+      assert.doesNotMatch(message, /WhatsApp|375|chiam|wa\.me|tel:/i);
+      return true;
+    });
+    assert.equal(readSubmissionStatus(top), null);
+  }
 });

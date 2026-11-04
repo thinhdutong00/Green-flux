@@ -132,6 +132,8 @@ export async function renderSite() {
     if (s.slug === 'pompe-calore') {
       const campaign = JSON.parse(await readFile(join(root, 'content/heat-pump-campaign.json'), 'utf8'));
       const title = campaign.title;
+      const landingSchema = schema(serviceRoute(s.slug), title, campaign.description);
+      delete landingSchema['@graph'][0].telephone;
       await write(serviceRoute(s.slug), fill(await template('heat-pump-landing'), {
         LANDING_DESCRIPTION: esc(campaign.description),
         LANDING_INTRO_TITLE: esc(s.introTitle),
@@ -145,7 +147,7 @@ export async function renderSite() {
         LANDING_REVIEW_DATE: esc(new Intl.DateTimeFormat('it-IT', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(campaign.reviews.checkedAt + 'T12:00:00Z'))),
         LANDING_REVIEWS: ['Clara Paccagnella', 'Claudio Biasiolo', 'Giovanni Dondi'].map(name => content.reviews.items.find(review => review.author === name)).filter(Boolean).map(review => `<article class="hp-review"><div class="hp-stars" role="img" aria-label="${esc(review.rating)} stelle su 5">${'★'.repeat(review.rating)}</div><blockquote><p>${esc(review.text)}</p></blockquote><div class="hp-review-author"><span aria-hidden="true">${esc(review.author[0])}</span><div><strong>${esc(review.author)}</strong><span>Recensione Google · Green Flux</span></div></div></article>`).join(''),
         LANDING_SOURCES: s.sources.map(source => link(source.url, source.label)).join(' · '),
-        LANDING_SCHEMA: JSON.stringify(schema(serviceRoute(s.slug), title, campaign.description)).replaceAll(origin, 'https://green-flux.com').replace(/</g, '\\u003c')
+        LANDING_SCHEMA: JSON.stringify(landingSchema).replaceAll(origin, 'https://green-flux.com').replace(/</g, '\\u003c')
       }), title);
       continue;
     }
