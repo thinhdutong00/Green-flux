@@ -7,6 +7,7 @@ const googleHost = host => /(^|\.)google\.(com|it|fr|de|es|pt|nl|be|ch|at|ie|co\
 const parameterNames = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_id', 'utm_content', 'utm_term', 'campaignid', 'adgroupid', 'creative', 'gclid', 'gbraid', 'wbraid'];
 const clean = value => typeof value === 'string' && /^[\p{L}\p{N} _.:|/\-]{1,200}$/u.test(value) ? value : '';
 export function pagePath(value) {
+  if (typeof value !== 'string' || !value.trim()) return '';
   try {
     const url = new URL(value, 'https://green-flux.com');
     return hosts.has(url.hostname) && url.protocol === 'https:' ? url.pathname.slice(0, 200) : '';

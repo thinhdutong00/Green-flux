@@ -80,6 +80,7 @@ test('Attribution preserves consented UTM across the iframe, strips unrelated UR
   assert.equal(captureAttribution(frame).params,undefined);
   assert.equal(normalizeAttribution({consent:false,params:{gclid:'not-permitted'}}).params,undefined);
   assert.equal(normalizeAttribution({submissionPage:top.location.href}).source,'Non rilevata');
+  assert.equal(normalizeAttribution({submissionPage:top.location.href}).entryPage,'');
 });
 
 test('Diagnostic events whitelist non-personal fields, require analytics consent and never create advertising conversions', () => {
