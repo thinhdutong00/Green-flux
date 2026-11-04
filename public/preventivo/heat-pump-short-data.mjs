@@ -12,7 +12,7 @@ export function validateShortRequest(data) {
   if (typeof data.phone !== 'string' || !/^\+?[\d\s().-]+$/.test(data.phone) || data.phone.replace(/\D/g, '').length < 7 || data.phone.replace(/\D/g, '').length > 15) issue('telefono', 'Controlla il numero di telefono, incluso il prefisso se necessario.');
   if (typeof data.city !== 'string' || data.city.trim().length < 2 || data.city.length > 120) issue('comune', 'Scrivi il comune in cui si trova la casa.');
   if (!shortHeatingOptions.includes(data.heating)) issue('riscaldamento', 'Scegli il riscaldamento attuale. Se hai dubbi, seleziona “Non lo so”.');
-  if (typeof data.email !== 'string' || (data.email && (data.email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)))) issue('email', 'Controlla l’indirizzo email oppure lascia vuoto il campo.');
+  if (typeof data.email !== 'string' || data.email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) issue('email', 'Inserisci un indirizzo email valido per ricevere la conferma della richiesta.');
   if (data.privacy !== true) issue('privacy', 'Leggi l’informativa e spunta la casella per autorizzarci a ricontattarti.');
   return errors;
 }

@@ -15,7 +15,7 @@ Eseguire `installRecoveryTrigger` nel progetto dedicato: crea un controllo ogni 
 
 ## Flusso e affidabilità
 
-Tutti i moduli che usano `/api/preventivo` sono coperti: `contact`, `heat-pump-short`, `heat-pump`, `conditional` e `legacy`. Il modulo breve pompe di calore richiede nome, telefono, comune, riscaldamento attuale e consenso al ricontatto; l'email è facoltativa e, se assente, non viene inviata una conferma al cliente. La validazione precede ogni registrazione. Il client conserva solo hash del contenuto e UUID per 15 minuti per riutilizzare l'ID in caso di ritentativo/rientro; nessun dato del modulo è messo in URL.
+Tutti i moduli che usano `/api/preventivo` sono coperti: `contact`, `heat-pump-short`, `heat-pump`, `conditional` e `legacy`. Il modulo breve pompe di calore richiede nome, telefono, comune, riscaldamento attuale, email e consenso al ricontatto. L'email è obbligatoria sia nel browser sia sul server: dopo l'accettazione dell'email aziendale, il flusso esistente invia al cliente la conferma di ricezione con riepilogo e possibilità di rispondere a `info@green-flux.com`. La conferma usa una chiave di idempotenza distinta dall'email aziendale; un suo errore non annulla la richiesta già ricevuta. La validazione precede ogni registrazione. Il client conserva solo hash del contenuto e UUID per 15 minuti per riutilizzare l'ID in caso di ritentativo/rientro; nessun dato del modulo è messo in URL.
 
 1. Coda privata `staged/<requestId>.json` prima dell'invio; scritture immutabili per preservare il primo tentativo e il corpo Resend.
 2. Email a Green Flux con chiave idempotente `greenflux-<requestId>`.

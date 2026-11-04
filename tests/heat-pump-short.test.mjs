@@ -10,7 +10,7 @@ import { CLARITY_CONSENT_KEY } from '../public/assets/js/clarity.mjs';
 import { readSubmissionStatus, saveSubmissionStatus } from '../public/assets/js/submission-status.mjs';
 import { submitAndRedirect, createRequestSender } from '../public/assets/js/request-delivery.mjs';
 
-const sample = () => ({ kind: 'heat-pump-short', name: 'TEST TECNICO', phone: '+390491234567', city: 'Padova', heating: 'Non lo so', email: '', privacy: true, website: '', elapsed: 5000, requestId: '22222222-3333-4444-8555-666666666666' });
+const sample = () => ({ kind: 'heat-pump-short', name: 'TEST TECNICO', phone: '+390491234567', city: 'Padova', heating: 'Non lo so', email: 'cliente@example.test', privacy: true, website: '', elapsed: 5000, requestId: '22222222-3333-4444-8555-666666666666' });
 const storage = () => { const entries = new Map(); return { getItem: k => entries.get(k) ?? null, setItem: (k,v) => entries.set(k,v), removeItem: k => entries.delete(k) }; };
 function browser() {
   const value = { location: { hostname: 'green-flux.com', origin: 'https://green-flux.com', href: 'https://green-flux.com/servizi/pompe-calore/?utm_source=google&utm_medium=cpc&utm_campaign=heat-pump&utm_term=radiatori&email=private', search: '?utm_source=google&utm_medium=cpc&utm_campaign=heat-pump&utm_term=radiatori&email=private' }, document: { referrer: 'https://www.google.com/search?q=private' }, localStorage: storage(), sessionStorage: storage() };
@@ -18,16 +18,17 @@ function browser() {
   return value;
 }
 
-test('The short form accepts unknown heating and no email; required fields, consent and invalid options are rejected', () => {
+test('The short form requires a valid email along with the other contact fields, and accepts unknown heating', () => {
   assert.deepEqual(validateShortRequest(sample()), []);
-  for (const [field, value] of [['name',''],['phone','123'],['city',''],['heating','arbitrary'],['privacy',false],['email','invalid'],['email',{}]]) assert(validateShortRequest({ ...sample(), [field]: value }).length, field);
+  for (const [field, value] of [['name',''],['phone','123'],['city',''],['heating','arbitrary'],['privacy',false],['email',''],['email','   '],['email',undefined],['email','invalid'],['email',{}]]) assert(validateShortRequest({ ...sample(), [field]: value }).length, field);
   const data = new FormData();
-  for (const [key,value] of [['nome',' TEST '],['telefono',' +390491234567 '],['comune',' Padova '],['riscaldamento','Non lo so'],['privacy','on']]) data.set(key,value);
+  for (const [key,value] of [['nome',' TEST '],['telefono',' +390491234567 '],['comune',' Padova '],['riscaldamento','Non lo so'],['email',` ${sample().email} `],['privacy','on']]) data.set(key,value);
   assert.deepEqual(validateShortRequest(readShortRequest(data)), []);
-  assert(shortRequestText(sample()).includes('Email: Non indicata'));
+  assert.equal(readShortRequest(data).email, sample().email);
+  assert(shortRequestText(sample()).includes(`Email: ${sample().email}`));
 });
 
-test('The backend sends one business message without email and reuses provider idempotency on retry; failure is never accepted', async () => {
+test('The short-form backend requires email and sends distinct idempotent business and customer confirmations after acceptance', async () => {
   const previous = { fetch: globalThis.fetch, key: process.env.RESEND_API_KEY, from: process.env.QUOTE_FROM_EMAIL };
   const calls = [], delivered = new Map(); let fail = false, sequence = 0;
   process.env.RESEND_API_KEY = 'test-key'; process.env.QUOTE_FROM_EMAIL = 'test@example.test';
@@ -45,15 +46,26 @@ test('The backend sends one business message without email and reuses provider i
   try {
     for (let i = 0; i < 2; i++) {
       const res = await invoke();
-      assert.equal(res.body.accepted, true); assert.equal(res.body.confirmationStatus, 'not_requested');
+      assert.equal(res.body.accepted, true); assert.equal(res.body.confirmationStatus, 'sent');
       assert.equal(res.body.receipt.kind, 'heat-pump');
     }
-    assert.equal(delivered.size,1); assert.equal(calls.length,2);
-    assert.deepEqual(calls[0].payload.to,['info@green-flux.com']); assert(!calls[0].payload.reply_to);
+    assert.equal(delivered.size,2); assert.equal(calls.length,4);
+    assert.deepEqual(calls[0].payload.to,['info@green-flux.com']); assert.equal(calls[0].payload.reply_to, sample().email);
     assert.equal(calls[0].payload.text, shortRequestText(sample()));
-    for (const data of [{...sample(),website:'spam'}, {...sample(),elapsed:0}, {...sample(),privacy:false}, {...sample(),phone:''}]) assert.equal((await invoke(data)).code,400);
+    const confirmation = calls[1].payload;
+    assert.deepEqual(confirmation.to, [sample().email]);
+    assert.equal(confirmation.reply_to, 'info@green-flux.com');
+    assert(confirmation.text.includes(shortRequestText(sample())));
+    assert(confirmation.text.includes('la prenderà in carico'));
+    assert(confirmation.html.includes(sample().email));
+    assert(!confirmation.text.includes('24 ore'));
+    assert.notEqual(calls[0].key, calls[1].key);
+    assert.equal(calls[0].key, calls[2].key); assert.equal(calls[1].key, calls[3].key);
+    for (const data of [{...sample(),website:'spam'}, {...sample(),elapsed:0}, {...sample(),privacy:false}, {...sample(),phone:''}, {...sample(),email:''}, {...sample(),email:'   '}, {...sample(),email:'invalid'}, {...sample(),email:undefined}]) assert.equal((await invoke(data)).code,400);
+    assert.equal(calls.length, 4, 'Invalid requests must not reach the email provider');
     fail = true;
     const failure = await invoke(); assert.equal(failure.code,502); assert.notEqual(failure.body.accepted,true);
+    assert.equal(calls.length, 5, 'A failed business delivery must not send a customer confirmation');
   } finally {
     globalThis.fetch = previous.fetch;
     for (const [key,value] of [['RESEND_API_KEY',previous.key],['QUOTE_FROM_EMAIL',previous.from]]) if (value === undefined) delete process.env[key]; else process.env[key]=value;
@@ -74,7 +86,7 @@ test('Attribution preserves consented UTM across the iframe, strips unrelated UR
   assert.equal(embedded.source,'Google Ads');
   assert(!JSON.stringify(embedded).includes('private'));
   const record = buildCrmRecord({...sample(),attribution:embedded},'heat-pump-short',shortRequestText(sample()));
-  assert.equal(record.crm.service,'Pompe di calore'); assert.equal(record.crm.email,'');
+  assert.equal(record.crm.service,'Pompe di calore'); assert.equal(record.crm.email,sample().email);
   assert.equal(record.crm.source,'Google Ads'); assert(record.crm.campaign.includes('heat-pump'));
   saveAdsConsent(top,false);
   assert.equal(captureAttribution(frame).params,undefined);
