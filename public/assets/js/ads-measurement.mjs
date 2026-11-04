@@ -82,7 +82,7 @@ if (window.top === window) {
       </div>
       <div class="gf-consent-settings" id="gf-cookie-settings" data-consent-settings hidden>
         <h2 tabindex="-1" data-consent-settings-title>Gestisci le preferenze</h2>
-        <p>Attiva solo gli strumenti che desideri. Puoi cambiare scelta in qualsiasi momento da “Preferenze cookie”.</p>
+        <p>Attiva solo gli strumenti che desideri. Puoi cambiare scelta in qualsiasi momento da “Preferenze cookie” in fondo alla pagina.</p>
         <div class="gf-consent-categories">
           <div class="gf-consent-category"><strong>Necessari al sito</strong><p>Consentono le funzioni essenziali del sito e memorizzano le tue preferenze.</p><span class="gf-consent-required">Sempre attivi</span></div>
           <label class="gf-consent-category"><span><strong>Misurazione degli annunci</strong><span>Google Ads misura i risultati delle campagne, senza ricevere i dati dei moduli né attivare annunci personalizzati.</span></span><span class="gf-consent-toggle"><input type="checkbox" role="switch" data-consent-ads aria-label="Consenti la misurazione degli annunci con Google Ads"><span class="gf-consent-switch-off" aria-hidden="true">OFF</span><span class="gf-consent-switch-on" aria-hidden="true">ON</span></span></label>
@@ -97,6 +97,7 @@ if (window.top === window) {
   trigger.textContent = 'Preferenze cookie';
   trigger.setAttribute('aria-expanded', 'false');
   trigger.setAttribute('aria-controls', 'gf-cookie-banner');
+  let returnFocus = null;
   function closeBanner() {
     banner.hidden = true;
     trigger.hidden = false;
@@ -132,7 +133,8 @@ if (window.top === window) {
     saveClarityConsent(analytics);
     showSettings(false);
     closeBanner();
-    trigger.focus({ preventScroll: true });
+    returnFocus?.focus({ preventScroll: true });
+    returnFocus = null;
   }
   banner.querySelector('[data-consent-accept]').addEventListener('click', () => choose(true, true));
   banner.querySelector('[data-consent-reject]').addEventListener('click', () => choose(false, false));
@@ -151,6 +153,7 @@ if (window.top === window) {
   });
   banner.querySelector('[data-consent-save]').addEventListener('click', () => choose(adsCheckbox.checked, analyticsCheckbox.checked));
   trigger.addEventListener('click', () => {
+    returnFocus = trigger;
     syncSettings();
     showSettings(false);
     banner.hidden = false;
@@ -160,7 +163,19 @@ if (window.top === window) {
   });
   banner.hidden = !needsChoice();
   trigger.hidden = needsChoice();
-  document.body.append(banner, trigger);
+  document.body.append(banner);
+  const legalLinks = document.querySelector('footer a[href="/cookie-policy/"]')?.parentElement;
+  if (legalLinks) {
+    legalLinks.classList.add('gf-consent-links');
+    legalLinks.append(trigger);
+  }
+  else {
+    // Standalone questionnaires have no site footer; keep the control in normal flow.
+    const footer = document.createElement('footer');
+    footer.className = 'gf-consent-footer';
+    footer.append(trigger);
+    document.body.append(footer);
+  }
   applyChoice(consent);
   initClarity('z6bpz2ydko');
   syncSettings();

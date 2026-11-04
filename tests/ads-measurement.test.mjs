@@ -85,6 +85,7 @@ test('The deployed entry point blocks Google until consent and records the accep
   browser.addEventListener = () => {};
   saveConversionReceipt(browser, { id: requestId, kind: 'heat-pump' });
   const nodes = [];
+  const footerNodes = [];
   const scripts = [];
   function element() {
     const children = new Map();
@@ -94,7 +95,8 @@ test('The deployed entry point blocks Google until consent and records the accep
       querySelector(selector) { if (!children.has(selector)) children.set(selector, element()); return children.get(selector); },
     };
   }
-  const doc = { cookie: '', dispatchEvent() {}, createElement: element, head: { append: node => scripts.push(node) }, body: { append: (...items) => nodes.push(...items) } };
+  const legalLinks = { classList: { add() {} }, append: node => footerNodes.push(node) };
+  const doc = { cookie: '', dispatchEvent() {}, createElement: element, querySelector: () => ({ parentElement: legalLinks }), head: { append: node => scripts.push(node) }, body: { append: (...items) => nodes.push(...items) } };
   const previous = { window: globalThis.window, document: globalThis.document, location: globalThis.location };
   try {
     globalThis.window = browser; globalThis.document = doc; globalThis.location = browser.location;
@@ -102,13 +104,17 @@ test('The deployed entry point blocks Google until consent and records the accep
     const conversions = () => browser.dataLayer.filter(command => command[0] === 'event' && command[1] === 'conversion');
     assert.equal(scripts.length, 0);
     assert.equal(conversions().length, 0);
+    assert.equal(nodes.length, 1);
+    assert.equal(footerNodes.length, 1);
+    const trigger = footerNodes[0];
     // Closing the first layer is a complete refusal, with no tracker load.
     nodes[0].querySelector('[data-consent-close]').listeners.click();
     assert.equal(readAdsConsent(browser), false);
     assert.equal(readClarityConsent(browser), false);
     assert.equal(nodes[0].hidden, true);
+    assert.equal(trigger.hidden, false);
     assert.equal(scripts.length, 0);
-    nodes[1].listeners.click();
+    trigger.listeners.click();
     nodes[0].querySelector('[data-consent-manage]').listeners.click();
     assert.equal(scripts.length, 0);
     assert.equal(nodes[0].querySelector('[data-consent-ads]').checked, false);
@@ -124,7 +130,7 @@ test('The deployed entry point blocks Google until consent and records the accep
     scripts[0].listeners.load();
     assert.equal(conversions().length, 1);
     assert.deepEqual(conversions()[0][2], { send_to: 'AW-18501721820/c3AoCIbZsq0dENy9p_ZE', transaction_id: requestId, value: 0, currency: 'EUR' });
-    nodes[1].listeners.click();
+    trigger.listeners.click();
     nodes[0].querySelector('[data-consent-accept]').listeners.click();
     assert.equal(readClarityConsent(browser), true);
     assert.equal(scripts.length, 1);
