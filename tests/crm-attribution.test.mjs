@@ -11,6 +11,8 @@ function browser(url, referrer = '') {
   b.parent = b; return b;
 }
 test('Attribution requires consent and positive evidence; missing click ids never by themselves imply SEO', () => {
+  assert.equal(normalizeAttribution().entryPage, '');
+  assert.equal(normalizeAttribution({ consent: false }).submissionPage, '');
   assert.equal(normalizeAttribution({ consent: false, params: { gclid: 'abc' } }).source, 'Non rilevata');
   for (const key of ['gclid', 'gbraid', 'wbraid']) assert.equal(normalizeAttribution({ consent: true, params: { [key]: 'abc_123' } }).source, 'Google Ads');
   assert.equal(normalizeAttribution({ consent: true, params: { utm_source: 'google', utm_medium: 'cpc', utm_campaign: 'Padova pompe' } }).source, 'Google Ads');

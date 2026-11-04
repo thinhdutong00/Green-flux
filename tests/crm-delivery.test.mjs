@@ -88,6 +88,7 @@ function scriptHarness() {
       assert(state.locked); assert.equal(sheetId, book.getId());
       if (state.failCommit) throw new Error('Sheets batch rejected');
       const update = body.requests[0].updateCells;
+      assert(update.rows[0].values.every(c => !('formulaValue' in c.userEnteredValue)));
       const values = update.rows[0].values.map(c => c.userEnteredValue.stringValue ?? c.userEnteredValue.numberValue);
       for (const [column, allowed] of Object.entries(choices)) assert(allowed.includes(values[Number(column) - 1]));
       assert.equal(update.fields, 'userEnteredValue');
@@ -108,7 +109,7 @@ test('Apps Script rejects invalid signatures and replays; atomic requestId dedup
   assert.equal(invoke(signedEnvelope(crm, 'wrong-secret')).reason, 'unauthorized');
   assert.equal(invoke(signedEnvelope(crm, 'test-secret', Date.now() - 600000)).reason, 'unauthorized');
   assert.equal(invoke(signedEnvelope(crm, 'test-secret')).ok, true); assert.equal(rows.length, 2);
-  assert.equal(rows[1][8], 'Da contattare'); assert(rows[1][1].startsWith("'=")); assert(rows[1][2].startsWith("'+")); assert(rows[1][11].startsWith("'=")); assert.equal(typeof rows[1][0], 'number');
+  assert.equal(rows[1][8], 'Da contattare'); assert.equal(rows[1][1], crm.name); assert.equal(rows[1][2], crm.phone); assert(rows[1][11].startsWith('=FORMULA')); assert.equal(typeof rows[1][0], 'number');
   assert.equal(rows[1][7], 'Altro'); assert(rows[1][11].includes('Richiesta Informazioni'));
   rows[1][8] = 'In trattativa'; rows[1][11] = 'Nota commerciale reale';
   assert.equal(invoke(signedEnvelope(crm, 'test-secret')).duplicate, true); assert.equal(rows.length, 2); assert.equal(rows[1][8], 'In trattativa'); assert.equal(rows[1][11], 'Nota commerciale reale');

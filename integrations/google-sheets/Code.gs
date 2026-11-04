@@ -84,7 +84,8 @@ function gfSheet_() {
 function gfText_(value) {
   if (value instanceof Date) return value;
   const text = String(value == null ? '' : value).replace(/\u0000/g, '').slice(0, 15000);
-  return /^[\s]*[=+@\-]/.test(text) ? "'" + text : text;
+  // Every text cell is sent as stringValue, never formulaValue.
+  return text;
 }
 function gfEqual_(a, b) { let mismatch = a.length ^ b.length; for (let i = 0; i < Math.max(a.length, b.length); i++) mismatch |= (a.charCodeAt(i) || 0) ^ (b.charCodeAt(i) || 0); return mismatch === 0; }
 function gfJson_(value) { return ContentService.createTextOutput(JSON.stringify(value)).setMimeType(ContentService.MimeType.JSON); }
