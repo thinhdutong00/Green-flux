@@ -72,9 +72,9 @@ if (window.top === window) {
     <div class="gf-consent-inner">
       <button class="gf-consent-close" type="button" data-consent-close aria-label="Chiudi e rifiuta i cookie facoltativi" title="Continua senza cookie facoltativi"><span aria-hidden="true">×</span></button>
       <div class="gf-consent-copy" data-consent-summary>
-        <h2>Cookie e privacy</h2>
-        <p>Con il tuo consenso usiamo Google Ads per misurare gli annunci e Microsoft Clarity per analizzare la navigazione nella pagina pompe di calore. I dati dei moduli sono mascherati. Le due scelte sono indipendenti.</p>
-        <p class="gf-consent-note">Chiudi con la X per continuare senza cookie facoltativi. <a href="/cookie-policy/">Informativa cookie</a> · <a href="/privacy-policy/">Privacy</a></p>
+        <h2>Cookie e preferenze</h2>
+        <p>Usiamo cookie e strumenti simili per il funzionamento del sito. Con il tuo consenso, Google Ads ci aiuta a misurare l’efficacia delle campagne e Microsoft Clarity ad analizzare la navigazione nella pagina sulle pompe di calore. Puoi accettare tutti i cookie facoltativi o scegliere quali attivare.</p>
+        <p class="gf-consent-note">La X chiude il banner senza accettare i cookie facoltativi. <a href="/cookie-policy/">Informativa cookie</a> · <a href="/privacy-policy/">Privacy</a></p>
       </div>
       <div class="gf-consent-actions" data-consent-actions>
         <button type="button" data-consent-accept>Accetta tutti</button>
@@ -82,11 +82,11 @@ if (window.top === window) {
       </div>
       <div class="gf-consent-settings" id="gf-cookie-settings" data-consent-settings hidden>
         <h2 tabindex="-1" data-consent-settings-title>Gestisci le preferenze</h2>
-        <p>Scegli quali strumenti facoltativi consentire. Puoi cambiare idea in qualsiasi momento da “Preferenze cookie”.</p>
+        <p>Attiva solo gli strumenti che desideri. Puoi cambiare scelta in qualsiasi momento da “Preferenze cookie”.</p>
         <div class="gf-consent-categories">
-          <div class="gf-consent-category"><strong>Necessari</strong><p>Permettono al sito di funzionare e di ricordare queste preferenze.</p><span class="gf-consent-required">Sempre attivi</span></div>
-          <label class="gf-consent-category"><span><strong>Efficacia degli annunci</strong><span>Google Ads misura i risultati degli annunci, senza ricevere i dati compilati nei moduli e senza attivare annunci personalizzati.</span></span><input type="checkbox" data-consent-ads aria-label="Consenti la misurazione degli annunci con Google Ads"></label>
-          <label class="gf-consent-category"><span><strong>Analisi della navigazione</strong><span>Microsoft Clarity crea mappe di calore e registrazioni delle interazioni nella pagina pompe di calore. I moduli sono mascherati.</span></span><input type="checkbox" data-consent-analytics aria-label="Consenti l’analisi della navigazione con Microsoft Clarity"></label>
+          <div class="gf-consent-category"><strong>Necessari al sito</strong><p>Consentono le funzioni essenziali del sito e memorizzano le tue preferenze.</p><span class="gf-consent-required">Sempre attivi</span></div>
+          <label class="gf-consent-category"><span><strong>Misurazione degli annunci</strong><span>Google Ads misura i risultati delle campagne, senza ricevere i dati dei moduli né attivare annunci personalizzati.</span></span><span class="gf-consent-toggle"><input type="checkbox" role="switch" data-consent-ads aria-label="Consenti la misurazione degli annunci con Google Ads"><span class="gf-consent-switch-off" aria-hidden="true">OFF</span><span class="gf-consent-switch-on" aria-hidden="true">ON</span></span></label>
+          <label class="gf-consent-category"><span><strong>Analisi della navigazione</strong><span>Microsoft Clarity registra le interazioni nella pagina sulle pompe di calore per analizzarne l’utilizzo. Il contenuto dei moduli è oscurato.</span></span><span class="gf-consent-toggle"><input type="checkbox" role="switch" data-consent-analytics aria-label="Consenti l’analisi della navigazione con Microsoft Clarity"><span class="gf-consent-switch-off" aria-hidden="true">OFF</span><span class="gf-consent-switch-on" aria-hidden="true">ON</span></span></label>
         </div>
         <div class="gf-consent-settings-footer"><p><a href="/cookie-policy/">Informativa cookie</a> · <a href="/privacy-policy/">Privacy</a></p><div class="gf-consent-settings-actions"><button type="button" data-consent-back>Indietro</button><button type="button" data-consent-reject>Rifiuta tutti</button><button type="button" data-consent-save>Salva le preferenze</button></div></div>
       </div>
