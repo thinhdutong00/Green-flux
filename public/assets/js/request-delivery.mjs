@@ -1,23 +1,42 @@
 import { clearConversionReceipt, saveConversionReceipt } from './conversion-receipt.mjs';
 import { readAdsConsent } from './ads-consent.mjs';
+import { captureAttribution } from './lead-attribution.mjs';
 
 export const thankYouPath = '/thank-you/';
 export const pendingRequestKey = 'green-flux:pending-request';
 export const pendingRequestLifetime = 15 * 60 * 1000;
+export const deliveryKey = 'green-flux:delivery-key:v1';
+
+async function persistentRequestId(browser, payload, createId, now) {
+  if (!browser) return createId();
+  try {
+    const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(payload));
+    const fingerprint = Array.from(new Uint8Array(digest), b => b.toString(16).padStart(2, '0')).join('');
+    const stored = JSON.parse(browser.sessionStorage.getItem(deliveryKey));
+    if (stored?.fingerprint === fingerprint && /^[0-9a-f-]{36}$/i.test(stored.id) && stored.expiresAt > now && stored.expiresAt <= now + pendingRequestLifetime) return stored.id;
+    const id = createId();
+    browser.sessionStorage.setItem(deliveryKey, JSON.stringify({ fingerprint, id, expiresAt: now + pendingRequestLifetime }));
+    return id;
+  } catch { return createId(); }
+}
 
 // Keep the same key when a visitor retries the same request after a timeout.
-export function createRequestSender(kind, { fetchRequest = (...args) => fetch(...args), now = Date.now, createId = () => crypto.randomUUID() } = {}) {
+export function createRequestSender(kind, { fetchRequest = (...args) => fetch(...args), now = Date.now, createId = () => crypto.randomUUID(), browser = typeof window === 'undefined' ? null : window } = {}) {
   const started = now();
-  let previousPayload, requestId;
+  let previousPayload, requestId, attribution;
   return async data => {
     const payload = JSON.stringify({ ...data, kind });
-    if (payload !== previousPayload) { previousPayload = payload; requestId = createId(); }
+    if (payload !== previousPayload) { previousPayload = payload; requestId = await persistentRequestId(browser, payload, createId, now()); attribution = captureAttribution(browser, now()); }
+    // A revoked choice immediately removes optional attribution, including on retries.
+    if (browser && captureAttribution(browser, now()).consent !== true) attribution = { consent: false };
+    // The server derives the channel; do not duplicate derived campaign/evidence text.
+    const context = { consent: attribution?.consent === true, entryPage: attribution?.entryPage, submissionPage: attribution?.submissionPage, ...(attribution?.consent === true ? { params: attribution.params, referrer: attribution.referrer, directEntry: attribution.directEntry } : {}) };
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 15000);
+    const timeout = setTimeout(() => controller.abort(), 45000);
     try {
       const response = await fetchRequest('/api/preventivo', {
         method: 'POST', headers: { 'Content-Type': 'application/json' }, cache: 'no-store',
-        body: JSON.stringify({ ...data, kind, website: '', elapsed: now() - started, requestId }), signal: controller.signal,
+        body: JSON.stringify({ ...data, kind, attribution: context, website: '', elapsed: now() - started, requestId }), signal: controller.signal,
       });
       const result = await response.json().catch(() => null);
       if (!response.ok || result?.accepted !== true) throw new Error(result?.message || 'L’invio non è stato confermato. I dati sono ancora nel modulo: riprova oppure usa email o WhatsApp.');

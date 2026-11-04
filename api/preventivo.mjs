@@ -2,6 +2,8 @@ import { validateQuote, quoteText, services } from '../public/preventivo/data.mj
 import { validateFunnel } from '../public/preventivo/funnel-data.mjs';
 import { validateHeatPumpRequest, heatPumpRequestText } from '../public/preventivo/heat-pump-data.mjs';
 import { customerConfirmation } from '../lib/customer-confirmation.mjs';
+import { buildCrmRecord, recoveryEmailText, crmConfigured, syncCrm } from '../lib/crm-record.mjs';
+import { createOutbox, outboxConfigured } from '../lib/crm-outbox.mjs';
 
 // Best-effort per-instance throttling. Use Vercel rate-limit rules for a global limit.
 const attempts = new Map();
@@ -64,6 +66,20 @@ export default async function handler(request, response) {
   if (attempts.size >= 2000) attempts.delete(attempts.keys().next().value);
   attempts.set(ip, entry);
 
+  let record = buildCrmRecord(data, kind, text);
+  const queueEnabled = outboxConfigured();
+  const crmEnabled = crmConfigured();
+  const outbox = createOutbox();
+  if (queueEnabled) {
+    try {
+      const prepared = await outbox.prepare(record);
+      if (prepared.done) return sendJson(response, 200, { accepted: true, receipt: { id: data.requestId, kind }, confirmationStatus: 'already_processed', crmStatus: 'already_registered' });
+      record = prepared.record;
+    } catch (error) {
+      if (error.conflict) return sendJson(response, 409, { message: 'Questo identificativo è già associato a una richiesta diversa. Ricarica il modulo.' });
+      console.error('crm_outbox_stage_failed', { requestId: data.requestId });
+    }
+  }
   try {
     const result = await fetch('https://api.resend.com/emails', {
       method: 'POST',
@@ -73,14 +89,22 @@ export default async function handler(request, response) {
         to: ['info@green-flux.com'],
         ...(data.email.trim() ? { reply_to: data.email.trim() } : {}),
         subject: kind === 'contact' ? 'Nuova richiesta di contatto — Green Flux' : 'Nuova richiesta di preventivo — Green Flux',
-        text,
+        text: queueEnabled || crmEnabled ? recoveryEmailText(record) : text,
       }),
       signal: AbortSignal.timeout(10000),
     });
     const receipt = await result.json().catch(() => null);
     if (!result.ok || !receipt?.id) return sendJson(response, 502, { message: 'Non abbiamo ricevuto conferma dell’invio. I dati sono ancora nel modulo: riprova oppure usa i contatti qui sotto.' });
-    const confirmationStatus = data.email.trim() ? await sendCustomerConfirmation(apiKey, from, data, text) : 'not_requested';
-    return sendJson(response, 200, { accepted: true, receipt: { id: data.requestId, kind }, confirmationStatus });
+    const [confirmationStatus, crmStatus] = await Promise.all([
+      data.email.trim() ? sendCustomerConfirmation(apiKey, from, data, text) : 'not_requested',
+      (async () => {
+        if (queueEnabled) return (await outbox.accepted(record, receipt.id)).status;
+        if (!crmEnabled) return 'not_configured';
+        try { const result = await syncCrm({ ...record.crm, resendId: receipt.id }); return result.duplicate ? 'already_registered' : 'registered'; }
+        catch { console.error('crm_recover_from_email', { requestId: data.requestId }); return 'email_recovery'; }
+      })(),
+    ]);
+    return sendJson(response, 200, { accepted: true, receipt: { id: data.requestId, kind }, confirmationStatus, crmStatus });
   } catch {
     return sendJson(response, 502, { message: 'La conferma dell’invio non è arrivata. Puoi riprovare o inviare il riepilogo tramite i contatti qui sotto.' });
   }
