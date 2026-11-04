@@ -2,7 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import handler from '../api/preventivo.mjs';
 import { readShortRequest, validateShortRequest, shortRequestText } from '../public/preventivo/heat-pump-short-data.mjs';
-import { collectAttribution, normalizeAttribution, attributionText } from '../public/assets/js/lead-attribution.mjs';
+import { captureAttribution, normalizeAttribution } from '../public/assets/js/lead-attribution.mjs';
+import { buildCrmRecord } from '../lib/crm-record.mjs';
 import { safeLeadEvent, trackLeadEvent } from '../public/assets/js/lead-events.mjs';
 import { saveAdsConsent } from '../public/assets/js/ads-consent.mjs';
 import { CLARITY_CONSENT_KEY } from '../public/assets/js/clarity.mjs';
@@ -61,21 +62,24 @@ test('The backend sends one business message without email and reuses provider i
 
 test('Attribution preserves consented UTM across the iframe, strips unrelated URL queries and never guesses paid traffic', () => {
   const top = browser();
-  const denied = collectAttribution(top,top.document);
-  assert.equal(denied.utm_source,undefined); assert(!denied.landingPage.includes('?')); assert.equal(denied.referrer,'https://www.google.com');
-  assert(!attributionText(denied).includes('Google Ads'));
+  const denied = captureAttribution(top);
+  assert.equal(denied.params,undefined); assert(!denied.submissionPage.includes('?')); assert.equal(denied.referrer,undefined);
+  assert.equal(normalizeAttribution(denied).source,'Non rilevata');
   saveAdsConsent(top,true);
-  const first = collectAttribution(top,top.document);
-  assert.equal(first.utm_campaign,'heat-pump'); assert.equal(first.utm_term,'radiatori');
+  const first = captureAttribution(top);
+  assert.equal(first.params.utm_campaign,'heat-pump'); assert.equal(first.params.utm_term,'radiatori');
   const frame = { parent:top, location:{origin:top.location.origin,href:'https://green-flux.com/preventivo/?servizio=pompe-di-calore&embed=1'} };
-  const embedded = collectAttribution(frame,{referrer:top.location.href});
-  assert.equal(embedded.landingPage,'https://green-flux.com/servizi/pompe-calore/'); assert.equal(embedded.formPage,'https://green-flux.com/preventivo/');
-  assert(attributionText(embedded).includes('Provenienza: Google Ads'));
-  assert(attributionText(embedded).includes('non query cercata'));
+  const embedded = captureAttribution(frame);
+  assert.equal(embedded.entryPage,'/servizi/pompe-calore/'); assert.equal(embedded.submissionPage,'/preventivo/');
+  assert.equal(embedded.source,'Google Ads');
+  assert(!JSON.stringify(embedded).includes('private'));
+  const record = buildCrmRecord({...sample(),attribution:embedded},'heat-pump-short',shortRequestText(sample()));
+  assert.equal(record.crm.service,'Pompe di calore'); assert.equal(record.crm.email,'');
+  assert.equal(record.crm.source,'Google Ads'); assert(record.crm.campaign.includes('heat-pump'));
   saveAdsConsent(top,false);
-  assert.equal(collectAttribution(frame,{}).utm_source,undefined);
-  assert.equal(normalizeAttribution({adsConsent:false,gclid:'not-permitted'}).gclid,undefined);
-  assert.equal(attributionText({formPage:top.location.href}).split('\n')[0],'Provenienza: Non rilevata');
+  assert.equal(captureAttribution(frame).params,undefined);
+  assert.equal(normalizeAttribution({consent:false,params:{gclid:'not-permitted'}}).params,undefined);
+  assert.equal(normalizeAttribution({submissionPage:top.location.href}).source,'Non rilevata');
 });
 
 test('Diagnostic events whitelist non-personal fields, require analytics consent and never create advertising conversions', () => {

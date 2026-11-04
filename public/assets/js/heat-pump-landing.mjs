@@ -1,4 +1,3 @@
-import { collectAttribution } from './lead-attribution.mjs';
 import { trackLeadEvent } from './lead-events.mjs';
 import { readSubmissionStatus } from './submission-status.mjs';
 
@@ -20,7 +19,6 @@ if (dialog && frame && typeof dialog.showModal === 'function') {
       if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
       event.preventDefault();
       if (['heat-pump', 'heat-pump-short'].includes(readSubmissionStatus(window)?.kind)) { location.assign('/thank-you/'); return; }
-      collectAttribution();
       opener = link;
       if (!frame.hasAttribute('src')) frame.src = '/preventivo/?servizio=pompe-di-calore&embed=1';
       dialog.showModal();

@@ -112,10 +112,9 @@ export async function renderSite() {
         .replaceAll('href="/preventivo/"', `href="${quote(service.quote)}"`);
     }
     html = rewriteLinks(html);
-    // Measure the heat-pump funnel. Legal pages also expose the consent controls.
-    if (['/servizi/pompe-calore/', '/preventivo/', '/thank-you/', '/privacy-policy/', '/cookie-policy/'].includes(route)) {
-      html = html.replace('</head>', '<link rel="stylesheet" href="/assets/css/ads-consent.css"><script type="module" src="/assets/js/ads-measurement.mjs"></script></head>');
-    }
+    // Consent and acquisition context also cover journeys through ordinary site pages.
+    // The conversion event remains restricted to a confirmed heat-pump request.
+    html = html.replace('</head>', '<link rel="stylesheet" href="/assets/css/ads-consent.css"><script type="module" src="/assets/js/lead-attribution.mjs"></script><script type="module" src="/assets/js/ads-measurement.mjs"></script></head>');
     if (/\{\{[^{}]+\}\}/.test(html)) throw new Error(`Unfilled template in ${route}`);
     const target = join(publicRoot, route, 'index.html');
     await mkdir(dirname(target), { recursive: true });

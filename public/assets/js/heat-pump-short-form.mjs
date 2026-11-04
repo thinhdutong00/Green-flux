@@ -1,6 +1,5 @@
 import { readShortRequest, validateShortRequest } from '../../preventivo/heat-pump-short-data.mjs';
 import { createRequestSender, submitAndRedirect } from './request-delivery.mjs';
-import { collectAttribution } from './lead-attribution.mjs';
 import { trackLeadEvent } from './lead-events.mjs';
 import { readSubmissionStatus } from './submission-status.mjs';
 import { CLARITY_CONSENT_EVENT } from './clarity.mjs';
@@ -10,13 +9,11 @@ if (form) {
   const button = form.querySelector('[type="submit"]');
   const status = form.querySelector('[data-lead-status]');
   const sender = createRequestSender('heat-pump-short');
-  let sending = false, completed = false, started = false, viewed = false, visible = false, attribution;
-  const capture = () => { attribution = collectAttribution(); };
-  capture();
+  let sending = false, completed = false, started = false, viewed = false, visible = false;
   function view() { if (visible && !viewed) viewed = trackLeadEvent('lead_form_view'); }
   const observer = new IntersectionObserver(entries => { visible = entries.some(entry => entry.isIntersecting); view(); }, { threshold: 0.15 });
   observer.observe(form);
-  document.addEventListener(CLARITY_CONSENT_EVENT, () => { capture(); view(); });
+  document.addEventListener(CLARITY_CONSENT_EVENT, view);
   function existingRequest() {
     const previous = readSubmissionStatus(window);
     if (!['heat-pump', 'heat-pump-short'].includes(previous?.kind)) return;
@@ -60,10 +57,8 @@ if (form) {
     form.setAttribute('aria-busy', 'true');
     status.hidden = true;
     trackLeadEvent('lead_form_submit');
-    // Freeze attribution for retries so the same request keeps its idempotency key.
-    if (!attribution) capture();
     try {
-      await submitAndRedirect(sender, { ...data, attribution }, { redirectOnError: false, onAccepted: () => { completed = true; trackLeadEvent('lead_form_success'); } });
+      await submitAndRedirect(sender, data, { redirectOnError: false, onAccepted: () => { completed = true; trackLeadEvent('lead_form_success'); } });
     } catch (error) {
       status.textContent = error.message || 'La conferma non è arrivata. I dati sono ancora qui: riprova oppure chiamaci al +39 375 552 1420.';
       status.hidden = false;

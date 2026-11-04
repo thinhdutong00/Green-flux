@@ -17,9 +17,11 @@ export function trackLeadEvent(name, parameters = {}, browser = window) {
   }
   if (!['green-flux.com', 'www.green-flux.com'].includes(browser.location.hostname) || readClarityConsent(browser) !== true) return false;
   // Diagnostics only. No conversion command, identity, free text or answers.
-  (browser.dataLayer ||= []).push(payload);
-  browser.clarity?.('event', payload.event);
-  if (payload.step) browser.clarity?.('event', `quiz_step_${payload.step}_complete`);
-  if (payload.error_category) browser.clarity?.('event', `lead_form_error_${payload.error_category}`);
+  try {
+    (browser.dataLayer ||= []).push(payload);
+    browser.clarity?.('event', payload.event);
+    if (payload.step) browser.clarity?.('event', `quiz_step_${payload.step}_complete`);
+    if (payload.error_category) browser.clarity?.('event', `lead_form_error_${payload.error_category}`);
+  } catch { return false; }
   return true;
 }

@@ -3,7 +3,8 @@ import { validateFunnel } from '../public/preventivo/funnel-data.mjs';
 import { validateHeatPumpRequest, heatPumpRequestText } from '../public/preventivo/heat-pump-data.mjs';
 import { customerConfirmation } from '../lib/customer-confirmation.mjs';
 import { validateShortRequest, shortRequestText } from '../public/preventivo/heat-pump-short-data.mjs';
-import { attributionText } from '../public/assets/js/lead-attribution.mjs';
+import { buildCrmRecord, recoveryEmailText, crmConfigured, syncCrm } from '../lib/crm-record.mjs';
+import { createOutbox, outboxConfigured } from '../lib/crm-outbox.mjs';
 
 // Best-effort per-instance throttling. Use Vercel rate-limit rules for a global limit.
 const attempts = new Map();
@@ -49,7 +50,8 @@ export default async function handler(request, response) {
   const errors = kind === 'heat-pump-short' ? validateShortRequest(data) : kind === 'heat-pump' ? validateHeatPumpRequest(data) : kind === 'conditional' ? validateFunnel(data) : kind === 'contact' ? validateContact(data) : validateQuote(data);
   if (errors.length) return sendJson(response, 400, { message: errors[0].message });
   const summary = kind === 'heat-pump-short' ? shortRequestText(data) : kind === 'heat-pump' ? heatPumpRequestText(data) : kind === 'contact' ? contactText(data) : quoteText(data);
-  const text = summary + (data.attribution ? '\n\n' + attributionText(data.attribution) : '');
+  const text = summary;
+  const receiptKind = kind === 'heat-pump-short' ? 'heat-pump' : kind;
 
   const apiKey = process.env.RESEND_API_KEY;
   const from = process.env.QUOTE_FROM_EMAIL;
@@ -67,6 +69,20 @@ export default async function handler(request, response) {
   if (attempts.size >= 2000) attempts.delete(attempts.keys().next().value);
   attempts.set(ip, entry);
 
+  let record = buildCrmRecord(data, kind, text);
+  const queueEnabled = outboxConfigured();
+  const crmEnabled = crmConfigured();
+  const outbox = createOutbox();
+  if (queueEnabled) {
+    try {
+      const prepared = await outbox.prepare(record);
+      if (prepared.done) return sendJson(response, 200, { accepted: true, receipt: { id: data.requestId, kind: receiptKind }, confirmationStatus: 'already_processed', crmStatus: 'already_registered' });
+      record = prepared.record;
+    } catch (error) {
+      if (error.conflict) return sendJson(response, 409, { message: 'Questo identificativo è già associato a una richiesta diversa. Ricarica il modulo.' });
+      console.error('crm_outbox_stage_failed', { requestId: data.requestId });
+    }
+  }
   try {
     const result = await fetch('https://api.resend.com/emails', {
       method: 'POST',
@@ -76,14 +92,22 @@ export default async function handler(request, response) {
         to: ['info@green-flux.com'],
         ...(data.email.trim() ? { reply_to: data.email.trim() } : {}),
         subject: kind === 'contact' ? 'Nuova richiesta di contatto — Green Flux' : 'Nuova richiesta di preventivo — Green Flux',
-        text,
+        text: queueEnabled || crmEnabled ? recoveryEmailText(record) : text,
       }),
       signal: AbortSignal.timeout(10000),
     });
     const receipt = await result.json().catch(() => null);
     if (!result.ok || !receipt?.id) return sendJson(response, 502, { message: 'Non abbiamo ricevuto conferma dell’invio. I dati sono ancora nel modulo: riprova oppure usa i contatti qui sotto.' });
-    const confirmationStatus = data.email.trim() ? await sendCustomerConfirmation(apiKey, from, data, summary) : 'not_requested';
-    return sendJson(response, 200, { accepted: true, receipt: { id: data.requestId, kind: kind === 'heat-pump-short' ? 'heat-pump' : kind }, confirmationStatus });
+    const [confirmationStatus, crmStatus] = await Promise.all([
+      data.email.trim() ? sendCustomerConfirmation(apiKey, from, data, text) : 'not_requested',
+      (async () => {
+        if (queueEnabled) return (await outbox.accepted(record, receipt.id)).status;
+        if (!crmEnabled) return 'not_configured';
+        try { const result = await syncCrm({ ...record.crm, resendId: receipt.id }); return result.duplicate ? 'already_registered' : 'registered'; }
+        catch { console.error('crm_recover_from_email', { requestId: data.requestId }); return 'email_recovery'; }
+      })(),
+    ]);
+    return sendJson(response, 200, { accepted: true, receipt: { id: data.requestId, kind: receiptKind }, confirmationStatus, crmStatus });
   } catch {
     return sendJson(response, 502, { message: 'La conferma dell’invio non è arrivata. Puoi riprovare o inviare il riepilogo tramite i contatti qui sotto.' });
   }
@@ -97,7 +121,7 @@ async function sendCustomerConfirmation(apiKey, from, data, requestText) {
       method: 'POST',
       headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json', 'Idempotency-Key': `greenflux-confirmation-${data.requestId}` },
       body: JSON.stringify({ from, to: [data.email.trim()], ...customerConfirmation(data.name, requestText, { heatPump: ['heat-pump', 'heat-pump-short'].includes(data.kind) }) }),
-      // Together with the primary 10s timeout this stays inside the form's 15s limit.
+      // Confirmation runs alongside CRM synchronization, within the sender's timeout.
       signal: AbortSignal.timeout(3000),
     });
     const receipt = await result.json().catch(() => null);

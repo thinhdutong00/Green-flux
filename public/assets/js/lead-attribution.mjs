@@ -1,46 +1,90 @@
 import { readAdsConsent } from './ads-consent.mjs';
 
-const key = 'green-flux:lead-attribution:v1';
-const lifetime = 30 * 60 * 1000;
-const campaignFields = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid', 'gbraid', 'wbraid'];
-const clean = value => typeof value === 'string' ? value.replace(/[\r\n\u0000-\u001f]/g, '').slice(0, 250) : '';
-const page = value => { try { const url = new URL(value); return /^https?:$/.test(url.protocol) ? url.origin + url.pathname : ''; } catch { return ''; } };
-const referrerOrigin = value => { try { const url = new URL(value); return /^https?:$/.test(url.protocol) ? url.origin : ''; } catch { return ''; } };
-
-export function collectAttribution(browser = window, doc = document, now = Date.now()) {
-  let top = browser;
-  try { if (browser.parent && browser.parent.location.origin === browser.location.origin) top = browser.parent; } catch { /* Cross-origin embeds use their own page. */ }
-  const consent = readAdsConsent(top) === true;
-  let first;
-  try { first = JSON.parse(top.sessionStorage.getItem(key)); } catch { /* Storage is optional. */ }
-  if (!first || first.expiresAt <= now || first.expiresAt > now + lifetime) first = null;
-  const current = { landingPage: page(top.location.href), referrer: referrerOrigin(top.document?.referrer || doc.referrer || '') };
-  const result = { ...(first || current), formPage: page(browser.location.href), adsConsent: consent };
-  delete result.expiresAt;
-  const params = new URLSearchParams(top.location.search || '');
-  for (const field of campaignFields) {
-    if (!consent) delete result[field];
-    else if (!result[field] && params.has(field)) result[field] = clean(params.get(field));
-  }
-  // Persist marketing attribution only after advertising consent. Page paths and
-  // referrer origin sent with the request never include arbitrary query strings.
+export const attributionKey = 'green-flux:lead-attribution:v1';
+export const attributionLifetime = 30 * 60 * 1000;
+const hosts = new Set(['green-flux.com', 'www.green-flux.com']);
+const googleHost = host => /(^|\.)google\.(com|it|fr|de|es|pt|nl|be|ch|at|ie|co\.uk|co\.in|com\.au|ca|co\.jp|pl|ro|se|dk|no|fi|gr|cz)$/.test(host);
+const parameterNames = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_id', 'utm_content', 'utm_term', 'campaignid', 'adgroupid', 'creative', 'gclid', 'gbraid', 'wbraid'];
+const clean = value => typeof value === 'string' && /^[\p{L}\p{N} _.:|/\-]{1,200}$/u.test(value) ? value : '';
+export function pagePath(value) {
   try {
-    if (consent) top.sessionStorage.setItem(key, JSON.stringify({ ...result, expiresAt: first?.expiresAt || now + lifetime }));
-    else top.sessionStorage.removeItem(key);
-  } catch { /* A blocked store must never block a contact request. */ }
+    const url = new URL(value, 'https://green-flux.com');
+    return hosts.has(url.hostname) && url.protocol === 'https:' ? url.pathname.slice(0, 200) : '';
+  } catch { return ''; }
+}
+export function trackingParameters(value) {
+  const result = {};
+  for (const name of parameterNames) {
+    const token = clean(value?.[name]);
+    if (token && (!['gclid', 'gbraid', 'wbraid'].includes(name) || /^[A-Za-z0-9_-]+$/.test(token))) result[name] = token;
+  }
   return result;
 }
-
-export function normalizeAttribution(value) {
-  if (!value || typeof value !== 'object' || Array.isArray(value)) return {};
-  const result = { landingPage: page(value.landingPage), formPage: page(value.formPage), referrer: referrerOrigin(value.referrer), adsConsent: value.adsConsent === true };
-  if (result.adsConsent) for (const field of campaignFields) if (clean(value[field])) result[field] = clean(value[field]);
-  return result;
+export function referrerEvidence(value) {
+  try {
+    const url = new URL(value);
+    if (!['https:', 'http:'].includes(url.protocol) || hosts.has(url.hostname)) return '';
+    // Never copy search terms, query strings, fragments, or arbitrary external paths.
+    const path = googleHost(url.hostname) && /^\/(maps|search)(\/|$)/.test(url.pathname) ? url.pathname.split('/').slice(0, 2).join('/') : '';
+    return `${url.origin}${path}`;
+  } catch { return ''; }
+}
+export function normalizeAttribution(input) {
+  const base = { entryPage: pagePath(input?.entryPage), submissionPage: pagePath(input?.submissionPage) };
+  if (input?.consent !== true) return { ...base, consent: false, source: 'Non rilevata', campaign: '', evidence: 'Consenso alla misurazione assente: dati di acquisizione non raccolti.' };
+  const params = trackingParameters(input.params);
+  const referrer = referrerEvidence(input.referrer);
+  const refUrl = referrer ? new URL(referrer) : null;
+  const source = (params.utm_source || '').toLowerCase();
+  const medium = (params.utm_medium || '').toLowerCase();
+  const google = /^(google|googleads|google_ads|adwords)$/.test(source);
+  const paid = /^(cpc|ppc|paidsearch|paid_search|paid)$/.test(medium);
+  const maps = /^(google_maps|googlemaps|maps|gmb|gbp|google_business_profile)$/.test(source) || (google && /^(maps|gmb|gbp)$/.test(medium)) || (refUrl && googleHost(refUrl.hostname) && (refUrl.hostname.startsWith('maps.') || refUrl.pathname === '/maps'));
+  const social = /^(facebook|instagram|linkedin|tiktok|youtube|pinterest|twitter|x|meta)$/.test(source) || /^(social|paid_social|social_paid|social-organic)$/.test(medium) || /https?:\/\/(?:[^/]+\.)?(facebook\.com|instagram\.com|linkedin\.com|tiktok\.com|youtube\.com|youtu\.be|pinterest\.[a-z.]+|twitter\.com|x\.com|t\.co)$/.test(referrer);
+  let provenance = 'Non rilevata';
+  if (params.gclid || params.gbraid || params.wbraid || (google && paid)) provenance = 'Google Ads';
+  else if (maps) provenance = 'Google Maps';
+  else if (google && medium === 'organic') provenance = 'Google organico';
+  else if (social) provenance = 'Social';
+  else if (source || medium) provenance = 'Altre fonti';
+  else if (referrer) {
+    // A Google origin alone cannot distinguish an untagged ad from SEO.
+    if (googleHost(refUrl.hostname) && refUrl.pathname === '/search') provenance = 'Google organico';
+    else if (!googleHost(refUrl.hostname)) provenance = 'Referral';
+  } else if (input.directEntry === true && input.entryPage) provenance = 'Diretto';
+  const campaign = [params.utm_campaign, params.utm_id && `Campagna ID: ${params.utm_id}`, params.campaignid && `Campagna ID: ${params.campaignid}`, params.adgroupid && `Gruppo ID: ${params.adgroupid}`, params.creative && `Annuncio ID: ${params.creative}`, ...['gclid', 'gbraid', 'wbraid'].filter(key => params[key]).map(key => `${key.toUpperCase()}: ${params[key]}`)].filter(Boolean).join(' | ');
+  const evidence = [Object.entries(params).map(([key, value]) => `${key}=${value}`).join('; '), referrer && `Referrer: ${referrer}`, input.directEntry === true && !referrer && !Object.keys(params).length && 'Ingresso senza referrer o parametri (può includere link non tracciati).', provenance === 'Non rilevata' && 'Evidenze insufficienti per distinguere il canale.'].filter(Boolean).join(' | ');
+  return { ...base, consent: true, params, referrer, directEntry: input.directEntry === true, source: provenance, campaign, evidence };
 }
 
-export function attributionText(input) {
-  const data = normalizeAttribution(input);
-  const googlePaid = data.gclid || data.gbraid || data.wbraid || (data.utm_source?.toLowerCase() === 'google' && /^(cpc|ppc|paidsearch)$/i.test(data.utm_medium || ''));
-  const source = googlePaid ? 'Google Ads' : data.utm_source ? `UTM: ${data.utm_source} / ${data.utm_medium || 'mezzo non indicato'}` : data.referrer && !/^https:\/\/(www\.)?green-flux\.com$/.test(data.referrer) ? `Referral: ${data.referrer}` : 'Non rilevata';
-  return ['Provenienza: ' + source, ...(data.landingPage ? ['Pagina di ingresso: ' + data.landingPage] : []), ...(data.formPage ? ['Pagina di invio: ' + data.formPage] : []), ...campaignFields.filter(field => data[field]).map(field => `${field === 'utm_term' ? 'utm_term (parola chiave, non query cercata)' : field}: ${data[field]}`)].join('\n');
+function topBrowser(browser) {
+  try { if (browser.parent !== browser && browser.parent.location.origin === browser.location.origin) return browser.parent; } catch { /* Cross-origin embeds cannot access their parent. */ }
+  return browser;
+}
+export function captureAttribution(browser, now = Date.now()) {
+  if (!browser?.location) return { consent: false };
+  const root = topBrowser(browser);
+  if (readAdsConsent(root, now) !== true) {
+    try { root.sessionStorage.removeItem(attributionKey); } catch { /* Consent never depends on storage. */ }
+    return { consent: false, submissionPage: pagePath(browser.location.href || browser.location.pathname) };
+  }
+  let saved;
+  try { saved = JSON.parse(root.sessionStorage.getItem(attributionKey)); } catch { /* Optional storage. */ }
+  const current = new URL(root.location.href || root.location.pathname, root.location.origin);
+  const params = trackingParameters(Object.fromEntries(current.searchParams));
+  const hasCampaign = Object.keys(params).length > 0;
+  if (!saved || saved.version !== 1 || saved.expiresAt <= now || saved.expiresAt > now + attributionLifetime || hasCampaign && saved.campaignUrl !== current.pathname + JSON.stringify(params)) {
+    const rawReferrer = root.document?.referrer || '';
+    saved = { version: 1, consent: true, params, entryPage: pagePath(current.href), referrer: referrerEvidence(rawReferrer), directEntry: !rawReferrer, expiresAt: now + attributionLifetime };
+    // The comparison key contains only allowlisted tracking values, never arbitrary query data.
+    saved.campaignUrl = current.pathname + JSON.stringify(params);
+    try { root.sessionStorage.setItem(attributionKey, JSON.stringify(saved)); } catch { /* Same-page attribution still works. */ }
+  }
+  return { ...normalizeAttribution(saved), submissionPage: pagePath(browser.location.href || browser.location.pathname) };
+}
+
+if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+  captureAttribution(window);
+  window.addEventListener('greenflux:ads-consent', () => captureAttribution(window));
+  window.addEventListener('storage', () => captureAttribution(window));
 }

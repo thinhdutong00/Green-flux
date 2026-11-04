@@ -5,7 +5,6 @@ import {
 } from './heat-pump-data.mjs';
 import { showHandoff } from '../assets/js/handoff.mjs';
 import { createRequestSender, submitAndRedirect } from '../assets/js/request-delivery.mjs';
-import { collectAttribution } from '../assets/js/lead-attribution.mjs';
 import { trackLeadEvent } from '../assets/js/lead-events.mjs';
 import { readSubmissionStatus } from '../assets/js/submission-status.mjs';
 
@@ -47,7 +46,7 @@ export function mountHeatPumpQuiz(root, { embedded = false } = {}) {
   }
   const diagnostic = (name, params = {}) => trackLeadEvent(name, { ...params, form_position: 'quiz' });
   diagnostic('quiz_open');
-  let started = false, requestAttribution;
+  let started = false, delivered = false;
   const completedSteps = new Set();
   const panels = [...form.querySelectorAll('[data-hpq-step]')];
   const workspace = root.querySelector('[data-hpq-workspace]');
@@ -159,7 +158,7 @@ export function mountHeatPumpQuiz(root, { embedded = false } = {}) {
   previous.addEventListener('click', () => setStep(current - 1, true));
   form.addEventListener('submit', async event => {
     event.preventDefault();
-    if (sending) return;
+    if (sending || delivered || ['heat-pump', 'heat-pump-short'].includes(readSubmissionStatus(statusBrowser)?.kind)) return;
     const data = read();
     const issues = validateHeatPumpRequest(data);
     const issue = current < 5 ? issues.find(issue => issue.step === current) : issues[0];
@@ -167,7 +166,6 @@ export function mountHeatPumpQuiz(root, { embedded = false } = {}) {
     if (!completedSteps.has(current)) { diagnostic('quiz_step_complete', { step: current + 1 }); completedSteps.add(current); }
     if (current < 5) { setStep(current + 1, true); return; }
     diagnostic('lead_form_submit');
-    requestAttribution ||= collectAttribution();
     sending = true;
     clearError();
     completion.hidden = true;
@@ -175,7 +173,7 @@ export function mountHeatPumpQuiz(root, { embedded = false } = {}) {
     form.setAttribute('aria-busy', 'true');
     next.disabled = previous.disabled = true;
     next.textContent = 'Invio in corso…';
-    try { await submitAndRedirect(sendRequest, { ...data, attribution: requestAttribution }, { requestText: heatPumpRequestText(data), redirectOnError: false, onAccepted: () => diagnostic('lead_form_success') }); }
+    try { await submitAndRedirect(sendRequest, data, { requestText: heatPumpRequestText(data), redirectOnError: false, onAccepted: () => { delivered = true; diagnostic('lead_form_success'); } }); }
     catch (failure) {
       diagnostic('lead_form_error', { error_category: failure.category || 'network_or_timeout' });
       showError({ message: failure.message || 'L’invio non è riuscito. I dati sono ancora nel modulo.' });
@@ -184,9 +182,9 @@ export function mountHeatPumpQuiz(root, { embedded = false } = {}) {
     } finally {
       sending = false;
       form.removeAttribute('aria-busy');
-      next.disabled = false;
+      next.disabled = delivered;
       previous.disabled = current === 0;
-      next.textContent = 'Invia la richiesta';
+      next.textContent = delivered ? 'Richiesta inviata' : 'Invia la richiesta';
     }
   });
   form.addEventListener('keydown', event => {
