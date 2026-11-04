@@ -80,6 +80,7 @@ if (window.top === window) {
   }
   function applyChoice(ads) {
     consent = ads;
+    window.dispatchEvent?.(new Event('greenflux:ads-consent'));
     window.gtag('consent', 'update', consentSettings(ads === true));
     if (ads === true) { loadGoogleTag(); measureRequest(); }
     else removeAdvertisingCookies();

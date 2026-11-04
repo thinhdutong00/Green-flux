@@ -1324,5 +1324,10 @@
       "destination": "/servizi/pompe-calore/",
       "permanent": true
     }
-  ]
+  ],
+  "functions": {
+    "api/*.mjs": {
+      "maxDuration": 60
+    }
+  }
 }
