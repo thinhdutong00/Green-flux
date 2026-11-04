@@ -15,7 +15,7 @@ Eseguire `installRecoveryTrigger` nel progetto dedicato: crea un controllo ogni 
 
 ## Flusso e affidabilità
 
-Tutti i moduli che usano `/api/preventivo` sono coperti: `contact`, `heat-pump`, `conditional` e `legacy`. La validazione precede ogni registrazione. Il client conserva solo hash del contenuto e UUID per 15 minuti per riutilizzare l'ID in caso di ritentativo/rientro; nessun dato del modulo è messo in URL.
+Tutti i moduli che usano `/api/preventivo` sono coperti: `contact`, `heat-pump-short`, `heat-pump`, `conditional` e `legacy`. Il modulo breve pompe di calore richiede nome, telefono, comune, riscaldamento attuale e consenso al ricontatto; l'email è facoltativa e, se assente, non viene inviata una conferma al cliente. La validazione precede ogni registrazione. Il client conserva solo hash del contenuto e UUID per 15 minuti per riutilizzare l'ID in caso di ritentativo/rientro; nessun dato del modulo è messo in URL.
 
 1. Coda privata `staged/<requestId>.json` prima dell'invio; scritture immutabili per preservare il primo tentativo e il corpo Resend.
 2. Email a Green Flux con chiave idempotente `greenflux-<requestId>`.
@@ -43,7 +43,7 @@ L'acquisizione è separata dalle conversioni Google Ads e funziona anche nel pre
 - Google organico: UTM organic espliciti o referrer di ricerca identificabile. Il solo dominio Google senza percorso e senza UTM resta **Non rilevata**, perché può avere perso parametri pubblicitari.
 - Social, referral e altre fonti: evidenze UTM/referrer disponibili. Diretto indica tecnicamente un ingresso senza referrer o parametri, e può includere link non tracciati.
 
-Parametri estranei e query di ricerca del referrer non vengono conservati. Senza consenso o con evidenze insufficienti: **Non rilevata**. Nessun dato del modulo è mandato a Google Ads. L'evento di conversione esistente resta limitato a un quiz pompe di calore confermato con consenso, con deduplica per UUID.
+Parametri estranei e query di ricerca del referrer non vengono conservati. Senza consenso o con evidenze insufficienti: **Non rilevata**. Nessun dato del modulo è mandato a Google Ads. L'evento di conversione esistente comprende il modulo breve e il quiz pompe di calore: richiede un invio accettato dal backend e consenso pubblicitario, con deduplica per UUID. Gli eventi diagnostici del modulo e dei passaggi del quiz richiedono il consenso Clarity e non sono conversioni primarie. La conferma operativa dell'invio non dipende dal consenso pubblicitario.
 
 ## Collaudo
 
