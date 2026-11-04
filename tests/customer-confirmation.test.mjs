@@ -52,7 +52,7 @@ test('Customer confirmations include the complete heat-pump request in HTML and 
     assert.deepEqual(confirmation.to, [sample().email]);
     assert.equal(confirmation.from, process.env.QUOTE_FROM_EMAIL); assert.equal(confirmation.reply_to, 'info@green-flux.com');
     assert(confirmation.text.includes(heatPumpRequestText(sample())));
-    for (const expected of [sample().name, sample().company, sample().city, sample().phone, sample().notes, 'entro 24 ore']) {
+    for (const expected of [sample().name, sample().company, sample().city, sample().phone, sample().notes, 'Ti ricontattiamo']) {
       assert(confirmation.text.includes(expected), expected); assert(confirmation.html.includes(expected), expected);
     }
     assert.equal(confirmation.headers['Auto-Submitted'], 'auto-generated');

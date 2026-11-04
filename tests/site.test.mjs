@@ -69,8 +69,8 @@ test('Every Green Flux technology has its own explanation, decision criteria and
   assert(html.includes(`servizio=${service.quote}`));assert(!titles.has(service.introTitle));titles.add(service.introTitle);
   let catalogueVersion=html;
   if(service.slug==='pompe-calore'){
-   assert(html.includes('Abbatti i Costi del Riscaldamento.'));
-   for(const topic of ['La tua abitazione consuma più energia del necessario?','Calore senza gas.','In famiglia l\'acqua calda non basta mai?','Verifica se la tua casa è compatibile','Hai già il fotovoltaico o vuoi installarlo?'])assert(html.includes(topic),topic);
+   assert(html.includes('Vuoi sostituire la caldaia'));
+   for(const topic of ['Posso tenere','Quanto costa installare','Parliamo della tua casa.','E se ho già il fotovoltaico?','data-lead-form'])assert(html.includes(topic),topic);
    catalogueVersion=readFileSync(join(root,'landing/pompe-calore/index.html'),'utf8');
    assert(catalogueVersion.includes('name="robots" content="noindex, follow"'));
   }
@@ -103,7 +103,7 @@ test('Every installation page carries its service through header, content, foote
   const context=html.match(/<body[^>]*data-quote-service="([^"]+)"/)[1];
   assert.equal(context,service.quote);
   const links=quoteLinks(html);
-  assert(links.length>=4,service.slug);
+  assert(links.length >= (service.slug === 'pompe-calore' ? 1 : 4),service.slug);
   for(const href of [...links,...quoteLinks(mobileHeaderForService(context))]){
    assert.equal(href,`/preventivo/?servizio=${service.quote}`,service.slug);
   }

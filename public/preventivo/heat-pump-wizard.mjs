@@ -5,6 +5,9 @@ import {
 } from './heat-pump-data.mjs';
 import { showHandoff } from '../assets/js/handoff.mjs';
 import { createRequestSender, submitAndRedirect } from '../assets/js/request-delivery.mjs';
+import { collectAttribution } from '../assets/js/lead-attribution.mjs';
+import { trackLeadEvent } from '../assets/js/lead-events.mjs';
+import { readSubmissionStatus } from '../assets/js/submission-status.mjs';
 
 const paths = {
   house: '<path d="m3 10 9-7 9 7M5 9v12h14V9M9 21v-7h6v7M16 5V2h3v6"/>',
@@ -36,6 +39,16 @@ export function mountHeatPumpQuiz(root, { embedded = false } = {}) {
   document.body.classList.add('hpq-body');
   document.title = 'Preventivo pompe di calore su misura | Green Flux';
   const form = root.querySelector('[data-hpq-form]');
+  let statusBrowser = window;
+  try { if (window.parent.location.origin === location.origin) statusBrowser = window.parent; } catch { /* External embeds stay independent. */ }
+  if (['heat-pump', 'heat-pump-short'].includes(readSubmissionStatus(statusBrowser)?.kind)) {
+    form.replaceChildren(element('p', '', 'La tua richiesta è già stata inviata. Per aggiungere un dettaglio, chiamaci al +39 375 552 1420.'));
+    return;
+  }
+  const diagnostic = (name, params = {}) => trackLeadEvent(name, { ...params, form_position: 'quiz' });
+  diagnostic('quiz_open');
+  let started = false, requestAttribution;
+  const completedSteps = new Set();
   const panels = [...form.querySelectorAll('[data-hpq-step]')];
   const workspace = root.querySelector('[data-hpq-workspace]');
   const title = root.querySelector('[data-hpq-title]');
@@ -141,7 +154,7 @@ export function mountHeatPumpQuiz(root, { embedded = false } = {}) {
     workspace.scrollTop = 0;
     if (focus) panels[current].querySelector('h2').focus({ preventScroll: true });
   }
-  form.addEventListener('input', () => { clearError(); sync(); });
+  form.addEventListener('input', () => { if (!started) { diagnostic('lead_form_start'); started = true; } clearError(); sync(); });
   form.addEventListener('change', () => { clearError(); sync(); });
   previous.addEventListener('click', () => setStep(current - 1, true));
   form.addEventListener('submit', async event => {
@@ -150,8 +163,11 @@ export function mountHeatPumpQuiz(root, { embedded = false } = {}) {
     const data = read();
     const issues = validateHeatPumpRequest(data);
     const issue = current < 5 ? issues.find(issue => issue.step === current) : issues[0];
-    if (issue) { if (issue.step !== current) setStep(issue.step, true); showError(issue); return; }
+    if (issue) { diagnostic('lead_form_error', { error_category: 'validation' }); if (issue.step !== current) setStep(issue.step, true); showError(issue); return; }
+    if (!completedSteps.has(current)) { diagnostic('quiz_step_complete', { step: current + 1 }); completedSteps.add(current); }
     if (current < 5) { setStep(current + 1, true); return; }
+    diagnostic('lead_form_submit');
+    requestAttribution ||= collectAttribution();
     sending = true;
     clearError();
     completion.hidden = true;
@@ -159,8 +175,9 @@ export function mountHeatPumpQuiz(root, { embedded = false } = {}) {
     form.setAttribute('aria-busy', 'true');
     next.disabled = previous.disabled = true;
     next.textContent = 'Invio in corso…';
-    try { await submitAndRedirect(sendRequest, data, { requestText: heatPumpRequestText(data) }); }
+    try { await submitAndRedirect(sendRequest, { ...data, attribution: requestAttribution }, { requestText: heatPumpRequestText(data), redirectOnError: false, onAccepted: () => diagnostic('lead_form_success') }); }
     catch (failure) {
+      diagnostic('lead_form_error', { error_category: failure.category || 'network_or_timeout' });
       showError({ message: failure.message || 'L’invio non è riuscito. I dati sono ancora nel modulo.' });
       completion.hidden = false;
       showHandoff(completion, heatPumpRequestText(data), { onEdit: () => { completion.hidden = true; setStep(5, true); } });

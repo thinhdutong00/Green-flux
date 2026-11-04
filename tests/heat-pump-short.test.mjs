@@ -1,0 +1,107 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import handler from '../api/preventivo.mjs';
+import { readShortRequest, validateShortRequest, shortRequestText } from '../public/preventivo/heat-pump-short-data.mjs';
+import { collectAttribution, normalizeAttribution, attributionText } from '../public/assets/js/lead-attribution.mjs';
+import { safeLeadEvent, trackLeadEvent } from '../public/assets/js/lead-events.mjs';
+import { saveAdsConsent } from '../public/assets/js/ads-consent.mjs';
+import { CLARITY_CONSENT_KEY } from '../public/assets/js/clarity.mjs';
+import { readSubmissionStatus, saveSubmissionStatus } from '../public/assets/js/submission-status.mjs';
+import { submitAndRedirect, createRequestSender } from '../public/assets/js/request-delivery.mjs';
+
+const sample = () => ({ kind: 'heat-pump-short', name: 'TEST TECNICO', phone: '+390491234567', city: 'Padova', heating: 'Non lo so', email: '', privacy: true, website: '', elapsed: 5000, requestId: '22222222-3333-4444-8555-666666666666' });
+const storage = () => { const entries = new Map(); return { getItem: k => entries.get(k) ?? null, setItem: (k,v) => entries.set(k,v), removeItem: k => entries.delete(k) }; };
+function browser() {
+  const value = { location: { hostname: 'green-flux.com', origin: 'https://green-flux.com', href: 'https://green-flux.com/servizi/pompe-calore/?utm_source=google&utm_medium=cpc&utm_campaign=heat-pump&utm_term=radiatori&email=private', search: '?utm_source=google&utm_medium=cpc&utm_campaign=heat-pump&utm_term=radiatori&email=private' }, document: { referrer: 'https://www.google.com/search?q=private' }, localStorage: storage(), sessionStorage: storage() };
+  value.top = value.parent = value;
+  return value;
+}
+
+test('The short form accepts unknown heating and no email; required fields, consent and invalid options are rejected', () => {
+  assert.deepEqual(validateShortRequest(sample()), []);
+  for (const [field, value] of [['name',''],['phone','123'],['city',''],['heating','arbitrary'],['privacy',false],['email','invalid'],['email',{}]]) assert(validateShortRequest({ ...sample(), [field]: value }).length, field);
+  const data = new FormData();
+  for (const [key,value] of [['nome',' TEST '],['telefono',' +390491234567 '],['comune',' Padova '],['riscaldamento','Non lo so'],['privacy','on']]) data.set(key,value);
+  assert.deepEqual(validateShortRequest(readShortRequest(data)), []);
+  assert(shortRequestText(sample()).includes('Email: Non indicata'));
+});
+
+test('The backend sends one business message without email and reuses provider idempotency on retry; failure is never accepted', async () => {
+  const previous = { fetch: globalThis.fetch, key: process.env.RESEND_API_KEY, from: process.env.QUOTE_FROM_EMAIL };
+  const calls = [], delivered = new Map(); let fail = false, sequence = 0;
+  process.env.RESEND_API_KEY = 'test-key'; process.env.QUOTE_FROM_EMAIL = 'test@example.test';
+  globalThis.fetch = async (_url, opts) => {
+    const payload = JSON.parse(opts.body), key = opts.headers['Idempotency-Key'];
+    calls.push({payload,key});
+    if (!delivered.has(key)) delivered.set(key, payload);
+    return { ok: !fail, status: fail ? 500 : 200, json: async () => fail ? {} : { id: 'provider-id' } };
+  };
+  const invoke = async (data = sample()) => {
+    const res = { setHeader() {}, status(code) { this.code = code; return this; }, json(body) { this.body = body; } };
+    await handler({method:'POST', headers:{'content-type':'application/json',host:'example.test',origin:'https://example.test','x-real-ip':`198.51.100.${++sequence}`}, body:data},res);
+    return res;
+  };
+  try {
+    for (let i = 0; i < 2; i++) {
+      const res = await invoke();
+      assert.equal(res.body.accepted, true); assert.equal(res.body.confirmationStatus, 'not_requested');
+      assert.equal(res.body.receipt.kind, 'heat-pump');
+    }
+    assert.equal(delivered.size,1); assert.equal(calls.length,2);
+    assert.deepEqual(calls[0].payload.to,['info@green-flux.com']); assert(!calls[0].payload.reply_to);
+    assert.equal(calls[0].payload.text, shortRequestText(sample()));
+    for (const data of [{...sample(),website:'spam'}, {...sample(),elapsed:0}, {...sample(),privacy:false}, {...sample(),phone:''}]) assert.equal((await invoke(data)).code,400);
+    fail = true;
+    const failure = await invoke(); assert.equal(failure.code,502); assert.notEqual(failure.body.accepted,true);
+  } finally {
+    globalThis.fetch = previous.fetch;
+    for (const [key,value] of [['RESEND_API_KEY',previous.key],['QUOTE_FROM_EMAIL',previous.from]]) if (value === undefined) delete process.env[key]; else process.env[key]=value;
+  }
+});
+
+test('Attribution preserves consented UTM across the iframe, strips unrelated URL queries and never guesses paid traffic', () => {
+  const top = browser();
+  const denied = collectAttribution(top,top.document);
+  assert.equal(denied.utm_source,undefined); assert(!denied.landingPage.includes('?')); assert.equal(denied.referrer,'https://www.google.com');
+  assert(!attributionText(denied).includes('Google Ads'));
+  saveAdsConsent(top,true);
+  const first = collectAttribution(top,top.document);
+  assert.equal(first.utm_campaign,'heat-pump'); assert.equal(first.utm_term,'radiatori');
+  const frame = { parent:top, location:{origin:top.location.origin,href:'https://green-flux.com/preventivo/?servizio=pompe-di-calore&embed=1'} };
+  const embedded = collectAttribution(frame,{referrer:top.location.href});
+  assert.equal(embedded.landingPage,'https://green-flux.com/servizi/pompe-calore/'); assert.equal(embedded.formPage,'https://green-flux.com/preventivo/');
+  assert(attributionText(embedded).includes('Provenienza: Google Ads'));
+  assert(attributionText(embedded).includes('non query cercata'));
+  saveAdsConsent(top,false);
+  assert.equal(collectAttribution(frame,{}).utm_source,undefined);
+  assert.equal(normalizeAttribution({adsConsent:false,gclid:'not-permitted'}).gclid,undefined);
+  assert.equal(attributionText({formPage:top.location.href}).split('\n')[0],'Provenienza: Non rilevata');
+});
+
+test('Diagnostic events whitelist non-personal fields, require analytics consent and never create advertising conversions', () => {
+  const event = safeLeadEvent('quiz_step_complete',{form_position:'quiz',step:2,name:'Private',phone:'private',answers:'private'});
+  assert.deepEqual(Object.keys(event).sort(),['event','flow_version','form_position','service','step'].sort());
+  assert.equal(safeLeadEvent('conversion'),null);
+  const top=browser(), sent=[];top.clarity=(...args)=>sent.push(args);
+  assert.equal(trackLeadEvent('lead_form_success',{},top),false);
+  top.localStorage.setItem(CLARITY_CONSENT_KEY,JSON.stringify({version:1,analytics:true,expiresAt:Date.now()+100000}));
+  assert.equal(trackLeadEvent('lead_form_success',{email:'private'},top),true);
+  assert.deepEqual(sent,[['event','lead_form_success']]); assert(!JSON.stringify(top.dataLayer).includes('private'));
+  top.location.hostname='localhost';assert.equal(trackLeadEvent('lead_form_submit',{},top),false);
+});
+
+test('Failed short submissions stay in the form, retries keep the same id, and success UI is independent of advertising consent', async () => {
+  const top=browser(), visits=[], ids=[]; let fail=true, count=0;
+  top.location.assign=path=>visits.push(path);
+  const sender=createRequestSender('heat-pump-short',{createId:()=>`id-${++count}`,fetchRequest:async (_url,opts)=>{
+    ids.push(JSON.parse(opts.body).requestId); return {ok:!fail,status:fail?502:200,json:async()=>fail?{}:{accepted:true,receipt:{kind:'heat-pump',id:sample().requestId}}};
+  }});
+  await assert.rejects(submitAndRedirect(sender,sample(),{browser:top,redirectOnError:false}));
+  assert.deepEqual(visits,[]);assert.equal(readSubmissionStatus(top),null);
+  fail=false;
+  await submitAndRedirect(sender,sample(),{browser:top,redirectOnError:false});
+  assert.equal(ids[0],ids[1]);assert.deepEqual(visits,['/thank-you/']);
+  assert.equal(readSubmissionStatus(top).kind,'heat-pump'); assert.equal(top.sessionStorage.getItem('green-flux:confirmed-request'),null);
+  assert.equal(readSubmissionStatus(browser()),null);
+  saveSubmissionStatus(top,'heat-pump',100);assert.equal(readSubmissionStatus(top,100+16*60*1000),null);
+});

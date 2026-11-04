@@ -1,3 +1,7 @@
+import { collectAttribution } from './lead-attribution.mjs';
+import { trackLeadEvent } from './lead-events.mjs';
+import { readSubmissionStatus } from './submission-status.mjs';
+
 const hero = document.querySelector('.hp-hero');
 const dialog = document.querySelector('[data-hp-quiz]');
 const frame = dialog?.querySelector('[data-hp-quiz-frame]');
@@ -15,6 +19,8 @@ if (dialog && frame && typeof dialog.showModal === 'function') {
     link.addEventListener('click', event => {
       if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
       event.preventDefault();
+      if (['heat-pump', 'heat-pump-short'].includes(readSubmissionStatus(window)?.kind)) { location.assign('/thank-you/'); return; }
+      collectAttribution();
       opener = link;
       if (!frame.hasAttribute('src')) frame.src = '/preventivo/?servizio=pompe-di-calore&embed=1';
       dialog.showModal();
@@ -28,6 +34,10 @@ if (dialog && frame && typeof dialog.showModal === 'function') {
   });
   window.addEventListener('message', event => {
     if (event.origin !== location.origin || event.source !== frame.contentWindow) return;
+    if (event.data?.type === 'green-flux:lead-event') {
+      const payload = event.data.payload;
+      trackLeadEvent(payload?.event, { ...payload, form_position: 'quiz' });
+    }
     if (event.data?.type === 'green-flux:close-quiz' && dialog.open) dialog.close();
   });
 }

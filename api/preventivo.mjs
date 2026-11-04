@@ -2,6 +2,8 @@ import { validateQuote, quoteText, services } from '../public/preventivo/data.mj
 import { validateFunnel } from '../public/preventivo/funnel-data.mjs';
 import { validateHeatPumpRequest, heatPumpRequestText } from '../public/preventivo/heat-pump-data.mjs';
 import { customerConfirmation } from '../lib/customer-confirmation.mjs';
+import { validateShortRequest, shortRequestText } from '../public/preventivo/heat-pump-short-data.mjs';
+import { attributionText } from '../public/assets/js/lead-attribution.mjs';
 
 // Best-effort per-instance throttling. Use Vercel rate-limit rules for a global limit.
 const attempts = new Map();
@@ -31,10 +33,10 @@ export default async function handler(request, response) {
   catch { return sendJson(response, 400, { message: 'La richiesta non è leggibile.' }); }
   if (!data || typeof data !== 'object' || Array.isArray(data) || JSON.stringify(data).length > 10000) return sendJson(response, 400, { message: 'La richiesta non è valida o è troppo lunga.' });
   const kind = data.kind || 'legacy';
-  if (!['heat-pump', 'conditional', 'contact', 'legacy'].includes(kind)) return sendJson(response, 400, { message: 'Tipo di richiesta non valido.' });
+  if (!['heat-pump', 'heat-pump-short', 'conditional', 'contact', 'legacy'].includes(kind)) return sendJson(response, 400, { message: 'Tipo di richiesta non valido.' });
   const arrayFields = kind === 'legacy' ? ['services', 'spaces'] : kind === 'conditional' ? ['services'] : [];
   const arraysValid = arrayFields.every(key => Array.isArray(data[key]) && data[key].length <= services.length && data[key].every(value => typeof value === 'string' && value.length <= 80));
-  const stringFields = kind === 'heat-pump'
+  const stringFields = kind === 'heat-pump-short' ? ['name', 'phone', 'city', 'heating', 'email'] : kind === 'heat-pump'
     ? ['clientType', 'propertyType', 'city', 'heating', 'distribution', 'area', 'outdoorSpace', 'functions', 'timeline', 'name', 'company', 'phone', 'email', 'notes']
     : kind === 'conditional' ? ['propertyType', 'timeline', 'name', 'email', 'phone', 'city', 'notes']
     : kind === 'contact' ? ['name', 'email', 'phone', 'subject', 'notes']
@@ -44,13 +46,14 @@ export default async function handler(request, response) {
   if (data.website || !Number.isFinite(data.elapsed) || data.elapsed < 3000) return sendJson(response, 400, { message: 'Attendi qualche secondo e riprova. Se il problema continua, contattaci direttamente.' });
   if (typeof data.requestId !== 'string' || !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(data.requestId)) return sendJson(response, 400, { message: 'Ricarica la pagina e riprova.' });
   if (kind === 'conditional') data.funnel = 'conditional';
-  const errors = kind === 'heat-pump' ? validateHeatPumpRequest(data) : kind === 'conditional' ? validateFunnel(data) : kind === 'contact' ? validateContact(data) : validateQuote(data);
+  const errors = kind === 'heat-pump-short' ? validateShortRequest(data) : kind === 'heat-pump' ? validateHeatPumpRequest(data) : kind === 'conditional' ? validateFunnel(data) : kind === 'contact' ? validateContact(data) : validateQuote(data);
   if (errors.length) return sendJson(response, 400, { message: errors[0].message });
-  const text = kind === 'heat-pump' ? heatPumpRequestText(data) : kind === 'contact' ? contactText(data) : quoteText(data);
+  const summary = kind === 'heat-pump-short' ? shortRequestText(data) : kind === 'heat-pump' ? heatPumpRequestText(data) : kind === 'contact' ? contactText(data) : quoteText(data);
+  const text = summary + (data.attribution ? '\n\n' + attributionText(data.attribution) : '');
 
   const apiKey = process.env.RESEND_API_KEY;
   const from = process.env.QUOTE_FROM_EMAIL;
-  if (!apiKey || !from) return sendJson(response, 503, { message: 'L’invio automatico non è ancora disponibile. Puoi inviare il riepilogo usando WhatsApp o email qui sotto.' });
+  if (!apiKey || !from) return sendJson(response, 503, { message: 'Il modulo non riesce a inviare la richiesta. Riprova oppure chiamaci al +39 375 552 1420 o scrivi a info@green-flux.com.' });
 
   const now = Date.now();
   for (const [key, entry] of attempts) if (entry.expires < now) attempts.delete(key);
@@ -79,8 +82,8 @@ export default async function handler(request, response) {
     });
     const receipt = await result.json().catch(() => null);
     if (!result.ok || !receipt?.id) return sendJson(response, 502, { message: 'Non abbiamo ricevuto conferma dell’invio. I dati sono ancora nel modulo: riprova oppure usa i contatti qui sotto.' });
-    const confirmationStatus = data.email.trim() ? await sendCustomerConfirmation(apiKey, from, data, text) : 'not_requested';
-    return sendJson(response, 200, { accepted: true, receipt: { id: data.requestId, kind }, confirmationStatus });
+    const confirmationStatus = data.email.trim() ? await sendCustomerConfirmation(apiKey, from, data, summary) : 'not_requested';
+    return sendJson(response, 200, { accepted: true, receipt: { id: data.requestId, kind: kind === 'heat-pump-short' ? 'heat-pump' : kind }, confirmationStatus });
   } catch {
     return sendJson(response, 502, { message: 'La conferma dell’invio non è arrivata. Puoi riprovare o inviare il riepilogo tramite i contatti qui sotto.' });
   }
@@ -93,7 +96,7 @@ async function sendCustomerConfirmation(apiKey, from, data, requestText) {
     const result = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json', 'Idempotency-Key': `greenflux-confirmation-${data.requestId}` },
-      body: JSON.stringify({ from, to: [data.email.trim()], ...customerConfirmation(data.name, requestText) }),
+      body: JSON.stringify({ from, to: [data.email.trim()], ...customerConfirmation(data.name, requestText, { heatPump: ['heat-pump', 'heat-pump-short'].includes(data.kind) }) }),
       // Together with the primary 10s timeout this stays inside the form's 15s limit.
       signal: AbortSignal.timeout(3000),
     });

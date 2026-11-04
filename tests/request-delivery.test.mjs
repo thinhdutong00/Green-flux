@@ -130,6 +130,6 @@ test('The email endpoint validates all active forms and sends their complete sum
 test('The thank-you URL is available for preview and excluded from indexing and the sitemap', () => {
   const html = readFileSync('public/thank-you/index.html', 'utf8');
   assert(html.includes('name="robots" content="noindex, follow"'));
-  assert(html.includes('entro 24 ore.'));
+  assert(html.includes('Da questa pagina non possiamo confermare un invio.'));
   assert(!readFileSync('public/sitemap.xml', 'utf8').includes('/thank-you/'));
 });
