@@ -32,9 +32,10 @@ test('Every page has an editorial audit record and no imported commercial promis
   assert(audit.pages[route],route);
   const text=textOnly(html);
   assert(!/VenetaGreen|preventivo gratuito|comuni coperti|regioni servite|squadra tecnica|progetti realizzati|giugno 2026|manutenzione programmata|batterie di accumulo|cappotto/i.test(text),route);
-  // The owner requested named incentives in this conditional card and its landing copy.
+  // The owner approved the conditional card and, on 2026-11-04, the sourced incentives FAQ.
   const incentiveCard=['/servizi/pompe-calore/','/landing/pompe-calore/'].includes(route)?html.match(/<a\b[^>]*id="incentivi"[^>]*>[\s\S]*?<\/a>/)?.[0] ?? '':'';
-  assert(!/Conto Termico|Ecobonus/i.test(textOnly(html.replace(incentiveCard,''))),route);
+  const incentiveFaq=route==='/servizi/pompe-calore/'?html.match(/<details\b[^>]*id="faq-incentivi"[^>]*>[\s\S]*?<\/details>/)?.[0] ?? '':'';
+  assert(!/Conto Termico|Ecobonus/i.test(textOnly(html.replace(incentiveCard,'').replace(incentiveFaq,''))),route);
   if(incentiveCard){
    assert(/Verifichiamo/.test(textOnly(incentiveCard)),route);
    assert(!/\d\s*%|€|garantit[oa]/i.test(textOnly(incentiveCard)),route);
