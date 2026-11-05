@@ -5,6 +5,28 @@
   "outputDirectory": "dist",
   "redirects": [
     {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "green-flux-nine.vercel.app"
+        }
+      ],
+      "destination": "https://green-flux.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.green-flux.com"
+        }
+      ],
+      "destination": "https://green-flux.com/:path*",
+      "permanent": true
+    },
+    {
       "source": "/blog/",
       "destination": "/servizi/",
       "permanent": true

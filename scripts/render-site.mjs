@@ -9,7 +9,7 @@ export let content = JSON.parse(await readFile(join(root, 'content/site-content.
 let profile = JSON.parse(await readFile(join(root, 'content/green-flux-profile.json'), 'utf8'));
 const previousRoutes = JSON.parse(await readFile(join(root, 'content/previous-routes.json'), 'utf8'));
 let imageDimensions = JSON.parse(await readFile(join(root, 'content/image-dimensions.json'), 'utf8'));
-const origin = 'https://green-flux-nine.vercel.app';
+export const origin = 'https://green-flux.com';
 const supportRoute = '/servizi/progettazione-e-supporto/';
 const landingCopies = [{ route: '/landing/pompe-calore/', template: 'heat-pump-landing-copy', title: 'Pompe di calore progettate per la tua casa' }];
 const featuredServices = () => [...content.services]
@@ -212,7 +212,14 @@ export async function renderSite() {
   await writeFile(join(root,'content/redirects.json'),JSON.stringify(redirects,null,2)+'\n');
   await writeFile(join(publicRoot,'_redirects'),Object.entries(redirects).flatMap(([from,to])=>[`${from} ${to} 301`,`${from.slice(0,-1)} ${to} 301`]).join('\n')+'\n');
   const vercel=JSON.parse(await readFile(join(root,'vercel.json'),'utf8'));
-  vercel.redirects=Object.entries(redirects).flatMap(([source,destination])=>[source,source.slice(0,-1)].map(source=>({source,destination,permanent:true})));
+  // Consolidate public aliases without redirecting private deployment previews.
+  const hostRedirects = ['green-flux-nine.vercel.app', 'www.green-flux.com'].map(host => ({
+    source: '/:path*',
+    has: [{ type: 'host', value: host }],
+    destination: `${origin}/:path*`,
+    permanent: true
+  }));
+  vercel.redirects=[...hostRedirects,...Object.entries(redirects).flatMap(([source,destination])=>[source,source.slice(0,-1)].map(source=>({source,destination,permanent:true})))];
   await writeFile(join(root,'vercel.json'),JSON.stringify(vercel,null,2)+'\n');
   await writeFile(join(root,'docs/content-audit.json'),JSON.stringify({reviewed_at:content.reviewed_at,total_pages:Object.keys(audit).length,canonical_pages:routes.length,source_url:content.company_source,pages:audit},null,2)+'\n');
   await writeFile(join(publicRoot,'llms.txt'),'# Green Flux\n\nImpianti residenziali, terziari e industriali.\n\n'+[['/','Home'],['/servizi/','Impianti e servizi'],...content.services.map(s=>[serviceRoute(s.slug),s.title]),[supportRoute,'Progettazione e supporto'],['/chi-siamo/','Chi siamo'],['/contatti/','Contatti']].map(([u,t])=>`- [${t}](${origin+u})`).join('\n')+'\n');

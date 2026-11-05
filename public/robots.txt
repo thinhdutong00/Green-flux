@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://green-flux-nine.vercel.app/sitemap.xml
+Sitemap: https://green-flux.com/sitemap.xml
