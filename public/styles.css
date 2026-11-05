@@ -653,17 +653,6 @@ html.quote-open, html.quote-open body { overflow: hidden; overscroll-behavior: n
 .home-green-flux .services-grid > .service-item { grid-column:auto; }
 .home-green-flux .service-inquiry { font-size:14px; }
 .home-green-flux .service-item .support-benefit { margin:15px 0 10px; color:var(--lime); font-size:19px; font-weight:600; line-height:1.45; }
-.ecosystem-panel { width:min(1180px,100%); margin:56px auto 0; padding:42px; border:1px solid var(--line); border-radius:26px; background:var(--paper); }
-.ecosystem-heading { max-width:750px; }
-.ecosystem-heading h3 { margin:0 0 20px; font-size:clamp(30px,3vw,44px); line-height:1.12; letter-spacing:-.035em; }
-.ecosystem-heading > p:last-child { margin:0; color:var(--muted); font-size:17px; line-height:1.65; }
-.ecosystem-connections { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:30px; margin-top:36px; }
-.ecosystem-connections article { padding-top:24px; border-top:1px solid var(--line); }
-.ecosystem-connections article > span { color:var(--muted); font-size:12px; font-weight:800; letter-spacing:.065em; text-transform:uppercase; }
-.ecosystem-connections h4 { margin:14px 0 12px; font-size:21px; line-height:1.35; letter-spacing:-.02em; }
-.ecosystem-connections p { margin:0; color:var(--muted); font-size:15px; line-height:1.65; }
-.ecosystem-link { display:inline-flex; align-items:center; gap:12px; min-height:44px; margin-top:26px; font-size:15px; font-weight:800; }
-.ecosystem-link:hover { text-decoration:underline; text-underline-offset:4px; }
 @media (max-width:991px) {
  .home-green-flux .hero { padding-top:160px; }
  .home-green-flux .hero-lead { max-width:580px; }
@@ -673,8 +662,6 @@ html.quote-open, html.quote-open body { overflow: hidden; overscroll-behavior: n
  .reviews-heading { grid-template-columns:1fr; align-items:start; }
  .reviews-summary { min-width:0; width:min(360px,100%); }
  .review-card { flex-basis:calc((100% - 24px) / 2); }
- .ecosystem-panel { padding:30px; }
- .ecosystem-connections { gap:24px; }
 }
 @media (max-width:680px) {
  .home-green-flux .hero { min-height:790px; padding:136px 20px 54px; }
@@ -693,9 +680,6 @@ html.quote-open, html.quote-open body { overflow: hidden; overscroll-behavior: n
  .review-card { flex-basis:88%; min-height:310px; padding:26px; border-radius:22px; }
  .review-card blockquote p { font-size:17px; }
  .review-controls { justify-content:flex-start; }
- .ecosystem-panel { margin-top:32px; padding:28px 24px; border-radius:22px; }
- .ecosystem-connections { grid-template-columns:minmax(0,1fr); gap:26px; }
- .ecosystem-heading > p:last-child { font-size:16px; }
 }
 /* Clear local service intent and the next step in the existing hero. */
 .home-green-flux .hero h1{font-size:clamp(34px,4.4vw,64px);line-height:1.13;max-width:1060px}.hero-next-step{font-size:15px;line-height:1.65;color:#edf1e6;max-width:650px;margin:20px 0 0}.hero-services{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:18px}.hero-services a{font-size:14px;color:#fff;text-underline-offset:5px}.reviews-summary small{font-size:11px;font-weight:400}.home-green-flux .hero-content{padding-bottom:55px}.home-green-flux .experience-proof{margin-top:26px}@media(max-width:680px){.home-green-flux .hero h1{font-size:36px}.hero-next-step{font-size:14px}.home-green-flux .hero-content{padding-top:0}.hero-services{gap:10px 18px}}
