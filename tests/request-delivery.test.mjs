@@ -112,7 +112,7 @@ test('The email endpoint validates all active forms and sends their complete sum
     const confirmations = outbound.filter(message => message.to[0] === 'test@example.com');
     assert(business[2].text.includes(contact.notes));
     assert.equal(business.length, 3); assert.equal(confirmations.length, 2);
-    for (const message of confirmations) { assert.equal(message.reply_to, 'info@green-flux.com'); assert(message.text.includes('entro 24 ore')); }
+    for (const message of confirmations) { assert.equal(message.reply_to, 'info@green-flux.com'); assert(!message.text.includes('24 ore')); assert(message.text.includes('dopo questo primo contatto'));  }
     assert(confirmations[0].text.includes(quoteText(conditional))); assert(confirmations[1].text.includes(contact.notes));
     for (const invalid of [{ ...heatPump(), phone: '' }, { ...heatPump(), privacy: false }, { ...heatPump(), heating: 'arbitrario' }, { ...conditional, answers: {} }, { ...contact, privacy: false }, { ...contact, subject: 'arbitrario' }, { ...heatPump(), kind: 'arbitrario' }]) assert.equal((await invoke(invalid)).code, 400);
     assert.equal(outbound.length, 5);

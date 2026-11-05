@@ -68,7 +68,7 @@ if (form) {
     } finally {
       sending = false;
       button.disabled = completed;
-      button.textContent = completed ? 'Richiesta inviata' : 'Richiedi una valutazione';
+      button.textContent = completed ? 'Richiesta inviata' : 'Richiedi un sopralluogo';
       form.removeAttribute('aria-busy');
     }
   });

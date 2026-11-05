@@ -1,5 +1,5 @@
 {
-  "reviewed_at": "2026-09-15",
+  "reviewed_at": "2026-11-05",
   "company_source": "https://www.green-flux.com/",
   "services": [
     {
@@ -8,7 +8,7 @@
       "quote": "pompe-di-calore",
       "category": "Riscaldamento e comfort",
       "image": "images/heat-pump-home-1600.webp",
-      "imageAlt": "Pompa di calore esterna accanto a un’abitazione",
+      "imageAlt": "Immagine illustrativa: pompa di calore esterna accanto a un’abitazione",
       "summary": "Riscaldamento e acqua calda, con una soluzione dimensionata sull’edificio e sull’impianto esistente.",
       "lead": "Pompe di calore aria-acqua per sostituire la caldaia: riscaldamento, acqua calda e verifica dei termosifoni. Progettazione e installazione Green Flux.",
       "introTitle": "Più calore dell’elettricità che consuma. Come è possibile?",
@@ -101,8 +101,8 @@
       ],
       "home": {
         "order": 1,
-        "benefit": "Il comfort che ti fa sentire a casa.",
-        "proof": "Riscaldamento e acqua calda con una soluzione dimensionata sull’edificio, sui radiatori o sugli altri sistemi che distribuiscono il calore."
+        "benefit": "Sostituire la caldaia con una pompa di calore.",
+        "proof": "Riscaldamento e acqua calda, con una soluzione dimensionata sull’edificio e sull’impianto esistente."
       }
     },
     {
@@ -111,13 +111,14 @@
       "quote": "fotovoltaico",
       "category": "Energia solare",
       "image": "images/solar-home-1600.webp",
-      "imageAlt": "Abitazione con pannelli fotovoltaici sul tetto",
-      "summary": "Produzione di elettricità dal sole per abitazioni, attività e immobili produttivi.",
-      "lead": "Green Flux progetta e installa impianti fotovoltaici per il settore residenziale, terziario e industriale. Un unico servizio, studiato sui diversi profili di consumo.",
-      "introTitle": "Quanto consumi e quando lo consumi",
+      "imageAlt": "Immagine illustrativa: abitazione con pannelli fotovoltaici sul tetto",
+      "summary": "Fotovoltaico per casa e attività, dimensionato su tetto, bollette e orari di consumo.",
+      "lead": "Vuoi produrre elettricità per la casa o la tua attività? Partiamo dal tetto e dalle bollette per capire quale impianto installare e quanta energia puoi usare quando viene prodotta.",
+      "introTitle": "Il fotovoltaico si dimensiona sui tuoi consumi e sul tetto",
       "overview": [
-        "I moduli fotovoltaici trasformano la luce solare in energia elettrica. Per definire il progetto contano sia la superficie utilizzabile sia il fabbisogno dell’edificio: la stessa copertura può rispondere a esigenze molto diverse.",
-        "Per una casa è utile capire le abitudini della famiglia e gli impianti che utilizzano elettricità. Per un’attività diventano centrali gli orari di lavoro e l’andamento dei consumi. Green Flux segue il progetto con il supporto per pratiche e autorizzazioni previsto dalla propria offerta."
+        "Una bolletta ci dice quanta elettricità usi. Gli orari in cui la usi aiutano a capire quanta produzione solare puoi consumare direttamente: una casa abitata soprattutto la sera ha esigenze diverse da un ufficio aperto di giorno.",
+        "Al sopralluogo controlliamo esposizione e ombre, superficie disponibile, accesso alla copertura e percorso dei collegamenti elettrici. Se prevedi una pompa di calore o altri nuovi utilizzi, li consideriamo prima di scegliere la potenza.",
+        "Un accumulo può conservare parte dell’energia prodotta per usarla più tardi. È un’opzione da valutare sui consumi e sul costo complessivo; il fotovoltaico può funzionare anche senza."
       ],
       "situations": [
         [
@@ -133,23 +134,23 @@
           "Copertura, disponibilità degli spazi e profilo dei consumi sono il punto di partenza di un progetto coordinato con l’attività."
         ]
       ],
-      "checksTitle": "Cosa serve per dimensionare il progetto",
+      "checksTitle": "Cosa controlliamo prima della proposta",
       "checks": [
         [
-          "Copertura disponibile",
-          "Orientamento, ombre, ingombri e condizioni del tetto delimitano la superficie da valutare."
+          "Tetto e accesso",
+          "Verifichiamo spazio, orientamento, ombre e condizioni della copertura. Anche l’accesso al tetto e la posa influiscono sul lavoro."
         ],
         [
-          "Profilo di consumo",
-          "Le bollette e, quando disponibili, i dati orari aiutano a distinguere il consumo totale da quello contemporaneo alla produzione."
+          "Consumi e orari",
+          "Guardiamo le bollette e quando utilizzi l’elettricità. Se disponibili, i dati orari aiutano a dimensionare impianto ed eventuale accumulo."
         ],
         [
-          "Evoluzione degli utilizzi",
-          "Una futura pompa di calore o nuovi carichi elettrici vanno segnalati prima di definire l’impianto."
+          "Inverter e collegamenti",
+          "Definiamo dove collocare i componenti, come raggiungere il quadro elettrico e quali adeguamenti servono."
         ],
         [
-          "Collegamenti e pratiche",
-          "Spazi tecnici, quadro elettrico e adempimenti fanno parte delle valutazioni del progetto."
+          "Costo e attività incluse",
+          "La proposta deve distinguere moduli, inverter, eventuale accumulo, installazione, collegamenti e pratiche. Lavori aggiuntivi e responsabilità si chiariscono prima dell’intervento."
         ]
       ],
       "prepare": [
@@ -160,37 +161,44 @@
       ],
       "faqs": [
         [
-          "Casa e azienda richiedono due servizi diversi?",
-          "La tecnologia è la stessa; cambiano dimensionamento, spazi, consumi e organizzazione dell’intervento. Green Flux opera in entrambi gli ambiti."
+          "L’accumulo è obbligatorio?",
+          "No. Si valuta se una parte dell’energia prodotta può essere conservata e utilizzata più tardi, in base ai tuoi consumi. Confrontiamo la soluzione con e senza accumulo prima di inserirlo nella proposta."
         ],
         [
-          "Bastano i consumi annuali per scegliere la potenza?",
-          "Sono un primo dato utile. Il progetto considera anche il momento in cui si consuma, la copertura disponibile e gli utilizzi futuri."
+          "Quanto costa installare un impianto fotovoltaico?",
+          "Dipende dalla potenza, dai componenti, dall’eventuale accumulo e dai lavori di posa e collegamento. Accesso al tetto, distanze e adeguamenti elettrici possono cambiare il costo: il sopralluogo serve anche a definirli."
         ],
         [
-          "Fotovoltaico e solare termico sono la stessa cosa?",
-          "Il fotovoltaico produce elettricità. Il solare termico raccoglie il calore del sole per scaldare acqua: rispondono a esigenze diverse."
+          "Installate anche per attività e aziende?",
+          "Sì. Per uffici, attività e immobili produttivi valutiamo copertura, consumi e orari di lavoro, coordinando l’installazione con le esigenze dell’attività."
         ],
         [
-          "Posso chiedere una valutazione insieme alla pompa di calore?",
-          "Sì. Entrambi rientrano nei campi d’intervento Green Flux e possono essere affrontati nello stesso progetto."
+          "Posso abbinarlo a una pompa di calore?",
+          "Sì, possiamo valutare i due impianti nello stesso progetto. Contano il fabbisogno della pompa di calore e quanta produzione fotovoltaica è disponibile nei momenti in cui funziona."
         ]
       ],
       "related": [
         "pompe-calore",
-        "solare-termico"
+        "impianti-completi"
       ],
       "sources": [
         {
-          "label": "GSE · il solare fotovoltaico",
-          "url": "https://www.gse.it/documenti_site/Documenti%20GSE/Rapporti%20statistici/GSE%20-%20Solare%20Fotovoltaico%20-%20Rapporto%20Statistico%202022.pdf"
+          "label": "GSE · autoconsumo fotovoltaico",
+          "url": "https://autoconsumo.psn.gse.it/"
+        },
+        {
+          "label": "ABB · dimensionare l’accumulo sui consumi",
+          "url": "https://cataloghi.it.abb.com/view/734148453/178/"
         }
       ],
       "home": {
         "order": 2,
-        "benefit": "Più energia prodotta da te.",
-        "proof": "Trasforma il sole in elettricità da usare in casa o nella tua attività. Il progetto parte da esposizione, consumi e orari di utilizzo."
-      }
+        "benefit": "Produrre elettricità per casa o attività.",
+        "proof": "Fotovoltaico per casa e attività, dimensionato su tetto, bollette e orari di consumo."
+      },
+      "h1": "Impianti fotovoltaici a Padova",
+      "seoTitle": "Fotovoltaico a Padova: installazione e sopralluogo",
+      "metaDescription": "Valutiamo tetto, consumi e orari di utilizzo per progettare il tuo fotovoltaico a Padova. Accumulo se utile al progetto. Richiedi un sopralluogo."
     },
     {
       "slug": "climatizzazione",
@@ -198,13 +206,13 @@
       "quote": "condizionatori",
       "category": "Riscaldamento e comfort",
       "image": "images/air-conditioning-1600.webp",
-      "imageAlt": "Climatizzatore a parete in un soggiorno",
-      "summary": "Climatizzazione degli ambienti con potenza, posizione e regolazione adatte agli spazi.",
-      "lead": "Green Flux si occupa di condizionatori per gli ambienti residenziali e di lavoro. Il progetto parte dalle stanze da trattare e da come vengono utilizzate.",
-      "introTitle": "Comfort stanza per stanza",
+      "imageAlt": "Immagine illustrativa: climatizzatore a parete in un soggiorno",
+      "summary": "Installazione e sostituzione di climatizzatori per una stanza, più ambienti o un ufficio.",
+      "lead": "Per una stanza, più ambienti o un ufficio, scegliamo il climatizzatore in base agli spazi e all’uso quotidiano. Ci occupiamo anche della sostituzione di apparecchi esistenti, verificando i collegamenti.",
+      "introTitle": "Dove serve fresco, e come portarlo nelle stanze",
       "overview": [
-        "Un condizionatore raffresca gli ambienti trasferendo calore verso l’esterno. I modelli a pompa di calore possono anche riscaldare, in funzione delle caratteristiche dell’apparecchio e delle condizioni d’uso.",
-        "La scelta non si esaurisce nella potenza indicata sulla macchina. Disposizione delle stanze, esposizione al sole, persone presenti e posizione delle unità influiscono sul risultato. Un progetto considera anche il percorso dei collegamenti e lo scarico della condensa."
+        "Partiamo dagli ambienti che vuoi climatizzare: dimensioni, esposizione al sole, vetrate e orari di utilizzo. In una camera conta anche l’uso notturno; in ufficio entrano in gioco persone e apparecchiature presenti.",
+        "Prima di scegliere le unità controlliamo dove installarle e come collegarle. Flusso d’aria, rumore, tubazioni e scarico della condensa fanno parte della valutazione, anche quando sostituiamo un vecchio condizionatore."
       ],
       "situations": [
         [
@@ -220,23 +228,23 @@
           "Presenze, apparecchiature e orari di apertura contribuiscono al fabbisogno di climatizzazione."
         ]
       ],
-      "checksTitle": "Le scelte che incidono sul comfort",
+      "checksTitle": "Le verifiche per installare il climatizzatore",
       "checks": [
         [
-          "Potenza utile",
-          "Dimensioni, vetrate, esposizione e carichi interni servono a valutare la potenza richiesta."
+          "Stanze e potenza",
+          "Metri quadrati, altezza, esposizione e isolamento aiutano a scegliere la potenza. Per più stanze valutiamo quali devono funzionare contemporaneamente."
         ],
         [
-          "Posizione delle unità",
-          "Il flusso d’aria va considerato rispetto a letti, scrivanie e zone di permanenza."
+          "Posizione e rumore",
+          "Scegliamo la posizione delle unità considerando letti, scrivanie, accesso per la manutenzione e vicinanza ad altri ambienti. Verifichiamo anche la rumorosità prevista."
         ],
         [
-          "Collegamenti",
-          "Occorre valutare unità esterna, percorso delle tubazioni e scarico della condensa."
+          "Tubazioni e condensa",
+          "Controlliamo il percorso tra unità interne ed esterna, lo scarico della condensa e l’alimentazione elettrica. Le predisposizioni esistenti vanno verificate prima di riutilizzarle."
         ],
         [
-          "Uso e regolazione",
-          "Orari, temperatura desiderata e necessità di gestire separatamente le stanze orientano la configurazione."
+          "Lavori e costo",
+          "Numero di unità, lunghezza dei collegamenti, accessibilità e opere necessarie incidono sul preventivo. La proposta chiarisce cosa comprende l’installazione."
         ]
       ],
       "prepare": [
@@ -247,16 +255,24 @@
       ],
       "faqs": [
         [
-          "È sufficiente scegliere in base ai metri quadrati?",
-          "La superficie è un dato iniziale. Esposizione, finestre, isolamento e utilizzo dell’ambiente possono modificare il fabbisogno."
+          "Potete sostituire un condizionatore esistente?",
+          "Sì. Verifichiamo apparecchi, alimentazione e collegamenti per capire cosa può essere riutilizzato e quali lavori servono per la nuova installazione."
         ],
         [
-          "Un condizionatore cambia anche l’aria della stanza?",
-          "Il normale split ricircola l’aria interna. Il ricambio con l’esterno è una funzione da affrontare con una soluzione di ventilazione adatta."
+          "Meglio una o più unità interne?",
+          "Dipende dalle stanze da servire e da come le usi. Una sola unità non distribuisce necessariamente l’aria in modo adeguato in locali separati: valutiamo pianta e posizioni disponibili."
         ],
         [
-          "Posso usarlo anche per riscaldare?",
-          "Va scelta una macchina con funzione a pompa di calore e verificata la sua adeguatezza agli ambienti e alle condizioni d’uso."
+          "Quanto costa l’installazione?",
+          "Contano numero e tipo di unità, tubazioni, scarichi, collegamenti elettrici e accessibilità. Il sopralluogo permette di descrivere il lavoro e preparare una proposta adatta agli ambienti."
+        ],
+        [
+          "Il climatizzatore può anche riscaldare?",
+          "I modelli a pompa di calore possono farlo. Verifichiamo se questa funzione è adatta agli ambienti e alle condizioni in cui intendi utilizzarla."
+        ],
+        [
+          "Lo split ricambia l’aria?",
+          "Un normale split ricircola l’aria interna. Per il ricambio con l’esterno si valuta una soluzione di ventilazione dedicata."
         ]
       ],
       "related": [
@@ -271,13 +287,20 @@
         {
           "label": "ENEA · raffrescamento e pompe di calore",
           "url": "https://www.efficienzaenergetica.enea.it/servizi-per/cittadini/interventi-di-efficienza-e-risparmio-energetico-nelle-abitazioni/impianti/raffrescamento/tecnologie-e-etichetta-energetica-raffrescamento/solo-freddo-e-pompe-di-calore.html"
+        },
+        {
+          "label": "ENEA · installazione e uso del climatizzatore",
+          "url": "https://www.efficienzaenergetica.enea.it/servizi-per/cittadini/interventi-di-efficienza-e-risparmio-energetico-nelle-abitazioni/impianti/raffrescamento/consigli-d-uso.html"
         }
       ],
       "home": {
         "order": 6,
-        "benefit": "Fuori fa caldo. Dentro stai bene.",
-        "proof": "Potenza, posizione delle unità e regolazione si scelgono in base alle stanze, per portare il fresco dove vivi e lavori."
-      }
+        "benefit": "Installare o sostituire il climatizzatore.",
+        "proof": "Installazione e sostituzione di climatizzatori per una stanza, più ambienti o un ufficio."
+      },
+      "h1": "Installazione climatizzatori a Padova",
+      "seoTitle": "Climatizzatori a Padova: installazione e sostituzione",
+      "metaDescription": "Climatizzatori per casa e ufficio a Padova. Valutiamo stanze, posizione delle unità e collegamenti, anche per sostituire un impianto. Richiedi un sopralluogo."
     },
     {
       "slug": "caldaie",
@@ -285,13 +308,13 @@
       "quote": "caldaie",
       "category": "Riscaldamento e comfort",
       "image": "images/boiler-installation-1600.webp",
-      "imageAlt": "Caldaia moderna installata in un locale tecnico domestico",
-      "summary": "Generazione di calore per riscaldamento e acqua calda, da valutare insieme all’impianto esistente.",
-      "lead": "La sostituzione del generatore è uno degli interventi da cui può partire Green Flux. Il servizio mette in relazione la nuova caldaia con distribuzione, regolazione e necessità dell’immobile.",
-      "introTitle": "Sostituire la caldaia significa guardare anche il resto dell’impianto",
+      "imageAlt": "Immagine illustrativa: caldaia moderna installata in un locale tecnico domestico",
+      "summary": "Sostituzione della caldaia con verifica di radiatori, acqua calda, scarichi e collegamenti.",
+      "lead": "Se devi sostituire la caldaia, controlliamo l’impianto attuale e le esigenze di acqua calda. La proposta comprende i lavori da definire su collegamenti, scarichi e regolazione.",
+      "introTitle": "Prima della nuova caldaia, controlliamo l’impianto",
       "overview": [
-        "La caldaia produce calore per il circuito di riscaldamento e, secondo la configurazione, per l’acqua calda sanitaria. Nei modelli a condensazione viene recuperata anche parte del calore contenuto nei fumi.",
-        "Per una sostituzione occorre conoscere il generatore attuale, la distribuzione del calore e gli spazi tecnici. Collegamenti, evacuazione dei fumi e gestione della condensa sono elementi da valutare nel progetto, insieme alla regolazione degli ambienti."
+        "Il modello della vecchia caldaia è un punto di partenza. Per scegliere quella nuova servono anche informazioni su radiatori, temperature di lavoro, bagni e persone che usano l’acqua calda.",
+        "Al sopralluogo verifichiamo la posizione del generatore, i collegamenti, lo scarico dei fumi e la gestione della condensa. Possiamo valutare anche una pompa di calore, se vuoi confrontare le alternative per la tua casa."
       ],
       "situations": [
         [
@@ -307,7 +330,7 @@
           "Stai decidendo come rinnovare il riscaldamento e vuoi confrontare la caldaia con una pompa di calore sul tuo edificio."
         ]
       ],
-      "checksTitle": "I punti del progetto di sostituzione",
+      "checksTitle": "Cosa verifichiamo per la sostituzione",
       "checks": [
         [
           "Generatore e terminali",
@@ -342,8 +365,8 @@
           "Sì. Entrambe le tecnologie rientrano negli ambiti Green Flux; la valutazione tiene conto dell’edificio, dei terminali e dei collegamenti necessari."
         ],
         [
-          "Quali lavori sono compresi?",
-          "Il perimetro deve essere definito nella proposta: generatore, collegamenti, eventuali adeguamenti e servizi richiesti vanno chiariti insieme."
+          "Cosa comprende il preventivo di sostituzione?",
+          "La proposta indica caldaia, posa, collegamenti e adeguamenti necessari. Verifichiamo anche scarico dei fumi, condensa e regolazione, così puoi capire quali lavori sono compresi e quali eventuali attività restano separate."
         ]
       ],
       "related": [
@@ -358,9 +381,12 @@
       ],
       "home": {
         "order": 5,
-        "benefit": "Il calore su cui conti ogni giorno.",
-        "proof": "Riscaldamento e, nella configurazione adatta, acqua calda sanitaria. La scelta considera l’impianto esistente, i collegamenti e la regolazione degli ambienti."
-      }
+        "benefit": "Sostituire la caldaia e verificare i collegamenti.",
+        "proof": "Sostituzione della caldaia con verifica di radiatori, acqua calda, scarichi e collegamenti."
+      },
+      "h1": "Installazione e sostituzione caldaie a Padova",
+      "seoTitle": "Sostituzione caldaia a Padova: installazione",
+      "metaDescription": "Devi sostituire la caldaia a Padova? Verifichiamo riscaldamento, acqua calda, scarichi e collegamenti prima della proposta. Richiedi un sopralluogo."
     },
     {
       "slug": "biomassa",
@@ -368,10 +394,10 @@
       "quote": "biomassa",
       "category": "Riscaldamento e comfort",
       "image": "biomassa-750.webp",
-      "imageAlt": "Generatore di calore a biomassa",
-      "summary": "Impianti termici a biomassa, con attenzione a combustibile, spazi e gestione quotidiana.",
-      "lead": "La biomassa rientra nei campi d’intervento Green Flux. Il progetto deve considerare il generatore, il suo collegamento all’impianto e le condizioni dell’immobile.",
-      "introTitle": "Una scelta che coinvolge anche la gestione del combustibile",
+      "imageAlt": "Immagine illustrativa: generatore di calore a biomassa",
+      "summary": "Riscaldamento a legna o pellet, con verifica di deposito, sistema fumario e collegamenti.",
+      "lead": "Stai valutando legna o pellet per riscaldare l’immobile? Controlliamo il fabbisogno, gli spazi per il combustibile e il sistema fumario prima di scegliere il generatore.",
+      "introTitle": "Spazio per il generatore e per il combustibile",
       "overview": [
         "Legna e pellet sono esempi di combustibili utilizzati dai generatori a biomassa. La scelta di un impianto riguarda sia il calore necessario sia l’organizzazione pratica: approvvigionamento, deposito e accesso agli apparecchi.",
         "Prima di definire una soluzione è utile distinguere il riscaldamento di un ambiente dal collegamento a un circuito che serve l’edificio. Il tipo di generatore e la sua installabilità devono essere valutati per il contesto specifico."
@@ -427,6 +453,10 @@
         [
           "Cosa devo chiarire nella proposta?",
           "Tipo di generatore, funzioni servite, collegamenti, opere necessarie e gestione ordinaria dell’apparecchio."
+        ],
+        [
+          "Da cosa dipende il costo dell’installazione?",
+          "Contano il generatore, gli spazi da predisporre per il combustibile, il sistema fumario e i collegamenti all’impianto. Prima della proposta verifichiamo anche i requisiti applicabili nel luogo dell’intervento."
         ]
       ],
       "related": [
@@ -437,9 +467,12 @@
       "home": {
         "order": 90,
         "visible": false,
-        "benefit": "Il piacere del calore, con legna o pellet.",
-        "proof": "Dalla stufa al sistema che riscalda l’edificio: valutiamo il fabbisogno insieme a deposito del combustibile, spazi e gestione quotidiana."
-      }
+        "benefit": "Valutare il riscaldamento a legna o pellet.",
+        "proof": "Riscaldamento a legna o pellet, con verifica di deposito, sistema fumario e collegamenti."
+      },
+      "h1": "Impianti a biomassa a Padova",
+      "seoTitle": "Impianti a biomassa a Padova",
+      "metaDescription": "Riscaldamento a legna o pellet: valutiamo generatore, deposito, sistema fumario e collegamenti. Richiedi una verifica per il tuo immobile a Padova."
     },
     {
       "slug": "solare-termico",
@@ -447,10 +480,10 @@
       "quote": "solare-termico",
       "category": "Energia solare",
       "image": "solare-termico-750.webp",
-      "imageAlt": "Collettori di un impianto solare termico",
-      "summary": "Utilizzo del calore del sole per la produzione di acqua calda.",
-      "lead": "Green Flux include il solare termico tra le soluzioni impiantistiche. La valutazione parte dal fabbisogno di acqua calda e dagli spazi per collettori e serbatoio.",
-      "introTitle": "Dal sole all’acqua calda",
+      "imageAlt": "Immagine illustrativa: collettori di un impianto solare termico",
+      "summary": "Collettori solari e accumulo termico per contribuire alla produzione di acqua calda.",
+      "lead": "Per usare il sole nella produzione di acqua calda, partiamo da quante persone la utilizzano e dagli spazi disponibili. Valutiamo collettori, serbatoio e collegamento con il generatore esistente.",
+      "introTitle": "Quanta acqua calda serve nella tua giornata",
       "overview": [
         "I collettori solari termici raccolgono energia dal sole e la trasferiscono sotto forma di calore. Il loro impiego riguarda la produzione di acqua calda; il fotovoltaico, invece, produce elettricità.",
         "La progettazione mette in relazione esposizione dei collettori, volume di acqua richiesto, accumulo termico e generatore già presente. È importante descrivere come varia il fabbisogno durante la giornata e nel corso dell’anno."
@@ -506,6 +539,10 @@
         [
           "Può essere integrato con un altro generatore?",
           "Il collegamento con l’impianto esistente è uno dei punti da valutare, tenendo conto della configurazione e del fabbisogno."
+        ],
+        [
+          "Cosa incide sul costo del solare termico?",
+          "Numero e posizione dei collettori, capacità del serbatoio, distanze e collegamento con il generatore esistente determinano i lavori. Il sopralluogo serve a controllare questi elementi prima della proposta."
         ]
       ],
       "related": [
@@ -521,9 +558,12 @@
       "home": {
         "order": 91,
         "visible": false,
-        "benefit": "Il sole, anche nell’acqua calda.",
-        "proof": "I collettori trasferiscono il calore del sole all’acqua. Esposizione, fabbisogno e integrazione con il generatore esistente guidano il dimensionamento."
-      }
+        "benefit": "Usare il sole per l’acqua calda.",
+        "proof": "Collettori solari e accumulo termico per contribuire alla produzione di acqua calda."
+      },
+      "h1": "Impianti solari termici a Padova",
+      "seoTitle": "Solare termico a Padova | Acqua calda dal sole",
+      "metaDescription": "Solare termico per l’acqua calda: valutiamo consumi, esposizione e spazio per il serbatoio. Richiedi un sopralluogo con Green Flux a Padova."
     },
     {
       "slug": "ventilazione",
@@ -531,10 +571,10 @@
       "quote": "ventilazione",
       "category": "Aria, acqua e controllo",
       "image": "ventilazione-750.webp",
-      "imageAlt": "Componenti di un impianto di ventilazione",
-      "summary": "Ricambio controllato dell’aria negli ambienti, da coordinare con gli spazi e gli altri impianti.",
-      "lead": "Green Flux si occupa di ventilazione meccanica. Il progetto considera gli ambienti da servire, la presenza di persone e le possibilità di installazione.",
-      "introTitle": "Ricambiare l’aria è una funzione specifica",
+      "imageAlt": "Immagine illustrativa: componenti di un impianto di ventilazione",
+      "summary": "Ricambio dell’aria con unità e percorsi scelti in base agli ambienti e ai lavori possibili.",
+      "lead": "Vuoi gestire il ricambio d’aria in casa o negli ambienti di lavoro? Verifichiamo i locali da servire e gli spazi per installare una ventilazione meccanica, anche durante una ristrutturazione.",
+      "introTitle": "Come portare aria nuova negli ambienti",
       "overview": [
         "La ventilazione meccanica gestisce lo scambio di aria tra interno ed esterno attraverso apparecchi e percorsi dedicati. Nei sistemi predisposti, un recuperatore permette di recuperare parte del calore dell’aria estratta.",
         "Riscaldamento e raffrescamento regolano la temperatura; il ricambio d’aria risponde a un’esigenza diversa. Nel progetto vanno considerati insieme, soprattutto quando si riorganizzano gli ambienti o si ristruttura."
@@ -590,6 +630,10 @@
         [
           "Il recupero di calore è presente in ogni sistema?",
           "Dipende dalla configurazione e dagli apparecchi scelti. È una caratteristica da chiarire nella proposta tecnica."
+        ],
+        [
+          "Quali lavori servono per installare la ventilazione?",
+          "Dipende dalla distribuzione degli ambienti e dalla soluzione scelta. Verifichiamo passaggi, aperture, alimentazione, rumore e accesso ai filtri: sono aspetti che incidono sull’installazione e sul costo."
         ]
       ],
       "related": [
@@ -604,9 +648,12 @@
       ],
       "home": {
         "order": 4,
-        "benefit": "Aria nuova, anche a finestre chiuse.",
-        "proof": "Il ricambio meccanico rinnova l’aria degli ambienti. Nei sistemi predisposti, il recupero di calore limita la dispersione dell’energia già utilizzata."
-      }
+        "benefit": "Gestire il ricambio d’aria negli ambienti.",
+        "proof": "Ricambio dell’aria con unità e percorsi scelti in base agli ambienti e ai lavori possibili."
+      },
+      "h1": "Ventilazione meccanica controllata a Padova",
+      "seoTitle": "Ventilazione meccanica a Padova | Impianti VMC",
+      "metaDescription": "Impianti di ventilazione meccanica per case e ambienti di lavoro a Padova. Valutiamo locali, passaggi, rumore e ricambio d’aria. Richiedi un sopralluogo."
     },
     {
       "slug": "trattamento-acqua",
@@ -614,10 +661,10 @@
       "quote": "trattamento-acqua",
       "category": "Aria, acqua e controllo",
       "image": "trattamento-acqua-750.webp",
-      "imageAlt": "Componenti per il trattamento dell’acqua",
-      "summary": "Valutazione dell’acqua e delle esigenze dell’impianto per scegliere un trattamento pertinente.",
-      "lead": "Il trattamento dell’acqua è uno dei campi d’intervento Green Flux. Il primo passo è chiarire quale circuito vuoi trattare e quale problema vuoi affrontare.",
-      "introTitle": "Prima il problema, poi il trattamento",
+      "imageAlt": "Immagine illustrativa: componenti per il trattamento dell’acqua",
+      "summary": "Scelta del trattamento a partire dalle caratteristiche dell’acqua e dall’uso dell’impianto.",
+      "lead": "Vuoi affrontare il calcare o un’altra esigenza legata all’acqua? Prima di scegliere un apparecchio, verifichiamo le caratteristiche dell’acqua, i consumi e l’impianto che deve servirla.",
+      "introTitle": "Partire dall’acqua e dal problema da risolvere",
       "overview": [
         "L’acqua utilizzata nell’edificio e quella che circola nell’impianto termico hanno funzioni differenti. Per individuare un trattamento occorre conoscere le caratteristiche dell’acqua e dei componenti che deve attraversare.",
         "Filtrazione, riduzione della durezza e protezione del circuito non sono interventi equivalenti. La soluzione si definisce a partire dai dati disponibili, dalle condizioni dell’impianto e dalle esigenze da risolvere."
@@ -673,6 +720,10 @@
         [
           "Posso includerlo nel progetto della pompa di calore?",
           "Sì, puoi chiedere di valutare anche il trattamento dell’acqua del circuito nell’ambito del progetto impiantistico."
+        ],
+        [
+          "Cosa controllate prima di proporre un apparecchio?",
+          "Partiamo dall’esigenza da risolvere e dai dati disponibili sull’acqua. Verifichiamo poi portata, pressione, punti di utilizzo, spazio e collegamenti richiesti dal trattamento scelto."
         ]
       ],
       "related": [
@@ -688,9 +739,12 @@
       "home": {
         "order": 92,
         "visible": false,
-        "benefit": "Meno calcare. Più cura per i tuoi impianti.",
-        "proof": "Filtrazione, riduzione della durezza e protezione dei circuiti: il trattamento si sceglie dalle caratteristiche dell’acqua e dal problema da risolvere."
-      }
+        "benefit": "Scegliere il trattamento per la tua acqua.",
+        "proof": "Scelta del trattamento a partire dalle caratteristiche dell’acqua e dall’uso dell’impianto."
+      },
+      "h1": "Trattamento dell’acqua a Padova",
+      "seoTitle": "Trattamento acqua a Padova | Valutazione impianto",
+      "metaDescription": "Valutiamo le caratteristiche dell’acqua e l’impianto per scegliere il trattamento adatto alla tua esigenza. Contatta Green Flux a Padova."
     },
     {
       "slug": "smart-home",
@@ -698,10 +752,10 @@
       "quote": "smart-home",
       "category": "Aria, acqua e controllo",
       "image": "smart-home-750.webp",
-      "imageAlt": "Controllo degli impianti di un’abitazione",
-      "summary": "Comandi e automazioni progettati attorno alle abitudini di utilizzo degli ambienti.",
-      "lead": "Green Flux include smart home e automazioni tra i propri ambiti. La richiesta parte dalle funzioni che vuoi controllare e dagli impianti presenti nell’immobile.",
-      "introTitle": "Partire dalle azioni che vuoi semplificare",
+      "imageAlt": "Immagine illustrativa: controllo degli impianti di un’abitazione",
+      "summary": "Comandi, orari e automazioni definiti sui dispositivi compatibili e sulle tue abitudini.",
+      "lead": "Vuoi gestire luci, temperature o altri impianti con comandi più pratici? Partiamo dalle funzioni che ti servono e controlliamo quali dispositivi possono lavorare insieme.",
+      "introTitle": "Quali azioni vuoi semplificare in casa?",
       "overview": [
         "Un progetto di automazione mette in relazione comandi, dispositivi e funzioni dell’edificio. Per descriverlo è più utile partire da un’esigenza concreta — gestire orari, zone o comandi — che da una lista di apparecchi.",
         "La compatibilità con l’impianto esistente è centrale. Le funzioni disponibili dipendono dai dispositivi scelti e dal modo in cui comunicano: questi aspetti vanno chiariti prima di definire la configurazione."
@@ -757,6 +811,10 @@
         [
           "Conviene definirlo durante una ristrutturazione?",
           "Affrontarlo insieme agli altri impianti permette di considerare collegamenti e predisposizioni prima di completare le opere."
+        ],
+        [
+          "Quanto lavoro serve su un impianto esistente?",
+          "Dipende dalla compatibilità degli apparecchi e dalle predisposizioni. Prima di definire costi e funzioni, controlliamo modelli, quadri, cablaggi e modalità di comando che vuoi mantenere."
         ]
       ],
       "related": [
@@ -771,9 +829,12 @@
       ],
       "home": {
         "order": 3,
-        "benefit": "La casa segue i tuoi ritmi.",
-        "proof": "Orari, zone e comandi coordinati semplificano la gestione quotidiana. Definiamo le funzioni a partire dalle tue abitudini e dai dispositivi compatibili."
-      }
+        "benefit": "Coordinare comandi, orari e automazioni.",
+        "proof": "Comandi, orari e automazioni definiti sui dispositivi compatibili e sulle tue abitudini."
+      },
+      "h1": "Smart home e automazioni a Padova",
+      "seoTitle": "Smart home a Padova | Comandi e automazioni",
+      "metaDescription": "Comandi e automazioni per gestire gli impianti di casa. Verifichiamo dispositivi, funzioni e predisposizioni con Green Flux a Padova."
     },
     {
       "slug": "impianti-radianti-parete-soffitto",
@@ -781,10 +842,10 @@
       "quote": "impianti-radianti",
       "category": "Riscaldamento e raffrescamento",
       "image": "images/radiant-wall-ceiling-1600.webp",
-      "imageAlt": "Installazione di un impianto radiante a parete e soffitto",
-      "summary": "Sistemi radianti integrati nelle superfici per distribuire caldo e, nelle configurazioni previste, fresco negli ambienti.",
-      "lead": "Green Flux progetta e installa impianti radianti a parete e soffitto, coordinando superfici, generatore, circuito idraulico e regolazione.",
-      "introTitle": "Il comfort passa dalle superfici dell’ambiente",
+      "imageAlt": "Immagine illustrativa: installazione di un impianto radiante a parete e soffitto",
+      "summary": "Distribuzione del caldo e, nelle configurazioni adatte, del fresco attraverso pareti e soffitti.",
+      "lead": "Stai rinnovando pareti o soffitti? Possiamo valutare un impianto radiante integrato nelle superfici, coordinando spazio disponibile, generatore e regolazione degli ambienti.",
+      "introTitle": "Usare pareti e soffitti per distribuire il calore",
       "overview": [
         "Negli impianti radianti a parete e soffitto, l’acqua circola in tubazioni integrate in pannelli o strati predisposti. Le superfici scambiano calore con l’ambiente senza richiedere terminali sporgenti come radiatori o ventilconvettori.",
         "Il progetto deve considerare il fabbisogno dell’edificio, la stratigrafia delle superfici e la temperatura di lavoro. Se il sistema viene previsto anche per il raffrescamento, regolazione dell’umidità e controllo della condensa entrano nella valutazione tecnica."
@@ -844,6 +905,10 @@
         [
           "Si abbina a una pompa di calore?",
           "Può essere valutato nello stesso progetto. La compatibilità dipende dal fabbisogno, dalle temperature di lavoro e dalla configurazione complessiva dell’impianto."
+        ],
+        [
+          "Cosa incide sul preventivo di un impianto radiante?",
+          "Superficie da attivare, tipo di parete o soffitto, collegamenti al generatore e regolazione determinano il lavoro. Se vuoi anche raffrescare, valutiamo la gestione dell’umidità e le opere necessarie."
         ]
       ],
       "related": [
@@ -853,9 +918,12 @@
       "sources": [],
       "home": {
         "order": 7,
-        "benefit": "Il comfort avvolge ogni ambiente.",
-        "proof": "Pareti e soffitti diventano superfici attive per distribuire caldo e, nel progetto adatto, fresco in modo uniforme."
-      }
+        "benefit": "Riscaldare con pareti e soffitti radianti.",
+        "proof": "Distribuzione del caldo e, nelle configurazioni adatte, del fresco attraverso pareti e soffitti."
+      },
+      "h1": "Impianti radianti a parete e soffitto a Padova",
+      "seoTitle": "Radianti a parete e soffitto a Padova",
+      "metaDescription": "Riscaldamento e raffrescamento radiante a parete e soffitto. Valutiamo superfici, generatore e umidità per il tuo immobile a Padova."
     },
     {
       "slug": "impianti-completi",
@@ -863,13 +931,13 @@
       "quote": "impianti-completi",
       "category": "Progetto integrato",
       "image": "images/technical-plant-1600.webp",
-      "imageAlt": "Locale tecnico con componenti idraulici e generatore",
-      "summary": "Un progetto coordinato quando più impianti e lavorazioni devono funzionare insieme.",
-      "lead": "Green Flux affianca i progetti residenziali, terziari e industriali con competenze idrauliche ed elettriche, dalla sostituzione di un generatore alla ristrutturazione completa.",
-      "introTitle": "Progettare i collegamenti tra le scelte",
+      "imageAlt": "Immagine illustrativa: locale tecnico con componenti idraulici e generatore",
+      "summary": "Coordinamento della parte idraulica ed elettrica per nuove costruzioni e ristrutturazioni.",
+      "lead": "Quando ristrutturi o costruisci, riscaldamento, acqua, climatizzazione e parte elettrica vanno progettati insieme. Green Flux coordina gli impianti e le lavorazioni concordate con i professionisti coinvolti.",
+      "introTitle": "Definire gli impianti prima di chiudere pareti e pavimenti",
       "overview": [
-        "Un impianto completo parte dalle funzioni richieste all’edificio: riscaldamento, acqua calda, climatizzazione e gli altri sistemi previsti dal progetto. L’obiettivo è definire come si collegano, dove trovano spazio e quali lavori richiedono.",
-        "L’offerta Green Flux comprende progettazione e installazione, con servizi di supporto per pratiche, diagnosi energetiche, detrazioni e formule assicurative. Il perimetro dell’intervento va definito sulla singola commessa, insieme agli eventuali professionisti coinvolti."
+        "Posizione dei bagni, distribuzione delle stanze, locale tecnico e sistemi di riscaldamento influenzano tubazioni, scarichi e collegamenti elettrici. Affrontarli insieme aiuta a definire i passaggi prima delle finiture.",
+        "Partiamo dalle planimetrie e dai lavori previsti, distinguendo ciò che si conserva, ciò che si sostituisce e le predisposizioni per il futuro. Nella proposta chiariamo forniture, installazione, attività dei professionisti e sequenza dei lavori."
       ],
       "situations": [
         [
@@ -885,23 +953,23 @@
           "Hai priorità immediate e altre future: è utile chiarire quali predisposizioni considerare fin dall’inizio."
         ]
       ],
-      "checksTitle": "Un perimetro di lavoro leggibile",
+      "checksTitle": "Come coordiniamo il lavoro",
       "checks": [
         [
           "Funzioni e priorità",
-          "Elenca cosa deve fare l’edificio e quali necessità vengono prima."
+          "Individuiamo gli impianti necessari per l’immobile e quelli che vuoi realizzare in una fase successiva."
         ],
         [
-          "Impianti e collegamenti",
-          "Definisci i sistemi coinvolti, le relazioni fra loro e le parti esistenti da conservare."
+          "Idraulica ed elettrico",
+          "Mettiamo in relazione generatori, distribuzione, acqua calda, alimentazione e comandi, verificando le parti esistenti da conservare."
         ],
         [
-          "Spazi e lavorazioni",
-          "Locali tecnici, passaggi, ingombri e opere collegate devono essere affrontati insieme."
+          "Spazi e passaggi",
+          "Definiamo locali tecnici, percorsi delle tubazioni, quadri e ingombri insieme agli altri lavori sull’immobile."
         ],
         [
-          "Responsabilità e fasi",
-          "La proposta deve chiarire attività, interlocutori e sequenza dei lavori per il progetto concordato."
+          "Fasi e responsabilità",
+          "Concordiamo chi segue ciascuna attività e in quale ordine intervenire. Eventuali opere edili o prestazioni di altri professionisti devono essere indicate nella proposta."
         ]
       ],
       "prepare": [
@@ -921,7 +989,7 @@
         ],
         [
           "Posso includere sia la parte idraulica sia quella elettrica?",
-          "Green Flux dichiara competenze in entrambi gli ambiti: descrivi i sistemi da coordinare nella richiesta."
+          "Sì. Possiamo coordinare impianti idraulici ed elettrici nello stesso intervento. Indica i sistemi esistenti, i lavori previsti e gli eventuali professionisti già coinvolti."
         ],
         [
           "Si possono pianificare lavori in momenti diversi?",
@@ -930,22 +998,27 @@
       ],
       "related": [
         "pompe-calore",
+        "fotovoltaico",
+        "climatizzazione",
         "smart-home"
       ],
       "sources": [],
       "home": {
         "order": 8,
-        "benefit": "Un progetto che tiene tutto insieme.",
-        "proof": "Idraulica ed elettrico si coordinano fin dall’inizio. Funzioni, spazi e collegamenti vengono progettati insieme, nella nuova costruzione come nella ristrutturazione."
-      }
+        "benefit": "Coordinare impianti idraulici ed elettrici.",
+        "proof": "Coordinamento della parte idraulica ed elettrica per nuove costruzioni e ristrutturazioni."
+      },
+      "h1": "Impianti idraulici ed elettrici a Padova",
+      "seoTitle": "Impianti completi a Padova | Idraulica ed elettrico",
+      "metaDescription": "Impianti idraulici ed elettrici per nuove costruzioni e ristrutturazioni a Padova. Coordiniamo sistemi, collegamenti e fasi di lavoro. Richiedi un sopralluogo."
     }
   ],
   "reviews": {
     "source": "Google",
     "sourceUrl": "https://www.google.com/maps?cid=11411563110781072231",
     "rating": 5,
-    "count": 27,
-    "checkedAt": "2026-09-26",
+    "count": 29,
+    "checkedAt": "2026-11-05",
     "items": [
       {
         "author": "Matteo Rossetti",
@@ -983,63 +1056,63 @@
     {
       "id": "progettazione",
       "title": "Progettazione",
-      "text": "Nel progetto dell’impianto, traduce le esigenze dell’immobile in scelte tecniche coordinate. Mette in relazione generatori, distribuzione, regolazione, spazi e collegamenti.",
+      "text": "Definiamo potenze, spazi e collegamenti prima dell’installazione. Il progetto mette insieme generatore, distribuzione, regolazione e parte elettrica, con gli elaborati concordati per l’intervento.",
       "use": "Nella scelta di un nuovo impianto, nella sostituzione di un generatore o quando più lavorazioni devono essere coordinate.",
       "prepare": "Planimetrie, impianti esistenti, funzioni richieste e vincoli già noti.",
       "clarify": "Quali impianti rientrano nel progetto, quali elaborati sono previsti e come si coordina il lavoro con gli altri professionisti.",
       "home": {
-        "benefit": "Decidere con una visione chiara.",
-        "proof": "Spazi, potenze e collegamenti vengono valutati insieme: puoi capire come le scelte tecniche rispondono a ciò che chiedi al tuo immobile."
+        "benefit": "Definire come installare e collegare gli impianti.",
+        "proof": "Definiamo potenze, spazi e collegamenti prima dell’installazione. Il progetto mette insieme generatore, distribuzione, regolazione e parte elettrica, con gli elaborati concordati per l’intervento."
       }
     },
     {
       "id": "pratiche-e-permessi",
       "title": "Pratiche e permessi",
-      "text": "Accompagna la realizzazione dell’impianto con la gestione delle pratiche e delle autorizzazioni necessarie. Le attività da seguire si definiscono in base al tipo di intervento.",
+      "text": "Individuiamo le pratiche e le autorizzazioni da gestire per l’impianto. Prima dei lavori chiariamo chi se ne occupa, quali documenti devi fornire e quali attività sono comprese nella proposta.",
       "use": "Quando l’installazione richiede documenti, richieste o autorizzazioni da coordinare con i lavori.",
       "prepare": "Indirizzo, tipo di immobile, titolo di disponibilità e documenti già presenti.",
       "clarify": "Quali pratiche sono necessarie, chi le presenta, quali documenti devi fornire e quali costi rientrano nella proposta.",
       "home": {
         "visible": false,
-        "benefit": "Sapere quale passo viene dopo.",
-        "proof": "La gestione delle pratiche accompagna l’installazione. Documenti necessari, attività e responsabilità si chiariscono in relazione al progetto."
+        "benefit": "Sapere quali documenti servono e chi li prepara.",
+        "proof": "Individuiamo le pratiche e le autorizzazioni da gestire per l’impianto. Prima dei lavori chiariamo chi se ne occupa, quali documenti devi fornire e quali attività sono comprese nella proposta."
       }
     },
     {
       "id": "diagnosi-energetiche",
       "title": "Diagnosi energetiche",
-      "text": "Nel percorso di valutazione dell’impianto, l’analisi dei consumi e delle prestazioni aiuta a individuare le priorità e confrontare gli interventi possibili.",
+      "text": "Esaminiamo consumi, caratteristiche dell’edificio e utilizzo degli impianti per individuare dove intervenire. I dati disponibili e l’obiettivo del lavoro definiscono il tipo di analisi da svolgere.",
       "use": "Quando, prima di scegliere o rinnovare l’impianto, occorre capire come viene utilizzata l’energia nell’immobile.",
       "prepare": "Bollette e dati di consumo, orari di utilizzo, caratteristiche dell’edificio e degli impianti.",
       "clarify": "Quali analisi sono utili al progetto impiantistico, quali dati servono e quali risultati verranno presentati nella valutazione.",
       "home": {
-        "benefit": "Capire dove vale la pena intervenire.",
-        "proof": "L’analisi di consumi e prestazioni aiuta a individuare le priorità e confrontare le soluzioni prima di scegliere gli impianti."
+        "benefit": "Capire i consumi prima di scegliere i lavori.",
+        "proof": "Esaminiamo consumi, caratteristiche dell’edificio e utilizzo degli impianti per individuare dove intervenire. I dati disponibili e l’obiettivo del lavoro definiscono il tipo di analisi da svolgere."
       }
     },
     {
       "id": "detrazioni-fiscali",
       "title": "Detrazioni fiscali e incentivi",
-      "text": "Il supporto sulle agevolazioni accompagna la valutazione del progetto impiantistico. Le possibilità dipendono dall’intervento, dal beneficiario e dai requisiti applicabili.",
+      "text": "Durante la definizione dell’impianto verifichiamo quali agevolazioni valutare e quali documenti servono. La possibilità di accedervi dipende dal lavoro, dall’immobile e da chi sostiene la spesa.",
       "use": "Durante la definizione dell’intervento impiantistico, per coordinare la valutazione delle agevolazioni e la documentazione necessaria.",
       "prepare": "Tipo di intervento, situazione dell’immobile e informazioni sul soggetto che sostiene la spesa.",
       "clarify": "Quale supporto viene prestato, quali verifiche servono e quali adempimenti restano al cliente o al suo consulente.",
       "home": {
-        "benefit": "Fare scelte con più consapevolezza.",
-        "proof": "Valutiamo il supporto sulle agevolazioni legate all’intervento, in base ai requisiti applicabili e alla situazione di chi sostiene la spesa."
+        "benefit": "Verificare requisiti e documenti per le agevolazioni.",
+        "proof": "Durante la definizione dell’impianto verifichiamo quali agevolazioni valutare e quali documenti servono. La possibilità di accedervi dipende dal lavoro, dall’immobile e da chi sostiene la spesa."
       }
     },
     {
       "id": "formule-assicurative",
       "title": "Formule assicurative",
-      "text": "Le formule assicurative si valutano in relazione all’impianto previsto nel progetto. Le eventuali coperture e le relative condizioni vanno chiarite nella proposta.",
+      "text": "Se vuoi valutare una copertura per l’impianto, chiariamo le opzioni disponibili e le condizioni della proposta. Rischi coperti, esclusioni, costi e soggetto assicuratore devono essere indicati nei documenti.",
       "use": "Quando, insieme alla realizzazione dell’impianto, vuoi valutare le opzioni di copertura associabili.",
       "prepare": "Tipologia e caratteristiche dell’impianto, ubicazione e protezioni eventualmente già presenti.",
       "clarify": "Soggetto assicuratore, rischi coperti, esclusioni, massimali, franchigie, durata e premio indicati nella documentazione della proposta.",
       "home": {
         "visible": false,
-        "benefit": "Conoscere le tutele del tuo investimento.",
-        "proof": "Le coperture associabili all’impianto si valutano su una proposta concreta, chiarendo condizioni, costi ed esclusioni."
+        "benefit": "Conoscere condizioni e costi delle eventuali coperture.",
+        "proof": "Se vuoi valutare una copertura per l’impianto, chiariamo le opzioni disponibili e le condizioni della proposta. Rischi coperti, esclusioni, costi e soggetto assicuratore devono essere indicati nei documenti."
       }
     }
   ]

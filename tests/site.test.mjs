@@ -37,8 +37,8 @@ test('The home review carousel renders the audited Google reviews and controls',
  const {reviews}=JSON.parse(readFileSync('content/site-content.json','utf8'));
  const html=readFileSync(join(root,'index.html'),'utf8');
  const script=readFileSync(join(root,'script.js'),'utf8');
- assert.equal(reviews.source,'Google');assert.equal(reviews.rating,5);assert.equal(reviews.count,27);assert.equal(reviews.items.length,6);
- assert(html.includes('data-review-carousel'));assert(html.includes(reviews.sourceUrl));assert(html.includes('27 recensioni su Google'));
+ assert.equal(reviews.source,'Google');assert.equal(reviews.rating,5);assert.equal(reviews.count,JSON.parse(readFileSync('content/heat-pump-campaign.json','utf8')).reviews.count);assert.equal(reviews.items.length,6);
+ assert(html.includes('data-review-carousel'));assert(html.includes(reviews.sourceUrl));assert(html.includes(`${reviews.count} recensioni su Google`)); assert(html.includes('Rilevazione del'));
  for(const review of reviews.items){assert.equal(review.rating,5);assert(html.includes(review.author));assert(html.includes(review.text.replaceAll('&','&amp;').replaceAll("'",'&#39;')));}
  assert(script.includes('function setupReviewCarousel()'));
 });
@@ -105,7 +105,7 @@ test('Every installation page carries its service through header, content, foote
   const links=quoteLinks(html);
   assert(links.length >= (service.slug === 'pompe-calore' ? 1 : 4),service.slug);
   for(const href of [...links,...quoteLinks(mobileHeaderForService(context))]){
-   assert.equal(href,`/preventivo/?servizio=${service.quote}`,service.slug);
+   const url=new URL(href.replaceAll('&amp;','&'),'https://green-flux.com'); assert.equal(url.pathname,'/preventivo/'); assert.equal(url.searchParams.get('servizio'),service.quote,service.slug); for(const key of url.searchParams.keys()) assert(['servizio','dettagli'].includes(key));
   }
  }
  for(const route of ['','servizi','servizi/progettazione-e-supporto','contatti']){

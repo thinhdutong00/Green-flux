@@ -1,0 +1,15 @@
+<form class="visit-form" data-site-visit-form novalidate>
+  <div class="visit-fields">
+    <label>Nome e Cognome<input name="name" autocomplete="name" maxlength="120" required></label>
+    <label>Telefono<input name="phone" type="tel" autocomplete="tel" maxlength="30" required></label>
+    <label>Comune dell’immobile<input name="city" autocomplete="address-level2" maxlength="120" required></label>
+    <label>Di cosa hai bisogno?<select name="service" required><option value="">Scegli un servizio</option>{{VISIT_OPTIONS}}<option value="da-valutare">Da valutare insieme</option></select></label>
+    <label class="visit-wide">Email <span>(facoltativa)</span><input name="email" type="email" autocomplete="email" maxlength="254"><small>Se la indichi, ricevi una copia della richiesta.</small></label>
+    <label class="visit-wide">Vuoi aggiungere un dettaglio? <span>(facoltativo)</span><textarea name="notes" rows="3" maxlength="2000" placeholder="Per esempio: vorrei sostituire l’impianto esistente oppure sto ristrutturando."></textarea></label>
+  </div>
+  <div class="visit-trap" aria-hidden="true"><label>Lascia vuoto questo campo<input name="website" tabindex="-1" autocomplete="off"></label></div>
+  <label class="visit-privacy"><input name="privacy" type="checkbox" required><span>Ho letto l’<a href="/privacy-policy/" target="_blank" rel="noopener">informativa privacy</a> e autorizzo il ricontatto per questa richiesta.</span></label>
+  <p class="visit-error" data-visit-error role="alert" hidden></p>
+  <button class="visit-submit" type="submit">Richiedi un sopralluogo <span aria-hidden="true">↗</span></button>
+  <p class="visit-note">Ti richiamiamo per verificare il tipo di lavoro e la zona. La data del sopralluogo si concorda dopo questo primo contatto.</p>
+</form>

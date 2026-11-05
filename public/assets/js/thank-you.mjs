@@ -4,8 +4,8 @@ import { readSubmissionStatus } from './submission-status.mjs';
 
 if (location.hash !== '#completa-invio' && readSubmissionStatus(window)) {
   document.querySelector('[data-thank-you-status]').textContent = 'Richiesta inviata';
-  document.querySelector('#thank-you-title').textContent = 'Grazie. Parliamo della tua casa.';
-  document.querySelector('[data-thank-you-message]').textContent = 'La tua richiesta è stata accettata. Ti ricontattiamo ai recapiti che hai indicato per capire cosa ti serve e concordare le verifiche.';
+  document.querySelector('#thank-you-title').textContent = 'Grazie, la tua richiesta è arrivata.';
+  document.querySelector('[data-thank-you-message]').textContent = 'Ti ricontattiamo ai recapiti che hai indicato per capire il lavoro da fare e verificare la zona. La data del sopralluogo si concorda dopo questo primo contatto.';
   document.querySelector('.ty-reassurance').textContent = 'Non serve compilare di nuovo il modulo. Se vuoi aggiungere un dettaglio, puoi chiamarci.';
 }
 

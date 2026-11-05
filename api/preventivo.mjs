@@ -1,3 +1,4 @@
+import { validateSiteVisit, siteVisitText } from '../public/preventivo/site-visit-data.mjs';
 import { validateQuote, quoteText, services } from '../public/preventivo/data.mjs';
 import { validateFunnel } from '../public/preventivo/funnel-data.mjs';
 import { validateHeatPumpRequest, heatPumpRequestText } from '../public/preventivo/heat-pump-data.mjs';
@@ -34,10 +35,10 @@ export default async function handler(request, response) {
   catch { return sendJson(response, 400, { message: 'La richiesta non è leggibile.' }); }
   if (!data || typeof data !== 'object' || Array.isArray(data) || JSON.stringify(data).length > 10000) return sendJson(response, 400, { message: 'La richiesta non è valida o è troppo lunga.' });
   const kind = data.kind || 'legacy';
-  if (!['heat-pump', 'heat-pump-short', 'conditional', 'contact', 'legacy'].includes(kind)) return sendJson(response, 400, { message: 'Tipo di richiesta non valido.' });
+  if (!['site-visit', 'heat-pump', 'heat-pump-short', 'conditional', 'contact', 'legacy'].includes(kind)) return sendJson(response, 400, { message: 'Tipo di richiesta non valido.' });
   const arrayFields = kind === 'legacy' ? ['services', 'spaces'] : kind === 'conditional' ? ['services'] : [];
   const arraysValid = arrayFields.every(key => Array.isArray(data[key]) && data[key].length <= services.length && data[key].every(value => typeof value === 'string' && value.length <= 80));
-  const stringFields = kind === 'heat-pump-short' ? ['name', 'phone', 'city', 'heating', 'email'] : kind === 'heat-pump'
+  const stringFields = kind === 'site-visit' ? ['name', 'phone', 'city', 'service', 'email', 'notes'] : kind === 'heat-pump-short' ? ['name', 'phone', 'city', 'heating', 'email'] : kind === 'heat-pump'
     ? ['clientType', 'propertyType', 'city', 'heating', 'distribution', 'area', 'outdoorSpace', 'functions', 'timeline', 'name', 'company', 'phone', 'email', 'notes']
     : kind === 'conditional' ? ['propertyType', 'timeline', 'name', 'email', 'phone', 'city', 'notes']
     : kind === 'contact' ? ['name', 'email', 'phone', 'subject', 'notes']
@@ -47,11 +48,11 @@ export default async function handler(request, response) {
   if (data.website || !Number.isFinite(data.elapsed) || data.elapsed < 3000) return sendJson(response, 400, { message: 'Attendi qualche secondo e riprova. Se il problema continua, contattaci direttamente.' });
   if (typeof data.requestId !== 'string' || !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(data.requestId)) return sendJson(response, 400, { message: 'Ricarica la pagina e riprova.' });
   if (kind === 'conditional') data.funnel = 'conditional';
-  const errors = kind === 'heat-pump-short' ? validateShortRequest(data) : kind === 'heat-pump' ? validateHeatPumpRequest(data) : kind === 'conditional' ? validateFunnel(data) : kind === 'contact' ? validateContact(data) : validateQuote(data);
+  const errors = kind === 'site-visit' ? validateSiteVisit(data) : kind === 'heat-pump-short' ? validateShortRequest(data) : kind === 'heat-pump' ? validateHeatPumpRequest(data) : kind === 'conditional' ? validateFunnel(data) : kind === 'contact' ? validateContact(data) : validateQuote(data);
   if (errors.length) return sendJson(response, 400, { message: errors[0].message });
-  const summary = kind === 'heat-pump-short' ? shortRequestText(data) : kind === 'heat-pump' ? heatPumpRequestText(data) : kind === 'contact' ? contactText(data) : quoteText(data);
+  const summary = kind === 'site-visit' ? siteVisitText(data) : kind === 'heat-pump-short' ? shortRequestText(data) : kind === 'heat-pump' ? heatPumpRequestText(data) : kind === 'contact' ? contactText(data) : quoteText(data);
   const text = summary;
-  const receiptKind = kind === 'heat-pump-short' ? 'heat-pump' : kind;
+  const receiptKind = kind === 'heat-pump-short' || (kind === 'site-visit' && data.service === 'pompe-di-calore') ? 'heat-pump' : kind;
 
   const apiKey = process.env.RESEND_API_KEY;
   const from = process.env.QUOTE_FROM_EMAIL;
@@ -91,7 +92,7 @@ export default async function handler(request, response) {
         from,
         to: ['info@green-flux.com'],
         ...(data.email.trim() ? { reply_to: data.email.trim() } : {}),
-        subject: kind === 'contact' ? 'Nuova richiesta di contatto — Green Flux' : 'Nuova richiesta di preventivo — Green Flux',
+        subject: kind === 'site-visit' ? 'Nuova richiesta di sopralluogo — Green Flux' : kind === 'contact' ? 'Nuova richiesta di contatto — Green Flux' : 'Nuova richiesta di preventivo — Green Flux',
         text: queueEnabled || crmEnabled ? recoveryEmailText(record) : text,
       }),
       signal: AbortSignal.timeout(10000),

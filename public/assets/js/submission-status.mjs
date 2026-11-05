@@ -9,7 +9,7 @@ export function saveSubmissionStatus(browser, kind, now = Date.now()) {
 export function readSubmissionStatus(browser, now = Date.now()) {
   try {
     const status = JSON.parse(browser.sessionStorage.getItem(key));
-    if (status && ['heat-pump', 'heat-pump-short', 'contact', 'conditional', 'legacy'].includes(status.kind) && status.expiresAt > now && status.expiresAt <= now + lifetime) return status;
+    if (status && ['site-visit', 'heat-pump', 'heat-pump-short', 'contact', 'conditional', 'legacy'].includes(status.kind) && status.expiresAt > now && status.expiresAt <= now + lifetime) return status;
     browser.sessionStorage.removeItem(key);
   } catch { /* No receipt is not proof of delivery. */ }
   return null;

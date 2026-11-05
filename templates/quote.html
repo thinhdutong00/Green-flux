@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Richiedi un preventivo Green Flux | Green Flux</title>
-  <meta name="description" content="Raccontaci il tuo progetto. Scegli gli impianti, rispondi alle domande dedicate e prepara la richiesta di preventivo per Green Flux.">
+  <title>Richiedi un sopralluogo a Padova | Green Flux</title>
+  <meta name="description" content="Lascia nome, telefono, comune e servizio. Green Flux ti ricontatta per verificare il lavoro e concordare un sopralluogo.">
   <link rel="canonical" href="https://green-flux.com/preventivo/">
   <meta name="robots" content="index, follow, max-image-preview:large">
-  <meta property="og:title" content="Richiedi un preventivo Green Flux">
-  <meta property="og:description" content="Un percorso guidato per raccontarci il tuo progetto e richiedere un preventivo per i tuoi impianti.">
+  <meta property="og:title" content="Richiedi un sopralluogo a Padova">
+  <meta property="og:description" content="Un modulo breve per richiedere un sopralluogo. Questionario dettagliato disponibile per chi vuole aggiungere informazioni.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="it_IT">
   <meta property="og:site_name" content="Green Flux">
@@ -19,10 +19,16 @@
   <link rel="preload" href="/assets/fonts/plus-jakarta-sans-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/css/quote.css">
   <link rel="stylesheet" href="/assets/css/heat-pump-quote.css">
+  <link rel="stylesheet" href="/assets/css/site-visit.css">
 </head>
 <body class="quote-wizard-body">
-  <a class="quote-skip-link" href="#contenuto">Vai al modulo</a>
-  <main class="quote-page" data-quote-wizard>
+  <a class="quote-skip-link" href="#richiesta-breve">Vai al modulo</a>
+  <main class="visit-page" data-visit-page id="richiesta-breve">
+<header class="visit-header"><a href="/" aria-label="Green Flux — Home"><img src="/assets/logo.webp" width="500" height="232" alt="Green Flux — impianti tecnologici"></a><a href="/servizi/">Tutti gli impianti</a></header>
+<div class="visit-layout"><div class="visit-intro"><p class="visit-kicker">Il primo contatto</p><h1>Richiedi un sopralluogo.</h1><p>Stai sostituendo un impianto o ristrutturando? Lasciaci i tuoi recapiti e il comune dell’immobile. Puoi contattarci anche se devi ancora scegliere la soluzione.</p><ol><li>Ci indichi il servizio e dove si trova l’immobile.</li><li>Ti richiamiamo per capire il lavoro da fare.</li><li>Verifichiamo la disponibilità e concordiamo l’eventuale sopralluogo.</li></ol><p class="visit-secondary">Vuoi già descriverci l’impianto e i lavori?<br><a href="/preventivo/?dettagli=1" data-visit-detailed>Compila il questionario dettagliato →</a></p></div><div>{{SITE_VISIT_FORM}}<noscript><p>Per inviare il modulo attiva JavaScript, oppure scrivi a <a href="mailto:info@green-flux.com">info@green-flux.com</a>.</p></noscript></div></div>
+</main>
+<a class="visit-back" data-visit-brief href="/preventivo/" hidden>← Torna al modulo breve</a>
+<section class="quote-page" data-quote-wizard hidden>
     <header class="quote-header">
       <a class="quote-brand" href="/" aria-label="Torna alla home Green Flux"><img src="/assets/logo.webp" width="500" height="232" alt="Green Flux — impianti tecnologici"></a>
       <a class="quote-close" href="/" aria-label="Chiudi il preventivo e torna alla home"><svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 6 12 12M18 6 6 18"/></svg></a>
@@ -34,9 +40,9 @@
       <form class="quote-form" data-green-flux-form="preventivo" autocomplete="on" novalidate>
         <section class="quote-step" data-step="1" aria-labelledby="quote-intro-title">
           <p class="quote-step-label"><span>01</span><i aria-hidden="true"></i>Introduzione</p>
-          <h1 class="quote-title" id="quote-intro-title">Ciao! Facciamo un’analisi veloce.<br>Come ti chiami?</h1>
-          <label class="visually-hidden" for="quote-name">Il tuo nome</label>
-          <input class="quote-name-input" id="quote-name" name="nome" type="text" placeholder="Il tuo nome..." autocomplete="name" minlength="2" maxlength="120" required>
+          <h2 class="quote-title" id="quote-intro-title">Raccontaci il tuo intervento.<br>Come ti chiami?</h2>
+          <label class="visually-hidden" for="quote-name">Nome e Cognome</label>
+          <input class="quote-name-input" id="quote-name" name="nome" type="text" placeholder="Nome e Cognome..." autocomplete="name" minlength="2" maxlength="120" required>
         </section>
         <section class="quote-step" data-step="2" hidden>
           <p class="quote-step-label"><span>02</span><i aria-hidden="true"></i>Obiettivo</p>
@@ -74,7 +80,7 @@
             <label class="quote-field quote-field-wide">Raccontaci il progetto in breve <span class="quote-optional">(facoltativo)</span><textarea name="messaggio" placeholder="Dimensioni, impianti esistenti o altri dettagli utili..." maxlength="2000" rows="3"></textarea></label>
           </div>
           <label class="quote-privacy"><input name="privacy" type="checkbox" required><span>Ho letto l’<a href="/privacy-policy/" target="_blank" rel="noopener">informativa privacy</a> e autorizzo il ricontatto per la richiesta di preventivo.</span></label>
-          <p class="quote-delivery-note">Invia la richiesta: un referente Green Flux ti ricontatterà entro 24 ore.</p>
+          <p class="quote-delivery-note">Invia la richiesta: ti ricontattiamo per chiarire il lavoro e concordare le verifiche.</p>
         </section>
         <p class="quote-error" data-error-message role="alert" hidden></p>
         <div class="quote-actions">
@@ -85,8 +91,8 @@
         <p class="quote-keyboard-hint" data-keyboard-hint>premi <kbd>Invio ↵</kbd></p>
       </form>
     </div>
-  </main>
+  </section>
   {{HEAT_PUMP_QUIZ}}
-  <script type="module" src="/preventivo/wizard.mjs"></script>
+  <script type="module" src="/assets/js/site-visit-form.mjs"></script>
 </body>
 </html>
