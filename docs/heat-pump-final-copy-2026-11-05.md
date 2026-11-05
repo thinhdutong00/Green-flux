@@ -2,7 +2,7 @@
 
 Revisione dopo il feedback sul tono: Green Flux prende in carico progetto, installazione e avviamento, con passaggi espliciti e azioni concrete. CTA principale: **Richiedi il sopralluogo gratuito**. Modulo: nome e cognome, telefono, comune dell’immobile, riscaldamento attuale (anche «Non lo so»), email facoltativa e privacy. Le recensioni conservano testo e autori originali; il dato storico mostrato è 5,0/5 su 29 recensioni del 4 novembre 2026.
 
-Pompe di calore a Padova e dintorni · Entro 35 km
+Pompe di calore a Padova e dintorni
 
 ## Vuoi cambiare caldaia e spendere meno per riscaldare casa?
 
