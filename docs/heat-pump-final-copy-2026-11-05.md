@@ -1,58 +1,58 @@
 # Testi finali principali — 5 novembre 2026
 
-Testi estratti dalla landing renderizzata. CTA principale in tutta la pagina: **Richiedi il sopralluogo gratuito**. Modulo: nome e cognome, telefono, comune dell’immobile, riscaldamento attuale (anche «Non lo so»), email facoltativa e privacy. Le recensioni conservano testo e autori originali e sono consultabili nell’HTML; il dato storico mostrato è 5,0/5 su 29 recensioni del 4 novembre 2026.
+Revisione dopo il feedback sul tono: Green Flux prende in carico progetto, installazione e avviamento, con passaggi espliciti e azioni concrete. CTA principale: **Richiedi il sopralluogo gratuito**. Modulo: nome e cognome, telefono, comune dell’immobile, riscaldamento attuale (anche «Non lo so»), email facoltativa e privacy. Le recensioni conservano testo e autori originali; il dato storico mostrato è 5,0/5 su 29 recensioni del 4 novembre 2026.
 
 Pompe di calore a Padova e dintorni · Entro 35 km
 
 ## Vuoi cambiare caldaia e spendere meno per riscaldare casa?
 
-Scopri se una pompa di calore può convenirti, quali parti dell’impianto puoi mantenere e quali lavori servono. Con Green Flux parti dalla tua casa e dal riscaldamento che hai già, prima di scegliere cosa installare.
+Con Green Flux hai un unico interlocutore per il tuo nuovo riscaldamento. Studiamo la tua casa, prepariamo la proposta e coordiniamo l’installazione idraulica ed elettrica, fino all’avviamento della pompa di calore.
 
-Ti contattiamo per parlare della casa e concordare il sopralluogo, dopo una prima verifica dell’intervento.
+Ti contattiamo per un primo confronto sulla casa e sull’intervento, poi concordiamo il sopralluogo gratuito.
 
-Le domande da cui partire
+Iniziamo da un sopralluogo
 
-### Prima di cambiare impianto, vuoi sapere se ne vale la pena.
+### Dal sopralluogo, un piano chiaro per la tua casa.
 
-Non devi aver già scelto marca o potenza. È più utile partire da tre domande.
+Durante la visita controlliamo impianto e spazi. Poi ti presentiamo la soluzione, i lavori necessari e i costi.
 
-#### Posso spendere meno per riscaldare casa?
+#### Una scelta basata sui tuoi consumi.
 
-Si parte dai consumi attuali e da come dovrà lavorare il nuovo impianto.
+Esaminiamo come riscaldi casa e quanta energia usi, per scegliere una pompa di calore adatta alle tue esigenze.
 
-#### Devo cambiare anche i termosifoni?
+#### Chiarezza su cosa mantenere.
 
-Controlliamo cosa può restare e quali modifiche servono davvero.
+Ti indichiamo quali componenti conservare e quali adattamenti prevedere, a partire dai termosifoni.
 
-#### Quanto mi costa l’intervento completo?
+#### Un quadro completo della spesa.
 
-Prima di decidere, devono essere chiari lavori, componenti e agevolazioni applicabili.
+Nella proposta trovi componenti, lavori e costi. Ti aiutiamo a individuare le agevolazioni applicabili.
 
 Il lavoro di Green Flux
 
-### Non devi scegliere da solo una macchina e poi capire come farla funzionare a casa tua.
+### Vendita, installazione e assistenza
 
-#### Partiamo dall’impianto che hai.
+#### Progettiamo a partire dalla tua casa.
 
-Guardiamo come riscaldi casa oggi per capire cosa mantenere, cosa modificare e quale soluzione proporti.
+Studiamo casa, consumi e riscaldamento esistente. Su questa base definiamo la pompa di calore e gli interventi necessari.
 
-#### Ti spieghiamo i lavori prima di iniziare.
+#### Ti presentiamo lavori e costi.
 
-La proposta chiarisce gli interventi previsti nella tua casa, oltre al modello della pompa di calore.
+Ricevi una proposta con componenti e interventi previsti. Ti spieghiamo le scelte e rispondiamo alle tue domande prima di organizzare i lavori.
 
-#### Coordiniamo idraulica ed elettrico.
+#### Coordiniamo l’installazione.
 
-Seguiamo i collegamenti dell’acqua e quelli elettrici necessari all’installazione, organizzando le due parti del lavoro nello stesso intervento.
+Organizziamo insieme le parti idrauliche ed elettriche dell’intervento. Per il lavoro sull’impianto, il tuo riferimento resta Green Flux.
 
-#### Ti mostriamo come usare il nuovo impianto.
+#### Avviamo l’impianto insieme a te.
 
-All’avviamento controlliamo il funzionamento e ti spieghiamo come impostare le temperature e regolare il riscaldamento.
+Controlliamo il funzionamento e ti mostriamo come impostare le temperature e regolare il riscaldamento di casa.
 
-Lavori e agevolazioni, insieme
+Approfitta degli incentivi e detrazioni fiscali 2026
 
-### Per cambiare impianto, valuta anche le agevolazioni del 2026.
+### Le agevolazioni del 2026 per il tuo nuovo impianto.
 
-Non basta conoscere una percentuale: bisogna capire quale agevolazione puoi richiedere per la tua casa e per il lavoro da fare.
+Ti aiutiamo a orientarti tra le agevolazioni per sostituire il riscaldamento, partendo dalla tua casa e dall’intervento proposto.
 
 Detrazione fiscale
 
@@ -72,33 +72,33 @@ Non è un rimborso automatico del 65% del preventivo. L’erogazione è subordin
 
 **Quali requisiti bisogna chiarire prima dei lavori?**
 
-Per il Conto Termico 3.0, il GSE richiede un impianto di riscaldamento esistente e funzionante al 25 dicembre 2025, oltre alle altre condizioni dell’intervento. Per l’Ecobonus servono i requisiti dell’immobile, dell’intervento e della macchina; per l’aliquota maggiore, chi paga deve essere proprietario o titolare di un diritto reale sull’abitazione principale.
+Per il Conto Termico 3.0, il GSE richiede un impianto di riscaldamento esistente e funzionante al 25 dicembre 2025, oltre alle altre condizioni dell’intervento. Per l’Ecobonus servono i requisiti dell’immobile, dell’intervento e della pompa di calore; per l’aliquota maggiore, chi paga deve essere proprietario o titolare di un diritto reale sull’abitazione principale.
 
 Prima di scegliere, occorre controllare impianto da sostituire, dati tecnici, spese ammissibili e documentazione richiesta dalla misura.
 
 Conto Termico e detrazioni fiscali non si sommano sulle stesse spese. Requisiti, documenti e beneficio applicabile vanno verificati prima dei lavori.
 
-Partiamo dall’impianto che vuoi sostituire, così puoi valutare insieme lavori e agevolazioni.
+Con il sopralluogo raccogliamo le informazioni per affrontare insieme lavori e agevolazioni.
 
 Fonti ufficiali consultate il 5 novembre 2026: ENEA · Ecobonus 2026 · Agenzia delle Entrate · requisiti · GSE · importi ed erogazione · GSE · impianto esistente · GSE · cumulabilità.
 
 L’impianto che hai già
 
-### Hai i termosifoni? Non significa dover rifare tutto.
+### Hai i termosifoni? Ti indichiamo cosa mantenere.
 
-In alcuni impianti si possono mantenere. Prima di dirtelo, controlliamo i radiatori, quanto calore serve alla casa e la temperatura dell’acqua necessaria a scaldarla.
+Controlliamo i radiatori, il calore necessario per la casa e la temperatura dell’acqua. Quando sono adatti al nuovo impianto, li manteniamo; dove servono modifiche, le inseriamo nella proposta.
 
-Così puoi capire quali componenti restano e quali interventi sono necessari, prima di acquistare la macchina.
+Ricevi indicazioni precise sui componenti da conservare e sui lavori necessari per collegarli alla pompa di calore.
 
-Il confronto va fatto sulla spesa complessiva per riscaldare casa: meno combustibile non significa automaticamente meno costi, perché va considerata anche l’elettricità utilizzata.
+Per valutare il risparmio, confrontiamo la spesa complessiva per riscaldare casa: consumi attuali, elettricità utilizzata dal nuovo impianto e tariffe.
 
 Cosa trovi nel preventivo
 
-### Un preventivo che comprenda i lavori, non soltanto la macchina.
+### Il tuo preventivo: impianto, lavori e costi chiari.
 
-Il prezzo della pompa di calore, da solo, non dice quanto spenderai per cambiare impianto. Nella proposta devono essere chiari i componenti necessari, i collegamenti e gli interventi previsti nella tua casa.
+Ti presentiamo una proposta che comprende la pompa di calore, i componenti e gli interventi previsti nella tua casa. Ti spieghiamo ogni voce, così sai come si compone la spesa.
 
-#### Macchina e componenti
+#### Pompa di calore e componenti
 
 La pompa di calore e gli elementi necessari a farla lavorare con il tuo impianto.
 
@@ -118,27 +118,25 @@ Gli adattamenti necessari ai componenti che restano nella tua casa.
 
 I controlli di funzionamento e le impostazioni iniziali.
 
-Il preventivo indica le voci previste e i relativi costi per il tuo intervento.
+Efficientamento energetico insieme
 
-Dopo la tua richiesta
+### Mandaci la tua richiesta
 
-### Tre passaggi, senza dover scegliere tutto adesso.
+#### Lasci i recapiti. Ti contattiamo noi.
 
-#### Ci racconti cosa vuoi cambiare.
+Raccontaci come riscaldi casa e dove si trova l’immobile. Nel primo confronto raccogliamo le informazioni per organizzare il sopralluogo.
 
-Lasci i recapiti e poche informazioni. Ti contattiamo per parlare della casa e del riscaldamento attuale.
+#### Veniamo a vedere casa e impianto.
 
-#### Concordiamo il sopralluogo gratuito.
+Concordiamo il sopralluogo gratuito e controlliamo termosifoni, spazi e collegamenti. Su questa base prepariamo la proposta.
 
-Dopo il primo confronto, concordiamo la visita per controllare impianto, spazi e lavori necessari.
+#### Approvi la proposta. Organizziamo i lavori.
 
-#### Ricevi una proposta e decidi.
+Ti presentiamo soluzione, interventi e costi. Dopo la tua conferma coordiniamo l’installazione, avviamo l’impianto e ti mostriamo come usarlo.
 
-Ti spieghiamo soluzione, costi e interventi previsti. L’installazione si organizza dopo l’accettazione.
+Risposte pratiche
 
-Prima di decidere
-
-### Le altre domande sulla tua casa.
+### Sopralluogo, installazione e incentivi: le risposte alle tue domande.
 
 **Lavorate nel mio comune?**
 
@@ -146,15 +144,15 @@ Operiamo a Padova e nel territorio entro 35 km dal centro di Padova. Indica il c
 
 **Il sopralluogo è gratuito e come si concorda?**
 
-Sì, il sopralluogo è gratuito. Ti contattiamo prima per parlare della casa e dell’intervento, poi concordiamo la visita. L’invio del modulo non prenota automaticamente un appuntamento.
+Sì, il sopralluogo è gratuito. Dopo la richiesta ti contattiamo per parlare della casa e dell’intervento. Concordiamo direttamente con te l’appuntamento dopo questo primo confronto.
 
 **Posso installarla in condominio?**
 
-Bisogna considerare il tipo di riscaldamento, lo spazio per l’unità esterna, il rumore e i vincoli condominiali. Il primo confronto serve anche a chiarire questi aspetti.
+Controlliamo il tipo di riscaldamento, lo spazio per l’unità esterna, il rumore e i vincoli condominiali. Ti indichiamo le condizioni da rispettare per installarla nel tuo immobile.
 
 **Posso usarla anche per acqua calda o raffrescamento?**
 
-Può produrre acqua calda con la configurazione e l’accumulo adatti. Per raffrescare servono una macchina, terminali e regolazione compatibili: i normali termosifoni non bastano.
+Può produrre acqua calda con la configurazione e l’accumulo adatti. Per raffrescare servono una pompa di calore, terminali e regolazione compatibili: i normali termosifoni non bastano.
 
 **Il fotovoltaico è necessario?**
 
@@ -162,13 +160,13 @@ No, la pompa di calore può funzionare con l’elettricità della rete. Se hai i
 
 **Come capisco quale agevolazione posso richiedere?**
 
-Si parte da immobile, impianto da sostituire, chi sostiene la spesa e caratteristiche dell’intervento. Nella sezione agevolazioni trovi differenze e requisiti principali da approfondire prima dei lavori.
+Ti aiutiamo a capire quale agevolazione puoi richiedere, considerando l’immobile, il riscaldamento da sostituire e chi sostiene la spesa. Nella sezione agevolazioni trovi differenze e requisiti principali da approfondire prima dei lavori.
 
-Padova e dintorni, entro 35 km
+Installazione su Padova e dintorni
 
-### Partiamo dalla tua casa, non da un modello da venderti.
+### Fai il primo passo. Al tuo nuovo impianto pensiamo noi.
 
-Raccontaci come riscaldi casa oggi e dove si trova l’immobile. Ti contattiamo per capire cosa vuoi cambiare e concordare il sopralluogo.
+Lasciaci i recapiti e il comune della casa. Ti contattiamo per parlare dell’intervento e concordare il sopralluogo gratuito. Dalla proposta all’installazione, fino alle prime regolazioni, hai Green Flux al tuo fianco.
 
 **Vuoi aggiungere più informazioni sulla casa?**
 
