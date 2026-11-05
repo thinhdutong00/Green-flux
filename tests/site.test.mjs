@@ -45,7 +45,7 @@ test('The home review carousel renders the audited Google reviews and controls',
 test('The home and navigation expose only the requested services in the requested order',()=>{
  const html=readFileSync(join(root,'index.html'),'utf8');
  const expected=['Pompe di calore','Fotovoltaico','Smart home e automazioni','Ventilazione meccanica','Caldaie','Condizionatori','Impianti radianti a parete e soffitto','Impianti completi'];
- const home=html.match(/<div class="solutions-grid">([\s\S]*?)<div class="ecosystem-panel/)[1];
+ const home=html.match(/<section\b[^>]*\bid="campidiintervento"[^>]*>([\s\S]*?)<\/section>/)[1];
  const homeTitles=[...home.matchAll(/<span class="solution-category">([^<]+)<\/span>/g)].map(match=>match[1]);
  assert.deepEqual(homeTitles,expected);
  const desktopMenu=html.match(/<div class="services-menu" id="desktop-fields-menu"[\s\S]*?<div class="services-menu-footer">/)[0];

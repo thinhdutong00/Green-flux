@@ -19,14 +19,18 @@
   <link rel="preload" href="/assets/fonts/plus-jakarta-sans-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/css/quote.css">
   <link rel="stylesheet" href="/assets/css/heat-pump-quote.css">
+  <link rel="stylesheet" href="/assets/css/desktop-header.css">
+  <link rel="stylesheet" href="/assets/css/mobile-header.css">
   <link rel="stylesheet" href="/assets/css/site-visit.css">
 </head>
 <body class="quote-wizard-body">
   <a class="quote-skip-link" href="#richiesta-breve">Vai al modulo</a>
-  <main class="visit-page" data-visit-page id="richiesta-breve">
-<header class="visit-header"><a href="/" aria-label="Green Flux — Home"><img src="/assets/logo.webp" width="500" height="232" alt="Green Flux — impianti tecnologici"></a><a href="/servizi/">Tutti gli impianti</a></header>
+  <div class="visit-shell" data-visit-page>
+  {{HEADER}}
+  <main class="visit-page" id="richiesta-breve">
 <div class="visit-layout"><div class="visit-intro"><p class="visit-kicker">Il primo contatto</p><h1>Richiedi un sopralluogo.</h1><p>Stai sostituendo un impianto o ristrutturando? Lasciaci i tuoi recapiti e il comune dell’immobile. Puoi contattarci anche se devi ancora scegliere la soluzione.</p><ol><li>Ci indichi il servizio e dove si trova l’immobile.</li><li>Ti richiamiamo per capire il lavoro da fare.</li><li>Verifichiamo la disponibilità e concordiamo l’eventuale sopralluogo.</li></ol><p class="visit-secondary">Vuoi già descriverci l’impianto e i lavori?<br><a href="/preventivo/?dettagli=1" data-visit-detailed>Compila il questionario dettagliato →</a></p></div><div>{{SITE_VISIT_FORM}}<noscript><p>Per inviare il modulo attiva JavaScript, oppure scrivi a <a href="mailto:info@green-flux.com">info@green-flux.com</a>.</p></noscript></div></div>
 </main>
+</div>
 <a class="visit-back" data-visit-brief href="/preventivo/" hidden>← Torna al modulo breve</a>
 <section class="quote-page" data-quote-wizard hidden>
     <header class="quote-header">
