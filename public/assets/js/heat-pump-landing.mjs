@@ -6,6 +6,11 @@ const dialog = document.querySelector('[data-hp-quiz]');
 const frame = dialog?.querySelector('[data-hp-quiz-frame]');
 let opener;
 
+// One diagnostic per primary link activation; no form values or link text.
+document.querySelectorAll('a[href="#valutazione"]').forEach(link => {
+  link.addEventListener('click', () => trackLeadEvent('lead_cta_click'));
+});
+
 if (hero) {
   const updateHeader = () => document.body.classList.toggle('is-scrolled', window.scrollY > hero.offsetHeight - 110);
   window.addEventListener('scroll', updateHeader, { passive: true });

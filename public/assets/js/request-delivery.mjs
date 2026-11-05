@@ -29,7 +29,12 @@ export function createRequestSender(kind, { fetchRequest = (...args) => fetch(..
     const payload = JSON.stringify({ ...data, kind });
     if (payload !== previousPayload) { previousPayload = payload; requestId = await persistentRequestId(browser, payload, createId, now()); attribution = captureAttribution(browser, now()); }
     // A revoked choice immediately removes optional attribution, including on retries.
-    if (browser && captureAttribution(browser, now()).consent !== true) attribution = { consent: false };
+    const currentAttribution = browser && captureAttribution(browser, now());
+    if (currentAttribution && currentAttribution.consent !== true) {
+      // The submission path identifies the operational form, without keeping any
+      // optional acquisition data (campaign, referrer, click ID, or entry history).
+      attribution = { consent: false, submissionPage: currentAttribution.submissionPage };
+    }
     // The server derives the channel; do not duplicate derived campaign/evidence text.
     const context = { consent: attribution?.consent === true, entryPage: attribution?.entryPage, submissionPage: attribution?.submissionPage, ...(attribution?.consent === true ? { params: attribution.params, referrer: attribution.referrer, directEntry: attribution.directEntry } : {}) };
     const controller = new AbortController();

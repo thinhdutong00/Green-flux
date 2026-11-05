@@ -71,7 +71,8 @@ dell’immobile distingue abitazioni e aziende; il fotovoltaico è un solo servi
 Il quiz pompe di calore, il preventivo generale e il modulo contatti inviano a
 `/api/preventivo`. Tutte le compilazioni valide portano a `/thank-you/`, anche
 quando il quiz si trova nella finestra della landing. Una richiesta accettata
-mostra la conferma di ricontatto entro 24 ore. Se l’invio diretto non è disponibile,
+conferma la ricezione: Green Flux ricontatta il richiedente e concorda il sopralluogo
+dopo un primo confronto, senza promettere tempi. Se l’invio diretto non è disponibile,
 la stessa pagina si apre con `#completa-invio` e permette di inviare il riepilogo
 già compilato via email o WhatsApp, senza dichiarare che sia già stato ricevuto.
 I dati non sono inseriti nell’URL: il riepilogo è trasferito in sessionStorage
@@ -87,7 +88,8 @@ chiavi nei sorgenti o nelle variabili pubbliche. `GET /api/preventivo` restituis
 presenza della configurazione, senza inviare messaggi. Il destinatario della
 richiesta è fisso: `info@green-flux.com`. Dopo l’accettazione dell’invio, se il
 cliente ha lasciato un’email valida, riceve una conferma con tutti i dati della
-richiesta e l’avviso di ricontatto entro 24 ore. La conferma include HTML e testo
+richiesta. Nel modulo breve pompe di calore l’email è facoltativa: senza indirizzo
+non viene inviata alcuna conferma al cliente e la cella email nel CRM resta vuota. La conferma include HTML e testo
 semplice e consente di rispondere a `info@green-flux.com`. Le due email hanno
 chiavi di idempotenza distinte per evitare duplicati durante i tentativi ripetuti.
 Un errore della sola conferma non annulla una richiesta già accettata: la risposta

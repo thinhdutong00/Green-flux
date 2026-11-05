@@ -68,7 +68,7 @@ if (form) {
     } finally {
       sending = false;
       button.disabled = completed;
-      button.textContent = completed ? 'Richiesta inviata' : 'Richiedi un sopralluogo';
+      button.textContent = completed ? 'Richiesta inviata' : 'Richiedi il sopralluogo gratuito';
       form.removeAttribute('aria-busy');
     }
   });

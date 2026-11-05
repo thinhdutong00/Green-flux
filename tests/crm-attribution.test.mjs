@@ -67,3 +67,25 @@ test('Re-entering the same timed-out form reuses its requestId without storing c
   await createRequestSender('contact', options)({ name: 'TEST diverso', email: 'private@example.com' });
   assert.notEqual(calls[1].requestId, calls[2].requestId);
 });
+
+test('The sender keeps the operational submission path after cookie refusal or revocation, without retaining acquisition data', async () => {
+  const b = browser('https://green-flux.com/servizi/pompe-calore/?gclid=TEST_CLICK&utm_campaign=Padova&email=private@example.test', 'https://www.google.com/');
+  const now = Date.now(), calls = [];
+  const sender = createRequestSender('heat-pump-short', {
+    browser: b, now: () => now, createId: () => 'aaaaaaaa-bbbb-4ccc-8ddd-000000000001',
+    fetchRequest: async (_url, options) => { calls.push(JSON.parse(options.body)); return { ok: true, json: async () => ({ accepted: true }) }; },
+  });
+  const payload = { name: 'TEST', phone: '+390491234567', email: '' };
+  await sender(payload);
+  assert.deepEqual(calls[0].attribution, { consent: false, submissionPage: '/servizi/pompe-calore/' });
+  saveAdsConsent(b, true, now);
+  await sender({ ...payload, name: 'TEST AGGIORNATO' });
+  assert.equal(calls[1].attribution.params.gclid, 'TEST_CLICK');
+  saveAdsConsent(b, false, now);
+  await sender({ ...payload, name: 'TEST AGGIORNATO' });
+  assert.deepEqual(calls[2].attribution, { consent: false, submissionPage: '/servizi/pompe-calore/' });
+  assert.equal(calls[1].requestId, calls[2].requestId);
+  assert.equal(normalizeAttribution(calls[2].attribution).source, 'Non rilevata');
+  assert(!JSON.stringify(calls[2].attribution).includes('private'));
+  assert.equal(b.sessionStorage.getItem(attributionKey), null);
+});

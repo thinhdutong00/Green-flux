@@ -32,10 +32,16 @@ test('Every page has an editorial audit record and no imported commercial promis
   assert(audit.pages[route],route);
   const text=textOnly(html);
   assert(!/VenetaGreen|preventivo gratuito|comuni coperti|regioni servite|squadra tecnica|progetti realizzati|giugno 2026|manutenzione programmata|batterie di accumulo|cappotto/i.test(text),route);
-  // The owner approved the conditional card and, on 2026-11-04, the sourced incentives FAQ.
+  // The owner approved a visible, sourced 2026 section on the service landing.
   const incentiveCard=['/servizi/pompe-calore/','/landing/pompe-calore/'].includes(route)?html.match(/<a\b[^>]*id="incentivi"[^>]*>[\s\S]*?<\/a>/)?.[0] ?? '':'';
   const incentiveFaq=route==='/servizi/pompe-calore/'?html.match(/<details\b[^>]*id="faq-incentivi"[^>]*>[\s\S]*?<\/details>/)?.[0] ?? '':'';
-  assert(!/Conto Termico|Ecobonus/i.test(textOnly(html.replace(incentiveCard,'').replace(incentiveFaq,''))),route);
+  const incentiveSection=route==='/servizi/pompe-calore/'?html.match(/<section\b[^>]*id="incentivi"[^>]*>[\s\S]*?<\/section>/)?.[0] ?? '':'';
+  assert(!/Conto Termico|Ecobonus/i.test(textOnly(html.replace(incentiveCard,'').replace(incentiveFaq,'').replace(incentiveSection,''))),route);
+  if(incentiveSection){
+   for(const condition of ['50%', '36%', '10 quote annuali', 'imposta dovuta', 'fino al 65%', 'spese ammissibili', 'approvazione della richiesta', '25 dicembre 2025', 'non si sommano sulle stesse spese']) assert(textOnly(incentiveSection).includes(condition),condition);
+   for(const source of ['efficienzaenergetica.enea.it','agenziaentrate.gov.it','gse.it']) assert(incentiveSection.includes(source),source);
+   assert(incentiveSection.includes('datetime="2026-11-05"'));
+  }
   if(incentiveCard){
    assert(/Verifichiamo/.test(textOnly(incentiveCard)),route);
    assert(!/\d\s*%|€|garantit[oa]/i.test(textOnly(incentiveCard)),route);

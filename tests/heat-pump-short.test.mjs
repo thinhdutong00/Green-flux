@@ -19,17 +19,22 @@ function browser() {
   return value;
 }
 
-test('The short form requires a valid email along with the other contact fields, and accepts unknown heating', () => {
+test('The short form accepts an omitted email value and unknown heating, while validating any provided email', () => {
   assert.deepEqual(validateShortRequest(sample()), []);
-  for (const [field, value] of [['name',''],['phone','123'],['city',''],['heating','arbitrary'],['privacy',false],['email',''],['email','   '],['email',undefined],['email','invalid'],['email',{}]]) assert(validateShortRequest({ ...sample(), [field]: value }).length, field);
+  for (const email of ['', '   ']) assert.deepEqual(validateShortRequest({ ...sample(), email }), []);
+  for (const [field, value] of [['name',''],['phone','123'],['city',''],['heating','arbitrary'],['privacy',false],['email',undefined],['email','invalid'],['email',{}]]) assert(validateShortRequest({ ...sample(), [field]: value }).length, field);
   const data = new FormData();
   for (const [key,value] of [['nome',' TEST '],['telefono',' +390491234567 '],['comune',' Padova '],['riscaldamento','Non lo so'],['email',` ${sample().email} `],['privacy','on']]) data.set(key,value);
   assert.deepEqual(validateShortRequest(readShortRequest(data)), []);
   assert.equal(readShortRequest(data).email, sample().email);
   assert(shortRequestText(sample()).includes(`Email: ${sample().email}`));
+  data.delete('email');
+  assert.equal(readShortRequest(data).email, '');
+  assert.deepEqual(validateShortRequest(readShortRequest(data)), []);
+  assert(shortRequestText(readShortRequest(data)).includes('Email: Non indicata'));
 });
 
-test('The short-form backend requires email and sends distinct idempotent business and customer confirmations after acceptance', async () => {
+test('The short-form backend validates email when provided and sends distinct idempotent business and customer confirmations after acceptance', async () => {
   const previous = { fetch: globalThis.fetch, key: process.env.RESEND_API_KEY, from: process.env.QUOTE_FROM_EMAIL };
   const calls = [], delivered = new Map(); let fail = false, sequence = 0;
   process.env.RESEND_API_KEY = 'test-key'; process.env.QUOTE_FROM_EMAIL = 'test@example.test';
@@ -62,7 +67,7 @@ test('The short-form backend requires email and sends distinct idempotent busine
     assert(!confirmation.text.includes('24 ore'));
     assert.notEqual(calls[0].key, calls[1].key);
     assert.equal(calls[0].key, calls[2].key); assert.equal(calls[1].key, calls[3].key);
-    for (const data of [{...sample(),website:'spam'}, {...sample(),elapsed:0}, {...sample(),privacy:false}, {...sample(),phone:''}, {...sample(),email:''}, {...sample(),email:'   '}, {...sample(),email:'invalid'}, {...sample(),email:undefined}]) assert.equal((await invoke(data)).code,400);
+    for (const data of [{...sample(),website:'spam'}, {...sample(),elapsed:0}, {...sample(),privacy:false}, {...sample(),phone:''}, {...sample(),email:'invalid'}, {...sample(),email:undefined}]) assert.equal((await invoke(data)).code,400);
     assert.equal(calls.length, 4, 'Invalid requests must not reach the email provider');
     fail = true;
     const failure = await invoke(); assert.equal(failure.code,502); assert.notEqual(failure.body.accepted,true);
@@ -71,6 +76,53 @@ test('The short-form backend requires email and sends distinct idempotent busine
     globalThis.fetch = previous.fetch;
     for (const [key,value] of [['RESEND_API_KEY',previous.key],['QUOTE_FROM_EMAIL',previous.from]]) if (value === undefined) delete process.env[key]; else process.env[key]=value;
   }
+});
+
+test('A short request without email sends only the business notification and registers an empty CRM email without placeholders', async () => {
+  const env = { ...process.env }, previousFetch = globalThis.fetch;
+  const emails = [], records = [];
+  process.env.RESEND_API_KEY = 'test-key';
+  process.env.QUOTE_FROM_EMAIL = 'test@example.test';
+  process.env.GREEN_FLUX_CRM_URL = 'https://script.google.com/macros/s/test/exec';
+  process.env.GREEN_FLUX_CRM_SECRET = 'test-only-crm-secret';
+  delete process.env.BLOB_STORE_ID;
+  delete process.env.BLOB_READ_WRITE_TOKEN;
+  globalThis.fetch = async (url, options) => {
+    const payload = JSON.parse(options.body);
+    if (String(url).includes('script.google.com')) {
+      const record = JSON.parse(payload.payload);
+      records.push(record);
+      return { ok: true, json: async () => ({ ok: true, requestId: record.requestId }) };
+    }
+    assert.equal(String(url), 'https://api.resend.com/emails');
+    emails.push(payload);
+    return { ok: true, json: async () => ({ id: 'mock-provider-acceptance' }) };
+  };
+  try {
+    for (const [index, email] of ['', '   '].entries()) {
+      const data = { ...sample(), email, attribution: { consent: false, submissionPage: '/servizi/pompe-calore/' } };
+      const response = { setHeader() {}, status(code) { this.code = code; return this; }, json(body) { this.body = body; } };
+      await handler({ method: 'POST', headers: { 'content-type': 'application/json', host: 'example.test', origin: 'https://example.test', 'x-real-ip': `198.51.100.${200 + index}` }, body: data }, response);
+      assert.equal(response.code, 200);
+      assert.equal(response.body.accepted, true);
+      assert.equal(response.body.confirmationStatus, 'not_requested');
+      assert.equal(response.body.crmStatus, 'registered');
+    }
+    assert.equal(emails.length, 2, 'Only one business notification per accepted submission');
+    for (const email of emails) {
+      assert.deepEqual(email.to, ['info@green-flux.com']);
+      assert(!('reply_to' in email));
+      assert(!email.text.includes('example.test'));
+    }
+    assert.equal(records.length, 2);
+    for (const record of records) {
+      assert.equal(record.email, '');
+      assert.equal(record.service, 'Pompe di calore');
+      assert.equal(record.source, 'Non rilevata');
+      assert.equal(record.submissionPage, '/servizi/pompe-calore/');
+      assert.equal(record.resendId, 'mock-provider-acceptance');
+    }
+  } finally { process.env = env; globalThis.fetch = previousFetch; }
 });
 
 test('Attribution preserves consented UTM across the iframe, strips unrelated URL queries and never guesses paid traffic', () => {
@@ -100,6 +152,7 @@ test('Diagnostic events whitelist non-personal fields, require analytics consent
   const event = safeLeadEvent('quiz_step_complete',{form_position:'quiz',step:2,name:'Private',phone:'private',answers:'private'});
   assert.deepEqual(Object.keys(event).sort(),['event','flow_version','form_position','service','step'].sort());
   assert.equal(safeLeadEvent('conversion'),null);
+  assert.deepEqual(safeLeadEvent('lead_cta_click', { name: 'Private', email: 'private@example.test', text: 'Private' }), { event: 'lead_cta_click', service: 'heat-pump', form_position: 'landing', flow_version: 'short-v1' });
   const top=browser(), sent=[];top.clarity=(...args)=>sent.push(args);
   assert.equal(trackLeadEvent('lead_form_success',{},top),false);
   top.localStorage.setItem(CLARITY_CONSENT_KEY,JSON.stringify({version:1,analytics:true,expiresAt:Date.now()+100000}));

@@ -69,8 +69,10 @@ test('Every Green Flux technology has its own explanation, decision criteria and
   assert(html.includes(`servizio=${service.quote}`));assert(!titles.has(service.introTitle));titles.add(service.introTitle);
   let catalogueVersion=html;
   if(service.slug==='pompe-calore'){
-   assert(html.includes('Vuoi sostituire la caldaia'));
-   for(const topic of ['Posso tenere','Quanto costa installare','Parliamo della tua casa.','E se ho già il fotovoltaico?','data-lead-form'])assert(html.includes(topic),topic);
+   assert(html.includes('Vuoi cambiare caldaia'));
+   for(const topic of ['Hai i termosifoni?','Un preventivo che comprenda i lavori','Richiedi il sopralluogo gratuito','Il fotovoltaico è necessario?','data-lead-form','Entro 35 km'])assert(html.includes(topic),topic);
+   const emailInput=html.match(/<input[^>]*id="lead-email"[^>]*>/)[0];
+   assert(!emailInput.includes('required'));assert(html.includes('Email <span>(facoltativa)</span>'));
    catalogueVersion=readFileSync(join(root,'landing/pompe-calore/index.html'),'utf8');
    assert(catalogueVersion.includes('name="robots" content="noindex, follow"'));
   }

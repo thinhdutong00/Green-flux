@@ -127,3 +127,16 @@ test('Rejected atomic writes leave no partial rows; recovery uses strict live dr
   assert.equal(state.rows.length, 2); assert.equal(state.rows[1][5], 'Altro'); assert.equal(state.rows[1][7], 'Altro'); assert(state.rows[1][11].includes(crm.service));
   assert.equal(state.invoke(signedEnvelope(crm, 'test-secret')).duplicate, true); assert.equal(state.commits, 1);
 });
+
+test('Apps Script stores a phone-only heat-pump request with an empty email cell and deduplicates it', () => {
+  const state = scriptHarness();
+  const crm = { ...sample().crm, kind: 'heat-pump-short', email: '', phone: '+390491234567', city: 'Padova', service: 'Pompe di calore', resendId: 'mock-provider-acceptance' };
+  assert.equal(state.invoke(signedEnvelope(crm, 'test-secret')).ok, true);
+  assert.equal(state.rows.length, 2);
+  assert.equal(state.rows[1][3], '');
+  assert.equal(state.rows[1][2], crm.phone);
+  assert.equal(state.rows[1][7], 'Pompe di calore');
+  assert.equal(state.invoke(signedEnvelope(crm, 'test-secret')).duplicate, true);
+  assert.equal(state.rows.length, 2);
+  assert.equal(state.commits, 1);
+});
