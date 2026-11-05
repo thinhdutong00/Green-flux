@@ -96,6 +96,7 @@ def transform(raw,path):
    if 'Interventi concreti' in p.get_text():p.string='Tipologie di intervento: le immagini illustrano possibili applicazioni e non documentano cantieri Green Flux.'
  if soup.head:
   soup.head.append(soup.new_tag('link',rel='stylesheet',href='/assets/css/green-flux.css'))
+  soup.head.append(soup.new_tag('link',rel='stylesheet',href='/assets/css/mobile-header.css'))
   canonical=soup.select_one('link[rel="canonical"]')
   if canonical:canonical['href']=ORIGIN+path
   metadata={'@context':'https://schema.org','@graph':[

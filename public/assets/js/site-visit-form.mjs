@@ -2,6 +2,8 @@ import { readSiteVisit, validateSiteVisit } from '../../preventivo/site-visit-da
 import { serviceId } from '../../preventivo/funnel-data.mjs';
 import { createRequestSender, submitAndRedirect } from './request-delivery.mjs';
 import { readSubmissionStatus } from './submission-status.mjs';
+import { setupMobileHeader } from './mobile-header.mjs';
+import { setupDesktopMenus } from './desktop-header.mjs';
 
 const params = new URLSearchParams(location.search);
 const selected = serviceId(params.get('servizio'));
@@ -60,6 +62,11 @@ for (const form of document.querySelectorAll('[data-site-visit-form]')) {
 
 const brief = document.querySelector('[data-visit-page]');
 const detailed = document.querySelector('[data-quote-wizard]');
+if (brief) {
+  setupMobileHeader(brief);
+  setupDesktopMenus();
+  brief.querySelectorAll('a[href="/preventivo/"]').forEach(link => link.setAttribute('href', '#richiesta-breve'));
+}
 if (brief && detailed && (params.get('dettagli') === '1' || params.get('embed') === '1')) {
   brief.hidden = true;
   detailed.hidden = false;
