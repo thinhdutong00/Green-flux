@@ -630,11 +630,11 @@ html.quote-open, html.quote-open body { overflow: hidden; overscroll-behavior: n
 .home-green-flux .hero-lead { max-width:630px; margin-left:0; color:rgb(255 255 255 / 88%); font-size:20px; }
 .home-green-flux .hero-actions { justify-content:flex-start; }
 .home-green-flux .solutions-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
-.home-green-flux .solutions-grid > .solution-card { grid-column:auto; min-height:450px; }
+.home-green-flux .solutions-grid > .solution-card { grid-column:auto; min-height:450px; background:#0b0d0c; }
 .home-green-flux .card-content { padding:150px 32px 32px; }
 .home-green-flux .card-content h3 { max-width:480px; font-size:clamp(28px,2.4vw,36px); line-height:1.12; }
 .home-green-flux .card-content p { max-width:490px; color:rgb(255 255 255 / 90%); }
-.home-green-flux .card-scrim { background:linear-gradient(180deg,rgb(18 51 53 / 2%),rgb(18 51 53 / 35%) 24%,rgb(18 51 53 / 92%) 70%,#123335); }
+.home-green-flux .card-scrim { background:linear-gradient(180deg,rgb(11 13 12 / 2%),rgb(11 13 12 / 35%) 24%,rgb(11 13 12 / 92%) 70%,#0b0d0c); }
 .home-green-flux .solution-category {
  position:absolute;
  top:0;
