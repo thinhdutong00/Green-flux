@@ -134,9 +134,9 @@ Concordiamo il sopralluogo gratuito e controlliamo termosifoni, spazi e collegam
 
 Ti presentiamo soluzione, interventi e costi. Dopo la tua conferma coordiniamo l’installazione, avviamo l’impianto e ti mostriamo come usarlo.
 
-Risposte pratiche
+FAQ
 
-### Sopralluogo, installazione e incentivi: le risposte alle tue domande.
+### Domande frequenti
 
 **Lavorate nel mio comune?**
 
