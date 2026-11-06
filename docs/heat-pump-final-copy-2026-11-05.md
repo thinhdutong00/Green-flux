@@ -84,7 +84,7 @@ Fonti ufficiali: ENEA · Ecobonus 2026 · Agenzia delle Entrate · requisiti · 
 
 L’impianto che hai già
 
-### Hai i termosifoni? Ti indichiamo cosa mantenere.
+### Durante il sopralluogo verifichiamo se puoi tenere i tuoi termosifoni.
 
 Controlliamo i radiatori, il calore necessario per la casa e la temperatura dell’acqua. Quando sono adatti al nuovo impianto, li manteniamo; dove servono modifiche, le inseriamo nella proposta.
 
