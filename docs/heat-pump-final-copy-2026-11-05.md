@@ -6,7 +6,7 @@ Pompe di calore a Padova e dintorni
 
 ## Vuoi cambiare caldaia e spendere meno per riscaldare casa?
 
-Con Green Flux hai un unico interlocutore per il tuo nuovo riscaldamento. Studiamo la tua casa, prepariamo la proposta e coordiniamo l’installazione idraulica ed elettrica, fino all’avviamento della pompa di calore.
+La pompa di calore sfrutta il calore dell’aria esterna per scaldare casa. Così usi meno gas e puoi spendere meno in bolletta. Durante il sopralluogo gratuito valutiamo la metratura e gli spazi disponibili. Poi ricevi un preventivo con il **prezzo totale, installazione compresa**. Verifichiamo anche quali incentivi puoi richiedere e ti aiutiamo con i documenti.
 
 Ti contattiamo per un primo confronto sulla casa e sull’intervento, poi concordiamo il sopralluogo gratuito.
 
