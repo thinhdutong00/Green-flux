@@ -40,7 +40,7 @@ test('Every page has an editorial audit record and no imported commercial promis
   if(incentiveSection){
    for(const condition of ['50%', '36%', '10 quote annuali', 'imposta dovuta', 'fino al 65%', 'spese ammissibili', 'approvazione della richiesta', '25 dicembre 2025', 'non si sommano sulle stesse spese']) assert(textOnly(incentiveSection).includes(condition),condition);
    for(const source of ['efficienzaenergetica.enea.it','agenziaentrate.gov.it','gse.it']) assert(incentiveSection.includes(source),source);
-   assert(incentiveSection.includes('datetime="2026-11-05"'));
+   assert(textOnly(incentiveSection).includes('Fonti ufficiali:'));
   }
   if(incentiveCard){
    assert(/Verifichiamo/.test(textOnly(incentiveCard)),route);

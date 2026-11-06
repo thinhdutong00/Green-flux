@@ -80,7 +80,7 @@ Conto Termico e detrazioni fiscali non si sommano sulle stesse spese. Requisiti,
 
 Con il sopralluogo raccogliamo le informazioni per affrontare insieme lavori e agevolazioni.
 
-Fonti ufficiali consultate il 5 novembre 2026: ENEA · Ecobonus 2026 · Agenzia delle Entrate · requisiti · GSE · importi ed erogazione · GSE · impianto esistente · GSE · cumulabilità.
+Fonti ufficiali: ENEA · Ecobonus 2026 · Agenzia delle Entrate · requisiti · GSE · importi ed erogazione · GSE · impianto esistente · GSE · cumulabilità.
 
 L’impianto che hai già
 
