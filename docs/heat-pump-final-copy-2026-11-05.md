@@ -126,7 +126,7 @@ Efficientamento energetico insieme
 
 Raccontaci come riscaldi casa e dove si trova l’immobile. Nel primo confronto raccogliamo le informazioni per organizzare il sopralluogo.
 
-#### Veniamo a vedere casa e impianto.
+#### Veniamo da te per il sopralluogo gratuito.
 
 Concordiamo il sopralluogo gratuito e controlliamo termosifoni, spazi e collegamenti. Su questa base prepariamo la proposta.
 
