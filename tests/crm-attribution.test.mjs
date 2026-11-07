@@ -79,13 +79,39 @@ test('The sender keeps the operational submission path after cookie refusal or r
   await sender(payload);
   assert.deepEqual(calls[0].attribution, { consent: false, submissionPage: '/servizi/pompe-calore/' });
   saveAdsConsent(b, true, now);
-  await sender({ ...payload, name: 'TEST AGGIORNATO' });
+  await sender(payload);
   assert.equal(calls[1].attribution.params.gclid, 'TEST_CLICK');
   saveAdsConsent(b, false, now);
-  await sender({ ...payload, name: 'TEST AGGIORNATO' });
+  await sender(payload);
   assert.deepEqual(calls[2].attribution, { consent: false, submissionPage: '/servizi/pompe-calore/' });
   assert.equal(calls[1].requestId, calls[2].requestId);
   assert.equal(normalizeAttribution(calls[2].attribution).source, 'Non rilevata');
   assert(!JSON.stringify(calls[2].attribution).includes('private'));
   assert.equal(b.sessionStorage.getItem(attributionKey), null);
+});
+
+test('A consented form recovers the ad tags from its own referring landing without storing other query data', () => {
+  const now = Date.now();
+  const landing = 'https://green-flux.com/servizi/pompe-calore/?gad_source=1&gad_campaignid=12345678&email=private@example.test';
+  const b = browser('https://green-flux.com/preventivo/', landing);
+  assert.equal(captureAttribution(b, now).consent, false);
+  assert.equal(b.sessionStorage.getItem(attributionKey), null);
+  saveAdsConsent(b, true, now);
+  const recovered = captureAttribution(b, now);
+  assert.equal(recovered.source, 'Google Ads');
+  assert.equal(recovered.entryPage, '/servizi/pompe-calore/');
+  assert.equal(recovered.submissionPage, '/preventivo/');
+  assert.equal(recovered.campaign, 'Campagna ID: 12345678');
+  assert(!JSON.stringify(recovered).includes('private'));
+  b.location = new URL('https://green-flux.com/preventivo/?gad_source=1&gad_campaignid=12345678');
+  assert.equal(captureAttribution(b, now + 1).entryPage, recovered.entryPage);
+  b.location = new URL('https://green-flux.com/preventivo/');
+  assert.equal(captureAttribution(b, now + attributionLifetime + 1).source, 'Non rilevata');
+  const external = browser('https://green-flux.com/preventivo/', landing.replace('green-flux.com/', 'example.org/'));
+  saveAdsConsent(external, true, now);
+  assert.equal(captureAttribution(external, now).source, 'Referral');
+  for (const params of [{gad_source: '1'}, {gad_campaignid: '12345678'}]) {
+    assert.equal(normalizeAttribution({consent: true, params}).source, 'Google Ads');
+  }
+  assert.equal(normalizeAttribution({consent: true, params: {gad_source: 'bad', gad_campaignid: '0'}}).source, 'Non rilevata');
 });

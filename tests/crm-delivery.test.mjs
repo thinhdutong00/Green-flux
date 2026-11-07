@@ -77,11 +77,11 @@ test('The retry endpoint rejects anonymous requests and discloses no queued data
   assert.equal(response.code, 401); assert.deepEqual(response.payload, { ok: false });
 });
 function scriptHarness() {
-  const rows = [['Data', 'Nome e cognome', 'Telefono', 'Email', 'Città', 'Provenienza', 'Annuncio / campagna', 'Servizio richiesto', 'Stato richiesta', 'Contattato', 'Data e ora contatto', 'Comunicazioni / note', 'Preventivo', 'Accettato', 'ID richiesta', 'Pagina di ingresso', 'Pagina di invio', 'Evidenza attribuzione']];
+  const rows = [['Data', 'Nome e cognome', 'Telefono', 'Email', 'Città', 'Provenienza', 'Annuncio / campagna', 'Servizio richiesto', 'Stato richiesta', 'Contattato', 'Data e ora contatto', 'Comunicazioni / note', 'Preventivo', 'Accettato', 'ID richiesta', 'Pagina di ingresso', 'Pagina di invio']];
   const state = { failCommit: false, commits: 0, rows, locked: false };
   const choices = { 6: ['Google Ads', 'Google organico', 'Google Maps', 'Diretto', 'Social', 'Referral', 'Altro', 'Non rilevata'], 8: ['Pompe di calore', 'Fotovoltaico', 'Altro'], 9: ['Nuova', 'Da contattare'] };
   const book = { getId: () => '1_T3GS1bZUXE_5FQXKOeEd1gOzJmjKoBtiJksfyRGHvw', getSpreadsheetTimeZone: () => 'Europe/Rome', getSheetByName: () => sheet };
-  const sheet = { getParent: () => book, getSheetId: () => 0, getLastRow: () => rows.length, getMaxRows: () => 1000, getRange: (row, col, height = 1, width = 1) => ({ getValues: () => Array.from({ length: height }, (_, i) => Array.from({ length: width }, (_, j) => rows[row - 1 + i]?.[col - 1 + j] ?? '')), getDataValidation: () => choices[col] ? { getCriteriaType: () => 'VALUE_IN_LIST', getCriteriaValues: () => [choices[col]] } : null, createTextFinder: value => ({ matchEntireCell() { return this; }, matchCase() { return this; }, findNext: () => rows.slice(1).some(r => r[14] === value) }) }) };
+  const sheet = { getParent: () => book, getSheetId: () => 0, getLastRow: () => rows.length, getMaxRows: () => 1000, getMaxColumns: () => rows[0].length, getRange: (row, col, height = 1, width = 1) => ({ getValues: () => Array.from({ length: height }, (_, i) => Array.from({ length: width }, (_, j) => rows[row - 1 + i]?.[col - 1 + j] ?? '')), getDataValidation: () => choices[col] ? { getCriteriaType: () => 'VALUE_IN_LIST', getCriteriaValues: () => [choices[col]] } : null, createTextFinder: value => ({ matchEntireCell() { return this; }, matchCase() { return this; }, findNext: () => rows.slice(1).some(r => r[14] === value) }) }) };
   const context = vm.createContext({ console: { error() {} }, Date, JSON, Number, String, Object, Math,
     SpreadsheetApp: { openById(id) { assert.equal(id, book.getId()); return book; }, flush() {}, DataValidationCriteria: { VALUE_IN_LIST: 'VALUE_IN_LIST' } },
     Sheets: { Spreadsheets: { batchUpdate(body, sheetId) {
@@ -105,11 +105,12 @@ function scriptHarness() {
 }
 test('Apps Script rejects invalid signatures and replays; atomic requestId deduplication preserves commercial edits and neutralizes formulas', () => {
   const { invoke, rows, context } = scriptHarness();
-  const crm = { ...sample().crm, name: '=IMPORTXML("secret")', phone: '+390000000000', notes: '=FORMULA', resendId: 'confirmed-email' };
+  const crm = { ...sample().crm, entryPage: '/servizi/pompe-calore/', submissionPage: '/preventivo/', name: '=IMPORTXML("secret")', phone: '+390000000000', notes: '=FORMULA', resendId: 'confirmed-email' };
   assert.equal(invoke(signedEnvelope(crm, 'wrong-secret')).reason, 'unauthorized');
   assert.equal(invoke(signedEnvelope(crm, 'test-secret', Date.now() - 600000)).reason, 'unauthorized');
   assert.equal(invoke(signedEnvelope(crm, 'test-secret')).ok, true); assert.equal(rows.length, 2);
   assert.equal(rows[1][8], 'Da contattare'); assert.equal(rows[1][1], crm.name); assert.equal(rows[1][2], crm.phone); assert(rows[1][11].startsWith('=FORMULA')); assert.equal(typeof rows[1][0], 'number');
+  assert.deepEqual(Array.from(rows[1].slice(15)), [crm.entryPage, crm.submissionPage]);
   assert.equal(rows[1][7], 'Altro'); assert(rows[1][11].includes('Richiesta Informazioni'));
   rows[1][8] = 'In trattativa'; rows[1][11] = 'Nota commerciale reale';
   assert.equal(invoke(signedEnvelope(crm, 'test-secret')).duplicate, true); assert.equal(rows.length, 2); assert.equal(rows[1][8], 'In trattativa'); assert.equal(rows[1][11], 'Nota commerciale reale');

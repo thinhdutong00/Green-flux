@@ -37,13 +37,13 @@ Un operatore autorizzato può ripassare il record verificato a `node scripts/rec
 
 L'acquisizione è separata dalle conversioni Google Ads e funziona anche nel preventivo incorporato sullo stesso dominio. Dati di attribuzione solo dopo consenso Ads, per una sessione massima di 30 minuti; rifiuto/revoca svuotano la memoria di acquisizione. Il CRM riceve comunque recapiti e richiesta operativa.
 
-- Click ID `gclid`, `gbraid`, `wbraid`, oppure `utm_source=google` con `utm_medium=cpc/ppc/paidsearch`: Google Ads.
+- Click ID `gclid`, `gbraid`, `wbraid`, parametri Google `gad_source` o `gad_campaignid` numerici, oppure `utm_source=google` con `utm_medium=cpc/ppc/paidsearch`: Google Ads.
 - Nome campagna solo da `utm_campaign`; in sua assenza si registrano gli ID realmente disponibili. Nessuna risoluzione inventata dell'ID al nome.
 - Google Maps: UTM espliciti Maps/GBP/GMB o referrer Maps riconoscibile.
 - Google organico: UTM organic espliciti o referrer di ricerca identificabile. Il solo dominio Google senza percorso e senza UTM resta **Non rilevata**, perché può avere perso parametri pubblicitari.
 - Social, referral e altre fonti: evidenze UTM/referrer disponibili. Diretto indica tecnicamente un ingresso senza referrer o parametri, e può includere link non tracciati.
 
-Parametri estranei e query di ricerca del referrer non vengono conservati. Senza consenso o con evidenze insufficienti: **Non rilevata**. Nessun dato del modulo è mandato a Google Ads. L'evento di conversione esistente comprende il modulo breve e il quiz pompe di calore: richiede un invio accettato dal backend e consenso pubblicitario, con deduplica per UUID. Gli eventi diagnostici del modulo e dei passaggi del quiz richiedono il consenso Clarity e non sono conversioni primarie. La conferma operativa dell'invio non dipende dal consenso pubblicitario.
+Se il primo consenso arriva sul preventivo e il referrer della pagina precedente sullo stesso dominio contiene parametri di campagna, il modulo recupera solo i parametri ammessi e il percorso della pagina. Il foglio registra la pagina di ingresso in P e la pagina di invio in Q. Parametri estranei e query di ricerca del referrer non vengono conservati. Senza consenso o con evidenze insufficienti: **Non rilevata**. Nessun dato del modulo è mandato a Google Ads. L'evento di conversione esistente comprende il modulo breve e il quiz pompe di calore: richiede un invio accettato dal backend e consenso pubblicitario, con deduplica per UUID. Gli eventi diagnostici del modulo e dei passaggi del quiz richiedono il consenso Clarity e non sono conversioni primarie. La conferma operativa dell'invio non dipende dal consenso pubblicitario.
 
 ## Collaudo
 

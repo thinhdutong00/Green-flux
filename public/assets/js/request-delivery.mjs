@@ -24,17 +24,11 @@ async function persistentRequestId(browser, payload, createId, now) {
 // Keep the same key when a visitor retries the same request after a timeout.
 export function createRequestSender(kind, { fetchRequest = (...args) => fetch(...args), now = Date.now, createId = () => crypto.randomUUID(), browser = typeof window === 'undefined' ? null : window } = {}) {
   const started = now();
-  let previousPayload, requestId, attribution;
+  let previousPayload, requestId;
   return async data => {
     const payload = JSON.stringify({ ...data, kind });
-    if (payload !== previousPayload) { previousPayload = payload; requestId = await persistentRequestId(browser, payload, createId, now()); attribution = captureAttribution(browser, now()); }
-    // A revoked choice immediately removes optional attribution, including on retries.
-    const currentAttribution = browser && captureAttribution(browser, now());
-    if (currentAttribution && currentAttribution.consent !== true) {
-      // The submission path identifies the operational form, without keeping any
-      // optional acquisition data (campaign, referrer, click ID, or entry history).
-      attribution = { consent: false, submissionPage: currentAttribution.submissionPage };
-    }
+    if (payload !== previousPayload) { previousPayload = payload; requestId = await persistentRequestId(browser, payload, createId, now()); }
+    const attribution = captureAttribution(browser, now());
     // The server derives the channel; do not duplicate derived campaign/evidence text.
     const context = { consent: attribution?.consent === true, entryPage: attribution?.entryPage, submissionPage: attribution?.submissionPage, ...(attribution?.consent === true ? { params: attribution.params, referrer: attribution.referrer, directEntry: attribution.directEntry } : {}) };
     const controller = new AbortController();

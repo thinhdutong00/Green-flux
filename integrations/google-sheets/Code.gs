@@ -4,7 +4,7 @@ const GF_SHEET_NAME = 'Richieste dal sito';
 const GF_HEADERS = ['Data', 'Nome e cognome', 'Telefono', 'Email', 'Città', 'Provenienza', 'Annuncio / campagna', 'Servizio richiesto', 'Stato richiesta', 'Contattato', 'Data e ora contatto', 'Comunicazioni / note', 'Preventivo', 'Accettato', 'ID richiesta'];
 const GF_SOURCES = ['Google Ads', 'Google organico', 'Google Maps', 'Diretto', 'Social', 'Referral', 'Altre fonti', 'Non rilevata'];
 
-function doGet() { return gfJson_({ ok: true, service: 'green-flux-crm', version: 2 }); }
+function doGet() { return gfJson_({ ok: true, service: 'green-flux-crm', version: 3 }); }
 
 function doPost(event) {
   let lock;
@@ -39,8 +39,8 @@ function doPost(event) {
     const status = gfChoice_(sheet, row, 9, 'Da contattare', 'Nuova');
     const notes = service === lead.service ? lead.notes : String(lead.notes || '') + '\n\nServizio / oggetto indicato nel modulo: ' + String(lead.service || 'Non specificato');
     const values = [date, lead.name, lead.phone, lead.email, lead.city, source, lead.campaign, service, status, '', '', notes, '', '', lead.requestId].map(gfText_);
-    const extraHeaders = sheet.getRange(1, 16, 1, 3).getValues()[0];
-    if (extraHeaders.join('|') === 'Pagina di ingresso|Pagina di invio|Evidenza attribuzione') values.push(gfText_(lead.entryPage), gfText_(lead.submissionPage), gfText_(lead.evidence));
+    const pageHeaders = sheet.getMaxColumns() >= 17 && sheet.getRange(1, 16, 1, 2).getValues()[0];
+    if (pageHeaders && pageHeaders.join('|') === 'Pagina di ingresso|Pagina di invio') values.push(gfText_(lead.entryPage), gfText_(lead.submissionPage));
     // SpreadsheetApp.setValues can leave a partial row after a validation error.
     // The Sheets API validates and commits all cells, including requestId, atomically.
     SpreadsheetApp.flush();
