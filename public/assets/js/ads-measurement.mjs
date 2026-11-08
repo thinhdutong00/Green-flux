@@ -122,9 +122,8 @@ if (window.top === window) {
     manageButton.setAttribute('aria-expanded', String(open));
   }
   function syncSettings() {
-    // Until a choice is saved, the optional categories are shown as enabled.
-    adsCheckbox.checked = consent !== false;
-    analyticsCheckbox.checked = analyticsConsent !== false;
+    adsCheckbox.checked = consent === true;
+    analyticsCheckbox.checked = analyticsConsent === true;
   }
   function choose(ads, analytics) {
     saveAdsConsent(window, ads);
