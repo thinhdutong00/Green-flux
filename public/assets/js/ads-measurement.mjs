@@ -80,14 +80,14 @@ if (window.top === window) {
         <button type="button" data-consent-accept>Accetta tutti</button>
       </div>
       <div class="gf-consent-settings" id="gf-cookie-settings" data-consent-settings hidden>
-        <h2 tabindex="-1" data-consent-settings-title>Gestisci le preferenze</h2>
-        <p>Attiva solo gli strumenti che desideri. Puoi cambiare scelta in qualsiasi momento da “Preferenze cookie” in fondo alla pagina.</p>
+        <h2 tabindex="-1" data-consent-settings-title>Preferenze sui cookie</h2>
+        <p>Seleziona le categorie di cookie che desideri autorizzare. Puoi modificare le tue scelte in qualsiasi momento tramite il link “Preferenze cookie” presente in fondo a ogni pagina.</p>
         <div class="gf-consent-categories">
-          <div class="gf-consent-category"><strong>Necessari al sito</strong><p>Consentono le funzioni essenziali del sito e memorizzano le tue preferenze.</p><span class="gf-consent-required">Sempre attivi</span></div>
-          <label class="gf-consent-category"><span><strong>Misurazione degli annunci</strong><span>Google Ads misura i risultati delle campagne, senza ricevere i dati dei moduli né attivare annunci personalizzati.</span></span><span class="gf-consent-toggle"><input type="checkbox" role="switch" data-consent-ads aria-label="Consenti la misurazione degli annunci con Google Ads"><span class="gf-consent-switch-off" aria-hidden="true">OFF</span><span class="gf-consent-switch-on" aria-hidden="true">ON</span></span></label>
-          <label class="gf-consent-category"><span><strong>Analisi della navigazione</strong><span>Microsoft Clarity registra le interazioni nella pagina sulle pompe di calore per analizzarne l’utilizzo. Il contenuto dei moduli è oscurato.</span></span><span class="gf-consent-toggle"><input type="checkbox" role="switch" data-consent-analytics aria-label="Consenti l’analisi della navigazione con Microsoft Clarity"><span class="gf-consent-switch-off" aria-hidden="true">OFF</span><span class="gf-consent-switch-on" aria-hidden="true">ON</span></span></label>
+          <div class="gf-consent-category"><strong>Cookie tecnici</strong><p>Indispensabili per il corretto funzionamento del sito e per memorizzare le tue preferenze. Non richiedono il consenso.</p><span class="gf-consent-required">Sempre attivi</span></div>
+          <label class="gf-consent-category"><span><strong>Cookie di misurazione</strong><span>Consentono di valutare in forma aggregata l’efficacia delle nostre campagne. Non vengono utilizzati per mostrarti annunci personalizzati e non ricevono i dati inseriti nei moduli.</span></span><span class="gf-consent-toggle"><input type="checkbox" role="switch" data-consent-ads aria-label="Consenti i cookie di misurazione"><span class="gf-consent-switch-off" aria-hidden="true">OFF</span><span class="gf-consent-switch-on" aria-hidden="true">ON</span></span></label>
+          <label class="gf-consent-category"><span><strong>Cookie di analisi</strong><span>Ci aiutano a comprendere come i visitatori utilizzano il sito, per migliorarne contenuti e usabilità. I dati inseriti nei moduli non vengono mai raccolti.</span></span><span class="gf-consent-toggle"><input type="checkbox" role="switch" data-consent-analytics aria-label="Consenti i cookie di analisi"><span class="gf-consent-switch-off" aria-hidden="true">OFF</span><span class="gf-consent-switch-on" aria-hidden="true">ON</span></span></label>
         </div>
-        <div class="gf-consent-settings-footer"><p><a href="/cookie-policy/">Informativa cookie</a> · <a href="/privacy-policy/">Privacy</a></p><div class="gf-consent-settings-actions"><button type="button" data-consent-back>Indietro</button><button type="button" data-consent-reject>Rifiuta tutti</button><button type="button" data-consent-save>Salva le preferenze</button></div></div>
+        <div class="gf-consent-settings-footer"><p><a href="/cookie-policy/">Informativa sui cookie</a> · <a href="/privacy-policy/">Privacy</a></p><div class="gf-consent-settings-actions"><button type="button" data-consent-back>Indietro</button><button type="button" data-consent-reject>Rifiuta tutti</button><button type="button" data-consent-save>Salva le preferenze</button></div></div>
       </div>
     </div>`;
   const trigger = document.createElement('button');
@@ -122,8 +122,9 @@ if (window.top === window) {
     manageButton.setAttribute('aria-expanded', String(open));
   }
   function syncSettings() {
-    adsCheckbox.checked = consent === true;
-    analyticsCheckbox.checked = analyticsConsent === true;
+    // Until a choice is saved, the optional categories are shown as enabled.
+    adsCheckbox.checked = consent !== false;
+    analyticsCheckbox.checked = analyticsConsent !== false;
   }
   function choose(ads, analytics) {
     saveAdsConsent(window, ads);
