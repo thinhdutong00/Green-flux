@@ -334,3 +334,18 @@ body.hp-qualified{--hp-green:#c7e6a0;--hp-green-dark:#44652f;--hp-ink:#18322d}
  .hp-radiator-figure img{min-width:680px}
  .hp-house-figure figcaption::after{content:" Scorri il disegno verso destra per vedere l’unità esterna."}
 }
+
+/* Quanto costa: fattori di prezzo */
+.hp-price-section{background:#f1f4ec;padding:88px 0}
+.hp-price-factors{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.hp-price-factors li{background:#fff;border:1px solid #d8e0d1;border-radius:20px;padding:26px 28px}
+.hp-price-factors li:last-child{grid-column:1/-1}
+.hp-price-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 20px;margin-bottom:10px}
+.hp-price-factors h3{font-size:18px;letter-spacing:-.4px;margin:0;color:#18322d}
+.hp-price-factors p{margin:0;font-size:14.5px;line-height:1.75;color:#526159}
+.hp-price-weight{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:700;color:#2f5a3a}
+.hp-price-weight i{display:block;width:16px;height:8px;border-radius:4px;background:#e6e9df}
+.hp-price-weight b{margin-left:8px;font-weight:700}
+.hp-weight-1 i:nth-child(1),.hp-weight-2 i:nth-child(-n+2),.hp-weight-3 i:nth-child(-n+3){background:#2f5a3a}
+.hp-price-section .hp-offer-close{background:#fff;margin-top:28px}
+@media(max-width:850px){.hp-price-section{padding:60px 0}.hp-price-factors{grid-template-columns:1fr;gap:12px}.hp-price-factors li{padding:20px}}

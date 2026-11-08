@@ -87,7 +87,7 @@ if (window.top === window) {
     <div class="gf-consent-inner">
       <div class="gf-consent-copy" data-consent-summary>
         <h2>Cookie e preferenze</h2>
-        <p>Questo sito utilizza cookie tecnici necessari al suo funzionamento e, solo previo tuo consenso, cookie di analisi e di misurazione per migliorare l’esperienza di navigazione e valutare l’efficacia delle nostre comunicazioni. Puoi accettarli tutti oppure scegliere quali attivare.</p>
+        <p class="gf-consent-long">Questo sito utilizza cookie tecnici necessari al suo funzionamento e, solo previo tuo consenso, cookie di analisi e di misurazione per migliorare l’esperienza di navigazione e valutare l’efficacia delle nostre comunicazioni. Puoi accettarli tutti oppure scegliere quali attivare.</p><p class="gf-consent-short">Usiamo cookie tecnici e, solo con il tuo consenso, cookie di analisi e misurazione. Puoi accettarli tutti o scegliere quali attivare.</p>
         <p class="gf-consent-note"><a href="/cookie-policy/">Informativa cookie</a> · <a href="/privacy-policy/">Privacy</a></p>
       </div>
       <div class="gf-consent-actions" data-consent-actions>

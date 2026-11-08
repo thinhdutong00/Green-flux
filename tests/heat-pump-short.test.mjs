@@ -21,8 +21,10 @@ function browser() {
 
 test('The short form accepts an omitted email value and unknown heating, while validating any provided email', () => {
   assert.deepEqual(validateShortRequest(sample()), []);
+  assert.deepEqual(validateShortRequest({ ...sample(), city: '', heating: '' }), []);
+  assert(shortRequestText({ ...sample(), city: '', heating: '' }).includes('Immobile: Da chiedere al telefono'));
   for (const email of ['', '   ']) assert.deepEqual(validateShortRequest({ ...sample(), email }), []);
-  for (const [field, value] of [['name',''],['phone','123'],['city',''],['heating','arbitrary'],['privacy',false],['email',undefined],['email','invalid'],['email',{}]]) assert(validateShortRequest({ ...sample(), [field]: value }).length, field);
+  for (const [field, value] of [['name',''],['phone','123'],['city','x'],['heating','arbitrary'],['privacy',false],['email',undefined],['email','invalid'],['email',{}]]) assert(validateShortRequest({ ...sample(), [field]: value }).length, field);
   const data = new FormData();
   for (const [key,value] of [['nome',' TEST '],['telefono',' +390491234567 '],['comune',' Padova '],['riscaldamento','Non lo so'],['email',` ${sample().email} `],['privacy','on']]) data.set(key,value);
   assert.deepEqual(validateShortRequest(readShortRequest(data)), []);
