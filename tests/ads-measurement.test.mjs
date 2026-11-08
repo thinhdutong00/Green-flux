@@ -28,9 +28,10 @@ test('Only an accepted heat-pump delivery provides a conversion receipt, includi
     await submitAndRedirect(async () => result, {}, { browser: iframe });
     assert.equal(readConversionReceipt(parent), null);
   }
+  // Without advertising consent the receipt is still kept for 15 minutes: the event is sent only if consent is granted on the thank-you page.
   saveAdsConsent(parent, false);
   await submitAndRedirect(async () => ({ accepted: true, receipt }), {}, { browser: iframe });
-  assert.equal(readConversionReceipt(parent), null);
+  assert.equal(readConversionReceipt(parent).sent, false);
 });
 
 test('Direct visits, failed deliveries, other pages, reloads and expired receipts do not create conversions', () => {

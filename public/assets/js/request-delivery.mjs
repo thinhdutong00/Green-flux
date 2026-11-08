@@ -1,5 +1,4 @@
 import { clearConversionReceipt, saveConversionReceipt } from './conversion-receipt.mjs';
-import { readAdsConsent } from './ads-consent.mjs';
 import { saveSubmissionStatus } from './submission-status.mjs';
 import { captureAttribution } from './lead-attribution.mjs';
 
@@ -86,7 +85,8 @@ export async function submitAndRedirect(sender, data, { requestText = '', browse
   clearPendingRequest(destination);
   clearConversionReceipt(destination);
   if (accepted) saveSubmissionStatus(destination, receipt?.kind || data.kind || 'legacy');
-  if (accepted && readAdsConsent(destination) === true) saveConversionReceipt(destination, receipt);
+  // The receipt is kept for 15 minutes; the conversion is sent only if advertising consent is (or becomes) granted.
+  if (accepted) saveConversionReceipt(destination, receipt);
   if (!accepted && requestText) {
     try { destination.sessionStorage.setItem(pendingRequestKey, JSON.stringify({ version: 1, text: requestText, expiresAt: Date.now() + pendingRequestLifetime })); } catch { /* Navigation still works when browser storage is disabled. */ }
   }

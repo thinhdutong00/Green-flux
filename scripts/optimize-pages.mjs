@@ -51,7 +51,7 @@ export async function optimizePages(output, pagePaths, scriptPaths) {
     const [purged] = await new PurgeCSS().purge({
       content: [{raw: html, extension: 'html'}, ...scripts],
       css: [{raw: css}],
-      dynamicAttributes: ['open', 'hidden', 'aria-expanded', 'aria-invalid', 'data-step'],
+      dynamicAttributes: ['open', 'hidden', 'aria-expanded', 'aria-invalid', 'data-step', 'data-closed'],
       safelist: ['html', 'body', 'is-open', 'is-visible', 'is-hidden', 'is-selected', 'is-scrolled', 'gf-mobile-ready', 'gf-menu-open', 'menu-open', 'reveal-ready', 'js'],
     });
     const minified = (await transform(purged.css, {loader: 'css', minify: true, target: ['chrome110','firefox115','safari16.4']})).code;

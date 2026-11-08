@@ -10,6 +10,26 @@ let opener;
 document.querySelectorAll('a[href="#valutazione"]').forEach(link => {
   link.addEventListener('click', () => trackLeadEvent('lead_cta_click'));
 });
+document.querySelectorAll('[data-hp-call]').forEach(link => link.addEventListener('click', () => trackLeadEvent('lead_call_click')));
+document.querySelectorAll('[data-hp-whatsapp]').forEach(link => link.addEventListener('click', () => trackLeadEvent('lead_whatsapp_click')));
+
+// The phone is answered Monday to Friday, 8:00–18:00 (Europe/Rome): outside those hours the bar leads with WhatsApp.
+const sticky = document.querySelector('[data-hp-sticky]');
+if (sticky) {
+  const updateHours = () => {
+    try {
+      const parts = new Intl.DateTimeFormat('it-IT', { timeZone: 'Europe/Rome', weekday: 'short', hour: 'numeric', hour12: false }).formatToParts(new Date());
+      const weekday = parts.find(part => part.type === 'weekday')?.value || '';
+      const hour = Number(parts.find(part => part.type === 'hour')?.value);
+      const open = !/^(sab|dom)/i.test(weekday) && hour >= 8 && hour < 18;
+      sticky.toggleAttribute('data-closed', !open);
+      const call = sticky.querySelector('[data-hp-sticky-call] span:last-child');
+      if (call) call.textContent = open ? 'Chiama' : 'Chiama lun–ven';
+    } catch { /* Without Intl support the bar keeps its default labels. */ }
+  };
+  updateHours();
+  setInterval(updateHours, 60000);
+}
 
 if (hero) {
   const updateHeader = () => document.body.classList.toggle('is-scrolled', window.scrollY > hero.offsetHeight - 110);
