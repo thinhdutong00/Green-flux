@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="t2 d2">
+<title id="t2">Pompa di calore in estate: con i terminali adatti raffresca le stanze</title>
+<desc id="d2">La stessa casa in modalità estiva: l’unità esterna cede il calore all’aria, l’acqua fredda arriva ai ventilconvettori e l’aria fresca si diffonde nelle stanze.</desc>
+<defs>
+ <linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e9f2f7"/><stop offset="1" stop-color="#f7f8f3"/></linearGradient>
+ <linearGradient id="cool" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9ddff0"/><stop offset="1" stop-color="#3f8fc9"/></linearGradient>
+ <radialGradient id="cglow"><stop offset="0" stop-color="#7cc4e8" stop-opacity=".5"/><stop offset="1" stop-color="#7cc4e8" stop-opacity="0"/></radialGradient>
+ <marker id="arrowC" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="14" markerHeight="14" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#3f8fc9"/></marker>
+ <marker id="arrowH" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="14" markerHeight="14" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#e2643a"/></marker>
+</defs>
+<rect width="1200" height="760" fill="url(#sky2)"/>
+<g transform="translate(60 48)"><rect width="242" height="36" rx="18" fill="#3f8fc9"/><text x="121" y="24" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#fff" letter-spacing="1">ESTATE · RAFFRESCAMENTO</text></g>
+<circle cx="1060" cy="140" r="54" fill="#f6d36b"/>
+<circle cx="1060" cy="140" r="74" fill="#f6d36b" opacity=".25"/>
+<rect x="0" y="640" width="1200" height="120" fill="#dfe7d3"/>
+<path d="M0 640h1200" stroke="#c6d2b6" stroke-width="2"/>
+<g>
+ <path d="M120 300 420 110l300 190v340H120z" fill="#fbfcf9" stroke="#2d4a3f" stroke-width="3" stroke-linejoin="round"/>
+ <path d="M100 302 420 98l320 204" fill="none" stroke="#2d4a3f" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+ <path d="M120 470h600M120 640h600M430 300v170M430 470v170" stroke="#2d4a3f" stroke-width="3"/>
+ <path d="M120 300 420 110l300 190z" fill="#1f3a33"/>
+ <text x="150" y="335" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#2d4a3f" letter-spacing="1">CAMERA</text>
+ <text x="460" y="335" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#2d4a3f" letter-spacing="1">STUDIO</text>
+ <text x="150" y="505" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#2d4a3f" letter-spacing="1">SOGGIORNO</text>
+ <text x="460" y="505" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#2d4a3f" letter-spacing="1">LOCALE TECNICO</text>
+</g>
+<circle cx="230" cy="420" r="120" fill="url(#cglow)"/>
+<circle cx="280" cy="570" r="150" fill="url(#cglow)"/>
+<circle cx="560" cy="420" r="100" fill="url(#cglow)"/>
+<!-- fan coils (wall units) -->
+<g fill="#fff" stroke="#2d4a3f" stroke-width="3">
+ <g transform="translate(150 352)"><rect width="130" height="40" rx="12"/><path d="M14 28h102" stroke="#9ddff0" stroke-width="5" stroke-linecap="round"/></g>
+ <g transform="translate(470 352)"><rect width="110" height="40" rx="12"/><path d="M14 28h82" stroke="#9ddff0" stroke-width="5" stroke-linecap="round"/></g>
+ <g transform="translate(160 520)"><rect width="150" height="40" rx="12"/><path d="M14 28h122" stroke="#9ddff0" stroke-width="5" stroke-linecap="round"/></g>
+</g>
+<!-- cool air flows -->
+<g fill="none" stroke="url(#cool)" stroke-width="4" stroke-linecap="round" opacity=".95">
+ <path d="M175 402c10 15 10 30 0 45M215 402c10 15 10 30 0 45M255 402c10 15 10 30 0 45"/>
+ <path d="M495 402c10 15 10 30 0 45M535 402c10 15 10 30 0 45"/>
+ <path d="M190 570c10 15 10 30 0 45M235 570c10 15 10 30 0 45M280 570c10 15 10 30 0 45"/>
+</g>
+<!-- indoor unit -->
+<g transform="translate(470 520)">
+ <rect width="70" height="118" rx="10" fill="#fff" stroke="#2d4a3f" stroke-width="3"/>
+ <rect x="14" y="16" width="42" height="22" rx="4" fill="#c7e6a0"/>
+ <circle cx="35" cy="80" r="14" fill="none" stroke="#2d4a3f" stroke-width="3"/>
+ <circle cx="35" cy="80" r="4" fill="#3f8fc9"/>
+ <text x="35" y="138" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#2d4a3f">UNITÀ INTERNA</text>
+</g>
+<!-- cold water pipes to fan coils -->
+<g fill="none" stroke="url(#cool)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+ <path d="M505 520V480H340V372H282"/>
+ <path d="M505 520V480H600V372H582"/>
+ <path d="M505 520V480H340V540H312"/>
+</g>
+<!-- pipes to outdoor + heat rejected -->
+<path d="M700 598H565" fill="none" stroke="#3f8fc9" stroke-width="5" stroke-linecap="round" marker-end="url(#arrowC)"/>
+<path d="M565 580H700" fill="none" stroke="#e2643a" stroke-width="5" stroke-linecap="round" marker-end="url(#arrowH)"/>
+<text x="630" y="568" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#b3532f">CALORE</text>
+<text x="630" y="616" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#3f7fa6">ACQUA FREDDA</text>
+<g transform="translate(760 530)">
+ <rect x="0" y="0" width="170" height="110" rx="14" fill="#fff" stroke="#2d4a3f" stroke-width="3"/>
+ <circle cx="60" cy="55" r="38" fill="#f4f6f0" stroke="#2d4a3f" stroke-width="3"/>
+ <g stroke="#2d4a3f" stroke-width="3" fill="none"><path d="M60 55l0-30M60 55l26 15M60 55l-26 15"/></g>
+ <circle cx="60" cy="55" r="6" fill="#2d4a3f"/>
+ <path d="M120 22h30M120 40h30M120 58h30M120 76h30M120 94h30" stroke="#d6dccb" stroke-width="5" stroke-linecap="round"/>
+ <rect x="0" y="110" width="170" height="10" rx="3" fill="#9aa892"/>
+ <text x="85" y="-16" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#2d4a3f">UNITÀ ESTERNA</text>
+</g>
+<g fill="none" stroke="#e2643a" stroke-width="5" stroke-linecap="round" marker-end="url(#arrowH)">
+ <path d="M960 540c50-10 90-30 150-50"/>
+ <path d="M960 585c60 0 110 0 180 0"/>
+ <path d="M960 630c50 10 90 30 150 50"/>
+</g>
+<text x="990" y="450" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#b3532f" letter-spacing=".5">CALORE ESPULSO</text>
+<text x="990" y="470" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#b3532f">il ciclo si inverte: la casa si raffresca</text>
+<g transform="translate(120 680)">
+ <rect width="780" height="54" rx="12" fill="#102f2d"/>
+ <text x="20" y="33" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#edf3e3">Per raffrescare servono <tspan font-weight="700" fill="#c7e6a0">ventilconvettori</tspan> o pavimento radiante: i termosifoni non bastano.</text>
+</g>
+</svg>

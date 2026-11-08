@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="t d">
+<title id="t">Pompa di calore in una casa: il calore passa dall’unità esterna ai termosifoni</title>
+<desc id="d">Sezione di una casa su due piani. L’unità esterna a destra preleva calore dall’aria, l’unità interna lo cede all’acqua dell’impianto e i termosifoni lo diffondono nelle stanze.</desc>
+<defs>
+ <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eef3ea"/><stop offset="1" stop-color="#f7f8f3"/></linearGradient>
+ <linearGradient id="warm" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f6b26b"/><stop offset="1" stop-color="#e2643a"/></linearGradient>
+ <radialGradient id="glow"><stop offset="0" stop-color="#f6b26b" stop-opacity=".55"/><stop offset="1" stop-color="#f6b26b" stop-opacity="0"/></radialGradient>
+ <linearGradient id="air" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9ccfe8" stop-opacity="0"/><stop offset="1" stop-color="#6fb3d8"/></linearGradient>
+ <marker id="arrowW" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="14" markerHeight="14" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#e2643a"/></marker>
+ <marker id="arrowA" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="14" markerHeight="14" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#6fb3d8"/></marker>
+ <pattern id="brick" width="28" height="14" patternUnits="userSpaceOnUse"><rect width="28" height="14" fill="#e6e9df"/><path d="M0 7h28M14 0v7M0 7v7M28 7v7" stroke="#d6dccb" stroke-width="1"/></pattern>
+</defs>
+<rect width="1200" height="760" fill="url(#sky)"/>
+<g transform="translate(60 48)"><rect width="242" height="36" rx="18" fill="#e2643a"/><text x="121" y="24" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#fff" letter-spacing="1">INVERNO · RISCALDAMENTO</text></g>
+<!-- ground -->
+<rect x="0" y="640" width="1200" height="120" fill="#dfe7d3"/>
+<path d="M0 640h1200" stroke="#c6d2b6" stroke-width="2"/>
+<!-- house body -->
+<g>
+ <path d="M120 300 420 110l300 190v340H120z" fill="#fbfcf9" stroke="#2d4a3f" stroke-width="3" stroke-linejoin="round"/>
+ <path d="M100 302 420 98l320 204" fill="none" stroke="#2d4a3f" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+ <!-- floors -->
+ <path d="M120 470h600" stroke="#2d4a3f" stroke-width="3"/>
+ <path d="M120 640h600" stroke="#2d4a3f" stroke-width="3"/>
+ <!-- inner walls -->
+ <path d="M430 300v170M430 470v170" stroke="#2d4a3f" stroke-width="3"/>
+ <!-- roof fill -->
+ <path d="M120 300 420 110l300 190z" fill="#1f3a33"/>
+ <!-- room labels -->
+ <text x="150" y="335" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#2d4a3f" letter-spacing="1">CAMERA</text>
+ <text x="460" y="335" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#2d4a3f" letter-spacing="1">BAGNO</text>
+ <text x="150" y="505" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#2d4a3f" letter-spacing="1">SOGGIORNO</text>
+ <text x="460" y="505" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#2d4a3f" letter-spacing="1">LOCALE TECNICO</text>
+</g>
+<!-- warmth glows in rooms -->
+<circle cx="200" cy="440" r="110" fill="url(#glow)"/>
+<circle cx="260" cy="580" r="150" fill="url(#glow)"/>
+<circle cx="520" cy="430" r="90" fill="url(#glow)"/>
+<!-- radiators -->
+<g fill="#fff" stroke="#2d4a3f" stroke-width="3">
+ <g transform="translate(150 395)"><rect width="110" height="60" rx="8"/><path d="M15 0v60M35 0v60M55 0v60M75 0v60M95 0v60" stroke-width="2.5"/></g>
+ <g transform="translate(470 395)"><rect width="80" height="60" rx="8"/><path d="M16 0v60M32 0v60M48 0v60M64 0v60" stroke-width="2.5"/></g>
+ <g transform="translate(160 560)"><rect width="150" height="66" rx="8"/><path d="M19 0v66M38 0v66M57 0v66M76 0v66M95 0v66M114 0v66M133 0v66" stroke-width="2.5"/></g>
+</g>
+<!-- heat waves from radiators -->
+<g fill="none" stroke="url(#warm)" stroke-width="4" stroke-linecap="round" opacity=".9">
+ <path d="M175 385c8-12 8-18 0-30M205 385c8-12 8-18 0-30M235 385c8-12 8-18 0-30"/>
+ <path d="M490 385c8-12 8-18 0-30M520 385c8-12 8-18 0-30"/>
+ <path d="M190 550c8-12 8-18 0-30M235 550c8-12 8-18 0-30M280 550c8-12 8-18 0-30"/>
+</g>
+<!-- indoor unit + tank -->
+<g transform="translate(470 520)">
+ <rect width="70" height="118" rx="10" fill="#fff" stroke="#2d4a3f" stroke-width="3"/>
+ <rect x="14" y="16" width="42" height="22" rx="4" fill="#c7e6a0"/>
+ <circle cx="35" cy="80" r="14" fill="none" stroke="#2d4a3f" stroke-width="3"/>
+ <circle cx="35" cy="80" r="4" fill="#e2643a"/>
+ <text x="30" y="138" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#2d4a3f">UNITÀ INTERNA</text>
+ <rect x="90" y="18" width="60" height="100" rx="14" fill="#fff" stroke="#2d4a3f" stroke-width="3"/>
+ <text x="126" y="138" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#2d4a3f">ACQUA CALDA</text>
+ <path d="M105 50h30M105 68h30M105 86h30" stroke="#c7e6a0" stroke-width="6" stroke-linecap="round"/>
+</g>
+<!-- pipes: indoor unit -> radiators (hot) -->
+<g fill="none" stroke="url(#warm)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+ <path d="M505 520V480H560V380H560"/>
+ <path d="M505 520V480H300V430H262"/>
+ <path d="M505 520V480H300V600H312"/>
+ <path d="M560 480V380H552"/>
+</g>
+
+<!-- pipes: outdoor -> indoor -->
+<path d="M748 580H632" fill="none" stroke="#e2643a" stroke-width="5" stroke-linecap="round" marker-end="url(#arrowW)"/>
+<path d="M632 598H748" fill="none" stroke="#6fb3d8" stroke-width="5" stroke-linecap="round" marker-end="url(#arrowA)"/>
+<text x="690" y="568" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#b3532f">CALORE</text>
+<text x="690" y="616" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#3f7fa6">RITORNO</text>
+<!-- outdoor unit -->
+<g transform="translate(760 530)">
+ <rect x="0" y="0" width="170" height="110" rx="14" fill="#fff" stroke="#2d4a3f" stroke-width="3"/>
+ <circle cx="60" cy="55" r="38" fill="#f4f6f0" stroke="#2d4a3f" stroke-width="3"/>
+ <g stroke="#2d4a3f" stroke-width="3" fill="none"><path d="M60 55l0-30M60 55l26 15M60 55l-26 15"/></g>
+ <circle cx="60" cy="55" r="6" fill="#2d4a3f"/>
+ <path d="M120 22h30M120 40h30M120 58h30M120 76h30M120 94h30" stroke="#d6dccb" stroke-width="5" stroke-linecap="round"/>
+ <rect x="0" y="110" width="170" height="10" rx="3" fill="#9aa892"/>
+ <text x="85" y="-16" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#2d4a3f">UNITÀ ESTERNA</text>
+</g>
+<!-- outdoor air arrows into unit -->
+<g fill="none" stroke="#6fb3d8" stroke-width="5" stroke-linecap="round" marker-end="url(#arrowA)">
+ <path d="M1120 500c-50 10-90 40-150 55"/>
+ <path d="M1130 585c-60 0-110 0-180 0"/>
+ <path d="M1110 665c-50-10-90-30-150-50"/>
+</g>
+<text x="1010" y="450" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#3f7fa6" letter-spacing=".5">ARIA ESTERNA</text>
+<text x="1010" y="470" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#3f7fa6">anche a 0 °C contiene calore</text>
+<!-- callout -->
+<g transform="translate(120 680)">
+ <rect width="780" height="54" rx="12" fill="#102f2d"/>
+ <text x="20" y="33" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#edf3e3">Con <tspan font-weight="700" fill="#c7e6a0">1 kWh di elettricità</tspan> la pompa di calore porta in casa circa <tspan font-weight="700" fill="#c7e6a0">3 kWh di calore</tspan> (COP 3, esempio ENEA).</text>
+</g>
+</svg>

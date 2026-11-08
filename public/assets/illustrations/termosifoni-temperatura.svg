@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" role="img" aria-labelledby="t3 d3">
+<title id="t3">Caldaia e pompa di calore a confronto sui termosifoni</title>
+<desc id="d3">Con la caldaia l’acqua nei termosifoni è a circa 70 gradi. Con la pompa di calore lavora a 45–55 gradi: la stanza resta calda se la superficie del radiatore è sufficiente, per questo si misura al sopralluogo.</desc>
+<defs>
+ <linearGradient id="hot" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#f6b26b"/><stop offset="1" stop-color="#e2643a"/></linearGradient>
+ <linearGradient id="mild" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#f9d9a8"/><stop offset="1" stop-color="#f0a35e"/></linearGradient>
+ <radialGradient id="g1"><stop offset="0" stop-color="#f6b26b" stop-opacity=".5"/><stop offset="1" stop-color="#f6b26b" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1200" height="520" fill="#f7f8f3"/>
+<path d="M600 60v400" stroke="#d8e0d1" stroke-width="2" stroke-dasharray="6 8"/>
+<!-- LEFT: caldaia -->
+<g transform="translate(70 60)">
+ <rect width="150" height="34" rx="17" fill="#2d4a3f"/><text x="75" y="22" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#fff" letter-spacing="1">OGGI · CALDAIA</text>
+</g>
+<circle cx="330" cy="300" r="150" fill="url(#g1)"/>
+<g transform="translate(240 230)" fill="#fff" stroke="#2d4a3f" stroke-width="3">
+ <rect width="180" height="110" rx="10"/><path d="M22 0v110M48 0v110M74 0v110M100 0v110M126 0v110M152 0v110" stroke-width="2.5"/>
+</g>
+<g fill="none" stroke="url(#hot)" stroke-width="4" stroke-linecap="round"><path d="M275 215c8-12 8-18 0-30M315 215c8-12 8-18 0-30M355 215c8-12 8-18 0-30M395 215c8-12 8-18 0-30"/></g>
+<!-- thermometer -->
+<g transform="translate(120 160)">
+ <rect x="20" y="0" width="28" height="200" rx="14" fill="#fff" stroke="#2d4a3f" stroke-width="3"/>
+ <rect x="27" y="30" width="14" height="150" rx="7" fill="url(#hot)"/>
+ <circle cx="34" cy="206" r="22" fill="#e2643a" stroke="#2d4a3f" stroke-width="3"/>
+ <text x="34" y="-14" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" fill="#2d4a3f">70 °C</text>
+</g>
+<text x="330" y="395" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#2d4a3f">Acqua molto calda, radiatore “normale”</text>
+<text x="330" y="420" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#526159">Brucia gas per ogni grado. Nessun incentivo nel 2026.</text>
+<!-- RIGHT: pompa di calore -->
+<g transform="translate(660 60)">
+ <rect width="250" height="34" rx="17" fill="#c7e6a0"/><text x="125" y="22" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#10261c" letter-spacing="1">DOMANI · POMPA DI CALORE</text>
+</g>
+<circle cx="940" cy="300" r="150" fill="url(#g1)"/>
+<g transform="translate(820 215)" fill="#fff" stroke="#2d4a3f" stroke-width="3">
+ <rect width="240" height="125" rx="10"/><path d="M24 0v125M51 0v125M78 0v125M105 0v125M132 0v125M159 0v125M186 0v125M213 0v125" stroke-width="2.5"/>
+</g>
+<g fill="none" stroke="url(#mild)" stroke-width="4" stroke-linecap="round"><path d="M850 200c8-12 8-18 0-30M895 200c8-12 8-18 0-30M940 200c8-12 8-18 0-30M985 200c8-12 8-18 0-30M1030 200c8-12 8-18 0-30"/></g>
+<g transform="translate(700 160)">
+ <rect x="20" y="0" width="28" height="200" rx="14" fill="#fff" stroke="#2d4a3f" stroke-width="3"/>
+ <rect x="27" y="85" width="14" height="95" rx="7" fill="url(#mild)"/>
+ <circle cx="34" cy="206" r="22" fill="#f0a35e" stroke="#2d4a3f" stroke-width="3"/>
+ <text x="34" y="-14" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" fill="#2d4a3f">45–55 °C</text>
+</g>
+<text x="940" y="395" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#2d4a3f">Acqua più tiepida, stessa stanza calda</text>
+<text x="940" y="420" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#526159">Serve la superficie giusta: la misuriamo al sopralluogo.</text>
+<!-- bottom strip -->
+<g transform="translate(70 455)">
+ <rect width="1060" height="44" rx="12" fill="#102f2d"/>
+ <text x="530" y="28" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#edf3e3">Nella maggior parte delle case i termosifoni <tspan font-weight="700" fill="#c7e6a0">restano al loro posto</tspan>. Dove uno è piccolo, lo sostituiamo e il costo è già nel preventivo.</text>
+</g>
+</svg>

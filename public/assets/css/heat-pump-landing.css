@@ -288,3 +288,49 @@ body.hp-qualified{--hp-green:#c7e6a0;--hp-green-dark:#44652f;--hp-ink:#18322d}
  .hp-guarantee-grid article{padding:22px}
  .hp-trust-bar span{font-size:12px}
 }
+
+/* Come lavora nella tua casa */
+.hp-house-tabs{position:relative;display:flex;flex-wrap:wrap;gap:10px}
+.hp-house-tabs input{position:absolute;opacity:0;pointer-events:none}
+.hp-house-tabs label{cursor:pointer;padding:11px 20px;border-radius:999px;border:1px solid #b9c7b0;font-size:13px;font-weight:700;color:#2f5a3a;background:#fff;transition:background .2s,color .2s}
+.hp-house-tabs label:hover{background:#f1f4ec}
+.hp-house-tabs input:focus-visible+label{outline:3px solid #c7e6a0;outline-offset:2px}
+#season-winter:checked~label[for="season-winter"],#season-summer:checked~label[for="season-summer"]{background:#102f2d;border-color:#102f2d;color:#edf3e3}
+.hp-house-figure{display:none;flex-basis:100%;margin:18px 0 0}
+#season-winter:checked~.hp-house-winter,#season-summer:checked~.hp-house-summer{display:block}
+.hp-house-figure img{display:block;width:100%;height:auto;border-radius:20px;border:1px solid #d8e0d1}
+.hp-house-figure figcaption{margin-top:10px;font-size:12px;color:#6b7a6d}
+.hp-house-facts{list-style:none;margin:32px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.hp-house-facts li{display:flex;flex-direction:column;gap:6px;border-top:1px solid #d8e0d1;padding-top:16px}
+.hp-house-facts strong{font-size:20px;letter-spacing:-.5px;color:#18322d}
+.hp-house-facts span{font-size:14px;line-height:1.7;color:#526159}
+.hp-radiator-figure{margin:48px 0 0}
+.hp-radiator-figure img{display:block;width:100%;height:auto;border-radius:20px;border:1px solid #d8e0d1;background:#f7f8f3}
+/* Qualificazione */
+.hp-fit-section{background:#fff;padding:88px 0}
+.hp-fit-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.hp-fit-grid article{border-radius:20px;padding:30px 30px 26px;border:1px solid #d8e0d1}
+.hp-fit-yes{background:#edf3e3;border-color:#c7e6a0!important}
+.hp-fit-grid h3{font-size:20px;letter-spacing:-.5px;margin:0 0 16px;color:#18322d}
+.hp-fit-grid ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.hp-fit-grid li{position:relative;padding-left:30px;font-size:15px;line-height:1.65;color:#2f3f36}
+.hp-fit-grid li::before{position:absolute;left:0;top:2px;width:20px;height:20px;border-radius:50%;font-size:12px;font-weight:700;display:grid;place-items:center}
+.hp-fit-yes li::before{content:"✓";background:#c7e6a0;color:#10261c}
+.hp-fit-no li::before{content:"–";background:#e6e9df;color:#526159}
+.hp-fit-close{margin-top:32px}
+@media(max-width:850px){
+ .hp-house-facts{grid-template-columns:1fr;gap:14px;margin-top:24px}
+ .hp-house-facts strong{font-size:18px}
+ .hp-house-tabs label{flex:1;text-align:center;padding:11px 10px;font-size:12px}
+ .hp-fit-section{padding:60px 0}
+ .hp-fit-grid{grid-template-columns:1fr;gap:14px}
+ .hp-fit-grid article{padding:22px}
+ .hp-radiator-figure{margin-top:32px}
+}
+
+@media(max-width:600px){
+ .hp-house-figure,.hp-radiator-figure{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+ .hp-house-figure img{min-width:720px}
+ .hp-radiator-figure img{min-width:680px}
+ .hp-house-figure figcaption::after{content:" Scorri il disegno verso destra per vedere l’unità esterna."}
+}
