@@ -363,3 +363,15 @@ body.hp-qualified{--hp-green:#c7e6a0;--hp-green-dark:#44652f;--hp-ink:#18322d}
 .hp-radiator-steps p{font-size:15px;line-height:1.7;color:#45564c;margin:0}
 .hp-explainer-section .hp-bill-note{margin-top:22px;font-size:14px;color:#526159;text-align:center}
 @media(max-width:600px){.hp-radiator-steps li{gap:14px;padding:16px 0}.hp-radiator-steps h3{font-size:17px}.hp-radiator-steps p{font-size:14px}.hp-explainer-section .hp-bill-note{text-align:left;font-size:13px}}
+
+/* Perché adesso: soluzione */
+.hp-urgency-solution{margin-top:24px;display:grid;grid-template-columns:.9fr 1.4fr auto;gap:32px;align-items:center;padding:34px 36px;border-radius:24px;background:#18322d;color:#fff}
+.hp-urgency-solution .hp-eyebrow{color:#c7e6a0;margin-bottom:10px}
+.hp-urgency-solution h3{font-size:24px;line-height:1.25;letter-spacing:-.6px;margin:0;color:#fff}
+.hp-urgency-solution ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.hp-urgency-solution li{position:relative;padding-left:30px;font-size:15px;line-height:1.6;color:#dfe8d6}
+.hp-urgency-solution li strong{color:#fff}
+.hp-urgency-solution li::before{content:"✓";position:absolute;left:0;top:2px;width:20px;height:20px;border-radius:50%;background:#c7e6a0;color:#10261c;font-size:12px;font-weight:700;display:grid;place-items:center}
+.hp-urgency-solution .hp-button{white-space:nowrap}
+@media(max-width:1100px){.hp-urgency-solution{grid-template-columns:1fr 1.4fr}.hp-urgency-solution .hp-button{grid-column:1/-1;justify-self:start}}
+@media(max-width:600px){.hp-urgency-solution{grid-template-columns:1fr;gap:20px;padding:24px 20px;margin-top:16px}.hp-urgency-solution h3{font-size:21px}.hp-urgency-solution li{font-size:14px}.hp-urgency-solution .hp-button{width:100%;justify-content:center;white-space:normal}}
