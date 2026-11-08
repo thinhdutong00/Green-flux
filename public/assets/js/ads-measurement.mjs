@@ -72,12 +72,12 @@ if (window.top === window) {
     <div class="gf-consent-inner">
       <div class="gf-consent-copy" data-consent-summary>
         <h2>Cookie e preferenze</h2>
-        <p>Usiamo cookie e strumenti simili per il funzionamento del sito. Con il tuo consenso, Google Ads ci aiuta a misurare l’efficacia delle campagne e Microsoft Clarity ad analizzare la navigazione nella pagina sulle pompe di calore. Puoi accettare tutti i cookie facoltativi o scegliere quali attivare.</p>
+        <p>Questo sito utilizza cookie tecnici necessari al suo funzionamento e, solo previo tuo consenso, cookie di analisi e di misurazione per migliorare l’esperienza di navigazione e valutare l’efficacia delle nostre comunicazioni. Puoi accettarli tutti oppure scegliere quali attivare.</p>
         <p class="gf-consent-note"><a href="/cookie-policy/">Informativa cookie</a> · <a href="/privacy-policy/">Privacy</a></p>
       </div>
       <div class="gf-consent-actions" data-consent-actions>
-        <button type="button" data-consent-accept>Accetta tutti</button>
         <button type="button" data-consent-manage aria-expanded="false" aria-controls="gf-cookie-settings">Gestisci le preferenze</button>
+        <button type="button" data-consent-accept>Accetta tutti</button>
       </div>
       <div class="gf-consent-settings" id="gf-cookie-settings" data-consent-settings hidden>
         <h2 tabindex="-1" data-consent-settings-title>Gestisci le preferenze</h2>
