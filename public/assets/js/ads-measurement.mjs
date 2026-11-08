@@ -70,11 +70,10 @@ if (window.top === window) {
   banner.setAttribute('aria-label', 'Preferenze cookie');
   banner.innerHTML = `
     <div class="gf-consent-inner">
-      <button class="gf-consent-close" type="button" data-consent-close aria-label="Chiudi e rifiuta i cookie facoltativi" title="Continua senza cookie facoltativi"><span aria-hidden="true">×</span></button>
       <div class="gf-consent-copy" data-consent-summary>
         <h2>Cookie e preferenze</h2>
         <p>Usiamo cookie e strumenti simili per il funzionamento del sito. Con il tuo consenso, Google Ads ci aiuta a misurare l’efficacia delle campagne e Microsoft Clarity ad analizzare la navigazione nella pagina sulle pompe di calore. Puoi accettare tutti i cookie facoltativi o scegliere quali attivare.</p>
-        <p class="gf-consent-note">La X chiude il banner senza accettare i cookie facoltativi. <a href="/cookie-policy/">Informativa cookie</a> · <a href="/privacy-policy/">Privacy</a></p>
+        <p class="gf-consent-note"><a href="/cookie-policy/">Informativa cookie</a> · <a href="/privacy-policy/">Privacy</a></p>
       </div>
       <div class="gf-consent-actions" data-consent-actions>
         <button type="button" data-consent-accept>Accetta tutti</button>
@@ -138,7 +137,6 @@ if (window.top === window) {
   }
   banner.querySelector('[data-consent-accept]').addEventListener('click', () => choose(true, true));
   banner.querySelector('[data-consent-reject]').addEventListener('click', () => choose(false, false));
-  banner.querySelector('[data-consent-close]').addEventListener('click', () => choose(false, false));
   banner.addEventListener('keydown', event => {
     if (event.key === 'Escape') { event.preventDefault(); choose(false, false); }
   });
@@ -159,7 +157,7 @@ if (window.top === window) {
     banner.hidden = false;
     trigger.hidden = true;
     trigger.setAttribute('aria-expanded', 'true');
-    banner.querySelector('[data-consent-close]').focus({ preventScroll: true });
+    banner.querySelector('[data-consent-accept]').focus({ preventScroll: true });
   });
   banner.hidden = !needsChoice();
   trigger.hidden = needsChoice();

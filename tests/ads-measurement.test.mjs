@@ -107,8 +107,8 @@ test('The deployed entry point blocks Google until consent and records the accep
     assert.equal(nodes.length, 1);
     assert.equal(footerNodes.length, 1);
     const trigger = footerNodes[0];
-    // Closing the first layer is a complete refusal, with no tracker load.
-    nodes[0].querySelector('[data-consent-close]').listeners.click();
+    // Refusing everything from the preferences is a complete refusal, with no tracker load.
+    nodes[0].querySelector('[data-consent-reject]').listeners.click();
     assert.equal(readAdsConsent(browser), false);
     assert.equal(readClarityConsent(browser), false);
     assert.equal(nodes[0].hidden, true);
