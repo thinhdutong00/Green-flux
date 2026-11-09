@@ -382,3 +382,34 @@ body.hp-qualified{--hp-green:#c7e6a0;--hp-green-dark:#44652f;--hp-ink:#18322d}
 .hp-urgency-soft h3{font-size:19px}
 .hp-urgency-soft p{font-size:15px}
 @media(max-width:600px){.hp-urgency-icon{width:34px;height:34px;font-size:13px;margin-bottom:14px}.hp-urgency-soft h3{font-size:18px}.hp-urgency-soft p{font-size:14px}}
+
+/* Conviene davvero: confronto oggi/domani */
+.hp-compare-section.hp-explainer-section{background:#f1f4ec}
+.hp-compare-intro{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center;margin-bottom:40px}
+.hp-compare-intro h2{font-size:40px;line-height:1.15;letter-spacing:-1.4px;max-width:none}
+.hp-compare-intro h2 em{display:block;margin-top:14px;font-size:.55em;line-height:1.45;letter-spacing:-.3px;font-weight:600}
+.hp-compare-figure{margin:0}
+.hp-compare-figure img{display:block;width:100%;max-width:520px;height:auto;margin-left:auto;border-radius:20px;border:1px solid #d8e0d1;background:#fbfcf8}
+.hp-compare-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:20px;align-items:stretch}
+.hp-compare-grid article{border-radius:22px;padding:30px 32px}
+.hp-compare-grid h3{display:flex;align-items:center;gap:12px;font-size:20px;letter-spacing:-.5px;margin:0 0 20px}
+.hp-compare-grid h3 span{font-size:11px;letter-spacing:1.4px;text-transform:uppercase;padding:6px 10px;border-radius:999px}
+.hp-compare-grid ul{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.hp-compare-grid li{position:relative;padding-left:30px;font-size:15px;line-height:1.55}
+.hp-compare-grid li::before{position:absolute;left:0;top:1px;width:20px;height:20px;border-radius:50%;font-size:12px;font-weight:700;display:grid;place-items:center}
+.hp-compare-today{background:#fff;border:1px solid #d8e0d1;color:#45564c}
+.hp-compare-today h3{color:#18322d}
+.hp-compare-today h3 span{background:#e6e9df;color:#526159}
+.hp-compare-today li::before{content:"–";background:#edf0e6;color:#7a8c7e}
+.hp-compare-tomorrow{background:#102f2d;color:#dfe8d6;box-shadow:0 20px 50px rgba(16,47,45,.18)}
+.hp-compare-tomorrow h3{color:#fff}
+.hp-compare-tomorrow h3 span{background:#c7e6a0;color:#10261c}
+.hp-compare-tomorrow li strong{color:#fff}
+.hp-compare-tomorrow li::before{content:"✓";background:#c7e6a0;color:#10261c}
+.hp-compare-how{margin-top:24px;display:flex;align-items:center;justify-content:space-between;gap:32px;padding:26px 32px;border-radius:22px;background:#fff;border:1px solid #d8e0d1}
+.hp-compare-how p{margin:0;font-size:15px;line-height:1.7;color:#45564c;max-width:760px}
+.hp-compare-how p strong{color:#18322d}
+.hp-compare-how .hp-button{white-space:nowrap;flex:0 0 auto}
+@media(max-width:1100px){.hp-compare-intro{grid-template-columns:1fr;gap:28px}.hp-compare-figure img{margin-left:0;max-width:460px}}
+@media(max-width:850px){.hp-compare-grid{grid-template-columns:1fr;gap:14px}.hp-compare-how{flex-direction:column;align-items:stretch;gap:18px}.hp-compare-how .hp-button{white-space:normal;justify-content:center}}
+@media(max-width:600px){.hp-compare-intro h2{font-size:30px;letter-spacing:-1px}.hp-compare-intro h2 em{font-size:.6em}.hp-compare-grid article{padding:22px 20px}.hp-compare-grid h3{font-size:18px}.hp-compare-grid li{font-size:14px}.hp-compare-how{padding:20px}.hp-compare-how p{font-size:14px}}

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420" role="img" aria-labelledby="t d">
+<title id="t">I tuoi termosifoni restano al loro posto</title>
+<desc id="d">Un termosifone con onde di calore e una spunta verde; fuori dalla finestra l’unità esterna della pompa di calore.</desc>
+<defs>
+ <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbfcf8"/><stop offset="1" stop-color="#eef3e6"/></linearGradient>
+ <radialGradient id="glow" cx=".5" cy=".55" r=".6"><stop offset="0" stop-color="#f6b26b" stop-opacity=".55"/><stop offset="1" stop-color="#f6b26b" stop-opacity="0"/></radialGradient>
+ <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dcecf7"/><stop offset="1" stop-color="#eef6e2"/></linearGradient>
+</defs>
+<rect width="640" height="420" rx="24" fill="url(#wall)"/>
+<!-- floor -->
+<rect x="0" y="340" width="640" height="80" fill="#e3e9d9"/>
+<path d="M0 340h640" stroke="#cdd8c1" stroke-width="2"/>
+<!-- window with outdoor unit -->
+<g transform="translate(400 54)">
+ <rect x="0" y="0" width="190" height="150" rx="10" fill="url(#sky)" stroke="#2d4a3f" stroke-width="3"/>
+ <path d="M95 0v150M0 75h190" stroke="#2d4a3f" stroke-width="3"/>
+ <!-- outdoor unit -->
+ <g transform="translate(108 84)">
+  <rect x="0" y="0" width="70" height="52" rx="6" fill="#fff" stroke="#2d4a3f" stroke-width="2.5"/>
+  <circle cx="24" cy="26" r="15" fill="none" stroke="#2d4a3f" stroke-width="2.5"/>
+  <path d="M24 11v30M9 26h30M13.4 15.4l21.2 21.2M34.6 15.4 13.4 36.6" stroke="#2d4a3f" stroke-width="2"/>
+  <path d="M48 12h14M48 20h14M48 28h14M48 36h14" stroke="#7a8c7e" stroke-width="2"/>
+ </g>
+ <!-- air flow arrows into the unit -->
+ <path d="M30 118c10-6 20-6 30 0M30 130c10-6 20-6 30 0" fill="none" stroke="#3f8fc9" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+</g>
+<text x="495" y="232" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#526159">Unità esterna: circa 1 m²</text>
+<!-- heat glow -->
+<ellipse cx="200" cy="250" rx="190" ry="130" fill="url(#glow)"/>
+<!-- heat waves -->
+<g fill="none" stroke="#e2643a" stroke-width="5" stroke-linecap="round" opacity=".85">
+ <path d="M110 150c6-12 6-24 0-36M160 140c6-12 6-24 0-36M210 136c6-12 6-24 0-36M260 140c6-12 6-24 0-36M310 150c6-12 6-24 0-36"/>
+</g>
+<!-- radiator -->
+<g transform="translate(70 170)">
+ <rect x="0" y="0" width="270" height="150" rx="14" fill="#fff" stroke="#2d4a3f" stroke-width="4"/>
+ <g stroke="#2d4a3f" stroke-width="4"><path d="M45 0v150M90 0v150M135 0v150M180 0v150M225 0v150"/></g>
+ <rect x="-14" y="24" width="14" height="22" rx="4" fill="#2d4a3f"/>
+ <rect x="270" y="104" width="14" height="22" rx="4" fill="#2d4a3f"/>
+ <!-- legs -->
+ <path d="M40 150v22M230 150v22" stroke="#2d4a3f" stroke-width="5" stroke-linecap="round"/>
+ <!-- thermostatic valve -->
+ <circle cx="-26" cy="35" r="12" fill="#c7e6a0" stroke="#2d4a3f" stroke-width="3"/>
+</g>
+<!-- check badge -->
+<g transform="translate(300 300)">
+ <circle cx="0" cy="0" r="40" fill="#102f2d"/>
+ <circle cx="0" cy="0" r="40" fill="none" stroke="#c7e6a0" stroke-width="4"/>
+ <path d="M-17 2l11 11 23-26" fill="none" stroke="#c7e6a0" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<!-- label -->
+<g transform="translate(40 372)">
+ <rect width="330" height="34" rx="10" fill="#102f2d"/>
+ <text x="165" y="22" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#edf3e3">I tuoi termosifoni restano al loro posto</text>
+</g>
+</svg>
