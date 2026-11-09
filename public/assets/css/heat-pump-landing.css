@@ -375,3 +375,10 @@ body.hp-qualified{--hp-green:#c7e6a0;--hp-green-dark:#44652f;--hp-ink:#18322d}
 .hp-urgency-solution .hp-button{white-space:nowrap}
 @media(max-width:1100px){.hp-urgency-solution{grid-template-columns:1fr 1.4fr}.hp-urgency-solution .hp-button{grid-column:1/-1;justify-self:start}}
 @media(max-width:600px){.hp-urgency-solution{grid-template-columns:1fr;gap:20px;padding:24px 20px;margin-top:16px}.hp-urgency-solution h3{font-size:21px}.hp-urgency-solution li{font-size:14px}.hp-urgency-solution .hp-button{width:100%;justify-content:center;white-space:normal}}
+
+/* Incentivi: versione leggera */
+.hp-urgency-soft article{background:#f7f9f3;border-color:#dde5d3}
+.hp-urgency-icon{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#c7e6a0;color:#10261c;font-size:15px;font-weight:700;margin-bottom:18px}
+.hp-urgency-soft h3{font-size:19px}
+.hp-urgency-soft p{font-size:15px}
+@media(max-width:600px){.hp-urgency-icon{width:34px;height:34px;font-size:13px;margin-bottom:14px}.hp-urgency-soft h3{font-size:18px}.hp-urgency-soft p{font-size:14px}}
