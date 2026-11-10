@@ -69,7 +69,7 @@ test('Every Green Flux technology has its own explanation, decision criteria and
   assert(html.includes(`servizio=${service.quote}`));assert(!titles.has(service.introTitle));titles.add(service.introTitle);
   let catalogueVersion=html;
   if(service.slug==='pompe-calore'){
-   assert(html.includes('Via la caldaia, dentro la pompa di calore'));
+   assert(html.includes('Dal gas alla pompa di calore'));
    for(const topic of ['Funziona con i miei termosifoni?','Nel preventivo trovi sempre','Prenota il sopralluogo gratuito','Serve anche il fotovoltaico?','data-lead-form','tel:+393755521420','data-hp-sticky'])assert(html.includes(topic),topic);
    const emailInput=html.match(/<input[^>]*id="lead-email"[^>]*>/)[0];
    assert(!emailInput.includes('required'));assert(html.includes('<label for="lead-email">Email <span class="hp-optional">(facoltativa)</span></label>'));
