@@ -57,3 +57,15 @@ if (calc) {
   calc.addEventListener('submit', event => event.preventDefault());
   update();
 }
+
+// Modulo: tipo di lavoro e tempi entrano nel messaggio della richiesta di sopralluogo.
+const lead = document.querySelector('[data-rn-lead]');
+if (lead) {
+  const notes = lead.querySelector('[data-rn-notes]');
+  const work = lead.querySelector('[data-rn-work]');
+  const start = lead.querySelector('[data-rn-start]');
+  const update = () => { notes.value = `Landing ristrutturazione — lavoro: ${work.value} — inizio: ${start.value}`; };
+  work.addEventListener('change', update);
+  start.addEventListener('change', update);
+  update();
+}
