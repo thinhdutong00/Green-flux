@@ -19,11 +19,11 @@ function browser() {
   return value;
 }
 
-test('The short form accepts an omitted email value and unknown heating, while validating any provided email', () => {
+test('The short form requires a valid email and accepts unknown heating', () => {
   assert.deepEqual(validateShortRequest(sample()), []);
   assert.deepEqual(validateShortRequest({ ...sample(), city: '', heating: '' }), []);
   assert(shortRequestText({ ...sample(), city: '', heating: '' }).includes('Immobile: Da chiedere al telefono'));
-  for (const email of ['', '   ']) assert.deepEqual(validateShortRequest({ ...sample(), email }), []);
+  for (const email of ['', '   ']) assert.deepEqual(validateShortRequest({ ...sample(), email }).map(issue => issue.field), ['email']);
   for (const [field, value] of [['name',''],['phone','123'],['city','x'],['heating','arbitrary'],['privacy',false],['email',undefined],['email','invalid'],['email',{}]]) assert(validateShortRequest({ ...sample(), [field]: value }).length, field);
   const data = new FormData();
   for (const [key,value] of [['nome',' TEST '],['telefono',' +390491234567 '],['comune',' Padova '],['riscaldamento','Non lo so'],['email',` ${sample().email} `],['privacy','on']]) data.set(key,value);
@@ -32,11 +32,11 @@ test('The short form accepts an omitted email value and unknown heating, while v
   assert(shortRequestText(sample()).includes(`Email: ${sample().email}`));
   data.delete('email');
   assert.equal(readShortRequest(data).email, '');
-  assert.deepEqual(validateShortRequest(readShortRequest(data)), []);
+  assert.deepEqual(validateShortRequest(readShortRequest(data)).map(issue => issue.field), ['email']);
   assert(shortRequestText(readShortRequest(data)).includes('Email: Non indicata'));
 });
 
-test('The short-form backend validates email when provided and sends distinct idempotent business and customer confirmations after acceptance', async () => {
+test('The short-form backend requires a valid email and sends distinct idempotent business and customer confirmations after acceptance', async () => {
   const previous = { fetch: globalThis.fetch, key: process.env.RESEND_API_KEY, from: process.env.QUOTE_FROM_EMAIL };
   const calls = [], delivered = new Map(); let fail = false, sequence = 0;
   process.env.RESEND_API_KEY = 'test-key'; process.env.QUOTE_FROM_EMAIL = 'test@example.test';
@@ -80,7 +80,7 @@ test('The short-form backend validates email when provided and sends distinct id
   }
 });
 
-test('A short request without email sends only the business notification and registers an empty CRM email without placeholders', async () => {
+test('A short request without email is refused before any email or CRM delivery', async () => {
   const env = { ...process.env }, previousFetch = globalThis.fetch;
   const emails = [], records = [];
   process.env.RESEND_API_KEY = 'test-key';
@@ -105,25 +105,11 @@ test('A short request without email sends only the business notification and reg
       const data = { ...sample(), email, attribution: { consent: false, submissionPage: '/servizi/pompe-calore/' } };
       const response = { setHeader() {}, status(code) { this.code = code; return this; }, json(body) { this.body = body; } };
       await handler({ method: 'POST', headers: { 'content-type': 'application/json', host: 'example.test', origin: 'https://example.test', 'x-real-ip': `198.51.100.${200 + index}` }, body: data }, response);
-      assert.equal(response.code, 200);
-      assert.equal(response.body.accepted, true);
-      assert.equal(response.body.confirmationStatus, 'not_requested');
-      assert.equal(response.body.crmStatus, 'registered');
+      assert.equal(response.code, 400);
+      assert.notEqual(response.body?.accepted, true);
     }
-    assert.equal(emails.length, 2, 'Only one business notification per accepted submission');
-    for (const email of emails) {
-      assert.deepEqual(email.to, ['info@green-flux.com']);
-      assert(!('reply_to' in email));
-      assert(!email.text.includes('example.test'));
-    }
-    assert.equal(records.length, 2);
-    for (const record of records) {
-      assert.equal(record.email, '');
-      assert.equal(record.service, 'Pompe di calore');
-      assert.equal(record.source, 'Non rilevata');
-      assert.equal(record.submissionPage, '/servizi/pompe-calore/');
-      assert.equal(record.resendId, 'mock-provider-acceptance');
-    }
+    assert.equal(emails.length, 0, 'A request without email must not reach the email provider');
+    assert.equal(records.length, 0, 'A request without email must not reach the CRM');
   } finally { process.env = env; globalThis.fetch = previousFetch; }
 });
 
