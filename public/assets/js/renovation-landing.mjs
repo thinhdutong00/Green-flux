@@ -64,7 +64,7 @@ if (lead) {
   const notes = lead.querySelector('[data-rn-notes]');
   const work = lead.querySelector('[data-rn-work]');
   const start = lead.querySelector('[data-rn-start]');
-  const update = () => { notes.value = `Landing ristrutturazione — lavoro: ${work.value} — inizio: ${start.value}`; };
+  const update = () => { notes.value = `Landing ristrutturazione — lavoro: ${work.value || 'non indicato'} — inizio: ${start.value}`; };
   work.addEventListener('change', update);
   start.addEventListener('change', update);
   update();

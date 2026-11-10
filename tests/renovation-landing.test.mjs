@@ -17,7 +17,8 @@ test('The renovation form sends a short site-visit request with the job and the 
   assert(html.includes('<input type="hidden" name="service" value="impianti-completi">'));
   for (const name of ['name', 'phone', 'city', 'notes', 'email', 'privacy', 'website']) assert(html.includes(`name="${name}"`), name);
   const notes = html.match(/name="notes" value="([^"]+)"/)[1];
-  assert.equal(notes, 'Landing ristrutturazione — lavoro: da definire al telefono — inizio: da definire');
+  assert.equal(notes, 'Landing ristrutturazione — lavoro: non indicato — inizio: da definire');
+  assert(!html.includes('Lo dico al telefono'));
   const longest = `Landing ristrutturazione — lavoro: casa o villetta completa — inizio: tra 3 e 6 mesi`;
   for (const value of [notes, longest]) assert.deepEqual(validateSiteVisit({ name: 'Test Locale', phone: '+390491234567', city: 'Padova', service: 'impianti-completi', email: '', notes: value, website: '', privacy: true }), []);
 });
