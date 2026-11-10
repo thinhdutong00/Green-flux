@@ -21,17 +21,18 @@ test('The renovation form sends a short site-visit request for complete systems'
   for (const value of notes) assert.deepEqual(validateSiteVisit({ name: 'Test Locale', phone: '+390491234567', city: 'Padova', service: 'impianti-completi', email: '', notes: value, website: '', privacy: true }), []);
 });
 
-test('The renovation landing names the five trades and promises no single shared warranty', () => {
+test('The renovation landing sells the outcome: no single warranty, no fixed price, no story about the firms', () => {
   for (const role of ['Impresa edile', 'Idraulica e impianti termici', 'Elettricista', 'Geometra', 'Termotecnico']) assert(html.includes(`<h3>${role}</h3>`), role);
-  assert(!/garanzia unica|prezzo bloccato/i.test(html));
+  assert(!/garanzia unica|prezzo bloccato|chiavi in mano|cinque imprese|lavorano insieme|collabor/i.test(html));
   for (const condition of ['50% sull’abitazione principale', '36% negli altri casi', '10 quote annuali', '96.000 €']) assert(html.includes(condition), condition);
 });
 
-test('Each of the six worries has one question and one answer, with the first selected', () => {
-  assert.equal([...html.matchAll(/<input type="radio" name="rn-worry"/g)].length, 6);
-  assert.equal([...html.matchAll(/class="rn-worry-q"/g)].length, 6);
-  assert.equal([...html.matchAll(/class="rn-worry-a"/g)].length, 6);
-  assert.equal([...html.matchAll(/name="rn-worry" id="rn-w\d" checked/g)].length, 1);
+test('Every section after the hero closes with the same call to action', () => {
+  const sections = html.split('<section ').slice(2);
+  assert.equal(sections.length, 8);
+  for (const section of sections.filter(section => !section.startsWith('class="rn-sec rn-white" id="chi-lavora"') && !section.startsWith('class="rn-sec rn-white" id="domande"'))) assert(section.includes('<a class="hp-button" href="#valutazione">Richiedi il sopralluogo</a>'), section.slice(0, 60));
+  assert.equal([...html.matchAll(/class="rn-vs-row"/g)].length, 6);
+  assert.equal([...html.matchAll(/<em>incluso<\/em>/g)].length, 5);
 });
 
 test('The bonus estimate follows the 2026 rates, the 96,000 euro ceiling and ten yearly instalments', () => {
