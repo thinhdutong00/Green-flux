@@ -4,8 +4,6 @@ import { initClarity, isClarityLanding, readClarityConsent, saveClarityConsent, 
 
 const googleAdsId = 'AW-18501721820';
 const heatPumpConversion = 'AW-18501721820/c3AoCIbZsq0dENy9p_ZE';
-const phoneCallConversion = 'AW-18501721820/T_wYCMr0zrQdENy9p_ZE';
-const phoneCallKey = 'green-flux:phone-click-sent';
 
 // The quiz is embedded in the landing: only its top-level page loads Google.
 // Preview deployments and local tests never send advertising measurements.
@@ -33,18 +31,7 @@ if (window.top === window) {
     });
   }
 
-  // A tap on the phone number counts once per session, only with advertising consent.
-  function measurePhoneClick() {
-    if (!production || consent !== true || !tagReady) return false;
-    try { if (sessionStorage.getItem(phoneCallKey)) return false; } catch { /* Storage can be blocked. */ }
-    window.gtag('event', 'conversion', { send_to: phoneCallConversion, value: 0, currency: 'EUR' });
-    try { sessionStorage.setItem(phoneCallKey, '1'); } catch { /* Google also limits counting to one per click. */ }
-    return true;
-  }
-  document.addEventListener?.('click', event => {
-    const link = event.target?.closest?.('a[href^="tel:"]');
-    if (link) measurePhoneClick();
-  }, true);
+  // Phone taps are not measured as conversions: the only Google Ads conversion is a confirmed request.
 
   function loadGoogleTag() {
     if (!production || tagLoading || tagReady || consent !== true) return;

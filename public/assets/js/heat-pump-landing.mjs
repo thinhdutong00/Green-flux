@@ -7,7 +7,7 @@ const frame = dialog?.querySelector('[data-hp-quiz-frame]');
 let opener;
 
 // One diagnostic per primary link activation; no form values or link text.
-document.querySelectorAll('a[href="#valutazione"]').forEach(link => {
+document.querySelectorAll('a[href="#valutazione"], a[data-hp-open]').forEach(link => {
   link.addEventListener('click', () => trackLeadEvent('lead_cta_click'));
 });
 document.querySelectorAll('[data-hp-call]').forEach(link => link.addEventListener('click', () => trackLeadEvent('lead_call_click')));
