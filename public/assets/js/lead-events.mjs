@@ -1,6 +1,6 @@
 import { readClarityConsent } from './clarity.mjs';
 
-const names = new Set(['lead_cta_click', 'lead_form_view', 'lead_form_start', 'lead_form_submit', 'lead_form_error', 'lead_form_success', 'quiz_open', 'quiz_step_complete', 'lead_call_click', 'lead_whatsapp_click']);
+const names = new Set(['lead_cta_click', 'lead_form_view', 'lead_form_start', 'lead_form_submit', 'lead_form_error', 'lead_form_success', 'quiz_open', 'quiz_step_complete', 'lead_call_click', 'lead_whatsapp_click', 'lead_video_play']);
 const errors = new Set(['validation', 'rate_limit', 'unavailable', 'delivery', 'network_or_timeout']);
 
 export function safeLeadEvent(name, parameters = {}) {

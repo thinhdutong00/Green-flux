@@ -13,6 +13,19 @@ document.querySelectorAll('a[href="#valutazione"]').forEach(link => {
 document.querySelectorAll('[data-hp-call]').forEach(link => link.addEventListener('click', () => trackLeadEvent('lead_call_click')));
 document.querySelectorAll('[data-hp-whatsapp]').forEach(link => link.addEventListener('click', () => trackLeadEvent('lead_whatsapp_click')));
 
+// The offer video: without JavaScript it keeps the native controls; with it, one clear button starts playback.
+const video = document.querySelector('[data-hp-video]');
+const videoPlay = document.querySelector('[data-hp-video-play]');
+if (video && videoPlay) {
+  const started = () => { video.controls = true; videoPlay.hidden = true; };
+  const start = () => { started(); video.play()?.catch(() => {}); };
+  video.controls = false;
+  videoPlay.hidden = false;
+  videoPlay.addEventListener('click', start);
+  video.addEventListener('click', () => { if (!videoPlay.hidden) start(); });
+  video.addEventListener('play', () => { started(); trackLeadEvent('lead_video_play'); }, { once: true });
+}
+
 // The phone is answered Monday to Friday, 8:00–18:00 (Europe/Rome): outside those hours the bar leads with WhatsApp.
 const sticky = document.querySelector('[data-hp-sticky]');
 if (sticky) {
