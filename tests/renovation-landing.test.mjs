@@ -22,8 +22,10 @@ test('The renovation form sends a short site-visit request for complete systems'
 });
 
 test('The renovation landing sells the outcome: no single warranty, no fixed price, no story about the firms', () => {
-  for (const role of ['Impresa edile', 'Idraulica e impianti termici', 'Elettricista', 'Geometra', 'Termotecnico']) assert(html.includes(`<h3>${role}</h3>`), role);
-  assert(!/garanzia unica|prezzo bloccato|chiavi in mano|cinque imprese|lavorano insieme|collabor/i.test(html));
+  for (const trade of ['Opere edili', 'Idraulica e riscaldamento', 'Impianto elettrico', 'Progetto e permessi', 'Progetto degli impianti']) assert(html.includes(`<h3>${trade}</h3>`), trade);
+  const copy = html.slice(html.indexOf('<main'), html.indexOf('</main>')).replace(/<[^>]*>/g, ' ');
+  // The page talks about the result, never about how many firms do the work.
+  assert(!/garanzia unica|prezzo bloccato|chiavi in mano|cinque|\bditt[ae]\b|\bimpres[ae]\b|lavorano insieme|collabor/i.test(copy));
   for (const condition of ['50% sull’abitazione principale', '36% negli altri casi', '10 quote annuali', '96.000 €']) assert(html.includes(condition), condition);
 });
 
