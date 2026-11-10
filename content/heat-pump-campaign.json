@@ -12,7 +12,29 @@
     "note": ""
   },
   "financing": {
-    "label": "Pagamento",
-    "text": ""
-  }
+    "label": "Sconto in fattura",
+    "text": "Con il Conto Termico puoi chiedere lo sconto in fattura: l’incentivo lo anticipiamo noi e tu paghi solo la parte che resta. Al sopralluogo verifichiamo se la tua pratica lo consente.",
+    "faq": "Con il Conto Termico puoi anche chiedere lo sconto in fattura: l’incentivo viene scalato dal prezzo e paghi solo la differenza, se la pratica lo consente."
+  },
+  "brand": "Bosch",
+  "warranty": {
+    "extension": "Per chi richiede il preventivo da questa pagina, l’estensione di garanzia Bosch fino a 10 anni è inclusa nel prezzo, alle condizioni previste da Bosch."
+  },
+  "photos": [
+    {
+      "src": "",
+      "alt": "",
+      "caption": "Foto di un impianto installato da Green Flux"
+    },
+    {
+      "src": "",
+      "alt": "",
+      "caption": "Foto di un impianto installato da Green Flux"
+    },
+    {
+      "src": "",
+      "alt": "",
+      "caption": "Foto di un impianto installato da Green Flux"
+    }
+  ]
 }
