@@ -507,5 +507,5 @@ body.hp-qualified{--hp-green:#c7e6a0;--hp-green-dark:#44652f;--hp-ink:#18322d}
  .hp-ready .hp-hero-proof>span:last-child{text-align:center}
 }
 
-/* Barra fissa senza il tasto di chiamata: WhatsApp e modulo */
-.hp-sticky-bar.hp-sticky-two{grid-template-columns:1fr 1.7fr}
+/* Barra fissa con il solo pulsante del modulo */
+.hp-sticky-bar.hp-sticky-one{grid-template-columns:1fr}
