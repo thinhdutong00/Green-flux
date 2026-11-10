@@ -495,3 +495,14 @@ body.hp-qualified{--hp-green:#c7e6a0;--hp-green-dark:#44652f;--hp-ink:#18322d}
 @media(max-width:850px){.hp-landing .hp-video-section{padding:64px 0 60px}}
 @media(max-width:600px){.hp-landing .hp-video-section{padding:52px 0 48px}.hp-landing .hp-video-heading{margin-bottom:24px}.hp-landing .hp-video-heading h2 br{display:none}.hp-landing .hp-video-frame{border-radius:14px}.hp-landing .hp-video-play{bottom:11%;padding:10px 20px 10px 14px;font-size:14px}.hp-landing .hp-video-play svg{width:26px;height:26px}.hp-landing .hp-video-cta{margin-top:26px}}
 @media(prefers-reduced-motion:reduce){.hp-landing .hp-video-play{transition:none}}
+
+/* Hero su telefono e tablet: occhiello, titolo, punti e recensioni centrati */
+@media(max-width:850px){
+ .hp-ready .hp-hero-content{align-items:center;text-align:center}
+ .hp-ready .hp-hero h1{margin-inline:auto}
+ .hp-ready .hp-hero-bullets{justify-items:center;margin-inline:auto}
+ .hp-ready .hp-hero-bullets li{padding-left:0}
+ .hp-ready .hp-hero-bullets li::before{position:static;display:inline-grid;vertical-align:-4px;margin-right:8px}
+ .hp-ready .hp-hero-proof{justify-content:center;flex-wrap:wrap;margin-inline:auto;text-align:center}
+ .hp-ready .hp-hero-proof>span:last-child{text-align:center}
+}
