@@ -69,7 +69,7 @@ test('Every Green Flux technology has its own explanation, decision criteria and
   assert(html.includes(`servizio=${service.quote}`));assert(!titles.has(service.introTitle));titles.add(service.introTitle);
   let catalogueVersion=html;
   if(service.slug==='pompe-calore'){
-   assert(html.includes('Dal gas alla pompa di calore'));
+   assert(html.includes('Sostituisci la caldaia a gas'));
    for(const topic of ['data-hp-video','/assets/video/pompa-di-calore.mp4','Come funziona, in tre passaggi','Hai già deciso di cambiare caldaia?','Prenota il sopralluogo gratuito','Serve anche il fotovoltaico?','data-lead-form','tel:+393755521420','data-hp-sticky'])assert(html.includes(topic),topic);
    assert.equal((html.match(/<section\b/g)||[]).length,6);assert(!html.includes('<p class="hp-eyebrow">Padova e comuni entro 35 km</p>'));
    const emailInput=html.match(/<input[^>]*id="lead-email"[^>]*>/)[0];
