@@ -1,6 +1,6 @@
 {
   "reviewed_at": "2026-11-05",
-  "total_pages": 22,
+  "total_pages": 23,
   "canonical_pages": 20,
   "source_url": "https://www.green-flux.com/",
   "pages": {
@@ -106,6 +106,11 @@
     },
     "/landing/pompe-calore/": {
       "title": "Pompe di calore progettate per la tua casa",
+      "source_url": "https://www.green-flux.com/",
+      "kind": "landing-copy"
+    },
+    "/landing/ristrutturazione/": {
+      "title": "Ristrutturazione casa a Padova: cinque specialisti, un cantiere coordinato",
       "source_url": "https://www.green-flux.com/",
       "kind": "landing-copy"
     },

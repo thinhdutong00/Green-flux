@@ -11,7 +11,7 @@ const previousRoutes = JSON.parse(await readFile(join(root, 'content/previous-ro
 let imageDimensions = JSON.parse(await readFile(join(root, 'content/image-dimensions.json'), 'utf8'));
 export const origin = 'https://green-flux.com';
 const supportRoute = '/servizi/progettazione-e-supporto/';
-const landingCopies = [{ route: '/landing/pompe-calore/', template: 'heat-pump-landing-copy', title: 'Pompe di calore progettate per la tua casa' }];
+const landingCopies = [{ route: '/landing/pompe-calore/', template: 'heat-pump-landing-copy', title: 'Pompe di calore progettate per la tua casa' }, { route: '/landing/ristrutturazione/', template: 'renovation-landing', title: 'Ristrutturazione casa a Padova: cinque specialisti, un cantiere coordinato' }];
 const featuredServices = () => [...content.services]
   .filter(service => service.home?.visible !== false)
   .sort((a, b) => a.home.order - b.home.order);
