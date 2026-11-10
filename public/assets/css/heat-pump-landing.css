@@ -509,3 +509,23 @@ body.hp-qualified{--hp-green:#c7e6a0;--hp-green-dark:#44652f;--hp-ink:#18322d}
 
 /* Barra fissa con il solo pulsante del modulo */
 .hp-sticky-bar.hp-sticky-one{grid-template-columns:1fr}
+
+/* Variante per gli annunci (/landing/pompe-calore-video/): solo hero, con il video subito prima del modulo */
+.hp-video-landing .hp-hero{min-height:100vh;display:flex;align-items:center}
+.hp-video-landing .hp-hero-layout{width:min(1216px,calc(100% - 64px))}
+.hp-video-landing .hp-hero-proof{margin-top:20px}
+.hp-video-landing .hp-hero-video{width:100%;max-width:620px;margin:26px 0 0;border-radius:18px;box-shadow:0 24px 60px -24px rgba(0,0,0,.6)}
+.hp-video-landing .hp-hero-video .hp-video-play{bottom:15%;padding:11px 22px 11px 16px;font-size:14px}
+.hp-video-landing .hp-hero-video .hp-video-play svg{width:28px;height:28px}
+@media(min-width:851px){
+ /* su computer il video sale sotto il titolo, accanto al modulo */
+ .hp-video-landing .hp-hero h1{font-size:clamp(34px,3.2vw,48px)}
+ .hp-video-landing .hp-hero-video{order:1;margin-top:4px}
+ .hp-video-landing .hp-hero-bullets{order:2;margin-top:24px}
+ .hp-video-landing .hp-hero-proof{order:3}
+}
+@media(max-width:850px){
+ .hp-video-landing .hp-hero{display:block;min-height:0}
+ .hp-video-landing .hp-hero-layout{width:calc(100% - 40px)}
+ .hp-video-landing .hp-hero-video{max-width:none;margin:22px auto 0;border-radius:14px}
+}

@@ -3,7 +3,7 @@ export const CLARITY_CONSENT_KEY = 'gf-clarity-consent-v1';
 export const CLARITY_CONSENT_EVENT = 'gf-clarity-preference';
 const LIFETIME = 180 * 24 * 60 * 60 * 1000;
 const HOSTS = new Set(["green-flux.com", "www.green-flux.com"]);
-const PATHS = new Set(["/servizi/pompe-calore"]);
+const PATHS = new Set(["/servizi/pompe-calore", "/landing/pompe-calore-video"]);
 const initialized = new WeakSet();
 
 export function isClarityLanding(browser = window) {
