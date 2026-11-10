@@ -149,6 +149,8 @@ export async function renderSite() {
         LANDING_REVIEW_URL: esc(campaign.reviews.sourceUrl),
         LANDING_REVIEWS: ['Clara Paccagnella', 'Claudio Biasiolo', 'Giovanni Dondi'].map(name => content.reviews.items.find(review => review.author === name)).filter(Boolean).map(review => `<article class="hp-review"><div class="hp-stars" role="img" aria-label="${esc(review.rating)} stelle su 5">${'★'.repeat(review.rating)}</div><blockquote><p>${esc(review.text)}</p></blockquote><div class="hp-review-author"><span aria-hidden="true">${esc(review.author[0])}</span><div><strong>${esc(review.author)}</strong><span>Recensione Google · Green Flux</span></div></div></article>`).join(''),
         LANDING_SOURCES: s.sources.map(source => link(source.url, source.label)).join(' · '),
+        LANDING_PRICE_ANCHOR: campaign.price?.from ? `<div class="hp-price-anchor"><p class="hp-eyebrow">Per darti un’idea</p><p class="hp-price-anchor-value">Impianto completo a partire da <strong>${esc(campaign.price.from)}</strong></p>${campaign.price.note ? `<p class="hp-price-anchor-note">${esc(campaign.price.note)}</p>` : ''}</div>` : '',
+        LANDING_FINANCING: campaign.financing?.text ? `<div class="hp-financing"><p class="hp-compat-tag">${esc(campaign.financing.label || 'Pagamento')}</p><p>${esc(campaign.financing.text)}</p></div>` : '',
         LANDING_SCHEMA: JSON.stringify(landingSchema).replaceAll(origin, 'https://green-flux.com').replace(/</g, '\\u003c')
       }), title);
       continue;

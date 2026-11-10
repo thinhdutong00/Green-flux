@@ -441,3 +441,26 @@ body.hp-qualified{--hp-green:#c7e6a0;--hp-green-dark:#44652f;--hp-ink:#18322d}
 .hp-price-factors li:hover,.hp-urgency-grid article:hover,.hp-incentive-card:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(16,47,45,.08)}
 .hp-section-heading>p{position:relative;padding-left:18px;border-left:2px solid #dde5d3}
 @media(max-width:850px){.hp-section-heading>p{padding-left:0;border-left:0}}
+/* Compatibilità con fotovoltaico e impianti esistenti */
+.hp-compat{background:#fff}
+.hp-compat-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.hp-compat-grid article{padding:28px 26px;border:1px solid #d8e0d1;border-radius:20px;background:#fff}
+.hp-compat-grid .hp-compat-main{grid-column:span 3;background:#18322d;border-color:#18322d}
+.hp-compat-main .hp-compat-tag{background:#c7e6a0;color:#10261c}
+.hp-compat-tag{display:inline-block;margin:0 0 14px;padding:4px 10px;border-radius:999px;background:#edf3e3;color:#2f5a3a;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+.hp-compat-grid h3{font-size:18px;line-height:1.35;letter-spacing:-.4px;margin:0 0 10px;color:#18322d}
+.hp-compat-grid .hp-compat-main h3{font-size:24px;color:#fff}
+.hp-compat-grid .hp-compat-main p:not(.hp-compat-tag){color:#dfe8d6;max-width:820px;font-size:15px}
+.hp-compat-grid p:not(.hp-compat-tag){font-size:14px;line-height:1.75;color:#526159;margin:0}
+.hp-compat .hp-offer-close{margin-top:28px;background:#edf3e3}
+.hp-fit-maybe li::before{content:"→";background:#c7e6a0;color:#10261c}
+.hp-fit-maybe li strong{color:#18322d}
+.hp-price-anchor{margin:0 0 28px;padding:24px 28px;border-radius:20px;background:#18322d;color:#fff}
+.hp-price-anchor .hp-eyebrow{color:#c7e6a0;margin-bottom:8px}
+.hp-price-anchor-value{margin:0;font-size:22px;line-height:1.35;letter-spacing:-.4px}
+.hp-price-anchor-value strong{color:#c7e6a0}
+.hp-price-anchor-note{margin:8px 0 0;font-size:14px;line-height:1.6;color:#dfe8d6}
+.hp-financing{margin-top:24px;padding:22px 26px;border:1px solid #c7e6a0;border-radius:20px;background:#fff}
+.hp-financing p:last-child{margin:0;font-size:15px;line-height:1.7;color:#2f3f36}
+@media(max-width:1100px){.hp-compat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hp-compat-grid .hp-compat-main{grid-column:span 2}}
+@media(max-width:760px){.hp-compat-grid{grid-template-columns:1fr;gap:14px}.hp-compat-grid .hp-compat-main{grid-column:auto}.hp-compat-grid article{padding:22px}.hp-compat-grid .hp-compat-main h3{font-size:20px}.hp-price-anchor-value{font-size:19px}}
