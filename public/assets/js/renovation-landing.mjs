@@ -68,18 +68,47 @@ if (lead) {
   lead.addEventListener('change', update);
   update();
 
+  // Passi: 1 lavoro, 2 superficie, 3 tempi, 4 recapiti. Toccando una risposta si passa alla domanda dopo.
   const next = lead.querySelector('[data-rn-next]');
   const back = lead.querySelector('[data-rn-back]');
+  const nav = lead.querySelector('[data-rn-nav]');
   const progress = lead.querySelector('[data-rn-progress]');
-  if (next && back && progress) {
-    const go = step => {
-      lead.dataset.rnAt = String(step);
-      progress.querySelector('b').textContent = `Passo ${step} di 2`;
+  if (next && back && nav && progress) {
+    const marks = ['rn-at-1', 'rn-at-2', 'rn-at-3', 'rn-at-4'];
+    const groups = ['rn-work', 'rn-size', 'rn-start'];
+    let at = 1;
+    const refresh = () => { next.disabled = at < 4 && !choice(groups[at - 1]); };
+    const go = (step, focus) => {
+      at = Math.min(4, Math.max(1, step));
+      lead.classList.remove(...marks);
+      lead.classList.add(marks[at - 1]);
+      progress.querySelector('b').textContent = `Passo ${at} di 4`;
+      refresh();
+      if (focus) (at === 4 ? lead.querySelector('#lead-name') : lead.querySelector(`input[name="${groups[at - 1]}"]:checked, input[name="${groups[at - 1]}"]`))?.focus({ preventScroll: true });
     };
     lead.classList.add('rn-quiz-on');
-    for (const element of [next, back, progress]) element.hidden = false;
+    nav.hidden = false;
+    progress.hidden = false;
     go(1);
-    next.addEventListener('click', () => { go(2); lead.querySelector('#lead-name')?.focus({ preventScroll: true }); });
-    back.addEventListener('click', () => { go(1); lead.querySelector('input[name="rn-work"]')?.focus({ preventScroll: true }); });
+    lead.addEventListener('change', refresh);
+    // Solo il tocco o il clic fanno avanzare da soli: con la tastiera si sceglie con le frecce e si usa "Avanti".
+    for (const chip of lead.querySelectorAll('.rn-chip')) chip.addEventListener('click', event => {
+      if (event.detail > 0 && event.target.matches('input')) setTimeout(() => go(at + 1, at === 3), 180);
+    });
+    next.addEventListener('click', () => go(at + 1, true));
+    back.addEventListener('click', () => go(at - 1, true));
   }
+}
+
+// Video dell'hero: parte solo quando lo chiede chi guarda.
+const video = document.querySelector('[data-rn-video]');
+const videoPlay = document.querySelector('[data-rn-video-play]');
+if (video && videoPlay) {
+  const started = () => { video.controls = true; videoPlay.hidden = true; };
+  const start = () => { started(); video.play()?.catch(() => {}); };
+  video.controls = false;
+  videoPlay.hidden = false;
+  videoPlay.addEventListener('click', start);
+  video.addEventListener('click', () => { if (!videoPlay.hidden) start(); });
+  video.addEventListener('play', started, { once: true });
 }

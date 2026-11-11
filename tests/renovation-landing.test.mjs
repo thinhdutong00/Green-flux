@@ -19,7 +19,11 @@ test('The renovation form sends a short site-visit request with the job and the 
   const notes = html.match(/name="notes" value="([^"]+)"/)[1];
   assert.equal(notes, 'Landing ristrutturazione — lavoro: non indicato — superficie: non indicata — inizio: da definire');
   for (const group of ['rn-work', 'rn-size', 'rn-start']) assert.equal([...html.matchAll(new RegExp(`type="radio" name="${group}"`, 'g'))].length, 4, group);
-  assert(html.includes('data-rn-step="1"') && html.includes('data-rn-step="2"') && html.includes('data-rn-next hidden') && html.includes('data-rn-back hidden'));
+  // One question per step, contact details last; the step classes are literal so the production CSS purge keeps their rules.
+  for (const step of ['rn-s1', 'rn-s2', 'rn-s3', 'rn-s4']) assert(html.includes(`class="rn-quiz-step ${step}"`), step);
+  const script = readFileSync('public/assets/js/renovation-landing.mjs', 'utf8'); const css = readFileSync('public/assets/css/renovation-landing.css', 'utf8');
+  for (const mark of ['rn-quiz-on', 'rn-at-1', 'rn-at-2', 'rn-at-3', 'rn-at-4']) assert(script.includes(`'${mark}'`) && css.includes(`.${mark}`), mark);
+  assert(!css.includes('data-rn-at') && html.includes('data-rn-nav hidden') && html.includes('data-rn-video') && html.includes('/assets/video/ristrutturazione.mp4'));
   assert(!html.includes('Lo dico al telefono'));
   const longest = `Landing ristrutturazione — lavoro: casa o villetta completa — superficie: meno di 60 m² — inizio: tra 3 e 6 mesi`;
   for (const value of [notes, longest]) assert.deepEqual(validateSiteVisit({ name: 'Test Locale', phone: '+390491234567', city: 'Padova', service: 'impianti-completi', email: '', notes: value, website: '', privacy: true }), []);

@@ -319,9 +319,6 @@
 .rn-landing .rn-quiz-progress span{flex:1;height:6px;border-radius:999px;background:#e3eadc;overflow:hidden}
 .rn-landing .rn-quiz-progress i{display:block;width:50%;height:100%;border-radius:999px;background:#507a30;transition:width .25s}
 .rn-landing .rn-quiz-progress b{font-size:12px;font-weight:700;color:#566151;white-space:nowrap}
-.rn-landing .rn-quiz-on[data-rn-at="1"] [data-rn-step="2"],.rn-landing .rn-quiz-on[data-rn-at="2"] [data-rn-step="1"]{display:none}
-.rn-landing .rn-quiz-on[data-rn-at="2"] .rn-quiz-progress i{width:100%}
-.rn-landing .rn-quiz-step>.hp-button{width:100%;margin-top:4px}
 .rn-landing .rn-quiz-back{display:block;margin:12px auto 0;padding:6px 8px;border:0;background:none;font-size:13px;font-weight:600;color:#566151;text-decoration:underline;cursor:pointer}
 .rn-landing .rn-quiz-back[hidden]{display:none}
 @media(max-width:900px){
@@ -337,3 +334,27 @@
 .rn-landing .rn-tier-for{margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--rn-line)}
 .rn-landing .rn-tier-pick .rn-tier-for{border-color:#ffffff2e}
 .rn-landing .rn-eyebrow{margin-bottom:14px;font-size:13px;letter-spacing:1.2px;color:#44652f}
+
+/* Modulo a passi: una domanda per volta, i recapiti alla fine */
+.rn-landing .rn-quiz-on .rn-quiz-step{display:none}
+.rn-landing .rn-quiz-on.rn-at-1 .rn-s1,.rn-landing .rn-quiz-on.rn-at-2 .rn-s2,.rn-landing .rn-quiz-on.rn-at-3 .rn-s3,.rn-landing .rn-quiz-on.rn-at-4 .rn-s4{display:block}
+.rn-landing .rn-quiz-progress i{width:25%}
+.rn-landing .rn-at-2 .rn-quiz-progress i{width:50%}
+.rn-landing .rn-at-3 .rn-quiz-progress i{width:75%}
+.rn-landing .rn-at-4 .rn-quiz-progress i{width:100%}
+.rn-landing .rn-quiz-on .rn-chips{grid-template-columns:1fr;gap:10px;margin-bottom:4px}
+.rn-landing .rn-quiz-on .rn-chips legend{margin-bottom:14px;font-size:20px;line-height:1.25;letter-spacing:-.02em}
+.rn-landing .rn-quiz-on .rn-chip span{min-height:54px;justify-items:start;padding:10px 18px;font-size:16px;text-align:left}
+.rn-landing .rn-quiz-last{display:none;margin:0 0 14px;font-size:20px;line-height:1.25;font-weight:700;letter-spacing:-.02em;color:#18322d}
+.rn-landing .rn-quiz-on .rn-quiz-last{display:block}
+.rn-landing .rn-quiz-nav{display:grid;gap:2px;margin-top:14px}
+.rn-landing .rn-quiz-nav[hidden]{display:none}
+.rn-landing .rn-quiz-nav .hp-button{width:100%;margin-top:0}
+.rn-landing .rn-quiz-nav .hp-button:disabled{opacity:.45;cursor:not-allowed}
+.rn-landing .rn-at-4 .rn-quiz-nav .hp-button,.rn-landing .rn-at-1 .rn-quiz-back{display:none}
+/* Video nell'hero, sotto il titolo */
+.rn-landing .rn-hero-video{width:100%;max-width:620px;margin:26px 0 24px}
+@media(max-width:850px){.rn-landing .rn-hero-video{max-width:none;margin:20px 0 20px}}
+/* Il modulo resta in alto a destra e non si sposta quando cambia altezza tra un passo e l'altro */
+@media(min-width:851px){.rn-landing .rn-hero .hp-hero-layout{align-items:start}.rn-landing .rn-hero .hp-hero-form{position:sticky;top:112px}}
+.rn-landing .rn-hero-video .hp-video-play{bottom:9%;padding:12px 24px 12px 16px;font-size:15px}
