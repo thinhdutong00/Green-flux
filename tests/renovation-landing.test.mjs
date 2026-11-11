@@ -23,6 +23,9 @@ test('The renovation form sends a short site-visit request with the job and the 
   for (const step of ['rn-s1', 'rn-s2', 'rn-s3', 'rn-s4']) assert(html.includes(`class="rn-quiz-step ${step}"`), step);
   const script = readFileSync('public/assets/js/renovation-landing.mjs', 'utf8'); const css = readFileSync('public/assets/css/renovation-landing.css', 'utf8');
   for (const mark of ['rn-quiz-on', 'rn-at-1', 'rn-at-2', 'rn-at-3', 'rn-at-4']) assert(script.includes(`'${mark}'`) && css.includes(`.${mark}`), mark);
+  // On desktop the lead, the bullets and the buttons sit above the form: they live in their own block after the title and the video.
+  const hero = html.slice(html.indexOf('hp-hero-layout'), html.indexOf('data-rn-lead'));
+  assert(hero.indexOf('rn-hero-video') < hero.indexOf('rn-hero-info') && hero.indexOf('rn-hero-info') < hero.indexOf('hp-hero-lead') && hero.indexOf('hp-hero-actions') < hero.indexOf('id="valutazione"'));
   assert(!css.includes('data-rn-at') && html.includes('data-rn-nav hidden') && html.includes('data-rn-video') && html.includes('/assets/video/ristrutturazione.mp4'));
   assert(!html.includes('Lo dico al telefono'));
   const longest = `Landing ristrutturazione — lavoro: casa o villetta completa — superficie: meno di 60 m² — inizio: tra 3 e 6 mesi`;

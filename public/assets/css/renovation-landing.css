@@ -355,6 +355,14 @@
 /* Video nell'hero, sotto il titolo */
 .rn-landing .rn-hero-video{width:100%;max-width:620px;margin:26px 0 24px}
 @media(max-width:850px){.rn-landing .rn-hero-video{max-width:none;margin:20px 0 20px}}
-/* Il modulo resta in alto a destra e non si sposta quando cambia altezza tra un passo e l'altro */
-@media(min-width:851px){.rn-landing .rn-hero .hp-hero-layout{align-items:start}.rn-landing .rn-hero .hp-hero-form{position:sticky;top:112px}}
+/* Su computer: a sinistra titolo e video, a destra frase, punti e pulsanti sopra il modulo */
+@media(min-width:851px){
+ .rn-landing .rn-hero .hp-hero-layout{grid-template-areas:"main info" "main form";grid-template-rows:auto 1fr;align-items:start;row-gap:26px}
+ .rn-landing .rn-hero .hp-hero-content{grid-area:main}
+ .rn-landing .rn-hero .rn-hero-info{grid-area:info}
+ .rn-landing .rn-hero .hp-hero-form{grid-area:form}
+ .rn-landing .rn-hero .rn-hero-video{margin-bottom:0}
+ .rn-landing .rn-hero .rn-hero-info .hp-hero-lead{margin-top:0}
+}
+@media(max-width:850px){.rn-landing .rn-hero .rn-hero-info{margin-top:-12px}}
 .rn-landing .rn-hero-video .hp-video-play{bottom:9%;padding:12px 24px 12px 16px;font-size:15px}
