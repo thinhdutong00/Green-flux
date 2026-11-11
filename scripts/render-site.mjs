@@ -26,10 +26,9 @@ function renovationVideoFirst(html) {
   swap('<meta property="og:image" content="https://green-flux.com/assets/images/renovation-systems-1600.webp">', '<meta property="og:image" content="https://green-flux.com/assets/video/ristrutturazione-poster.webp">');
   swap('value="Landing ristrutturazione — lavoro:', 'value="Landing ristrutturazione video — lavoro:');
   swap(' alt="Immagine illustrativa: casa in ristrutturazione con l’impianto a pavimento in posa" fetchpriority="high">', ' alt="Immagine illustrativa: casa in ristrutturazione con l’impianto a pavimento in posa" loading="lazy" decoding="async">');
-  swap('<section class="hp-hero rn-hero" aria-labelledby="hero-title">', `<section class="hp-hero rn-video-hero" aria-label="Video di presentazione"><div class="hp-wrap">
+  swap('<section class="hp-hero rn-hero" aria-labelledby="hero-title">', `<section class="hp-hero rn-video-hero" aria-label="Video di presentazione">
  ${bridge[1]}
- <div class="rn-video-hero-cta"><a class="hp-button" href="#valutazione">Richiedi il sopralluogo</a><p>Senza impegno. Ti richiamiamo noi.</p></div>
-</div></section>
+</section>
 
 <section class="hp-hero rn-hero rn-hero-second" aria-labelledby="hero-title">`);
   return html;

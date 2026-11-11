@@ -14,7 +14,8 @@ test('The second renovation landing is hidden like the first one', () => {
 
 test('Its hero is the video and the content of the first hero becomes the second section', () => {
   const sections = second.split('<section ').slice(1);
-  assert(sections[0].startsWith('class="hp-hero rn-video-hero"') && sections[0].includes('data-rn-video') && sections[0].includes('href="#valutazione"'));
+  // Full-screen video, with no booking button under it.
+  assert(sections[0].startsWith('class="hp-hero rn-video-hero"') && sections[0].includes('data-rn-video') && !sections[0].includes('hp-button') && !sections[0].includes('#valutazione'));
   assert(!sections[0].includes('<h1') && !sections[0].includes('data-rn-lead'));
   assert(sections[1].startsWith('class="hp-hero rn-hero rn-hero-second"'));
   for (const part of ['<h1 id="hero-title">', 'hp-hero-lead', 'hp-hero-bullets', 'hp-hero-actions', 'data-rn-lead', 'rn-quiz-step rn-s4']) assert(sections[1].includes(part), part);
