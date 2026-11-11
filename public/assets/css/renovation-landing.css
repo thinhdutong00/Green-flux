@@ -354,7 +354,8 @@
 .rn-landing .rn-at-4 .rn-quiz-nav .hp-button,.rn-landing .rn-at-1 .rn-quiz-back{display:none}
 /* Video nell'hero, sotto il titolo */
 /* Hero: testo a sinistra, modulo a destra in alto (non si sposta quando cambia altezza tra un passo e l'altro) */
-@media(min-width:851px){.rn-landing .rn-hero .hp-hero-layout{align-items:start}}
+/* Il bordo alto del modulo combacia con la cima delle lettere del titolo, non con il badge sopra */
+@media(min-width:851px){.rn-landing .rn-hero .hp-hero-layout{align-items:start}.rn-landing .rn-hero .hp-hero-form{margin-top:calc(64px + clamp(9px,.9vw,13px))}}
 /* Video a cavallo: metà sull'hero, metà sulla sezione del bonus */
 .rn-landing{--rn-vw:min(940px,calc(100vw - 96px));--rn-vhalf:calc(var(--rn-vw)*.28125)}
 .rn-landing .rn-hero{padding-bottom:calc(var(--rn-vhalf) + 64px)}
