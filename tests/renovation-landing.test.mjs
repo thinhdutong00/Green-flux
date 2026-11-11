@@ -34,7 +34,10 @@ test('The renovation landing sells the outcome and pushes the 2026 bonus without
   assert(!/garanzia unica|prezzo bloccato|cinque|\bditt[ae]\b|\bimpres[ae]\b|lavorano insieme|collabor/i.test(copy));
   for (const condition of ['50% sull’abitazione principale', '36% sugli altri immobili', '96.000 €', 'in 10 anni', 'Il 50% è certo per le spese pagate nel 2026.', 'la legge non è ancora approvata']) assert(copy.includes(condition), condition);
   // Prices, guarantee, instalments and capacity stay marked until the owner confirms them.
-  assert.equal([...html.matchAll(/class="rn-tbd"/g)].length, 7);
+  assert.equal([...html.matchAll(/class="rn-tbd"/g)].length, 5);
+  // No price of the works on the page: a renovation is too broad for a "from x euro" figure.
+  assert(!/€\/m²|€\/mese|rn-tier-price/.test(html));
+  assert(html.includes('<p class="hp-eyebrow rn-eyebrow">FAQ</p><h2 class="rn-h2" id="faq-title">Domande frequenti</h2>'));
   assert(!html.includes('Foto segnaposto') && html.includes('/assets/lavori/cantiere-prima-560.webp') && html.includes('/assets/lavori/impianto-dopo-560.webp'));
 });
 

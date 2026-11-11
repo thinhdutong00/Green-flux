@@ -332,3 +332,8 @@
  .rn-landing .rn-hub-points{grid-template-columns:1fr;gap:18px;margin-top:36px}
 }
 @media(max-width:420px){.rn-landing .rn-hub-trades{grid-template-columns:1fr}}
+
+/* Soluzioni senza prezzo: la riga sotto il titolo fa da separatore */
+.rn-landing .rn-tier-for{margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--rn-line)}
+.rn-landing .rn-tier-pick .rn-tier-for{border-color:#ffffff2e}
+.rn-landing .rn-eyebrow{margin-bottom:14px;font-size:13px;letter-spacing:1.2px;color:#44652f}
