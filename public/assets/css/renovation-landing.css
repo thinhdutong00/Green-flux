@@ -353,16 +353,13 @@
 .rn-landing .rn-quiz-nav .hp-button:disabled{opacity:.45;cursor:not-allowed}
 .rn-landing .rn-at-4 .rn-quiz-nav .hp-button,.rn-landing .rn-at-1 .rn-quiz-back{display:none}
 /* Video nell'hero, sotto il titolo */
-.rn-landing .rn-hero-video{width:100%;max-width:620px;margin:26px 0 24px}
-@media(max-width:850px){.rn-landing .rn-hero-video{max-width:none;margin:20px 0 20px}}
-/* Su computer: a sinistra titolo e video, a destra frase, punti e pulsanti sopra il modulo */
-@media(min-width:851px){
- .rn-landing .rn-hero .hp-hero-layout{grid-template-areas:"main info" "main form";grid-template-rows:auto 1fr;align-items:start;row-gap:26px}
- .rn-landing .rn-hero .hp-hero-content{grid-area:main}
- .rn-landing .rn-hero .rn-hero-info{grid-area:info}
- .rn-landing .rn-hero .hp-hero-form{grid-area:form}
- .rn-landing .rn-hero .rn-hero-video{margin-bottom:0}
- .rn-landing .rn-hero .rn-hero-info .hp-hero-lead{margin-top:0}
-}
-@media(max-width:850px){.rn-landing .rn-hero .rn-hero-info{margin-top:-12px}}
-.rn-landing .rn-hero-video .hp-video-play{bottom:9%;padding:12px 24px 12px 16px;font-size:15px}
+/* Hero: testo a sinistra, modulo a destra in alto (non si sposta quando cambia altezza tra un passo e l'altro) */
+@media(min-width:851px){.rn-landing .rn-hero .hp-hero-layout{align-items:start}}
+/* Video a cavallo: metà sull'hero, metà sulla sezione del bonus */
+.rn-landing{--rn-vw:min(940px,calc(100vw - 96px));--rn-vhalf:calc(var(--rn-vw)*.28125)}
+.rn-landing .rn-hero{padding-bottom:calc(var(--rn-vhalf) + 64px)}
+.rn-landing .rn-video-bridge{position:relative;z-index:4;height:0}
+.rn-landing .rn-video-bridge .rn-hero-video{position:absolute;top:0;left:50%;width:var(--rn-vw);max-width:none;margin:0;transform:translate(-50%,-50%);box-shadow:0 30px 70px -24px rgba(8,30,24,.6)}
+.rn-landing .rn-after-video{padding-top:calc(var(--rn-vhalf) + 84px)}
+.rn-landing .rn-video-bridge .hp-video-play{bottom:14%}
+@media(max-width:850px){.rn-landing{--rn-vw:calc(100vw - 40px)}.rn-landing .rn-hero{padding-bottom:calc(var(--rn-vhalf) + 40px)}.rn-landing .rn-after-video{padding-top:calc(var(--rn-vhalf) + 56px)}.rn-landing .rn-video-bridge .hp-video-play{bottom:9%;padding:12px 22px 12px 16px;font-size:15px}}
