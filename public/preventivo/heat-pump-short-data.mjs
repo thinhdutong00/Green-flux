@@ -13,7 +13,8 @@ export function validateShortRequest(data) {
   // Comune e riscaldamento sono facoltativi: vengono chiesti al primo contatto telefonico.
   if (typeof data.city !== 'string' || data.city.length > 120 || (data.city.trim() && data.city.trim().length < 2)) issue('comune', 'Controlla il comune oppure lascia vuoto il campo: è facoltativo.');
   if (typeof data.heating !== 'string' || (data.heating && !shortHeatingOptions.includes(data.heating))) issue('riscaldamento', 'Scegli una voce dell’elenco oppure lascia il campo vuoto.');
-  if (typeof data.email !== 'string' || data.email.length > 254 || (data.email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim()))) issue('email', 'Controlla l’indirizzo email oppure lascia vuoto il campo: è facoltativo.');
+  // L’email è obbligatoria: è l’indirizzo a cui arriva la conferma della richiesta.
+  if (typeof data.email !== 'string' || data.email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim())) issue('email', 'Inserisci un indirizzo email valido: ti mandiamo lì la conferma della richiesta.');
   if (data.privacy !== true) issue('privacy', 'Leggi l’informativa e spunta la casella per autorizzarci a ricontattarti.');
   return errors;
 }

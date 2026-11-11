@@ -11,7 +11,8 @@ const previousRoutes = JSON.parse(await readFile(join(root, 'content/previous-ro
 let imageDimensions = JSON.parse(await readFile(join(root, 'content/image-dimensions.json'), 'utf8'));
 export const origin = 'https://green-flux.com';
 const supportRoute = '/servizi/progettazione-e-supporto/';
-const landingCopies = [{ route: '/landing/pompe-calore/', template: 'heat-pump-landing-copy', title: 'Pompe di calore progettate per la tua casa' }, { route: '/landing/ristrutturazione/', template: 'renovation-landing', title: 'Ristrutturazione casa a Padova: cinque specialisti, un cantiere coordinato' }];
+const heatPumpVideoLanding = '/landing/pompe-calore-video/';
+const landingCopies = [{ route: '/landing/pompe-calore/', template: 'heat-pump-landing-copy', title: 'Pompe di calore progettate per la tua casa' }, { route: '/landing/ristrutturazione/', template: 'renovation-landing', title: 'Ristrutturazione casa a Padova: un unico referente, dal progetto alle chiavi' }];
 const featuredServices = () => [...content.services]
   .filter(service => service.home?.visible !== false)
   .sort((a, b) => a.home.order - b.home.order);
@@ -137,7 +138,11 @@ export async function renderSite() {
       const title = campaign.title;
       const landingSchema = schema(serviceRoute(s.slug), title, campaign.description);
       delete landingSchema['@graph'][0].telephone;
-      await write(serviceRoute(s.slug), fill(await template('heat-pump-landing'), {
+      // Comuni entro 35 km da Padova: l'elenco sta in content/heat-pump-comuni.json.
+      const serviceArea = JSON.parse(await readFile(join(root, 'content/heat-pump-comuni.json'), 'utf8'));
+      const cityOptions = serviceArea.provinces.map(province => `<optgroup label="Provincia di ${esc(province.name)}">${[...province.comuni].sort((a, b) => (b === 'Padova') - (a === 'Padova')).map(name => `<option>${esc(name)}</option>`).join('')}</optgroup>`).join('') + '<option value="Altro comune">Altro comune</option>';
+      const landingValues = {
+        LANDING_CITY_OPTIONS: cityOptions,
         LANDING_DESCRIPTION: esc(campaign.description),
         LANDING_INTRO_TITLE: esc(s.introTitle),
         LANDING_OVERVIEW: paragraphs(s.overview),
@@ -157,7 +162,12 @@ export async function renderSite() {
         LANDING_PRICE_ANCHOR: campaign.price?.from ? `<div class="hp-price-anchor"><p class="hp-eyebrow">Per darti un’idea</p><p class="hp-price-anchor-value">Impianto completo a partire da <strong>${esc(campaign.price.from)}</strong></p>${campaign.price.note ? `<p class="hp-price-anchor-note">${esc(campaign.price.note)}</p>` : ''}</div>` : '',
         LANDING_FINANCING: campaign.financing?.text ? `<div class="hp-financing"><p class="hp-compat-tag">${esc(campaign.financing.label || 'Pagamento')}</p><p>${esc(campaign.financing.text)}</p></div>` : '',
         LANDING_SCHEMA: JSON.stringify(landingSchema).replaceAll(origin, 'https://green-flux.com').replace(/</g, '\\u003c')
-      }), title);
+      };
+      await write(serviceRoute(s.slug), fill(await template('heat-pump-landing'), landingValues), title);
+      // Variante per gli annunci: solo hero, video e modulo. Stessi dati della landing principale, fuori dall'indice e dalla sitemap.
+      const videoSchema = schema(heatPumpVideoLanding, title, campaign.description);
+      delete videoSchema['@graph'][0].telephone;
+      await write(heatPumpVideoLanding, fill(await template('heat-pump-landing-video'), { ...landingValues, LANDING_SCHEMA: JSON.stringify(videoSchema).replaceAll(origin, 'https://green-flux.com').replace(/</g, '\\u003c') }), title, 'landing-copy');
       continue;
     }
     const body = `<section class="gf-section"><div class="gf-wrap gf-intro"><div><p class="gf-eyebrow">Il servizio</p><h2>${esc(s.introTitle)}</h2>${paragraphs(s.overview)}</div><aside class="gf-preparation"><h2>Cosa può essere utile</h2><p>Per richiedere il sopralluogo bastano i recapiti e il comune. Se li hai, questi dati ci aiutano a preparare il confronto.</p>${list(s.prepare)}${link(quote(s.quote),'Richiedi un sopralluogo ↗','gf-button')}</aside></div></section>

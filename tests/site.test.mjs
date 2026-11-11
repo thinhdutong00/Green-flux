@@ -69,10 +69,12 @@ test('Every Green Flux technology has its own explanation, decision criteria and
   assert(html.includes(`servizio=${service.quote}`));assert(!titles.has(service.introTitle));titles.add(service.introTitle);
   let catalogueVersion=html;
   if(service.slug==='pompe-calore'){
-   assert(html.includes('Dal gas alla pompa di calore'));
-   for(const topic of ['Funziona con i miei termosifoni?','Nel preventivo trovi sempre','Prenota il sopralluogo gratuito','Serve anche il fotovoltaico?','data-lead-form','tel:+393755521420','data-hp-sticky'])assert(html.includes(topic),topic);
+   assert(html.includes('Sostituisci la caldaia a gas'));
+   for(const topic of ['data-hp-video','/assets/video/pompa-di-calore.mp4','Come funziona, in tre passaggi','Hai già deciso di cambiare caldaia?','Prenota il sopralluogo gratuito','Serve anche il fotovoltaico?','data-lead-form','data-hp-sticky'])assert(html.includes(topic),topic);
+   assert(!html.includes('tel:')&&!html.includes('wa.me'),'La landing non offre contatti via telefono o WhatsApp');assert(/<a class="hp-button hp-final-cta" href="\/preventivo\/\?servizio=pompe-di-calore&amp;dettagli=1" data-hp-open>/.test(html));
+   assert.equal((html.match(/<section\b/g)||[]).length,7);const lavori=html.slice(html.indexOf('id="lavori"'),html.indexOf('id="metodo"'));assert((lavori.match(/<figure>/g)||[]).length===2&&lavori.includes('>Prima<')&&lavori.includes('>Dopo<'),'Sezione prima e dopo con una coppia di foto');assert(!/Campolongo|Piombino|Fiesso|\((PD|VE|VI|TV|RO)\)/.test(lavori),'Nessuna località nella sezione prima e dopo');assert(!html.includes('<p class="hp-eyebrow">Padova e comuni entro 35 km</p>'));
    const emailInput=html.match(/<input[^>]*id="lead-email"[^>]*>/)[0];
-   assert(!emailInput.includes('required'));assert(html.includes('<label for="lead-email">Email <span class="hp-optional">(facoltativa)</span></label>'));
+   assert(emailInput.includes('required'));assert(html.includes('<label for="lead-email">Email</label>'));
    catalogueVersion=readFileSync(join(root,'landing/pompe-calore/index.html'),'utf8');
    assert(catalogueVersion.includes('name="robots" content="noindex, follow"'));
   }

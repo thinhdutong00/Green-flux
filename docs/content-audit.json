@@ -1,6 +1,6 @@
 {
   "reviewed_at": "2026-11-05",
-  "total_pages": 23,
+  "total_pages": 24,
   "canonical_pages": 20,
   "source_url": "https://www.green-flux.com/",
   "pages": {
@@ -8,6 +8,11 @@
       "title": "Pompe di calore a Padova: valutazione e installazione",
       "source_url": "https://www.green-flux.com/",
       "kind": "canonical"
+    },
+    "/landing/pompe-calore-video/": {
+      "title": "Pompe di calore a Padova: valutazione e installazione",
+      "source_url": "https://www.green-flux.com/",
+      "kind": "landing-copy"
     },
     "/servizi/fotovoltaico/": {
       "title": "Fotovoltaico",
@@ -110,7 +115,7 @@
       "kind": "landing-copy"
     },
     "/landing/ristrutturazione/": {
-      "title": "Ristrutturazione casa a Padova: cinque specialisti, un cantiere coordinato",
+      "title": "Ristrutturazione casa a Padova: un unico referente, dal progetto alle chiavi",
       "source_url": "https://www.green-flux.com/",
       "kind": "landing-copy"
     },
