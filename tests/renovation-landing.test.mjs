@@ -17,26 +17,31 @@ test('The renovation form sends a short site-visit request with the job and the 
   assert(html.includes('<input type="hidden" name="service" value="impianti-completi">'));
   for (const name of ['name', 'phone', 'city', 'notes', 'email', 'privacy', 'website']) assert(html.includes(`name="${name}"`), name);
   const notes = html.match(/name="notes" value="([^"]+)"/)[1];
-  assert.equal(notes, 'Landing ristrutturazione — lavoro: non indicato — inizio: da definire');
+  assert.equal(notes, 'Landing ristrutturazione — lavoro: non indicato — superficie: non indicata — inizio: da definire');
+  for (const group of ['rn-work', 'rn-size', 'rn-start']) assert.equal([...html.matchAll(new RegExp(`type="radio" name="${group}"`, 'g'))].length, 4, group);
+  assert(html.includes('data-rn-step="1"') && html.includes('data-rn-step="2"') && html.includes('data-rn-next hidden') && html.includes('data-rn-back hidden'));
   assert(!html.includes('Lo dico al telefono'));
-  const longest = `Landing ristrutturazione — lavoro: casa o villetta completa — inizio: tra 3 e 6 mesi`;
+  const longest = `Landing ristrutturazione — lavoro: casa o villetta completa — superficie: meno di 60 m² — inizio: tra 3 e 6 mesi`;
   for (const value of [notes, longest]) assert.deepEqual(validateSiteVisit({ name: 'Test Locale', phone: '+390491234567', city: 'Padova', service: 'impianti-completi', email: '', notes: value, website: '', privacy: true }), []);
 });
 
 test('The renovation landing sells the outcome and pushes the 2026 bonus without inventing commitments', () => {
-  for (const trade of ['Opere edili', 'Idraulica e riscaldamento', 'Impianto elettrico', 'Progetto e permessi', 'Progetto degli impianti']) assert(html.includes(`<h3>${trade}</h3>`), trade);
+  for (const trade of ['Progetto e permessi', 'Demolizioni e opere murarie', 'Impianto idraulico e bagni', 'Riscaldamento e raffrescamento', 'Impianto elettrico', 'Pavimenti e finiture']) assert(html.includes(`<li>${trade}</li>`), trade);
+  // One contact person who coordinates the works: no partner logos, no placeholder names.
+  assert(html.includes('Ristrutturi casa con un unico referente.') && html.includes('id="referente"') && !html.includes('Nome in arrivo') && !html.includes('rn-logo-placeholder'));
   const copy = html.slice(html.indexOf('<main'), html.indexOf('</main>')).replace(/<[^>]*>/g, ' ');
   // The page talks about the result, never about how many firms do the work.
   assert(!/garanzia unica|prezzo bloccato|cinque|\bditt[ae]\b|\bimpres[ae]\b|lavorano insieme|collabor/i.test(copy));
   for (const condition of ['50% sull’abitazione principale', '36% sugli altri immobili', '96.000 €', 'in 10 anni', 'Il 50% è certo per le spese pagate nel 2026.', 'la legge non è ancora approvata']) assert(copy.includes(condition), condition);
   // Prices, guarantee, instalments and capacity stay marked until the owner confirms them.
   assert.equal([...html.matchAll(/class="rn-tbd"/g)].length, 7);
+  assert(!html.includes('Foto segnaposto') && html.includes('/assets/lavori/cantiere-prima-560.webp') && html.includes('/assets/lavori/impianto-dopo-560.webp'));
 });
 
 test('Every section after the hero closes with the same call to action', () => {
   const sections = html.split('<section ').slice(2);
   assert.equal(sections.length, 10);
-  const withoutCta = ['id="chi-lavora"', 'id="domande"'];
+  const withoutCta = ['id="domande"'];
   for (const section of sections.filter(section => !withoutCta.some(id => section.slice(0, 80).includes(id)))) assert(section.includes('<a class="hp-button" href="#valutazione">Richiedi il sopralluogo</a>'), section.slice(0, 60));
   assert.equal([...html.matchAll(/class="rn-vs-row"/g)].length, 6);
   assert.equal([...html.matchAll(/<em>incluso<\/em>/g)].length, 4);

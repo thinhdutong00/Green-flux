@@ -58,14 +58,28 @@ if (calc) {
   update();
 }
 
-// Modulo: tipo di lavoro e tempi entrano nel messaggio della richiesta di sopralluogo.
+// Modulo: lavoro, superficie e tempi entrano nel messaggio della richiesta di sopralluogo.
+// Con JavaScript le domande stanno in due passi; senza, restano tutte in fila.
 const lead = document.querySelector('[data-rn-lead]');
 if (lead) {
   const notes = lead.querySelector('[data-rn-notes]');
-  const work = lead.querySelector('[data-rn-work]');
-  const start = lead.querySelector('[data-rn-start]');
-  const update = () => { notes.value = `Landing ristrutturazione — lavoro: ${work.value || 'non indicato'} — inizio: ${start.value}`; };
-  work.addEventListener('change', update);
-  start.addEventListener('change', update);
+  const choice = name => lead.querySelector(`input[name="${name}"]:checked`)?.value;
+  const update = () => { notes.value = `Landing ristrutturazione — lavoro: ${choice('rn-work') || 'non indicato'} — superficie: ${choice('rn-size') || 'non indicata'} — inizio: ${choice('rn-start') || 'da definire'}`; };
+  lead.addEventListener('change', update);
   update();
+
+  const next = lead.querySelector('[data-rn-next]');
+  const back = lead.querySelector('[data-rn-back]');
+  const progress = lead.querySelector('[data-rn-progress]');
+  if (next && back && progress) {
+    const go = step => {
+      lead.dataset.rnAt = String(step);
+      progress.querySelector('b').textContent = `Passo ${step} di 2`;
+    };
+    lead.classList.add('rn-quiz-on');
+    for (const element of [next, back, progress]) element.hidden = false;
+    go(1);
+    next.addEventListener('click', () => { go(2); lead.querySelector('#lead-name')?.focus({ preventScroll: true }); });
+    back.addEventListener('click', () => { go(1); lead.querySelector('input[name="rn-work"]')?.focus({ preventScroll: true }); });
+  }
 }
