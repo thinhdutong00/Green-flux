@@ -1,6 +1,6 @@
 {
   "reviewed_at": "2026-11-05",
-  "total_pages": 24,
+  "total_pages": 25,
   "canonical_pages": 20,
   "source_url": "https://www.green-flux.com/",
   "pages": {
@@ -116,6 +116,11 @@
     },
     "/landing/ristrutturazione/": {
       "title": "Ristrutturazione casa a Padova: un unico referente, dal progetto alle chiavi",
+      "source_url": "https://www.green-flux.com/",
+      "kind": "landing-copy"
+    },
+    "/landing/ristrutturazione-video/": {
+      "title": "Ristrutturazione casa a Padova: guarda il video e richiedi il sopralluogo",
       "source_url": "https://www.green-flux.com/",
       "kind": "landing-copy"
     },

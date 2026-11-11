@@ -12,7 +12,28 @@ let imageDimensions = JSON.parse(await readFile(join(root, 'content/image-dimens
 export const origin = 'https://green-flux.com';
 const supportRoute = '/servizi/progettazione-e-supporto/';
 const heatPumpVideoLanding = '/landing/pompe-calore-video/';
-const landingCopies = [{ route: '/landing/pompe-calore/', template: 'heat-pump-landing-copy', title: 'Pompe di calore progettate per la tua casa' }, { route: '/landing/ristrutturazione/', template: 'renovation-landing', title: 'Ristrutturazione casa a Padova: un unico referente, dal progetto alle chiavi' }];
+const landingCopies = [{ route: '/landing/pompe-calore/', template: 'heat-pump-landing-copy', title: 'Pompe di calore progettate per la tua casa' }, { route: '/landing/ristrutturazione/', template: 'renovation-landing', title: 'Ristrutturazione casa a Padova: un unico referente, dal progetto alle chiavi' }, { route: '/landing/ristrutturazione-video/', template: 'renovation-landing', title: 'Ristrutturazione casa a Padova: guarda il video e richiedi il sopralluogo', transform: renovationVideoFirst }];
+// Seconda landing ristrutturazioni: stessa pagina, ma l'hero è il video e il contenuto dell'hero diventa la seconda sezione.
+// Nasce dallo stesso template, così testi e modulo restano allineati alla prima.
+function renovationVideoFirst(html) {
+  const swap = (from, to) => { if (html.split(from).length !== 2) throw new Error(`Landing ristrutturazione video: atteso una volta "${from.slice(0, 60)}"`); html = html.replace(from, to); };
+  const bridge = html.match(/\n*<div class="rn-video-bridge">\s*(<div class="hp-video-frame rn-hero-video">[\s\S]*?<\/div>)\s*<\/div>/);
+  if (!bridge) throw new Error('Landing ristrutturazione video: blocco del video non trovato');
+  html = html.replace(bridge[0], '');
+  swap(' rn-after-video" id="bonus"', '" id="bonus"');
+  swap('<body class="hp-landing hp-qualified hp-ready rn-landing"', '<body class="hp-landing hp-qualified hp-ready rn-landing rn-video-first"');
+  swap('<meta property="og:url" content="https://green-flux.com/landing/ristrutturazione/">', '<meta property="og:url" content="https://green-flux.com/landing/ristrutturazione-video/">');
+  swap('<meta property="og:image" content="https://green-flux.com/assets/images/renovation-systems-1600.webp">', '<meta property="og:image" content="https://green-flux.com/assets/video/ristrutturazione-poster.webp">');
+  swap('value="Landing ristrutturazione — lavoro:', 'value="Landing ristrutturazione video — lavoro:');
+  swap(' alt="Immagine illustrativa: casa in ristrutturazione con l’impianto a pavimento in posa" fetchpriority="high">', ' alt="Immagine illustrativa: casa in ristrutturazione con l’impianto a pavimento in posa" loading="lazy" decoding="async">');
+  swap('<section class="hp-hero rn-hero" aria-labelledby="hero-title">', `<section class="hp-hero rn-video-hero" aria-label="Video di presentazione"><div class="hp-wrap">
+ ${bridge[1]}
+ <div class="rn-video-hero-cta"><a class="hp-button" href="#valutazione">Richiedi il sopralluogo</a><p>Senza impegno. Ti richiamiamo noi.</p></div>
+</div></section>
+
+<section class="hp-hero rn-hero rn-hero-second" aria-labelledby="hero-title">`);
+  return html;
+}
 const featuredServices = () => [...content.services]
   .filter(service => service.home?.visible !== false)
   .sort((a, b) => a.home.order - b.home.order);
@@ -224,7 +245,7 @@ export async function renderSite() {
   await writeFile(join(publicRoot,'preventivo/catalog.mjs'),`// Generated from content/site-content.json by scripts/render-site.mjs.\nexport const services = ${JSON.stringify(catalogue,null,2)};\n`);
   await writeFile(join(publicRoot,'assets/js/mobile-header-template.mjs'),`// Generated from templates/mobile-header.html and content/site-content.json.\nexport const mobileHeaderMarkup = ${JSON.stringify(fill(await template('mobile-header'),{MOBILE_NAV:navMarkup('gf-')}))};\n`);
   // Authored copies have their own template so content edits can be made independently.
-  for (const copy of landingCopies) await write(copy.route, await template(copy.template), copy.title, 'landing-copy');
+  for (const copy of landingCopies) { const page = await template(copy.template); await write(copy.route, copy.transform ? copy.transform(page) : page, copy.title, 'landing-copy'); }
   await write('/thank-you/', fill(await template('thank-you'), {
     THANK_YOU_SCHEMA: JSON.stringify(schema('/thank-you/', 'Grazie per la tua richiesta', 'Richiesta ricevuta: Green Flux ti ricontatta per chiarire il lavoro e concordare le verifiche.')).replace(/</g, '\\u003c')
   }), 'Grazie per la tua richiesta', 'confirmation');

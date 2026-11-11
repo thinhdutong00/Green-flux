@@ -364,3 +364,21 @@
 .rn-landing .rn-after-video{padding-top:calc(var(--rn-vhalf) + 84px)}
 .rn-landing .rn-video-bridge .hp-video-play{bottom:14%}
 @media(max-width:850px){.rn-landing{--rn-vw:calc(100vw - 40px)}.rn-landing .rn-hero{padding-bottom:calc(var(--rn-vhalf) + 40px)}.rn-landing .rn-after-video{padding-top:calc(var(--rn-vhalf) + 56px)}.rn-landing .rn-video-bridge .hp-video-play{bottom:9%;padding:12px 22px 12px 16px;font-size:15px}}
+
+/* Seconda landing: l'hero è il video, il contenuto dell'hero è la seconda sezione */
+.rn-landing .rn-video-hero{padding:128px 0 56px;background:radial-gradient(1200px 700px at 50% 40%,#1b3f37 0%,var(--rn-deep) 70%)}
+.rn-landing .rn-video-hero .rn-hero-video{width:min(100%,1100px,max(560px,calc((100vh - 300px)*1.7778)));max-width:none;margin:0 auto;box-shadow:0 30px 70px -24px rgba(0,0,0,.6)}
+.rn-landing .rn-video-hero-cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px 22px;margin-top:28px}
+.rn-landing .rn-video-hero-cta .hp-button{margin-top:0}
+.rn-landing .rn-video-hero-cta p{margin:0;font-size:15px;color:#d6e4dc}
+.rn-landing.rn-video-first .rn-hero-second{padding:88px 0 84px}
+@media(max-width:850px){
+ .rn-landing .rn-video-hero{padding:100px 0 40px}
+ .rn-landing .rn-video-hero .rn-hero-video{width:100%}
+ .rn-landing .rn-video-hero .hp-video-play{bottom:9%;padding:12px 22px 12px 16px;font-size:15px}
+ .rn-landing .rn-video-hero-cta{flex-direction:column;margin-top:20px}.rn-landing .rn-video-hero-cta .hp-button{width:100%}
+ .rn-landing.rn-video-first .rn-hero-second{padding:48px 0 48px}
+}
+
+/* Senza telefono: nella barra fissa restano WhatsApp e il modulo */
+.rn-landing .hp-sticky-bar.rn-sticky-two{grid-template-columns:1fr 1.7fr}
