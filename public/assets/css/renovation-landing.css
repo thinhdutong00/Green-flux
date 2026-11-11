@@ -380,3 +380,6 @@
 
 /* Senza telefono: nella barra fissa restano WhatsApp e il modulo */
 .rn-landing .hp-sticky-bar.rn-sticky-two{grid-template-columns:1fr 1.7fr}
+
+/* Parole in verde dentro i titoli */
+.rn-landing .rn-green{color:#1d7350}
