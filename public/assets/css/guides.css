@@ -1,0 +1,44 @@
+/* Guide di approfondimento (/guide/…). Stili circoscritti alle classi gd-: nessun effetto sulle altre pagine. */
+.gd-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,340px);gap:72px;align-items:start}
+.gd-prose{max-width:760px;min-width:0}
+.gf-content-page .gf-section .gd-meta{font-size:14px;line-height:1.6;color:var(--gf-muted);margin:0 0 28px}
+.gf-content-page .gd-prose h2{font-size:clamp(26px,2.6vw,34px);margin:56px 0 20px}
+.gf-content-page .gd-prose h3{font-size:21px;margin:36px 0 12px}
+.gf-content-page .gd-prose>h2:first-of-type{margin-top:40px}
+.gd-prose ul,.gd-prose ol{padding-left:22px;margin:0 0 24px}
+.gd-prose li+li{margin-top:10px}
+.gf-content-page .gd-prose strong{color:var(--gf-ink);font-weight:700}
+.gd-answer{padding:28px 30px;background:var(--gf-paper);border:1px solid var(--gf-line);border-left:4px solid var(--gf-ink);border-radius:16px;margin:0 0 12px}
+.gf-content-page .gd-answer p:last-child,.gf-content-page .gd-note p:last-child{margin-bottom:0}
+.gf-content-page .gd-answer p{color:var(--gf-ink)}
+.gd-note{padding:20px 24px;border:1px solid var(--gf-line);border-radius:16px;margin:0 0 28px}
+.gf-content-page .gd-note p{font-size:16px;line-height:1.7}
+.gd-table-wrap{overflow-x:auto;margin:0 0 12px;border:1px solid var(--gf-line);border-radius:16px;background:#fff}
+.gd-table{width:100%;min-width:540px;border-collapse:collapse}
+.gd-table th,.gd-table td{padding:14px 18px;text-align:left;vertical-align:top;border-bottom:1px solid var(--gf-line);font-family:var(--primary-font);font-size:16px;line-height:1.6;color:var(--gf-muted)}
+.gd-table th{background:var(--gf-paper);color:var(--gf-ink);font-weight:700}
+.gd-table tr:last-child td{border-bottom:0}
+.gd-table td:first-child{color:var(--gf-ink);font-weight:600}
+.gf-content-page .gf-section .gd-caption{font-size:14px;line-height:1.6;margin:0 0 28px}
+.gd-aside{position:sticky;top:24px;display:grid;gap:24px}
+.gd-toc{padding:28px 32px;border:1px solid var(--gf-line);border-radius:20px;background:#fff}
+.gd-toc ul{list-style:none;margin:0;padding:0}
+.gf-content-page .gd-toc li{font-size:15px;line-height:1.5}
+.gd-toc li+li{margin-top:12px}
+.gd-toc a{text-decoration:none}
+.gd-toc a:hover{text-decoration:underline}
+.gf-content-page .gd-contact p{font-size:16px;line-height:1.7}
+.gf-content-page .gd-card h3{font-size:21px;margin-bottom:10px}
+.gf-content-page .gd-card h3 a{text-decoration:none}
+.gf-content-page .gd-card h3 a:hover{text-decoration:underline}
+.gf-content-page .gd-card p{margin-bottom:0}
+.gf-content-page .gf-section .gd-area{font-size:16px;margin:18px 0 0}
+.gd-sources{margin-top:56px;padding-top:32px;border-top:1px solid var(--gf-line)}
+.gf-content-page .gd-sources h3{font-size:19px}
+.gf-content-page .gd-sources p,.gf-content-page .gd-sources li{font-size:15px;line-height:1.65}
+.gd-sources ul{padding-left:20px;margin:0 0 20px}
+.gd-sources li+li{margin-top:6px}
+.gd-sources a{overflow-wrap:anywhere}
+.gd-article [id]{scroll-margin-top:24px}
+@media(max-width:991px){.gd-layout{grid-template-columns:1fr;gap:40px}.gd-aside{position:static}.gd-prose{max-width:none}}
+@media(max-width:767px){.gd-answer{padding:22px}.gd-toc{padding:24px}.gf-content-page .gd-prose h2{font-size:26px;margin-top:44px}.gd-table th,.gd-table td{padding:12px 14px;font-size:15px}}

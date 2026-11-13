@@ -1,7 +1,7 @@
 {
   "reviewed_at": "2026-11-05",
-  "total_pages": 25,
-  "canonical_pages": 20,
+  "total_pages": 41,
+  "canonical_pages": 36,
   "source_url": "https://www.green-flux.com/",
   "pages": {
     "/servizi/pompe-calore/": {
@@ -128,6 +128,86 @@
       "title": "Grazie per la tua richiesta",
       "source_url": "https://www.green-flux.com/",
       "kind": "confirmation"
+    },
+    "/guide/costo-pompa-di-calore/": {
+      "title": "Quanto costa una pompa di calore installata",
+      "source_url": "https://www.green-flux.com/",
+      "kind": "guide"
+    },
+    "/guide/preventivo-pompa-di-calore/": {
+      "title": "Preventivo per una pompa di calore: come leggerlo e confrontarlo",
+      "source_url": "https://www.green-flux.com/",
+      "kind": "guide"
+    },
+    "/guide/incentivi-pompa-di-calore/": {
+      "title": "Incentivi per la pompa di calore: Conto Termico o Ecobonus",
+      "source_url": "https://www.green-flux.com/",
+      "kind": "guide"
+    },
+    "/guide/pompa-di-calore-termosifoni/": {
+      "title": "Pompa di calore con i termosifoni: quando funziona",
+      "source_url": "https://www.green-flux.com/",
+      "kind": "guide"
+    },
+    "/guide/sostituire-caldaia-con-pompa-di-calore/": {
+      "title": "Sostituire la caldaia con una pompa di calore: che cosa cambia",
+      "source_url": "https://www.green-flux.com/",
+      "kind": "guide"
+    },
+    "/guide/pompa-di-calore-appartamento-condominio/": {
+      "title": "Pompa di calore in appartamento e in condominio",
+      "source_url": "https://www.green-flux.com/",
+      "kind": "guide"
+    },
+    "/guide/potenza-pompa-di-calore/": {
+      "title": "Che potenza deve avere la pompa di calore",
+      "source_url": "https://www.green-flux.com/",
+      "kind": "guide"
+    },
+    "/guide/pompa-di-calore-conviene/": {
+      "title": "Pompa di calore: quando conviene e quando no",
+      "source_url": "https://www.green-flux.com/",
+      "kind": "guide"
+    },
+    "/guide/consumi-pompa-di-calore/": {
+      "title": "Quanto consuma una pompa di calore",
+      "source_url": "https://www.green-flux.com/",
+      "kind": "guide"
+    },
+    "/guide/caldaia-a-condensazione-o-pompa-di-calore/": {
+      "title": "Caldaia a condensazione o pompa di calore",
+      "source_url": "https://www.green-flux.com/",
+      "kind": "guide"
+    },
+    "/guide/pompa-di-calore-e-fotovoltaico/": {
+      "title": "Pompa di calore con o senza fotovoltaico",
+      "source_url": "https://www.green-flux.com/",
+      "kind": "guide"
+    },
+    "/guide/fotovoltaico-con-accumulo/": {
+      "title": "Fotovoltaico con accumulo: quando la batteria serve",
+      "source_url": "https://www.green-flux.com/",
+      "kind": "guide"
+    },
+    "/guide/installazione-condizionatore/": {
+      "title": "Installare un condizionatore: chi può farlo e che cosa comprende",
+      "source_url": "https://www.green-flux.com/",
+      "kind": "guide"
+    },
+    "/guide/ventilazione-meccanica-controllata/": {
+      "title": "Ventilazione meccanica controllata: puntuale o centralizzata",
+      "source_url": "https://www.green-flux.com/",
+      "kind": "guide"
+    },
+    "/guide/impianti-in-ristrutturazione/": {
+      "title": "Ristrutturare casa: quando e come decidere gli impianti",
+      "source_url": "https://www.green-flux.com/",
+      "kind": "guide"
+    },
+    "/guide/": {
+      "title": "Guide agli impianti: costi, verifiche e scelte",
+      "source_url": "https://www.green-flux.com/",
+      "kind": "guide-index"
     }
   }
 }

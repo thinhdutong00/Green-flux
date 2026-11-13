@@ -2,6 +2,7 @@ import { readFile, writeFile, mkdir, rm, readdir } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { join, dirname, resolve } from 'node:path';
 import { propertyTypes, timelines } from '../public/preventivo/funnel-data.mjs';
+import { guideRoutes, renderGuides } from './render-guides.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const publicRoot = join(root, 'public');
@@ -39,6 +40,8 @@ const featuredServices = () => [...content.services]
 const featuredSupport = () => content.support.filter(service => service.home?.visible !== false);
 export const serviceRoute = slug => `/servizi/${slug}/`;
 export let routes = ['/', '/servizi/', ...content.services.map(s => serviceRoute(s.slug)), supportRoute, '/chi-siamo/', '/contatti/', '/preventivo/', '/privacy-policy/', '/cookie-policy/', '/termini-condizioni/'];
+// Guide di approfondimento (/guide/…): route aggiunte in coda, senza toccare quelle esistenti.
+routes.push(...await guideRoutes());
 const esc = value => String(value).replace(/[&<>"']/g, x => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));
 const paragraphs = values => values.map(t => `<p>${esc(t)}</p>`).join('');
 const list = values => `<ul>${values.map(t => `<li>${esc(t)}</li>`).join('')}</ul>`;
@@ -113,6 +116,7 @@ export async function renderSite() {
   profile = JSON.parse(await readFile(join(root, 'content/green-flux-profile.json'), 'utf8'));
   imageDimensions = JSON.parse(await readFile(join(root, 'content/image-dimensions.json'), 'utf8'));
   routes = ['/', '/servizi/', ...content.services.map(s => serviceRoute(s.slug)), supportRoute, '/chi-siamo/', '/contatti/', '/preventivo/', '/privacy-policy/', '/cookie-policy/', '/termini-condizioni/'];
+  routes.push(...await guideRoutes());
   redirects = Object.fromEntries(previousRoutes.filter(r => !routes.includes(r)).map(r => [r, redirectFor(r)]));
   const menuTemplate = await template('desktop-menu');
   const desktopMenu = (id, title, url, items, prompt, all) => fill(menuTemplate, {
@@ -248,6 +252,8 @@ export async function renderSite() {
   await write('/thank-you/', fill(await template('thank-you'), {
     THANK_YOU_SCHEMA: JSON.stringify(schema('/thank-you/', 'Grazie per la tua richiesta', 'Richiesta ricevuta: Green Flux ti ricontatta per chiarire il lavoro e concordare le verifiche.')).replace(/</g, '\\u003c')
   }), 'Grazie per la tua richiesta', 'confirmation');
+  // Guide di approfondimento: pagine nuove generate da content/guides, con la stessa impaginazione delle pagine interne.
+  await renderGuides({ page, write, esc, link, quote, origin });
   // Remove only the audited legacy pages. Their URLs remain as permanent redirects.
   for(const old of Object.keys(redirects))await rm(join(publicRoot,old,'index.html'),{force:true});
   async function removeEmpty(dir){for(const e of await readdir(dir,{withFileTypes:true}))if(e.isDirectory())await removeEmpty(join(dir,e.name));if(dir!==publicRoot&&(await readdir(dir)).length===0)await rm(dir,{recursive:true});}
