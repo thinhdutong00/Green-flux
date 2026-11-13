@@ -1,6 +1,6 @@
 # Guide di approfondimento (/guide/)
 
-Creato il 13 novembre 2026 sul branch `guide-approfondimenti`. Quindici guide e un indice, aggiunti senza modificare le pagine esistenti. Base di partenza: `claude/ricerca-query-google-2026-11.md` nel progetto (ricerca delle query Google del 13 novembre 2026).
+Creato il 13 novembre 2026 sul branch `guide-approfondimenti`. Quindici guide e la pagina di raccolta «Guide e consigli» (`/guide/`). Nella seconda fase, lo stesso giorno, sono stati aggiunti la voce di menu «Informazioni», il riquadro di richiesta nella testata e la chiusura con il passaggio successivo, ed è stata fatta la pubblicazione con push su `main`. Base di partenza: `claude/ricerca-query-google-2026-11.md` nel progetto (ricerca delle query Google del 13 novembre 2026).
 
 ## Inventario prima del lavoro
 
@@ -16,9 +16,21 @@ Creato il 13 novembre 2026 sul branch `guide-approfondimenti`. Quindici guide e 
 - Renderer: `scripts/render-guides.mjs`, chiamato da `render-site.mjs`. Usa `page()` e `write()` delle pagine interne: stesso header, footer, CTA, consenso e misurazione.
 - Stile: `public/assets/css/guides.css`, solo classi `gd-`, caricato soltanto dalle guide.
 - Una guida con `"status": "draft"` non viene generata, collegata né inserita nella sitemap.
-- Modifiche a file esistenti: sei righe in `scripts/render-site.mjs` (import, registrazione delle route, chiamata al renderer), `public/sitemap.xml` (16 URL aggiunte), `docs/content-audit.json` (16 voci aggiunte dal renderer).
+- Modifiche a file esistenti, prima fase: sei righe in `scripts/render-site.mjs` (import, registrazione delle route, chiamata al renderer), `public/sitemap.xml` (16 URL aggiunte), `docs/content-audit.json` (16 voci aggiunte dal renderer). Seconda fase: vedi «Menu, raccolta e richiesta di preventivo».
 
 Per aggiungere una guida: creare il file in `content/guides/`, eseguire `npm run render` e `npm test`. Per aggiornare regole o prezzi: modificare testo, fonti e campo `updated`.
+
+## Menu, raccolta e richiesta di preventivo
+
+- Menu: la voce principale «Chi siamo» è diventata «Informazioni», con due voci: «Chi siamo» (`/chi-siamo/`, indirizzo invariato) e «Guide e consigli» (`/guide/`). Le voci stanno in `infoMenu` dentro `scripts/render-site.mjs` e alimentano sia il menu desktop (`templates/header.html`, segnaposto `{{DESKTOP_INFO}}`, stesso componente a schede di «Impianti») sia il menu mobile (`navMarkup`, sezione `<details>` come le altre). Nessuna guida singola nel menu. Footer, pagine legali, pagina servizio pompe di calore e landing hanno una navigazione propria e non sono stati toccati.
+- Il menu desktop si apre con clic, tocco, Invio, Spazio e freccia giù; si chiude con Esc (il fuoco torna sulla voce), con un clic fuori o uscendo con il fuoco. Sotto 992 px resta il menu mobile esistente. Tra 992 e 1099 px il menu è leggermente più compatto, perché «Informazioni» è più lunga di «Chi siamo».
+- Raccolta: `/guide/` mantiene l’indirizzo e si intitola «Guide e consigli». Elenca le guide per argomento a partire dagli stessi file di `content/guides/`: una guida nuova compare da sola, un gruppo senza guide non viene mostrato.
+- Richiesta di preventivo, due componenti in `scripts/render-guides.mjs` usati da ogni guida e dalla raccolta:
+  - `requestBox`: riquadro nella testata con una frase legata all’argomento (campo `requestText`) e il pulsante «Richiedi un preventivo» verso `/preventivo/?servizio=…` (solo `/preventivo/` nella raccolta).
+  - `finalCta`: chiusura della pagina con il titolo (`ctaTitle`), un testo sull’argomento (`ctaText`), il passaggio successivo uguale per tutte («Nel modulo indichi i recapiti e il comune dell’immobile: ti ricontattiamo per capire il lavoro e concordare il sopralluogo») e lo stesso pulsante.
+- Non c’è un secondo modulo: sono collegamenti al modulo reale. Il modulo breve della pagina pompe di calore non è stato riusato perché invia la richiesta direttamente e non porta a `/preventivo/`. Il parametro `servizio` è quello già letto dal modulo, che preseleziona il servizio; nessun dato personale negli indirizzi.
+- Il riquadro di contatto che stava nella colonna laterale è stato tolto: il suo testo è passato nella chiusura, per non avere tre inviti nella stessa pagina. Nella colonna resta l’indice della guida.
+- Misurazione invariata: il clic verso `/preventivo/` non genera eventi; l’unica conversione resta la richiesta confermata su `/thank-you/`.
 
 ## Mappa degli argomenti
 
@@ -71,14 +83,16 @@ Tutte già presenti sul sito alla data del lavoro: sopralluogo e preventivo pomp
 
 ## Verifiche
 
-- `npm run render`: 36 pagine canoniche; tutti i file già presenti in `public/` identici byte per byte al render precedente; `vercel.json` e `content/redirects.json` invariati.
-- `npm test`: 5 test nuovi (`tests/guides.test.mjs`) superati. Restano i 7 esiti negativi già presenti prima del lavoro: 6 file che richiedono `@vercel/blob`, non installabile in questo ambiente, e il test editoriale di `company-content.test.mjs`, che già falliva su `/landing/pompe-calore-video/`.
-- Quel test editoriale vieta “Conto Termico”, “Ecobonus” e altri termini fuori da sezioni approvate: segnalerebbe anche le guide sugli incentivi. Non è stato modificato; va aggiornato se si conferma la nuova linea editoriale.
-- Browser: 16 pagine a 1366 e 390 px senza scorrimento orizzontale, errori in console o ancore rotte. I collegamenti di contatto portano a `/preventivo/?servizio=…` senza inviare dati.
-- `npm run build` non è stato eseguito: richiede esbuild e purgecss, non installabili qui. La sitemap in `public/` è stata rigenerata con la stessa logica di `scripts/build.mjs`.
+- `npm run render`: 36 pagine canoniche. Nella prima fase tutti i file già presenti in `public/` erano identici byte per byte; nella seconda le 16 pagine esistenti con il menu condiviso cambiano soltanto dentro la navigazione (confronto automatico con il commit precedente).
+- `npm test`: 8 test in `tests/guides.test.mjs` superati (guide, sitemap, collegamenti, dati strutturati, promesse non verificate, richiesta di preventivo, raccolta, menu). Restano i 7 esiti negativi già presenti su `main` prima del lavoro: 6 file che richiedono `@vercel/blob`, non installabile in questo ambiente, e il test editoriale di `company-content.test.mjs`, che fallisce su `/landing/pompe-calore-video/`.
+- Quel test editoriale vieta «Conto Termico», «Ecobonus» e altri termini fuori dalle sezioni approvate. Le guide ne parlano con fonti e data, quindi il test ora salta le sole regole di contenuto per gli indirizzi `/guide/` (resta il controllo sulla scheda di audit); le loro regole sono in `tests/guides.test.mjs`.
+- Browser (Chrome senza interfaccia, pagine servite in locale): 16 pagine delle guide a 1440, 1024, 820, 390 e 360 px e le 20 pagine esistenti a 1440 e 390 px, senza scorrimento orizzontale, errori o ancore rotte. Percorso Informazioni → Guide e consigli → guida → riquadro → `/preventivo/` → ritorno → chiusura → `/preventivo/` verificato con mouse, sola tastiera e tocco (telefono e tablet). I sei valori di `servizio` usati dalle guide preselezionano il servizio nel modulo. Nessuna richiesta inviata durante le prove.
+- `npm run build` non è eseguibile in questo ambiente (esbuild e purgecss non installabili): la build è verificata da Vercel sull’anteprima del branch e poi in produzione.
 
 ## Limiti e passi successivi
 
-- Le guide non sono collegate da menu, footer o pagine esistenti: per ora si raggiungono dalla sitemap e tra loro. Per farle trovare e pesare servono collegamenti dalle pagine servizio e una voce nel footer; non applicati in questa fase.
+- Le guide si raggiungono da ogni pagina con il menu condiviso (Informazioni → Guide e consigli). Le pagine servizio non collegano ancora le singole guide: è il passo successivo per farle pesare di più, da fare modificando i contenuti di quelle pagine.
+- Nelle pagine interne esistenti il testo sotto il titolo della sezione finale («Lasciaci i recapiti…») ha lo stesso colore dello sfondo e non si legge. Nelle guide è corretto da `guides.css`; nelle altre pagine non è stato toccato perché fuori da questo intervento.
+- Il pulsante dice «Richiedi un preventivo» e porta a una pagina intitolata «Richiedi un sopralluogo»: l’indirizzo e il modulo sono quelli giusti, l’etichetta è quella richiesta per le guide.
 - Incentivi 2027: aggiornare `incentivi-pompa-di-calore` e le guide che la citano quando la legge di bilancio sarà approvata.
 - Metriche da osservare in Search Console dopo la pubblicazione: pagine `/guide/` indicizzate; query non legate al nome con impressioni; posizione media per le ricerche della tabella; clic; richieste arrivate da sessioni che hanno visitato una guida.

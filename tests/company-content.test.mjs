@@ -30,6 +30,8 @@ test('Every page has an editorial audit record and no imported commercial promis
  for(const file of pages){
   const html=readFileSync(file,'utf8'),route='/'+file.replace(/^public\//,'').replace(/index\.html$/,'');
   assert(audit.pages[route],route);
+  // Le guide trattano incentivi, accumulo e isolamento con fonti e data: le loro regole sono in tests/guides.test.mjs.
+  if(route.startsWith('/guide/')) continue;
   const text=textOnly(html);
   assert(!/VenetaGreen|preventivo gratuito|comuni coperti|regioni servite|squadra tecnica|progetti realizzati|giugno 2026|manutenzione programmata|batterie di accumulo|cappotto/i.test(text),route);
   // The owner approved a visible, sourced 2026 section on the service landing.

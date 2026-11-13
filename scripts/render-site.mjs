@@ -2,7 +2,9 @@ import { readFile, writeFile, mkdir, rm, readdir } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { join, dirname, resolve } from 'node:path';
 import { propertyTypes, timelines } from '../public/preventivo/funnel-data.mjs';
-import { guideRoutes, renderGuides } from './render-guides.mjs';
+import { guideRoutes, renderGuides, guideIndexRoute, guideIndexLabel } from './render-guides.mjs';
+// Voci del menu «Informazioni», uguali su desktop e mobile: [icona, etichetta, indirizzo].
+const infoMenu = [['chi-siamo', 'Chi siamo', '/chi-siamo/'], ['guide-e-consigli', guideIndexLabel, guideIndexRoute]];
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const publicRoot = join(root, 'public');
@@ -84,7 +86,8 @@ const sections = pairs => pairs.map(([title, text]) => `<article class="gf-infor
 const reviewCards = items => items.map(({author,rating,text}) => `<article class="review-card"><div aria-label="${esc(rating)} stelle su 5" class="review-card-stars" role="img">${'★'.repeat(rating)}${'☆'.repeat(5-rating)}</div><blockquote><p>${esc(text)}</p></blockquote><footer><strong>${esc(author)}</strong><span>Recensione Google</span></footer></article>`).join('');
 function navMarkup(prefix = '') {
   const arrow = '<span aria-hidden="true">⌄</span>';
-  return `${link('/', 'Home', prefix+'menu-primary-link')}${link('/chi-siamo/', 'Chi siamo', prefix+'menu-primary-link')}
+  return `${link('/', 'Home', prefix+'menu-primary-link')}
+  <details class="${prefix}menu-section" name="mobile-navigation"><summary><span>Informazioni</span>${arrow}</summary><div class="${prefix}menu-section-links">${infoMenu.map(([, label, href]) => link(href, label)).join('')}</div></details>
   <details class="${prefix}menu-section" name="mobile-navigation"><summary><span>Impianti</span>${arrow}</summary><div class="${prefix}menu-section-links">${featuredServices().map(s => link(serviceRoute(s.slug), s.title)).join('')}${link('/servizi/', 'Tutti gli impianti', prefix+'menu-all-link')}</div></details>
   <details class="${prefix}menu-section" name="mobile-navigation"><summary><span>Progettazione e supporto</span>${arrow}</summary><div class="${prefix}menu-section-links">${featuredSupport().map(s => link(supportRoute+'#'+s.id, s.title)).join('')}${link(supportRoute, 'Come ti affianchiamo', prefix+'menu-all-link')}</div></details>${link('/contatti/', 'Contatti', prefix+'menu-primary-link')}`;
 }
@@ -124,6 +127,9 @@ export async function renderSite() {
     MENU_CARDS: items.map(([icon, label, href]) => `<a class="services-menu-card" href="${esc(href)}"><span class="services-menu-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="/assets/icons/navigation.svg#${esc(icon)}"></use></svg></span><span class="services-menu-label">${esc(label)}</span></a>`).join('')
   });
   const header = fill(await template('header'), {
+    // «Informazioni» riusa il menu a schede in versione compatta, allineata alla voce; il piede del pannello
+    // viene tolto perché ripeterebbe una delle due voci.
+    DESKTOP_INFO: desktopMenu('info', 'Informazioni', '/chi-siamo/', infoMenu, '', '').replace(/<div class="services-menu-footer">[\s\S]*?<\/div>/, '').replace('class="services-nav-item"', 'class="services-nav-item services-nav-item-compact"'),
     DESKTOP_FIELDS: desktopMenu('fields', 'Impianti', '/servizi/', featuredServices().map(s => [s.quote, s.title, serviceRoute(s.slug)]), 'Scegli un campo di intervento', 'Tutti gli impianti'),
     DESKTOP_SUPPORT: desktopMenu('services', 'Progettazione e supporto', supportRoute, featuredSupport().map(s => [s.id, s.title, supportRoute+'#'+s.id]), 'Il supporto al tuo impianto', 'Come ti affianchiamo')
   });

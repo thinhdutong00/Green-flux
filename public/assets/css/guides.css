@@ -27,7 +27,6 @@
 .gd-toc li+li{margin-top:12px}
 .gd-toc a{text-decoration:none}
 .gd-toc a:hover{text-decoration:underline}
-.gf-content-page .gd-contact p{font-size:16px;line-height:1.7}
 .gf-content-page .gd-card h3{font-size:21px;margin-bottom:10px}
 .gf-content-page .gd-card h3 a{text-decoration:none}
 .gf-content-page .gd-card h3 a:hover{text-decoration:underline}
@@ -40,5 +39,20 @@
 .gd-sources li+li{margin-top:6px}
 .gd-sources a{overflow-wrap:anywhere}
 .gd-article [id]{scroll-margin-top:24px}
+/* Richiesta di preventivo: riquadro nella testata e passaggio successivo nella chiusura. */
+.gf-hero-action.gd-request{display:flex;align-items:center;justify-content:space-between;gap:20px 28px;max-width:760px;margin-top:32px;padding:18px 20px 18px 24px;border:1px solid rgb(255 255 255 / 28%);border-radius:20px;background:rgb(13 40 42 / 58%);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.gf-hero-action.gd-request p{margin:0;font-size:16px;line-height:1.55;color:#fff;max-width:none}
+.gf-hero-action.gd-request .gf-button{flex:none;white-space:nowrap}
+.gf-content-page .cta-section .cta-content .gf-cta-note{color:#fff;margin:0;text-align:inherit}
+.gd-cta-text{max-width:560px}
+.gf-content-page .cta-section .cta-content .gd-cta-step{font-size:15px;line-height:1.6;margin:12px 0 0;color:rgb(255 255 255 / 82%)}
+/* Argomenti nella pagina «Guide e consigli». */
+.gd-topics{margin-top:28px}
+.gd-topics ul{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:0;padding:0}
+.gf-content-page .gd-topics a{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:8px 16px;border:1px solid var(--gf-line);border-radius:999px;background:#fff;color:var(--gf-ink);font-size:15px;line-height:1.3;text-decoration:none}
+.gf-content-page .gd-topics a:hover{border-color:var(--gf-ink)}
+.gd-topics span{display:inline-grid;place-items:center;min-width:24px;height:24px;padding:0 6px;border-radius:999px;background:var(--gf-paper);font-size:13px;font-weight:700}
+.gd-layout:not(:has(.gd-aside)){grid-template-columns:minmax(0,1fr)}
 @media(max-width:991px){.gd-layout{grid-template-columns:1fr;gap:40px}.gd-aside{position:static}.gd-prose{max-width:none}}
 @media(max-width:767px){.gd-answer{padding:22px}.gd-toc{padding:24px}.gf-content-page .gd-prose h2{font-size:26px;margin-top:44px}.gd-table th,.gd-table td{padding:12px 14px;font-size:15px}}
+@media(max-width:767px){.gf-hero-action.gd-request{flex-direction:column;align-items:stretch;gap:12px;margin-top:20px;padding:14px 16px 16px}.gf-hero-action.gd-request p{font-size:15px;line-height:1.5}.gf-hero-action.gd-request .gf-button{justify-content:center;text-align:center}}
