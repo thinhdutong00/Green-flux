@@ -1,112 +1,232 @@
 [
   {
     "page": "/chi-siamo/",
-    "cssBefore": 172239,
-    "cssAfter": 57608
+    "cssBefore": 173039,
+    "cssAfter": 58510
   },
   {
     "page": "/contatti/",
-    "cssBefore": 172239,
-    "cssAfter": 51554
+    "cssBefore": 173039,
+    "cssAfter": 52293
   },
   {
     "page": "/cookie-policy/",
-    "cssBefore": 33085,
-    "cssAfter": 19186
+    "cssBefore": 33818,
+    "cssAfter": 19317
+  },
+  {
+    "page": "/guide/caldaia-a-condensazione-o-pompa-di-calore/",
+    "cssBefore": 178733,
+    "cssAfter": 62740
+  },
+  {
+    "page": "/guide/consumi-pompa-di-calore/",
+    "cssBefore": 178733,
+    "cssAfter": 62724
+  },
+  {
+    "page": "/guide/costo-impianto-fotovoltaico/",
+    "cssBefore": 178733,
+    "cssAfter": 61880
+  },
+  {
+    "page": "/guide/costo-installazione-climatizzatore/",
+    "cssBefore": 178733,
+    "cssAfter": 61986
+  },
+  {
+    "page": "/guide/costo-pompa-di-calore/",
+    "cssBefore": 178733,
+    "cssAfter": 62724
+  },
+  {
+    "page": "/guide/costo-sostituzione-caldaia-condensazione/",
+    "cssBefore": 178733,
+    "cssAfter": 61880
+  },
+  {
+    "page": "/guide/fotovoltaico-con-accumulo/",
+    "cssBefore": 178733,
+    "cssAfter": 61880
+  },
+  {
+    "page": "/guide/impianti-in-ristrutturazione/",
+    "cssBefore": 178733,
+    "cssAfter": 61896
+  },
+  {
+    "page": "/guide/incentivi-pompa-di-calore/",
+    "cssBefore": 178733,
+    "cssAfter": 62724
+  },
+  {
+    "page": "/guide/",
+    "cssBefore": 178733,
+    "cssAfter": 60118
+  },
+  {
+    "page": "/guide/installazione-condizionatore/",
+    "cssBefore": 178733,
+    "cssAfter": 61880
+  },
+  {
+    "page": "/guide/pompa-di-calore-appartamento-condominio/",
+    "cssBefore": 178733,
+    "cssAfter": 61954
+  },
+  {
+    "page": "/guide/pompa-di-calore-conviene/",
+    "cssBefore": 178733,
+    "cssAfter": 62072
+  },
+  {
+    "page": "/guide/pompa-di-calore-e-fotovoltaico/",
+    "cssBefore": 178733,
+    "cssAfter": 61880
+  },
+  {
+    "page": "/guide/pompa-di-calore-termosifoni/",
+    "cssBefore": 178733,
+    "cssAfter": 62842
+  },
+  {
+    "page": "/guide/potenza-pompa-di-calore/",
+    "cssBefore": 178733,
+    "cssAfter": 61880
+  },
+  {
+    "page": "/guide/preventivo-pompa-di-calore/",
+    "cssBefore": 178733,
+    "cssAfter": 62858
+  },
+  {
+    "page": "/guide/sostituire-caldaia-con-pompa-di-calore/",
+    "cssBefore": 178733,
+    "cssAfter": 61880
+  },
+  {
+    "page": "/guide/ventilazione-meccanica-controllata/",
+    "cssBefore": 178733,
+    "cssAfter": 62562
   },
   {
     "page": "/",
-    "cssBefore": 57605,
-    "cssAfter": 51618
+    "cssBefore": 58338,
+    "cssAfter": 52351
   },
   {
     "page": "/landing/pompe-calore/",
-    "cssBefore": 54285,
-    "cssAfter": 31968
+    "cssBefore": 83883,
+    "cssAfter": 32430
+  },
+  {
+    "page": "/landing/pompe-calore-video/",
+    "cssBefore": 83883,
+    "cssAfter": 26913
+  },
+  {
+    "page": "/landing/ristrutturazione/",
+    "cssBefore": 114476,
+    "cssAfter": 51638
+  },
+  {
+    "page": "/landing/ristrutturazione-video/",
+    "cssBefore": 114476,
+    "cssAfter": 51996
+  },
+  {
+    "page": "/lavori/centrale-termica-con-pompa-di-calore/",
+    "cssBefore": 173039,
+    "cssAfter": 57939
   },
   {
     "page": "/preventivo/",
-    "cssBefore": 50975,
-    "cssAfter": 49287
+    "cssBefore": 51708,
+    "cssAfter": 50020
   },
   {
     "page": "/privacy-policy/",
-    "cssBefore": 33085,
-    "cssAfter": 19186
+    "cssBefore": 33818,
+    "cssAfter": 19317
   },
   {
     "page": "/servizi/biomassa/",
-    "cssBefore": 172239,
-    "cssAfter": 58878
+    "cssBefore": 173039,
+    "cssAfter": 59684
   },
   {
     "page": "/servizi/caldaie/",
-    "cssBefore": 172239,
-    "cssAfter": 59072
+    "cssBefore": 173039,
+    "cssAfter": 59878
   },
   {
     "page": "/servizi/climatizzazione/",
-    "cssBefore": 172239,
-    "cssAfter": 59072
+    "cssBefore": 173039,
+    "cssAfter": 59878
   },
   {
     "page": "/servizi/fotovoltaico/",
-    "cssBefore": 172239,
-    "cssAfter": 59072
+    "cssBefore": 173039,
+    "cssAfter": 59878
   },
   {
     "page": "/servizi/impianti-completi/",
-    "cssBefore": 172239,
-    "cssAfter": 58952
+    "cssBefore": 173039,
+    "cssAfter": 59758
   },
   {
     "page": "/servizi/impianti-radianti-parete-soffitto/",
-    "cssBefore": 172239,
-    "cssAfter": 58952
+    "cssBefore": 173039,
+    "cssAfter": 59758
   },
   {
     "page": "/servizi/",
-    "cssBefore": 172239,
-    "cssAfter": 57974
+    "cssBefore": 173039,
+    "cssAfter": 58780
   },
   {
     "page": "/servizi/pompe-calore/",
-    "cssBefore": 54285,
-    "cssAfter": 41428
+    "cssBefore": 83883,
+    "cssAfter": 41708
   },
   {
     "page": "/servizi/progettazione-e-supporto/",
-    "cssBefore": 172239,
-    "cssAfter": 57106
+    "cssBefore": 173039,
+    "cssAfter": 57912
+  },
+  {
+    "page": "/servizi/ristrutturazione-casa/",
+    "cssBefore": 173039,
+    "cssAfter": 58221
   },
   {
     "page": "/servizi/smart-home/",
-    "cssBefore": 172239,
-    "cssAfter": 58998
+    "cssBefore": 173039,
+    "cssAfter": 59804
   },
   {
     "page": "/servizi/solare-termico/",
-    "cssBefore": 172239,
-    "cssAfter": 59072
+    "cssBefore": 173039,
+    "cssAfter": 59878
   },
   {
     "page": "/servizi/trattamento-acqua/",
-    "cssBefore": 172239,
-    "cssAfter": 59178
+    "cssBefore": 173039,
+    "cssAfter": 59984
   },
   {
     "page": "/servizi/ventilazione/",
-    "cssBefore": 172239,
-    "cssAfter": 58998
+    "cssBefore": 173039,
+    "cssAfter": 59804
   },
   {
     "page": "/termini-condizioni/",
-    "cssBefore": 33085,
-    "cssAfter": 19186
+    "cssBefore": 33818,
+    "cssAfter": 19317
   },
   {
     "page": "/thank-you/",
-    "cssBefore": 11210,
-    "cssAfter": 11141
+    "cssBefore": 11141,
+    "cssAfter": 11072
   }
 ]

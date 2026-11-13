@@ -6,6 +6,7 @@ import { captureAttribution, normalizeAttribution } from '../public/assets/js/le
 import { buildCrmRecord } from '../lib/crm-record.mjs';
 import { safeLeadEvent, trackLeadEvent } from '../public/assets/js/lead-events.mjs';
 import { saveAdsConsent } from '../public/assets/js/ads-consent.mjs';
+import { readConversionReceipt } from '../public/assets/js/conversion-receipt.mjs';
 import { CLARITY_CONSENT_KEY } from '../public/assets/js/clarity.mjs';
 import { readSubmissionStatus, saveSubmissionStatus } from '../public/assets/js/submission-status.mjs';
 import { submitAndRedirect, createRequestSender } from '../public/assets/js/request-delivery.mjs';
@@ -157,10 +158,16 @@ test('Failed short submissions stay in the form, retries keep the same id, and s
   }});
   await assert.rejects(submitAndRedirect(sender,sample(),{browser:top,redirectOnError:false}));
   assert.deepEqual(visits,[]);assert.equal(readSubmissionStatus(top),null);
+  assert.equal(readConversionReceipt(top), null);
+  saveAdsConsent(top, false);
   fail=false;
   await submitAndRedirect(sender,sample(),{browser:top,redirectOnError:false});
   assert.equal(ids[0],ids[1]);assert.deepEqual(visits,['/thank-you/']);
-  assert.equal(readSubmissionStatus(top).kind,'heat-pump'); assert.equal(top.sessionStorage.getItem('green-flux:confirmed-request'),null);
+  assert.equal(readSubmissionStatus(top).kind,'heat-pump');
+  const receipt = readConversionReceipt(top);
+  assert.equal(receipt.id, sample().requestId);
+  assert.equal(receipt.sent, false);
+  assert.equal(readConversionReceipt(top, receipt.expiresAt), null);
   assert.equal(readSubmissionStatus(browser()),null);
   saveSubmissionStatus(top,'heat-pump',100);assert.equal(readSubmissionStatus(top,100+16*60*1000),null);
 });

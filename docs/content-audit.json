@@ -1,7 +1,7 @@
 {
   "reviewed_at": "2026-11-05",
-  "total_pages": 41,
-  "canonical_pages": 36,
+  "total_pages": 46,
+  "canonical_pages": 41,
   "source_url": "https://www.green-flux.com/",
   "pages": {
     "/servizi/pompe-calore/": {
@@ -129,6 +129,16 @@
       "source_url": "https://www.green-flux.com/",
       "kind": "confirmation"
     },
+    "/servizi/ristrutturazione-casa/": {
+      "title": "Rifacimento degli impianti per chi ristruttura casa a Padova",
+      "source_url": "https://www.green-flux.com/",
+      "kind": "canonical"
+    },
+    "/lavori/centrale-termica-con-pompa-di-calore/": {
+      "title": "Una centrale termica con pompa di calore, dal cantiere alla consegna",
+      "source_url": "https://www.green-flux.com/",
+      "kind": "canonical"
+    },
     "/guide/costo-pompa-di-calore/": {
       "title": "Quanto costa una pompa di calore installata",
       "source_url": "https://www.green-flux.com/",
@@ -201,6 +211,21 @@
     },
     "/guide/impianti-in-ristrutturazione/": {
       "title": "Ristrutturare casa: quando e come decidere gli impianti",
+      "source_url": "https://www.green-flux.com/",
+      "kind": "guide"
+    },
+    "/guide/costo-impianto-fotovoltaico/": {
+      "title": "Quanto costa un impianto fotovoltaico installato sul tetto?",
+      "source_url": "https://www.green-flux.com/",
+      "kind": "guide"
+    },
+    "/guide/costo-sostituzione-caldaia-condensazione/": {
+      "title": "Quanto costa sostituire la caldaia con una a condensazione?",
+      "source_url": "https://www.green-flux.com/",
+      "kind": "guide"
+    },
+    "/guide/costo-installazione-climatizzatore/": {
+      "title": "Quanto costa un climatizzatore installato per una, due o tre stanze?",
       "source_url": "https://www.green-flux.com/",
       "kind": "guide"
     },

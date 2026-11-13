@@ -54,12 +54,12 @@ export async function renderGuides({ page, write, esc, link, quote, img, origin 
   const guideCards = list => `<div class="gf-information-grid">${list.map(guide => `<article class="gf-information-item gd-card"><h3>${link(guideRoute(guide.slug), guide.title)}</h3><p>${esc(guide.card)}</p></article>`).join('')}</div>`;
   // Componenti riutilizzabili per la richiesta di preventivo, usati da ogni guida e da “Guide e consigli”.
   // Sono collegamenti al modulo reale di /preventivo/: nessun secondo modulo, nessun dato raccolto in pagina.
-  const requestLabel = 'Richiedi un preventivo';
+  const defaultLabel = 'Richiedi un preventivo';
   const nextStep = 'Nel modulo indichi i recapiti e il comune dell’immobile: ti ricontattiamo per capire il lavoro e concordare il sopralluogo.';
   // A) Nella testata: pulsante verso il modulo e, sotto, una riga su che cosa succede dopo la richiesta.
   // La freccia è un disegno SVG: il carattere «↗» su iPhone viene mostrato come emoji.
   const arrowIcon = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg>';
-  const requestBox = (text, url) => `<div class="gf-hero-action gd-request"><a class="gd-button" href="${esc(url)}"><span>${requestLabel}</span><span class="gd-button-icon">${arrowIcon}</span></a><p>${esc(text)}</p></div>`;
+  const requestBox = (text, url, label) => `<div class="gf-hero-action gd-request"><a class="gd-button" href="${esc(url)}"><span>${esc(label)}</span><span class="gd-button-icon">${arrowIcon}</span></a><p>${esc(text)}</p></div>`;
   // Immagini: testo alternativo e titolo descrivono il soggetto; la didascalia dichiara che sono illustrative.
   const picture = (asset, alt, title, eager = false) => img(asset, alt, '', eager).replace('<img ', `<img title="${esc(title)}" `);
   const figure = data => data ? `<figure class="gd-figure">${picture(data.image, data.alt, data.title)}<figcaption>${esc(data.caption)} <span>Immagine illustrativa.</span></figcaption></figure>` : '';
@@ -67,11 +67,11 @@ export async function renderGuides({ page, write, esc, link, quote, img, origin 
   // B) Chiusura della pagina: stessa sezione delle pagine interne, con testo dell’argomento e passaggio successivo.
   const finalCta = text => `<div class="gd-cta-text"><p class="gf-cta-note">${esc(text)}</p><p class="gf-cta-note gd-cta-step">${esc(nextStep)}</p></div>`;
   const swap = (html, pattern, replacement, what) => { if (!pattern.test(html)) throw new Error(`Guide: ${what} non trovato nella pagina generata`); return html.replace(pattern, replacement); };
-  const withRequest = (html, { requestText, ctaText, url, imageAlt, imageTitle }) => {
+  const withRequest = (html, { requestText, ctaText, url, imageAlt, imageTitle, label = defaultLabel }) => {
     html = heroImage(html, imageAlt, imageTitle);
-    html = swap(html, /<div class="gf-hero-action">[\s\S]*?<\/p><\/div>/, () => requestBox(requestText, url), 'riquadro della testata');
+    html = swap(html, /<div class="gf-hero-action">[\s\S]*?<\/p><\/div>/, () => requestBox(requestText, url, label), 'riquadro della testata');
     html = swap(html, /(<section class="cta-section">[\s\S]*?)<p class="gf-cta-note">[\s\S]*?<\/p>/, (_, before) => before + finalCta(ctaText), 'testo della chiusura');
-    return swap(html, /(<section class="cta-section">[\s\S]*?<p class="primary-button-text">)[^<]*(<\/p>)/, (_, before, after) => before + requestLabel + after, 'pulsante della chiusura');
+    return swap(html, /(<section class="cta-section">[\s\S]*?<p class="primary-button-text">)[^<]*(<\/p>)/, (_, before, after) => before + esc(label) + after, 'pulsante della chiusura');
   };
   const finish = (html, head) => html
     .replace('<meta property="og:type" content="website">', '<meta property="og:type" content="article">')
@@ -94,8 +94,8 @@ export async function renderGuides({ page, write, esc, link, quote, img, origin 
       { '@type': 'BreadcrumbList', itemListElement: [['Home', '/'], [guideIndexLabel, guideIndexRoute], [guide.title, route]].map(([name, url], index) => ({ '@type': 'ListItem', position: index + 1, name, item: origin + url })) }
     ];
     if (guide.faqs.length) graph.push({ '@type': 'FAQPage', '@id': origin + route + '#domande', mainEntity: guide.faqs.map(([question, answer]) => ({ '@type': 'Question', name: question, acceptedAnswer: { '@type': 'Answer', text: answer } })) });
-    let html = page(route, guide.title, guide.lead, body, { image: guide.image, kicker: guide.kicker || 'Guide Green Flux', quote: guide.quote, seoTitle: guide.seoTitle || guide.title, metaDescription: guide.description, ctaTitle: guide.ctaTitle });
-    html = finish(withRequest(html, { requestText: guide.requestText, ctaText: guide.ctaText, url: requestUrl, imageAlt: guide.imageAlt, imageTitle: guide.imageTitle }), jsonLd({ '@context': 'https://schema.org', '@graph': graph }))
+    let html = page(route, guide.title, guide.lead, body, { image: guide.image, kicker: guide.kicker || 'Guide Green Flux', quote: guide.quote, quoteLabel: guide.requestLabel, seoTitle: guide.seoTitle || guide.title, metaDescription: guide.description, ctaTitle: guide.ctaTitle });
+    html = finish(withRequest(html, { requestText: guide.requestText, ctaText: guide.ctaText, url: requestUrl, label: guide.requestLabel, imageAlt: guide.imageAlt, imageTitle: guide.imageTitle }), jsonLd({ '@context': 'https://schema.org', '@graph': graph }))
       .replace('<span aria-current="page">', `${link(guideIndexRoute, guideIndexLabel)}<span aria-hidden="true">/</span><span aria-current="page">`);
     await write(route, html, guide.title, 'guide');
   }

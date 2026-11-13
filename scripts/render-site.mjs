@@ -3,6 +3,9 @@ import { fileURLToPath } from 'node:url';
 import { join, dirname, resolve } from 'node:path';
 import { propertyTypes, timelines } from '../public/preventivo/funnel-data.mjs';
 import { guideRoutes, renderGuides, guideIndexRoute, guideIndexLabel } from './render-guides.mjs';
+import { renovationRoute, renderRenovation } from './render-renovation.mjs';
+
+const caseRoute = '/lavori/centrale-termica-con-pompa-di-calore/';
 // Voci del menu «Informazioni», uguali su desktop e mobile: [icona, etichetta, indirizzo].
 const infoMenu = [['chi-siamo', 'Chi siamo', '/chi-siamo/'], ['guide-e-consigli', guideIndexLabel, guideIndexRoute]];
 
@@ -41,7 +44,7 @@ const featuredServices = () => [...content.services]
   .sort((a, b) => a.home.order - b.home.order);
 const featuredSupport = () => content.support.filter(service => service.home?.visible !== false);
 export const serviceRoute = slug => `/servizi/${slug}/`;
-export let routes = ['/', '/servizi/', ...content.services.map(s => serviceRoute(s.slug)), supportRoute, '/chi-siamo/', '/contatti/', '/preventivo/', '/privacy-policy/', '/cookie-policy/', '/termini-condizioni/'];
+export let routes = ['/', '/servizi/', ...content.services.map(s => serviceRoute(s.slug)), supportRoute, renovationRoute, caseRoute, '/chi-siamo/', '/contatti/', '/preventivo/', '/privacy-policy/', '/cookie-policy/', '/termini-condizioni/'];
 // Guide di approfondimento (/guide/…): route aggiunte in coda, senza toccare quelle esistenti.
 routes.push(...await guideRoutes());
 const esc = value => String(value).replace(/[&<>"']/g, x => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));
@@ -101,10 +104,12 @@ function footerMarkup() {
   <div aria-label="Green Flux" class="footer-brand-text">Green Flux</div><div class="content-bottom footer"><p class="body-text-16">2026 © Green Flux. Tutti i diritti riservati.</p><nav class="navitem-list footer" aria-label="Informazioni legali">${[['/privacy-policy/','Privacy'],['/cookie-policy/','Cookie'],['/termini-condizioni/','Termini e condizioni']].map(([u,t])=>link(u,t,'navtext')).join('')}</nav></div></div></div></footer>`;
 }
 function img(asset, alt, cls = '', eager = false) {
-  const generated = asset.startsWith('images/');
   const full = `/assets/${asset}`;
   const [width, height] = imageDimensions[full];
-  const srcset = generated ? `${full.replace(/-\d+\.webp$/, '-480.webp')} 480w, ${full.replace(/-\d+\.webp$/, '-960.webp')} 960w, ${full} ${asset.match(/-(\d+)\.webp$/)[1]}w` : `${full.replace('-750.webp','-400.webp')} 400w, ${full} 750w`;
+  let variants = [400, 750];
+  if (asset.startsWith('images/')) variants = [480, 960, width];
+  if (asset.startsWith('lavori/')) variants = [560, 1000];
+  const srcset = variants.map(size => full.replace(/-\d+\.webp$/, '-' + size + '.webp') + ' ' + size + 'w').join(', ');
   return `<img class="${cls}" src="${full}" srcset="${srcset}" sizes="${eager?'100vw':'(max-width: 767px) 100vw, 50vw'}" alt="${esc(alt)}" width="${width}" height="${height}" loading="${eager?'eager':'lazy'}" decoding="async"${eager?' fetchpriority="high"':''}${asset.includes('heat-pump-home')?' data-image-asset="heat-pump-home"':''}>`;
 }
 function cards(items) {
@@ -118,7 +123,7 @@ export async function renderSite() {
   content = JSON.parse(await readFile(join(root, 'content/site-content.json'), 'utf8'));
   profile = JSON.parse(await readFile(join(root, 'content/green-flux-profile.json'), 'utf8'));
   imageDimensions = JSON.parse(await readFile(join(root, 'content/image-dimensions.json'), 'utf8'));
-  routes = ['/', '/servizi/', ...content.services.map(s => serviceRoute(s.slug)), supportRoute, '/chi-siamo/', '/contatti/', '/preventivo/', '/privacy-policy/', '/cookie-policy/', '/termini-condizioni/'];
+  routes = ['/', '/servizi/', ...content.services.map(s => serviceRoute(s.slug)), supportRoute, renovationRoute, caseRoute, '/chi-siamo/', '/contatti/', '/preventivo/', '/privacy-policy/', '/cookie-policy/', '/termini-condizioni/'];
   routes.push(...await guideRoutes());
   redirects = Object.fromEntries(previousRoutes.filter(r => !routes.includes(r)).map(r => [r, redirectFor(r)]));
   const menuTemplate = await template('desktop-menu');
@@ -155,13 +160,25 @@ export async function renderSite() {
   function page(route, title, lead, body, options = {}) {
     const seoTitle = options.seoTitle || title;
     const description = options.metaDescription || lead;
-    const heroAction = options.cta === false ? '' : `<div class="gf-hero-action">${link(quote(options.quote),'Richiedi un sopralluogo ↗','gf-button')}<p>Ti richiamiamo per verificare il lavoro e la zona, poi concordiamo il sopralluogo.</p></div>`;
+    const quoteUrl = options.quoteUrl || quote(options.quote);
+    const quoteLabel = options.quoteLabel || 'Richiedi un sopralluogo';
+    const heroAction = options.cta === false ? '' : `<div class="gf-hero-action">${link(quoteUrl, quoteLabel + ' ↗', 'gf-button')}<p>Ti richiamiamo per verificare il lavoro e la zona, poi concordiamo il sopralluogo.</p></div>`;
+    const scopedQuote = options.quoteLabel || options.quoteUrl;
+    const pageHeader = scopedQuote ? header.replaceAll('href="/preventivo/"', 'href="' + esc(quoteUrl) + '"') : header;
+    const pageFooter = scopedQuote ? footer.replaceAll('href="/preventivo/"', 'href="' + esc(quoteUrl) + '"') : footer;
+    const mobileQuote = scopedQuote ? ' data-quote-url="' + esc(quoteUrl) + '"' : '';
     const asset = options.image || 'images/heat-pump-home-1600.webp';
-    const hero = `<section class="internal-hero-shell">${img(asset,'','hero-bg-image',true)}<section class="header-primary">${header}</section><section class="internal-hero-section"><div class="vg-layout-blockcontainer container vg-container"><div class="internal-hero-content"><p class="internal-hero-kicker">${esc(options.kicker || 'Green Flux · Impianti tecnologici')}</p><h1 class="internal-hero-heading">${esc(title)}</h1><p class="internal-hero-text">${esc(lead)}</p>${heroAction}</div></div></section></section>`;
-    const cta = options.cta === false ? '' : fill(ctaTemplate, {CTA_TITLE:esc(options.ctaTitle || 'Parliamo del tuo impianto.'),QUOTE_URL:quote(options.quote)});
-    return `<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${esc(seoTitle)} | Green Flux</title><meta name="description" content="${esc(description)}"><link rel="canonical" href="${origin+route}"><link rel="icon" href="/assets/favicon.ico"><meta property="og:title" content="${esc(seoTitle)} | Green Flux"><meta property="og:description" content="${esc(description)}"><meta property="og:url" content="${origin+route}"><meta property="og:image" content="${origin}/assets/${asset}"><meta property="og:type" content="website"><meta name="twitter:card" content="summary_large_image"><link rel="preload" href="/assets/fonts/plus-jakarta-sans-400.woff2" as="font" type="font/woff2" crossorigin>${['site','green-flux','mobile-header','brand','desktop-header','editorial','site-visit'].map(name=>`<link rel="stylesheet" href="/assets/css/${name}.css">`).join('')}<script type="application/ld+json">${JSON.stringify(schema(route,seoTitle,description)).replace(/</g,'\\u003c')}</script></head><body class="gf-content-page"><a class="vg-skip-link" href="#contenuto">Vai al contenuto</a>${hero}<main id="contenuto"><nav class="gf-crumbs gf-wrap" aria-label="Percorso">${link('/','Home')}<span aria-hidden="true">/</span>${route.startsWith('/servizi/')&&route!='/servizi/'?link('/servizi/','Impianti e servizi')+'<span aria-hidden="true">/</span>':''}<span aria-current="page">${esc(title)}</span></nav>${body}${cta}</main>${footer}<script defer src="/assets/js/site.js"></script><script type="module" src="/assets/js/green-flux.mjs"></script></body></html>`;
+    const hero = `<section class="internal-hero-shell">${img(asset,'','hero-bg-image',true)}<section class="header-primary">${pageHeader}</section><section class="internal-hero-section"><div class="vg-layout-blockcontainer container vg-container"><div class="internal-hero-content"><p class="internal-hero-kicker">${esc(options.kicker || 'Green Flux · Impianti tecnologici')}</p><h1 class="internal-hero-heading">${esc(title)}</h1><p class="internal-hero-text">${esc(lead)}</p>${heroAction}</div></div></section></section>`;
+    const cta = options.cta === false ? '' : fill(ctaTemplate, {CTA_TITLE:esc(options.ctaTitle || 'Parliamo del tuo impianto.'),QUOTE_URL:esc(quoteUrl),QUOTE_LABEL:esc(quoteLabel)});
+    return `<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${esc(seoTitle)} | Green Flux</title><meta name="description" content="${esc(description)}"><link rel="canonical" href="${origin+route}"><link rel="icon" href="/assets/favicon.ico"><meta property="og:title" content="${esc(seoTitle)} | Green Flux"><meta property="og:description" content="${esc(description)}"><meta property="og:url" content="${origin+route}"><meta property="og:image" content="${origin}/assets/${asset}"><meta property="og:type" content="website"><meta name="twitter:card" content="summary_large_image"><link rel="preload" href="/assets/fonts/plus-jakarta-sans-400.woff2" as="font" type="font/woff2" crossorigin>${['site','green-flux','mobile-header','brand','desktop-header','editorial','site-visit'].map(name=>`<link rel="stylesheet" href="/assets/css/${name}.css">`).join('')}<script type="application/ld+json">${JSON.stringify(schema(route,seoTitle,description)).replace(/</g,'\\u003c')}</script></head><body class="gf-content-page"${mobileQuote}><a class="vg-skip-link" href="#contenuto">Vai al contenuto</a>${hero}<main id="contenuto"><nav class="gf-crumbs gf-wrap" aria-label="Percorso">${link('/','Home')}<span aria-hidden="true">/</span>${route.startsWith('/servizi/')&&route!='/servizi/'?link('/servizi/','Impianti e servizi')+'<span aria-hidden="true">/</span>':''}<span aria-current="page">${esc(title)}</span></nav>${body}${cta}</main>${pageFooter}<script defer src="/assets/js/site.js"></script><script type="module" src="/assets/js/green-flux.mjs"></script></body></html>`;
   }
 
+  const readingByService = {
+    fotovoltaico: [guideIndexRoute + 'costo-impianto-fotovoltaico/', 'Fotovoltaico installato: esempi di costo e voci del preventivo'],
+    climatizzazione: [guideIndexRoute + 'costo-installazione-climatizzatore/', 'Costo del climatizzatore con e senza predisposizione'],
+    caldaie: [guideIndexRoute + 'costo-sostituzione-caldaia-condensazione/', 'Quanto costa sostituire una caldaia a condensazione?'],
+    'impianti-completi': [renovationRoute, 'Rifacimento degli impianti per chi ristruttura casa']
+  };
   for (const s of content.services) {
     if (s.slug === 'pompe-calore') {
       const campaign = JSON.parse(await readFile(join(root, 'content/heat-pump-campaign.json'), 'utf8'));
@@ -200,14 +217,16 @@ export async function renderSite() {
       await write(heatPumpVideoLanding, fill(await template('heat-pump-landing-video'), { ...landingValues, LANDING_SCHEMA: JSON.stringify(videoSchema).replaceAll(origin, 'https://green-flux.com').replace(/</g, '\\u003c') }), title, 'landing-copy');
       continue;
     }
-    const body = `<section class="gf-section"><div class="gf-wrap gf-intro"><div><p class="gf-eyebrow">Il servizio</p><h2>${esc(s.introTitle)}</h2>${paragraphs(s.overview)}</div><aside class="gf-preparation"><h2>Cosa può essere utile</h2><p>Per richiedere il sopralluogo bastano i recapiti e il comune. Se li hai, questi dati ci aiutano a preparare il confronto.</p>${list(s.prepare)}${link(quote(s.quote),'Richiedi un sopralluogo ↗','gf-button')}</aside></div></section>
+    const reading = readingByService[s.slug];
+    const relatedReading = reading ? '<p class="gf-support-link">' + link(...reading) + '</p>' : '';
+    const body = `<section class="gf-section"><div class="gf-wrap gf-intro"><div><p class="gf-eyebrow">Il servizio</p><h2>${esc(s.introTitle)}</h2>${paragraphs(s.overview)}${relatedReading}</div><aside class="gf-preparation"><h2>Cosa può essere utile</h2><p>Per richiedere il sopralluogo bastano i recapiti e il comune. Se li hai, questi dati ci aiutano a preparare il confronto.</p>${list(s.prepare)}${link(quote(s.quote),'Richiedi un sopralluogo ↗','gf-button')}</aside></div></section>
     <section class="gf-section gf-paper" id="quando-valutarlo"><div class="gf-wrap"><p class="gf-eyebrow">Le tue esigenze</p><h2>Quando valutarlo</h2><div class="gf-information-grid gf-three">${sections(s.situations)}</div></div></section>
     <section class="gf-section" id="progetto"><div class="gf-wrap"><p class="gf-eyebrow">Le scelte tecniche</p><h2>${esc(s.checksTitle)}</h2><div class="gf-information-grid">${sections(s.checks)}</div><p class="gf-support-link">Hai bisogno anche di un progetto, di una diagnosi o di supporto documentale? ${link(supportRoute,'Scopri i servizi che accompagnano l’impianto ↗')}</p></div></section>
     <section class="gf-section gf-paper" id="domande"><div class="gf-wrap gf-faq-layout"><div><p class="gf-eyebrow">Prima di decidere</p><h2>Prima di richiedere il sopralluogo</h2></div><div class="gf-faq-list">${s.faqs.map(([q,a])=>`<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}</div></div></section>
     <section class="gf-section"><div class="gf-wrap"><h2>Altri impianti da valutare insieme</h2>${cards(s.related.map(id=>content.services.find(x=>x.slug===id)))}${s.sources.length?`<p class="gf-source-links">Approfondimenti tecnici: ${s.sources.map(x=>link(x.url,x.label)).join(' · ')}</p>`:''}</div></section>`;
     await write(serviceRoute(s.slug),page(serviceRoute(s.slug),s.h1 || s.title,s.lead,body,{image:s.image,kicker:s.category,quote:s.quote,seoTitle:s.seoTitle,metaDescription:s.metaDescription,ctaTitle:'Vuoi valutare il lavoro nel tuo immobile?'}),s.title);
   }
-  const hubBody = `<section class="gf-section"><div class="gf-wrap"><p class="gf-eyebrow">Gli impianti</p><h2>Quale impianto devi installare o sostituire?</h2><p class="gf-section-lead">Dal fotovoltaico al riscaldamento, trovi qui i lavori che possiamo valutare. Se stai ristrutturando, puoi partire dalla pagina dedicata agli impianti completi.</p>${cards(content.services)}</div></section>
+  const hubBody = `<section class="gf-section"><div class="gf-wrap"><p class="gf-eyebrow">Gli impianti</p><h2>Quale impianto devi installare o sostituire?</h2><p class="gf-section-lead">Dal fotovoltaico al riscaldamento, trovi qui i lavori che possiamo valutare. Se stai ristrutturando, scopri come organizziamo il ${link(renovationRoute, 'rifacimento degli impianti di casa')}.</p>${cards(content.services)}</div></section>
   <section class="gf-section gf-paper"><div class="gf-wrap gf-intro"><div><p class="gf-eyebrow">I servizi tecnici</p><h2>Dal progetto alla gestione dei documenti</h2><p>Prima di installare un impianto possono servire un progetto, pratiche o un’analisi dei consumi. Ti aiutiamo a individuare le attività necessarie e a chiarire quali sono comprese nella proposta.</p>${link(supportRoute,'Progettazione e supporto ↗','gf-button')}</div><div class="gf-information-grid gf-one">${sections([['Devi scegliere la tecnologia?','Parti dal problema che vuoi risolvere: comfort, consumi, acqua calda o ristrutturazione. Puoi chiedere un confronto anche senza avere già scelto l’impianto.'],['Devi coordinare più sistemi?','La pagina Impianti completi ti aiuta a definire funzioni, spazi, lavorazioni e priorità.']])}</div></div></section>`;
   await write('/servizi/',page('/servizi/','Installazione di impianti a Padova','Fotovoltaico, riscaldamento, climatizzazione e impianti idraulici ed elettrici per case e attività. Scegli il servizio o chiedici di valutare da dove partire.',hubBody), 'Impianti e servizi Green Flux');
 
@@ -216,7 +235,7 @@ export async function renderSite() {
   await write(supportRoute,page(supportRoute,'Progettazione e supporto per gli impianti a Padova','Dal dimensionamento ai documenti dell’intervento: definiamo le attività necessarie per realizzare l’impianto e coordinarlo con gli altri lavori.',supportBody,{image:'images/project-plans-1600.webp',ctaTitle:'Parliamo del tuo impianto.'}),'Progettazione e supporto');
 
   const aboutBody = `<section class="gf-section"><div class="gf-wrap gf-intro"><div><p class="gf-eyebrow">Chi siamo</p><h2>Competenze idrauliche ed elettriche nello stesso progetto</h2><p>Green Flux realizza impianti per abitazioni, attività del terziario e immobili industriali. L’azienda si avvale di tecnici che operano da oltre 15 anni nel settore delle energie rinnovabili.</p><p>Il lavoro può partire dalla sostituzione di un generatore o coinvolgere più sistemi in una ristrutturazione. La collaborazione con professionisti qualificati permette di affiancare installazione, progettazione e servizi di supporto.</p>${link('/servizi/','Conosci gli impianti e i servizi ↗','gf-button')}</div>${img('images/technician-heat-pump-1086.webp','Immagine illustrativa: tecnico con tablet accanto a una pompa di calore','gf-editorial-photo')}</div></section>
-  <section class="gf-section gf-paper" id="come-lavoriamo"><div class="gf-wrap"><p class="gf-eyebrow">Come lavoriamo</p><h2>Un progetto chiaro prima dell’intervento</h2><div class="gf-information-grid">${sections([['01 · Le esigenze','Lasciaci i recapiti, il comune e il servizio che ti interessa. Ti ricontattiamo per capire la situazione e verificare la disponibilità dell’intervento.'],['02 · Il sopralluogo','Concordiamo l’appuntamento e controlliamo gli impianti esistenti, gli spazi e i collegamenti. Se hai planimetrie, bollette o foto, possiamo usarle per preparare la valutazione.'],['03 · La proposta','Ti presentiamo le forniture e i lavori previsti, chiarendo adeguamenti, documenti e attività affidate ad altri professionisti.'],['04 · La realizzazione','Dopo aver concordato la proposta, organizziamo l’intervento e coordiniamo la parte idraulica ed elettrica con i professionisti coinvolti.']])}</div></div></section>
+  <section class="gf-section gf-paper" id="come-lavoriamo"><div class="gf-wrap"><p class="gf-eyebrow">Come lavoriamo</p><h2>Un progetto chiaro prima dell’intervento</h2><div class="gf-information-grid">${sections([['01 · Le esigenze','Lasciaci i recapiti, il comune e il servizio che ti interessa. Ti ricontattiamo per capire la situazione e verificare la disponibilità dell’intervento.'],['02 · Il sopralluogo','Concordiamo l’appuntamento e controlliamo gli impianti esistenti, gli spazi e i collegamenti. Se hai planimetrie, bollette o foto, possiamo usarle per preparare la valutazione.'],['03 · La proposta','Ti presentiamo le forniture e i lavori previsti, chiarendo adeguamenti, documenti e attività affidate ad altri professionisti.'],['04 · La realizzazione','Dopo aver concordato la proposta, organizziamo l’intervento e coordiniamo la parte idraulica ed elettrica con i professionisti coinvolti.']])}</div><p class="gf-support-link">${link(caseRoute, 'Guarda un nostro lavoro: la centrale termica prima e dopo')}</p></div></section>
   <section class="gf-section"><div class="gf-wrap"><p class="gf-eyebrow">Le esperienze dei clienti</p><h2>Cosa raccontano del lavoro con Green Flux</h2><div class="gf-information-grid">${content.reviews.items.filter(r => ['Clara Paccagnella','Claudio Biasiolo'].includes(r.author)).map(r => `<figure class="gf-customer-quote"><blockquote><p>${esc(r.text)}</p></blockquote><figcaption>${esc(r.author)} · Recensione Google</figcaption></figure>`).join('')}</div><p>${link(content.reviews.sourceUrl,'Leggi le recensioni su Google ↗')}</p></div></section>
   <section class="gf-section"><div class="gf-wrap gf-intro"><div><h2>Una sede, un contatto diretto</h2><p>GREEN FLUX srls ha sede in Via Trieste, 19, 35121 Padova (PD). Indica il comune dell’immobile per chiedere la disponibilità dell’intervento.</p>${link('/contatti/','Contatta Green Flux ↗','gf-button')}</div><div><h2>Hai già un tecnico di riferimento?</h2><p>Segnala i professionisti coinvolti e la fase del progetto. È utile chiarire fin dal primo confronto quali attività sono già definite e quali devono essere coordinate.</p></div></div></section>`;
   await write('/chi-siamo/',page('/chi-siamo/','Green Flux: impianti idraulici ed elettrici a Padova','Realizziamo impianti per case, attività e immobili industriali. La sede è a Padova; i nostri tecnici lavorano da oltre 15 anni nel settore delle energie rinnovabili.',aboutBody,{image:'images/technical-plant-1600.webp'}),'Chi siamo');
@@ -259,6 +278,14 @@ export async function renderSite() {
     THANK_YOU_SCHEMA: JSON.stringify(schema('/thank-you/', 'Grazie per la tua richiesta', 'Richiesta ricevuta: Green Flux ti ricontatta per chiarire il lavoro e concordare le verifiche.')).replace(/</g, '\\u003c')
   }), 'Grazie per la tua richiesta', 'confirmation');
   // Guide di approfondimento: pagine nuove generate da content/guides, con la stessa impaginazione delle pagine interne.
+  await renderRenovation({ page, write });
+  const caseTitle = 'Una centrale termica con pompa di calore, dal cantiere alla consegna';
+  const caseLead = 'Le foto di un nostro intervento mostrano le tubazioni durante la posa e la centrale termica finita, con pompa di calore e accumulo.';
+  await write(caseRoute, page(caseRoute, caseTitle, caseLead, await template('lavoro-centrale-termica'), {
+    image: 'lavori/impianto-dopo-1000.webp', kicker: 'Un lavoro Green Flux',
+    seoTitle: 'Centrale termica con pompa di calore: foto prima e dopo',
+    quote: 'pompe-di-calore', quoteLabel: 'Ho un impianto simile', ctaTitle: 'Vuoi valutare il tuo locale per la pompa di calore?'
+  }), caseTitle);
   await renderGuides({ page, write, esc, link, quote, img, origin });
   // Remove only the audited legacy pages. Their URLs remain as permanent redirects.
   for(const old of Object.keys(redirects))await rm(join(publicRoot,old,'index.html'),{force:true});

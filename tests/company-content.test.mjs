@@ -32,13 +32,28 @@ test('Every page has an editorial audit record and no imported commercial promis
   assert(audit.pages[route],route);
   // Le guide trattano incentivi, accumulo e isolamento con fonti e data: le loro regole sono in tests/guides.test.mjs.
   if(route.startsWith('/guide/')) continue;
-  const text=textOnly(html);
+  const serviceLanding = route === '/servizi/pompe-calore/';
+  const heatPumpQuote = serviceLanding || route === '/landing/pompe-calore-video/';
+  // These two campaign pages offer the free quote in their navigation and sticky form links.
+  const copy = heatPumpQuote ? html.replace(/<a\b[^>]*href="#valutazione"[^>]*>Preventivo gratuito(?:\s*<span aria-hidden="true">↗<\/span>)?<\/a>/g, '') : html;
+  const text=textOnly(copy);
   assert(!/VenetaGreen|preventivo gratuito|comuni coperti|regioni servite|squadra tecnica|progetti realizzati|giugno 2026|manutenzione programmata|batterie di accumulo|cappotto/i.test(text),route);
   // The owner approved a visible, sourced 2026 section on the service landing.
   const incentiveCard=['/servizi/pompe-calore/','/landing/pompe-calore/'].includes(route)?html.match(/<a\b[^>]*id="incentivi"[^>]*>[\s\S]*?<\/a>/)?.[0] ?? '':'';
   const incentiveFaq=route==='/servizi/pompe-calore/'?html.match(/<details\b[^>]*id="faq-incentivi"[^>]*>[\s\S]*?<\/details>/)?.[0] ?? '':'';
   const incentiveSection=route==='/servizi/pompe-calore/'?html.match(/<section\b[^>]*id="incentivi"[^>]*>[\s\S]*?<\/section>/)?.[0] ?? '':'';
-  assert(!/Conto Termico|Ecobonus/i.test(textOnly(html.replace(incentiveCard,'').replace(incentiveFaq,'').replace(incentiveSection,''))),route);
+  let otherIncentiveCopy = html.replace(incentiveCard,'').replace(incentiveFaq,'').replace(incentiveSection,'');
+  if (serviceLanding) {
+   // The current landing describes the incentive in the lead and in its payment FAQ.
+   const lead = html.match(/<p class="hp-hero-lead">[\s\S]*?<\/p>/)?.[0] ?? '';
+   const paymentFaq = html.match(/<details><summary>Come si paga e quando arriva l’incentivo\?[\s\S]*?<\/details>/)?.[0] ?? '';
+   assert.match(textOnly(lead), /fino al 65% con il Conto Termico o il 50% con l’Ecobonus/);
+   for (const condition of ['dopo l’approvazione della pratica', '10 quote annuali', 'se la pratica lo consente']) assert(textOnly(paymentFaq).includes(condition), condition);
+   for (const source of ['https://bonusfiscali.enea.it/', 'https://www.gse.it/servizi-per-te/efficienza-energetica/conto-termico-3-0']) assert(html.includes(`href="${source}"`), source);
+   assert.doesNotMatch(textOnly(lead + paymentFaq), /(?:incentivo|rimborso|risparmio) garantit[oa]|\b100\s*%/i);
+   otherIncentiveCopy = otherIncentiveCopy.replace(lead, '').replace(paymentFaq, '');
+  }
+  assert(!/Conto Termico|Ecobonus/i.test(textOnly(otherIncentiveCopy)), route);
   if(incentiveSection){
    for(const condition of ['50%', '36%', '10 quote annuali', 'imposta dovuta', 'fino al 65%', 'spese ammissibili', 'approvazione della richiesta', '25 dicembre 2025', 'non si sommano sulle stesse spese']) assert(textOnly(incentiveSection).includes(condition),condition);
    for(const source of ['efficienzaenergetica.enea.it','agenziaentrate.gov.it','gse.it']) assert(incentiveSection.includes(source),source);
@@ -59,13 +74,14 @@ test('Every page has an editorial audit record and no imported commercial promis
  }
 });
 
-test('Consolidation keeps 20 canonical pages and redirects every removed URL without chains',()=>{
+test('Consolidation keeps 22 canonical pages and redirects every removed URL without chains',()=>{
  const previous=JSON.parse(readFileSync('content/previous-routes.json'));
  const redirects=JSON.parse(readFileSync('content/redirects.json'));
  const current=new Set(pages.map(p=>'/'+p.replace(/^public\//,'').replace(/index\.html$/,'')));
  const audit=JSON.parse(readFileSync('docs/content-audit.json','utf8'));
  const canonical=[...current].filter(route=>audit.pages[route]?.kind==='canonical');
- assert.equal(canonical.length,20);assert.equal(Object.keys(redirects).length,132);
+ assert.equal(canonical.length,22);assert.equal(Object.keys(redirects).length,132);
+ for (const route of ['/servizi/ristrutturazione-casa/', '/lavori/centrale-termica-con-pompa-di-calore/']) assert(canonical.includes(route), route);
  assert(!pages.some(p=>/^public\/(zone|blog|progetti)\//.test(p)));
  for(const old of previous){assert(current.has(old)||redirects[old],old);if(redirects[old]){const destination=redirects[old].split('#')[0];assert(current.has(destination),old);assert(!redirects[destination],old);}}
  for(const page of pages){const html=readFileSync(page,'utf8');for(const m of html.matchAll(/href="([^"?#]+)[^"]*"/g))assert(!redirects[m[1]],`${page} links to retired ${m[1]}`);}

@@ -23,6 +23,9 @@ if (wizard && serviceId(campaignParams.get('servizio')) === 'pompe-di-calore') {
   let sending = false;
   const params = new URLSearchParams(location.search);
   const selected = serviceId(params.get('servizio'));
+  if (selected === 'impianti-completi' && params.get('progetto') === 'ristrutturazione' && !form.elements.messaggio.value) {
+    form.elements.messaggio.value = 'Vorrei rifare gli impianti durante la ristrutturazione di casa.';
+  }
   const journey = selected ? [0, 2, 3, 4, 5] : [0, 1, 2, 3, 4, 5];
   const embedded = params.get('embed') === '1' && window.parent !== window;
   if (embedded) {

@@ -89,13 +89,14 @@ test('Guides and the hub start and end with a link to the real quote form, witho
     const box = hero.match(/<div class="gf-hero-action gd-request"><a class="gd-button" href="([^"]+)"><span>([^<]+)<\/span><span class="gd-button-icon"><svg[\s\S]*?<\/svg><\/span><\/a><p>([\s\S]*?)<\/p><\/div>/);
     assert(box, `${route}: pulsante nella testata`);
     assert.equal(box[1], expected, route);
-    assert.equal(box[2], 'Richiedi un preventivo', route);
+    const label = guide?.requestLabel || 'Richiedi un preventivo';
+    assert.equal(box[2], label, route);
     assert(box[3].length > 40 && box[3].length < 170, `${route}: riga sotto il pulsante`);
     assert.equal(html.split('gd-request').length - 1, 1, `${route}: una sola richiesta nella testata`);
     const own = html.replace(/<section class="header-primary">[\s\S]*?<\/section>\s*<section class="internal-hero-section">/, '');
     assert(!own.includes('↗'), `${route}: nessuna freccia a carattere nei contenuti (su iPhone diventa un’emoji)`);
     const cta = html.match(/<section class="cta-section">[\s\S]*?<\/section>/)[0];
-    assert(cta.includes(`href="${expected}"`) && /<p class="primary-button-text">Richiedi un preventivo<\/p>/.test(cta), `${route}: chiusura`);
+    assert(cta.includes(`href="${expected}"`) && cta.includes(`<p class="primary-button-text">${label}</p>`), `${route}: chiusura`);
     assert.equal((cta.match(/class="gf-cta-note/g) || []).length, 2, `${route}: testo dell’argomento e passaggio successivo`);
     assert(/Nel modulo indichi i recapiti e il comune/.test(textOnly(cta)), route);
     assert(!/[?&](nome|email|telefono|name|phone)=/i.test(html), `${route}: nessun dato personale negli indirizzi`);

@@ -6,7 +6,7 @@ import { bonusEstimate, bonusCeiling, bonusRates, euro } from '../public/assets/
 
 const html = readFileSync('public/landing/ristrutturazione/index.html', 'utf8');
 
-test('The renovation landing is a draft outside the index and the sitemap', () => {
+test('The renovation campaign landing is outside the index and the sitemap', () => {
   assert(html.includes('name="robots" content="noindex, nofollow"'));
   assert(!readFileSync('public/sitemap.xml', 'utf8').includes('/landing/ristrutturazione/'));
   assert(!/\{\{[^{}]+\}\}/.test(html));
@@ -34,16 +34,16 @@ test('The renovation form sends a short site-visit request with the job and the 
   for (const value of [notes, longest]) assert.deepEqual(validateSiteVisit({ name: 'Test Locale', phone: '+390491234567', city: 'Padova', service: 'impianti-completi', email: '', notes: value, website: '', privacy: true }), []);
 });
 
-test('The renovation landing sells the outcome and pushes the 2026 bonus without inventing commitments', () => {
+test('The renovation landing identifies the conditions of its 2026 tax estimate and commercial proposal', () => {
   for (const trade of ['Progetto e permessi', 'Demolizioni e opere murarie', 'Impianto idraulico e bagni', 'Riscaldamento e raffrescamento', 'Impianto elettrico', 'Pavimenti e finiture']) assert(html.includes(`<li>${trade}</li>`), trade);
   // One contact person who coordinates the works: no partner logos, no placeholder names.
   assert(html.includes('Ristrutturi casa con un unico referente.') && html.includes('id="referente"') && !html.includes('Nome in arrivo') && !html.includes('rn-logo-placeholder'));
   const copy = html.slice(html.indexOf('<main'), html.indexOf('</main>')).replace(/<[^>]*>/g, ' ');
   // The page talks about the result, never about how many firms do the work.
   assert(!/garanzia unica|prezzo bloccato|cinque|\bditt[ae]\b|\bimpres[ae]\b|lavorano insieme|collabor/i.test(copy));
-  for (const condition of ['50% sull’abitazione principale', '36% sugli altri immobili', '96.000 €', 'in 10 anni', 'Il 50% è certo per le spese pagate nel 2026.', 'la legge non è ancora approvata']) assert(copy.includes(condition), condition);
-  // Prices, guarantee, instalments and capacity stay marked until the owner confirms them.
-  assert.equal([...html.matchAll(/class="rn-tbd"/g)].length, 5);
+  for (const condition of ['50%', '36%', '96.000 €', 'in 10 anni', 'spese ammesse', 'diritto reale di godimento', 'IRPEF']) assert(copy.includes(condition), condition);
+  assert(html.includes('https://www.normattiva.it/eli/id/2025/12/30/25G00212/ORIGINAL'));
+  assert(!/rn-tbd|Mattia|___|[Pp]osti limitati|[Pp]aghi a rate|50% è certo/.test(html));
   // No price of the works on the page: a renovation is too broad for a "from x euro" figure.
   assert(!/€\/m²|€\/mese|rn-tier-price/.test(html));
   assert(html.includes('<p class="hp-eyebrow rn-eyebrow">FAQ</p><h2 class="rn-h2" id="faq-title">Domande frequenti</h2>'));
@@ -69,5 +69,5 @@ test('The bonus estimate follows the 2026 rates, the 96,000 euro ceiling and ten
   assert.equal(euro(120000), '120.000 €');
   // The static figures shown before the script runs match the default inputs.
   assert.deepEqual(bonusEstimate(60000, bonusRates.main), { total: 30000, yearly: 3000, net: 30000, capped: false });
-  assert(html.includes('value="60000"') && html.includes('<dd data-rn-total>30.000 €</dd>') && html.includes('<dd data-rn-year>3.000 €</dd>') && html.includes('Su 60.000 € di lavori, 30.000 € tornano a te.'));
+  assert(html.includes('value="60000"') && html.includes('<dd data-rn-total>30.000 €</dd>') && html.includes('<dd data-rn-year>3.000 €</dd>') && html.includes('Su 60.000 € di spese ammesse, la detrazione può arrivare a 30.000 €.'));
 });

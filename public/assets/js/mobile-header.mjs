@@ -11,6 +11,8 @@ export function setupMobileHeader(container = document.body) {
   const header = document.querySelector('.gf-mobile-header');
   const toggle = header.querySelector('.gf-mobile-toggle');
   const menu = document.querySelector('#gf-mobile-menu');
+  const quoteUrl = document.body.dataset.quoteUrl;
+  if (quoteUrl) menu.querySelector('.gf-menu-action-primary').setAttribute('href', quoteUrl);
   const desktop = matchMedia('(min-width: 992px)');
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   const sections = [...menu.querySelectorAll('details')];

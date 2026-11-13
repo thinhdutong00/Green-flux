@@ -2,6 +2,8 @@
 
 Destinazione esclusiva: `1_T3GS1bZUXE_5FQXKOeEd1gOzJmjKoBtiJksfyRGHvw`, scheda **Richieste dal sito**. L'integrazione non accetta un ID foglio dal client e non accede al CRM di altre attività.
 
+La colonna R, **Sopralluogo concordato**, è compilata dal team dopo il ricontatto. Il menu ammette «Sì» e «No». Un campo vuoto indica che l’esito non è stato registrato.
+
 ## Configurazione di produzione
 
 - `RESEND_API_KEY`, `QUOTE_FROM_EMAIL`: configurazione email esistente, destinatario fisso `info@green-flux.com`.

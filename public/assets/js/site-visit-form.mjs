@@ -14,6 +14,9 @@ for (const form of document.querySelectorAll('[data-site-visit-form]')) {
   const detailedLink = document.querySelector('[data-visit-detailed]');
   let sending = false;
   if (selected) form.elements.service.value = selected;
+  if (selected === 'impianti-completi' && params.get('progetto') === 'ristrutturazione' && !form.elements.notes.value) {
+    form.elements.notes.value = 'Vorrei rifare gli impianti durante la ristrutturazione di casa.';
+  }
   const updateDetailLink = () => {
     if (!detailedLink) return;
     const url = new URL('/preventivo/', location.origin);

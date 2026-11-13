@@ -1,14 +1,15 @@
 # Green Flux
 
-Sito statico con **19 pagine**, organizzato sui 10 ambiti impiantistici e sui
-5 servizi di supporto dichiarati da [Green Flux](https://www.green-flux.com/).
+Sito statico con **46 pagine**, di cui **41 in sitemap**. Fuori sitemap ci sono quattro landing di campagna e la pagina di ringraziamento.
 La home conserva il design e il focus sulle pompe di calore.
 
 ## Struttura
 
 - Home e catalogo impianti.
-- Dieci pagine: pompe di calore, fotovoltaico, condizionatori, caldaie, biomassa,
-  solare termico, ventilazione, trattamento acqua, smart home e impianti completi.
+- Undici pagine: pompe di calore, fotovoltaico, condizionatori, caldaie, biomassa,
+  solare termico, ventilazione, trattamento acqua, smart home, radianti a parete e soffitto e impianti completi.
+- Rifacimento impianti in ristrutturazione e scheda fotografica di una centrale termica.
+- Diciotto guide e la raccolta «Guide e consigli».
 - Progettazione e supporto: cinque sezioni distinte nella stessa pagina.
 - Chi siamo, contatti e preventivo.
 - Privacy, cookie e termini.
