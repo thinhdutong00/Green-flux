@@ -39,10 +39,23 @@
 .gd-sources li+li{margin-top:6px}
 .gd-sources a{overflow-wrap:anywhere}
 .gd-article [id]{scroll-margin-top:24px}
-/* Richiesta di preventivo: riquadro nella testata e passaggio successivo nella chiusura. */
-.gf-hero-action.gd-request{display:flex;align-items:center;justify-content:space-between;gap:20px 28px;max-width:760px;margin-top:32px;padding:18px 20px 18px 24px;border:1px solid rgb(255 255 255 / 28%);border-radius:20px;background:rgb(13 40 42 / 58%);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
-.gf-hero-action.gd-request p{margin:0;font-size:16px;line-height:1.55;color:#fff;max-width:none}
-.gf-hero-action.gd-request .gf-button{flex:none;white-space:nowrap}
+/* Richiesta di preventivo nella testata: pulsante e riga di testo, senza riquadro. */
+.gf-hero-action.gd-request{margin-top:32px}
+.gf-hero-action .gd-button{display:inline-flex;align-items:center;gap:14px;min-height:56px;padding:8px 8px 8px 24px;border-radius:999px;background:var(--gf-lime,#d5ed90);color:var(--gf-ink,#193e40);font-family:Arial,Helvetica,sans-serif;font-size:17px;font-weight:700;line-height:1.2;text-decoration:none;transition:transform .16s ease,box-shadow .16s ease}
+.gf-hero-action .gd-button:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgb(0 0 0 / 24%)}
+.gf-hero-action .gd-button:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.gd-button-icon{display:grid;place-items:center;flex:none;width:40px;height:40px;border-radius:50%;background:var(--gf-ink,#193e40);color:#fff}
+.gd-button-icon svg{display:block}
+.gf-hero-action.gd-request p{margin:16px 0 0;font-size:15px;line-height:1.6;color:rgb(255 255 255 / 90%);max-width:560px}
+/* Immagini nel testo e nella raccolta. */
+.gd-figure{margin:44px 0 8px}
+.gd-figure img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:16px}
+.gf-content-page .gd-figure figcaption{margin-top:12px;text-align:left;font-size:14px;line-height:1.6;color:var(--gf-muted)}
+.gd-catalog{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.gd-catalog .gf-catalog-card>div{padding:22px 22px 24px}
+.gf-content-page .gd-catalog h3{font-size:20px;line-height:1.3;margin:0 0 10px}
+.gf-content-page .gd-catalog p{font-size:16px;line-height:1.6;margin:0 0 16px}
+.gd-catalog .gf-text-link{margin-top:auto;font-weight:700}
 .gf-content-page .cta-section .cta-content .gf-cta-note{color:#fff;margin:0;text-align:inherit}
 .gd-cta-text{max-width:560px}
 .gf-content-page .cta-section .cta-content .gd-cta-step{font-size:15px;line-height:1.6;margin:12px 0 0;color:rgb(255 255 255 / 82%)}
@@ -55,4 +68,5 @@
 .gd-layout:not(:has(.gd-aside)){grid-template-columns:minmax(0,1fr)}
 @media(max-width:991px){.gd-layout{grid-template-columns:1fr;gap:40px}.gd-aside{position:static}.gd-prose{max-width:none}}
 @media(max-width:767px){.gd-answer{padding:22px}.gd-toc{padding:24px}.gf-content-page .gd-prose h2{font-size:26px;margin-top:44px}.gd-table th,.gd-table td{padding:12px 14px;font-size:15px}}
-@media(max-width:767px){.gf-hero-action.gd-request{flex-direction:column;align-items:stretch;gap:12px;margin-top:20px;padding:14px 16px 16px}.gf-hero-action.gd-request p{font-size:15px;line-height:1.5}.gf-hero-action.gd-request .gf-button{justify-content:center;text-align:center}}
+@media(max-width:991px){.gd-catalog{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:767px){.gf-hero-action.gd-request{margin-top:24px}.gf-hero-action .gd-button{font-size:16px}.gd-catalog{grid-template-columns:1fr}.gd-figure{margin-top:36px}}

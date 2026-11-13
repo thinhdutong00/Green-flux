@@ -86,12 +86,14 @@ test('Guides and the hub start and end with a link to the real quote form, witho
     if (guide) assert(serviceIds.has(guide.quote), `${route}: servizio non previsto dal modulo`);
     assert(!/<form\b/.test(html), `${route}: nessun modulo in pagina`);
     const hero = html.match(/<section class="internal-hero-shell">[\s\S]*?<main/)[0];
-    const box = hero.match(/<div class="gf-hero-action gd-request"><p>([\s\S]*?)<\/p><a class="gf-button" href="([^"]+)">([\s\S]*?)<\/a><\/div>/);
-    assert(box, `${route}: riquadro nella testata`);
-    assert(box[1].length > 30 && box[1].length < 140, `${route}: testo del riquadro breve`);
-    assert.equal(box[2], expected, route);
-    assert.equal(box[3], 'Richiedi un preventivo ↗', route);
-    assert.equal(html.split('gd-request').length - 1, 1, `${route}: un solo riquadro`);
+    const box = hero.match(/<div class="gf-hero-action gd-request"><a class="gd-button" href="([^"]+)"><span>([^<]+)<\/span><span class="gd-button-icon"><svg[\s\S]*?<\/svg><\/span><\/a><p>([\s\S]*?)<\/p><\/div>/);
+    assert(box, `${route}: pulsante nella testata`);
+    assert.equal(box[1], expected, route);
+    assert.equal(box[2], 'Richiedi un preventivo', route);
+    assert(box[3].length > 40 && box[3].length < 170, `${route}: riga sotto il pulsante`);
+    assert.equal(html.split('gd-request').length - 1, 1, `${route}: una sola richiesta nella testata`);
+    const own = html.replace(/<section class="header-primary">[\s\S]*?<\/section>\s*<section class="internal-hero-section">/, '');
+    assert(!own.includes('↗'), `${route}: nessuna freccia a carattere nei contenuti (su iPhone diventa un’emoji)`);
     const cta = html.match(/<section class="cta-section">[\s\S]*?<\/section>/)[0];
     assert(cta.includes(`href="${expected}"`) && /<p class="primary-button-text">Richiedi un preventivo<\/p>/.test(cta), `${route}: chiusura`);
     assert.equal((cta.match(/class="gf-cta-note/g) || []).length, 2, `${route}: testo dell’argomento e passaggio successivo`);
@@ -109,7 +111,7 @@ test('The hub is “Guide e consigli”, groups every guide and each guide leads
   assert(sections.length >= 2);
   let listed = 0;
   for (const [section, id] of sections) {
-    const cards = [...section.matchAll(/<article class="gf-information-item gd-card"><h3><a href="([^"]+)">([^<]+)<\/a><\/h3><p>([^<]{40,})<\/p>/g)];
+    const cards = [...section.matchAll(/<a class="gf-catalog-card" href="([^"]+)"><img title="[^"]{10,}"[^>]* alt="[^"]{10,}"[^>]*><div><h3>([^<]+)<\/h3><p>([^<]{40,})<\/p>/g)];
     assert(cards.length > 0, `gruppo vuoto: ${id}`);
     assert(index.includes(`<a href="#${id}">`), `argomento senza collegamento: ${id}`);
     listed += cards.length;
@@ -142,5 +144,20 @@ test('The shared menu shows “Informazioni” with “Chi siamo” and “Guide
     assert(section, name);
     assert.deepEqual(links(section[0]), [['/chi-siamo/', 'Chi siamo'], [guideIndexRoute, guideIndexLabel]], name);
     assert(!new RegExp(`class="${prefix}menu-primary-link" href="/chi-siamo/"`).test(source), `${name}: “Chi siamo” solo nel sottomenu`);
+  }
+});
+
+test('Guides carry described images and no filler headings', () => {
+  for (const route of routes) {
+    const html = read(route), guide = guides.find(item => guideRoute(item.slug) === route);
+    const heroImage = html.match(/<img title="([^"]*)"[^>]*class="hero-bg-image"[^>]*>|<img class="hero-bg-image"[^>]*>/)[0];
+    assert(/ alt="[^"]{15,}"/.test(heroImage) && / title="[^"]{10,}"/.test(heroImage), `${route}: immagine della testata con testo alternativo e titolo`);
+    assert(!/Parti dal dubbio|Dubbi che restano|Per continuare|Come usare le guide|non un’opinione|Qui serve franchezza/.test(textOnly(html)), `${route}: titoli e frasi di riempimento`);
+    if (!guide) continue;
+    const figures = [...html.matchAll(/<figure class="gd-figure"><img title="([^"]+)"[^>]* alt="([^"]+)"[^>]* width="\d+" height="\d+"[^>]*><figcaption>([\s\S]*?)<\/figcaption><\/figure>/g)];
+    assert.equal(figures.length, 1, `${route}: un’immagine nel testo`);
+    assert(figures[0][1].length > 15 && figures[0][2].length > 25 && /Immagine illustrativa\./.test(figures[0][3]), `${route}: titolo, testo alternativo e didascalia`);
+    assert(existsSync(`public/assets/${guide.figure.image}`) && guide.figure.image !== guide.image, `${route}: immagine diversa da quella della testata`);
+    assert(!html.includes('<!--figure-->'), route);
   }
 });

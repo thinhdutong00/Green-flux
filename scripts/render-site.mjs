@@ -259,7 +259,7 @@ export async function renderSite() {
     THANK_YOU_SCHEMA: JSON.stringify(schema('/thank-you/', 'Grazie per la tua richiesta', 'Richiesta ricevuta: Green Flux ti ricontatta per chiarire il lavoro e concordare le verifiche.')).replace(/</g, '\\u003c')
   }), 'Grazie per la tua richiesta', 'confirmation');
   // Guide di approfondimento: pagine nuove generate da content/guides, con la stessa impaginazione delle pagine interne.
-  await renderGuides({ page, write, esc, link, quote, origin });
+  await renderGuides({ page, write, esc, link, quote, img, origin });
   // Remove only the audited legacy pages. Their URLs remain as permanent redirects.
   for(const old of Object.keys(redirects))await rm(join(publicRoot,old,'index.html'),{force:true});
   async function removeEmpty(dir){for(const e of await readdir(dir,{withFileTypes:true}))if(e.isDirectory())await removeEmpty(join(dir,e.name));if(dir!==publicRoot&&(await readdir(dir)).length===0)await rm(dir,{recursive:true});}
