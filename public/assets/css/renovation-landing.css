@@ -89,6 +89,11 @@
 .rn-landing .rn-photo-badge{position:absolute;z-index:2;right:16px;bottom:16px;padding:5px 10px;border:1px dashed var(--rn-ink);border-radius:3px;background:#ffffffe6;font-size:11.5px;font-weight:600;color:var(--rn-ink);pointer-events:none}
 
 /* Recensioni: la voce dei clienti */
+/* Voto di Google, sopra le recensioni */
+.rn-landing .rn-rating{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;margin:0 0 22px}
+.rn-landing .rn-rating strong{font-size:40px;line-height:1.05;letter-spacing:-.03em;color:var(--rn-ink)}
+.rn-landing .rn-rating .rn-stat-stars{font-size:24px;letter-spacing:2px;color:#f5b400}
+.rn-landing .rn-rating span:last-child{font-size:14.5px;color:var(--rn-mute)}
 .rn-landing .rn-voices{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:0 64px}
 .rn-landing .rn-voice{margin:0;padding:28px 0;border-top:1px solid var(--rn-line)}
 .rn-landing .rn-voice-main{grid-row:1/span 2;border-top:2px solid var(--rn-ink)}
@@ -174,9 +179,6 @@
 .rn-landing .rn-logo-placeholder span{font-size:12px;font-weight:600;color:#7d8f83}
 
 /* Chiusura */
-.rn-landing .rn-final-points{display:flex;flex-wrap:wrap;gap:12px 32px;margin:30px 0 0;padding:0;list-style:none}
-.rn-landing .rn-final-points li{position:relative;padding-left:30px;font-size:18px;font-weight:600;color:#fff}
-.rn-landing .rn-final-points li::before{content:"";position:absolute;top:7px;left:2px;width:15px;height:8px;border-bottom:2.5px solid var(--rn-lime);border-left:2.5px solid var(--rn-lime);transform:rotate(-45deg)}
 .rn-landing .rn-white .rn-steps li::before{background:var(--rn-paper)}
 .rn-landing .rn-paper .rn-steps li::before{background:var(--rn-paper)}
 .rn-landing .rn-paper .rn-steps li:last-child::before{background:var(--rn-lime)}
@@ -189,7 +191,7 @@
 /* Hero: il bonus come primo segnale */
 .rn-landing .rn-badge{align-self:flex-start;display:inline-flex;align-items:center;gap:10px;margin:0 0 18px;padding:6px 14px 6px 6px;border-radius:999px;background:var(--rn-lime);font-size:14px;font-weight:600;line-height:1.3;color:#10261c;text-decoration:none}
 .rn-landing .rn-badge b{padding:4px 9px;border-radius:999px;background:var(--rn-ink);font-size:14px;color:var(--rn-lime)}
-.rn-landing .rn-hero h1{max-width:18ch}
+.rn-landing .rn-hero h1{max-width:18ch;letter-spacing:-.028em;word-spacing:.05em}
 
 /* Bonus: il numero è l'offerta */
 .rn-landing .rn-giant{margin:0 0 6px;font-size:clamp(110px,15vw,210px);font-weight:700;line-height:.82;letter-spacing:-.065em;color:var(--rn-ink)}
@@ -208,8 +210,7 @@
 .rn-landing .rn-tier ul{flex:1;margin:0 0 22px;padding:0;list-style:none}
 .rn-landing .rn-tier li{position:relative;padding:7px 0 7px 28px;font-size:15px;line-height:1.45;color:var(--rn-ink)}
 .rn-landing .rn-tier li::before{content:"";position:absolute;top:12px;left:2px;width:13px;height:7px;border-bottom:2.5px solid #5d8a2f;border-left:2.5px solid #5d8a2f;transform:rotate(-45deg)}
-.rn-landing .rn-tier-bonus{margin:0 0 20px;padding:10px 12px;border-radius:4px;background:var(--rn-paper);font-size:14px;font-weight:700;color:#2f5a3a}
-.rn-landing .rn-tier .hp-button{width:100%}
+.rn-landing .rn-tier-bonus{margin:0;padding:10px 12px;border-radius:4px;background:var(--rn-paper);font-size:14px;font-weight:700;color:#2f5a3a}
 .rn-landing .rn-tier-pick{border:2px solid var(--rn-ink);background:var(--rn-ink);transform:translateY(-12px)}
 .rn-landing .rn-tier-pick h3,.rn-landing .rn-tier-pick .rn-tier-price,.rn-landing .rn-tier-pick li{color:#fff}
 .rn-landing .rn-tier-pick .rn-tier-for{color:#b9c9be}
@@ -228,13 +229,6 @@
 .rn-landing .rn-seals p{margin:0;font-size:15px;line-height:1.55;color:#c9d6cc}
 .rn-landing .rn-dark .rn-cta p{color:#b9c9be}
 
-/* Prove: tre numeri sopra il prima/dopo */
-.rn-landing .rn-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:0 0 32px;padding:0;list-style:none}
-.rn-landing .rn-stats li{display:flex;flex-direction:column;gap:2px;padding:0 24px 0 0}
-.rn-landing .rn-stats li+li{padding-left:24px;border-left:1px solid var(--rn-line)}
-.rn-landing .rn-stats strong{font-size:40px;line-height:1.05;letter-spacing:-.04em;color:var(--rn-ink)}
-.rn-landing .rn-stats span{font-size:14.5px;color:var(--rn-mute)}
-.rn-landing .rn-stats .rn-stat-stars{display:inline-block;margin-left:12px;font-size:.62em;letter-spacing:2px;vertical-align:.2em;color:#f5b400}
 
 @media(max-width:1100px){
  .rn-landing .rn-costs,.rn-landing .rn-bonus{gap:48px}
@@ -279,7 +273,6 @@
  .rn-landing .rn-steps::before{top:0;right:auto;bottom:0;left:27px;border-top:0;border-left:2px dashed var(--rn-line)}
  .rn-landing .rn-steps li{padding:6px 0 0 78px}
  .rn-landing .rn-steps li::before{width:56px;height:56px;font-size:22px}
- .rn-landing .rn-final-points{flex-direction:column}
  .rn-landing .rn-final-actions{flex-direction:column;align-items:flex-start}
 
  .rn-landing .rn-tiers{grid-template-columns:1fr;gap:28px}
@@ -287,10 +280,6 @@
  .rn-landing .rn-seals{grid-template-columns:1fr}
  .rn-landing .rn-seals li,.rn-landing .rn-seals li+li,.rn-landing .rn-seals li:nth-child(3){display:grid;grid-template-columns:40px minmax(0,1fr);column-gap:16px;padding:20px 0;border-left:0;border-bottom:1px solid #ffffff2e}
  .rn-landing .rn-seals svg{grid-row:1/span 2;width:36px;height:36px;margin:0}
- .rn-landing .rn-stats strong{font-size:28px}
- .rn-landing .rn-stats .rn-stat-stars{display:block;margin:4px 0 2px;font-size:.5em;letter-spacing:1px}
- .rn-landing .rn-stats li,.rn-landing .rn-stats li+li{padding:0 10px}
- .rn-landing .rn-stats li:first-child{padding-left:0}
  .rn-landing .rn-giant{font-size:104px}
  .rn-landing .rn-badge{font-size:13px}
 }
@@ -389,3 +378,13 @@
 /* Parole in verde dentro i titoli */
 .rn-landing .rn-green{color:#1d7350}
 .rn-landing .rn-dark .rn-green{color:var(--rn-lime)}
+/* Hero su telefono: il blocco resta centrato, ma i quattro punti si allineano tra loro e l'etichetta del bonus sta su una riga */
+@media(max-width:850px){
+ .rn-landing .rn-hero .rn-badge{align-self:center}
+ .rn-landing .rn-hero .hp-hero-bullets{justify-items:start;width:fit-content;max-width:100%;text-align:left}
+ .rn-landing .rn-hero .hp-hero-bullets li{padding-left:30px}
+ .rn-landing .rn-hero .hp-hero-bullets li::before{position:absolute;display:grid;margin-right:0}
+}
+@media(max-width:600px){
+ .rn-landing .rn-badge-rest{display:none}
+}

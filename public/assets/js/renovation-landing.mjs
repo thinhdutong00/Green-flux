@@ -10,6 +10,13 @@ if (hero) {
   updateHeader();
 }
 
+// Barra fissa su telefono: sparisce mentre il modulo è a schermo, così non copre le risposte.
+const stickyBar = document.querySelector('[data-hp-sticky]');
+const leadCard = document.querySelector('#valutazione');
+if (stickyBar && leadCard && 'IntersectionObserver' in window) {
+  new IntersectionObserver(([entry]) => { stickyBar.style.display = entry.isIntersecting ? 'none' : ''; }, { threshold: 0.15 }).observe(leadCard);
+}
+
 // Confronto prima/dopo: il cursore sposta la linea di taglio.
 const compare = document.querySelector('[data-rn-compare]');
 if (compare) {
