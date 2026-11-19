@@ -37,6 +37,7 @@ test('Neither renovation landing shows the phone number or a call link', () => {
   for (const page of [first, second]) {
     assert(!page.includes('tel:') && !/375\s?552\s?1420/.test(page.replace(/wa\.me\/\d+/g, '')));
     assert(!/[Cc]hiama il|hp-header-phone|hp-call-link|data-hp-sticky-call/.test(page));
-    assert(page.includes('class="hp-sticky-bar rn-sticky-two"'));
+    // The form is the only way to book: no fixed bar on phones and no WhatsApp link.
+    assert(!page.includes('hp-sticky-bar') && !/wa\.me|whatsapp/i.test(page));
   }
 });

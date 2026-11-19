@@ -120,8 +120,6 @@
 .rn-landing .rn-final .rn-h2{max-width:13ch;font-size:clamp(40px,6.4vw,88px)}
 .rn-landing .rn-final .rn-lead{margin-top:26px}
 .rn-landing .rn-final-actions{display:flex;flex-wrap:wrap;align-items:center;gap:20px 32px;margin-top:40px}
-.rn-landing .rn-final-actions p{max-width:38ch;margin:0;font-size:15px;line-height:1.6;color:#b9c9be}
-.rn-landing .rn-final-actions p a{color:#fff;text-decoration:underline;text-underline-offset:3px}
 
 
 /* Titoli larghi e invito all'azione ripetuto a fine sezione */
@@ -361,8 +359,8 @@
  .rn-landing.rn-video-first .rn-hero-second{padding:48px 0 48px}
 }
 
-/* Senza telefono: nella barra fissa restano WhatsApp e il modulo */
-.rn-landing .hp-sticky-bar.rn-sticky-two{grid-template-columns:1fr 1.7fr}
+/* Nessuna barra fissa su telefono: si prenota solo dal modulo. Tolto lo spazio che la pagina le riservava in fondo. */
+.rn-landing.hp-ready{padding-bottom:0}
 
 /* Parole in verde dentro i titoli */
 .rn-landing .rn-green{color:#1d7350}
