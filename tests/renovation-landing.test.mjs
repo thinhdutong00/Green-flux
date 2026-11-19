@@ -37,7 +37,7 @@ test('The renovation form sends a short site-visit request with the job and the 
 test('The renovation landing identifies the conditions of its 2026 tax estimate and commercial proposal', () => {
   for (const trade of ['Progetto e permessi', 'Demolizioni e opere murarie', 'Impianto idraulico e bagni', 'Riscaldamento e raffrescamento', 'Impianto elettrico', 'Pavimenti e finiture']) assert(html.includes(`<li>${trade}</li>`), trade);
   // One contact person who coordinates the works: no partner logos, no placeholder names.
-  assert(html.includes('Ristrutturi casa con un unico referente.') && html.includes('id="referente"') && !html.includes('Nome in arrivo') && !html.includes('rn-logo-placeholder'));
+  assert(html.includes('Ristrutturazione casa completa o parziale, parla con un unico referente') && html.includes('id="referente"') && !html.includes('Nome in arrivo') && !html.includes('rn-logo-placeholder'));
   const copy = html.slice(html.indexOf('<main'), html.indexOf('</main>')).replace(/<[^>]*>/g, ' ');
   // The page talks about the result, never about how many firms do the work.
   assert(!/garanzia unica|prezzo bloccato|cinque|\bditt[ae]\b|\bimpres[ae]\b|lavorano insieme|collabor/i.test(copy));

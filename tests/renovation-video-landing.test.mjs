@@ -27,7 +27,7 @@ test('Everything else matches the first landing, and requests say which landing 
   assert.equal(second.split('<section ').length, first.split('<section ').length + 1);
   const rest = html => html.slice(html.indexOf('id="bonus"'));
   assert.equal(rest(second).replace(/ rn-after-video/g, ''), rest(first).replace(/ rn-after-video/g, ''));
-  for (const phrase of ['Ristrutturi casa con un unico referente. Verifica quali lavori puoi portare in detrazione.', 'Domande frequenti', 'Su 60.000 € di spese ammesse, la detrazione può arrivare a 30.000 €.']) assert(text(second).includes(phrase), phrase);
+  for (const phrase of ['Ristrutturazione casa completa o parziale, parla con un unico referente', 'Domande frequenti', 'Su 60.000 € di spese ammesse, la detrazione può arrivare a 30.000 €.']) assert(text(second).includes(phrase), phrase);
   assert(second.includes('value="Landing ristrutturazione video — lavoro: non indicato — superficie: non indicata — inizio: da definire"'));
   assert(first.includes('value="Landing ristrutturazione — lavoro: non indicato'));
   assert(readFileSync('public/assets/js/renovation-landing.mjs', 'utf8').includes("notes.value.split(' — ')[0]"));
