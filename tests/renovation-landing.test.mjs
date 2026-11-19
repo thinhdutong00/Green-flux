@@ -35,9 +35,8 @@ test('The renovation form sends a short site-visit request with the job and the 
 });
 
 test('The renovation landing identifies the conditions of its 2026 tax estimate and commercial proposal', () => {
-  for (const trade of ['Progetto e permessi', 'Demolizioni e opere murarie', 'Impianto idraulico e bagni', 'Riscaldamento e raffrescamento', 'Impianto elettrico', 'Pavimenti e finiture']) assert(html.includes(`<li>${trade}</li>`), trade);
-  // One contact person who coordinates the works: no partner logos, no placeholder names.
-  assert(html.includes('Ristrutturazione casa completa o parziale, richiedi un sopralluogo gratuito.') && html.includes('id="referente"') && !html.includes('Nome in arrivo') && !html.includes('rn-logo-placeholder'));
+  // The "one contact person" diagram section was removed: no partner logos, no placeholder names.
+  assert(html.includes('Ristrutturazione casa completa o parziale, richiedi un sopralluogo gratuito.') && !html.includes('id="referente"') && !html.includes('Nome in arrivo') && !html.includes('rn-logo-placeholder'));
   const copy = html.slice(html.indexOf('<main'), html.indexOf('</main>')).replace(/<[^>]*>/g, ' ');
   // The page talks about the result, never about how many firms do the work.
   assert(!/garanzia unica|prezzo bloccato|cinque|\bditt[ae]\b|\bimpres[ae]\b|lavorano insieme|collabor/i.test(copy));
@@ -52,7 +51,7 @@ test('The renovation landing identifies the conditions of its 2026 tax estimate 
 
 test('Every section after the hero closes with the same call to action', () => {
   const sections = html.split('<section ').slice(2);
-  assert.equal(sections.length, 10);
+  assert.equal(sections.length, 9);
   const withoutCta = ['id="domande"'];
   for (const section of sections.filter(section => !withoutCta.some(id => section.slice(0, 80).includes(id)))) assert(section.includes('<a class="hp-button" href="#valutazione">Richiedi il sopralluogo</a>'), section.slice(0, 60));
   assert.equal([...html.matchAll(/class="rn-vs-row"/g)].length, 6);
