@@ -234,6 +234,7 @@
 .rn-landing .rn-stats li+li{padding-left:24px;border-left:1px solid var(--rn-line)}
 .rn-landing .rn-stats strong{font-size:40px;line-height:1.05;letter-spacing:-.04em;color:var(--rn-ink)}
 .rn-landing .rn-stats span{font-size:14.5px;color:var(--rn-mute)}
+.rn-landing .rn-stats .rn-stat-stars{display:inline-block;margin-left:12px;font-size:.62em;letter-spacing:2px;vertical-align:.2em;color:#f5b400}
 
 @media(max-width:1100px){
  .rn-landing .rn-costs,.rn-landing .rn-bonus{gap:48px}
@@ -287,6 +288,7 @@
  .rn-landing .rn-seals li,.rn-landing .rn-seals li+li,.rn-landing .rn-seals li:nth-child(3){display:grid;grid-template-columns:40px minmax(0,1fr);column-gap:16px;padding:20px 0;border-left:0;border-bottom:1px solid #ffffff2e}
  .rn-landing .rn-seals svg{grid-row:1/span 2;width:36px;height:36px;margin:0}
  .rn-landing .rn-stats strong{font-size:28px}
+ .rn-landing .rn-stats .rn-stat-stars{display:block;margin:4px 0 2px;font-size:.5em;letter-spacing:1px}
  .rn-landing .rn-stats li,.rn-landing .rn-stats li+li{padding:0 10px}
  .rn-landing .rn-stats li:first-child{padding-left:0}
  .rn-landing .rn-giant{font-size:104px}
