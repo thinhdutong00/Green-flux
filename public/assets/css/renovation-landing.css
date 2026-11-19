@@ -221,12 +221,6 @@
 .rn-landing .rn-tier-note{max-width:70ch;margin:26px 0 0;font-size:13.5px;line-height:1.55;color:var(--rn-mute)}
 
 /* Garanzie: quattro sigilli */
-.rn-landing .rn-seals{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin:0;padding:0;list-style:none;border-top:1px solid #ffffff2e}
-.rn-landing .rn-seals li{padding:30px 24px 10px 0}
-.rn-landing .rn-seals li+li{padding-left:24px;border-left:1px solid #ffffff2e}
-.rn-landing .rn-seals svg{display:block;width:44px;height:44px;margin-bottom:18px;color:var(--rn-lime)}
-.rn-landing .rn-seals h3{margin:0 0 8px;font-size:19px;letter-spacing:-.02em;color:#fff}
-.rn-landing .rn-seals p{margin:0;font-size:15px;line-height:1.55;color:#c9d6cc}
 .rn-landing .rn-dark .rn-cta p{color:#b9c9be}
 
 
@@ -235,8 +229,6 @@
  .rn-landing .rn-sheet{width:53cqw;font-size:2.03cqw}
  .rn-landing .rn-team{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:20px}
  .rn-landing .rn-team li:nth-child(4){padding-left:0;border-left:0}
- .rn-landing .rn-seals{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:12px}
- .rn-landing .rn-seals li:nth-child(3){padding-left:0;border-left:0}
 }
 @media(max-width:850px){
  .rn-landing .rn-sec{padding-block:64px}
@@ -277,9 +269,6 @@
 
  .rn-landing .rn-tiers{grid-template-columns:1fr;gap:28px}
  .rn-landing .rn-tier-pick{transform:none}
- .rn-landing .rn-seals{grid-template-columns:1fr}
- .rn-landing .rn-seals li,.rn-landing .rn-seals li+li,.rn-landing .rn-seals li:nth-child(3){display:grid;grid-template-columns:40px minmax(0,1fr);column-gap:16px;padding:20px 0;border-left:0;border-bottom:1px solid #ffffff2e}
- .rn-landing .rn-seals svg{grid-row:1/span 2;width:36px;height:36px;margin:0}
  .rn-landing .rn-giant{font-size:104px}
  .rn-landing .rn-badge{font-size:13px}
 }
@@ -388,3 +377,10 @@
 @media(max-width:600px){
  .rn-landing .rn-badge-rest{display:none}
 }
+/* Angoli: 6 px per schede, modulo, video e riquadri; 4 px per foto e campi piccoli. Tondi solo pulsanti, etichette e intestazione. */
+.rn-landing .hp-hero-form .hp-lead-form{border-radius:6px}
+.rn-landing .rn-video-bridge .rn-hero-video{border-radius:6px}
+.rn-landing .rn-work-pair{border-radius:6px}
+.rn-landing .rn-work-pair img{border-radius:4px}
+.rn-landing .rn-chip span{border-radius:6px}
+.rn-landing .hp-lead-form .hp-field input,.rn-landing .hp-lead-form .hp-field select{border-radius:6px}

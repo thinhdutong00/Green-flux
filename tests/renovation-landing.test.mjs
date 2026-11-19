@@ -51,14 +51,14 @@ test('The renovation landing identifies the conditions of its 2026 tax estimate 
 
 test('The call to action closes only the sections where a decision is made', () => {
   const sections = html.split('<section ').slice(2);
-  assert.equal(sections.length, 9);
+  assert.equal(sections.length, 8);
   // The header button on computers and the fixed bar on phones are always on screen: a button under every section added nothing.
   const cta = '<a class="hp-button" href="#valutazione">Richiedi il sopralluogo</a>';
   const withCta = ['id="soluzioni"', 'id="prove"', 'rn-final'];
   for (const section of sections) assert.equal(section.split(cta).length - 1, withCta.some(id => section.slice(0, 80).includes(id)) ? 1 : 0, section.slice(0, 60));
   assert(readFileSync('public/assets/js/renovation-landing.mjs', 'utf8').includes("stickyBar.style.display = entry.isIntersecting ? 'none' : ''"));
   assert.equal([...html.matchAll(/class="rn-vs-row"/g)].length, 5);
-  assert.equal([...html.matchAll(/<em>incluso<\/em>/g)].length, 4);
+  assert.equal([...html.matchAll(/<em>incluso<\/em>/g)].length, 5);
   assert.equal([...html.matchAll(/<article class="rn-tier[ "]/g)].length, 3);
 });
 
