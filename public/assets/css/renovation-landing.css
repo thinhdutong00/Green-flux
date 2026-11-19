@@ -386,3 +386,4 @@
 
 /* Parole in verde dentro i titoli */
 .rn-landing .rn-green{color:#1d7350}
+.rn-landing .rn-dark .rn-green{color:var(--rn-lime)}
