@@ -25,23 +25,27 @@
 .rn-landing .rn-checks li{position:relative;padding:14px 0 14px 34px;border-top:1px solid var(--rn-line);font-size:16px;font-weight:600;line-height:1.45;color:var(--rn-ink)}
 .rn-landing .rn-checks li:last-child{border-bottom:1px solid var(--rn-line)}
 .rn-landing .rn-checks li::before{content:"";position:absolute;top:19px;left:2px;width:14px;height:7px;border-bottom:2.5px solid #5d8a2f;border-left:2.5px solid #5d8a2f;transform:rotate(-45deg)}
-.rn-landing .rn-sheet{position:relative;margin:0;padding:34px 36px 26px;border:1px solid var(--rn-line);border-radius:3px;background:#fff;box-shadow:10px 10px 0 -1px var(--rn-paper),10px 10px 0 0 var(--rn-line);transform:rotate(1.2deg)}
-.rn-landing .rn-sheet header{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding-bottom:16px;border-bottom:2px solid var(--rn-ink)}
-.rn-landing .rn-sheet header strong{font-size:18px;letter-spacing:-.02em;color:var(--rn-ink)}
-.rn-landing .rn-sheet header span{font-size:12.5px;color:var(--rn-mute)}
+/* Foto di un impianto finito; il foglio della proposta, in piccolo, esce dall'angolo in basso a destra.
+   Le misure sono in cqw (larghezza del blocco) e in em, così foto e foglio restano in proporzione. */
+.rn-landing .rn-shot{position:relative;container-type:inline-size}
+.rn-landing .rn-shot-photo{display:block;width:88cqw;height:auto;margin-bottom:11cqw;aspect-ratio:4/5;object-fit:cover;border-radius:4px;background:var(--rn-line)}
+.rn-landing .rn-sheet{position:absolute;right:0;bottom:0;width:50cqw;margin:0;padding:1.8em 1.9em 1.1em;border:1px solid var(--rn-line);border-radius:3px;background:#fff;box-shadow:0 1.6em 3.4em -1.2em rgba(15,36,33,.5),0 .2em .6em rgba(15,36,33,.12);font-size:1.85cqw;line-height:1.35;transform:rotate(1.6deg)}
+.rn-landing .rn-sheet header{display:flex;flex-direction:column;gap:.1em;padding-bottom:.9em;border-bottom:2px solid var(--rn-ink)}
+.rn-landing .rn-sheet header strong{font-size:1.2em;letter-spacing:-.02em;color:var(--rn-ink)}
+.rn-landing .rn-sheet header span{font-size:.86em;color:var(--rn-mute)}
 .rn-landing .rn-sheet ol{margin:0;padding:0;list-style:none}
-.rn-landing .rn-sheet li{display:grid;grid-template-columns:minmax(0,1fr) 92px;gap:14px;align-items:center;padding:13px 0;border-bottom:1px solid #e3e9e1;color:var(--rn-ink)}
-.rn-landing .rn-sheet li div{display:grid;gap:2px}
-.rn-landing .rn-sheet li strong{font-size:15px;line-height:1.35}
-.rn-landing .rn-sheet li span{font-size:12.5px;line-height:1.4;color:var(--rn-mute)}
-.rn-landing .rn-sheet i{display:block;justify-self:end;width:72px;height:10px;border-radius:2px;background:#dfe6dd}
-.rn-landing .rn-sheet li:nth-child(2) i,.rn-landing .rn-sheet li:nth-child(4) i{width:88px}
-.rn-landing .rn-sheet li:nth-child(1) i{width:56px}
-.rn-landing .rn-sheet footer{position:relative;display:grid;grid-template-columns:1fr 110px;align-items:center;padding:22px 0 6px}
-.rn-landing .rn-sheet footer strong{font-size:18px;color:var(--rn-ink)}
-.rn-landing .rn-sheet footer i{width:104px;height:14px;background:var(--rn-ink)}
-.rn-landing .rn-circle{position:absolute;top:2px;right:-26px;width:162px;height:56px;color:var(--rn-red)}
-.rn-landing .rn-sheet figcaption{margin-top:8px;font-family:var(--rn-voice);font-size:17px;font-style:italic;text-align:right;color:var(--rn-red);transform:rotate(-2.5deg)}
+.rn-landing .rn-sheet li{display:grid;grid-template-columns:minmax(0,1fr) 5em;gap:1em;align-items:center;padding:.62em 0;border-bottom:1px solid #e3e9e1;color:var(--rn-ink)}
+.rn-landing .rn-sheet li div{display:grid;gap:.1em}
+.rn-landing .rn-sheet li strong{font-size:1em}
+.rn-landing .rn-sheet li span{font-size:.86em;color:var(--rn-mute)}
+.rn-landing .rn-sheet i{display:block;justify-self:end;width:4em;height:.6em;border-radius:2px;background:#dfe6dd}
+.rn-landing .rn-sheet li:nth-child(2) i,.rn-landing .rn-sheet li:nth-child(4) i{width:5em}
+.rn-landing .rn-sheet li:nth-child(1) i{width:3.1em}
+.rn-landing .rn-sheet footer{position:relative;display:grid;grid-template-columns:1fr 6.2em;align-items:center;padding:1.2em 0 .3em}
+.rn-landing .rn-sheet footer strong{font-size:1.2em;color:var(--rn-ink)}
+.rn-landing .rn-sheet footer i{width:5.8em;height:.85em;background:var(--rn-ink)}
+.rn-landing .rn-circle{position:absolute;top:.1em;right:-1.5em;width:9.2em;height:3.2em;color:var(--rn-red)}
+.rn-landing .rn-sheet figcaption{margin-top:.35em;font-family:var(--rn-voice);font-size:1.2em;font-style:italic;text-align:right;color:var(--rn-red);transform:rotate(-2.5deg)}
 
 /* Bonus casa: la ricevuta con il cursore */
 .rn-landing .rn-bonus{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:80px;align-items:center}
@@ -233,6 +237,7 @@
 
 @media(max-width:1100px){
  .rn-landing .rn-costs,.rn-landing .rn-bonus{gap:48px}
+ .rn-landing .rn-sheet{width:53cqw;font-size:2.03cqw}
  .rn-landing .rn-team{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:20px}
  .rn-landing .rn-team li:nth-child(4){padding-left:0;border-left:0}
  .rn-landing .rn-seals{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:12px}
@@ -255,12 +260,10 @@
  .rn-landing .rn-voices{gap:0}
  .rn-landing .rn-voice-main{grid-row:auto}
  .rn-landing .rn-stack strong{font-size:16.5px}
- .rn-landing .rn-sheet{padding:24px 20px 20px;transform:none}
- .rn-landing .rn-sheet header{flex-direction:column;gap:2px}
- .rn-landing .rn-sheet li{grid-template-columns:minmax(0,1fr) 60px;gap:12px}
- .rn-landing .rn-sheet i{width:52px!important}
- .rn-landing .rn-sheet footer i{width:84px!important}
- .rn-landing .rn-circle{right:-14px;width:132px}
+ .rn-landing .rn-shot{max-width:460px}
+ .rn-landing .rn-shot-photo{width:91cqw;margin-bottom:32cqw}
+ .rn-landing .rn-sheet{width:60cqw;font-size:2.73cqw}
+ .rn-landing .rn-sheet li span{display:none}
  .rn-landing .rn-calc{padding:26px 22px 24px}
  .rn-landing .rn-calc output{font-size:26px}
  .rn-landing .rn-calc .rn-calc-year dd{font-size:30px}
