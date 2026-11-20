@@ -51,7 +51,7 @@ test('The renovation landing identifies the conditions of its 2026 tax estimate 
 
 test('The call to action closes only the sections where a decision is made', () => {
   const sections = html.split('<section ').slice(2);
-  assert.equal(sections.length, 8);
+  assert.equal(sections.length, 9);
   // The header button is always on screen, on computers and on phones: a button under every section added nothing.
   const cta = '<a class="hp-button" href="#valutazione">Richiedi il sopralluogo</a>';
   const withCta = ['id="soluzioni"', 'id="prove"', 'rn-final'];
