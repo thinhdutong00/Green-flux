@@ -384,11 +384,14 @@
 .rn-landing .hp-lead-form .hp-field input,.rn-landing .hp-lead-form .hp-field select{border-radius:6px}
 /* Tipi di ristrutturazione: elenco a due colonne, nome del lavoro a sinistra e cosa comprende a destra */
 .rn-landing .rn-kinds{margin:0;border-bottom:1px solid var(--rn-line)}
-.rn-landing .rn-kinds div{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px;align-items:baseline;padding:30px 0;border-top:1px solid var(--rn-line)}
+.rn-landing .rn-kinds div{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px;align-items:center;padding:30px 0;border-top:1px solid var(--rn-line)}
 .rn-landing .rn-kinds div:first-child{border-top:2px solid var(--rn-ink)}
-.rn-landing .rn-kinds dt{font-size:clamp(24px,2.4vw,34px);font-weight:700;line-height:1.12;letter-spacing:-.03em;color:var(--rn-ink);text-wrap:balance}
+.rn-landing .rn-kinds dt{display:flex;align-items:center;gap:20px;font-size:clamp(24px,2.4vw,34px);font-weight:700;line-height:1.12;letter-spacing:-.03em;color:var(--rn-ink);text-wrap:balance}
+.rn-landing .rn-kind-icon{flex:0 0 auto;width:60px;height:60px;padding:12px;border-radius:6px;background:var(--rn-lime);color:var(--rn-ink)}
 .rn-landing .rn-kinds dd{max-width:60ch;margin:0;font-size:17px;line-height:1.6;color:var(--rn-mute)}
 @media(max-width:850px){
- .rn-landing .rn-kinds div{grid-template-columns:1fr;gap:8px;padding:22px 0}
+ .rn-landing .rn-kinds div{grid-template-columns:1fr;gap:12px;padding:22px 0}
+ .rn-landing .rn-kinds dt{gap:14px}
+ .rn-landing .rn-kind-icon{width:46px;height:46px;padding:9px}
  .rn-landing .rn-kinds dd{font-size:16px}
 }
